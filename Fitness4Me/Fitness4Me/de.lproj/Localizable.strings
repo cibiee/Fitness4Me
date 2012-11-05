@@ -1,0 +1,39 @@
+/* 
+  Localizable.strings
+  Fitness4Me
+
+  Created by Ciby on 10/08/12.
+
+*/
+
+
+
+"NoInternetMessage" ="Es besteht keine Internetverbindung - bitte versuche es später.";
+"UsernameNull"      ="Benützername/Passwort bitte ausfüllen.";
+"twitterConfigure"  ="Bitte den Twitter Zugang in dein Gerät konfigurieren";
+"emailExists"       ="E-Mail Adresse existiert bereits";
+"ProfileUpdated"    ="Profile Updated";
+"ExitMsg"           ="Möchtest du wirklich fitness4.me verlassen?";
+"fullDownloadMsg"   ="Lade alle übrigen Workouts herunter. Dies könnte mehrere Minuten dauern, abhängig von Deiner Internet Verbindung.";
+"usernameAlphanumeric"="Benutzername muss alphanumerischen";
+
+"PasswordAlphanumeric"="Password muss alphanumerischen";
+"workoutsthroughsettingsmsg"="Du kannst später alle Workouts unter Einstellungen herunterladen";
+
+"nullfeedbackmsg"="Sende uns bitte ein Feedback";
+
+"exitVideo"   ="Du bist dabei das Video zu beenden, bist Du sicher?";
+
+"VideoUnavailable"   ="Workout Video ist gerade nicht verfügbar.Downloade die Videos während einer guten Internet Verbindung.";
+
+"resumeDownload"   ="Wir versuchen Dein Workout herunter zu laden, aber Deine Internet Verbindungen scheint langsam zu sein.Wir empfehlen Dir, den Download abzubrechen, starte ihn  wieder, wenn Du eine gute Internet Verbindung zur Verfügung hast..";
+
+
+"validateemailUsername"="E-Mail / Benutzername nicht gültig.";
+
+"mandatory"="Alle Felder sind Pflichtfelder.";
+
+"invalidaMail"="E-Mail ist nicht gültig";
+
+"slowdata"="Antwort aufgrund einer zu langsamen Internet Verbindung im Moment leider nicht möglich Bitte erneut versuchen, wenn du eine bessere Internet Verbindung hast.";
+"requestError"="Fehlermeldung .Unser Support Team wurde dieser Fehler weiter geleitet.Bitte versuche es später erneut.";

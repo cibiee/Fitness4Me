@@ -1,0 +1,42 @@
+/* 
+  Localizable.strings
+  Fitness4Me
+
+  Created by Ciby on 10/08/12.
+
+*/
+
+
+"NoInternetMessage" ="Internet is not available - please try later.";
+"UsernameNull"      ="Username/Password cannot blank";
+"twitterConfigure"  ="Configure your Twitter Account in your device settings";
+"emailExists"       ="email already exists";
+"ProfileUpdated"    ="Profile Updated";
+"UsernameExits"     ="Username already exists";
+"ExitMsg"           ="You are about to exit fitness4me. Are you sure?";
+"fullDownloadMsg"   ="Download all remaining workouts.Depending on your internet connection this might take several minutes";
+
+"usernameAlphanumeric"="Username should be alphanumeric and cannot have space";
+
+
+"PasswordAlphanumeric"="Password should be alphanumeric and cannot have space";
+
+
+"workoutsthroughsettingsmsg"="You can choose to download all your remaining workouts through the settings";
+
+"nullfeedbackmsg"=" Please enter a feedback.";
+"exitVideo"   ="You are about to exit the video. Are you sure?";
+"VideoUnavailable"   ="Workout video unavailable.Download videos while internet is available.";
+"resumeDownload"   ="We are trying to download your workout,but  your internet connections seems to be slow.We recommend that you cancel the download and resume when you have faster internet.";
+
+"validateemailUsername"="Email/Username is not valid";
+
+
+"mandatory"="All fields are mandatory";
+
+"invalidaMail"="email is not valid";
+
+
+
+"slowdata"="Response not recieved from server due to  slow intenet connection.Please try again when you have a  better internet speed";
+"requestError"="Request error occurred.Our support team will be notified about this error. Please try again later.";
