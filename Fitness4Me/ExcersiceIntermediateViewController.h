@@ -13,6 +13,7 @@
 #import "ListWorkoutsViewController.h"
 #import "ASIFormDataRequest.h"
 #import "ASIHTTPRequest.h"
+#import "ASINetworkQueue.h"
 #import "SBJSON.h"
 #import "SBJsonParser.h"
 #import <StoreKit/StoreKit.h>
@@ -43,7 +44,9 @@
 
      IBOutlet UIButton *slownetButton;
     
-
+    ASIHTTPRequest   *downloadrequest ;
+    ASINetworkQueue  *myQueue;
+    
     ExcersiceDB *excersiceDB;  
     WorkoutDB *workoutDB;
     Workout * workout;
@@ -76,6 +79,7 @@
 @property(retain,nonatomic)NSString *userlevel;
 @property(retain,nonatomic)NSString *userID;
 @property(retain,nonatomic)NSString *productIdentifier;
+@property (nonatomic,retain) ASINetworkQueue *myQueue;
 
 -(void)downloadVideos:(NSString *)url:(NSString*)name;
 -(void)parseExcersiceDetails;

@@ -252,9 +252,9 @@
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<bool key="IBUIEditable">NO</bool>
 								<string type="base64-UTF8" key="IBUIText">SSBhbSBkb3dubG9hZGluZyB5b3VyIGZyZWUgd29ya291dCB2aWRlb3MgYW5kIHNhdmluZyBpdCB0byB5
-b3VyIGRldmljZS5QbGVhc2UgZG9ub3QgY2xvc2UgdGhlIGFwcGxpY2F0aW9ucyBiZWZvcmUgdGhlIGRv
-d25sb2FkIGlzIGNvbXBsZXRlZApEZXBlbmRpbmcgb24geW91ciBpbnRlcm5ldCBjb25uZWN0aW9uIHRo
-aXMgbWF5IHRha2Ugc2V2ZXJhbCBtaW51dGVzLgo</string>
+b3VyIGRldmljZS5QbGVhc2UgZG8gbm90IGNsb3NlIHRoZSBhcHBsaWNhdGlvbnMgYmVmb3JlIHRoZSBk
+b3dubG9hZCBpcyBjb21wbGV0ZWQKRGVwZW5kaW5nIG9uIHlvdXIgaW50ZXJuZXQgY29ubmVjdGlvbiB0
+aGlzIG1heSB0YWtlIHNldmVyYWwgbWludXRlcy4KA</string>
 								<reference key="IBUITextColor" ref="186350636"/>
 								<int key="IBUITextAlignment">1</int>
 								<object class="IBUITextInputTraits" key="IBUITextInputTraits">
@@ -630,6 +630,7 @@ bmxvYWQgcHVzaCBjYW5jZWw</string>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<int key="IBUIContentHorizontalAlignment">0</int>
 								<int key="IBUIContentVerticalAlignment">0</int>
+								<string key="IBUIHighlightedTitle">Download Full Vidoes</string>
 								<string key="IBUINormalTitle">Download Full Vidoes</string>
 								<reference key="IBUIHighlightedTitleColor" ref="186350636"/>
 								<reference key="IBUINormalTitleColor" ref="186350636"/>
@@ -1858,7 +1859,7 @@ bmxvYWQgcHVzaCBjYW5jZWw</string>
 				<boolean value="NO" key="100.showNotes"/>
 				<string key="114.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="115.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<real value="0.0" key="115.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
+				<real value="1" key="115.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
 				<reference key="115.IBUserGuides" ref="0"/>
 				<boolean value="NO" key="115.showNotes"/>
 				<string key="119.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -1953,7 +1954,7 @@ bmxvYWQgcHVzaCBjYW5jZWw</string>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">170</int>
+			<int key="maxID">171</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>

@@ -8,32 +8,29 @@
 
 #import <UIKit/UIKit.h>
 #import "GADBannerView.h"
+#import <QuartzCore/QuartzCore.h>
 
 
-@interface InitialAppLaunchViewController : UIViewController<UIPickerViewDelegate,UIPickerViewDataSource>
+@interface InitialAppLaunchViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 {
-    IBOutlet UILabel *newtoFitness4meLabel;
-    
-    IBOutlet UILabel *signUpLabel;
-
-    IBOutlet UILabel *haveAccountLabel;
-
-    IBOutlet UILabel *logInLabel;
-    
-       
-     UIActionSheet *actionSheet;
-    
-     GADBannerView *bannerView_;
-    
+    NSIndexPath *lastIndex;
+    NSString *selectedLanguage;
     NSMutableArray *currencyKeys;
-    
     NSMutableArray *currencytexts;
     
-    NSString *selectedLanguage;
+    IBOutlet UILabel *signUpLabel;
+    IBOutlet UILabel *logInLabel;
+    IBOutlet UILabel *haveAccountLabel;
+    IBOutlet UILabel *newtoFitness4meLabel;
+    IBOutlet UIView *selectLanguageView;
+    IBOutlet UITableView *languageSelectionTableView;
+
 }
+
 
 -(IBAction)onclickRegisterUser:(id)sender;
 -(IBAction)onclickLogin:(id)sender;
+-(IBAction)dismissActionSheets:(id)sender;
 @end
 
 

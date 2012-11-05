@@ -11,10 +11,6 @@
 #import "FeedbackViewController.h"
 
 @interface RatingViewController : UIViewController
-{
-    
-}
-
 
 -(IBAction)ratetheApp:(id)sender;
 -(IBAction)dontRatetheApp:(id)sender;

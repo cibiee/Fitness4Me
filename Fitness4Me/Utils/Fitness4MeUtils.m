@@ -24,7 +24,7 @@
 #pragma mark - validUsername Regular Expression Method
 +(BOOL) validUsername:(NSString*) username
 {
-    NSString *regExPattern = @"^[a-zA-Z0-9]{1,16}$";
+    NSString *regExPattern = @"^[a-zA-Z0-9]{1,100}$";
     NSRegularExpression *regEx = [[NSRegularExpression alloc] initWithPattern:regExPattern options:NSRegularExpressionCaseInsensitive error:nil];
     NSUInteger regExMatches = [regEx numberOfMatchesInString:username options:0 range:NSMakeRange(0, [username length])];
     
@@ -52,7 +52,7 @@
 
 +(void)setViewMovedUp:(BOOL)movedUp:(UIView*)view :(BOOL)stayup:(int)offset
 {
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+    
         [UIView beginAnimations:nil context:NULL];
         [UIView setAnimationDuration:0.3];
         [UIView setAnimationBeginsFromCurrentState:YES];
@@ -69,7 +69,7 @@
         }
         view.frame = rect;
         [UIView commitAnimations];
-    }
+    
 }
 
 +(void)showAdMob:(UIViewController*)viewController{
@@ -83,21 +83,51 @@
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
             
             bannerView_ = [[GADBannerView alloc]
-                           initWithFrame:CGRectMake(0,viewController.view.frame.size.width-40,
-                                                    viewController.view.frame.size.height-10,
-                                                    60)];
+                           initWithFrame:CGRectMake(0,viewController.view.frame.size.height-50,
+                                                    viewController.view.frame.size.width,
+                                                    50)];
+
         }
         else {
             bannerView_ = [[GADBannerView alloc]
-                           initWithFrame:CGRectMake(0,viewController.view.frame.size.width-70,
-                                                    viewController.view.frame.size.height-10,
-                                                    90)];
+                           initWithFrame:CGRectMake(0,viewController.view.frame.size.height-90,
+                                                    viewController.view.frame.size.width,
+                                                    100)];
         }
         bannerView_.adUnitID = @"a1506940e575b91";
+        [bannerView_ setAutoresizingMask:UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin];
         bannerView_.rootViewController = viewController;
         [viewController.view addSubview:bannerView_];
         [bannerView_ loadRequest:[GADRequest request]];
     }
+}
+
+
++(void)showAdMobPrelogin:(UIViewController*)viewController
+{
+    GADBannerView *bannerView_;
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+    {
+        
+        bannerView_ = [[GADBannerView alloc]
+                       initWithFrame:CGRectMake(0,viewController.view.frame.size.height-50,
+                                                viewController.view.frame.size.width,
+                                                50)];
+        
+    }
+    else {
+        bannerView_ = [[GADBannerView alloc]
+                       initWithFrame:CGRectMake(0,viewController.view.frame.size.height-90,
+                                                viewController.view.frame.size.width,
+                                                100)];
+        
+    }
+    bannerView_.adUnitID = @"a1506940e575b91";
+    [bannerView_ setAutoresizingMask:UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin];
+    bannerView_.rootViewController = viewController;
+    [viewController.view addSubview:bannerView_];
+    [bannerView_ loadRequest:[GADRequest request]];
 }
 
 +(void)showAdMobLandscape:(UIViewController*)viewController{
@@ -136,37 +166,6 @@
         
     }
 }
-+(void)showAdMobPrelogin:(UIViewController*)viewController
-{
-    GADBannerView *bannerView_;
-    
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
-    {
-        
-        bannerView_ = [[GADBannerView alloc]
-                       initWithFrame:CGRectMake(0,viewController.view.frame.size.height-50,
-                                                viewController.view.frame.size.width,
-                                                50)];
-        
-    }
-    else {
-        bannerView_ = [[GADBannerView alloc]
-                       initWithFrame:CGRectMake(0,viewController.view.frame.size.width-70,
-                                                viewController.view.frame.size.height-10,
-                                                90)];
-        
-    }
-    bannerView_.adUnitID = @"a1506940e575b91";
-    [bannerView_ setAutoresizingMask:UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin];
-    bannerView_.rootViewController = viewController;
-    [viewController.view addSubview:bannerView_];
-    [bannerView_ loadRequest:[GADRequest request]];
-    
-    
-    
-}
-
-
 
 
 +(void)navigateToHomeView:(UIViewController*)selfViewController
@@ -181,6 +180,12 @@
     [selfViewController.navigationController pushViewController:viewController animated:YES];
     
 }
+
+
+
+
+
+
 
 +(BOOL)isReachable
 {
@@ -247,41 +252,6 @@
     return languageBundle;
 }
 
-+(void)registerDevice :(UIView *)signUpView
-{
-    
-    NSString *devToken,*userID;
-    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
-    devToken =[userinfo stringForKey:@"deviceToken"];
-    userID=[userinfo stringForKey:@"UserID"];
-    UIDevice *dev = [UIDevice currentDevice];
-	NSString *deviceUuid = dev.uniqueIdentifier;
-    NSString *requestUrl =[NSString stringWithFormat:@"%@iphone_register.php?deviceregister=yes&userid=%@&devicetoken=%@&deviceuid=%@",[NSString getDeviceRegisterPath],userID,devToken,deviceUuid];
-    NSURL *urlrequest =[NSURL URLWithString:requestUrl];
-    
-    BOOL isReachable =[Fitness4MeUtils isReachable];
-    if (isReachable){
-        
-        
-        ASIFormDataRequest   *request = [ASIFormDataRequest   requestWithURL:urlrequest];
-        [request startSynchronous];
-        NSError *error = [request error];
-        if (!error)
-        {
-            NSString *response = [request responseString];
-            if ([response length]>0)
-            {
-                
-            }
-        }
-    }
-    
-    else {
-        
-        [Fitness4MeUtils showAlert:NSLocalizedString(@"NoInternetMessage", nil)];
-        [signUpView removeFromSuperview];
-    }
-}
 
 
 @end

@@ -16,21 +16,23 @@
     Reachability* hostReachable;
 }
 
++(int)getuserLevel;
++(int)getApplicationLanguage;
 
-+(void)showAlert:(NSString*)message;
++(BOOL)isReachable;
 +(BOOL) validUsername:(NSString*) username;
 +(BOOL) validEmail:(NSString*) emailString;
+
+
++(void)showAlert:(NSString*)message;
 +(void)setViewMovedUp:(BOOL)movedUp:(UIView*)view :(BOOL)stayup:(int)offset;
 +(void)showAdMob:(UIViewController*)viewController;
 +(void)showAdMobLandscape:(UIViewController*)viewController;
 +(void)showAdMobPrelogin:(UIViewController*)viewController;
 +(void)navigateToHomeView:(UIViewController*)selfViewController;
-+(NSBundle*)getBundle;
 +(void)registerDevice :(UIView *)signUpView;
-+(int)getuserLevel;
-+(BOOL)isReachable;
 
-+ (NSString *)path;
++(NSString *)path;
++(NSBundle*)getBundle;
 
-+ (int)getApplicationLanguage;
 @end

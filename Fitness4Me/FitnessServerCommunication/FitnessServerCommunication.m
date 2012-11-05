@@ -55,6 +55,197 @@ static FitnessServerCommunication *sharedState;
 #pragma mark -
 #pragma mark Instance method
 
+- (void)login:(NSString *)username password:(NSString *)password activityIndicator:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView onCompletion:(WMLoginResponseBlock)completionBlock onError:(NSError*)errorBlock 
+
+{
+    
+    BOOL isReachable =[Fitness4MeUtils isReachable];
+    if (isReachable)
+    {
+        NSString *UrlPath= [NSString GetURlPath];
+        NSString *requestString =[NSString stringWithFormat:@"%@login=yes&username=%@&password=%@",UrlPath,username,password];
+        NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+        
+        __block ASIHTTPRequest *requests = [ASIHTTPRequest requestWithURL:url];
+        [requests setCompletionBlock:^{
+            // Use when fetching text data
+            NSString *responseString =[requests responseString];
+            if ([responseString length]>0) {
+                if (completionBlock) completionBlock(responseString);
+            }else{
+                [self terminateActivities:NSLocalizedString(@"slowdata", nil):activityIndicator:signUpView];
+            }
+        }];
+        [requests setFailedBlock:^{
+            //NSError *error = [requests error];
+            [self terminateActivities:NSLocalizedString(@"requestError", nil):activityIndicator:signUpView];
+        }];
+        [requests startAsynchronous];
+    }else{
+        [self terminateActivities:NSLocalizedString(@"NoInternetMessage", nil):activityIndicator:signUpView];
+    }
+}
+
+
+- (NSString *)Isvalid:(NSString *)responseString
+{
+    NSString *IsExist;
+    NSMutableArray *object = [responseString JSONValue];
+    NSMutableArray *itemsarray =[object valueForKey:@"items"];
+    for (int i=0; i<[itemsarray count]; i++) {
+        IsExist=[[itemsarray objectAtIndex:i] valueForKey:@"status"];
+    }
+    return IsExist;
+}
+
+
+
+
+- (void)isValidEmail:(NSString *)email andActivityIndicator:(UIActivityIndicatorView*)activityIndicator onCompletion:(ResponseBlock)completionBlock onError:(NSError*)errorBlock
+
+{
+    __block NSString *IsExist;
+    BOOL isReachable =[Fitness4MeUtils isReachable];
+    if (isReachable)
+    {
+        NSString *UrlPath= [NSString GetURlPath];
+        NSString *requestString =[NSString stringWithFormat: @"%@checkemail=yes&email=%@", UrlPath,email];
+              NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:
+                                          NSUTF8StringEncoding]];
+        
+        __block ASIHTTPRequest *requests = [ASIHTTPRequest requestWithURL:url];
+        [requests setCompletionBlock:^{
+            // Use when fetching text data
+            NSString *responseString =[requests responseString];
+           
+            if ([responseString length]>0) {
+                IsExist = [self Isvalid:responseString];
+                if (completionBlock) completionBlock(IsExist);
+            }else{
+                [self terminateActivities:NSLocalizedString(@"slowdata", nil):activityIndicator:nil];
+            }
+        }];
+        [requests setFailedBlock:^{
+            //NSError *error = [requests error];
+            [self terminateActivities:NSLocalizedString(@"requestError", nil):activityIndicator:nil];
+        }];
+        [requests startAsynchronous];
+    }else{
+        [self terminateActivities:NSLocalizedString(@"NoInternetMessage", nil):activityIndicator:nil];
+    }
+}
+
+
+- (void)isValidUsername:(NSString *)username andActivityIndicator:(UIActivityIndicatorView*)activityIndicator onCompletion:(ResponseBlock)completionBlock onError:(NSError*)errorBlock
+
+{
+    __block NSString *IsExist;
+    BOOL isReachable =[Fitness4MeUtils isReachable];
+    if (isReachable)
+    {
+        NSString *UrlPath= [NSString GetURlPath];
+        NSString *requestString =[NSString stringWithFormat: @"%@checkusername=yes&username=%@",UrlPath, username];
+        NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:
+                                          NSUTF8StringEncoding]];
+        
+        __block ASIHTTPRequest *requests = [ASIHTTPRequest requestWithURL:url];
+        [requests setCompletionBlock:^{
+            // Use when fetching text data
+            NSString *responseString =[requests responseString];
+            
+            if ([responseString length]>0) {
+                IsExist = [self Isvalid:responseString];
+                if (completionBlock) completionBlock(IsExist);
+            }else{
+                [self terminateActivities:NSLocalizedString(@"slowdata", nil):activityIndicator:nil];
+            }
+        }];
+        [requests setFailedBlock:^{
+            //NSError *error = [requests error];
+            [self terminateActivities:NSLocalizedString(@"requestError", nil):activityIndicator:nil];
+        }];
+        [requests startAsynchronous];
+    }else{
+        [self terminateActivities:NSLocalizedString(@"NoInternetMessage", nil):activityIndicator:nil];
+    }
+}
+
+
+- (void)registerDeviceWithUserID:(int)userId andSignUpView:(UIView*)signUpView onCompletion:(ResponseVoidBlock)completionBlock onError:(NSError*)errorBlock
+
+{
+    
+    BOOL isReachable =[Fitness4MeUtils isReachable];
+    if (isReachable)
+    {
+        NSString *devToken;
+        NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+        devToken =[userinfo stringForKey:@"deviceToken"];
+        UIDevice *dev = [UIDevice currentDevice];
+        NSString *deviceUuid = dev.uniqueIdentifier;
+        NSString *requestUrl =[NSString stringWithFormat:@"%@iphone_register.php?deviceregister=yes&userid=%i&devicetoken=%@&deviceuid=%@",[NSString getDeviceRegisterPath],userId,devToken,deviceUuid];
+        NSURL *urlrequest =[NSURL URLWithString:requestUrl];
+        
+        __block ASIHTTPRequest *requests = [ASIHTTPRequest requestWithURL:urlrequest];
+        [requests setCompletionBlock:^{
+            // Use when fetching text data
+            NSString *responseString =[requests responseString];
+            if ([responseString length]>0) {
+                NSLog(responseString);
+            }else{
+                [self terminateActivities:NSLocalizedString(@"slowdata", nil):nil:signUpView];
+            }
+        }];
+        [requests setFailedBlock:^{
+            //NSError *error = [requests error];
+            [self terminateActivities:NSLocalizedString(@"requestError", nil):nil:signUpView];
+        }];
+        [requests startAsynchronous];
+    }else{
+        [self terminateActivities:NSLocalizedString(@"NoInternetMessage", nil):nil:signUpView];
+    }
+}
+
+
+
+
+- (void)sendFeedback:(NSString *)feedback byUser:(NSString*)username email:(NSString*)email  onCompletion:(ResponseBlock)completionBlock onError:(NSError*)errorBlock
+
+{
+    __block NSString *IsExist;
+    BOOL isReachable =[Fitness4MeUtils isReachable];
+    if (isReachable)
+    {
+       // NSString *UrlPath= [NSString GetURlPath];
+        NSString *requestString =[NSString stringWithFormat:@"http://fitness4metesting.com/mobile/testjson.php?user_name=%@&user_email=%@&feedback=%@",username,email,feedback];
+        NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:
+                                          NSUTF8StringEncoding]];
+
+        
+        __block ASIHTTPRequest *requests = [ASIHTTPRequest requestWithURL:url];
+        [requests setCompletionBlock:^{
+            // Use when fetching text data
+            NSString *responseString =[requests responseString];
+            
+            if ([responseString length]>0) {
+                IsExist = [self Isvalid:responseString];
+                if (completionBlock) completionBlock(IsExist);
+            }else{
+                [self terminateActivities:NSLocalizedString(@"slowdata", nil):nil:nil];
+            }
+        }];
+        [requests setFailedBlock:^{
+            //NSError *error = [requests error];
+            [self terminateActivities:NSLocalizedString(@"requestError", nil):nil:nil];
+        }];
+        [requests startAsynchronous];
+    }else{
+        [self terminateActivities:NSLocalizedString(@"NoInternetMessage", nil):nil:nil];
+    }
+}
+
+
+
 -(void)parseFitnessDetails:(int)userID {
     
     
@@ -105,38 +296,30 @@ static FitnessServerCommunication *sharedState;
     if (isReachable)
     {
         
-        //NSURL *url=[NSURL URLWithString:requestString];
         NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:
                                           NSUTF8StringEncoding]];
         ASIFormDataRequest   *request = [ASIFormDataRequest   requestWithURL:url];
         [request startSynchronous];
-        
         NSError *error = [request error];
-        
         if (!error)
         {
             NSString *response = [request responseString];
             if ([response length]>0)
             {
-                
                 NSMutableArray *object = [response JSONValue];
                 NSMutableArray *itemsarray =[object valueForKey:@"items"];
                 for (int i=0; i<[itemsarray count]; i++)
                 {
                     userID=[[itemsarray objectAtIndex:i] valueForKey:@"userid"];
                 }
-            }
-            else
+            }else
             {
-                
                 [self terminateActivities:NSLocalizedString(@"slowdata", nil):activityIndicator:signUpView];            }
-        }
-        else
+        }else
         {
             [self terminateActivities:NSLocalizedString(@"requestError", nil):activityIndicator:signUpView];
         }
-    }
-    else
+    }else
     {
         [self terminateActivities:NSLocalizedString(@"NoInternetMessage", nil):activityIndicator:signUpView];
     }
@@ -165,93 +348,6 @@ static FitnessServerCommunication *sharedState;
     [signUpView removeFromSuperview];
 }
 
--(NSString*)isValidUserWitName:(NSString*)userName urlPath:(NSString*)urlPaths andActivityIndicator:(UIActivityIndicatorView*)activityIndicator{
-
-  BOOL isReachable =[Fitness4MeUtils isReachable];
-    NSString *IsExist;
-
- if(isReachable){
-    
-    NSString *requestString =[NSString stringWithFormat: @"%@checkusername=yes&username=%@",urlPaths, userName];
-    NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:
-                                      NSUTF8StringEncoding]];
-    
-    ASIFormDataRequest   *request = [ASIFormDataRequest   requestWithURL:url];
-    [request startSynchronous];
-    
-    NSError *error = [request error];
-    
-    if (!error){
-        
-        NSString *response = [request responseString];
-        
-        if ([response length]>0){
-            
-            NSMutableArray *object = [response JSONValue];
-            NSMutableArray *itemsarray =[object valueForKey:@"items"];
-                        for (int i=0; i<[itemsarray count]; i++){
-                IsExist=[[itemsarray objectAtIndex:i] valueForKey:@"status"];
-            }
-        }
-        else{
-            [self terminateActivities:NSLocalizedString(@"slowdata", nil):nil:activityIndicator];
-            
-        }
-    }
-    else{
-        [self terminateActivities:NSLocalizedString(@"requestError", nil):nil:activityIndicator];
-    }
-}
-else {
-    [self terminateActivities:NSLocalizedString(@"NoInternetMessage", nil):nil:activityIndicator];
-}
-
-    return IsExist;
-}
-
-
--(NSString*)isValidUserWitEmail:(NSString*)email urlPath:(NSString*)urlPaths andActivityIndicator:(UIActivityIndicatorView*)activityIndicator{
-    
-    NSString *IsExist;
-    
-    BOOL isReachable =[Fitness4MeUtils isReachable];
-    if (isReachable){
-        
-        
-        NSString *requestString =[NSString stringWithFormat: @"%@checkemail=yes&email=%@", urlPaths,email];
-        NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:
-                                          NSUTF8StringEncoding]];
-        
-        ASIFormDataRequest   *request = [ASIFormDataRequest   requestWithURL:url];
-        [request startSynchronous];
-        [request setTimeOutSeconds:10];
-        NSError *error = [request error];
-        if (!error)
-        {
-            
-            NSString *response = [request responseString];
-            if ([response length]>0) {
-                
-                NSMutableArray *object = [response JSONValue];
-                NSMutableArray *itemsarray =[object valueForKey:@"items"];
-                for (int i=0; i<[itemsarray count]; i++) {
-                    IsExist=[[itemsarray objectAtIndex:i] valueForKey:@"status"];
-                }
-            }
-            else{
-                [self terminateActivities:NSLocalizedString(@"slowdata", nil):nil:activityIndicator];
-            }
-        }
-        else{
-            [self terminateActivities:NSLocalizedString(@"requestError", nil):nil:activityIndicator];
-        }
-    }
-    else {
-        [self terminateActivities:NSLocalizedString(@"NoInternetMessage", nil):nil:activityIndicator];
-    }
-    
-    return IsExist;
-}
 
 
 
@@ -330,6 +426,10 @@ else {
     NSString *keyValue;
     NSData *responseData = [request responseData];
     NSMutableDictionary *object = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:nil];
+    NSLog(@"%i",[object count]);
+    if ([object count]>0) {
+        
+    
     NSArray *keyArray =[object allKeys];
     if ([keyArray count]>0) {
         
@@ -337,38 +437,26 @@ else {
     }
     
     if ([keyValue isEqualToString:@"items"]) {
-        
-        
-        // Use when fetching text data
         NSString *responseString = [request responseString];
         if ([responseString length]>0) {
             [self parseWorkoutList:responseString];
         }
     }
     else if ([keyValue isEqualToString:@"freepurchase"]){
-        
         NSArray *unlockWorkout =[object objectForKey:@"freepurchase"];
         int unlockcount=[[[unlockWorkout objectAtIndex:0]valueForKey:@"count"]intValue];
         NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
         [userinfo setInteger:unlockcount forKey:@"freePurchaseCount"];
-        
-        
     }
     else if ([keyValue isEqualToString:@"video"]){
         NSString *responseString = [request responseString];
         [self parseVideoList:responseString];
     }
-    
-    
     else if ([keyValue isEqualToString:@"workoutvideos"]){
         NSString *responseString = [request responseString];
         [self parseWorkoutVideoList:responseString];
     }
-    
-    //    else if ([keyValue isEqualToString:@"images"]){
-    //        NSString *responseString = [request responseString];
-    //        [self parseImageList:responseString];
-    //    }
+        }
 }
 
 
@@ -414,18 +502,7 @@ else {
 }
 
 
-//-(void)parseImageList:(NSString*)responseString
-//{
-//    NSMutableArray *object = [responseString JSONValue];
-//    workouts = [[NSMutableArray alloc]init];
-//    NSMutableArray *itemsarray =[object valueForKey:@"images"];
-//
-//    [itemsarray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-//        NSDictionary* item = obj;
-//        [self downloadImages:[item objectForKey:@"imageUrl"] :[item objectForKey:@"imageName"]];
-//    }];
-//
-//}
+
 
 -(void)parseWorkoutList:(NSString*)responseString
 {
@@ -587,49 +664,19 @@ int excersiceIntroCount=0,excersiceMainCount=0,excersiceOtherCount=0;
 }
 
 
-//- (void)downloadImages:(NSString *)url:(NSString*)name
-//{
-//
-//
-//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//    NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
-//    NSString *dataPath = [documentsDirectory stringByAppendingPathComponent:@"MyFolder"];
-//
-//    if (![[NSFileManager defaultManager] fileExistsAtPath:dataPath]){
-//        //Create Folder
-//        [[NSFileManager defaultManager] createDirectoryAtPath:dataPath withIntermediateDirectories:YES attributes:nil error:nil];
-//
-//    }
-//
-//    NSString  *storeURL= [dataPath stringByAppendingPathComponent :name];
-//
-//
-//    // Check If File Does Exists if not download the video
-//    if (![[NSFileManager defaultManager] fileExistsAtPath:storeURL]){
-//
-//        [self.myQueue setDelegate:self];
-//        [self.myQueue setShowAccurateProgress:YES];
-//        [self.myQueue setRequestDidFailSelector:@selector(requestDidFail:)];
-//        [self.myQueue setRequestDidReceiveResponseHeadersSelector:@selector(requestDidrec:)];;
-//        ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
-//        [request setDownloadDestinationPath:storeURL];
-//         [request setTimeOutSeconds:200];
-//        [request setDelegate:self];
-//       // [request startAsynchronous];
-//
-//        [myQueue addOperation:[request copy]];
-//
-//        [myQueue go];
-//    }
-//}
-
-
-
-
-
 
 
 int finished=0;
+
+- (void)resetRequest
+{
+    totalcount=0;
+    excersiceIntroCount=0;
+    excersiceMainCount=0;
+    excersiceOtherCount=0;
+    finished=0;
+}
+
 - (void)requestDidFinish:(ASINetworkQueue *)queue
 {
     finished=finished+1;
@@ -639,13 +686,7 @@ int finished=0;
         [myQueue setDelegate:nil];
         [myQueue cancelAllOperations];
         
-        totalcount=0;
-        excersiceIntroCount=0;
-        excersiceMainCount=0;
-        excersiceOtherCount=0;
-        finished=0;
-        
-        
+        [self resetRequest];
     }
     
 }
@@ -655,20 +696,9 @@ int finished=0;
 {
     
     [self.delegate didfinishedWorkout:0:0];
-    
-    
     [myQueue setDelegate:nil];
     [myQueue cancelAllOperations];
-    
-    totalcount=0;
-    excersiceIntroCount=0;
-    excersiceMainCount=0;
-    excersiceOtherCount=0;
-    finished=0;
-    
-    
-    
-    
+    [self resetRequest];
 }
 
 @end

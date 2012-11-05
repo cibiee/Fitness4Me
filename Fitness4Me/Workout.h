@@ -11,54 +11,31 @@
 @interface Workout : NSObject
 {
     NSString *WorkoutID;
-    
     NSString * Name;
-    
     NSString * Rate;
-    
     NSString *ImageUrl;
-    
     NSString *ImageName;
-    
     NSString * IsLocked;
-    
     NSString *Description;
-    
     NSString *DescriptionToDo;
-    
     NSString *LockImageUrl;
-    
     NSString *DescriptionBig;
-    
     NSString *ThumbImageUrl;
-    
     NSString *Props;
     
 }
 
 @property(retain,nonatomic)NSString *WorkoutID;
-
-
 @property(retain, nonatomic)NSString *Name;
-
 @property(retain,nonatomic) NSString *Rate;
-
 @property(retain,nonatomic)NSString *ImageUrl;
-
 @property(retain,nonatomic)NSString *ImageName;
-
 @property( retain,nonatomic)NSString *Description;
-
 @property(retain, nonatomic)NSString *DescriptionToDo;
-
 @property(retain, nonatomic)NSString *IsLocked;
-
 @property(retain,nonatomic)NSString *LockImageUrl;
-
 @property(retain, nonatomic)NSString *DescriptionBig;
-
 @property(retain,nonatomic)NSString *ThumbImageUrl;
-
 @property(retain,nonatomic)NSString *Props;
 
 //////

@@ -15,9 +15,7 @@
 #import "GADBannerView.h"
 
 @interface InitialAppLaunchViewController ()
--(void)showAdmobs;
--(void)setChildProperties;
--(void)showDropDown;
+
 @end
 
 @implementation InitialAppLaunchViewController
@@ -33,29 +31,26 @@
 
 #pragma mark - View Overriden Methods
 
-
-
-
 - (void)viewDidLoad
 {
-
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [self setChildProperties];
+    selectedLanguage=@"";
+    [selectLanguageView removeFromSuperview];
     [super viewDidLoad];
     
     [self prepareData];
     [self showAdmobs];
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
-    [self setChildProperties];
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:NO];
-     selectedLanguage=@"Select";
     int  selectedlang=[Fitness4MeUtils getApplicationLanguage] ;
     if (selectedlang==0)
         [self showDropDown];
 }
-
 
 - (void)viewDidUnload
 {
@@ -64,46 +59,42 @@
     // e.g. self.myOutlet = nil;
 }
 
-
-
 #pragma mark - Instance Methods
-
 
 -(IBAction)onclickLogin:(id)sender
 {
     UserLoginViewController *viewController;
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
-    {
-        
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
         viewController = [[UserLoginViewController alloc]initWithNibName:@"UserLoginViewController" bundle:nil];
-        
-    }
-    else {
+    }else {
         viewController = [[UserLoginViewController alloc]initWithNibName:@"UserLoginViewController_iPad" bundle:nil];
     }
-    
     [self.navigationController pushViewController:viewController animated:YES];
-    [viewController release];
 }
-
-
-
 
 -(IBAction)onclickRegisterUser:(id)sender
 {
     
     LandigPageViewController *viewController;
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
-    {
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
         viewController = [[LandigPageViewController alloc]initWithNibName:@"LandigPageViewController" bundle:nil];
-    }
-    else {
+    }else {
         viewController = [[LandigPageViewController alloc]initWithNibName:@"LandigPageViewController_iPad" bundle:nil];
     }
-    
     [self.navigationController pushViewController:viewController animated:YES];
-    [viewController release];
+    
 }
+
+-(IBAction)dismissActionSheets:(id)sender{
+    
+    if ([selectedLanguage isEqualToString:@""]) {
+        [Fitness4MeUtils showAlert:@"Please select a language !"];
+    }else{
+        [selectLanguageView removeFromSuperview];
+        [self showTermsofUse];
+    }
+}
+
 
 #pragma mark - Hidden Instance methods
 
@@ -113,84 +104,33 @@
     [signUpLabel setTextColor:UIColorFromRGBWithAlpha(0xc8e2ff,1)];
     [logInLabel setTextColor:UIColorFromRGBWithAlpha(0xc8e2ff,1)];
     [haveAccountLabel setTextColor:UIColorFromRGBWithAlpha(0xc8e2ff,1)];
+    
+    [selectLanguageView.layer setBorderColor:[[UIColor whiteColor]CGColor]];
+    [selectLanguageView.layer setBorderWidth:2];
+    [selectLanguageView.layer setCornerRadius:8];
+    
 }
 
 - (void)showAdmobs
 {
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
-    {
-        
-        bannerView_ = [[GADBannerView alloc]
-                       initWithFrame:CGRectMake(0,self.view.frame.size.height-50,
-                                                self.view.frame.size.width,
-                                                50)];
-        
-    }
-    else {
-        bannerView_ = [[GADBannerView alloc]
-                       initWithFrame:CGRectMake(0,self.view.frame.size.height-70,
-                                                self.view.frame.size.width,
-                                                100)];
-        
-    }
-    
-    bannerView_.adUnitID = @"a1506940e575b91";
-    [bannerView_ setAutoresizingMask:UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin];
-    
-    bannerView_.rootViewController = self;
-    [self.view addSubview:bannerView_];
-    
-    
-    [bannerView_ loadRequest:[GADRequest request]];
+    [Fitness4MeUtils showAdMobPrelogin:self];
 }
-
-
 
 -(void)showDropDown{
     
-    actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:nil cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
-    
-    [actionSheet setActionSheetStyle:UIActionSheetStyleBlackTranslucent];
-    
-    CGRect pickerFrame = CGRectMake(0, 40, 0, 0);
-    
-    UIPickerView *pickerView = [[UIPickerView alloc] initWithFrame:pickerFrame];
-    pickerView.showsSelectionIndicator = YES;
-    pickerView.dataSource = self;
-    pickerView.delegate = self;
-    
-    [actionSheet addSubview:pickerView];
-    [pickerView release];
-    
-    UISegmentedControl *closeButton = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObject:@"Close"]];
-    closeButton.momentary = YES;
-    closeButton.frame = CGRectMake(260, 7.0f, 50.0f, 30.0f);
-    closeButton.segmentedControlStyle = UISegmentedControlStyleBar;
-    closeButton.tintColor = [UIColor blackColor];
-    [closeButton addTarget:self action:@selector(dismissActionSheet:) forControlEvents:UIControlEventValueChanged];
-    [actionSheet addSubview:closeButton];
-    [closeButton release];
-    
-    if (self.view !=nil) {
-        [actionSheet showInView: self.view];
-        
-    }
-    
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
-    {
-        
-       [actionSheet setBounds:CGRectMake(0, 0, 320, 485)];
-        
-    }
-    else {
-         [actionSheet setBounds:CGRectMake(0, 0, 600, 700)];
-    }
-
-   
-    
-    
+    [self.view addSubview:selectLanguageView];
 }
 
+- (void)showTermsofUse {
+    TermsOfUse *viewController;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+        viewController = [[TermsOfUse alloc]initWithNibName:@"TermsOfUse" bundle:nil];
+    }else {
+        viewController = [[TermsOfUse alloc]initWithNibName:@"TermsOfUse_iPad" bundle:nil];
+    }
+    [self.navigationController pushViewController:viewController animated:YES];
+    
+}
 
 -(void)prepareData{
     
@@ -199,75 +139,51 @@
                     nil];
 }
 
+#pragma mark - tableView Delegates
 
-#pragma mark - Action Sheet Delegates
-
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView;
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+    // Return the number of sections.
     return 1;
 }
 
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
-{
-    
-    selectedLanguage =[currencytexts objectAtIndex:row];
-    [[NSUserDefaults standardUserDefaults] setObject:[NSArray arrayWithObjects:[currencytexts objectAtIndex:row], nil] forKey:@"AppleLanguages"];
-    
-    [[NSUserDefaults standardUserDefaults]synchronize];
-    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
-    [userinfo setInteger:row+1 forKey:@"lang"];
-}
-
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component;
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [currencytexts count];
 }
 
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component;
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return  [currencytexts objectAtIndex:row];
+    UITableViewCell *cell;
+    cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    
+    if (cell == nil){
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1  reuseIdentifier:@"Cell"];
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    }
+    [cell.textLabel setText:[currencytexts objectAtIndex:indexPath.row]];
+    return cell;
 }
 
--(void)dismissActionSheet:(id)sender{
-    
-    
-    if ([selectedLanguage isEqualToString:@"Select"]) {
-        
-        selectedLanguage =[currencytexts objectAtIndex:0];
-        [[NSUserDefaults standardUserDefaults] setObject:[NSArray arrayWithObjects:[currencytexts objectAtIndex:0], nil] forKey:@"AppleLanguages"];
-        
-        [[NSUserDefaults standardUserDefaults]synchronize];
-        NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
-        [userinfo setInteger:1 forKey:@"lang"];
-    }
-    
-    [actionSheet dismissWithClickedButtonIndex:0 animated:YES];
-    
-    
-    TermsOfUse *viewController;
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
-    {
-        
-        viewController = [[TermsOfUse alloc]initWithNibName:@"TermsOfUse" bundle:nil];
-        
-    }
-    else {
-        viewController = [[TermsOfUse alloc]initWithNibName:@"TermsOfUse_iPad" bundle:nil];
-    }
-    
-    [self.navigationController pushViewController:viewController animated:YES];
-    [viewController release];
-    
-    
-    
-}
-- (void)actionSheet:(UIActionSheet *)actionSheet
-clickedButtonAtIndex:(NSInteger)buttonIndex {
-}
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    UITableViewCell *oldCell = [tableView cellForRowAtIndexPath:lastIndex];
+    if (oldCell.accessoryType == UITableViewCellAccessoryCheckmark){
+        oldCell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    [[tableView cellForRowAtIndexPath:indexPath]
+     setAccessoryType:UITableViewCellAccessoryCheckmark];
+    lastIndex=indexPath;
+    selectedLanguage =[currencytexts objectAtIndex:indexPath.row];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSArray arrayWithObjects:[currencytexts objectAtIndex:indexPath.row], nil] forKey:@"AppleLanguages"];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+    [userinfo setInteger:indexPath.row+1 forKey:@"lang"];
+}
 
 #pragma mark - orientation methods
-
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {

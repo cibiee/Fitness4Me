@@ -24,11 +24,14 @@
     return self;
 }
 
+
+#pragma mark View Overriden methods
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self loadhints];
-
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -38,8 +41,16 @@
     
 }
 
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+    // e.g. self.myOutlet = nil;
+}
 
--(IBAction)loadAboutUs
+#pragma mark hidden instance methods
+
+-(void)loadhints
 {
     
 	webView.backgroundColor = [UIColor colorWithRed:148.0/256.0 green:148.0/256.0 blue:148.0/256.0 alpha:0.0];
@@ -50,33 +61,7 @@
 	NSBundle *thisBundle = [NSBundle mainBundle];
     if (selectedLang ==1) {
         path = [thisBundle pathForResource:@"about" ofType:@"html"];
-    }
-    else
-    {
-        path = [thisBundle pathForResource:@"aboutusDe" ofType:@"html"];
-    }
-    
-	// make a file: URL out of the path
-	NSURL *instructionsURL = [NSURL fileURLWithPath:path];
-	[webView loadRequest:[NSURLRequest requestWithURL:instructionsURL]];
-    
-	[super viewDidLoad];
-}
-
--(void)loadhints
-{
-    
-	webView.backgroundColor = [UIColor colorWithRed:148.0/256.0 green:148.0/256.0 blue:148.0/256.0 alpha:0.0];
-	webView.opaque = YES;
-     int selectedLang= [Fitness4MeUtils getApplicationLanguage];
-	// get localized path for file from app bundle
-	NSString *path;
-	NSBundle *thisBundle = [NSBundle mainBundle];
-    if (selectedLang ==1) {
-	path = [thisBundle pathForResource:@"about" ofType:@"html"];
-    }
-    else
-    {
+    }else{
         path = [thisBundle pathForResource:@"aboutusDe" ofType:@"html"];
     }
     
@@ -92,72 +77,73 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
--(void)loadPrivacypolicy
+#pragma mark instance methods
+
+
+-(IBAction)loadAboutUs
 {
     
+	webView.backgroundColor = [UIColor colorWithRed:148.0/256.0 green:148.0/256.0 blue:148.0/256.0 alpha:0.0];
+	webView.opaque = YES;
+    int selectedLang= [Fitness4MeUtils getApplicationLanguage];
+	// get localized path for file from app bundle
+	NSString *path;
+	NSBundle *thisBundle = [NSBundle mainBundle];
+    if (selectedLang ==1) {
+        path = [thisBundle pathForResource:@"about" ofType:@"html"];
+    }else{
+        path = [thisBundle pathForResource:@"aboutusDe" ofType:@"html"];
+    }
+    
+	// make a file: URL out of the path
+	NSURL *instructionsURL = [NSURL fileURLWithPath:path];
+	[webView loadRequest:[NSURLRequest requestWithURL:instructionsURL]];
+    
+	[super viewDidLoad];
 }
+
+
 
 -(IBAction)loadTerms:(id)sender
 {
-  
-        
-   
     webView.backgroundColor = [UIColor colorWithRed:148.0/256.0 green:148.0/256.0 blue:148.0/256.0 alpha:0.0];
 	webView.opaque = YES;
     
     int selectedLang= [Fitness4MeUtils getApplicationLanguage];
-    
-    
-	// get localized path for file from app bundle
-	NSString *path;
+    NSString *path;
 	NSBundle *thisBundle = [NSBundle mainBundle];
     if (selectedLang ==2) {
         path = [thisBundle pathForResource:@"termsOfUseDe" ofType:@"html"];
+    }else{
+        path = [thisBundle pathForResource:@"termsofUse" ofType:@"html"];
     }
-    else
-    {
-	path = [thisBundle pathForResource:@"termsofUse" ofType:@"html"];
-    }
-	// make a file: URL out of the path
 	NSURL *instructionsURL = [NSURL fileURLWithPath:path];
 	[webView loadRequest:[NSURLRequest requestWithURL:instructionsURL]];
-    }
-    
-    
+}
+
+
 
 -(IBAction)loadPrivacypolicy:(id)sender
 {
     
-    
-   
-        webView.backgroundColor = [UIColor colorWithRed:148.0/256.0 green:148.0/256.0 blue:148.0/256.0 alpha:0.0];
-        webView.opaque = YES;
-        int selectedLang= [Fitness4MeUtils getApplicationLanguage];
-        // get localized path for file from app bundle
-        NSString *path;
-        NSBundle *thisBundle = [NSBundle mainBundle];
+    webView.backgroundColor = [UIColor colorWithRed:148.0/256.0 green:148.0/256.0 blue:148.0/256.0 alpha:0.0];
+    webView.opaque = YES;
+    int selectedLang= [Fitness4MeUtils getApplicationLanguage];
+    NSString *path;
+    NSBundle *thisBundle = [NSBundle mainBundle];
     
     if (selectedLang ==2) {
         path = [thisBundle pathForResource:@"PrivacyPolicyDe" ofType:@"html"];
-    }
-    else
-    {
+    }else{
         path = [thisBundle pathForResource:@"PrivacyPolicy" ofType:@"html"];
     }
-       
-        
-        // make a file: URL out of the path
-        NSURL *instructionsURL = [NSURL fileURLWithPath:path];
-        [webView loadRequest:[NSURLRequest requestWithURL:instructionsURL]];
+    NSURL *instructionsURL = [NSURL fileURLWithPath:path];
+    [webView loadRequest:[NSURLRequest requestWithURL:instructionsURL]];
     
 }
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
+#pragma mark view orientation Methods
+
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {

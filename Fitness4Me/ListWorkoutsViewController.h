@@ -20,63 +20,57 @@
 
 @interface ListWorkoutsViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,FitnessServerCommunicationDelegate>
 {
-    __unsafe_unretained IBOutlet UITableView *tableview;
-    IBOutlet UINavigationBar *navigationBars;
-    IBOutlet UIImageView *testImage;
-    IBOutlet UIButton *unlockAllButton;
-    IBOutlet UIButton *unlockOneButton;
-    IBOutlet UIView *offerView;
-  __unsafe_unretained  IBOutlet UIActivityIndicatorView *activityIndicator;
-   __unsafe_unretained  IBOutlet UIView *signUpView;
-    IBOutlet UIBarButtonItem *refreshButton ;
-    
-    
-    IBOutlet UITextView *networkNotificationtextView;
-    
-    
-    IBOutlet UIProgressView *fileDownloadProgressView;
-    IBOutlet UIButton *fullvideobutton;
-    IBOutlet UIView *fullvideoView;
-    IBOutlet UIView *signupviews;
-    
-    
-    
-     IBOutlet UIActivityIndicatorView *activityindicators;
-    IBOutlet UILabel *lblCompleted;
-    Workout *selectedWorkout;
-    WorkoutDB *workoutDB;
-    
-     ASINetworkQueue  *myQueue;
-    
-  
-    NSMutableArray *workouts;
+    int UserID;
+    int count;
     
     NSString *dataPath;
     NSString *purchaseMode;
-  
+    
+    NSMutableArray *workouts;
+    
     UIImageView *imageView;
     
-    int UserID;
-    int count;
- 
+    WorkoutDB *workoutDB;
+    ASINetworkQueue  *myQueue;
+    Workout *selectedWorkout;
+
+    IBOutlet UIView *offerView;
+    IBOutlet UIView *signupviews;
+    IBOutlet UIView *fullvideoView;
+    IBOutlet UILabel *lblCompleted;
+    IBOutlet UIImageView *testImage;
+    IBOutlet UIButton *unlockAllButton;
+    IBOutlet UIButton *unlockOneButton;
+    IBOutlet UIButton *fullvideobutton;
+    IBOutlet UIBarButtonItem *refreshButton ;
+    IBOutlet UINavigationBar *navigationBars;
+    IBOutlet UITextView *networkNotificationtextView;
+    IBOutlet UIProgressView *fileDownloadProgressView;
+    IBOutlet UIActivityIndicatorView *activityindicators;
+    __unsafe_unretained  IBOutlet UIView *signUpView;
+    __unsafe_unretained IBOutlet UITableView *tableview;
+    __unsafe_unretained  IBOutlet UIActivityIndicatorView *activityIndicator;
+    
 }
 
 @property (assign,nonatomic)int UserID;
-@property (assign,nonatomic)UIActivityIndicatorView *activityIndicator;
 @property (assign,nonatomic)UIView *signUpView;
 @property (assign,nonatomic)UITableView *tableview;
 @property (nonatomic,retain) ASINetworkQueue *myQueue;
+@property (assign,nonatomic)UIActivityIndicatorView *activityIndicator;
 
--(IBAction)navigateToHome;
--(IBAction)unlockOne;
--(IBAction)unlockAll;
 
 -(void)ListExcersices;
 
--(IBAction)fullVideoDownload:(id)sender;
 
+
+-(IBAction)unlockOne;
+-(IBAction)unlockAll;
+-(IBAction)navigateToHome;
 -(IBAction)later:(id)sender;
-
+-(IBAction)cancelTransaction;
+-(IBAction)cancelDownloas:(id)sender;
+-(IBAction)fullVideoDownload:(id)sender;
 @end
 
 @protocol ListWorkoutsDelegate <NSObject>

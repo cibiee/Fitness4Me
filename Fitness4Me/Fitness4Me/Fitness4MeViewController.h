@@ -28,6 +28,7 @@
     
     IBOutlet UIActivityIndicatorView *activityindicators;
     IBOutlet UILabel *lblCompleted;
+    ///IBOutlet UITextView freeDownload
 
 
 }

@@ -9,15 +9,25 @@
 
 
 "NoInternetMessage" ="Es besteht keine Internetverbindung - bitte versuche es später.";
+
 "UsernameNull"      ="Benützername/Passwort bitte ausfüllen.";
+
 "twitterConfigure"  ="Bitte den Twitter Zugang in dein Gerät konfigurieren";
+
 "emailExists"       ="E-Mail Adresse existiert bereits";
+
+"UsernameExits"     ="Benutzername existiert bereits";
+
 "ProfileUpdated"    ="Profile Updated";
+
 "ExitMsg"           ="Möchtest du wirklich fitness4.me verlassen?";
+
 "fullDownloadMsg"   ="Lade alle übrigen Workouts herunter. Dies könnte mehrere Minuten dauern, abhängig von Deiner Internet Verbindung.";
+
 "usernameAlphanumeric"="Benutzername muss alphanumerischen";
 
 "PasswordAlphanumeric"="Password muss alphanumerischen";
+
 "workoutsthroughsettingsmsg"="Du kannst später alle Workouts unter Einstellungen herunterladen";
 
 "nullfeedbackmsg"="Sende uns bitte ein Feedback";
@@ -28,7 +38,6 @@
 
 "resumeDownload"   ="Wir versuchen Dein Workout herunter zu laden, aber Deine Internet Verbindungen scheint langsam zu sein.Wir empfehlen Dir, den Download abzubrechen, starte ihn  wieder, wenn Du eine gute Internet Verbindung zur Verfügung hast..";
 
-
 "validateemailUsername"="E-Mail / Benutzername nicht gültig.";
 
 "mandatory"="Alle Felder sind Pflichtfelder.";
@@ -36,4 +45,13 @@
 "invalidaMail"="E-Mail ist nicht gültig";
 
 "slowdata"="Antwort aufgrund einer zu langsamen Internet Verbindung im Moment leider nicht möglich Bitte erneut versuchen, wenn du eine bessere Internet Verbindung hast.";
+
 "requestError"="Fehlermeldung .Unser Support Team wurde dieser Fehler weiter geleitet.Bitte versuche es später erneut.";
+
+
+"advancedLevelMessage" ="Bitte warte, bis Deine 5 kostenlose Workouts Fortgeschrittenen Niveau  heruntergeladen sind. Je nach Qualität deiner Internetverbindung kann dies einige Minuten dauern";
+
+"beginnerLevelMessage" ="Bitte warte, bis Deine 5 kostenlose Workouts Anfänger Niveau  heruntergeladen sind. Je nach Qualität deiner Internetverbindung kann dies einige Minuten dauern";
+
+"experLevelMessage" ="Bitte warte, bis Deine 5 kostenlose Workouts Profi Niveau  heruntergeladen sind. Je nach Qualität deiner Internetverbindung kann dies einige Minuten dauern";
+

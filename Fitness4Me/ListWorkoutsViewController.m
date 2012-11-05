@@ -33,7 +33,7 @@
 {
     tableview.rowHeight =90;
     tableview.separatorColor =[UIColor clearColor];
-    [Fitness4MeUtils showAdMobLandscape:self];
+    [Fitness4MeUtils showAdMob:self];
     networkNotificationtextView.hidden=YES;
     [networkNotificationtextView setBackgroundColor:UIColorFromRGBWithAlpha(0xde1818,1)];
     [offerView setBackgroundColor:UIColorFromRGBWithAlpha(0xf6f6f6,1)];
@@ -169,7 +169,7 @@
 
 -(void)insertExcersices
 {
-    workoutDB =[[WorkoutDB alloc]init];
+     workoutDB =[[WorkoutDB alloc]init];
     [workoutDB setUpDatabase];
     [workoutDB createDatabase];
     [workoutDB insertWorkouts:workouts];
@@ -209,6 +209,7 @@
     [signupviews removeFromSuperview];
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     [userinfo setObject:@"true" forKey:@"fullVideoDownloadlater"];
+    [userinfo setObject:@"true" forKey:@"showDownload"];
     [Fitness4MeUtils showAlert:NSLocalizedString(@"workoutsthroughsettingsmsg", nil)];
 
     
@@ -221,6 +222,8 @@
     lblCompleted.text =s;
     if (countCompleted ==totalCount) {
         [signupviews removeFromSuperview];
+        NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+        [userinfo setObject:@"false" forKey:@"showDownload"];
     }
     fileDownloadProgressView.progress = ((float)countCompleted / (float) totalCount);
 }
@@ -233,6 +236,7 @@
     [signupviews removeFromSuperview];
      NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     [userinfo setObject:@"true" forKey:@"fullVideoDownloadlater"];
+    [userinfo setObject:@"true" forKey:@"showDownload"];
      FitnessServerCommunication *fitness =[FitnessServerCommunication sharedState];
     [fitness cancelDownload];
     [lblCompleted removeFromSuperview];
@@ -306,7 +310,7 @@
     [signupviews removeFromSuperview];
     
     fullvideoView.layer.cornerRadius =14;
-     fullvideoView.layer.borderWidth = 2;
+    fullvideoView.layer.borderWidth = 2;
     fullvideoView.layer.borderColor = [UIColor whiteColor].CGColor;
     
     
@@ -329,9 +333,6 @@
         }
         
     }
-    
-   // [self getAllImages];
-
 }
 
 - (void)showRating {
@@ -355,7 +356,6 @@
 - (void)viewWillAppear:(BOOL)animated {
     
     [super viewWillAppear:animated];
-
     [self showRating];
     
 }
@@ -365,16 +365,8 @@
     
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     self.UserID =[userinfo integerForKey:@"UserID"];
-        [self getExcersices];
+    [self getExcersices];
     
-}
-
-- (void)viewWillDisappear:(BOOL)animated{
-	[super viewWillDisappear:animated];
-}
-
-- (void)viewDidDisappear:(BOOL)animated{
-	[super viewDidDisappear:animated];
 }
 
 - (void)viewDidUnload
@@ -454,8 +446,7 @@
 
 - (UIImage *)imageForRowAtIndexPath:(Workout *)workout inIndexPath:(NSIndexPath *)indexPath
 {
-    
-    
+
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
     dataPath = [documentsDirectory stringByAppendingPathComponent:@"MyFolder/Thumbs"];
@@ -463,35 +454,24 @@
     if (![[NSFileManager defaultManager] fileExistsAtPath:dataPath]){
         //Create Folder
         [[NSFileManager defaultManager] createDirectoryAtPath:dataPath withIntermediateDirectories:YES attributes:nil error:nil];
-        
     }
     
     NSString  *storeURL= [dataPath stringByAppendingPathComponent :[workout ImageName]];
     UIImageView *excersiceImageHolder =[[[UIImageView alloc]init]autorelease];
-    
     // Check If File Does Exists if not download the video
     if (![[NSFileManager defaultManager] fileExistsAtPath:storeURL]){
-       
-
         UIImage *im =[UIImage imageNamed:@"dummyimg.png"];
          excersiceImageHolder.image =im;
-
         [self.myQueue setDelegate:self];
         [self.myQueue setShowAccurateProgress:YES];
         [self.myQueue setRequestDidFinishSelector:@selector(requestFinisheds:)];
-        
         ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:[workout ThumbImageUrl]]];
         [request setDownloadDestinationPath:storeURL];
         [request setDelegate:self];
         [request startAsynchronous];
-        
         [myQueue addOperation:[request copy]];
-        
         [myQueue go];
-        
-
-    }
-    else {
+    }else {
         UIImage *im =[[UIImage alloc]initWithContentsOfFile:storeURL];
         excersiceImageHolder.image=im;
         [im release];
@@ -504,8 +484,6 @@
 
 - (void)mainImageForRowAtIndexPath:(Workout *)workout
 {
-    
-    
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
     dataPath = [documentsDirectory stringByAppendingPathComponent:@"MyFolder"];
@@ -513,26 +491,19 @@
     if (![[NSFileManager defaultManager] fileExistsAtPath:dataPath]){
         //Create Folder
         [[NSFileManager defaultManager] createDirectoryAtPath:dataPath withIntermediateDirectories:YES attributes:nil error:nil];
-        
     }
     
     NSString  *storeURL= [dataPath stringByAppendingPathComponent :[workout ImageName ]];
-
-    
     // Check If File Does Exists if not download the video
     if (![[NSFileManager defaultManager] fileExistsAtPath:storeURL]){
-        
         [self.myQueue setDelegate:self];
         [self.myQueue setShowAccurateProgress:YES];
         [self.myQueue setRequestDidFinishSelector:@selector(requestFinisheds:)];
-        
         ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:[workout ImageUrl]]];
         [request setDownloadDestinationPath:storeURL];
         [request setDelegate:self];
         [request startAsynchronous];
-        
         [myQueue addOperation:[request copy]];
-        
         [myQueue go];
     }    
 }
@@ -550,14 +521,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Workout *workout = [workouts objectAtIndex:indexPath.row];
-    
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     [userinfo setObject:workout.Name forKey:@"WorkoutName"];
-
-    
     if ([[workout IsLocked] isEqualToString :@"false"]) {
         ExcersiceIntermediateViewController *viewController;
-        
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
             viewController =[[ExcersiceIntermediateViewController alloc]initWithNibName:@"ExcersiceIntermediateViewController" bundle:nil];
         }
@@ -567,9 +534,7 @@
         viewController.workout =workout;
         [self.navigationController pushViewController:viewController animated:YES];
         [viewController release];
-        
-    }
-    else {
+    }else {
         selectedWorkout =workout;
         [self .view addSubview:offerView];
     }
@@ -630,32 +595,26 @@
 -(IBAction)unlockAll
 {
     
-    
     BOOL isReachable =[Fitness4MeUtils isReachable];
     if (isReachable){
-
-        [offerView removeFromSuperview];
         
+        [offerView removeFromSuperview];
         ExcersiceIntermediateViewController *viewController;
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
             viewController =[[ExcersiceIntermediateViewController alloc]initWithNibName:@"ExcersiceIntermediateViewController" bundle:nil];
-        }
-        else{
+        }else{
             viewController =[[ExcersiceIntermediateViewController alloc]initWithNibName:@"ExcersiceIntermediateViewController_iPad" bundle:nil];
         }
         
         viewController.purchaseAll =@"true";
         viewController.workout =selectedWorkout;
-        
         [self.navigationController pushViewController:viewController animated:YES];
         
         [viewController release];
-    }
-    else {
+    }else {
         
         [offerView removeFromSuperview];
         [Fitness4MeUtils showAlert:NSLocalizedString(@"NoInternetMessage", nil)];
-        
     }
     
 }

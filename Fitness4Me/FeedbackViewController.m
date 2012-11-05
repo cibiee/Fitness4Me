@@ -20,7 +20,7 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-   self = [super initWithNibName:nibNameOrNil bundle:[Fitness4MeUtils getBundle]];
+    self = [super initWithNibName:nibNameOrNil bundle:[Fitness4MeUtils getBundle]];
     if (self) {
         // Custom initialization
     }
@@ -44,72 +44,32 @@
 
 - (IBAction)sendFeedBack:(id)sender
 {
-    
-
     if ([feedbackTextView.text  length]>0) {
         
-          NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+        NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
         NSString *username= [userinfo  stringForKey:@"Username"];
         NSString *email= [userinfo  stringForKey:@"email"];
-        
-        BOOL isReachable =[Fitness4MeUtils isReachable];
-        if (isReachable){
-            
-            NSString *status ;
-            NSString *requestString;
-           
-            requestString= [NSString stringWithFormat:@"http://fitness4metesting.com/mobile/testjson.php?user_name=%@&user_email=%@&feedback=%@",username,email,feedbackTextView.text];
-            NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:
-                                              NSUTF8StringEncoding]];
-            ASIFormDataRequest   *request = [ASIFormDataRequest   requestWithURL:url];
-                       
-            [request startSynchronous];
-            NSError *error = [request error];
-            
-            if (!error){
-                NSString *response = [request responseString];
-                NSMutableArray *object = [response JSONValue];
-                
-                NSMutableArray *itemsarray =[object valueForKey:@"items"];
-                for (int i=0; i<[itemsarray count]; i++) {
-                    status = [[itemsarray objectAtIndex:i] valueForKey:@"status"];
-                    if ([status isEqualToString:@"sent"] ) {
-                        [self navigateToHome];
-                        break;
-                    }
-                }
-                
-            }
-            else{
-                
-                [Fitness4MeUtils showAlert:NSLocalizedString(@"NoInternetMessage", nil)];
-                
+        FitnessServerCommunication *fitness= [FitnessServerCommunication sharedState];
+        [fitness sendFeedback:feedbackTextView.text byUser:username email:email onCompletion:^(NSString *status) {
+            if ([status isEqualToString:@"sent"] ){
+                [self navigateToHome];
             }
         }
-        
-        else {
-            
-            [Fitness4MeUtils showAlert:NSLocalizedString(@"NoInternetMessage", nil)];
-            
-        }
-    }
-    else
-    {
+                      onError:^(NSError *error) {
+                          
+                      }];
+    }else{
         [Fitness4MeUtils showAlert:NSLocalizedString(@"nullfeedbackmsg", nil)];
     }
     
 }
-
-
-
 
 -(void)navigateToHome
 {
     ThanksViewController *viewController;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
         viewController =[[ThanksViewController alloc]initWithNibName:@"ThanksViewController" bundle:nil];
-    }
-    else{
+    }else{
         viewController =[[ThanksViewController alloc]initWithNibName:@"ThanksViewController_iPad" bundle:nil];
     }
     [self.navigationController pushViewController:viewController animated:YES];
@@ -132,8 +92,7 @@
             rect.origin.y -= kOFFSET_FOR_KEYBOARD;
             
         }
-    }
-    else{
+    }else{
         if (stayup == NO) {
             rect.origin.y += kOFFSET_FOR_KEYBOARD;
         }
@@ -146,18 +105,21 @@
 #pragma mark -textfieldDelgates
 
 
-- (BOOL)textViewShouldReturn:(UITextField *)textView {
+- (BOOL)textViewShouldReturn:(UITextField *)textView
+{
     [textView resignFirstResponder];
     return YES;
 }
 
-- (void)textViewDidBeginEditing:(UITextView *)textView {
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
     [self setViewMovedUp:YES];
     stayup = NO;
 }
 
 
-- (void)textViewDidEndEditing:(UITextView *)textView {
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
     [self setViewMovedUp:NO];
 }
 

@@ -138,7 +138,7 @@
     UrlPath =[NSString GetURlPath];
     int selectedlang =[Fitness4MeUtils getApplicationLanguage];
     
-    RequestString =[NSString stringWithFormat:@"%@register=yes&fname=%@&sname=%@&email=%@&username=%@&password=%@&level=%@&device=1&lang=%i",UrlPath,nameTextField.text,@"K",emailTextField.text,usernameTextField.text,passwordTextField.text,userlevel,selectedlang];
+    RequestString =[NSString stringWithFormat:@"%@register=yes&fname=%@&sname=%@&email=%@&username=%@&password=%@&level=%@&device=1&lang=%i",UrlPath,nameTextField.text,lastNameTextField.text,emailTextField.text,usernameTextField.text,passwordTextField.text,userlevel,selectedlang];
     
     [self performSelector:@selector(navigateToExcersiceListView:) withObject:RequestString afterDelay:0.5];
     
@@ -193,6 +193,7 @@
         if (lastNameTextField.text.length>0)
         {
             [lastNameValidator setBackgroundColor:[UIColor clearColor]];
+            [lastNameValidator setBackgroundColor:[UIColor whiteColor]];
             [ emailTextField becomeFirstResponder];
             
         }
@@ -372,7 +373,11 @@
     if (userID>0)
     {
         
-        [Fitness4MeUtils registerDevice:signUpView];
+        [fitness registerDeviceWithUserID:userID andSignUpView:signUpView onCompletion:^{
+            
+        } onError:^(NSError *error) {
+            
+        }];
         [self removeActivities];
         [self saveUserToDatabase:userLevel];
         [self saveUserDetails:userLevel];
@@ -475,20 +480,20 @@
         [usernameValidator setBackgroundColor:[UIColor redColor]];
         [activityIndicator  stopAnimating];
         
-    }
-    
-    else {
+    }else {
         
         [usernameValidator setBackgroundColor:[UIColor clearColor]];
         FitnessServerCommunication *fitness =[FitnessServerCommunication sharedState];
-        NSString *IsExist=[fitness isValidUserWitName:usernameTextField.text urlPath:UrlPath andActivityIndicator:activityIndicator];
-        if ([IsExist isEqualToString:@"true"]){
-            [self setInValidstate];
+        [fitness isValidUsername:usernameTextField.text  andActivityIndicator:activityIndicator onCompletion:^(NSString *IsExist) {
+            if ([IsExist isEqualToString:@"true"]){
+                [self setInValidstate];
+            }else{
+                [self setValiidstate];
+            }
             
-        }
-        else{
-            [self setValiidstate];
-        }
+        } onError:^(NSError *error) {
+            
+        }];
     }
 }
 
@@ -522,21 +527,23 @@
     if (isValid==NO) {
         
         [self terminateActivity:NSLocalizedString(@"invalidaMail", nil)];
-    }
-    else {
+    }else {
         
         [emailValidator setBackgroundColor:[UIColor clearColor]];
-        
         FitnessServerCommunication *fitness =[FitnessServerCommunication sharedState];
-        NSString *IsExist=[fitness isValidUserWitName:emailTextField.text urlPath:UrlPath andActivityIndicator:emailactivityIndicator];
-        if ([IsExist isEqualToString:@"true"]) {
-            isValid =NO;
-            [self terminateActivity:NSLocalizedString(@"emailExists", nil)];
-            [emailactivityIndicator stopAnimating];
-        }
-        else {
-            [self setvalidEmail];
-        }
+        [fitness isValidEmail:emailTextField.text andActivityIndicator:emailactivityIndicator onCompletion:^(NSString *IsExist) {
+            if ([IsExist isEqualToString:@"true"]) {
+                isValid =NO;
+                [self terminateActivity:NSLocalizedString(@"emailExists", nil)];
+                [emailactivityIndicator stopAnimating];
+            }
+            else {
+                [self setvalidEmail];
+            }
+
+        } onError:^(NSError *error) {
+            
+        }];
     }
     
     

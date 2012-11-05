@@ -18,6 +18,11 @@
 #import "ASINetworkQueue.h"
 #import "ExcersiceDB.h"
 
+typedef void (^WMLoginResponseBlock)(NSString *responseString);
+typedef void (^ResponseBlock)(NSString *isExist);
+typedef void (^ResponseVoidBlock)(void );
+typedef void (^errorBlock)(NSString *errorString);
+
 @protocol FitnessServerCommunicationDelegate;
 
 @interface FitnessServerCommunication : NSObject
@@ -50,18 +55,26 @@
 
 
 + (FitnessServerCommunication *)sharedState;
-
--(void)parseFitnessDetails:(int)UserID ;
 -(void)parseWorkoutVideos;
+-(void)parseFitnessDetails:(int)UserID ;
+
+
+- (void)login:(NSString *)username password:(NSString *)password activityIndicator:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView onCompletion:(WMLoginResponseBlock)completionBlock onError:(NSError*)errorBlock ;
+
+- (void)isValidEmail:(NSString *)email andActivityIndicator:(UIActivityIndicatorView*)activityIndicator onCompletion:(ResponseBlock)completionBlock onError:(NSError*)errorBlock;
+
+- (void)isValidUsername:(NSString *)username andActivityIndicator:(UIActivityIndicatorView*)activityIndicator onCompletion:(ResponseBlock)completionBlock onError:(NSError*)errorBlock;
+
+- (void)registerDeviceWithUserID:(int)userId andSignUpView:(UIView*)signUpView onCompletion:(ResponseVoidBlock)completionBlock onError:(NSError*)errorBlock;
+
+- (void)sendFeedback:(NSString *)feedback byUser:(NSString*)username email:(NSString*)email  onCompletion:(ResponseBlock)completionBlock onError:(NSError*)errorBlock;
 
 -(void)getFreePurchaseCount:(int)UserID ;
 -(void)getAllvideos;
 -(void)cancelDownload;
 -(void)getFreevideos;
 -(int)saveUserWithRequestString:(NSString*)requestString activityIndicator:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView;
--(NSString*)isValidUserWitName:(NSString*)userName urlPath:(NSString*)urlPaths andActivityIndicator:(UIActivityIndicatorView*)activityIndicator;
 
-//-(void)getAllImages;
 @end
 @protocol FitnessServerCommunicationDelegate <NSObject>
 

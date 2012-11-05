@@ -610,11 +610,12 @@ buKAnS4NA</string>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<int key="IBUIContentHorizontalAlignment">0</int>
 								<int key="IBUIContentVerticalAlignment">0</int>
+								<string key="IBUIHighlightedTitle">Vollständige Videos </string>
 								<string key="IBUINormalTitle">Vollständige Videos herunterladen</string>
 								<reference key="IBUIHighlightedTitleColor" ref="186350636"/>
 								<reference key="IBUINormalTitleColor" ref="186350636"/>
 								<reference key="IBUINormalTitleShadowColor" ref="793679857"/>
-								<reference key="IBUIHighlightedImage" ref="363046303"/>
+								<reference key="IBUIHighlightedBackgroundImage" ref="363046303"/>
 								<reference key="IBUINormalBackgroundImage" ref="771413406"/>
 								<reference key="IBUIFontDescription" ref="46883828"/>
 								<reference key="IBUIFont" ref="469993550"/>
@@ -1254,6 +1255,14 @@ buKAnS4NA</string>
 					<int key="connectionID">169</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">lblFreedownloadmessageTextView</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="408128222"/>
+					</object>
+					<int key="connectionID">171</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">onclickAdvancedButton:</string>
 						<reference key="source" ref="213219155"/>
@@ -1715,7 +1724,7 @@ buKAnS4NA</string>
 				<boolean value="NO" key="100.showNotes"/>
 				<string key="114.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="115.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<real value="0.0" key="115.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
+				<real value="1" key="115.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
 				<reference key="115.IBUserGuides" ref="0"/>
 				<boolean value="NO" key="115.showNotes"/>
 				<string key="119.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -1803,7 +1812,7 @@ buKAnS4NA</string>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">169</int>
+			<int key="maxID">171</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>

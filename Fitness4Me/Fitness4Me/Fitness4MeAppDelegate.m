@@ -8,7 +8,6 @@
 
 #import "Fitness4MeAppDelegate.h"
 #import "Fitness4MeViewController.h"
-#import "SyncScreenViewController.h"
 #import "InitialAppLaunchViewController.h"
 #import "FitnessServerCommunication.h"
 #import "Fitness4MeUtils.h"
@@ -19,89 +18,58 @@
 @synthesize viewController = _viewController;
 
 @synthesize fitness4MeViewController =_fitness4MeViewController;
-@synthesize ratingViewController =_ratingViewController;
 @synthesize navigationController=_navigationController;
 
 int userID;
+
+
+
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-      
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    
-    
-    
-
     // Override point for customization after application launch.
     [self getUserDetails];
-  
+    
     userID = [user UserID];
     if (userID>0) {
         
         // Clear application badge when app launches
         application.applicationIconBadgeNumber = 0;
-         NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
-        [userinfo setObject:[user Name] forKey:@"Name"];
-        [userinfo setObject:[user Username] forKey:@"Username"];
-        [userinfo setInteger:userID  forKey:@"UserID"];
-        [userinfo setObject:user.Userlevel  forKey:@"Userlevel"];
-        
-               
-        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-            self.fitness4MeViewController = [[Fitness4MeViewController alloc] initWithNibName:@"Fitness4MeViewController_iPad" bundle:nil];
-            self.navigationController =[[UINavigationController alloc]initWithRootViewController:_fitness4MeViewController];
-        }
-        
-        else{
-            self.fitness4MeViewController = [[Fitness4MeViewController alloc] initWithNibName:@"Fitness4MeViewController" bundle:nil];
-            
-            self.navigationController =[[UINavigationController alloc]initWithRootViewController:_fitness4MeViewController];
-        }
+        [self saveUserDefaults];
+        [self navigateToHome];
         
         FitnessServerCommunication *fitnessserverCommunication =[[FitnessServerCommunication alloc]init];
         [fitnessserverCommunication parseFitnessDetails:userID];
-
-        
     }
     else {
         
-        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
-            
-                      self.viewController = [[InitialAppLaunchViewController alloc] initWithNibName:@"InitialAppLaunchViewController" bundle:nil];
-            self.navigationController =[[UINavigationController alloc]initWithRootViewController:_viewController];
-        }
-        else {
-            self.viewController = [[InitialAppLaunchViewController alloc] initWithNibName:@"InitialAppLaunchViewController_iPad" bundle:nil];
-            self.navigationController =[[UINavigationController alloc]initWithRootViewController:_viewController];
-        }
+        [self navigateToInitalLaunchScreen];
         
         
         NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
         [userinfo setInteger:0  forKey:@"UserID"];
-        [[UIApplication sharedApplication] unregisterForRemoteNotifications];  
+        [userinfo setObject:@"true" forKey:@"showDownload"];
+        [[UIApplication sharedApplication] unregisterForRemoteNotifications];
         
         NSString *fullVideoDownloadlater=[userinfo stringForKey:@"fullVideoDownloadlater"];
-         NSString *showSyncView=[userinfo stringForKey:@"showSyncView"];
+        NSString *showSyncView=[userinfo stringForKey:@"showSyncView"];
         
         if ([fullVideoDownloadlater isEqualToString:@"true"]) {
             
         }
-        else
-        {
+        else{
             [userinfo setObject:@"false" forKey:@"fullVideoDownloadlater"];
         }
-        
         
         if ([showSyncView isEqualToString:@"false"]) {
             
         }
-        else
-        {
+        else{
             [userinfo setObject:@"true" forKey:@"showSyncView"];
         }
-        
-        
-        
     }
     
     self.window.rootViewController = self.navigationController;
@@ -110,7 +78,39 @@ int userID;
     return YES;
 }
 
+- (void)navigateToHome
+{
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        self.fitness4MeViewController = [[Fitness4MeViewController alloc] initWithNibName:@"Fitness4MeViewController_iPad" bundle:nil];
+        self.navigationController =[[UINavigationController alloc]initWithRootViewController:_fitness4MeViewController];
+    }
+    
+    else{
+        self.fitness4MeViewController = [[Fitness4MeViewController alloc] initWithNibName:@"Fitness4MeViewController" bundle:nil];
+        self.navigationController =[[UINavigationController alloc]initWithRootViewController:_fitness4MeViewController];
+    }
+}
 
+- (void)navigateToInitalLaunchScreen
+{
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+        self.viewController = [[InitialAppLaunchViewController alloc] initWithNibName:@"InitialAppLaunchViewController" bundle:nil];
+        self.navigationController =[[UINavigationController alloc]initWithRootViewController:_viewController];
+    }
+    else {
+        self.viewController = [[InitialAppLaunchViewController alloc] initWithNibName:@"InitialAppLaunchViewController_iPad" bundle:nil];
+        self.navigationController =[[UINavigationController alloc]initWithRootViewController:_viewController];
+    }
+}
+
+- (void)saveUserDefaults
+{
+    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+    [userinfo setObject:[user Name] forKey:@"Name"];
+    [userinfo setObject:[user Username] forKey:@"Username"];
+    [userinfo setInteger:userID  forKey:@"UserID"];
+    [userinfo setObject:user.Userlevel  forKey:@"Userlevel"];
+}
 
 -(void)dealloc
 {
@@ -124,25 +124,21 @@ int userID;
 }
 
 
-//
-// called for getting User Details
-//
+
 -(void)getUserDetails
 {
     
     UserDB *userDB =[[UserDB alloc]init];
     [userDB setUpDatabase];
     [userDB createDatabase];
-     user =[[[User alloc]init]autorelease];
-     user= userDB.getUser;
+    user =[[[User alloc]init]autorelease];
+    user= userDB.getUser;
     [userDB release];
 }
 
-// called for getting User Details
-//
+
 -(void)updateUserDetails:(NSString*)userlevel
 {
-    
     UserDB *userDB =[[UserDB alloc]init];
     [userDB setUpDatabase];
     [userDB createDatabase];
@@ -156,8 +152,6 @@ int userID;
     
     
     NSString *devToken = [NSString stringWithFormat:@"%@" ,deviceToken];
-    
-    
     NSString *token= [[[devToken stringByReplacingOccurrencesOfString:@"<"withString:@""]
                        stringByReplacingOccurrencesOfString:@">" withString:@""]
                       stringByReplacingOccurrencesOfString: @" " withString: @""];
@@ -165,9 +159,9 @@ int userID;
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     
     [userinfo setObject:token forKey:@"deviceToken"];
-
+    
 #endif
-
+    
 }
 
 - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
@@ -194,16 +188,14 @@ int userID;
     
     int UserID =[userinfo integerForKey:@"UserID"];
     
-    if(UserID >0)
-    {
-    
+    if(UserID >0){
+        
         NSDictionary *apsInfo = [userInfo objectForKey:@"aps"];
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         application.applicationIconBadgeNumber = [[apsInfo objectForKey:@"badge"] integerValue];
         
-
-        if( application.applicationIconBadgeNumber<4)
-        {
+        
+        if( application.applicationIconBadgeNumber<4){
             [userinfo setObject:[apsInfo objectForKey:@"badge"]  forKey:@"Userlevel"];
         }
         
@@ -211,34 +203,32 @@ int userID;
         if (application.applicationIconBadgeNumber==1) {
             [self updateUserDetails:@"1"];
             [self navigateToHomeScreen];
-
         }
         
         else if (application.applicationIconBadgeNumber==2) {
             [self updateUserDetails:@"2"];
             [self navigateToHomeScreen];
-
+            
         }
         else if (application.applicationIconBadgeNumber==3) {
             [self updateUserDetails:@"3"];
             [self navigateToHomeScreen];
-
         }
         
         else if (application.applicationIconBadgeNumber==4) {
             NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
             int unlockcount =[userinfo integerForKey:@"freePurchaseCount"];
             if (unlockcount<2) {
-                 [userinfo setInteger:unlockcount+1 forKey:@"freePurchaseCount"];
+                [userinfo setInteger:unlockcount+1 forKey:@"freePurchaseCount"];
             }
-    
+            
         }
-       
+        
         else if (application.applicationIconBadgeNumber==5) {
             NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
             [userinfo setObject:@"true" forKey:@"hasMadeFullPurchase"];
             [userinfo setObject:@"true" forKey:@"hasUpdations"];
-        }    
+        }
         else {
             [userinfo setObject:@"true" forKey:@"hasUpdations"];
         }
@@ -262,9 +252,6 @@ int userID;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
         viewController =[[Fitness4MeViewController alloc]initWithNibName:@"Fitness4MeViewController" bundle:nil];
     }
-    else{
-        
-    }
     [self.navigationController pushViewController:viewController animated:YES];
     [viewController release];
     
@@ -277,25 +264,23 @@ int userID;
     userID = [user UserID];
     
     if (userID>0){
-        
         FitnessServerCommunication *fitnessserverCommunication =[[FitnessServerCommunication alloc]init];
         [fitnessserverCommunication parseFitnessDetails:userID];
-        
         
         Fitness4MeAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
         UIViewController *topView = appDelegate.navigationController.topViewController;
         if ([topView isKindOfClass:[ListWorkoutsViewController class]]) {
-           [self navigateToHomeScreen];
+            [self navigateToHomeScreen];
         }
     }
-
+    
 }
 
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     
-     
+    
     /*
      Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
      Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
@@ -321,7 +306,7 @@ int userID;
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     
-   [self updateData];
+    [self updateData];
     /*
      Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
      */

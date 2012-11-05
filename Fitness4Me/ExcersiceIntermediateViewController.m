@@ -13,7 +13,7 @@
 
 @implementation ExcersiceIntermediateViewController
 
-@synthesize workout,userlevel,purchaseAll,userID,productIdentifier;
+@synthesize workout,userlevel,purchaseAll,userID,productIdentifier,myQueue;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,8 +35,11 @@
     [slownetView removeFromSuperview];
     slownetView.layer .cornerRadius =14;
     
-    stop =0;
+    [descriptionTextview.layer setBorderColor:[[UIColor greenColor]CGColor]];
+    [descriptionTextview.layer setBorderWidth:2];
     
+    stop =0;
+    [self InitializeView];
     urlPath =[NSString GetURlPath];
     self.view.transform = CGAffineTransformConcat(self.view.transform,
                                                   CGAffineTransformMakeRotation(M_PI_2));
@@ -52,14 +55,10 @@
     [letsgoButton setEnabled:NO];
 }
 
-
-
-
-
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:NO];
-    [self InitializeView];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -72,9 +71,7 @@
 
 - (void)viewDidUnload
 {
-    
-    [super viewDidUnload];
-    
+ [super viewDidUnload];
 }
 
 - (void)didReceiveMemoryWarning{
@@ -518,16 +515,12 @@ int stopz=0;
       
         // Check If File Does Exists if not download the video
         if (![[NSFileManager defaultManager] fileExistsAtPath:filepath]){
-
-            
             ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
             [request setDownloadDestinationPath:filepath];
             [request setDelegate:self];
             [request setTimeOutSeconds:15];
             [request startSynchronous];
-      
-        }
-        else {
+        }else {
             stop=stop+1;
             if (stop==[excersicesList count]) {
                 if([signUpView superview]!=nil){
@@ -575,6 +568,32 @@ int stopz=0;
 
 
 #pragma mark -ASIHTTPRequest delegate methods
+
+- (void)requestDidFinish:(ASINetworkQueue *)queue
+{
+//    finished=finished+1;
+//    [self.delegate didfinishedWorkout:finished:totalcount];
+//    
+//    if (finished==totalcount) {
+//        [myQueue setDelegate:nil];
+//        [myQueue cancelAllOperations];
+//        
+//        [self resetRequest];
+//    }
+    
+}
+
+
+- (void)requestDidFail:(ASINetworkQueue *)queue
+{
+    
+    [myQueue setDelegate:nil];
+    [myQueue cancelAllOperations];
+    [signUpView removeFromSuperview];
+    [letsgoButton setEnabled:NO];
+    [backButton setEnabled:YES];
+}
+
 
 -(void)requestFailed:(ASIHTTPRequest *)request
 {

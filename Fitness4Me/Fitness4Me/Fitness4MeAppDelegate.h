@@ -17,8 +17,6 @@
 @class Fitness4MeViewController;
 @class InitialAppLaunchViewController;
 
-
-
 @interface Fitness4MeAppDelegate : UIResponder <UIApplicationDelegate>
 {
     User *user;
@@ -28,11 +26,8 @@
 
 
 @property (strong, nonatomic) UIWindow *window;
-
 @property (strong, nonatomic) InitialAppLaunchViewController *viewController;
-@property (strong, nonatomic) RatingViewController *ratingViewController;
 @property (strong, nonatomic) Fitness4MeViewController *fitness4MeViewController;
-
 @property (strong, nonatomic) UINavigationController *navigationController;
 
 @end
