@@ -32,6 +32,8 @@
 
 -(IBAction)ratetheApp:(id)sender{
    
+  
+    
         NSString *str = @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa";
         str = [NSString stringWithFormat:@"%@/wa/viewContentsUserReviews?", str];
         str = [NSString stringWithFormat:@"%@type=Purple+Software&id=", str];

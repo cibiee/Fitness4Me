@@ -3,12 +3,12 @@
 	<data>
 		<int key="IBDocument.SystemTarget">1536</int>
 		<string key="IBDocument.SystemVersion">12C60</string>
-		<string key="IBDocument.InterfaceBuilderVersion">2843</string>
+		<string key="IBDocument.InterfaceBuilderVersion">2844</string>
 		<string key="IBDocument.AppKitVersion">1187.34</string>
 		<string key="IBDocument.HIToolboxVersion">625.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">1929</string>
+			<string key="NS.object.0">1930</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>IBProxyObject</string>
@@ -223,6 +223,7 @@ DQ</string>
 						<double key="IBUITitleEdgeInsets.bottom">0.0</double>
 						<double key="IBUITitleEdgeInsets.left">10</double>
 						<double key="IBUITitleEdgeInsets.right">0.0</double>
+						<string key="IBUIHighlightedTitle">Workout</string>
 						<string key="IBUINormalTitle">Workout</string>
 						<reference key="IBUIHighlightedTitleColor" ref="108433983"/>
 						<reference key="IBUINormalTitleColor" ref="108433983"/>
@@ -262,6 +263,7 @@ DQ</string>
 						<double key="IBUITitleEdgeInsets.bottom">0.0</double>
 						<double key="IBUITitleEdgeInsets.left">10</double>
 						<double key="IBUITitleEdgeInsets.right">0.0</double>
+						<string key="IBUIHighlightedTitle">Einstellungen</string>
 						<string key="IBUINormalTitle">Einstellungen</string>
 						<reference key="IBUIHighlightedTitleColor" ref="108433983"/>
 						<object class="NSColor" key="IBUINormalTitleColor">
@@ -294,6 +296,7 @@ DQ</string>
 						<double key="IBUITitleEdgeInsets.bottom">0.0</double>
 						<double key="IBUITitleEdgeInsets.left">10</double>
 						<double key="IBUITitleEdgeInsets.right">0.0</double>
+						<string key="IBUIHighlightedTitle">Tipps und Ratschläge</string>
 						<string key="IBUINormalTitle">Tipps und Ratschläge</string>
 						<reference key="IBUIHighlightedTitleColor" ref="108433983"/>
 						<reference key="IBUINormalTitleColor" ref="108433983"/>
@@ -316,6 +319,7 @@ DQ</string>
 						<double key="IBUITitleEdgeInsets.bottom">0.0</double>
 						<double key="IBUITitleEdgeInsets.left">10</double>
 						<double key="IBUITitleEdgeInsets.right">0.0</double>
+						<string key="IBUIHighlightedTitle">Über uns</string>
 						<string key="IBUINormalTitle">Über uns</string>
 						<reference key="IBUIHighlightedTitleColor" ref="108433983"/>
 						<object class="NSColor" key="IBUINormalTitleColor">
@@ -323,7 +327,7 @@ DQ</string>
 							<bytes key="NSRGB">MSAxIDEgMC45OQA</bytes>
 						</object>
 						<reference key="IBUINormalTitleShadowColor" ref="17824285"/>
-						<object class="NSCustomResource" key="IBUIHighlightedImage">
+						<object class="NSCustomResource" key="IBUIHighlightedBackgroundImage">
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">home_nav_bot_hover.png</string>
 						</object>
@@ -578,11 +582,11 @@ DQ</string>
 				<real value="1" key="18.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
 				<string key="19.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<real value="1" key="19.IBUIButtonInspectorSelectedEdgeInsetMetadataKey"/>
-				<real value="0.0" key="19.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
+				<real value="1" key="19.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
 				<string key="25.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="30.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<real value="1" key="30.IBUIButtonInspectorSelectedEdgeInsetMetadataKey"/>
-				<real value="0.0" key="30.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
+				<real value="1" key="30.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
 				<string key="40.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="6.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="90.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -613,6 +617,6 @@ DQ</string>
 			<string key="home_nav_top_hover.png">{269, 37}</string>
 			<string key="lady.png">{275, 150}</string>
 		</dictionary>
-		<string key="IBCocoaTouchPluginVersion">1929</string>
+		<string key="IBCocoaTouchPluginVersion">1930</string>
 	</data>
 </archive>

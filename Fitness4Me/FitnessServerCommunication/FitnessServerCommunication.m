@@ -98,6 +98,17 @@ static FitnessServerCommunication *sharedState;
     return IsExist;
 }
 
+- (NSString *)IsUpdated:(NSString *)responseString
+{
+    NSString *IsExist;
+    NSMutableArray *object = [responseString JSONValue];
+    NSMutableArray *itemsarray =[object valueForKey:@"items"];
+    for (int i=0; i<[itemsarray count]; i++) {
+        IsExist=[[itemsarray objectAtIndex:i] valueForKey:@"message"];
+    }
+    return IsExist;
+}
+
 
 
 
@@ -241,6 +252,43 @@ static FitnessServerCommunication *sharedState;
         [requests startAsynchronous];
     }else{
         [self terminateActivities:NSLocalizedString(@"NoInternetMessage", nil):nil:nil];
+    }
+}
+
+
+
+- (void)updateUserWithName:(NSString *)name surname:(NSString*)surname email:(NSString*)email userLevel:(NSString*)userLevel userID:(NSString*)userID  activityIndicator:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView onCompletion:(ResponseBlock)completionBlock onError:(NSError*)errorBlock
+
+{
+    __block NSString *IsExist;
+    BOOL isReachable =[Fitness4MeUtils isReachable];
+    if (isReachable)
+    {
+        NSString *UrlPath= [NSString GetURlPath];
+        NSString *requestString =[NSString stringWithFormat:@"%@user_setting=yes&user_name=%@&user_surname=%@&user_email=%@&user_level=%@&user_id=%@",UrlPath,name,@"K",email,userLevel,userID];
+        NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:
+                                          NSUTF8StringEncoding]];
+        
+        
+        __block ASIHTTPRequest *requests = [ASIHTTPRequest requestWithURL:url];
+        [requests setCompletionBlock:^{
+            NSString *responseString =[requests responseString];
+            
+            if ([responseString length]>0) {
+                IsExist = [self IsUpdated:responseString];
+                if (completionBlock) completionBlock(IsExist);
+            }else{
+                [self terminateActivities:NSLocalizedString(@"slowdata", nil):activityIndicator:signUpView];
+            }
+        }];
+        [requests setFailedBlock:^{
+            [self terminateActivities:NSLocalizedString(@"requestError", nil):activityIndicator:signUpView];
+
+        }];
+        [requests startAsynchronous];
+    }else{
+        [self terminateActivities:NSLocalizedString(@"NoInternetMessage", nil):activityIndicator:signUpView];
+
     }
 }
 

@@ -18,56 +18,60 @@
 @interface SettingsViewController : UIViewController<FitnessServerCommunicationDelegate>
 
 {
+    BOOL isValid;
+    BOOL isLevelChanged;
     
-    NSString *userlevel;
-    NSString *UrlPath;
-    NSString *RequestString;
-    NSString *oldUserlevel;
-    NSString *urlPath;
-    
-    NSString *freeVideo;
+    int userID;
 
-    IBOutlet UILabel *lblCompleted;
-    IBOutlet UIProgressView *fileDownloadProgressView;
-    IBOutlet UITextField *nameTextField;
-    IBOutlet UITextField *emailTextField;
+    NSString *userlevel;
+    NSString *freeVideo;
+    NSString *oldUserlevel;
+    NSString *hasMadeFullPurchase;
+    
+    WorkoutDB *workoutDB;
+    
+    UIView *signUpView;
+    
+    
     IBOutlet UIButton *updateButton;
     IBOutlet UIButton *begineerButton;
     IBOutlet UIButton *advancedButton;
     IBOutlet UIButton *experButton;
     IBOutlet UIButton *fulldownloadButton;
-    IBOutlet UILabel *errorLabel;
+    
     IBOutlet  UIImageView *errorIndicator;
+    IBOutlet UIImageView *emailImageView;
+   
+    IBOutlet UILabel *errorLabel;
     IBOutlet UILabel *pleaseWait;
+    IBOutlet UILabel *emailValidator;
+    IBOutlet UILabel *usernameLabel;
+    IBOutlet UILabel *passwordLabel;
+    IBOutlet UILabel *lblCompleteCount;
+    IBOutlet UILabel *lblCompleted;
+
+    
+    IBOutlet UIView *downloadFullView;
+    IBOutlet UIView *loadView;
+    IBOutlet UIView *SyncView;
+    IBOutlet UIView *profileUpdatedView;
+  
+    
+    IBOutlet UIProgressView *fileDownloadProgressView;
+    IBOutlet UIProgressView *fileDownloadView;
+    
     IBOutlet UIActivityIndicatorView *activityIndicator;
     IBOutlet UIActivityIndicatorView *emailactivityIndicator;
     IBOutlet UIActivityIndicatorView *signupIndicator;
-    IBOutlet UIImageView *emailImageView;
-    IBOutlet UILabel *emailValidator;
-    IBOutlet  UILabel *usernameLabel;
-    IBOutlet  UILabel *passwordLabel;
-    IBOutlet UIView *downloadFullView;
-    IBOutlet UIView *loadView;
     IBOutlet UIActivityIndicatorView *loadactivityIndicator;
     IBOutlet UIActivityIndicatorView *downloadFullViewIndicator;
-    IBOutlet  UIView *profileUpdatedView;
-    IBOutlet UIView *SyncView;
-    IBOutlet UIProgressView *fileDownloadView;
     IBOutlet UIActivityIndicatorView *activityindicators;
-    IBOutlet UILabel *lblCompleteCount;
-   
-     IBOutlet UITextView *lblFreedownloadmessageTextView;
     
-    BOOL isValid;
-    
-    UIView *signUpView;
+       
+    IBOutlet UITextField *nameTextField;
+    IBOutlet UITextField *emailTextField;
+    IBOutlet UITextView *lblFreedownloadmessageTextView;
 
-    WorkoutDB *workoutDB;
-    
-    int userID;
-    
-    BOOL isLevelChanged;
-    
    
 }
 -(IBAction)navigateToHome;
@@ -80,6 +84,6 @@
 -(IBAction)onClickNo;
 
 
-@property (nonatomic ,retain)  NSString *RequestString;
+
 
 @end

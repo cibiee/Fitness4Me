@@ -69,6 +69,9 @@ typedef void (^errorBlock)(NSString *errorString);
 
 - (void)sendFeedback:(NSString *)feedback byUser:(NSString*)username email:(NSString*)email  onCompletion:(ResponseBlock)completionBlock onError:(NSError*)errorBlock;
 
+- (void)updateUserWithName:(NSString *)name surname:(NSString*)surname email:(NSString*)email userLevel:(NSString*)userLevel userID:(NSString*)userID activityIndicator:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView  onCompletion:(ResponseBlock)completionBlock onError:(NSError*)errorBlock;
+
+
 -(void)getFreePurchaseCount:(int)UserID ;
 -(void)getAllvideos;
 -(void)cancelDownload;

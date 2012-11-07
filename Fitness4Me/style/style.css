@@ -1,0 +1,27 @@
+
+        *{
+            margin:0;
+            padding:0;
+        }
+        body{
+            font-family:Arial, sans-serif, Helvetica;
+            font-size:12px;
+            line-height:1.5em;
+            margin:0:10;
+        }
+        h3{
+            text-decoration:underline;
+            font-size:1.4em;
+            margin:.5em 0 1em;
+        }
+        h4{
+            font-size:1.05em;
+            margin:.5em 0 1em;
+        }
+        p{
+            margin:.5em 0 0;
+        }
+        img{
+            max-width:100%;
+        }       
+    
