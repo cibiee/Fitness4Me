@@ -66,7 +66,7 @@ static FitnessServerCommunication *sharedState;
         NSString *requestString =[NSString stringWithFormat:@"%@login=yes&username=%@&password=%@",UrlPath,username,password];
         NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         
-        __block ASIHTTPRequest *requests = [ASIHTTPRequest requestWithURL:url];
+        __weak ASIHTTPRequest *requests = [ASIHTTPRequest requestWithURL:url];
         [requests setCompletionBlock:^{
             // Use when fetching text data
             NSString *responseString =[requests responseString];
@@ -87,28 +87,6 @@ static FitnessServerCommunication *sharedState;
 }
 
 
-- (NSString *)Isvalid:(NSString *)responseString
-{
-    NSString *IsExist;
-    NSMutableArray *object = [responseString JSONValue];
-    NSMutableArray *itemsarray =[object valueForKey:@"items"];
-    for (int i=0; i<[itemsarray count]; i++) {
-        IsExist=[[itemsarray objectAtIndex:i] valueForKey:@"status"];
-    }
-    return IsExist;
-}
-
-- (NSString *)IsUpdated:(NSString *)responseString
-{
-    NSString *IsExist;
-    NSMutableArray *object = [responseString JSONValue];
-    NSMutableArray *itemsarray =[object valueForKey:@"items"];
-    for (int i=0; i<[itemsarray count]; i++) {
-        IsExist=[[itemsarray objectAtIndex:i] valueForKey:@"message"];
-    }
-    return IsExist;
-}
-
 
 
 
@@ -124,7 +102,7 @@ static FitnessServerCommunication *sharedState;
               NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:
                                           NSUTF8StringEncoding]];
         
-        __block ASIHTTPRequest *requests = [ASIHTTPRequest requestWithURL:url];
+        __weak ASIHTTPRequest *requests = [ASIHTTPRequest requestWithURL:url];
         [requests setCompletionBlock:^{
             // Use when fetching text data
             NSString *responseString =[requests responseString];
@@ -159,7 +137,7 @@ static FitnessServerCommunication *sharedState;
         NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:
                                           NSUTF8StringEncoding]];
         
-        __block ASIHTTPRequest *requests = [ASIHTTPRequest requestWithURL:url];
+        __weak ASIHTTPRequest *requests = [ASIHTTPRequest requestWithURL:url];
         [requests setCompletionBlock:^{
             // Use when fetching text data
             NSString *responseString =[requests responseString];
@@ -197,12 +175,12 @@ static FitnessServerCommunication *sharedState;
         NSString *requestUrl =[NSString stringWithFormat:@"%@iphone_register.php?deviceregister=yes&userid=%i&devicetoken=%@&deviceuid=%@",[NSString getDeviceRegisterPath],userId,devToken,deviceUuid];
         NSURL *urlrequest =[NSURL URLWithString:requestUrl];
         
-        __block ASIHTTPRequest *requests = [ASIHTTPRequest requestWithURL:urlrequest];
+        __weak ASIHTTPRequest *requests = [ASIHTTPRequest requestWithURL:urlrequest];
         [requests setCompletionBlock:^{
             // Use when fetching text data
             NSString *responseString =[requests responseString];
             if ([responseString length]>0) {
-                NSLog(responseString);
+                
             }else{
                 [self terminateActivities:NSLocalizedString(@"slowdata", nil):nil:signUpView];
             }
@@ -233,7 +211,7 @@ static FitnessServerCommunication *sharedState;
                                           NSUTF8StringEncoding]];
 
         
-        __block ASIHTTPRequest *requests = [ASIHTTPRequest requestWithURL:url];
+        __weak ASIHTTPRequest *requests = [ASIHTTPRequest requestWithURL:url];
         [requests setCompletionBlock:^{
             // Use when fetching text data
             NSString *responseString =[requests responseString];
@@ -270,7 +248,7 @@ static FitnessServerCommunication *sharedState;
                                           NSUTF8StringEncoding]];
         
         
-        __block ASIHTTPRequest *requests = [ASIHTTPRequest requestWithURL:url];
+        __weak ASIHTTPRequest *requests = [ASIHTTPRequest requestWithURL:url];
         [requests setCompletionBlock:^{
             NSString *responseString =[requests responseString];
             
@@ -375,30 +353,6 @@ static FitnessServerCommunication *sharedState;
     return [userID intValue];
 }
 
--(void)terminateActivities:(NSString*)message:(UIActivityIndicatorView*)activityIndicator:(UIView*)signUpView{
-    
-    [Fitness4MeUtils showAlert:message];
-    [self removeActivity:activityIndicator];
-    [self  removeSignupView:signUpView];
-}
-
-
-
--(void)removeActivity:(UIActivityIndicatorView*)activityIndicator;
-{
-    [activityIndicator setHidden:YES];
-    [activityIndicator stopAnimating];
-}
-
-
-
--(void)removeSignupView:(UIView*)signUpView{
-    [signUpView removeFromSuperview];
-}
-
-
-
-
 
 -(void)getFreePurchaseCount:(int)UserID {
     
@@ -474,7 +428,7 @@ static FitnessServerCommunication *sharedState;
     NSString *keyValue;
     NSData *responseData = [request responseData];
     NSMutableDictionary *object = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:nil];
-    NSLog(@"%i",[object count]);
+ 
     if ([object count]>0) {
         
     
@@ -748,5 +702,50 @@ int finished=0;
     [myQueue cancelAllOperations];
     [self resetRequest];
 }
+
+
+- (NSString *)Isvalid:(NSString *)responseString
+{
+    NSString *IsExist;
+    NSMutableArray *object = [responseString JSONValue];
+    NSMutableArray *itemsarray =[object valueForKey:@"items"];
+    for (int i=0; i<[itemsarray count]; i++) {
+        IsExist=[[itemsarray objectAtIndex:i] valueForKey:@"status"];
+    }
+    return IsExist;
+}
+
+- (NSString *)IsUpdated:(NSString *)responseString
+{
+    NSString *IsExist;
+    NSMutableArray *object = [responseString JSONValue];
+    NSMutableArray *itemsarray =[object valueForKey:@"items"];
+    for (int i=0; i<[itemsarray count]; i++) {
+        IsExist=[[itemsarray objectAtIndex:i] valueForKey:@"message"];
+    }
+    return IsExist;
+}
+
+-(void)terminateActivities:(NSString*)message:(UIActivityIndicatorView*)activityIndicator:(UIView*)signUpView{
+    
+    [Fitness4MeUtils showAlert:message];
+    [self removeActivity:activityIndicator];
+    [self  removeSignupView:signUpView];
+}
+
+
+
+-(void)removeActivity:(UIActivityIndicatorView*)activityIndicator;
+{
+    [activityIndicator setHidden:YES];
+    [activityIndicator stopAnimating];
+}
+
+
+
+-(void)removeSignupView:(UIView*)signUpView{
+    [signUpView removeFromSuperview];
+}
+
 
 @end

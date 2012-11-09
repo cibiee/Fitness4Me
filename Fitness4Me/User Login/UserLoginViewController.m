@@ -129,6 +129,9 @@
     [userDB insertUser:user];
     [userDB release];
     
+    User *usershared =[User sharedState];
+    [usershared setName:name];
+    
     NSUserDefaults *userInfo =[NSUserDefaults standardUserDefaults];
     [userInfo setObject:userlevel  forKey:@"Userlevel"];
     [userInfo setObject:name forKey:@"Name"];

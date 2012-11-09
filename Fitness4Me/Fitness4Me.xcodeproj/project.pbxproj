@@ -222,7 +222,6 @@
 		F52FEA2F1647D27A0002E199 /* LoginViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F52FEA311647D27A0002E199 /* LoginViewController_iPad.xib */; };
 		F52FEA331647D4220002E199 /* LandigPageViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F52FEA351647D4220002E199 /* LandigPageViewController_iPad.xib */; };
 		F5341CCE161323C8001E9075 /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F5341CCD161323C8001E9075 /* libGoogleAdMobAds.a */; };
-		F53E75381648E06000970DB9 /* SettingsViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F53E75371648E06000970DB9 /* SettingsViewController_iPad.xib */; };
 		F53E75421648FC9600970DB9 /* breathing.png in Resources */ = {isa = PBXBuildFile; fileRef = F53E753B1648FC9600970DB9 /* breathing.png */; };
 		F53E75431648FC9600970DB9 /* drinks.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F53E753C1648FC9600970DB9 /* drinks.jpg */; };
 		F53E75441648FC9600970DB9 /* floor.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F53E753D1648FC9600970DB9 /* floor.jpg */; };
@@ -264,6 +263,7 @@
 		F5BB87BD16253D2900043059 /* LoadAppstoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5BB87BB16253D2900043059 /* LoadAppstoreViewController.xib */; };
 		F5C34F20163E8D6F007E16AF /* ListWorkoutsViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5C34F22163E8D6F007E16AF /* ListWorkoutsViewController_iPad.xib */; };
 		F5E8CC06163FF9E100B21A47 /* ShareFitness4MeViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5E8CC08163FF9E100B21A47 /* ShareFitness4MeViewController_iPad.xib */; };
+		F5EB808E164A6290001901EA /* SettingsViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5EB8090164A6290001901EA /* SettingsViewController_iPad.xib */; };
 		F5F1F18D162FE3D70007D55E /* big_green_container_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = F5F1F16F162FE3D70007D55E /* big_green_container_iPad.png */; };
 		F5F1F18E162FE3D70007D55E /* buttongreenyes_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = F5F1F171162FE3D70007D55E /* buttongreenyes_iPad.png */; };
 		F5F1F18F162FE3D70007D55E /* congrats_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = F5F1F173162FE3D70007D55E /* congrats_iPad.png */; };
@@ -689,7 +689,6 @@
 		F52FEA361647D4970002E199 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/LandigPageViewController_iPad.xib; sourceTree = "<group>"; };
 		F52FEA3C1647DA290002E199 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/LoginViewController_iPad.xib; sourceTree = "<group>"; };
 		F5341CCD161323C8001E9075 /* libGoogleAdMobAds.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAdMobAds.a; sourceTree = "<group>"; };
-		F53E75371648E06000970DB9 /* SettingsViewController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController_iPad.xib; sourceTree = "<group>"; };
 		F53E753B1648FC9600970DB9 /* breathing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = breathing.png; sourceTree = "<group>"; };
 		F53E753C1648FC9600970DB9 /* drinks.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = drinks.jpg; sourceTree = "<group>"; };
 		F53E753D1648FC9600970DB9 /* floor.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = floor.jpg; sourceTree = "<group>"; };
@@ -764,6 +763,8 @@
 		F5C34F24163E8D74007E16AF /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/ListWorkoutsViewController_iPad.xib; sourceTree = "<group>"; };
 		F5E8CC07163FF9E100B21A47 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ShareFitness4MeViewController_iPad.xib; sourceTree = "<group>"; };
 		F5E8CC0A163FFA2C00B21A47 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/ShareFitness4MeViewController_iPad.xib; sourceTree = "<group>"; };
+		F5EB808F164A6290001901EA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SettingsViewController_iPad.xib; sourceTree = "<group>"; };
+		F5EB8092164A629E001901EA /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/SettingsViewController_iPad.xib; sourceTree = "<group>"; };
 		F5F1F170162FE3D70007D55E /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/big_green_container_iPad.png; sourceTree = "<group>"; };
 		F5F1F172162FE3D70007D55E /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/buttongreenyes_iPad.png; sourceTree = "<group>"; };
 		F5F1F174162FE3D70007D55E /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/congrats_iPad.png; sourceTree = "<group>"; };
@@ -1742,7 +1743,7 @@
 		F52538A6163FB5C6004F9195 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				F53E75371648E06000970DB9 /* SettingsViewController_iPad.xib */,
+				F5EB8090164A6290001901EA /* SettingsViewController_iPad.xib */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -2196,7 +2197,7 @@
 				F5A884DF16411A1500AFE158 /* btn_small@2x_hover.png in Resources */,
 				F5A884DB16411A0900AFE158 /* btn_small@2x.png in Resources */,
 				F52FEA1E164799D60002E199 /* ThanksViewController_iPad.xib in Resources */,
-				F53E75381648E06000970DB9 /* SettingsViewController_iPad.xib in Resources */,
+				F5EB808E164A6290001901EA /* SettingsViewController_iPad.xib in Resources */,
 				F53E75421648FC9600970DB9 /* breathing.png in Resources */,
 				F53E75431648FC9600970DB9 /* drinks.jpg in Resources */,
 				F53E75441648FC9600970DB9 /* floor.jpg in Resources */,
@@ -3592,6 +3593,15 @@
 				F5E8CC0A163FFA2C00B21A47 /* de */,
 			);
 			name = ShareFitness4MeViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+		F5EB8090164A6290001901EA /* SettingsViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F5EB808F164A6290001901EA /* en */,
+				F5EB8092164A629E001901EA /* de */,
+			);
+			name = SettingsViewController_iPad.xib;
 			sourceTree = "<group>";
 		};
 		F5F1F16F162FE3D70007D55E /* big_green_container_iPad.png */ = {

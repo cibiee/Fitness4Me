@@ -90,8 +90,19 @@
     if ([selectedLanguage isEqualToString:@""]) {
         [Fitness4MeUtils showAlert:@"Please select a language !"];
     }else{
-        [selectLanguageView removeFromSuperview];
-        [self showTermsofUse];
+        
+        
+        [UIView transitionWithView:selectLanguageView duration:1
+                           options:UIViewAnimationOptionTransitionCurlUp animations:^{
+                               [selectLanguageView setAlpha:0.0];
+                               
+                           }
+                        completion:^(BOOL finished)
+         {
+             [selectLanguageView removeFromSuperview];
+             [self showTermsofUse];
+             
+         }];
     }
 }
 
@@ -117,9 +128,8 @@
 }
 
 -(void)showDropDown{
-    
     [self.view addSubview:selectLanguageView];
-}
+      }
 
 - (void)showTermsofUse {
     TermsOfUse *viewController;

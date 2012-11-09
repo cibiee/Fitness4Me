@@ -33,7 +33,7 @@
     [super viewDidLoad];
     
     [slownetView removeFromSuperview];
-    slownetView.layer .cornerRadius =14;
+     slownetView.layer .cornerRadius =14;
     
     [descriptionTextview.layer setBorderColor:[[UIColor greenColor]CGColor]];
     [descriptionTextview.layer setBorderWidth:2];
@@ -45,6 +45,8 @@
                                                   CGAffineTransformMakeRotation(M_PI_2));
     [Fitness4MeUtils showAdMob:self];
     
+//    User *userstate = [User sharedState];
+//    User* user= [userstate getUserPreferences];
     
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     self.UserID =[userinfo stringForKey:@"UserID"];
@@ -698,7 +700,7 @@ int stopz=0;
         productIdentifier = [NSString stringWithFormat:@"com.fitness4me.Fitness4Me.%@",
                              [workout WorkoutID]];
     }
-    
+    SKProduct *validProduct=productIdentifier;
     SKPayment *payment = [SKPayment paymentWithProductIdentifier:productIdentifier];
     [[SKPaymentQueue defaultQueue] addPayment:payment];
 }
@@ -830,6 +832,22 @@ int stopz=0;
 
 -(void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response
 {
+    SKProduct *validProduct = nil;
+    
+    int counts = [response.products count];
+    
+    NSLog (@"count for in app purchases is %d", count);
+    
+    if (counts>0) {
+        
+        validProduct = [response.products objectAtIndex:0];
+        //SKPayment *payment = [SKPayment paymentWithProductIdentifier:@"appUpdate1"];
+        //
+       // [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+       // [[SKPaymentQueue defaultQueue] addPayment:payment]; // <-- KA CHING!
+        
+       // NSLog (@"payment proccessed I think");
+    }
     
 }
 

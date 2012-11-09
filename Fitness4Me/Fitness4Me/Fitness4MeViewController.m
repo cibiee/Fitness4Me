@@ -18,13 +18,23 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:[Fitness4MeUtils getBundle]];
+    if (self) {
+        
+        
+        // Custom initialization
+    }
+    return self;
+}
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
     
     [super viewDidLoad];
-    
     
     [Fitness4MeUtils showAdMob:self];
     
@@ -43,7 +53,7 @@
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
     dataPath= [documentsDirectory stringByAppendingPathComponent:@"MyFolder"];
-   
+    
     
     
     if (![[NSFileManager defaultManager] fileExistsAtPath:dataPath]){
@@ -53,26 +63,15 @@
     }
     
     for (NSString *name in VideoArray) {
-        
         NSString *datapath1=[[[NSBundle mainBundle]resourcePath]stringByAppendingPathComponent:name];
-       
-        
-        
         NSString *datapath2=[dataPath stringByAppendingPathComponent:name];
-        
         NSFileManager *filemanager =[NSFileManager defaultManager];
-        
         success =[filemanager  fileExistsAtPath:datapath1];
-        
-        if(success)
-        {
+        if(success){
             if (![[NSFileManager defaultManager] fileExistsAtPath:datapath2]){
                 [filemanager copyItemAtPath:datapath1 toPath:datapath2 error:nil];
             }
-           
         }
-        
-        
     }
     
 }
@@ -83,12 +82,9 @@
 -(void)freeVideoDownload{
     
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
-    
     NSString *showSyncView= [userinfo valueForKey:@"showSyncView"];
     
     if ([showSyncView isEqualToString:@"true"]) {
-        
-        
         [self.view addSubview:SyncView];
         [activityindicators startAnimating];
         NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
@@ -103,10 +99,7 @@
     FitnessServerCommunication *fitness =[FitnessServerCommunication sharedState];
     [fitness setDelegate:self];
     [fitness parseWorkoutVideos];
-    
-    
     [fitness getFreevideos];
-    
     fileDownloadProgressView.progress = ((float)0 / (float) 100);
 }
 
@@ -117,9 +110,15 @@
     NSString *s= [NSString stringWithFormat:@"%i / %i",countCompleted,totalCount];
     lblCompleted.text =s;
     if (countCompleted ==totalCount) {
-        [SyncView removeFromSuperview];
-        
-        
+        [UIView transitionWithView:SyncView duration:1
+                           options:UIViewAnimationOptionTransitionCurlUp animations:^{
+                               [SyncView setAlpha:0.0];
+                               
+                           }
+                        completion:^(BOOL finished)
+         {
+             [SyncView removeFromSuperview];
+         }];
     }
     fileDownloadProgressView.progress = ((float)countCompleted / (float) totalCount);
 }
@@ -134,14 +133,11 @@
     
     
     ListWorkoutsViewController *viewController;
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
-    {
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
         viewController =[[ListWorkoutsViewController alloc]initWithNibName:@"ListWorkoutsViewController" bundle:nil];
+    }else {
+        viewController =[[ListWorkoutsViewController alloc]initWithNibName:@"ListWorkoutsViewController_iPad" bundle:nil];
     }
-    else {
-        viewController =[[ListWorkoutsViewController alloc]initWithNibName:@"ListWorkoutsViewController_iPad" bundle:nil];    }
-    
-    
     [self.navigationController pushViewController:viewController animated:YES];
     
     [viewController release];
@@ -149,19 +145,6 @@
     
     
 }
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:[Fitness4MeUtils getBundle]];
-    if (self) {
-        
-        
-        // Custom initialization
-    }
-    return self;
-}
-
-
 
 //
 // called for  navigating To WorkoutListView
@@ -170,11 +153,8 @@
 -(IBAction)navigateToAboutView:(id)sender{
     
     AboutViewController *viewController =[[AboutViewController alloc]initWithNibName:@"AboutViewController" bundle:nil];
-    
     [self.navigationController pushViewController:viewController animated:YES];
-    
     [viewController release];
-    
     FitnessServerCommunication *fitness =[[FitnessServerCommunication alloc]init];
     [fitness getAllvideos];
     
@@ -190,9 +170,7 @@
 -(IBAction)navigateToSettingsView:(id)sender{
     
     SettingsViewController *viewController =[[SettingsViewController alloc]initWithNibName:@"SettingsViewController" bundle:nil];
-    
     [self.navigationController pushViewController:viewController animated:YES];
-    
     [viewController release];
     
 }
@@ -205,14 +183,11 @@
     
     
     HintsViewController *viewController;
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
-    {
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
         viewController =[[HintsViewController alloc]initWithNibName:@"HintsViewController" bundle:nil];
+    }else {
+        viewController =[[HintsViewController alloc]initWithNibName:@"HintsViewController_iPad" bundle:nil];
     }
-    else {
-        viewController =[[HintsViewController alloc]initWithNibName:@"HintsViewController_iPad" bundle:nil];    }
-    
-    
     [self.navigationController pushViewController:viewController animated:YES];
     
     [viewController release];
@@ -250,15 +225,6 @@
     [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
-	[super viewWillDisappear:animated];
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-	[super viewDidDisappear:animated];
-}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {

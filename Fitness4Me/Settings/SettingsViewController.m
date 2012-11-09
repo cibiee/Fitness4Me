@@ -526,16 +526,23 @@
         NSString *s= [NSString stringWithFormat:@"%i / %i",countCompleted,totalCount];
         lblCompleted.text =s;
         if (countCompleted ==totalCount) {
-            [UIView transitionWithView:downloadFullView duration:3
+            
+
+            [UIView transitionWithView:downloadFullView duration:1
                                options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{
-                                   [downloadFullView removeFromSuperview];
-                                   //[self.view addSubview:newView];
+                                   [downloadFullView setAlpha:0.0];
+                                   
                                }
-                            completion:NULL];
-            //        [downloadFullView removeFromSuperview];
-            NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
-            [userinfo setObject:@"false" forKey:@"showDownload"];
-            [fulldownloadButton removeFromSuperview];
+                            completion:^(BOOL finished)
+             {
+                  [downloadFullView removeFromSuperview];
+                 NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+                 [userinfo setObject:@"false" forKey:@"showDownload"];
+                 [fulldownloadButton removeFromSuperview];
+                 
+             }];
+            //       
+           
         }
         
         fileDownloadProgressView.progress = ((float)countCompleted / (float) totalCount);

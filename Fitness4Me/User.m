@@ -9,8 +9,8 @@
 #import "User.h"
 
 @implementation User
-
-@synthesize UserID,Username,Name,Userlevel;
+static User *sharedState;
+@synthesize UserID,Username,Name,Userlevel,hasMadeFullPurchase,email,password,ID;
 - (id)init
 {
     self = [super init];
@@ -38,6 +38,31 @@
     return self;
 }
 
+
++ (User *)sharedState {
+    
+    @synchronized(self) {
+        if (sharedState == nil)
+            sharedState = [[self alloc] init];
+    }
+    return sharedState;
+    
+    
+}
+
+-(User*)getUserPreferences{
+    User *user;
+    
+     NSUserDefaults *userInfo =[NSUserDefaults standardUserDefaults];
+    [user setName:[userInfo valueForKey:@"Name"]];
+    [user setUserlevel:[userInfo valueForKey:@"Userlevel"]];
+    [user setUsername:[userInfo valueForKey:@"Username"]];
+    [user setPassword:[userInfo valueForKey:@"password"]];
+    [user setID:[userInfo valueForKey:@"UserID"]];
+    [user setEmail:[userInfo valueForKey:@"email"]];
+    [user setHasMadeFullPurchase:[userInfo valueForKey:@"hasMadeFullPurchase"]];
+    return user;
+}
 
 
 @end

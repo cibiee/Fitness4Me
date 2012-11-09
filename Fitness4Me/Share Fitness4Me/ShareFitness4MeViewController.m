@@ -73,10 +73,7 @@
    
     msg =[name stringByAppendingString:msg];
     shareAppMessageTextView.text=[msg stringByAppendingString:workoutName];
-    
-    
-    
-    
+
     dataPath =[Fitness4MeUtils path];
     
     if ([Fitness4MeUtils isReachable]) {

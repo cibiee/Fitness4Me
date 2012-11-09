@@ -28,6 +28,24 @@
 
 @interface ExcersiceIntermediateViewController : UIViewController<SKProductsRequestDelegate,SKPaymentTransactionObserver,ASIHTTPRequestDelegate>
 {
+    BOOL isConected;
+    int count;
+    int stop;
+    
+    NSString *purchaseAll;
+    NSString *dataPath;
+    NSString *urlPath;
+    NSString *userlevel;
+    NSString *userID;
+
+    SKProduct *proUpgradeProduct;
+    SKProductsRequest *productsRequest;
+    NSString *productIdentifier;
+    
+    NSMutableArray *excersices;
+    NSMutableArray *arr;
+    NSMutableArray *excersicesList;
+
     
     IBOutlet UIImageView *excersiceImageHolder;
     IBOutlet UITextView  *descriptionTextview;
@@ -39,10 +57,9 @@
     IBOutlet UILabel *titleLabel;
     IBOutlet UIBarButtonItem *backButton ;
     IBOutlet UITextView *propsLabel;
-     IBOutlet UILabel *propLabel;
+    IBOutlet UILabel *propLabel;
     IBOutlet UIView *slownetView;
-
-     IBOutlet UIButton *slownetButton;
+    IBOutlet UIButton *slownetButton;
     
     ASIHTTPRequest   *downloadrequest ;
     ASINetworkQueue  *myQueue;
@@ -51,27 +68,6 @@
     WorkoutDB *workoutDB;
     Workout * workout;
     User *user;
-
-    
-    SKProduct *proUpgradeProduct;    
-    SKProductsRequest *productsRequest;
-    NSString *productIdentifier;
-
-    BOOL isConected;
-    
-    NSMutableArray *excersices;
-    NSMutableArray *arr;
-    NSMutableArray *excersicesList;
-    
-    NSString *purchaseAll;       
-    NSString *dataPath;
-    NSString *urlPath;
-        NSString *userlevel;
-    NSString *userID;
-    
-    int count;
-    int stop;
-    
 }
 
 @property (retain,nonatomic)Workout *workout;
@@ -84,7 +80,6 @@
 -(void)downloadVideos:(NSString *)url:(NSString*)name;
 -(void)parseExcersiceDetails;
 -(void)startDownload;
-
 -(void)getExcersices;
 -(void)getUnlockedExcersices;
 -(void)loadStore;

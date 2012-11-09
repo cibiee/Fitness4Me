@@ -30,7 +30,7 @@
 +(void)showAdMobLandscape:(UIViewController*)viewController;
 +(void)showAdMobPrelogin:(UIViewController*)viewController;
 +(void)navigateToHomeView:(UIViewController*)selfViewController;
-+(void)registerDevice :(UIView *)signUpView;
+
 
 +(NSString *)path;
 +(NSBundle*)getBundle;
