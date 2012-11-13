@@ -16,7 +16,7 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-   self = [super initWithNibName:nibNameOrNil bundle:[Fitness4MeUtils getBundle]];
+    self = [super initWithNibName:nibNameOrNil bundle:[Fitness4MeUtils getBundle]];
     if (self) {
         // Custom initialization
     }
@@ -31,17 +31,15 @@
 
 
 -(IBAction)ratetheApp:(id)sender{
-   
-  
     
-        NSString *str = @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa";
-        str = [NSString stringWithFormat:@"%@/wa/viewContentsUserReviews?", str];
-        str = [NSString stringWithFormat:@"%@type=Purple+Software&id=", str];
-        
-        // Here is the app id from itunesconnect
-        str = [NSString stringWithFormat:@"%@533402282", str];
-        
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+    
+    
+    NSString *str = @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa";
+    str = [NSString stringWithFormat:@"%@/wa/viewContentsUserReviews?", str];
+    str = [NSString stringWithFormat:@"%@type=Purple+Software&id=", str];
+    // Here is the app id from itunesconnect
+    str = [NSString stringWithFormat:@"%@533402282", str];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
     
 }
 
@@ -55,25 +53,25 @@
 }
 
 -(IBAction)remindMeLater:(id)sender{
-     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     [userinfo setInteger:0  forKey:@"applicationLaunchCount"];
-     [self navigateToHome];
+    [self navigateToHome];
 }
 
 -(void)navigateToHome
 {
     
-        ListWorkoutsViewController *viewController;
-        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
-        {
-            viewController =[[ListWorkoutsViewController alloc]initWithNibName:@"ListWorkoutsViewController" bundle:nil];
-        }
-        else {
-            viewController =[[ListWorkoutsViewController alloc]initWithNibName:@"ListWorkoutsViewController_iPad" bundle:nil];
-        }
-        
-        [self.navigationController pushViewController:viewController animated:YES];
-
+    ListWorkoutsViewController *viewController;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+    {
+        viewController =[[ListWorkoutsViewController alloc]initWithNibName:@"ListWorkoutsViewController" bundle:nil];
+    }
+    else {
+        viewController =[[ListWorkoutsViewController alloc]initWithNibName:@"ListWorkoutsViewController_iPad" bundle:nil];
+    }
+    
+    [self.navigationController pushViewController:viewController animated:YES];
+    
 }
 
 
@@ -85,9 +83,9 @@
         viewController =[[FeedbackViewController alloc]initWithNibName:@"FeedbackViewController" bundle:nil];
     }
     else{
-        viewController =[[FeedbackViewController alloc]initWithNibName:@"FeedbackViewController" bundle:nil];   
+        viewController =[[FeedbackViewController alloc]initWithNibName:@"FeedbackViewController" bundle:nil];
     }
-     [self.navigationController pushViewController:viewController animated:YES];
+    [self.navigationController pushViewController:viewController animated:YES];
     [viewController release];
     
 }

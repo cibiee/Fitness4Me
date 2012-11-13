@@ -36,7 +36,6 @@
     [self.navigationController setNavigationBarHidden:YES animated:YES];
     [self setChildProperties];
     selectedLanguage=@"";
-    [selectLanguageView removeFromSuperview];
     [super viewDidLoad];
     
     [self prepareData];
@@ -50,6 +49,8 @@
     int  selectedlang=[Fitness4MeUtils getApplicationLanguage] ;
     if (selectedlang==0)
         [self showDropDown];
+    else
+        [selectLanguageView removeFromSuperview];
 }
 
 - (void)viewDidUnload
