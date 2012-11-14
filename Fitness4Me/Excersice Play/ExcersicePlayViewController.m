@@ -16,7 +16,7 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-   self = [super initWithNibName:nibNameOrNil bundle:[Fitness4MeUtils getBundle]];
+    self = [super initWithNibName:nibNameOrNil bundle:[Fitness4MeUtils getBundle]];
     if (self) {
         // Custom initialization
     }
@@ -36,10 +36,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self getExcersices];    
-       self.view.transform = CGAffineTransformConcat(self.view.transform, CGAffineTransformMakeRotation(M_PI_2));
+    [self getExcersices];
+    self.view.transform = CGAffineTransformConcat(self.view.transform, CGAffineTransformMakeRotation(M_PI_2));
     moviePlayer.view.backgroundColor =[UIColor  whiteColor];
-    [self showAdMobs];   
+    [self showAdMobs];
 }
 
 
@@ -68,11 +68,8 @@
                                                     90)];
             
         }
-        // Specify the ad's "unit identifier." This is your AdMob Publisher ID.
+        
         bannerView_.adUnitID = @"a1506940e575b91";
-        //[bannerView_ setAutoresizingMask:UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin];
-        // Let the runtime know which UIViewController to restore after taking
-        // the user wherever the ad goes and add it to the view hierarchy.
         bannerView_.rootViewController = self;
         [self.view addSubview:bannerView_];
         
@@ -87,27 +84,27 @@
     [excersiceDB setUpDatabase];
     [excersiceDB createDatabase];
     [excersiceDB getExcersices:WorkoutID];
-     arr = [[NSMutableArray alloc]init];
-     arr =excersiceDB.Excersices;
+    arr = [[NSMutableArray alloc]init];
+    arr =excersiceDB.Excersices;
     [self MakeArrayforViewing ];
     [self initializPlayer ];
 }
 
 -(void)MakeArrayforViewing
 {
-   
+    
     ExcersicePlay *play;
     aras =[[NSMutableArray alloc]init];
     for (int i=0; i<[arr count]; i++) {
         play =[[ExcersicePlay alloc]init];
         play.repeatIntervel =[[[arr objectAtIndex:i]PosterRepeatCount]intValue];
-        play.videoName =[[arr objectAtIndex:i] PosterName];                
+        play.videoName =[[arr objectAtIndex:i] PosterName];
         if ([play.videoName length]>0) {
-           
+            
             [aras addObject:play];
         }
         [play release];
-       
+        
         play =[[ExcersicePlay alloc]init];
         play.repeatIntervel =[[[arr objectAtIndex:i]RepeatCount]intValue];
         play.videoName =[[arr objectAtIndex:i] Name];
@@ -115,8 +112,8 @@
             
             [aras addObject:play];
         }
-       [play release];
-    
+        [play release];
+        
         play =[[ExcersicePlay alloc]init];
         play.repeatIntervel =[[[arr objectAtIndex:i]StopRep] intValue];
         play.videoName =[[arr objectAtIndex:i] StopName];
@@ -134,21 +131,21 @@
             [aras addObject:play];
         }
         [play release];
-    
+        
         play =[[ExcersicePlay alloc]init];
         play.repeatIntervel =[[[arr objectAtIndex:i]OthersideRep]intValue];
         play.videoName =[[arr objectAtIndex:i] OthersideName];
         if ([play.videoName length]>0) {
-          
+            
             [aras addObject:play];
         }
         [play release];
-     
+        
         play =[[ExcersicePlay alloc]init];
         play.repeatIntervel =1;
         play.videoName =[[arr objectAtIndex:i] RecoveryVideoName];
         if ([play.videoName length]>0) {
-           
+            
             [aras addObject:play];
         }
         
@@ -158,37 +155,37 @@
         play.repeatIntervel =[[[arr objectAtIndex:i]NextRep]intValue];
         play.videoName =[[arr objectAtIndex:i] NextName];
         if ([play.videoName length]>0) {
-
+            
             [aras addObject:play];
         }
-
+        
         [play release];
-
+        
         play =[[ExcersicePlay alloc]init];
         play.repeatIntervel =[[[arr objectAtIndex:i]CompletedRep]intValue];
         play.videoName =[[arr objectAtIndex:i] CompletedName];
         if ([play.videoName length]>0) {
-           
+            
             [aras addObject:play];
         }
-
+        
         [play release];
     }
     
 }
 
- static int initalArrayCount=0;  
- static int playCount=0;
- static float totalDuration=0;
+static int initalArrayCount=0;
+static int playCount=0;
+static float totalDuration=0;
 
 -(void)initializPlayer
-{ 
+{
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
     NSString *dataPath = [documentsDirectory stringByAppendingPathComponent:@"MyFolder"];
-     storeURL =  [dataPath stringByAppendingPathComponent :[[aras objectAtIndex:initalArrayCount]videoName]];
-    if (playCount==0) {        
+    storeURL =  [dataPath stringByAppendingPathComponent :[[aras objectAtIndex:initalArrayCount]videoName]];
+    if (playCount==0) {
         if(initalArrayCount<[aras count]){
             initalArrayCount +=1;
             
@@ -196,65 +193,54 @@
         else {
             initalArrayCount = 0;
         }
-
-    }       
-        if (![[NSFileManager defaultManager] fileExistsAtPath:storeURL])
-        {
-            if (initalArrayCount<[aras count]) {
-                int count =[[aras objectAtIndex:initalArrayCount-1]repeatIntervel];
-                if (count==0) {
-                    count=1;
-                }
-                if (playCount==count) {
-                    
-                    playCount=0;
-                }
-                [self initializPlayer];
+        
+    }
+    if (![[NSFileManager defaultManager] fileExistsAtPath:storeURL])
+    {
+        if (initalArrayCount<[aras count]) {
+            int count =[[aras objectAtIndex:initalArrayCount-1]repeatIntervel];
+            if (count==0) {
+                count=1;
+            }
+            if (playCount==count) {
+                
+                playCount=0;
+            }
+            [self initializPlayer];
+        }
+    }
+    else {
+        if (moviePlayer!=nil) {
+            if (playCount==0) {
+                moviePlayer.view .frame= subview.bounds;
+                moviePlayer.contentURL =[NSURL fileURLWithPath:storeURL];
+                moviePlayer.controlStyle = MPMovieControlStyleNone;
+                [moviePlayer play];
+            }
+            else {
+                [moviePlayer play];
+                moviePlayer.controlStyle = MPMovieControlStyleNone;
             }
         }
         else {
-            if (moviePlayer!=nil) {
-                 if (playCount==0) {
-                      moviePlayer.view .frame= subview.bounds;
-                      moviePlayer.contentURL =[NSURL fileURLWithPath:storeURL]; 
-                      moviePlayer.controlStyle = MPMovieControlStyleNone;
-                      [moviePlayer play];
-                     }
-                 else {
-                      [moviePlayer play];
-                     moviePlayer.controlStyle = MPMovieControlStyleNone;
-                 }
-            }
-            else {
-                moviePlayer = [[MPMoviePlayerController alloc] init];                
-                moviePlayer.contentURL =[NSURL fileURLWithPath:storeURL];
-                [moviePlayer play];
-                 moviePlayer.controlStyle = MPMovieControlStyleNone;
-                moviePlayer.view .frame= subview.bounds;
-                [subview addSubview: moviePlayer.view];  
-            }
-           
+            moviePlayer = [[MPMoviePlayerController alloc] init];
+            moviePlayer.contentURL =[NSURL fileURLWithPath:storeURL];
+            [moviePlayer play];
             moviePlayer.controlStyle = MPMovieControlStyleNone;
-
-            //Register to receive a notification when the movie has finished playing.
-            [[NSNotificationCenter defaultCenter] addObserver:self
-                                                     selector:@selector(moviePlayBackDidFinish:)
-                                                         name:MPMoviePlayerPlaybackDidFinishNotification
-                                                       object:moviePlayer];
-                       
-//            //Register to receive a notification when the movie has been paused.
-//            [[NSNotificationCenter defaultCenter] addObserver:self
-//                                                     selector:@selector(moviePlayBackDidPause:)
-//                                                      name:MPMoviePlaybackStatePaused
-//                                                       object:moviePlayer];
-//            
-//            //Register to receive a notification when the movie has been paused.
-//            [[NSNotificationCenter defaultCenter] addObserver:self
-//                                                     selector:@selector(moviePlayBackDidStop:)
-//                                                         name:MPMoviePlaybackStateStopped
-//                                                       object:moviePlayer];
-            
-   }
+            moviePlayer.view .frame= subview.bounds;
+            [subview addSubview: moviePlayer.view];
+        }
+        
+        moviePlayer.controlStyle = MPMovieControlStyleNone;
+        
+        //Register to receive a notification when the movie has finished playing.
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(moviePlayBackDidFinish:)
+                                                     name:MPMoviePlayerPlaybackDidFinishNotification
+                                                   object:moviePlayer];
+        
+        
+    }
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -276,7 +262,7 @@
 -(void)showAlert
 {
     
-    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"Fitness4Me" message:NSLocalizedString(@"exitVideo", nil)   
+    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"Fitness4Me" message:NSLocalizedString(@"exitVideo", nil)
                                                        delegate:self cancelButtonTitle:@"OK" otherButtonTitles:@"Cancel", nil];
     [alertview show];
     [UIView beginAnimations:@"" context:nil];
@@ -302,14 +288,13 @@
     if (buttonIndex==0) {
         
         if (moviePlayer!=nil) {
-           totalDuration= [moviePlayer currentPlaybackTime];
+            totalDuration= [moviePlayer currentPlaybackTime];
             totalDuration =totalDuration*60;
-           // NSLog(@"%f",totalDuration);
             [moviePlayer release];
         }
         initalArrayCount=0;
         playCount=0;
-    
+        
         ListWorkoutsViewController *viewController;
         
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
@@ -322,7 +307,7 @@
         [viewController release];
     }
     else {
-       
+        
     }
 }
 
@@ -331,38 +316,13 @@
 }
 
 
--(void)setViewMovedUp:(BOOL)movedUp
-{
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.3]; 
-    [UIView setAnimationBeginsFromCurrentState:YES];
-    
-    CGRect rect = subview.frame;
-    if (movedUp)
-    {
-        if (rect.origin.y == 0 ) {
-            rect.origin.y -= kOFFSET_FOR_KEYBOARD;
-            
-        }
-    }
-    else
-    {
-        if (stayup == NO) {
-            rect.origin.y += kOFFSET_FOR_KEYBOARD;
-            
-        }
-    }
-    subview.frame = rect; 
-    [UIView commitAnimations];
-}
-
 - (void) moviePlayBackDidFinish:(NSNotification*)notification {
     moviePlayer = [notification object];
-      [[NSNotificationCenter defaultCenter] removeObserver:self
+    [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:MPMoviePlayerPlaybackDidFinishNotification
                                                   object:moviePlayer];
-
-        playCount=playCount+1;
+    
+    playCount=playCount+1;
     if (initalArrayCount<[aras count]) {
         int count =[[aras objectAtIndex:initalArrayCount-1]repeatIntervel];
         if (count==0) {
@@ -371,23 +331,22 @@
         if (playCount==count) {
             playCount=0;
         }
-                 
-            [self initializPlayer];
-      }
+        
+        [self initializPlayer];
+    }
     else {
         
         initalArrayCount=0;
         playCount=0;
-         totalDuration= [moviePlayer currentPlaybackTime];
+        totalDuration= [moviePlayer currentPlaybackTime];
         totalDuration=totalDuration*60;
-      //  NSLog(@"%f",totalDuration);
         [self updateStatisticsToServer];
         
         ExcersicePostPlayViewController *viewController;
         
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
             viewController = [[ExcersicePostPlayViewController alloc]initWithNibName:@"ExcersicePostPlayViewController" bundle:nil];
-            }
+        }
         else {
             viewController = [[ExcersicePostPlayViewController alloc]initWithNibName:@"ExcersicePostPlayViewController_iPad" bundle:nil];
         }
@@ -406,21 +365,9 @@
     if (isReachable) {
         [self updateServer];
     }
-        
-       //[self performSelector:@selector(updateDuration) withObject:nil afterDelay:0.5];
+    
+    
 }
-
--(void)updateDuration
-{
-    statisticsDB =[[StatisticsDB alloc]init];
-    [statisticsDB setUpDatabase];
-    [statisticsDB createDatabase];
-  //  Statistics *statistics= [[Statistics alloc]initWithData:WorkoutID :totalDuration];
-  //  [statisticsDB insertStatistics:statistics];
-    arr = [[NSMutableArray alloc]init];
-    arr =excersiceDB.Excersices;
-}
-
 
 -(void)updateServer{
     

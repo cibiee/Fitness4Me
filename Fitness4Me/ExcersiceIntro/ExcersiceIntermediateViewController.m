@@ -8,7 +8,7 @@
 
 #import "ExcersiceIntermediateViewController.h"
 #import "ExcersicePlayViewController.h"
-#import "NSString+Config.m"
+#import "NSString+Config.h"
 #import "Fitness4MeUtils.h"
 
 @implementation ExcersiceIntermediateViewController
