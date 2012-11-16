@@ -31,9 +31,10 @@
     IBOutlet UIButton *quitbutton;
     IBOutlet UIImageView *bgImageview;
     IBOutlet UIView *subview;
+     IBOutlet UIView *subview5;
     
     GADBannerView *bannerView_;
-    
+    CGRect screenBounds;
     NSString *storeURL;
     NSString *duration;
     MPMoviePlayerController __strong *moviePlayer;

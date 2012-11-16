@@ -178,11 +178,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    UITableViewCell *oldCell = [tableView cellForRowAtIndexPath:lastIndex];
-    if (oldCell.accessoryType == UITableViewCellAccessoryCheckmark){
-        oldCell.accessoryType = UITableViewCellAccessoryNone;
+    if (lastIndex !=nil) {
+        lastIndex=indexPath;
     }
+    UITableViewCell *oldCell = [tableView cellForRowAtIndexPath:lastIndex];
+    
+        oldCell.accessoryType = UITableViewCellAccessoryNone;
+   
     [[tableView cellForRowAtIndexPath:indexPath]
      setAccessoryType:UITableViewCellAccessoryCheckmark];
     lastIndex=indexPath;

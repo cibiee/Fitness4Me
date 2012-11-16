@@ -38,8 +38,22 @@
     [super viewDidLoad];
     [self getExcersices];
     self.view.transform = CGAffineTransformConcat(self.view.transform, CGAffineTransformMakeRotation(M_PI_2));
+     screenBounds = [[UIScreen mainScreen] bounds];
+    NSLog(@"%f",screenBounds.size.height);
+    if (screenBounds.size.height == 568)
+    {
+        [subview5 removeFromSuperview];
+        [self.view addSubview:subview];
+    }
+    else{
+        [subview5 removeFromSuperview];
+        [self.view addSubview:subview];
+    }
+    
     moviePlayer.view.backgroundColor =[UIColor  whiteColor];
     [self showAdMobs];
+    
+    
 }
 
 
@@ -212,7 +226,9 @@ static float totalDuration=0;
     else {
         if (moviePlayer!=nil) {
             if (playCount==0) {
-                moviePlayer.view .frame= subview.bounds;
+                
+                     moviePlayer.view .frame= subview.bounds;
+                               
                 moviePlayer.contentURL =[NSURL fileURLWithPath:storeURL];
                 moviePlayer.controlStyle = MPMovieControlStyleNone;
                 [moviePlayer play];
@@ -227,8 +243,10 @@ static float totalDuration=0;
             moviePlayer.contentURL =[NSURL fileURLWithPath:storeURL];
             [moviePlayer play];
             moviePlayer.controlStyle = MPMovieControlStyleNone;
-            moviePlayer.view .frame= subview.bounds;
-            [subview addSubview: moviePlayer.view];
+            
+                            moviePlayer.view .frame= subview.bounds;
+                [subview addSubview: moviePlayer.view];
+            
         }
         
         moviePlayer.controlStyle = MPMovieControlStyleNone;

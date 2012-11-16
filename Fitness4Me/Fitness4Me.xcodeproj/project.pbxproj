@@ -163,7 +163,7 @@
 		0BD4844816031E4600D3AFB8 /* popupline@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BD4844A16031E4600D3AFB8 /* popupline@2x.png */; };
 		0BD484691603752800D3AFB8 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BD484671603752800D3AFB8 /* icon.png */; };
 		0BD4846A1603752800D3AFB8 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BD484681603752800D3AFB8 /* icon@2x.png */; };
-		0BD4A2DC15C6459500F1FCB7 /* FitnessServerCommunication.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BD4A2DB15C6459500F1FCB7 /* FitnessServerCommunication.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		0BD4A2DC15C6459500F1FCB7 /* FitnessServerCommunication.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BD4A2DB15C6459500F1FCB7 /* FitnessServerCommunication.m */; };
 		0BDAE8D2156A01AB0041CC96 /* Statistics.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BDAE8D1156A01AB0041CC96 /* Statistics.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		0BDAE8D6156A08EA0041CC96 /* StatisticsDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BDAE8D5156A08EA0041CC96 /* StatisticsDB.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		0BE2F182155BCC8A0016FA06 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0BE2F181155BCC8A0016FA06 /* Config.plist */; };
