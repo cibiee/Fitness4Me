@@ -90,9 +90,6 @@
     dataPath =[Fitness4MeUtils path];
     
     if ([Fitness4MeUtils isReachable]) {
-        
-   
-    
     if (![[NSFileManager defaultManager] fileExistsAtPath:dataPath]){
         //Create Folder
         [[NSFileManager defaultManager] createDirectoryAtPath:dataPath withIntermediateDirectories:NO attributes:nil error:nil];
@@ -100,7 +97,6 @@
     NSString  *storeURL= [dataPath stringByAppendingPathComponent :[self.workout ImageName]];
     // Check If File Does Exists if not download the video
     if (![[NSFileManager defaultManager] fileExistsAtPath:storeURL]){
-        
         NSURL * imageURL = [NSURL URLWithString:[self. workout ThumbImageUrl]];
         NSData * imageData = [NSData dataWithContentsOfURL:imageURL];
         excersiceImageHolder.image = [UIImage imageWithData:imageData];
@@ -108,36 +104,21 @@
         [request setDownloadDestinationPath:storeURL];
         [request setDelegate:self];
         [request startAsynchronous];
-    }
-    else {
-        
+    }else {
         UIImage *im =[[UIImage alloc]initWithContentsOfFile:storeURL];
         excersiceImageHolder.image=im;
-    }
-    }
-    else
-    {
-       
-            
+     }
+    }else{
             NSString  *storeURL= [dataPath stringByAppendingPathComponent :[self.workout ImageName]];
             // Check If File Does Exists if not download the video
-            if ([[NSFileManager defaultManager] fileExistsAtPath:storeURL])
-            {
+            if ([[NSFileManager defaultManager] fileExistsAtPath:storeURL]){
                 UIImage *im =[[UIImage alloc]initWithContentsOfFile:storeURL];
-                
                 excersiceImageHolder.image=im;
-                
                 [im release];
-                
-            }
-            
-            else
-            {
+            }else{
                 UIImage *im =[UIImage imageNamed:@"dummyimg.png"];
                 excersiceImageHolder.image =im;
-                
             }
-
     }
 }
 
@@ -151,12 +132,9 @@
     if ([[self.workout Props] length]>0) {
         propsLabel.text=[self.workout Props];
         [propsLabel sizeToFit];
-    }
-    else
-    {
+    }else{
         propLabel.hidden =YES;
     }
-    
 }
 
 -(void)startActivity
@@ -180,8 +158,6 @@
     
     BOOL isReachable =[Fitness4MeUtils isReachable];
     if (isReachable){
-        
-        
         NSString *status ;
         NSString *requestString;
         
@@ -205,16 +181,11 @@
             for (int i=0; i<[itemsarray count]; i++) {
                 status = [[itemsarray objectAtIndex:i] valueForKey:@"status"];
             }
-        }
-        else{
-            
+        }else{
             [Fitness4MeUtils showAlert:NSLocalizedString(@"NoInternetMessage", nil)];
-            
-            
             if([signUpView superview]!=nil)
                 [signUpView removeFromSuperview];
         }
-        
         if ([status isEqualToString:@"success"]) {
             if ([[self purchaseAll] isEqualToString:@"true"]){
                 NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
@@ -264,8 +235,6 @@
     
 }
 
-//parse the exersice detils from the server and then download it from server
-//
 -(void)parseExcersiceDetails{
     
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
@@ -292,11 +261,8 @@
             [self deleteExcersices];
             [self insertExcersices];
             [self getExcersices];
-        }
-        else
-        {
+        }else{
             [self getExcersices];
-
         }
     }
     
@@ -343,9 +309,6 @@
     alertView.transform = CGAffineTransformRotate(alertView.transform, 3.14159/2);
     [UIView commitAnimations];
 }
-
-
-
 
 - (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex
 {
@@ -659,8 +622,7 @@ int stopz=0;
     ListWorkoutsViewController *viewController;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
         viewController = [[ListWorkoutsViewController alloc]initWithNibName:@"ListWorkoutsViewController" bundle:nil];
-    }
-    else {
+    }else {
         viewController = [[ListWorkoutsViewController alloc]initWithNibName:@"ListWorkoutsViewController_iPad" bundle:nil];
     }
     [self.navigationController pushViewController:viewController animated:YES];

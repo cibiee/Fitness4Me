@@ -85,7 +85,7 @@
         viewController =[[FeedbackViewController alloc]initWithNibName:@"FeedbackViewController" bundle:nil];
     }
     else{
-        viewController =[[FeedbackViewController alloc]initWithNibName:@"FeedbackViewController" bundle:nil];   
+        viewController =[[FeedbackViewController alloc]initWithNibName:@"FeedbackViewController_iPad" bundle:nil];   
     }
      [self.navigationController pushViewController:viewController animated:YES];
     [viewController release];

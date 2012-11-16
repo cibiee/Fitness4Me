@@ -151,8 +151,13 @@
 //
 
 -(IBAction)navigateToAboutView:(id)sender{
-    
-    AboutViewController *viewController =[[AboutViewController alloc]initWithNibName:@"AboutViewController" bundle:nil];
+  
+    AboutViewController *viewController;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+        viewController =[[AboutViewController alloc]initWithNibName:@"AboutViewController" bundle:nil];
+    }else {
+        viewController =[[AboutViewController alloc]initWithNibName:@"AboutViewController_iPad" bundle:nil];
+    }
     [self.navigationController pushViewController:viewController animated:YES];
     [viewController release];
     FitnessServerCommunication *fitness =[[FitnessServerCommunication alloc]init];
@@ -169,7 +174,13 @@
 
 -(IBAction)navigateToSettingsView:(id)sender{
     
-    SettingsViewController *viewController =[[SettingsViewController alloc]initWithNibName:@"SettingsViewController" bundle:nil];
+    SettingsViewController *viewController;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+        viewController =[[SettingsViewController alloc]initWithNibName:@"SettingsViewController" bundle:nil];
+    }else {
+        viewController =[[SettingsViewController alloc]initWithNibName:@"SettingsViewController_iPad" bundle:nil];
+    }
+    
     [self.navigationController pushViewController:viewController animated:YES];
     [viewController release];
     
