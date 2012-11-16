@@ -95,8 +95,7 @@
         
         excersiceImageHolder.image=im;
         
-        [im release];
-      }
+             }
         
     }
     
@@ -109,9 +108,6 @@
             UIImage *im =[[UIImage alloc]initWithContentsOfFile:storeURL];
             
             excersiceImageHolder.image=im;
-            
-            [im release];
-
         }
         
         else
@@ -201,7 +197,6 @@
     
     
     [self.navigationController pushViewController:viewController animated:YES];
-    [viewController release];
 }
 
 
@@ -224,7 +219,7 @@
     viewController.imageUrl =[self.workout ImageUrl];
     viewController.imageName =[self.workout ImageName];
     [self.navigationController pushViewController:viewController animated:YES];
-    [viewController release];
+    
 
     
 }
@@ -474,7 +469,7 @@
     [workoutDB createDatabase];
     
     [workoutDB updateWorkout:@"All":purchaseStatus];
-    [workoutDB release];
+    
     
 }
 
@@ -483,7 +478,7 @@
 
 - (void)viewDidUnload
 {
-      [bannerView_ release];
+    
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

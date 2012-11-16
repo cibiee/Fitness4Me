@@ -249,9 +249,10 @@ int userID;
 -(void)navigateToHomeScreen{
     
     Fitness4MeViewController *viewController;
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
         viewController =[[Fitness4MeViewController alloc]initWithNibName:@"Fitness4MeViewController" bundle:nil];
-    }
+    else
+        viewController =[[Fitness4MeViewController alloc]initWithNibName:@"Fitness4MeViewController_iPad" bundle:nil]; 
     [self.navigationController pushViewController:viewController animated:YES];
     [viewController release];
     

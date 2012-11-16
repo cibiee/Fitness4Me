@@ -43,15 +43,14 @@
     
     [self showHideDownloadButton:showDownload];
     
-    [self.view addSubview:loadView];
+    //[self.view addSubview:loadView];
     [loadactivityIndicator startAnimating];
     
-    [profileUpdatedView removeFromSuperview];
+   [profileUpdatedView removeFromSuperview];
     profileUpdatedView.layer .cornerRadius =14;
     
     [self setInitials];
-    
-    
+   
 }
 
 
@@ -85,12 +84,13 @@
     downloadFullView.layer .cornerRadius =14;
     downloadFullView.layer.borderWidth = 2;
     downloadFullView.layer.borderColor = [UIColor whiteColor].CGColor;
+    //SyncView =nil;
     
-    [SyncView removeFromSuperview];
     SyncView.layer.cornerRadius =14;
     SyncView.layer.borderWidth = 2;
+    
     SyncView.layer.borderColor = [UIColor whiteColor].CGColor;
-
+    
     [emailImageView setHidden:YES];
     [activityIndicator setHidesWhenStopped:YES];
     [emailactivityIndicator setHidesWhenStopped:YES];
@@ -98,17 +98,11 @@
 
 -(void)startActivity{
     
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
-        signUpView =[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 480)];
-    }
-    else {
-        signUpView =[[UIView alloc]initWithFrame:CGRectMake(0, 0, 768, 1004)];
-    }
-    
+    signUpView =[[UIView alloc]initWithFrame:[[UIScreen mainScreen]bounds]];
     [signUpView addSubview:signupIndicator];
     [signUpView addSubview:pleaseWait];
-    signUpView.backgroundColor=[UIColor blackColor];
-    signUpView.alpha=0.8;
+    [signUpView setBackgroundColor:[UIColor blackColor]];
+    [signUpView setAlpha:0.8];
     [signupIndicator setHidden:NO];
     [signupIndicator startAnimating];
     [self.view addSubview:signUpView];
@@ -118,7 +112,7 @@
 -(void)terminateActivity:(NSString *)message
 {
     [Fitness4MeUtils showAlert:message];
-    emailImageView.image =[UIImage imageNamed:@"invalid.png"];
+    [emailImageView setImage:[UIImage imageNamed:@"invalid.png"]];
     [emailValidator setBackgroundColor:[UIColor redColor]];
     [updateButton setEnabled:YES];
     [emailactivityIndicator setHidden:YES];
@@ -168,8 +162,7 @@
             
             if ([oldUserlevel isEqualToString:userlevel]){
                 isLevelChanged =NO;
-            }
-            else{
+            }else{
                 isLevelChanged =YES;
                 oldUserlevel=userlevel;
             }
@@ -315,7 +308,9 @@
 
 -(void)freeVideoDownload{
     freeVideo =@"true";
+    
     [self.view addSubview:SyncView];
+    [SyncView setHidden:NO];
     [activityindicators startAnimating];
     [NSThread detachNewThreadSelector:@selector(startFreeDownload) toTarget:self withObject:nil];
 }
@@ -339,10 +334,15 @@
 
 -(void)removeActivities
 {
-    
-    [signUpView removeFromSuperview];
-    [signupIndicator setHidden:YES];
-    [signupIndicator stopAnimating];
+    [UIView transitionWithView:downloadFullView duration:1
+                       options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{
+                           [signUpView setAlpha:0.0];
+                           
+                       }
+                    completion:^(BOOL finished)
+     {
+         [signUpView setHidden:YES];
+     }];
 }
 
 -(void)setvalidEmail
@@ -389,7 +389,6 @@
         [signUpView removeFromSuperview];
         return;
     }
-    
     if (isValid ==NO) {
         
         [Fitness4MeUtils showAlert:NSLocalizedString(@"validateemailUsername", Nil)];
@@ -446,10 +445,13 @@
 }
 
 -(IBAction)navigateToRating{
-    
-    RatingViewController *ratingViewController=[[RatingViewController alloc]initWithNibName:@"RatingViewController" bundle:nil];
+    RatingViewController *ratingViewController;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+        ratingViewController = [[RatingViewController alloc]initWithNibName:@"RatingViewController" bundle:nil];
+    }else {
+        ratingViewController = [[RatingViewController alloc]initWithNibName:@"RatingViewControllerView_iPad" bundle:nil];
+    }
     [self.navigationController pushViewController:ratingViewController animated:YES];
-    
 }
 
 
@@ -541,8 +543,6 @@
                  [fulldownloadButton removeFromSuperview];
                  
              }];
-            //       
-           
         }
         
         fileDownloadProgressView.progress = ((float)countCompleted / (float) totalCount);

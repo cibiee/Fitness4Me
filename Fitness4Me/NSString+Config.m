@@ -14,7 +14,7 @@
 +(NSString*)GetURlPath
 {
     
-    NSString *UrlPath =[[[NSString alloc]init]autorelease];
+    NSString *UrlPath =[[NSString alloc]init];
    NSString *filePath=[[NSBundle mainBundle]pathForResource:@"Config" ofType:@"plist"];
 
 if( [[NSFileManager defaultManager]fileExistsAtPath:filePath] )
@@ -36,7 +36,7 @@ if( [[NSFileManager defaultManager]fileExistsAtPath:filePath] )
 +(NSString*)getVideoPath
 {
     
-     NSString *UrlPath =[[[NSString alloc]init]autorelease];
+     NSString *UrlPath =[[NSString alloc]init];
     NSString *filePath=[[NSBundle mainBundle]pathForResource:@"Config" ofType:@"plist"];
     
     if( [[NSFileManager defaultManager]fileExistsAtPath:filePath] )
@@ -58,7 +58,7 @@ if( [[NSFileManager defaultManager]fileExistsAtPath:filePath] )
 +(NSString*)getDeviceRegisterPath
 {
     
-     NSString *UrlPath =[[[NSString alloc]init]autorelease];
+     NSString *UrlPath =[[NSString alloc]init];
     NSString *filePath=[[NSBundle mainBundle]pathForResource:@"Config" ofType:@"plist"];
     
     if( [[NSFileManager defaultManager]fileExistsAtPath:filePath] )

@@ -30,7 +30,7 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "RatingViewController.m"
@@ -416,8 +416,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "430"
          endingLineNumber = "430"
-         landmarkName = "@implementation FitnessServerCommunication"
-         landmarkType = "3">
+         landmarkName = "-requestFinished:"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -429,8 +429,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "435"
          endingLineNumber = "435"
-         landmarkName = "@implementation FitnessServerCommunication"
-         landmarkType = "3">
+         landmarkName = "-requestFinished:"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -442,8 +442,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "429"
          endingLineNumber = "429"
-         landmarkName = "@implementation FitnessServerCommunication"
-         landmarkType = "3">
+         landmarkName = "-requestFinished:"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -507,7 +507,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "279"
          endingLineNumber = "279"
-         landmarkName = "-updateUserWithName:surname:email:userLevel:userID:activityIndicator:progressView:onCompletion:onError:"
+         landmarkName = "-parseFitnessDetails:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -520,7 +520,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "299"
          endingLineNumber = "299"
-         landmarkName = "-parseFitnessDetails:"
+         landmarkName = "-parseWorkoutVideos"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -624,7 +624,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "242"
          endingLineNumber = "242"
-         landmarkName = "-sendFeedback:byUser:email:onCompletion:onError:"
+         landmarkName = "-updateUserWithName:surname:email:userLevel:userID:activityIndicator:progressView:onCompletion:onError:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -683,6 +683,19 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
+         filePath = "ExcersiceIntermediateViewController.m"
+         timestampString = "374070751.781007"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "52"
+         endingLineNumber = "52"
+         landmarkName = "-viewDidLoad"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
          filePath = "User.m"
          timestampString = "374070134.7251"
          startingColumnNumber = "9223372036854775807"
@@ -690,6 +703,19 @@
          startingLineNumber = "56"
          endingLineNumber = "56"
          landmarkName = "-getUserPreferences"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "ExcersiceIntermediateViewController.m"
+         timestampString = "374070713.429025"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "51"
+         endingLineNumber = "51"
+         landmarkName = "-viewDidLoad"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -706,29 +732,68 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "RatingViewController.m"
-         timestampString = "374491844.262242"
+         filePath = "Settings/SettingsViewController.m"
+         timestampString = "374581608.426528"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "42"
-         endingLineNumber = "42"
-         landmarkName = "-ratetheApp:"
+         startingLineNumber = "34"
+         endingLineNumber = "34"
+         landmarkName = "-viewDidLoad"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "RatingViewController.m"
-         timestampString = "374494006.246568"
+         filePath = "Settings/SettingsViewController.m"
+         timestampString = "374666169.632655"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "35"
-         endingLineNumber = "35"
-         landmarkName = "-ratetheApp:"
+         startingLineNumber = "189"
+         endingLineNumber = "189"
+         landmarkName = "-navigateToExcersiceListView:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Settings/SettingsViewController.m"
+         timestampString = "374666169.632655"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "178"
+         endingLineNumber = "178"
+         landmarkName = "-navigateToExcersiceListView:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Settings/SettingsViewController.m"
+         timestampString = "374666169.632655"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "312"
+         endingLineNumber = "312"
+         landmarkName = "-freeVideoDownload"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Settings/SettingsViewController.m"
+         timestampString = "374666169.632655"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "321"
+         endingLineNumber = "321"
+         landmarkName = "-startFreeDownload"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

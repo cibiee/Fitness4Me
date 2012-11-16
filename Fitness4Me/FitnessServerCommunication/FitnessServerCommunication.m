@@ -171,7 +171,7 @@ static FitnessServerCommunication *sharedState;
         NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
         devToken =[userinfo stringForKey:@"deviceToken"];
         UIDevice *dev = [UIDevice currentDevice];
-        NSString *deviceUuid = dev.identifierForVendor.UUIDString;
+        NSString *deviceUuid = dev.uniqueIdentifier;
         NSString *requestUrl =[NSString stringWithFormat:@"%@iphone_register.php?deviceregister=yes&userid=%i&devicetoken=%@&deviceuid=%@",[NSString getDeviceRegisterPath],userId,devToken,deviceUuid];
         NSURL *urlrequest =[NSURL URLWithString:requestUrl];
         

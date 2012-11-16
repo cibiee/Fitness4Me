@@ -76,7 +76,7 @@
         self.backgroundColor = background;
         
         
-        [background release];
+       
         
         
     
@@ -160,7 +160,6 @@
         self.backgroundColor = background;
         
 
-        [background release];
         
         
     }
