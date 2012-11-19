@@ -178,16 +178,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (lastIndex !=nil) {
-        lastIndex=indexPath;
-    }
-    UITableViewCell *oldCell = [tableView cellForRowAtIndexPath:lastIndex];
+
+    UITableViewCell *oldCell = [tableView cellForRowAtIndexPath:self.lastIndex];
     
-        oldCell.accessoryType = UITableViewCellAccessoryNone;
+    oldCell.accessoryType = UITableViewCellAccessoryNone;
    
     [[tableView cellForRowAtIndexPath:indexPath]
      setAccessoryType:UITableViewCellAccessoryCheckmark];
-    lastIndex=indexPath;
+    [self setLastIndex:indexPath];
     selectedLanguage =[currencytexts objectAtIndex:indexPath.row];
     [[NSUserDefaults standardUserDefaults] setObject:[NSArray arrayWithObjects:[currencytexts objectAtIndex:indexPath.row], nil] forKey:@"AppleLanguages"];
     [[NSUserDefaults standardUserDefaults]synchronize];

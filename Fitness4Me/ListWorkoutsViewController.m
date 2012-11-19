@@ -31,6 +31,21 @@
 
 -(void)setBackround
 {
+    
+    [offerView removeFromSuperview];
+    [fullvideoView removeFromSuperview];
+    [signupviews removeFromSuperview];
+    
+    fullvideoView.layer.cornerRadius =14;
+    fullvideoView.layer.borderWidth = 2;
+    fullvideoView.layer.borderColor = [UIColor whiteColor].CGColor;
+    
+    
+    signupviews.layer .cornerRadius =14;
+    signupviews.layer.borderWidth = 2;
+    signupviews.layer.borderColor = [UIColor whiteColor].CGColor;
+
+    
     tableview.rowHeight =90;
     tableview.separatorColor =[UIColor clearColor];
     [Fitness4MeUtils showAdMob:self];
@@ -180,8 +195,6 @@
 
 -(IBAction)fullVideoDownload:(id)sender{
     
-    
-    
     [fullvideoView  removeFromSuperview];
     [self.view addSubview:signupviews];
     [activityindicators startAnimating];
@@ -204,7 +217,6 @@
 
 -(IBAction)later:(id)sender
 {
-    
     [fullvideoView  removeFromSuperview];
     [signupviews removeFromSuperview];
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
@@ -212,21 +224,8 @@
     [userinfo setObject:@"true" forKey:@"showDownload"];
     [Fitness4MeUtils showAlert:NSLocalizedString(@"workoutsthroughsettingsmsg", nil)];
 
-    
 }
 
-- (void)didfinishedWorkout:(int)countCompleted:(int)totalCount
-{
-    [signupviews addSubview:lblCompleted];
-    NSString *s= [NSString stringWithFormat:@"%i / %i",countCompleted,totalCount];
-    lblCompleted.text =s;
-    if (countCompleted ==totalCount) {
-        [signupviews removeFromSuperview];
-        NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
-        [userinfo setObject:@"false" forKey:@"showDownload"];
-    }
-    fileDownloadProgressView.progress = ((float)countCompleted / (float) totalCount);
-}
 
  
 
@@ -242,6 +241,21 @@
     [lblCompleted removeFromSuperview];
 
 }
+
+
+- (void)didfinishedWorkout:(int)countCompleted:(int)totalCount
+{
+    [signupviews addSubview:lblCompleted];
+    NSString *s= [NSString stringWithFormat:@"%i / %i",countCompleted,totalCount];
+    lblCompleted.text =s;
+    if (countCompleted ==totalCount) {
+        [signupviews removeFromSuperview];
+        NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+        [userinfo setObject:@"false" forKey:@"showDownload"];
+    }
+    fileDownloadProgressView.progress = ((float)countCompleted / (float) totalCount);
+}
+
 
 
 
@@ -295,7 +309,23 @@
     [Fitness4MeUtils navigateToHomeView:self];
 }
 
-
+- (void)showRating {
+    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+    int applicationUsedCount =[userinfo integerForKey:@"applicationLaunchCount"];
+    RatingViewController *viewControllers;
+    if (applicationUsedCount==5) {
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+            
+             viewControllers =[[RatingViewController alloc]initWithNibName:@"RatingViewControllerView_iPad" bundle:nil];
+        }
+        
+        else {
+            
+            viewControllers =[[RatingViewController alloc]initWithNibName:@"RatingViewController" bundle:nil];
+            [self.navigationController pushViewController:viewControllers animated:YES];
+        }
+    }
+}
 
 #pragma mark - view overload methods
 
@@ -305,19 +335,7 @@
     [super viewDidLoad];
     [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
     [self setBackround];
-    [offerView removeFromSuperview];
-    [fullvideoView removeFromSuperview];
-    [signupviews removeFromSuperview];
-    
-    fullvideoView.layer.cornerRadius =14;
-    fullvideoView.layer.borderWidth = 2;
-    fullvideoView.layer.borderColor = [UIColor whiteColor].CGColor;
-    
-    
-    signupviews.layer .cornerRadius =14;
-    signupviews.layer.borderWidth = 2;
-    signupviews.layer.borderColor = [UIColor whiteColor].CGColor;
-
+   
 
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     NSString *hasMadeFullPurchase= [userinfo valueForKey:@"hasMadeFullPurchase"];
@@ -335,23 +353,7 @@
     }
 }
 
-- (void)showRating {
-    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
-    int applicationUsedCount =[userinfo integerForKey:@"applicationLaunchCount"];
-    RatingViewController *viewControllers;
-    if (applicationUsedCount==5) {
-        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-            
-            
-        }
-        
-        else {
-            
-            viewControllers =[[RatingViewController alloc]initWithNibName:@"RatingViewController" bundle:nil];
-            [self.navigationController pushViewController:viewControllers animated:YES];
-        }
-    }
-}
+
 
 - (void)viewWillAppear:(BOOL)animated {
     
@@ -553,43 +555,10 @@
 }
 
 
--(IBAction)unlockOne
-{
-    
-//    BOOL isReachable =[Fitness4MeUtils isReachable];
-//    if (isReachable){
-//
-//        [offerView removeFromSuperview];
-//        
-//        ExcersiceIntermediateViewController *viewController;
-//        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
-//            viewController =[[ExcersiceIntermediateViewController alloc]initWithNibName:@"ExcersiceIntermediateViewController" bundle:nil];
-//        }
-//        else{
-//            viewController =[[ExcersiceIntermediateViewController alloc]initWithNibName:@"ExcersiceIntermediateViewController_iPad" bundle:nil];
-//        }
-//        
-//        viewController.purchaseAll =@"false";
-//        viewController.workout =selectedWorkout;
-//        
-//        [self.navigationController pushViewController:viewController animated:YES];
-//        
-//        [viewController release];
-//    }
-//    else {
-//        
-//        [offerView removeFromSuperview];
-//        [Fitness4MeUtils showAlert:NSLocalizedString(@"NoInternetMessage", nil)];
-//        
-//    }
-}
-
-
 -(IBAction)cancelTransaction
 {
     [offerView removeFromSuperview];
     selectedWorkout=nil;
-    
 }
 
 -(IBAction)unlockAll

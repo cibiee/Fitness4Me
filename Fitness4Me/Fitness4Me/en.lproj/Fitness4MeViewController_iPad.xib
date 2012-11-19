@@ -114,6 +114,9 @@
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<bool key="IBUIMultipleTouchEnabled">YES</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+								<bool key="IBUIScrollEnabled">NO</bool>
+								<bool key="IBUIShowsHorizontalScrollIndicator">NO</bool>
+								<bool key="IBUIShowsVerticalScrollIndicator">NO</bool>
 								<bool key="IBUIEditable">NO</bool>
 								<string type="base64-UTF8" key="IBUIText">SSBhbSBkb3dubG9hZGluZyB5b3VyIGZyZWUgd29ya291dCB2aWRlb3MgYW5kIHNhdmluZyBpdCB0byB5
 b3VyIGRldmljZS5QbGVhc2UgZG8gbm90IGNsb3NlIHRoZSBhcHBsaWNhdGlvbnMgYmVmb3JlIHRoZSBk
@@ -306,6 +309,7 @@ aGlzIG1heSB0YWtlIHNldmVyYWwgbWludXRlcy4KA</string>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{115, 860}, {541, 52}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>

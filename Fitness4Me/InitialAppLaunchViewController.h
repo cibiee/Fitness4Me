@@ -13,7 +13,7 @@
 
 @interface InitialAppLaunchViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 {
-    NSIndexPath *lastIndex;
+    
     NSString *selectedLanguage;
     NSMutableArray *currencyKeys;
     NSMutableArray *currencytexts;
@@ -27,7 +27,7 @@
 
 }
 
-
+@property(strong,nonatomic)NSIndexPath *lastIndex;
 -(IBAction)onclickRegisterUser:(id)sender;
 -(IBAction)onclickLogin:(id)sender;
 -(IBAction)dismissActionSheets:(id)sender;

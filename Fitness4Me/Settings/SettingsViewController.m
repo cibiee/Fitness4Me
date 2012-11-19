@@ -43,7 +43,7 @@
     
     [self showHideDownloadButton:showDownload];
     
-    //[self.view addSubview:loadView];
+    [self.view addSubview:loadView];
     [loadactivityIndicator startAnimating];
     
    [profileUpdatedView removeFromSuperview];
@@ -434,7 +434,7 @@
     [self.view addSubview:downloadFullView];
     [downloadFullViewIndicator startAnimating];
     [NSThread detachNewThreadSelector:@selector(startDownload) toTarget:self withObject:nil];
-    [Fitness4MeUtils showAlert:NSLocalizedString(@"fullDownloadMsg", nil)];
+
 }
 
 

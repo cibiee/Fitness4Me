@@ -77,8 +77,8 @@
         }
         else {
             bannerView_ = [[GADBannerView alloc]
-                           initWithFrame:CGRectMake(0,self.view.frame.size.width-70,
-                                                    self.view.frame.size.height-10,
+                           initWithFrame:CGRectMake(0,0,
+                                                    self.view.frame.size.height-70,
                                                     90)];
             
         }

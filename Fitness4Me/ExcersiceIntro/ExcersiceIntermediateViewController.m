@@ -97,9 +97,13 @@
     NSString  *storeURL= [dataPath stringByAppendingPathComponent :[self.workout ImageName]];
     // Check If File Does Exists if not download the video
     if (![[NSFileManager defaultManager] fileExistsAtPath:storeURL]){
-        NSURL * imageURL = [NSURL URLWithString:[self. workout ThumbImageUrl]];
-        NSData * imageData = [NSData dataWithContentsOfURL:imageURL];
-        excersiceImageHolder.image = [UIImage imageWithData:imageData];
+//        NSURL * imageURL = [NSURL URLWithString:[self. workout ImageUrl]];
+//        NSData * imageData = [NSData dataWithContentsOfURL:imageURL];
+//        excersiceImageHolder.image = [UIImage imageWithData:imageData];
+        
+        UIImage *im =[UIImage imageNamed:@"dummyimg.png"];
+        excersiceImageHolder.image =im;
+
         ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:[workout ImageUrl]]];
         [request setDownloadDestinationPath:storeURL];
         [request setDelegate:self];

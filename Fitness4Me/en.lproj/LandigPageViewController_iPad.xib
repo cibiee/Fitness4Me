@@ -143,6 +143,7 @@ bHdheXMgY2hhbmdlIHRoZXNlIGJ5IHB1c2hpbmcgdGhlIHNldHRpbmdzIGJ1dHRvbi4</string>
 								<nil key="IBUIHighlightedColor"/>
 								<int key="IBUIBaselineAdjustment">0</int>
 								<float key="IBUIMinimumFontSize">10</float>
+								<int key="IBUITextAlignment">1</int>
 								<object class="IBUIFontDescription" key="IBUIFontDescription">
 									<int key="type">1</int>
 									<double key="pointSize">34</double>
@@ -241,10 +242,9 @@ bHdheXMgY2hhbmdlIHRoZXNlIGJ5IHB1c2hpbmcgdGhlIHNldHRpbmdzIGJ1dHRvbi4</string>
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 			</object>
 			<object class="IBUIImageView" id="718892137">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">274</int>
 				<string key="NSFrameSize">{320, 460}</string>
-				<reference key="NSSuperview"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<bool key="IBUIUserInteractionEnabled">NO</bool>
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>

@@ -37,7 +37,7 @@
     slownetView.layer.cornerRadius=14;
     slownetView.layer.borderWidth = 1;
     slownetView.layer.borderColor = [[UIColor greenColor] CGColor];
-    
+    slownetView .backgroundColor =[UIColor clearColor];
     [self InitializeView];
     
     static NSString* kApiKey = @"447892125262110";

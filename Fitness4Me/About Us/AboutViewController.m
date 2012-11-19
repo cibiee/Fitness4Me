@@ -59,11 +59,25 @@
 	// get localized path for file from app bundle
 	NSString *path;
 	NSBundle *thisBundle = [NSBundle mainBundle];
-    if (selectedLang ==1) {
-        path = [thisBundle pathForResource:@"about" ofType:@"html"];
-    }else{
-        path = [thisBundle pathForResource:@"aboutusDe" ofType:@"html"];
+   
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+    {
+        if (selectedLang ==1) {
+            path = [thisBundle pathForResource:@"about" ofType:@"html"];
+        }else{
+            path = [thisBundle pathForResource:@"aboutusDe" ofType:@"html"];
+        }
+        
     }
+    else {
+        if (selectedLang ==1) {
+            path = [thisBundle pathForResource:@"about_iPad" ofType:@"html"];
+        }else{
+            path = [thisBundle pathForResource:@"aboutusDe_Ipad" ofType:@"html"];
+        }
+    }
+    
     
 	// make a file: URL out of the path
 	NSURL *instructionsURL = [NSURL fileURLWithPath:path];
@@ -89,12 +103,23 @@
 	// get localized path for file from app bundle
 	NSString *path;
 	NSBundle *thisBundle = [NSBundle mainBundle];
-    if (selectedLang ==1) {
-        path = [thisBundle pathForResource:@"about" ofType:@"html"];
-    }else{
-        path = [thisBundle pathForResource:@"aboutusDe" ofType:@"html"];
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+    {
+        if (selectedLang ==1) {
+            path = [thisBundle pathForResource:@"about" ofType:@"html"];
+        }else{
+            path = [thisBundle pathForResource:@"aboutusDe" ofType:@"html"];
+        }
+        
     }
-    
+    else {
+        if (selectedLang ==1) {
+            path = [thisBundle pathForResource:@"about_iPad" ofType:@"html"];
+        }else{
+            path = [thisBundle pathForResource:@"aboutusDe_Ipad" ofType:@"html"];
+        }
+    }
+
 	// make a file: URL out of the path
 	NSURL *instructionsURL = [NSURL fileURLWithPath:path];
 	[webView loadRequest:[NSURLRequest requestWithURL:instructionsURL]];
@@ -132,11 +157,26 @@
     NSString *path;
     NSBundle *thisBundle = [NSBundle mainBundle];
     
-    if (selectedLang ==2) {
-        path = [thisBundle pathForResource:@"PrivacyPolicyDe" ofType:@"html"];
-    }else{
-        path = [thisBundle pathForResource:@"PrivacyPolicy" ofType:@"html"];
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+    {
+        if (selectedLang ==2) {
+            path = [thisBundle pathForResource:@"PrivacyPolicyDe" ofType:@"html"];
+        }else{
+            path = [thisBundle pathForResource:@"PrivacyPolicy" ofType:@"html"];
+        }
+        
     }
+    else {
+        if (selectedLang ==2) {
+            path = [thisBundle pathForResource:@"PrivacyPolicyDeiPad" ofType:@"html"];
+        }else{
+            path = [thisBundle pathForResource:@"PrivacyPolicyiPad" ofType:@"html"];
+        }
+
+    }
+
+    
+   
     NSURL *instructionsURL = [NSURL fileURLWithPath:path];
     [webView loadRequest:[NSURLRequest requestWithURL:instructionsURL]];
     

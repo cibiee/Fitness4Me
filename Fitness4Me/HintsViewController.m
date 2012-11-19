@@ -43,15 +43,33 @@
 	// get localized path for file from app bundle
 	NSString *path;
 	NSBundle *thisBundle = [NSBundle mainBundle];
-    
-    if (selectedLang ==1) {
-        path = [thisBundle pathForResource:@"Hintspage" ofType:@"html"];
-    }
-    else
+   
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
     {
-        path = [thisBundle pathForResource:@"hintsandTips_de" ofType:@"html"];
-    }
+        if (selectedLang ==1) {
+            path = [thisBundle pathForResource:@"Hintspage" ofType:@"html"];
+        }
+        else
+        {
+            path = [thisBundle pathForResource:@"hintsandTips_de" ofType:@"html"];
+        }
 
+        
+    }
+    else {
+        if (selectedLang ==1) {
+            path = [thisBundle pathForResource:@"HintspageiPad" ofType:@"html"];
+        }
+        else
+        {
+            path = [thisBundle pathForResource:@"hintsandTips_deiPad" ofType:@"html"];
+        }
+
+    }
+    
+
+    
+   
 
 
 	// make a file: URL out of the path
