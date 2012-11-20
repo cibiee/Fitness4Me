@@ -510,7 +510,7 @@ A</string>
 								<int key="IBUIContentMode">7</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<string key="IBUIText">Please Wait</string>
+								<string key="IBUIText">Bitte warten </string>
 								<object class="NSColor" key="IBUITextColor">
 									<int key="NSColorSpace">3</int>
 									<bytes key="NSWhite">MQA</bytes>
@@ -1475,7 +1475,7 @@ A</string>
 				<array class="NSMutableArray" key="9.IBUserGuides">
 					<object class="IBUserGuide">
 						<reference key="view" ref="696270039"/>
-						<double key="location">231</double>
+						<double key="location">232</double>
 						<int key="affinity">1</int>
 					</object>
 					<object class="IBUserGuide">

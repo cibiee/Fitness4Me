@@ -76,6 +76,51 @@
 							<int key="NSfFlags">16</int>
 						</object>
 					</object>
+					<object class="IBUILabel" id="829041068">
+						<reference key="NSNextResponder" ref="881345720"/>
+						<int key="NSvFlags">1316</int>
+						<string key="NSFrame">{{330, 359}, {91, 21}}</string>
+						<reference key="NSSuperview" ref="881345720"/>
+						<reference key="NSNextKeyView" ref="578005700"/>
+						<string key="NSReuseIdentifierKey">_NS:9</string>
+						<bool key="IBUIOpaque">NO</bool>
+						<bool key="IBUIClipsSubviews">YES</bool>
+						<int key="IBUIContentMode">7</int>
+						<bool key="IBUIUserInteractionEnabled">NO</bool>
+						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+						<string key="IBUIText">Bitte warten </string>
+						<object class="NSColor" key="IBUITextColor">
+							<int key="NSColorSpace">3</int>
+							<bytes key="NSWhite">MQA</bytes>
+							<object class="NSColorSpace" key="NSCustomColorSpace" id="706379270">
+								<int key="NSID">2</int>
+							</object>
+						</object>
+						<nil key="IBUIHighlightedColor"/>
+						<int key="IBUIBaselineAdjustment">0</int>
+						<float key="IBUIMinimumFontSize">10</float>
+						<object class="IBUIFontDescription" key="IBUIFontDescription" id="1062141549">
+							<int key="type">1</int>
+							<double key="pointSize">17</double>
+						</object>
+						<object class="NSFont" key="IBUIFont" id="218382565">
+							<string key="NSName">Helvetica</string>
+							<double key="NSSize">17</double>
+							<int key="NSfFlags">16</int>
+						</object>
+					</object>
+					<object class="IBUIActivityIndicatorView" id="992360726">
+						<reference key="NSNextResponder" ref="881345720"/>
+						<int key="NSvFlags">1316</int>
+						<string key="NSFrame">{{353, 320}, {37, 37}}</string>
+						<reference key="NSSuperview" ref="881345720"/>
+						<reference key="NSNextKeyView" ref="902956144"/>
+						<string key="NSReuseIdentifierKey">_NS:9</string>
+						<bool key="IBUIOpaque">NO</bool>
+						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+						<bool key="IBUIHidesWhenStopped">NO</bool>
+						<int key="IBUIStyle">0</int>
+					</object>
 					<object class="IBUIImageView" id="593552524">
 						<reference key="NSNextResponder" ref="881345720"/>
 						<int key="NSvFlags">1316</int>
@@ -103,51 +148,6 @@
 							<string key="NSResourceName">home_logo_iPad.png</string>
 						</object>
 					</object>
-					<object class="IBUIActivityIndicatorView" id="992360726">
-						<reference key="NSNextResponder" ref="881345720"/>
-						<int key="NSvFlags">1316</int>
-						<string key="NSFrame">{{353, 320}, {37, 37}}</string>
-						<reference key="NSSuperview" ref="881345720"/>
-						<reference key="NSNextKeyView" ref="902956144"/>
-						<string key="NSReuseIdentifierKey">_NS:9</string>
-						<bool key="IBUIOpaque">NO</bool>
-						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<bool key="IBUIHidesWhenStopped">NO</bool>
-						<int key="IBUIStyle">0</int>
-					</object>
-					<object class="IBUILabel" id="829041068">
-						<reference key="NSNextResponder" ref="881345720"/>
-						<int key="NSvFlags">1316</int>
-						<string key="NSFrame">{{330, 359}, {91, 21}}</string>
-						<reference key="NSSuperview" ref="881345720"/>
-						<reference key="NSNextKeyView" ref="578005700"/>
-						<string key="NSReuseIdentifierKey">_NS:9</string>
-						<bool key="IBUIOpaque">NO</bool>
-						<bool key="IBUIClipsSubviews">YES</bool>
-						<int key="IBUIContentMode">7</int>
-						<bool key="IBUIUserInteractionEnabled">NO</bool>
-						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<string key="IBUIText">Please Wait</string>
-						<object class="NSColor" key="IBUITextColor">
-							<int key="NSColorSpace">3</int>
-							<bytes key="NSWhite">MQA</bytes>
-							<object class="NSColorSpace" key="NSCustomColorSpace" id="706379270">
-								<int key="NSID">2</int>
-							</object>
-						</object>
-						<nil key="IBUIHighlightedColor"/>
-						<int key="IBUIBaselineAdjustment">0</int>
-						<float key="IBUIMinimumFontSize">10</float>
-						<object class="IBUIFontDescription" key="IBUIFontDescription" id="1062141549">
-							<int key="type">1</int>
-							<double key="pointSize">17</double>
-						</object>
-						<object class="NSFont" key="IBUIFont" id="218382565">
-							<string key="NSName">Helvetica</string>
-							<double key="NSSize">17</double>
-							<int key="NSfFlags">16</int>
-						</object>
-					</object>
 					<object class="IBUINavigationBar" id="585471744">
 						<reference key="NSNextResponder" ref="881345720"/>
 						<int key="NSvFlags">1314</int>
@@ -164,9 +164,9 @@
 						<array key="IBUIItems">
 							<object class="IBUINavigationItem" id="681249768">
 								<reference key="IBUINavigationBar" ref="585471744"/>
-								<string key="IBUITitle">Create Account</string>
+								<string key="IBUITitle">Zugang erstellen</string>
 								<object class="IBUIBarButtonItem" key="IBUILeftBarButtonItem" id="712062842">
-									<string key="IBUITitle">Back</string>
+									<string key="IBUITitle">zurück</string>
 									<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 									<int key="IBUIStyle">2</int>
 									<reference key="IBUINavigationItem" ref="681249768"/>
@@ -179,7 +179,7 @@
 						<reference key="NSNextResponder" ref="881345720"/>
 						<int key="NSvFlags">1316</int>
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
-						<string key="NSFrame">{{57, 774}, {674, 113}}</string>
+						<string key="NSFrame">{{56, 766}, {674, 113}}</string>
 						<reference key="NSSuperview" ref="881345720"/>
 						<reference key="NSNextKeyView" ref="716653674"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
@@ -190,7 +190,10 @@
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<bool key="IBUIEditable">NO</bool>
-						<string key="IBUIText">Shortly you will recieve an email to your personal login to our website . Don't worry we do not share your data with anyone . </string>
+						<string type="base64-UTF8" key="IBUIText">V2lyIHNjaGlja2VuIERpciBnbGVpY2ggZWluZSBlLW1haWwgbWl0IERlaW5lbiBwZXJzw7ZubGljaGVu
+IHp1Z2FuZ3NkYXRlbiBmw7xyIHVuc2VyZSB3ZWJzaXRlLiANIE1hY2ggZGlyIGtlaW5lIFNvcmdlbiwg
+ZXMgaXN0IGtvc3RlbmxvcyB1bmQgwqB3aXIgdGVpbGVuIERlaW5lIERhdGVuIG1pdCBuaWVtYW5kZW0u
+A</string>
 						<reference key="IBUITextColor" ref="818014003"/>
 						<int key="IBUITextAlignment">1</int>
 						<object class="IBUITextInputTraits" key="IBUITextInputTraits">
@@ -199,11 +202,11 @@
 						</object>
 						<object class="IBUIFontDescription" key="IBUIFontDescription">
 							<int key="type">1</int>
-							<double key="pointSize">28</double>
+							<double key="pointSize">22</double>
 						</object>
 						<object class="NSFont" key="IBUIFont">
 							<string key="NSName">Helvetica</string>
-							<double key="NSSize">28</double>
+							<double key="NSSize">22</double>
 							<int key="NSfFlags">16</int>
 						</object>
 					</object>
@@ -211,14 +214,14 @@
 						<reference key="NSNextResponder" ref="881345720"/>
 						<int key="NSvFlags">1316</int>
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
-						<string key="NSFrame">{{178, 210}, {418, 31}}</string>
+						<string key="NSFrame">{{178, 210}, {417, 36}}</string>
 						<reference key="NSSuperview" ref="881345720"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<string key="IBUIText">Please tell us about yourself</string>
+						<string key="IBUIText">erzähle uns etwas über Dich</string>
 						<reference key="IBUITextColor" ref="818014003"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
@@ -266,7 +269,7 @@
 						<int key="IBUIContentVerticalAlignment">0</int>
 						<string key="IBUIText"/>
 						<int key="IBUIBorderStyle">3</int>
-						<string key="IBUIPlaceholder">Firstname</string>
+						<string key="IBUIPlaceholder">Vorname</string>
 						<object class="NSColor" key="IBUITextColor" id="406578890">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MAA</bytes>
@@ -320,7 +323,7 @@
 						<int key="IBUIContentVerticalAlignment">0</int>
 						<string key="IBUIText"/>
 						<int key="IBUIBorderStyle">3</int>
-						<string key="IBUIPlaceholder">Lastname</string>
+						<string key="IBUIPlaceholder">Nachname</string>
 						<reference key="IBUITextColor" ref="406578890"/>
 						<bool key="IBUIAdjustsFontSizeToFit">YES</bool>
 						<float key="IBUIMinimumFontSize">17</float>
@@ -419,7 +422,7 @@
 						<int key="IBUIContentVerticalAlignment">0</int>
 						<string key="IBUIText"/>
 						<int key="IBUIBorderStyle">3</int>
-						<string key="IBUIPlaceholder">Username</string>
+						<string key="IBUIPlaceholder">Benutzername</string>
 						<reference key="IBUITextColor" ref="406578890"/>
 						<bool key="IBUIAdjustsFontSizeToFit">YES</bool>
 						<float key="IBUIMinimumFontSize">17</float>
@@ -500,7 +503,7 @@
 					<object class="IBUILabel" id="626517132">
 						<reference key="NSNextResponder" ref="881345720"/>
 						<int key="NSvFlags">1316</int>
-						<string key="NSFrame">{{266, 584}, {50, 21}}</string>
+						<string key="NSFrame">{{249, 584}, {65, 21}}</string>
 						<reference key="NSSuperview" ref="881345720"/>
 						<reference key="NSNextKeyView" ref="992360726"/>
 						<string key="NSReuseIdentifierKey">_NS:328</string>
@@ -509,7 +512,7 @@
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<string key="IBUIText">Beginner</string>
+						<string key="IBUIText">Anfänger</string>
 						<reference key="IBUITextColor" ref="818014003"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
@@ -527,7 +530,7 @@
 					<object class="IBUILabel" id="578005700">
 						<reference key="NSNextResponder" ref="881345720"/>
 						<int key="NSvFlags">1316</int>
-						<string key="NSFrame">{{399, 585}, {50, 20}}</string>
+						<string key="NSFrame">{{378, 585}, {107, 20}}</string>
 						<reference key="NSSuperview" ref="881345720"/>
 						<reference key="NSNextKeyView" ref="624497655"/>
 						<string key="NSReuseIdentifierKey">_NS:328</string>
@@ -536,7 +539,7 @@
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<string key="IBUIText">Advanced</string>
+						<string key="IBUIText">Fortgeschritten</string>
 						<reference key="IBUITextColor" ref="818014003"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
@@ -556,20 +559,13 @@
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<string key="IBUIText">Expert</string>
+						<string key="IBUIText">Profi</string>
 						<reference key="IBUITextColor" ref="818014003"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
 						<float key="IBUIMinimumFontSize">10</float>
-						<object class="IBUIFontDescription" key="IBUIFontDescription">
-							<int key="type">1</int>
-							<double key="pointSize">12</double>
-						</object>
-						<object class="NSFont" key="IBUIFont">
-							<string key="NSName">Helvetica</string>
-							<double key="NSSize">12</double>
-							<int key="NSfFlags">16</int>
-						</object>
+						<reference key="IBUIFontDescription" ref="590794315"/>
+						<reference key="IBUIFont" ref="396958115"/>
 					</object>
 					<object class="IBUILabel" id="728268593">
 						<reference key="NSNextResponder" ref="881345720"/>
@@ -618,8 +614,7 @@
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
-						<string key="IBUIHighlightedTitle">Sign Up</string>
-						<string key="IBUINormalTitle">Sign Up</string>
+						<string key="IBUINormalTitle">Registrieren</string>
 						<reference key="IBUIHighlightedTitleColor" ref="818014003"/>
 						<object class="NSColor" key="IBUINormalTitleColor">
 							<int key="NSColorSpace">1</int>
@@ -1069,11 +1064,11 @@
 							<reference ref="302971104"/>
 							<reference ref="9894980"/>
 							<reference ref="209231299"/>
-							<reference ref="810276148"/>
 							<reference ref="585471744"/>
-							<reference ref="992360726"/>
 							<reference ref="829041068"/>
+							<reference ref="992360726"/>
 							<reference ref="890691515"/>
+							<reference ref="810276148"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -1269,7 +1264,7 @@
 				<array class="NSMutableArray" key="144.IBUserGuides">
 					<object class="IBUserGuide">
 						<reference key="view" ref="881345720"/>
-						<double key="location">233</double>
+						<double key="location">234</double>
 						<int key="affinity">1</int>
 					</object>
 					<object class="IBUserGuide">

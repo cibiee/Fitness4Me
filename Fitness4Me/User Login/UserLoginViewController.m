@@ -210,7 +210,7 @@
 
 -(IBAction)onNavigateToHomeView:(id)sender
 {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(IBAction)onclickLogin:(id)sender

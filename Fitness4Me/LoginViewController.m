@@ -193,7 +193,6 @@
         if (lastNameTextField.text.length>0)
         {
             [lastNameValidator setBackgroundColor:[UIColor clearColor]];
-            [lastNameValidator setBackgroundColor:[UIColor whiteColor]];
             [ emailTextField becomeFirstResponder];
             
         }

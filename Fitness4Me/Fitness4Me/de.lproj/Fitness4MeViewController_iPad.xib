@@ -312,7 +312,6 @@ DQ</string>
 						<double key="IBUIContentEdgeInsets.bottom">0.0</double>
 						<double key="IBUIContentEdgeInsets.left">30</double>
 						<double key="IBUIContentEdgeInsets.right">0.0</double>
-						<string key="IBUIHighlightedTitle">Über uns</string>
 						<string key="IBUINormalTitle">Über uns</string>
 						<reference key="IBUIHighlightedTitleColor" ref="620430652"/>
 						<reference key="IBUINormalTitleColor" ref="908317802"/>
