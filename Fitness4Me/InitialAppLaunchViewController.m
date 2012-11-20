@@ -91,18 +91,19 @@
         [Fitness4MeUtils showAlert:@"Please select a language !"];
     }else{
         
-        
-        [UIView transitionWithView:selectLanguageView duration:1
-                           options:UIViewAnimationOptionTransitionCurlUp animations:^{
-                               [selectLanguageView setAlpha:0.0];
-                               
-                           }
-                        completion:^(BOOL finished)
-         {
+//        
+//        [UIView transitionWithView:selectLanguageView duration:1
+//                           options:UIViewAnimationOptionTransitionCurlUp animations:^{
+//                               [selectLanguageView setAlpha:0.0];
+//                               
+//                           }
+//                        completion:^(BOOL finished)
+//         {
              [selectLanguageView removeFromSuperview];
-             [self showTermsofUse];
              
-         }];
+             
+//         }];
+        [self showTermsofUse];
     }
 }
 
@@ -132,11 +133,18 @@
       }
 
 - (void)showTermsofUse {
+   
     TermsOfUse *viewController;
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
-        viewController = [[TermsOfUse alloc]initWithNibName:@"TermsOfUse" bundle:nil];
-    }else {
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+    {
+         
         viewController = [[TermsOfUse alloc]initWithNibName:@"TermsOfUse_iPad" bundle:nil];
+        
+    }else
+    {
+         
+        viewController = [[TermsOfUse alloc]initWithNibName:@"TermsOfUse" bundle:nil];
     }
     [self.navigationController pushViewController:viewController animated:YES];
     

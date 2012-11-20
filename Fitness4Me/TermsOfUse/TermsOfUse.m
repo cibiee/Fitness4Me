@@ -28,11 +28,15 @@
 - (void)viewDidLoad
 {
     
-    [self loadhints];
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    
+    [self loadhints];
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:YES];
 }
 
 
@@ -48,13 +52,35 @@
 	// get localized path for file from app bundle
 	NSString *path;
 	NSBundle *thisBundle = [NSBundle mainBundle];
-    if (selectedLang ==2) {
-        path = [thisBundle pathForResource:@"termsOfUseDe" ofType:@"html"];
-    }
-    else
+    NSLog(@"%i",[[UIDevice currentDevice] userInterfaceIdiom]);
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
     {
-        path = [thisBundle pathForResource:@"termsofUse" ofType:@"html"];
+        
+                 
+        if (selectedLang ==2) {
+             
+            path = [thisBundle pathForResource:@"termsOfUseDeiPad" ofType:@"html"];
+           
+        }else{
+            path = [thisBundle pathForResource:@"termsofUseiPad" ofType:@"html"];
+            
+        }
     }
+    else {
+        
+        if (selectedLang ==2) {
+            
+            path = [thisBundle pathForResource:@"termsOfUseDe" ofType:@"html"];
+            
+        }else{
+            path = [thisBundle pathForResource:@"termsofUse" ofType:@"html"];
+            
+        }
+        
+        
+    }
+    
+   
 	// make a file: URL out of the path
 	NSURL *instructionsURL = [NSURL fileURLWithPath:path];
 	[webView loadRequest:[NSURLRequest requestWithURL:instructionsURL]];

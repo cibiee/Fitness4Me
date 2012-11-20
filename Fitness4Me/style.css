@@ -1,0 +1,33 @@
+*{
+	margin:0;
+	padding:0;
+}
+body{
+	font-family:Arial, sans-serif, Helvetica;
+	font-size:12px;
+	line-height:1.5em;
+   
+}
+.ipad{
+	font-size:15px;
+    margin-left:1em;
+	color:#555555;
+}
+h3{
+	text-decoration:underline;
+	font-size:1.4em;
+	margin:.5em 0 1em;
+    color:green;
+}
+h4{
+	font-size:1.05em;
+	margin:.5em 0 1em;
+}
+p{
+	margin:.25em 0 .25em;
+	color:#555555;
+}
+img{
+	max-width:100%;
+	margin:0 10px 10px 0;
+}
