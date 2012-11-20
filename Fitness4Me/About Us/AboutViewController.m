@@ -137,12 +137,34 @@
     int selectedLang= [Fitness4MeUtils getApplicationLanguage];
     NSString *path;
 	NSBundle *thisBundle = [NSBundle mainBundle];
-    if (selectedLang ==2) {
-        path = [thisBundle pathForResource:@"termsOfUseDe" ofType:@"html"];
-    }else{
-        path = [thisBundle pathForResource:@"termsofUse" ofType:@"html"];
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+    {
+        
+        if (selectedLang ==2) {
+            
+            path = [thisBundle pathForResource:@"termsOfUseDeiPad" ofType:@"html"];
+            
+        }else{
+            path = [thisBundle pathForResource:@"termsofUseiPad" ofType:@"html"];
+            
+        }
     }
-	NSURL *instructionsURL = [NSURL fileURLWithPath:path];
+    else {
+        
+        if (selectedLang ==2) {
+            
+            path = [thisBundle pathForResource:@"termsOfUseDe" ofType:@"html"];
+            
+        }else{
+            path = [thisBundle pathForResource:@"termsofUse" ofType:@"html"];
+            
+        }
+        
+    
+    }
+
+   	NSURL *instructionsURL = [NSURL fileURLWithPath:path];
 	[webView loadRequest:[NSURLRequest requestWithURL:instructionsURL]];
 }
 

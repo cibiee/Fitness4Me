@@ -1040,7 +1040,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "162"
          endingLineNumber = "162"
-         landmarkName = "-loadPrivacypolicy:"
+         landmarkName = "-loadTerms:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

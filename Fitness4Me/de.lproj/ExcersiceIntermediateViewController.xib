@@ -295,12 +295,13 @@
 							<object class="IBUITextView" id="56085116">
 								<reference key="NSNextResponder" ref="956467140"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{2, 0}, {319, 88}}</string>
+								<string key="NSFrame">{{4, 2}, {311, 88}}</string>
 								<reference key="NSSuperview" ref="956467140"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="768480347"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIClipsSubviews">YES</bool>
+								<int key="IBUIContentMode">1</int>
 								<bool key="IBUIMultipleTouchEnabled">YES</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<bool key="IBUIEditable">NO</bool>
@@ -333,12 +334,13 @@
 								<reference key="IBUIFont" ref="581899622"/>
 							</object>
 						</array>
-						<string key="NSFrame">{{150, 80}, {326, 151}}</string>
+						<string key="NSFrame">{{143, 80}, {321, 151}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="7765394"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIClipsSubviews">YES</bool>
+						<int key="IBUIContentMode">1</int>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
