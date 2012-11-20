@@ -34,8 +34,7 @@
     [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
     
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
-    hasMadeFullPurchase= [userinfo valueForKey:@"hasMadeFullPurchase"];
-    [hasMadeFullPurchase retain];
+    
     NSString *showDownload= [userinfo valueForKey:@"showDownload"];
     
     userID=0;
@@ -46,11 +45,11 @@
     [self.view addSubview:loadView];
     [loadactivityIndicator startAnimating];
     
-   [profileUpdatedView removeFromSuperview];
+    [profileUpdatedView removeFromSuperview];
     profileUpdatedView.layer .cornerRadius =14;
     
     [self setInitials];
-   
+    
 }
 
 
@@ -64,10 +63,9 @@
 
 - (void)showHideDownloadButton:(NSString *)showDownload
 {
-    if ([hasMadeFullPurchase isEqualToString:@"true"]) {
-        if ([showDownload isEqualToString:@"true"]) {
-            [self.view addSubview:fulldownloadButton];
-        }
+    
+    if ([showDownload isEqualToString:@"true"]) {
+        [self.view addSubview:fulldownloadButton];
     }
     
     BOOL isReachable =[Fitness4MeUtils isReachable];
@@ -84,13 +82,6 @@
     downloadFullView.layer .cornerRadius =14;
     downloadFullView.layer.borderWidth = 2;
     downloadFullView.layer.borderColor = [UIColor whiteColor].CGColor;
-    //SyncView =nil;
-    
-    SyncView.layer.cornerRadius =14;
-    SyncView.layer.borderWidth = 2;
-    
-    SyncView.layer.borderColor = [UIColor whiteColor].CGColor;
-    
     [emailImageView setHidden:YES];
     [activityIndicator setHidesWhenStopped:YES];
     [emailactivityIndicator setHidesWhenStopped:YES];
@@ -166,30 +157,13 @@
                 isLevelChanged =YES;
                 oldUserlevel=userlevel;
             }
-            
-            
             NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
-            if ([hasMadeFullPurchase isEqualToString:@"true"]) {
-                if(isLevelChanged ==YES){
-                    [self.view addSubview:profileUpdatedView];
-                    [userinfo setObject:@"true" forKey:@"showDownload"];
-                }
-                freeVideo =@"false";
-                [self.view addSubview:fulldownloadButton];
-            }else{
-                if(isLevelChanged ==YES){
-                    freeVideo =@"true";
-                    if ([userlevel isEqualToString:@"1"]) {
-                        [lblFreedownloadmessageTextView setText:NSLocalizedString(@"beginnerLevelMessage", nil)];
-                    }else  if ([userlevel isEqualToString:@"2"]){
-                        [lblFreedownloadmessageTextView setText:NSLocalizedString(@"advancedLevelMessage", nil)];
-                    }else{
-                        [lblFreedownloadmessageTextView setText:NSLocalizedString(@"experLevelMessage", nil)];
-                    }
-                    [self freeVideoDownload];
-                }
+            if(isLevelChanged ==YES){
+                [self.view addSubview:profileUpdatedView];
+                [userinfo setObject:@"true" forKey:@"showDownload"];
             }
             
+            [self.view addSubview:fulldownloadButton];
             FitnessServerCommunication *fitnessserverCommunication =[[FitnessServerCommunication alloc]init];
             [fitnessserverCommunication parseFitnessDetails:userID];
             [fitnessserverCommunication parseWorkoutVideos];
@@ -306,22 +280,8 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
--(void)freeVideoDownload{
-    freeVideo =@"true";
-    
-    [self.view addSubview:SyncView];
-    [SyncView setHidden:NO];
-    [activityindicators startAnimating];
-    [NSThread detachNewThreadSelector:@selector(startFreeDownload) toTarget:self withObject:nil];
-}
 
--(void)startFreeDownload
-{
-    FitnessServerCommunication *fitness =[FitnessServerCommunication sharedState];
-    [fitness setDelegate:self];
-    [fitness getFreevideos];
-    fileDownloadProgressView.progress = ((float)0 / (float) 100);
-}
+
 
 -(void)saveUserDetails:(NSString*)userLevel
 {
@@ -362,12 +322,11 @@
 -(IBAction)fullVideoDownload:(id)sender{
     
     [self.view addSubview:downloadFullView];
-    freeVideo =@"false";
     [downloadFullViewIndicator startAnimating];
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     [userinfo setObject:@"true" forKey:@"fullVideoDownloadlater"];
     [NSThread detachNewThreadSelector:@selector(startDownload) toTarget:self withObject:nil];
-    [Fitness4MeUtils showAlert:NSLocalizedString(@"fullDownloadMsg", nil)];
+    //[Fitness4MeUtils showAlert:NSLocalizedString(@"fullDownloadMsg", nil)];
 }
 
 
@@ -434,7 +393,7 @@
     [self.view addSubview:downloadFullView];
     [downloadFullViewIndicator startAnimating];
     [NSThread detachNewThreadSelector:@selector(startDownload) toTarget:self withObject:nil];
-
+    
 }
 
 
@@ -522,45 +481,29 @@
 
 - (void)didfinishedWorkout:(int)countCompleted:(int)totalCount
 {
-
-    if ([freeVideo isEqualToString:@"false"]) {
-        [downloadFullView addSubview:lblCompleted];
-        NSString *s= [NSString stringWithFormat:@"%i / %i",countCompleted,totalCount];
-        lblCompleted.text =s;
-        if (countCompleted ==totalCount) {
-            
-
-            [UIView transitionWithView:downloadFullView duration:1
-                               options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{
-                                   [downloadFullView setAlpha:0.0];
-                                   
-                               }
-                            completion:^(BOOL finished)
-             {
-                  [downloadFullView removeFromSuperview];
-                 NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
-                 [userinfo setObject:@"false" forKey:@"showDownload"];
-                 [fulldownloadButton removeFromSuperview];
-                 
-             }];
-        }
+    
+    [downloadFullView addSubview:lblCompleted];
+    NSString *s= [NSString stringWithFormat:@"%i / %i",countCompleted,totalCount];
+    lblCompleted.text =s;
+    if (countCompleted ==totalCount) {
         
-        fileDownloadProgressView.progress = ((float)countCompleted / (float) totalCount);
-    }else{
         
-        [SyncView addSubview:lblCompleteCount];
-        NSString *ss= [NSString stringWithFormat:@"%i / %i",countCompleted,totalCount];
-        lblCompleteCount.text =ss;
-        if (countCompleted ==totalCount) {
-            [UIView transitionWithView:SyncView duration:3
-                               options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{
-                                   [SyncView removeFromSuperview];
-                                   //[self.view addSubview:newView];
-                               }
-                            completion:NULL];
-        }
-        fileDownloadView.progress = ((float)countCompleted / (float) totalCount);
+        [UIView transitionWithView:downloadFullView duration:1
+                           options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{
+                               [downloadFullView setAlpha:0.0];
+                               
+                           }
+                        completion:^(BOOL finished)
+         {
+             [downloadFullView removeFromSuperview];
+             NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+             [userinfo setObject:@"false" forKey:@"showDownload"];
+             [fulldownloadButton removeFromSuperview];
+             
+         }];
     }
+    
+    fileDownloadProgressView.progress = ((float)countCompleted / (float) totalCount);
 }
 
 

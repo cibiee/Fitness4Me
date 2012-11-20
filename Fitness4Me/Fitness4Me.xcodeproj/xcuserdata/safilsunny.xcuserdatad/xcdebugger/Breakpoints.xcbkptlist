@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "FitnessServerCommunication/FitnessServerCommunication.m"
-         timestampString = "374063335.603584"
+         timestampString = "375088452.33188"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "440"
-         endingLineNumber = "440"
+         startingLineNumber = "437"
+         endingLineNumber = "437"
          landmarkName = "-requestFinished:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -21,11 +21,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "InitialAppLaunchViewController.m"
-         timestampString = "374765300.850317"
+         timestampString = "375088452.33188"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "191"
-         endingLineNumber = "191"
+         startingLineNumber = "185"
+         endingLineNumber = "185"
          landmarkName = "-tableView:didSelectRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -99,11 +99,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "LoginViewController.m"
-         timestampString = "375082209.595464"
+         timestampString = "375088452.33188"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "467"
-         endingLineNumber = "467"
+         startingLineNumber = "422"
+         endingLineNumber = "422"
          landmarkName = "-removeSignupView"
          landmarkType = "5">
       </FileBreakpoint>
@@ -151,7 +151,20 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "InitialAppLaunchViewController.m"
-         timestampString = "373214019.238889"
+         timestampString = "375088452.33188"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "89"
+         endingLineNumber = "89"
+         landmarkName = "-dismissActionSheets:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "InitialAppLaunchViewController.m"
+         timestampString = "375088452.33188"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "90"
@@ -164,24 +177,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "InitialAppLaunchViewController.m"
-         timestampString = "373214019.238889"
+         timestampString = "375088452.33188"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "91"
-         endingLineNumber = "91"
-         landmarkName = "-dismissActionSheets:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "InitialAppLaunchViewController.m"
-         timestampString = "374050786.176838"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "93"
-         endingLineNumber = "93"
+         startingLineNumber = "92"
+         endingLineNumber = "92"
          landmarkName = "-dismissActionSheets:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -411,11 +411,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "FitnessServerCommunication/FitnessServerCommunication.m"
-         timestampString = "374063335.603584"
+         timestampString = "375088452.33188"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "430"
-         endingLineNumber = "430"
+         startingLineNumber = "427"
+         endingLineNumber = "427"
          landmarkName = "-requestFinished:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -424,7 +424,33 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "FitnessServerCommunication/FitnessServerCommunication.m"
-         timestampString = "374063335.603584"
+         timestampString = "375088452.33188"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "432"
+         endingLineNumber = "432"
+         landmarkName = "-requestFinished:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "FitnessServerCommunication/FitnessServerCommunication.m"
+         timestampString = "375088452.33188"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "426"
+         endingLineNumber = "426"
+         landmarkName = "-requestFinished:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "FitnessServerCommunication/FitnessServerCommunication.m"
+         timestampString = "375088452.33188"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "435"
@@ -437,37 +463,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "FitnessServerCommunication/FitnessServerCommunication.m"
-         timestampString = "374063335.603584"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "429"
-         endingLineNumber = "429"
-         landmarkName = "-requestFinished:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "FitnessServerCommunication/FitnessServerCommunication.m"
-         timestampString = "374063335.603584"
+         timestampString = "375088452.33188"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "438"
          endingLineNumber = "438"
-         landmarkName = "-requestFinished:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "FitnessServerCommunication/FitnessServerCommunication.m"
-         timestampString = "374063335.603584"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "441"
-         endingLineNumber = "441"
          landmarkName = "-requestFinished:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -502,11 +502,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "FitnessServerCommunication/FitnessServerCommunication.m"
-         timestampString = "374062036.070613"
+         timestampString = "375088452.33188"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "279"
-         endingLineNumber = "279"
+         startingLineNumber = "276"
+         endingLineNumber = "276"
          landmarkName = "-parseFitnessDetails:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -515,11 +515,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "FitnessServerCommunication/FitnessServerCommunication.m"
-         timestampString = "374062036.070613"
+         timestampString = "375088452.33188"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "299"
-         endingLineNumber = "299"
+         startingLineNumber = "296"
+         endingLineNumber = "296"
          landmarkName = "-parseWorkoutVideos"
          landmarkType = "5">
       </FileBreakpoint>
@@ -554,11 +554,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "LoginViewController.m"
-         timestampString = "373369990.884183"
+         timestampString = "375088452.33188"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "194"
-         endingLineNumber = "194"
+         startingLineNumber = "181"
+         endingLineNumber = "181"
          landmarkName = "-textFieldShouldReturn:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -567,11 +567,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "FitnessServerCommunication/FitnessServerCommunication.m"
-         timestampString = "374059196.453999"
+         timestampString = "375088452.33188"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "118"
-         endingLineNumber = "118"
+         startingLineNumber = "115"
+         endingLineNumber = "115"
          landmarkName = "-isValidEmail:andActivityIndicator:onCompletion:onError:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -580,11 +580,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "LoginViewController.m"
-         timestampString = "375082209.595464"
+         timestampString = "375088452.33188"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "484"
-         endingLineNumber = "484"
+         startingLineNumber = "439"
+         endingLineNumber = "439"
          landmarkName = "-isValidUserName"
          landmarkType = "5">
       </FileBreakpoint>
@@ -593,11 +593,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "FitnessServerCommunication/FitnessServerCommunication.m"
-         timestampString = "374059196.453999"
+         timestampString = "375088452.33188"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "143"
-         endingLineNumber = "143"
+         startingLineNumber = "140"
+         endingLineNumber = "140"
          landmarkName = "-isValidUsername:andActivityIndicator:onCompletion:onError:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -619,11 +619,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "FitnessServerCommunication/FitnessServerCommunication.m"
-         timestampString = "374062036.070613"
+         timestampString = "375088452.33188"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "242"
-         endingLineNumber = "242"
+         startingLineNumber = "239"
+         endingLineNumber = "239"
          landmarkName = "-updateUserWithName:surname:email:userLevel:userID:activityIndicator:progressView:onCompletion:onError:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -632,11 +632,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "FitnessServerCommunication/FitnessServerCommunication.m"
-         timestampString = "374062036.070613"
+         timestampString = "375088452.33188"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "253"
-         endingLineNumber = "253"
+         startingLineNumber = "250"
+         endingLineNumber = "250"
          landmarkName = "-updateUserWithName:surname:email:userLevel:userID:activityIndicator:progressView:onCompletion:onError:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -749,51 +749,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Settings/SettingsViewController.m"
-         timestampString = "374666169.632655"
+         timestampString = "375088452.33188"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "189"
-         endingLineNumber = "189"
+         startingLineNumber = "166"
+         endingLineNumber = "166"
          landmarkName = "-navigateToExcersiceListView:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Settings/SettingsViewController.m"
-         timestampString = "374666169.632655"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "178"
-         endingLineNumber = "178"
-         landmarkName = "-navigateToExcersiceListView:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Settings/SettingsViewController.m"
-         timestampString = "375011988.549911"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "312"
-         endingLineNumber = "312"
-         landmarkName = "-freeVideoDownload"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Settings/SettingsViewController.m"
-         timestampString = "375011988.549911"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "321"
-         endingLineNumber = "321"
-         landmarkName = "-startFreeDownload"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -853,11 +814,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Excersice Play/ExcersicePlayViewController.m"
-         timestampString = "374994483.689826"
+         timestampString = "375088452.33188"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "248"
-         endingLineNumber = "248"
+         startingLineNumber = "209"
+         endingLineNumber = "209"
          landmarkName = "-initializPlayer"
          landmarkType = "5">
       </FileBreakpoint>
@@ -866,11 +827,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Excersice Play/ExcersicePlayViewController.m"
-         timestampString = "374994483.689826"
+         timestampString = "375088452.33188"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "230"
-         endingLineNumber = "230"
+         startingLineNumber = "191"
+         endingLineNumber = "191"
          landmarkName = "-initializPlayer"
          landmarkType = "5">
       </FileBreakpoint>
@@ -879,11 +840,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "InitialAppLaunchViewController.m"
-         timestampString = "374765300.850317"
+         timestampString = "375088452.33188"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "182"
-         endingLineNumber = "182"
+         startingLineNumber = "176"
+         endingLineNumber = "176"
          landmarkName = "-tableView:didSelectRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -892,7 +853,20 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "InitialAppLaunchViewController.m"
-         timestampString = "374765300.850317"
+         timestampString = "375088452.33188"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "177"
+         endingLineNumber = "177"
+         landmarkName = "-tableView:didSelectRowAtIndexPath:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "InitialAppLaunchViewController.m"
+         timestampString = "375088452.33188"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "183"
@@ -905,24 +879,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "InitialAppLaunchViewController.m"
-         timestampString = "374765300.850317"
+         timestampString = "375088452.33188"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "189"
-         endingLineNumber = "189"
-         landmarkName = "-tableView:didSelectRowAtIndexPath:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "InitialAppLaunchViewController.m"
-         timestampString = "374765300.850317"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "184"
-         endingLineNumber = "184"
+         startingLineNumber = "178"
+         endingLineNumber = "178"
          landmarkName = "-tableView:didSelectRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -931,11 +892,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ListWorkoutsViewController.m"
-         timestampString = "374997535.463835"
+         timestampString = "375089355.803136"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "369"
-         endingLineNumber = "369"
+         startingLineNumber = "240"
+         endingLineNumber = "240"
          landmarkName = "-viewDidAppear:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -944,11 +905,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ListWorkoutsViewController.m"
-         timestampString = "374997535.463835"
+         timestampString = "375088452.33188"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "98"
-         endingLineNumber = "98"
+         startingLineNumber = "47"
+         endingLineNumber = "47"
          landmarkName = "-getExcersices"
          landmarkType = "5">
       </FileBreakpoint>
@@ -957,24 +918,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ListWorkoutsViewController.m"
-         timestampString = "374997535.463835"
+         timestampString = "375088452.33188"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "266"
-         endingLineNumber = "266"
-         landmarkName = "-ListExcersices"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "ListWorkoutsViewController.m"
-         timestampString = "374997535.463835"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "283"
-         endingLineNumber = "283"
+         startingLineNumber = "150"
+         endingLineNumber = "150"
          landmarkName = "-ListExcersices"
          landmarkType = "5">
       </FileBreakpoint>
@@ -983,11 +931,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ListWorkoutsViewController.m"
-         timestampString = "374997535.463835"
+         timestampString = "375088452.33188"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "273"
-         endingLineNumber = "273"
+         startingLineNumber = "157"
+         endingLineNumber = "157"
          landmarkName = "-ListExcersices"
          landmarkType = "5">
       </FileBreakpoint>
@@ -996,50 +944,24 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ListWorkoutsViewController.m"
-         timestampString = "374998338.33377"
+         timestampString = "375088452.33188"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "350"
-         endingLineNumber = "350"
-         landmarkName = "-viewDidLoad"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "ListWorkoutsViewController.m"
-         timestampString = "374998344.521223"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "127"
-         endingLineNumber = "127"
+         startingLineNumber = "76"
+         endingLineNumber = "76"
          landmarkName = "-parseFitnessDetails"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "ListWorkoutsViewController.m"
-         timestampString = "374998394.433078"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "289"
-         endingLineNumber = "289"
-         landmarkName = "-ListExcersices"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ExcersiceIntro/ExcersiceIntermediateViewController.m"
-         timestampString = "374999023.49947"
+         timestampString = "375088452.33188"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "97"
-         endingLineNumber = "97"
+         startingLineNumber = "89"
+         endingLineNumber = "89"
          landmarkName = "-showWorkoutImage"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1048,11 +970,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ExcersiceIntro/ExcersiceIntermediateViewController.m"
-         timestampString = "375000632.270314"
+         timestampString = "375088452.33188"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "102"
-         endingLineNumber = "102"
+         startingLineNumber = "94"
+         endingLineNumber = "94"
          landmarkName = "-showWorkoutImage"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1061,20 +983,7 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ExcersiceIntro/ExcersiceIntermediateViewController.m"
-         timestampString = "375000632.270314"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "117"
-         endingLineNumber = "117"
-         landmarkName = "-showWorkoutImage"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "ExcersiceIntro/ExcersiceIntermediateViewController.m"
-         timestampString = "375000632.270314"
+         timestampString = "375088452.33188"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "109"
@@ -1086,13 +995,13 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "Settings/SettingsViewController.m"
-         timestampString = "375011988.549911"
+         filePath = "ExcersiceIntro/ExcersiceIntermediateViewController.m"
+         timestampString = "375088452.33188"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "551"
-         endingLineNumber = "551"
-         landmarkName = "-didfinishedWorkout::"
+         startingLineNumber = "101"
+         endingLineNumber = "101"
+         landmarkName = "-showWorkoutImage"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -1100,11 +1009,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Settings/SettingsViewController.m"
-         timestampString = "375011988.549911"
+         timestampString = "375088452.33188"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "433"
-         endingLineNumber = "433"
+         startingLineNumber = "392"
+         endingLineNumber = "392"
          landmarkName = "-onClickYes"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1113,11 +1022,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Settings/SettingsViewController.m"
-         timestampString = "375011988.549911"
+         timestampString = "375088452.33188"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "443"
-         endingLineNumber = "443"
+         startingLineNumber = "402"
+         endingLineNumber = "402"
          landmarkName = "-onClickNo"
          landmarkType = "5">
       </FileBreakpoint>

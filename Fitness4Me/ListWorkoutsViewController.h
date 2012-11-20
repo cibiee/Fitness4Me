@@ -18,7 +18,7 @@
 #import "FitnessServerCommunication.h"
 #import <QuartzCore/QuartzCore.h>
 
-@interface ListWorkoutsViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,FitnessServerCommunicationDelegate>
+@interface ListWorkoutsViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 {
     int UserID;
     int count;
@@ -34,14 +34,7 @@
     ASINetworkQueue  *myQueue;
     Workout *selectedWorkout;
 
-    IBOutlet UIView *offerView;
-    IBOutlet UIView *signupviews;
-    IBOutlet UIView *fullvideoView;
-    IBOutlet UILabel *lblCompleted;
-    IBOutlet UIImageView *testImage;
-    IBOutlet UIButton *unlockAllButton;
-    IBOutlet UIButton *unlockOneButton;
-    IBOutlet UIButton *fullvideobutton;
+   
     IBOutlet UIBarButtonItem *refreshButton ;
     IBOutlet UINavigationBar *navigationBars;
     IBOutlet UITextView *networkNotificationtextView;
@@ -62,21 +55,11 @@
 
 -(void)ListExcersices;
 
-
-
--(IBAction)unlockOne;
--(IBAction)unlockAll;
 -(IBAction)navigateToHome;
--(IBAction)later:(id)sender;
--(IBAction)cancelTransaction;
--(IBAction)cancelDownloas:(id)sender;
--(IBAction)fullVideoDownload:(id)sender;
+
 @end
 
-@protocol ListWorkoutsDelegate <NSObject>
-@required
-- (void)reloadData;
-@end
+
 #define UIColorFromRGB(rgbValue) [UIColor \
 colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \

@@ -31,63 +31,12 @@
 
 -(void)setBackround
 {
-    
-    [offerView removeFromSuperview];
-    [fullvideoView removeFromSuperview];
-    [signupviews removeFromSuperview];
-    
-    fullvideoView.layer.cornerRadius =14;
-    fullvideoView.layer.borderWidth = 2;
-    fullvideoView.layer.borderColor = [UIColor whiteColor].CGColor;
-    
-    
-    signupviews.layer .cornerRadius =14;
-    signupviews.layer.borderWidth = 2;
-    signupviews.layer.borderColor = [UIColor whiteColor].CGColor;
 
-    
     tableview.rowHeight =90;
     tableview.separatorColor =[UIColor clearColor];
-    [Fitness4MeUtils showAdMob:self];
+
     networkNotificationtextView.hidden=YES;
     [networkNotificationtextView setBackgroundColor:UIColorFromRGBWithAlpha(0xde1818,1)];
-    [offerView setBackgroundColor:UIColorFromRGBWithAlpha(0xf6f6f6,1)];
-    
-}
-
-
--(void)getUnlockedExcersices
-{
-    
-    workoutDB =[[WorkoutDB alloc]init];
-    [workoutDB setUpDatabase];
-    [workoutDB createDatabase];
-    [workoutDB selectWorkout];
-    count= [workoutDB temp];
-    [workoutDB release];
-    
-    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
-    int Unlockcount =[userinfo integerForKey:@"freePurchaseCount"];
-    
-    if (Unlockcount<count)
-        Unlockcount=count;
-    [userinfo setInteger:Unlockcount forKey:@"freePurchaseCount"];
-    
-    if (Unlockcount<2) {
-        
-        NSString *msg;
-        
-        if(Unlockcount ==1){
-            msg =@"Unlock your remaining one free 10 Minute Exercise program now !!";
-        }
-        else{
-            msg =@"Now choose your two free 10 Minute Exercise program";
-        }
-        
-        [Fitness4MeUtils showAlert:msg];
-        
-    }
-    
 }
 
 
@@ -111,7 +60,7 @@
 
 - (ASIFormDataRequest *)getWorkoutList:(NSString *)UrlPath {
     
-     int  selectedlang=[Fitness4MeUtils getApplicationLanguage] ;
+    int  selectedlang=[Fitness4MeUtils getApplicationLanguage] ;
     NSString *requestString = [NSString stringWithFormat:@"%@listapps=yes&userid=%i&duration=10&lang=%i",UrlPath, UserID,selectedlang];
     NSURL *url =[NSURL URLWithString:requestString];
     
@@ -193,71 +142,6 @@
 }
 
 
--(IBAction)fullVideoDownload:(id)sender{
-    
-    [fullvideoView  removeFromSuperview];
-    [self.view addSubview:signupviews];
-    [activityindicators startAnimating];
-     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
-    [userinfo setObject:@"true" forKey:@"fullVideoDownloadlater"];
-    [NSThread detachNewThreadSelector:@selector(startDownload) toTarget:self withObject:nil];
-    
-    
-}
-
--(void)startDownload
-{
-     FitnessServerCommunication *fitness =[FitnessServerCommunication sharedState];
-    [fitness setDelegate:self];
-    [fitness getAllvideos];
-    fileDownloadProgressView.progress = ((float)0 / (float) 100);
-    
-       
-}
-
--(IBAction)later:(id)sender
-{
-    [fullvideoView  removeFromSuperview];
-    [signupviews removeFromSuperview];
-    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
-    [userinfo setObject:@"true" forKey:@"fullVideoDownloadlater"];
-    [userinfo setObject:@"true" forKey:@"showDownload"];
-    [Fitness4MeUtils showAlert:NSLocalizedString(@"workoutsthroughsettingsmsg", nil)];
-
-}
-
-
- 
-
--(IBAction)cancelDownloas:(id)sender
-{
-    
-    [signupviews removeFromSuperview];
-     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
-    [userinfo setObject:@"true" forKey:@"fullVideoDownloadlater"];
-    [userinfo setObject:@"true" forKey:@"showDownload"];
-     FitnessServerCommunication *fitness =[FitnessServerCommunication sharedState];
-    [fitness cancelDownload];
-    [lblCompleted removeFromSuperview];
-
-}
-
-
-- (void)didfinishedWorkout:(int)countCompleted:(int)totalCount
-{
-    [signupviews addSubview:lblCompleted];
-    NSString *s= [NSString stringWithFormat:@"%i / %i",countCompleted,totalCount];
-    lblCompleted.text =s;
-    if (countCompleted ==totalCount) {
-        [signupviews removeFromSuperview];
-        NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
-        [userinfo setObject:@"false" forKey:@"showDownload"];
-    }
-    fileDownloadProgressView.progress = ((float)countCompleted / (float) totalCount);
-}
-
-
-
 
 -(void)ListExcersices
 {
@@ -296,10 +180,6 @@
     
     [workoutDB release];
     
-    if([workouts count] >2){
-        [self getUnlockedExcersices];
-    }
-    
     tableview.separatorStyle =UITableViewStylePlain;
     [pool drain];
 }
@@ -322,9 +202,16 @@
         else {
             
             viewControllers =[[RatingViewController alloc]initWithNibName:@"RatingViewController" bundle:nil];
-            [self.navigationController pushViewController:viewControllers animated:YES];
+            
         }
+        
+        [self.navigationController pushViewController:viewControllers animated:YES];
     }
+}
+
+- (void)requestFinisheds:(ASINetworkQueue *)queue
+{
+    [tableview reloadData];
 }
 
 #pragma mark - view overload methods
@@ -335,22 +222,6 @@
     [super viewDidLoad];
     [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
     [self setBackround];
-   
-
-    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
-    NSString *hasMadeFullPurchase= [userinfo valueForKey:@"hasMadeFullPurchase"];
-    NSString *fullvideoDownload= [userinfo valueForKey:@"fullVideoDownloadlater"];
-    
-    if ([hasMadeFullPurchase isEqualToString:@"true"]) {
-        
-        if ([fullvideoDownload isEqualToString:@"false"]) {
-            [self.view addSubview:fullvideoView];
-            [activityIndicator setHidden:NO];
-            [activityIndicator startAnimating];
-            [NSThread detachNewThreadSelector:@selector(parseFitnessDetails) toTarget:self withObject:nil];
-        }
-        
-    }
 }
 
 
@@ -412,35 +283,8 @@
     workout = [workouts objectAtIndex:indexPath.row];
     cell.TitleLabel.text = [workout Name];
     cell.DescriptionLabel.text = [workout Description];
-    if ([[workout IsLocked] isEqualToString :@"true"]) {
-       // cell.RateLabel.text =[[workout Rate] stringByAppendingString:@"$"];
-    }
-    else {
-        [cell.RateLabel removeFromSuperview];
-    }
-    
+    [cell.RateLabel removeFromSuperview];
     cell.ExcersiceImage.image = [self imageForRowAtIndexPath:workout inIndexPath:indexPath];
-    //[self mainImageForRowAtIndexPath:workout];
-    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
-    int Unlockcount =[userinfo integerForKey:@"freePurchaseCount"];
-    
-    if (Unlockcount==1) {
-        [cell.LockedImage setHidden:NO];
-        [cell.LockedImage setImage:[UIImage imageNamed:[workout LockImageUrl]]];
-    }
-    
-    else {
-        if ([[workout IsLocked] isEqualToString :@"true"]) {
-            
-            [cell.LockedImage setHidden:NO];
-            [cell.LockedImage setImage:[UIImage imageNamed:[workout LockImageUrl]]];
-        }
-        
-        else{
-            [cell.LockedImage setHidden:NO];
-            [cell.LockedImage setImage:[UIImage imageNamed:[workout LockImageUrl]]];
-        }
-    }
     return cell;
     
 }
@@ -484,40 +328,6 @@
 }
 
 
-- (void)mainImageForRowAtIndexPath:(Workout *)workout
-{
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
-    dataPath = [documentsDirectory stringByAppendingPathComponent:@"MyFolder"];
-    
-    if (![[NSFileManager defaultManager] fileExistsAtPath:dataPath]){
-        //Create Folder
-        [[NSFileManager defaultManager] createDirectoryAtPath:dataPath withIntermediateDirectories:YES attributes:nil error:nil];
-    }
-    
-    NSString  *storeURL= [dataPath stringByAppendingPathComponent :[workout ImageName ]];
-    // Check If File Does Exists if not download the video
-    if (![[NSFileManager defaultManager] fileExistsAtPath:storeURL]){
-        [self.myQueue setDelegate:self];
-        [self.myQueue setShowAccurateProgress:YES];
-        [self.myQueue setRequestDidFinishSelector:@selector(requestFinisheds:)];
-        ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:[workout ImageUrl]]];
-        [request setDownloadDestinationPath:storeURL];
-        [request setDelegate:self];
-        [request startAsynchronous];
-        [myQueue addOperation:[request copy]];
-        [myQueue go];
-    }    
-}
-
-
-
-- (void)requestFinisheds:(ASINetworkQueue *)queue
-{
-    [tableview reloadData];
-}
-
-
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -525,21 +335,18 @@
     Workout *workout = [workouts objectAtIndex:indexPath.row];
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     [userinfo setObject:workout.Name forKey:@"WorkoutName"];
-    if ([[workout IsLocked] isEqualToString :@"false"]) {
-        ExcersiceIntermediateViewController *viewController;
-        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
-            viewController =[[ExcersiceIntermediateViewController alloc]initWithNibName:@"ExcersiceIntermediateViewController" bundle:nil];
-        }
-        else{
-            viewController =[[ExcersiceIntermediateViewController alloc]initWithNibName:@"ExcersiceIntermediateViewController_iPad" bundle:nil];
-        }
-        viewController.workout =workout;
-        [self.navigationController pushViewController:viewController animated:YES];
-        [viewController release];
-    }else {
-        selectedWorkout =workout;
-        [self .view addSubview:offerView];
+    
+    ExcersiceIntermediateViewController *viewController;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+        viewController =[[ExcersiceIntermediateViewController alloc]initWithNibName:@"ExcersiceIntermediateViewController" bundle:nil];
     }
+    else{
+        viewController =[[ExcersiceIntermediateViewController alloc]initWithNibName:@"ExcersiceIntermediateViewController_iPad" bundle:nil];
+    }
+    viewController.workout =workout;
+    [self.navigationController pushViewController:viewController animated:YES];
+    [viewController release];
+    
 }
 
 
@@ -547,54 +354,9 @@
 
 -(IBAction)snycData
 {
-    
     [activityIndicator setHidden:NO];
     [activityIndicator startAnimating];
     [NSThread detachNewThreadSelector:@selector(parseFitnessDetails) toTarget:self withObject:nil];
-    
-}
-
-
--(IBAction)cancelTransaction
-{
-    [offerView removeFromSuperview];
-    selectedWorkout=nil;
-}
-
--(IBAction)unlockAll
-{
-    
-    BOOL isReachable =[Fitness4MeUtils isReachable];
-    if (isReachable){
-        
-        [offerView removeFromSuperview];
-        ExcersiceIntermediateViewController *viewController;
-        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-            viewController =[[ExcersiceIntermediateViewController alloc]initWithNibName:@"ExcersiceIntermediateViewController" bundle:nil];
-        }else{
-            viewController =[[ExcersiceIntermediateViewController alloc]initWithNibName:@"ExcersiceIntermediateViewController_iPad" bundle:nil];
-        }
-        
-        viewController.purchaseAll =@"true";
-        viewController.workout =selectedWorkout;
-        [self.navigationController pushViewController:viewController animated:YES];
-        
-        [viewController release];
-    }else {
-        
-        [offerView removeFromSuperview];
-        [Fitness4MeUtils showAlert:NSLocalizedString(@"NoInternetMessage", nil)];
-    }
-    
-}
-
-- (void)didPresentView:(UIView *)View
-{
-    // UIAlertView in landscape mode
-    [UIView beginAnimations:@"" context:nil];
-    [UIView setAnimationDuration:0.0];
-    offerView.transform = CGAffineTransformRotate(offerView.transform, 0);
-    [UIView commitAnimations];
 }
 
 

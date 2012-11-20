@@ -10,23 +10,18 @@
 #import "Excersice.h"
 #import "Workout.h"
 #import "GADBannerView.h"
-#import <StoreKit/StoreKit.h>
 #import "WorkoutDB.h"
 
-@interface ExcersicePostPlayViewController : UIViewController<SKProductsRequestDelegate,SKPaymentTransactionObserver>
+@interface ExcersicePostPlayViewController : UIViewController
 
 {
     IBOutlet UIButton *listVideoButton;
-    IBOutlet UIButton *closeUpgradeViewButton;
-    IBOutlet UIButton *quitButton;
-    IBOutlet UIView *upgradeView;
     
-    IBOutlet UIView *signUpView;
+    IBOutlet UIButton *quitButton;
+       
     IBOutlet UIImageView *excersiceImageHolder;
     IBOutlet UITextView  *descriptiontextView;
-    IBOutlet UIActivityIndicatorView *activityIndicator;
-    IBOutlet UITextView *pleaseWait;
-   
+       
     NSString *urlPath;
     NSString *userID;
 
@@ -35,10 +30,7 @@
     Workout * workout;
     GADBannerView *bannerView_;
     WorkoutDB *workoutDB;
-    SKProduct *proUpgradeProduct;
-    SKProductsRequest *productsRequest;
-    NSString *productIdentifier;
-    
+        
 
 }
 
@@ -46,9 +38,9 @@
 @property (retain,nonatomic)Excersice *Excersice;
 @property (retain,nonatomic)Workout *workout;
 
--(IBAction)startActivity;
+
 -(IBAction)navigateToListView:(id)sender;
 -(IBAction)navigateToShareAppView:(id)sender;
--(IBAction)removeUpgardeView:(id)sender;
+
 
 @end

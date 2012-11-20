@@ -107,7 +107,7 @@
 							<object class="IBUITextView" id="235141192">
 								<reference key="NSNextResponder" ref="262402095"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{178, 135}, {262, 142}}</string>
+								<string key="NSFrame">{{118, 135}, {406, 121}}</string>
 								<reference key="NSSuperview" ref="262402095"/>
 								<reference key="NSNextKeyView" ref="544023961"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -118,10 +118,11 @@
 								<bool key="IBUIShowsHorizontalScrollIndicator">NO</bool>
 								<bool key="IBUIShowsVerticalScrollIndicator">NO</bool>
 								<bool key="IBUIEditable">NO</bool>
-								<string type="base64-UTF8" key="IBUIText">SSBhbSBkb3dubG9hZGluZyB5b3VyIGZyZWUgd29ya291dCB2aWRlb3MgYW5kIHNhdmluZyBpdCB0byB5
-b3VyIGRldmljZS5QbGVhc2UgZG8gbm90IGNsb3NlIHRoZSBhcHBsaWNhdGlvbnMgYmVmb3JlIHRoZSBk
-b3dubG9hZCBpcyBjb21wbGV0ZWQKRGVwZW5kaW5nIG9uIHlvdXIgaW50ZXJuZXQgY29ubmVjdGlvbiB0
-aGlzIG1heSB0YWtlIHNldmVyYWwgbWludXRlcy4KA</string>
+								<string type="base64-UTF8" key="IBUIText">SSBhbSBkb3dubG9hZGluZyB5b3VyIHdvcmtvdXQgIGFuZCBzYXZpbmcgaXQgdG8geW91ciBkZXZpY2Uu
+CkRlcGVuZGluZyBvbiB5b3VyIGludGVybmV0IGNvbm5lY3Rpb24gdGhpcyBtYXkgdGFrZSBzZXZlcmFs
+IG1pbnV0ZXMuCkRvbid0IHdvcnJ5LCB5b3UgY2FuIGNhbmNlbCB0aGUgZG93bmxvYWQgaW4gYmV0d2Vl
+biAgYW5kIHJlc3VtZSBpdCBhIGxhdGVyIHRpbWUgLklmIHlvdSB3aXNoIHRvIGNhbmNlbCB0aGUgZG93
+bmxvYWQgcHVzaCBjYW5jZWw</string>
 								<object class="NSColor" key="IBUITextColor" id="620430652">
 									<int key="NSColorSpace">3</int>
 									<bytes key="NSWhite">MQA</bytes>
@@ -164,6 +165,47 @@ aGlzIG1heSB0YWtlIHNldmVyYWwgbWludXRlcy4KA</string>
 								<float key="IBUIMinimumFontSize">10</float>
 								<reference key="IBUIFontDescription" ref="163622121"/>
 								<reference key="IBUIFont" ref="556432073"/>
+							</object>
+							<object class="IBUIButton" id="311984118">
+								<reference key="NSNextResponder" ref="262402095"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{176, 271}, {290, 37}}</string>
+								<reference key="NSSuperview" ref="262402095"/>
+								<string key="NSReuseIdentifierKey">_NS:9</string>
+								<bool key="IBUIOpaque">NO</bool>
+								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+								<int key="IBUIContentHorizontalAlignment">0</int>
+								<int key="IBUIContentVerticalAlignment">0</int>
+								<string key="IBUINormalTitle">Cancel</string>
+								<reference key="IBUIHighlightedTitleColor" ref="620430652"/>
+								<object class="NSColor" key="IBUINormalTitleColor">
+									<int key="NSColorSpace">3</int>
+									<bytes key="NSWhite">MQA</bytes>
+									<object class="NSColorSpace" key="NSCustomColorSpace" id="838761130">
+										<int key="NSID">2</int>
+									</object>
+								</object>
+								<object class="NSColor" key="IBUINormalTitleShadowColor" id="763177747">
+									<int key="NSColorSpace">3</int>
+									<bytes key="NSWhite">MC41AA</bytes>
+								</object>
+								<object class="NSCustomResource" key="IBUIHighlightedBackgroundImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">btn_portrait_hover_iPad.png</string>
+								</object>
+								<object class="NSCustomResource" key="IBUINormalBackgroundImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">btn_portrait_iPad.png</string>
+								</object>
+								<object class="IBUIFontDescription" key="IBUIFontDescription">
+									<int key="type">2</int>
+									<double key="pointSize">25</double>
+								</object>
+								<object class="NSFont" key="IBUIFont">
+									<string key="NSName">Helvetica-Bold</string>
+									<double key="NSSize">25</double>
+									<int key="NSfFlags">16</int>
+								</object>
 							</object>
 						</array>
 						<string key="NSFrame">{{63, 654}, {642, 316}}</string>
@@ -228,10 +270,7 @@ aGlzIG1heSB0YWtlIHNldmVyYWwgbWludXRlcy4KA</string>
 							<string key="NSColorName">alternateSelectedControlTextColor</string>
 							<reference key="NSColor" ref="620430652"/>
 						</object>
-						<object class="NSColor" key="IBUINormalTitleShadowColor" id="763177747">
-							<int key="NSColorSpace">3</int>
-							<bytes key="NSWhite">MC41AA</bytes>
-						</object>
+						<reference key="IBUINormalTitleShadowColor" ref="763177747"/>
 						<object class="NSCustomResource" key="IBUIHighlightedBackgroundImage">
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">home_nav_top_hover_iPad.png</string>
@@ -309,7 +348,6 @@ aGlzIG1heSB0YWtlIHNldmVyYWwgbWludXRlcy4KA</string>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{115, 860}, {541, 52}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -355,9 +393,7 @@ aGlzIG1heSB0YWtlIHNldmVyYWwgbWludXRlcy4KA</string>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
 					<bytes key="NSWhite">MQA</bytes>
-					<object class="NSColorSpace" key="NSCustomColorSpace">
-						<int key="NSID">2</int>
-					</object>
+					<reference key="NSCustomColorSpace" ref="838761130"/>
 				</object>
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics">
 					<int key="IBUIStatusBarStyle">2</int>
@@ -443,6 +479,15 @@ aGlzIG1heSB0YWtlIHNldmVyYWwgbWludXRlcy4KA</string>
 					</object>
 					<int key="connectionID">33</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">cancelDownloas:</string>
+						<reference key="source" ref="311984118"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">35</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -524,6 +569,7 @@ aGlzIG1heSB0YWtlIHNldmVyYWwgbWludXRlcy4KA</string>
 							<reference ref="663869785"/>
 							<reference ref="133856138"/>
 							<reference ref="235141192"/>
+							<reference ref="311984118"/>
 						</array>
 						<reference key="parent" ref="191373211"/>
 					</object>
@@ -552,6 +598,11 @@ aGlzIG1heSB0YWtlIHNldmVyYWwgbWludXRlcy4KA</string>
 						<reference key="object" ref="235141192"/>
 						<reference key="parent" ref="262402095"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">34</int>
+						<reference key="object" ref="311984118"/>
+						<reference key="parent" ref="262402095"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -572,6 +623,8 @@ aGlzIG1heSB0YWtlIHNldmVyYWwgbWludXRlcy4KA</string>
 				<string key="25.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="26.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="27.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="34.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<real value="1" key="34.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
 				<string key="5.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<real value="1" key="5.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
 				<string key="7.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -584,7 +637,7 @@ aGlzIG1heSB0YWtlIHNldmVyYWwgbWludXRlcy4KA</string>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">33</int>
+			<int key="maxID">35</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
@@ -592,6 +645,8 @@ aGlzIG1heSB0YWtlIHNldmVyYWwgbWludXRlcy4KA</string>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<string key="btn_portrait_hover_iPad.png">{290, 38}</string>
+			<string key="btn_portrait_iPad.png">{290, 38}</string>
 			<string key="home_bg_iPad.png">{768, 858}</string>
 			<string key="home_logo_iPad.png">{768, 146}</string>
 			<string key="home_nav_bot_hover_iPad.png">{541, 52}</string>

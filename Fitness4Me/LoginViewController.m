@@ -31,10 +31,7 @@
 
 - (void)didReceiveMemoryWarning
 {
-    // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
 }
 
 #pragma mark - View overloaded Methods
@@ -58,8 +55,6 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 
@@ -138,7 +133,7 @@
     UrlPath =[NSString GetURlPath];
     int selectedlang =[Fitness4MeUtils getApplicationLanguage];
     
-    RequestString =[NSString stringWithFormat:@"%@register=yes&fname=%@&sname=%@&email=%@&username=%@&password=%@&level=%@&device=1&lang=%i",UrlPath,nameTextField.text,lastNameTextField.text,emailTextField.text,usernameTextField.text,passwordTextField.text,userlevel,selectedlang];
+    RequestString =[NSString stringWithFormat:@"%@register=yes&fname=%@&sname=%@&email=%@&username=%@&password=%@&level=%@&device=1&lang=%i&plan=1",UrlPath,nameTextField.text,lastNameTextField.text,emailTextField.text,usernameTextField.text,passwordTextField.text,userlevel,selectedlang];
     
     [self performSelector:@selector(navigateToExcersiceListView:) withObject:RequestString afterDelay:0.5];
     
@@ -173,86 +168,57 @@
     
     if (textField ==nameTextField)
     {
-        if (nameTextField.text.length>0)
-        {
+        if (nameTextField.text.length>0){
             [nameValidator setBackgroundColor:[UIColor clearColor]];
             [lastNameTextField becomeFirstResponder];
-            
-        }
-        else
-        {
+        }else{
             [Fitness4MeUtils showAlert:NSLocalizedString(@"mandatory", nil)];
             [nameValidator setBackgroundColor:[UIColor redColor]];
             [nameTextField becomeFirstResponder];
         }
-    }
-    
-    
-    if (textField ==lastNameTextField)
+    }if (textField ==lastNameTextField)
     {
-        if (lastNameTextField.text.length>0)
-        {
+        if (lastNameTextField.text.length>0){
             [lastNameValidator setBackgroundColor:[UIColor clearColor]];
             [ emailTextField becomeFirstResponder];
-            
-        }
-        else
-        {
+        }else{
             [Fitness4MeUtils showAlert:NSLocalizedString(@"mandatory", nil)];
             [lastNameValidator setBackgroundColor:[UIColor redColor]];
             [lastNameTextField becomeFirstResponder];
         }
-    }
-    
-    else if (textField ==emailTextField) {
-        
+    }else if (textField ==emailTextField) {
         [emailImageView setHidden:YES];
-        if (emailTextField.text.length>0)
-        {
+        if (emailTextField.text.length>0){
             [ usernameTextField becomeFirstResponder];
             [emailValidator setBackgroundColor:[UIColor clearColor]];
-        }
-        else
-        {
+        }else{
             [Fitness4MeUtils showAlert:NSLocalizedString(@"mandatory", nil)];
             [emailValidator setBackgroundColor:[UIColor redColor]];
             [emailTextField becomeFirstResponder];
         }
         
-    }
-    else if (usernameTextField ==textField) {
-        
-        if (usernameTextField.text.length>0)
-        {
+    }else if (usernameTextField ==textField) {
+        if (usernameTextField.text.length>0){
             [passwordTextField becomeFirstResponder];
             [usernameValidator setBackgroundColor:[UIColor clearColor]];
             [usernameValidImageView setHidden:YES];
-        }
-        else
-        {
+        }else{
             [Fitness4MeUtils showAlert:NSLocalizedString(@"mandatory", nil)];
             [usernameValidator setBackgroundColor:[UIColor redColor]];
             [usernameValidImageView setHidden:YES];
             [usernameTextField becomeFirstResponder];
         }
-    }
-    
-    else if (passwordTextField ==textField) {
+    }else if (passwordTextField ==textField) {
         
-        if (passwordTextField.text.length>0)
-        {
+        if (passwordTextField.text.length>0){
             [textField resignFirstResponder];
             [passwordValidator setBackgroundColor:[UIColor clearColor]];
-        }
-        else
-        {
+        }else{
             [Fitness4MeUtils showAlert:NSLocalizedString(@"mandatory", nil)];
             [passwordValidator setBackgroundColor:[UIColor redColor]];
             [passwordTextField becomeFirstResponder];
         }
     }
-    
-    
     return NO;
 }
 
@@ -346,17 +312,12 @@
 -(void)setInitials{
     
     [pleaseWait removeFromSuperview];
-    
     [usernameValidImageView setHidden:YES];
-    
     [emailImageView setHidden:YES];
-    
     [activityIndicator setHidesWhenStopped:YES];
     [emailactivityIndicator setHidesWhenStopped:YES];
-    
     errorIndicator. hidden=YES;
     [signupIndicator setHidden:YES];
-    
     [begineerButton setImage:[UIImage imageNamed:@"red.png"] forState:UIControlStateNormal];
     userlevel =@"1";
     UrlPath =[NSString GetURlPath];
@@ -369,8 +330,7 @@
     FitnessServerCommunication *fitness =[FitnessServerCommunication sharedState];
     userID =[fitness saveUserWithRequestString:requestString activityIndicator:activityIndicator progressView:signUpView];
     NSString *userLevel =userlevel;
-    if (userID>0)
-    {
+    if (userID>0){
         
         [fitness registerDeviceWithUserID:userID andSignUpView:signUpView onCompletion:^{
             
@@ -386,8 +346,6 @@
     
 }
 
-
-
 -(void)saveUserToDatabase:(NSString*)userLevel
 {
     userDB =[[UserDB alloc]init];
@@ -400,7 +358,6 @@
 
 -(void)updateData
 {
-    
     if (userID>0){
         
         FitnessServerCommunication *fitnessserverCommunication =[[FitnessServerCommunication alloc]init];
@@ -421,8 +378,6 @@
     [userInfo setObject:emailTextField.text  forKey:@"email"];
 }
 
-
-
 -(void)removeActivities{
     
     [signUpView removeFromSuperview];
@@ -435,12 +390,12 @@
 -(void)navigateToWorkoutList
 {
     Fitness4MeViewController *viewController;
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
-    {
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
         viewController =[[Fitness4MeViewController alloc]initWithNibName:@"Fitness4MeViewController" bundle:nil];
     }
     else {
-        viewController =[[Fitness4MeViewController alloc]initWithNibName:@"Fitness4MeViewController_iPad" bundle:nil];    }
+        viewController =[[Fitness4MeViewController alloc]initWithNibName:@"Fitness4MeViewController_iPad" bundle:nil];
+    }
     [self.navigationController pushViewController:viewController animated:YES];
     [viewController release];
 }

@@ -28,8 +28,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    [Fitness4MeUtils showAdMobPrelogin:self];
     [[UIApplication sharedApplication]  registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert)];
     [activityIndicator setHidden:YES];
 }

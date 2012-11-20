@@ -40,7 +40,6 @@
     [super viewDidLoad];
     
     [self prepareData];
-    [self showAdmobs];
     
 }
 
@@ -120,11 +119,6 @@
     [selectLanguageView.layer setBorderWidth:2];
     [selectLanguageView.layer setCornerRadius:8];
     
-}
-
-- (void)showAdmobs
-{
-    [Fitness4MeUtils showAdMobPrelogin:self];
 }
 
 -(void)showDropDown{

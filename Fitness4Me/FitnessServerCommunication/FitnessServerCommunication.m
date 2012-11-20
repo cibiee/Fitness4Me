@@ -63,7 +63,7 @@ static FitnessServerCommunication *sharedState;
     if (isReachable)
     {
         NSString *UrlPath= [NSString GetURlPath];
-        NSString *requestString =[NSString stringWithFormat:@"%@login=yes&username=%@&password=%@",UrlPath,username,password];
+        NSString *requestString =[NSString stringWithFormat:@"%@login=yes&username=%@&password=%@&plan=1",UrlPath,username,password];
         NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         
         __weak ASIHTTPRequest *requests = [ASIHTTPRequest requestWithURL:url];
@@ -85,9 +85,6 @@ static FitnessServerCommunication *sharedState;
         [self terminateActivities:NSLocalizedString(@"NoInternetMessage", nil):activityIndicator:signUpView];
     }
 }
-
-
-
 
 
 - (void)isValidEmail:(NSString *)email andActivityIndicator:(UIActivityIndicatorView*)activityIndicator onCompletion:(ResponseBlock)completionBlock onError:(NSError*)errorBlock

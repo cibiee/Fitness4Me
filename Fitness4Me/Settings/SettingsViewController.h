@@ -24,9 +24,9 @@
     int userID;
 
     NSString *userlevel;
-    NSString *freeVideo;
+   
     NSString *oldUserlevel;
-    NSString *hasMadeFullPurchase;
+    
     
     WorkoutDB *workoutDB;
     
@@ -47,18 +47,16 @@
     IBOutlet UILabel *emailValidator;
     IBOutlet UILabel *usernameLabel;
     IBOutlet UILabel *passwordLabel;
-    IBOutlet UILabel *lblCompleteCount;
+   
     IBOutlet UILabel *lblCompleted;
 
     
     IBOutlet UIView *downloadFullView;
     IBOutlet UIView *loadView;
-    IBOutlet UIView *SyncView;
     IBOutlet UIView *profileUpdatedView;
   
     
     IBOutlet UIProgressView *fileDownloadProgressView;
-    IBOutlet UIProgressView *fileDownloadView;
     
     IBOutlet UIActivityIndicatorView *activityIndicator;
     IBOutlet UIActivityIndicatorView *emailactivityIndicator;

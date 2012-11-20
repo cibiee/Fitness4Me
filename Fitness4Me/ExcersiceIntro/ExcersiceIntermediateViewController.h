@@ -16,17 +16,13 @@
 #import "ASINetworkQueue.h"
 #import "SBJSON.h"
 #import "SBJsonParser.h"
-#import <StoreKit/StoreKit.h>
 #import "User.h"
 #import "UserDB.h"
 
 
-#define kInAppPurchaseManagerProductsFetchedNotification @"kInAppPurchaseManagerProductsFetchedNotification"
-#define kInAppPurchaseManagerTransactionFailedNotification @"kInAppPurchaseManagerTransactionFailedNotification"
-#define kInAppPurchaseManagerTransactionSucceededNotification @"kInAppPurchaseManagerTransactionSucceededNotification"
-#define kInAppPurchaseProUpgradeProductId @"com.fitness4me.Fitness4Me"
 
-@interface ExcersiceIntermediateViewController : UIViewController<SKProductsRequestDelegate,SKPaymentTransactionObserver,ASIHTTPRequestDelegate>
+
+@interface ExcersiceIntermediateViewController : UIViewController<ASIHTTPRequestDelegate>
 {
     BOOL isConected;
     int count;
@@ -38,10 +34,7 @@
     NSString *userlevel;
     NSString *userID;
 
-    SKProduct *proUpgradeProduct;
-    SKProductsRequest *productsRequest;
-    NSString *productIdentifier;
-    
+       
     NSMutableArray *excersices;
     NSMutableArray *arr;
     NSMutableArray *excersicesList;
@@ -82,10 +75,6 @@
 -(void)startDownload;
 -(void)getExcersices;
 -(void)getUnlockedExcersices;
--(void)loadStore;
--(void)purchaseProUpgrade;
--(BOOL)canMakePurchases;
-
 
 -(IBAction)onClickOK:(id)sender;
 -(IBAction)NavigateToMoviePlayer:(id)sender;

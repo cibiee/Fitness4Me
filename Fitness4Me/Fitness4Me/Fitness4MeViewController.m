@@ -35,9 +35,7 @@
 {
     
     [super viewDidLoad];
-    
-    [Fitness4MeUtils showAdMob:self];
-    
+
     [SyncView removeFromSuperview];
     SyncView.layer.cornerRadius =14;
     SyncView.layer.borderWidth = 2;
@@ -99,7 +97,7 @@
     FitnessServerCommunication *fitness =[FitnessServerCommunication sharedState];
     [fitness setDelegate:self];
     [fitness parseWorkoutVideos];
-    [fitness getFreevideos];
+    [fitness getAllvideos];
     fileDownloadProgressView.progress = ((float)0 / (float) 100);
 }
 
@@ -209,6 +207,16 @@
 -(IBAction)cancelDownloas:(id)sender
 {
     
+    [UIView transitionWithView:SyncView duration:1
+                       options:UIViewAnimationOptionTransitionCurlUp animations:^{
+                           [SyncView setAlpha:0.0];
+                           
+                       }
+                    completion:^(BOOL finished)
+     {
+         [SyncView removeFromSuperview];
+     }];
+    
     FitnessServerCommunication *fitness =[FitnessServerCommunication sharedState];
     [fitness cancelDownload];
 }
@@ -226,7 +234,6 @@
 {
     
     [self .navigationController setNavigationBarHidden:YES animated:NO];
-    
     [super viewWillAppear:animated];
 }
 

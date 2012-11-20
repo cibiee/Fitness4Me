@@ -27,6 +27,8 @@ typedef void (^errorBlock)(NSString *errorString);
 
 @interface FitnessServerCommunication : NSObject
 {
+    int stop;
+    
      NSMutableArray *workouts;
      NSMutableArray *workoutVideoLists;
     
@@ -34,7 +36,7 @@ typedef void (^errorBlock)(NSString *errorString);
      WorkoutDB *workoutDB;
      ExcersiceDB *excersiceDB;
     
-     int stop;
+     
     
     ASIHTTPRequest   *downloadrequest ;
     ASINetworkQueue  *myQueue;

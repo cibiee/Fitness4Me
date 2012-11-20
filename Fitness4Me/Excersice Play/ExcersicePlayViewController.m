@@ -38,7 +38,7 @@
     [super viewDidLoad];
     [self getExcersices];
     self.view.transform = CGAffineTransformConcat(self.view.transform, CGAffineTransformMakeRotation(M_PI_2));
-     screenBounds = [[UIScreen mainScreen] bounds];
+    screenBounds = [[UIScreen mainScreen] bounds];
     NSLog(@"%f",screenBounds.size.height);
     if (screenBounds.size.height == 568)
     {
@@ -51,45 +51,9 @@
     }
     
     moviePlayer.view.backgroundColor =[UIColor  whiteColor];
-    [self showAdMobs];
     
     
-}
-
-
--(void)showAdMobs
-{
-    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
-    NSString *hasMadeFullPurchase= [userinfo valueForKey:@"hasMadeFullPurchase"];
-    [userinfo setObject:@"false" forKey:@"shouldExit"];
-    if ([hasMadeFullPurchase isEqualToString:@"true"]) {
-        
-    }
-    else {
-        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
-        {
-            
-            bannerView_ = [[GADBannerView alloc]
-                           initWithFrame:CGRectMake(0,-7,
-                                                    self.view.frame.size.width-70,
-                                                    50)];
-            
-        }
-        else {
-            bannerView_ = [[GADBannerView alloc]
-                           initWithFrame:CGRectMake(0,0,
-                                                    self.view.frame.size.height-70,
-                                                    90)];
-            
-        }
-        
-        bannerView_.adUnitID = @"a1506940e575b91";
-        bannerView_.rootViewController = self;
-        [self.view addSubview:bannerView_];
-        
-        // Initiate a generic request to load it with an ad.
-        [bannerView_ loadRequest:[GADRequest request]];
-    }
+    
 }
 
 -(void)getExcersices
@@ -114,7 +78,6 @@
         play.repeatIntervel =[[[arr objectAtIndex:i]PosterRepeatCount]intValue];
         play.videoName =[[arr objectAtIndex:i] PosterName];
         if ([play.videoName length]>0) {
-            
             [aras addObject:play];
         }
         [play release];
@@ -123,7 +86,6 @@
         play.repeatIntervel =[[[arr objectAtIndex:i]RepeatCount]intValue];
         play.videoName =[[arr objectAtIndex:i] Name];
         if ([play.videoName length]>0) {
-            
             [aras addObject:play];
         }
         [play release];
@@ -132,7 +94,6 @@
         play.repeatIntervel =[[[arr objectAtIndex:i]StopRep] intValue];
         play.videoName =[[arr objectAtIndex:i] StopName];
         if ([play.videoName length]>0) {
-            
             [aras addObject:play];
         }
         [play release];
@@ -227,8 +188,8 @@ static float totalDuration=0;
         if (moviePlayer!=nil) {
             if (playCount==0) {
                 
-                     moviePlayer.view .frame= subview.bounds;
-                               
+                moviePlayer.view .frame= subview.bounds;
+                
                 moviePlayer.contentURL =[NSURL fileURLWithPath:storeURL];
                 moviePlayer.controlStyle = MPMovieControlStyleNone;
                 [moviePlayer play];
@@ -244,8 +205,8 @@ static float totalDuration=0;
             [moviePlayer play];
             moviePlayer.controlStyle = MPMovieControlStyleNone;
             
-                            moviePlayer.view .frame= subview.bounds;
-                [subview addSubview: moviePlayer.view];
+            moviePlayer.view .frame= subview.bounds;
+            [subview addSubview: moviePlayer.view];
             
         }
         

@@ -63,7 +63,7 @@
         
         [self.contentView addSubview:ExcersiceImage];
         
-        [self.contentView addSubview:LockedImage];
+        //[self.contentView addSubview:LockedImage];
         
         [self.contentView addSubview:TitleLabel];
         
