@@ -49,6 +49,7 @@
     StatisticsDB *statisticsDB;
     
     int WorkoutID;
+    
     NSString *userID;
     Boolean *stayup;
 }

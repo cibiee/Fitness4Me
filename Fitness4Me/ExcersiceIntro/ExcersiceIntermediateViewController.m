@@ -53,7 +53,7 @@
     self.UserID =[userinfo stringForKey:@"UserID"];
     self.userlevel =[userinfo stringForKey:@"Userlevel"];
     [userinfo setObject:@"false" forKey:@"shouldExit"];
-    
+    [signUpView removeFromSuperview];
     [self UnlockVideos];
     [letsgoButton setEnabled:NO];
     [letsgoButton setHidden:YES];
@@ -152,9 +152,8 @@
     [activityIndicator startAnimating];
     [signUpView addSubview:pleaseWait];
     [activityIndicator setHidden:NO];
-    if([signUpView superview]!=nil){
-        [self.view addSubview:signUpView];
-    }
+    [self.view addSubview:signUpView];
+
 }
 
 
