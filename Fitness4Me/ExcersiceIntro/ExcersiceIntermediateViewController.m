@@ -39,11 +39,12 @@
     [descriptionTextview.layer setBorderWidth:2];
     
     stop =0;
+    stopz=0;
     [self InitializeView];
     urlPath =[NSString GetURlPath];
     self.view.transform = CGAffineTransformConcat(self.view.transform,
                                                   CGAffineTransformMakeRotation(M_PI_2));
-    [Fitness4MeUtils showAdMob:self];
+    
     
 //    User *userstate = [User sharedState];
 //    User* user= [userstate getUserPreferences];
@@ -55,12 +56,15 @@
     
     [self UnlockVideos];
     [letsgoButton setEnabled:NO];
+    [letsgoButton setHidden:YES];
 }
 
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewDidAppear:NO];
+    [letsgoButton setEnabled:NO];
+    [letsgoButton setHidden:YES];
     backButton.enabled =NO;
     [self getUserDetails];
 }
@@ -233,23 +237,20 @@
     
     UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"fitness4.me" message:NSLocalizedString(@"resumeDownload", nil)                                                       delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
     [alertview show];
-    [UIView beginAnimations:@"" context:nil];
-    [UIView setAnimationDuration:0.0];
-    
-    alertview.transform = CGAffineTransformRotate(alertview.transform, 3.14159/2);
-    [UIView commitAnimations];
     [alertview release];
     
 }
 
-- (void)didPresentAlertView:(UIAlertView *)alertView
+-(void)ShowVideounAvaialableMessage
 {
-    // UIAlertView in landscape mode
-    [UIView beginAnimations:@"" context:nil];
-    [UIView setAnimationDuration:0.0];
-    alertView.transform = CGAffineTransformRotate(alertView.transform, 3.14159/2);
-    [UIView commitAnimations];
+    
+    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"fitness4.me" message:NSLocalizedString(@"VideoUnavailable", nil)
+                                                       delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alertview show];
+    [alertview release];
+    
 }
+
 
 - (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex
 {
@@ -389,13 +390,13 @@
     stop=stop+1;
     if ([excersicesList count]>0){
         [letsgoButton setEnabled:YES];
+        [letsgoButton setHidden:NO];
         [backButton  setEnabled:YES];
     }
     else {
-        UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"fitness4.me" message:NSLocalizedString(@"VideoUnavailable", nil)  
-                                                           delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alertview show];
-        [alertview release];
+        [self performSelectorOnMainThread:@selector(ShowVideounAvaialableMessage)
+                               withObject:nil
+                            waitUntilDone:YES];
     }
     
     if (stop==[excersicesList count]) {
@@ -405,6 +406,9 @@
     
     [pool drain];
 }
+
+
+
 
 int stopz=0;
 //method to Download videos related to a workout
@@ -434,6 +438,7 @@ int stopz=0;
                 }
                 if ([excersicesList count]>0){
                     [letsgoButton setEnabled:YES];
+                    [letsgoButton setHidden:NO];
                     [backButton setEnabled:YES];
                 }
                 
@@ -449,10 +454,12 @@ int stopz=0;
             if (stopz==1) {
 
            
-                [self navigateToHome];
                 [letsgoButton setEnabled:NO];
                 [letsgoButton setHidden:YES];
                 [backButton setEnabled:NO];
+                [self performSelectorOnMainThread:@selector(navigateToHome)
+                                       withObject:nil
+                                    waitUntilDone:YES];
                 return;
 
             }
@@ -463,6 +470,7 @@ int stopz=0;
             if (stop==[excersicesList count]) {
                 if ([excersicesList count]>0){
                     [letsgoButton setEnabled:YES];
+                    [letsgoButton setHidden:NO];
                     [backButton setEnabled:YES];
                 }
             }
@@ -497,6 +505,7 @@ int stopz=0;
     [myQueue cancelAllOperations];
     [signUpView removeFromSuperview];
     [letsgoButton setEnabled:NO];
+    [letsgoButton setHidden:YES];
     [backButton setEnabled:YES];
 }
 

@@ -71,7 +71,7 @@
 					<object class="IBUILabel" id="236032615">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{268, 212}, {233, 43}}</string>
+						<string key="NSFrame">{{219, 200}, {343, 43}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="563598808"/>
@@ -94,18 +94,18 @@
 							<string key="name">Arial-BoldMT</string>
 							<string key="family">Arial</string>
 							<int key="traits">2</int>
-							<double key="pointSize">36</double>
+							<double key="pointSize">41</double>
 						</object>
 						<object class="NSFont" key="IBUIFont">
 							<string key="NSName">Arial-BoldMT</string>
-							<double key="NSSize">36</double>
+							<double key="NSSize">41</double>
 							<int key="NSfFlags">16</int>
 						</object>
 					</object>
 					<object class="IBUITextView" id="563598808">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{39, 273}, {683, 145}}</string>
+						<string key="NSFrame">{{40, 251}, {689, 178}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="859877517"/>
@@ -127,11 +127,11 @@ Lg</string>
 						</object>
 						<object class="IBUIFontDescription" key="IBUIFontDescription">
 							<int key="type">1</int>
-							<double key="pointSize">28</double>
+							<double key="pointSize">34</double>
 						</object>
 						<object class="NSFont" key="IBUIFont">
 							<string key="NSName">Helvetica</string>
-							<double key="NSSize">28</double>
+							<double key="NSSize">34</double>
 							<int key="NSfFlags">16</int>
 						</object>
 					</object>
@@ -162,14 +162,11 @@ Lg</string>
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MC41AA</bytes>
 						</object>
-						<object class="NSCustomResource" key="IBUIHighlightedImage" id="331035956">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">yes_no_btn_hover.png</string>
-						</object>
-						<object class="NSCustomResource" key="IBUINormalBackgroundImage" id="271077038">
+						<object class="NSCustomResource" key="IBUIHighlightedBackgroundImage" id="927236703">
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">yes_no_btn_iPad.png</string>
 						</object>
+						<reference key="IBUINormalBackgroundImage" ref="927236703"/>
 						<object class="IBUIFontDescription" key="IBUIFontDescription" id="514519409">
 							<int key="type">2</int>
 							<double key="pointSize">15</double>
@@ -232,8 +229,8 @@ ICAgICAgICAgIHdvdWxkIGxpa2UgdG8gcmF0ZSBpdA0KA</string>
 							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 						</object>
 						<reference key="IBUINormalTitleShadowColor" ref="354787388"/>
-						<reference key="IBUIHighlightedImage" ref="331035956"/>
-						<reference key="IBUINormalBackgroundImage" ref="271077038"/>
+						<reference key="IBUIHighlightedBackgroundImage" ref="927236703"/>
+						<reference key="IBUINormalBackgroundImage" ref="927236703"/>
 						<reference key="IBUIFontDescription" ref="514519409"/>
 						<reference key="IBUIFont" ref="901283949"/>
 					</object>
@@ -281,14 +278,11 @@ Lg</string>
 							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 						</object>
 						<reference key="IBUINormalTitleShadowColor" ref="354787388"/>
-						<object class="NSCustomResource" key="IBUIHighlightedBackgroundImage" id="141635133">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">second_btn_hover.png</string>
-						</object>
-						<object class="NSCustomResource" key="IBUINormalBackgroundImage" id="119582175">
+						<object class="NSCustomResource" key="IBUIHighlightedBackgroundImage" id="460745790">
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">second_btn_iPad.png</string>
 						</object>
+						<reference key="IBUINormalBackgroundImage" ref="460745790"/>
 						<reference key="IBUIFontDescription" ref="514519409"/>
 						<reference key="IBUIFont" ref="901283949"/>
 					</object>
@@ -344,8 +338,11 @@ Lg</string>
 							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 						</object>
 						<reference key="IBUINormalTitleShadowColor" ref="354787388"/>
-						<reference key="IBUIHighlightedBackgroundImage" ref="141635133"/>
-						<reference key="IBUINormalBackgroundImage" ref="119582175"/>
+						<object class="NSCustomResource" key="IBUIHighlightedBackgroundImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">second_btn_hover.png</string>
+						</object>
+						<reference key="IBUINormalBackgroundImage" ref="460745790"/>
 						<reference key="IBUIFontDescription" ref="514519409"/>
 						<reference key="IBUIFont" ref="901283949"/>
 					</object>
@@ -453,7 +450,6 @@ Lg</string>
 						<reference key="object" ref="191373211"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="21840207"/>
-							<reference ref="563598808"/>
 							<reference ref="851288365"/>
 							<reference ref="545472377"/>
 							<reference ref="575230290"/>
@@ -464,6 +460,7 @@ Lg</string>
 							<reference ref="637726799"/>
 							<reference ref="1053410034"/>
 							<reference ref="530408612"/>
+							<reference ref="563598808"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -559,11 +556,11 @@ Lg</string>
 				<string key="143.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="150.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="195.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<real value="0.0" key="195.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
+				<real value="1" key="195.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
 				<string key="203.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<real value="0.0" key="203.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
+				<real value="1" key="203.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
 				<string key="218.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<real value="0.0" key="218.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
+				<real value="1" key="218.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
 				<string key="269.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="291.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="310.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -571,7 +568,7 @@ Lg</string>
 				<string key="79.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="82.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="86.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<real value="0.0" key="86.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
+				<real value="1" key="86.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
@@ -624,7 +621,6 @@ Lg</string>
 			<string key="home_logo_iPad.png">{768, 146}</string>
 			<string key="second_btn_hover.png">{94, 47}</string>
 			<string key="second_btn_iPad.png">{151, 85}</string>
-			<string key="yes_no_btn_hover.png">{250, 57}</string>
 			<string key="yes_no_btn_iPad.png">{591, 115}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">1930</string>
