@@ -140,6 +140,9 @@
 
 -(IBAction)shareAppOnTwitter :(id)sender{
     
+    BOOL isReachable =[Fitness4MeUtils isReachable];
+    if (isReachable)
+    {
     if([TWTweetComposeViewController canSendTweet]) {
         
         TWTweetComposeViewController *controller = [[TWTweetComposeViewController alloc] init];
@@ -175,6 +178,11 @@
     
     else{
         [Fitness4MeUtils showAlert:NSLocalizedString(@"twitterConfigure", nil)];
+    }
+    }
+    else {
+        [Fitness4MeUtils showAlert:NSLocalizedString(@"NoInternetMessage", nil)];
+        
     }
 }
 

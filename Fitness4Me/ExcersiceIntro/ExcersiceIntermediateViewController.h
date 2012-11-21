@@ -68,6 +68,7 @@
     WorkoutDB *workoutDB;
     Workout * workout;
     User *user;
+    int stopz;
 }
 
 @property (retain,nonatomic)Workout *workout;

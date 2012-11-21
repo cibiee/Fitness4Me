@@ -194,9 +194,11 @@
     NetworkStatus internetStatus = [reachability currentReachabilityStatus];
     if (internetStatus != NotReachable) {
         isReachable=YES;
+        return isReachable;
     }
     else{
         isReachable=NO;
+        return isReachable;
     }
     return isReachable;
 }

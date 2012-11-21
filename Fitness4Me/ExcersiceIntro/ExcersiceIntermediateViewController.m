@@ -39,6 +39,7 @@
     [descriptionTextview.layer setBorderWidth:2];
     
     stop =0;
+    stopz=0;
     [self InitializeView];
     urlPath =[NSString GetURlPath];
     self.view.transform = CGAffineTransformConcat(self.view.transform,
@@ -55,6 +56,7 @@
     
     [self UnlockVideos];
     [letsgoButton setEnabled:NO];
+    [letsgoButton setHidden:YES];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -65,7 +67,10 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    stopz=0;
     [super viewDidAppear:NO];
+    [letsgoButton setEnabled:NO];
+    [letsgoButton setHidden:YES];
     backButton.enabled =NO;
     [self getUserDetails];
 }
@@ -296,23 +301,10 @@
     
     UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"fitness4.me" message:NSLocalizedString(@"resumeDownload", nil)                                                       delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
     [alertview show];
-    [UIView beginAnimations:@"" context:nil];
-    [UIView setAnimationDuration:0.0];
-    
-    alertview.transform = CGAffineTransformRotate(alertview.transform, 3.14159/2);
-    [UIView commitAnimations];
     [alertview release];
     
 }
 
-- (void)didPresentAlertView:(UIAlertView *)alertView
-{
-    // UIAlertView in landscape mode
-    [UIView beginAnimations:@"" context:nil];
-    [UIView setAnimationDuration:0.0];
-    alertView.transform = CGAffineTransformRotate(alertView.transform, 3.14159/2);
-    [UIView commitAnimations];
-}
 
 - (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex
 {
@@ -452,6 +444,7 @@
     stop=stop+1;
     if ([excersicesList count]>0){
         [letsgoButton setEnabled:YES];
+        [letsgoButton setHidden:NO];
         [backButton  setEnabled:YES];
     }
     else {
@@ -469,7 +462,7 @@
     [pool drain];
 }
 
-int stopz=0;
+
 //method to Download videos related to a workout
 -(void)downloadVideos:(NSString *)url:(NSString*)name{
     
@@ -497,6 +490,7 @@ int stopz=0;
                 }
                 if ([excersicesList count]>0){
                     [letsgoButton setEnabled:YES];
+                    [letsgoButton setHidden:NO];
                     [backButton setEnabled:YES];
                 }
                 
@@ -511,11 +505,14 @@ int stopz=0;
             stopz=stopz+1;
             if (stopz==1) {
 
-           
-                [self navigateToHome];
                 [letsgoButton setEnabled:NO];
                 [letsgoButton setHidden:YES];
                 [backButton setEnabled:NO];
+                [self performSelectorOnMainThread:@selector(navigateToHome)
+                                             withObject:nil
+                                          waitUntilDone:YES];
+               // [self navigateToHome];
+                
                 return;
 
             }
@@ -526,6 +523,7 @@ int stopz=0;
             if (stop==[excersicesList count]) {
                 if ([excersicesList count]>0){
                     [letsgoButton setEnabled:YES];
+                    [letsgoButton setHidden:NO];
                     [backButton setEnabled:YES];
                 }
             }
@@ -560,6 +558,7 @@ int stopz=0;
     [myQueue cancelAllOperations];
     [signUpView removeFromSuperview];
     [letsgoButton setEnabled:NO];
+    [letsgoButton setHidden:YES];
     [backButton setEnabled:YES];
 }
 
