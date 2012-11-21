@@ -305,6 +305,16 @@
     
 }
 
+-(void)ShowVideounAvaialableMessage
+{
+    
+    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"fitness4.me" message:NSLocalizedString(@"VideoUnavailable", nil)
+                                                       delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alertview show];
+    [alertview release];
+    
+}
+
 
 - (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex
 {
@@ -448,10 +458,10 @@
         [backButton  setEnabled:YES];
     }
     else {
-        UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"fitness4.me" message:NSLocalizedString(@"VideoUnavailable", nil)  
-                                                           delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alertview show];
-        [alertview release];
+        [self performSelectorOnMainThread:@selector(ShowVideounAvaialableMessage)
+                               withObject:nil
+                            waitUntilDone:YES];
+
     }
     
     if (stop==[excersicesList count]) {
