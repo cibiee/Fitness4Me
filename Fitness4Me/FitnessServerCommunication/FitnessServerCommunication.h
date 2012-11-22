@@ -71,7 +71,13 @@ typedef void (^errorBlock)(NSString *errorString);
 
 - (void)updateUserWithName:(NSString *)name surname:(NSString*)surname email:(NSString*)email userLevel:(NSString*)userLevel userID:(NSString*)userID activityIndicator:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView  onCompletion:(ResponseBlock)completionBlock onError:(NSError*)errorBlock;
 
+- (void)UpdateServerWithPurchaseStatus:(NSString *)purchaseStatus hasMadefullpurchase:(NSString*)purchaseAll workoutID:(NSString*)workoutID  userID:(NSString*)userID  activityIndicator:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView onCompletion:(ResponseBlock)completionBlock onError:(NSError*)errorBlock;
 
+-(void)parserExcersiceDetailsForWorkoutID:(NSString *)workoutID userLevel:(NSString *)userLevel  language:(int )selectedlanguage activityIndicator:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView onCompletion:(WMLoginResponseBlock)completionBlock onError:(NSError*)errorBlock ;
+
+-(void)updateStatisticsToServer:(NSString *)userID  workoutID: (int)workoutID workoutDuration:(float)totalDuration onCompletion:(ResponseBlock)completionBlock onError:(NSError*)errorBlock;
+
+-(void) getImageAtPath:(NSString *)imageUrl toDestination:( NSString *)storeURL setDelegate:(UIViewController*)viewController;
 -(void)getFreePurchaseCount:(int)UserID ;
 -(void)getAllvideos;
 -(void)cancelDownload;
@@ -84,6 +90,9 @@ typedef void (^errorBlock)(NSString *errorString);
 
 @optional
 - (void)didRecieveWorkoutList;
-- (void)didfinishedWorkout:(int)countCompleted:(int)totalCount;
+@optional
 
+- (void)didfinishedWorkout:(int)countCompleted:(int)totalCount;
+@optional
+- (void)didfinishedDownloadImage;
 @end

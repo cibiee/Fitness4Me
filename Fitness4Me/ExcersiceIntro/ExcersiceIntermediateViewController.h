@@ -19,7 +19,7 @@
 #import <StoreKit/StoreKit.h>
 #import "User.h"
 #import "UserDB.h"
-
+#import "FitnessServerCommunication.h"
 
 #define kInAppPurchaseManagerProductsFetchedNotification @"kInAppPurchaseManagerProductsFetchedNotification"
 #define kInAppPurchaseManagerTransactionFailedNotification @"kInAppPurchaseManagerTransactionFailedNotification"
@@ -31,7 +31,7 @@
     BOOL isConected;
     int count;
     int stop;
-    
+    NSString  *storeURL;
     NSString *purchaseAll;
     NSString *dataPath;
     NSString *urlPath;

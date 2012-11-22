@@ -182,10 +182,22 @@
 }
 
 
++(void) createDirectoryatPath:(NSString *)dataPath
+{
+    if (![[NSFileManager defaultManager] fileExistsAtPath:dataPath]){
+        //Create Folder
+        [[NSFileManager defaultManager] createDirectoryAtPath:dataPath withIntermediateDirectories:NO attributes:nil error:nil];
+    }
+}
 
 
-
-
++(void) getImageAtPath:(NSString *)imageUrl toDestination:( NSString *)storeURL setDelegate:(UIViewController*)viewController
+{
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:imageUrl]];
+    [request setDownloadDestinationPath:storeURL];
+    [request setDelegate:viewController];
+    [request startAsynchronous];
+}
 
 +(BOOL)isReachable
 {

@@ -7,9 +7,7 @@
 //
 
 #import "ShareFitness4MeViewController.h"
-#import "Fitness4MeViewController.h"
-#import "Fitness4MeUtils.h"
-#import <QuartzCore/QuartzCore.h>
+
 
 @implementation ShareFitness4MeViewController
 
@@ -28,6 +26,7 @@
 }
 
 
+#pragma mark - Viewoverriden Methods
 
 - (void)viewDidLoad
 {
@@ -56,6 +55,44 @@
 }
 
 
+- (void)viewDidUnload
+{
+    
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+    // e.g. self.myOutlet = nil;
+}
+
+#pragma mark - Hidden Intance Methods
+
+- (void)showImage
+{
+    if ([Fitness4MeUtils isReachable]) {
+        [Fitness4MeUtils createDirectoryatPath:dataPath];
+        storeURL= [dataPath stringByAppendingPathComponent :imageName];
+        if (![[NSFileManager defaultManager] fileExistsAtPath:storeURL]){
+            NSURL * imageURLs = [NSURL URLWithString:imageUrl];
+            NSData * imageData = [NSData dataWithContentsOfURL:imageURLs];
+            excersiceImageHolder.image = [UIImage imageWithData:imageData];
+            FitnessServerCommunication *fitness =[FitnessServerCommunication sharedState];
+            [fitness getImageAtPath:imageUrl toDestination:storeURL setDelegate:self];
+        }else {
+            UIImage *im =[[UIImage alloc]initWithContentsOfFile:storeURL];
+            excersiceImageHolder.image=im;
+        }
+    }else{
+        storeURL= [dataPath stringByAppendingPathComponent :[self imageName]];
+        if ([[NSFileManager defaultManager] fileExistsAtPath:storeURL]){
+            UIImage *im =[[UIImage alloc]initWithContentsOfFile:storeURL];
+            excersiceImageHolder.image=im;
+            [im release];
+        }else{
+            UIImage *im =[UIImage imageNamed:@"dummyimg.png"];
+            excersiceImageHolder.image =im;
+        }
+    }
+}
+
 -(void)InitializeView
 {
     
@@ -65,78 +102,52 @@
     NSString *msg;
     if ([Fitness4MeUtils getApplicationLanguage] ==1) {
          msg =@" just completed the fitness4.Me ";
-    }
-    else
-    {
+    }else{
          msg =@" just completed the fitness4.Me ";
     }
    
     msg =[name stringByAppendingString:msg];
     shareAppMessageTextView.text=[msg stringByAppendingString:workoutName];
-
     dataPath =[Fitness4MeUtils path];
-    
-    if ([Fitness4MeUtils isReachable]) {
-        
-        
-        if (![[NSFileManager defaultManager] fileExistsAtPath:dataPath]){
-            //Create Folder
-            [[NSFileManager defaultManager] createDirectoryAtPath:dataPath withIntermediateDirectories:NO attributes:nil error:nil];
-        }
-        storeURL= [dataPath stringByAppendingPathComponent :imageName];
-        // Check If File Does Exists if not download the video
-        if (![[NSFileManager defaultManager] fileExistsAtPath:storeURL]){
-            
-            
-            NSURL * imageURLs = [NSURL URLWithString:imageUrl];
-            NSData * imageData = [NSData dataWithContentsOfURL:imageURLs];
-            excersiceImageHolder.image = [UIImage imageWithData:imageData];
-            
-            ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:imageUrl]];
-            [request setDownloadDestinationPath:storeURL];
-            [request setDelegate:self];
-            [request startAsynchronous];
-        }
-        else {
-            
-            UIImage *im =[[UIImage alloc]initWithContentsOfFile:storeURL];
-            excersiceImageHolder.image=im;
-        }
-    }
-    else
-    {
-        
-        
-        storeURL= [dataPath stringByAppendingPathComponent :[self imageName]];
-        // Check If File Does Exists if not download the video
-        if ([[NSFileManager defaultManager] fileExistsAtPath:storeURL])
-        {
-            UIImage *im =[[UIImage alloc]initWithContentsOfFile:storeURL];
-            
-            excersiceImageHolder.image=im;
-            
-            [im release];
-            
-        }
-        
-        else
-        {
-            UIImage *im =[UIImage imageNamed:@"dummyimg.png"];
-            excersiceImageHolder.image =im;
-            
-        }
-        
-    }
-    
-    
-    // [Fitness4MeUtils showAdMob:self];
+
+    [self showImage];
 }
 
 
+-(void)navigateToHome
+{
+    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"fitness4.me" message:NSLocalizedString(@"ExitMsg", nil)
+                                                       delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+    [alertview show];
+    [UIView beginAnimations:@"" context:nil];
+    [UIView setAnimationDuration:0.0];
+    alertview.transform = CGAffineTransformRotate(alertview.transform, 3.14159/2);
+    [UIView commitAnimations];
+    [alertview release];
+    
+}
 
-#pragma mark - shareAppOnTwitter
+- (void)didPresentAlertView:(UIAlertView *)alertView
+{
+    // UIAlertView in landscape mode
+    [UIView beginAnimations:@"" context:nil];
+    [UIView setAnimationDuration:0.0];
+    alertView.transform = CGAffineTransformRotate(alertView.transform, 3.14159/2);
+    [UIView commitAnimations];
+}
+
+- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex==0) {
+        [Fitness4MeUtils navigateToHomeView:self];
+    }
+    else {
+        exit(0);
+    }
+}
 
 
+#pragma mark - Instance Methods
 
 -(IBAction)shareAppOnTwitter :(id)sender{
     
@@ -186,24 +197,16 @@
     }
 }
 
-#pragma mark - shareAppOnFacebook
-
 
 -(IBAction)shareAppOnFacebook :(id)sender{
-    
-    
     BOOL isReachable =[Fitness4MeUtils isReachable];
     if (isReachable){
         [self login];
     }
-    
     else {
         [Fitness4MeUtils showAlert:NSLocalizedString(@"NoInternetMessage", nil)];
-        
     }
 }
-
-
 
 
 -(IBAction)EditText :(id)sender{
@@ -211,25 +214,17 @@
     [shareAppMessageTextView setEditable:YES];
 }
 
-- (void)viewDidUnload
+
+
+-(IBAction)navigateBackHome
 {
-    
-    
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+    [Fitness4MeUtils navigateToHomeView:self];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
+#pragma mark - Private Helper Methods for facebook
 
 
 - (void)apiFQLIMe {
-    // Using the "pic" picture since this currently has a maximum width of 100 pixels
-    // and since the minimum profile picture size is 180 pixels wide we should be able
-    // to get a 100 pixel wide version of the profile picture
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                    @"SELECT uid, name, pic FROM user WHERE uid=me()", @"query",
                                    nil];
@@ -244,32 +239,15 @@
 }
 
 
--(IBAction)navigateBackHome
-{
-    [Fitness4MeUtils navigateToHomeView:self];
-}
-
-#pragma - Private Helper Methods
-
-/**
- * Show the logged in menu
- */
 
 - (void)showLoggedIn {
     
     [self apiFQLIMe];
 }
 
-/**
- * Show the logged in menu
- */
-
 - (void)showLoggedOut {
 }
 
-/**
- * Show the authorization dialog.
- */
 - (void)login {
     if (![facebook isSessionValid]) {
         [facebook authorize:permissions];
@@ -279,18 +257,13 @@
     }
 }
 
-/**
- * Invalidate the access token and clear the cookie.
- */
 - (void)logout {
     [facebook logout];
 }
 
 
 #pragma mark - FBSessionDelegate Methods
-/**
- * Called when the user has logged in successfully.
- */
+
 - (void)fbDidLogin {
     [self apiDialogFeedUser];
 }
@@ -300,20 +273,13 @@
     // [self storeAuthData:accessToken expiresAt:expiresAt];
 }
 
-/**
- * Called when the user canceled the authorization dialog.
- */
 -(void)fbDidNotLogin:(BOOL)cancelled {
     //   [pendingApiCallsController userDidNotGrantPermission];
 }
 
-/**
- * Called when the request logout has succeeded.
- */
 - (void)fbDidLogout {
     
-    // Remove saved authorization information if it exists and it is
-    // ok to clear it (logout, session invalid, app unauthorized)
+
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults removeObjectForKey:@"FBAccessTokenKey"];
     [defaults removeObjectForKey:@"FBExpirationDateKey"];
@@ -322,9 +288,6 @@
     [self showLoggedOut];
 }
 
-/**
- * Called when the session has expired.
- */
 - (void)fbSessionInvalidated {
     UIAlertView *alertView = [[UIAlertView alloc]
                               initWithTitle:@"Auth Exception"
@@ -339,13 +302,7 @@
 }
 
 #pragma mark - FBRequestDelegate Methods
-/**
- * Called when the Facebook API request has returned a response.
- *
- * This callback gives you access to the raw response. It's called before
- * (void)request:(FBRequest *)request didLoad:(id)result,
- * which is passed the parsed response object.
- */
+
 - (void)request:(FBRequest *)request didReceiveResponse:(NSURLResponse *)response {
     
 }
@@ -365,11 +322,8 @@
     if ([result isKindOfClass:[NSArray class]]) {
         result = [result objectAtIndex:0];
     }
-    // This callback can be a result of getting the user's basic
-    // information or getting the user's permissions.
+    
     if ([result objectForKey:@"name"]) {
-        // If basic information callback, set the UI objects to
-        // display this.
         [self apiGraphUserPermissions];
     } else {
         
@@ -378,20 +332,10 @@
 
 - (void)apiDialogFeedUser {
     
-    
     NSString *msg =shareAppMessageTextView.text;
-    
-    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"fitness4.Me", @"name",@"Fitness Program.", @"caption",msg, @"message",
-                                   @"http://fitness4.Me/", @"link",
-                                   
-                                   imageUrl, @"picture",nil];
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"fitness4.Me", @"name",@"Fitness Program.", @"caption",msg, @"message",@"http://fitness4.Me/", @"link",imageUrl, @"picture",nil];
     [facebook requestWithGraphPath:@"me/feed" andParams:params andHttpMethod:@"POST" andDelegate:self];
 }
-
-/**
- * Called when an error prevents the Facebook API request from completing
- * successfully.
- */
 
 - (void)request:(FBRequest *)request didFailWithError:(NSError *)error {
     NSLog(@"Err message: %@", [[error userInfo] objectForKey:@"error_msg"]);
@@ -399,43 +343,13 @@
 }
 
 
-/**
- * Called when user click the home button
- */
+#pragma mark - view orientation
 
--(void)navigateToHome
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    
-    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"fitness4.me" message:NSLocalizedString(@"ExitMsg", nil)
-                                                       delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
-    [alertview show];
-    [UIView beginAnimations:@"" context:nil];
-    [UIView setAnimationDuration:0.0];
-    
-    alertview.transform = CGAffineTransformRotate(alertview.transform, 3.14159/2);
-    [UIView commitAnimations];
-    [alertview release];
-    
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (void)didPresentAlertView:(UIAlertView *)alertView
-{
-    // UIAlertView in landscape mode
-    [UIView beginAnimations:@"" context:nil];
-    [UIView setAnimationDuration:0.0];
-    alertView.transform = CGAffineTransformRotate(alertView.transform, 3.14159/2);
-    [UIView commitAnimations];
-}
-
-- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex
-{
-    if (buttonIndex==0) {
-        [Fitness4MeUtils navigateToHomeView:self];
-    }
-    else {
-        exit(0);
-    }
-}
 
 -(BOOL)shouldAutorotate {
     return NO;

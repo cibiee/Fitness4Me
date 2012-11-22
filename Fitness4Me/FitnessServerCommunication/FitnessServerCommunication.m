@@ -87,9 +87,6 @@ static FitnessServerCommunication *sharedState;
 }
 
 
-
-
-
 - (void)isValidEmail:(NSString *)email andActivityIndicator:(UIActivityIndicatorView*)activityIndicator onCompletion:(ResponseBlock)completionBlock onError:(NSError*)errorBlock
 
 {
@@ -271,6 +268,92 @@ static FitnessServerCommunication *sharedState;
 }
 
 
+
+//
+//  updated server with the video informations
+//
+
+
+- (void)UpdateServerWithPurchaseStatus:(NSString *)purchaseStatus hasMadefullpurchase:(NSString*)purchaseAll workoutID:(NSString*)workoutID  userID:(NSString*)userID  activityIndicator:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView onCompletion:(ResponseBlock)completionBlock onError:(NSError*)errorBlock
+
+{
+    
+    BOOL isReachable =[Fitness4MeUtils isReachable];
+    if (isReachable){
+        __block NSString *IsExist;
+        NSString *UrlPath= [NSString GetURlPath];
+        NSString *requestString;
+        if( [purchaseAll isEqualToString:@"true"]){
+            requestString=  [NSString stringWithFormat:@"%@unlockiphone=yes&userid=%@&workoutid=%@&purchase_status=%@&type=all",UrlPath,userID,@"''",purchaseStatus];
+        }else {
+            requestString =[NSString stringWithFormat:@"%@unlockiphone=yes&userid=%@&workoutid=%@&purchase_status=%@&type=single",UrlPath,userID, workoutID,purchaseStatus];
+        }
+
+        NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:
+                                          NSUTF8StringEncoding]];
+        __weak ASIHTTPRequest *requests = [ASIHTTPRequest requestWithURL:url];
+        [requests setCompletionBlock:^{
+            NSString *responseString =[requests responseString];
+            
+            if ([responseString length]>0) {
+                IsExist = [self Isvalid:responseString];
+                if (completionBlock) completionBlock(IsExist);
+            }else{
+                [self terminateActivities:NSLocalizedString(@"slowdata", nil):nil:signUpView];
+            }
+        }];
+        [requests setFailedBlock:^{
+            [self terminateActivities:NSLocalizedString(@"requestError", nil):nil:signUpView];
+            
+        }];
+        [requests startAsynchronous];
+    }else{
+        [self terminateActivities:NSLocalizedString(@"NoInternetMessage", nil):nil:signUpView];
+        
+    }
+}
+
+
+
+- (void)parserExcersiceDetailsForWorkoutID:(NSString *)workoutID userLevel:(NSString *)userLevel  language:(int )selectedlanguage activityIndicator:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView onCompletion:(WMLoginResponseBlock)completionBlock onError:(NSError*)errorBlock {
+   
+    NSString *UrlPath= [NSString GetURlPath];
+
+    BOOL isReachable =[Fitness4MeUtils isReachable];
+    if (isReachable){
+        
+        NSString *requestString =[NSString stringWithFormat:@"%@videos=yes&workoutid=%@&userlevel=%@&lang=%i",UrlPath,workoutID,userLevel,selectedlanguage];
+         NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+        
+        __weak ASIHTTPRequest *requests = [ASIHTTPRequest requestWithURL:url];
+        [requests setCompletionBlock:^{
+            // Use when fetching text data
+            NSString *responseString =[requests responseString];
+            if ([responseString length]>0) {
+                if (completionBlock) completionBlock(responseString);
+            }else{
+                [self terminateActivities:NSLocalizedString(@"slowdata", nil):activityIndicator:signUpView];
+            }
+        }];
+        [requests setFailedBlock:^{
+            //NSError *error = [requests error];
+            [self terminateActivities:NSLocalizedString(@"requestError", nil):activityIndicator:signUpView];
+        }];
+        [requests startAsynchronous];
+    }else{
+        [self terminateActivities:NSLocalizedString(@"NoInternetMessage", nil):activityIndicator:signUpView];
+    }
+
+}
+
+
+-(void) getImageAtPath:(NSString *)imageUrl toDestination:( NSString *)storeURL setDelegate:(UIViewController*)viewController
+{
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:imageUrl]];
+    [request setDownloadDestinationPath:storeURL];
+    [request setDelegate:viewController];
+    [request startAsynchronous];
+}
 
 -(void)parseFitnessDetails:(int)userID {
     
@@ -691,6 +774,14 @@ int finished=0;
         [self resetRequest];
     }
     
+}
+
+
+- (void)downloadImageDidfinish:(ASINetworkQueue *)queue
+{
+        [self.delegate didfinishedDownloadImage];
+        [myQueue setDelegate:nil];
+        [myQueue cancelAllOperations];
 }
 
 

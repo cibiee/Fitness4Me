@@ -48,7 +48,6 @@
     [acceptAgreementView removeFromSuperview];
     [[UIApplication sharedApplication]  registerForRemoteNotificationTypes:
      (UIRemoteNotificationTypeAlert)];
-    
     [super viewDidLoad];
     [self setInitials];
     
@@ -108,9 +107,7 @@
     [passwordTextField resignFirstResponder] ;
 }
 
--(IBAction)navigateToAcceptAgreement:(id)sender{
-    [self.view addSubview:acceptAgreementView];
-}
+
 
 -(void)showErrorWithMessage:(NSString*)message
 {
@@ -171,88 +168,55 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     
-    if (textField ==nameTextField)
-    {
-        if (nameTextField.text.length>0)
-        {
+    if (textField ==nameTextField){
+        if (nameTextField.text.length>0){
             [nameValidator setBackgroundColor:[UIColor clearColor]];
             [lastNameTextField becomeFirstResponder];
-            
-        }
-        else
-        {
+        }else{
             [Fitness4MeUtils showAlert:NSLocalizedString(@"mandatory", nil)];
             [nameValidator setBackgroundColor:[UIColor redColor]];
             [nameTextField becomeFirstResponder];
         }
-    }
-    
-    
-    if (textField ==lastNameTextField)
-    {
-        if (lastNameTextField.text.length>0)
-        {
+    }if (textField ==lastNameTextField){
+        if (lastNameTextField.text.length>0){
             [lastNameValidator setBackgroundColor:[UIColor clearColor]];
             [ emailTextField becomeFirstResponder];
-            
-        }
-        else
-        {
+        }else{
             [Fitness4MeUtils showAlert:NSLocalizedString(@"mandatory", nil)];
             [lastNameValidator setBackgroundColor:[UIColor redColor]];
             [lastNameTextField becomeFirstResponder];
         }
-    }
-    
-    else if (textField ==emailTextField) {
-        
+    }else if (textField ==emailTextField) {
         [emailImageView setHidden:YES];
-        if (emailTextField.text.length>0)
-        {
+        if (emailTextField.text.length>0){
             [ usernameTextField becomeFirstResponder];
             [emailValidator setBackgroundColor:[UIColor clearColor]];
-        }
-        else
-        {
+        }else{
             [Fitness4MeUtils showAlert:NSLocalizedString(@"mandatory", nil)];
             [emailValidator setBackgroundColor:[UIColor redColor]];
             [emailTextField becomeFirstResponder];
         }
-        
-    }
-    else if (usernameTextField ==textField) {
-        
-        if (usernameTextField.text.length>0)
-        {
+    }else if (usernameTextField ==textField) {
+        if (usernameTextField.text.length>0){
             [passwordTextField becomeFirstResponder];
             [usernameValidator setBackgroundColor:[UIColor clearColor]];
             [usernameValidImageView setHidden:YES];
-        }
-        else
-        {
+        }else{
             [Fitness4MeUtils showAlert:NSLocalizedString(@"mandatory", nil)];
             [usernameValidator setBackgroundColor:[UIColor redColor]];
             [usernameValidImageView setHidden:YES];
             [usernameTextField becomeFirstResponder];
         }
-    }
-    
-    else if (passwordTextField ==textField) {
-        
-        if (passwordTextField.text.length>0)
-        {
+    }else if (passwordTextField ==textField) {
+        if (passwordTextField.text.length>0){
             [textField resignFirstResponder];
             [passwordValidator setBackgroundColor:[UIColor clearColor]];
-        }
-        else
-        {
+        }else{
             [Fitness4MeUtils showAlert:NSLocalizedString(@"mandatory", nil)];
             [passwordValidator setBackgroundColor:[UIColor redColor]];
             [passwordTextField becomeFirstResponder];
         }
     }
-    
-    
     return NO;
 }
 
@@ -280,16 +244,13 @@
     }
     if (textField ==passwordTextField){
         [Fitness4MeUtils setViewMovedUp:NO :self.view :NO:80];
-        
     }
     
     // UIAlertView *alertview;;
     [usernameTextField resignFirstResponder ];
     
-    if(textField ==usernameTextField)
-    {
-        if (usernameTextField.text.length>0)
-        {
+    if(textField ==usernameTextField){
+        if (usernameTextField.text.length>0){
             [loginButton setEnabled:NO];
             [activityIndicator setHidden:NO];
             [activityIndicator startAnimating];
@@ -298,10 +259,8 @@
         }
         
     }
-    if(textField ==emailTextField)
-    {
-        if (emailTextField.text.length >0)
-        {
+    if(textField ==emailTextField){
+        if (emailTextField.text.length >0){
             [loginButton setEnabled:NO];
             [emailactivityIndicator setHidden:NO];
             [emailactivityIndicator startAnimating];
@@ -310,14 +269,11 @@
         }
     }
     
-    if(textField ==passwordTextField)
-    {
+    if(textField ==passwordTextField){
         if (passwordTextField.text.length >0) {
             [loginButton setEnabled:NO];
             [NSThread detachNewThreadSelector:@selector(isValidpassword) toTarget:self withObject:nil];
         }
-        
-        
     }
 }
 
@@ -325,13 +281,7 @@
 #pragma mark - Hidden Instance Method
 -(void)startActivity{
     
-    
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
-        signUpView =[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 480)];
-    }
-    else {
-        signUpView =[[UIView alloc]initWithFrame:CGRectMake(0, 0, 768, 1004)];
-    }
+    signUpView =[[UIView alloc]initWithFrame:[[UIScreen mainScreen] bounds]];
     [signUpView addSubview:signupIndicator];
     [signUpView addSubview:pleaseWait];
     signUpView.backgroundColor=[UIColor blackColor];
@@ -346,17 +296,12 @@
 -(void)setInitials{
     
     [pleaseWait removeFromSuperview];
-    
     [usernameValidImageView setHidden:YES];
-    
     [emailImageView setHidden:YES];
-    
     [activityIndicator setHidesWhenStopped:YES];
     [emailactivityIndicator setHidesWhenStopped:YES];
-    
     errorIndicator. hidden=YES;
     [signupIndicator setHidden:YES];
-    
     [begineerButton setImage:[UIImage imageNamed:@"red.png"] forState:UIControlStateNormal];
     userlevel =@"1";
     UrlPath =[NSString GetURlPath];
@@ -369,9 +314,7 @@
     FitnessServerCommunication *fitness =[FitnessServerCommunication sharedState];
     userID =[fitness saveUserWithRequestString:requestString activityIndicator:activityIndicator progressView:signUpView];
     NSString *userLevel =userlevel;
-    if (userID>0)
-    {
-        
+    if (userID>0){
         [fitness registerDeviceWithUserID:userID andSignUpView:signUpView onCompletion:^{
             
         } onError:^(NSError *error) {
@@ -400,13 +343,10 @@
 
 -(void)updateData
 {
-    
     if (userID>0){
-        
         FitnessServerCommunication *fitnessserverCommunication =[[FitnessServerCommunication alloc]init];
         [fitnessserverCommunication parseFitnessDetails:userID];
     }
-    
 }
 
 
@@ -420,8 +360,6 @@
     [userInfo setObject:userLevel  forKey:@"Userlevel"];
     [userInfo setObject:emailTextField.text  forKey:@"email"];
 }
-
-
 
 -(void)removeActivities{
     
@@ -464,6 +402,18 @@
 
 -(void)removeSignupView{
     [signUpView removeFromSuperview];
+}
+
+-(void)terminateActivity:(NSString *)message
+{
+    
+    [Fitness4MeUtils showAlert:message];
+    emailImageView.image =[UIImage imageNamed:@"invalid.png"];
+    [emailValidator setBackgroundColor:[UIColor redColor]];
+    [loginButton setEnabled:YES];
+    [emailactivityIndicator setHidden:YES];
+    [emailactivityIndicator stopAnimating];
+    [emailImageView setHidden:NO];
 }
 
 
@@ -569,20 +519,6 @@
     [self removeActivity];
     [usernameValidImageView setHidden:NO];
     usernameValidImageView.image =[UIImage imageNamed:@"valid.png"];
-}
-
-
-
--(void)terminateActivity:(NSString *)message
-{
-    
-    [Fitness4MeUtils showAlert:message];
-    emailImageView.image =[UIImage imageNamed:@"invalid.png"];
-    [emailValidator setBackgroundColor:[UIColor redColor]];
-    [loginButton setEnabled:YES];
-    [emailactivityIndicator setHidden:YES];
-    [emailactivityIndicator stopAnimating];
-    [emailImageView setHidden:NO];
 }
 
 

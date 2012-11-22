@@ -45,15 +45,14 @@
     self.view.transform = CGAffineTransformConcat(self.view.transform,
                                                   CGAffineTransformMakeRotation(M_PI_2));
     [Fitness4MeUtils showAdMob:self];
-    
-//    User *userstate = [User sharedState];
-//    User* user= [userstate getUserPreferences];
-    
+        
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     self.UserID =[userinfo stringForKey:@"UserID"];
     self.userlevel =[userinfo stringForKey:@"Userlevel"];
     [userinfo setObject:@"false" forKey:@"shouldExit"];
+    
     [signUpView removeFromSuperview];
+    
     [self UnlockVideos];
     [letsgoButton setEnabled:NO];
     [letsgoButton setHidden:YES];
@@ -95,41 +94,33 @@
     dataPath =[Fitness4MeUtils path];
     
     if ([Fitness4MeUtils isReachable]) {
-    if (![[NSFileManager defaultManager] fileExistsAtPath:dataPath]){
-        //Create Folder
-        [[NSFileManager defaultManager] createDirectoryAtPath:dataPath withIntermediateDirectories:NO attributes:nil error:nil];
-    }
-    NSString  *storeURL= [dataPath stringByAppendingPathComponent :[self.workout ImageName]];
-    // Check If File Does Exists if not download the video
-    if (![[NSFileManager defaultManager] fileExistsAtPath:storeURL]){
-//        NSURL * imageURL = [NSURL URLWithString:[self. workout ImageUrl]];
-//        NSData * imageData = [NSData dataWithContentsOfURL:imageURL];
-//        excersiceImageHolder.image = [UIImage imageWithData:imageData];
-        
-        UIImage *im =[UIImage imageNamed:@"dummyimg.png"];
-        excersiceImageHolder.image =im;
-
-        ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:[workout ImageUrl]]];
-        [request setDownloadDestinationPath:storeURL];
-        [request setDelegate:self];
-        [request startAsynchronous];
-    }else {
-        UIImage *im =[[UIImage alloc]initWithContentsOfFile:storeURL];
-        excersiceImageHolder.image=im;
-     }
+        [Fitness4MeUtils createDirectoryatPath:dataPath];
+         storeURL= [dataPath stringByAppendingPathComponent :[self.workout ImageName]];
+        // Check If File Does Exists if not download the video
+        if (![[NSFileManager defaultManager] fileExistsAtPath:storeURL]){
+            
+            UIImage *im =[UIImage imageNamed:@"dummyimg.png"];
+            excersiceImageHolder.image =im;
+            FitnessServerCommunication *fitness =[FitnessServerCommunication sharedState];
+            [fitness getImageAtPath:[self.workout ImageUrl] toDestination:storeURL setDelegate:self];
+        }else {
+            UIImage *im =[[UIImage alloc]initWithContentsOfFile:storeURL];
+            excersiceImageHolder.image=im;
+        }
     }else{
-            NSString  *storeURL= [dataPath stringByAppendingPathComponent :[self.workout ImageName]];
-            // Check If File Does Exists if not download the video
-            if ([[NSFileManager defaultManager] fileExistsAtPath:storeURL]){
-                UIImage *im =[[UIImage alloc]initWithContentsOfFile:storeURL];
-                excersiceImageHolder.image=im;
-                [im release];
-            }else{
-                UIImage *im =[UIImage imageNamed:@"dummyimg.png"];
-                excersiceImageHolder.image =im;
-            }
+        storeURL= [dataPath stringByAppendingPathComponent :[self.workout ImageName]];
+        // Check If File Does Exists if not download the video
+        if ([[NSFileManager defaultManager] fileExistsAtPath:storeURL]){
+            UIImage *im =[[UIImage alloc]initWithContentsOfFile:storeURL];
+            excersiceImageHolder.image=im;
+            [im release];
+        }else{
+            UIImage *im =[UIImage imageNamed:@"dummyimg.png"];
+            excersiceImageHolder.image =im;
+        }
     }
 }
+
 
 -(void)InitializeView
 {
@@ -162,54 +153,23 @@
 //
 -(void)UpdateServer:(NSString *)purchaseStatus;
 {
-    
-    
-    BOOL isReachable =[Fitness4MeUtils isReachable];
-    if (isReachable){
-        NSString *status ;
-        NSString *requestString;
-        
-        if( [[self purchaseAll] isEqualToString:@"true"]){
-            requestString=  [NSString stringWithFormat:@"%@unlockiphone=yes&userid=%@&workoutid=%@&purchase_status=%@&type=all",urlPath,userID,@"''",purchaseStatus];
-        }
-        else {
-            requestString =[NSString stringWithFormat:@"%@unlockiphone=yes&userid=%@&workoutid=%@&purchase_status=%@&type=single",urlPath,userID, [self.workout WorkoutID],purchaseStatus];
-        }
-        
-        NSURL *url =[NSURL URLWithString:requestString];
-        ASIFormDataRequest   *request = [ASIFormDataRequest   requestWithURL:url];
-        [request startSynchronous];
-        NSError *error = [request error];
-        
-        if (!error){
-            NSString *response = [request responseString];
-            NSMutableArray *object = [response JSONValue];
-            excersices = [[NSMutableArray alloc]init];
-            NSMutableArray *itemsarray =[object valueForKey:@"items"];
-            for (int i=0; i<[itemsarray count]; i++) {
-                status = [[itemsarray objectAtIndex:i] valueForKey:@"status"];
-            }
-        }else{
-            [Fitness4MeUtils showAlert:NSLocalizedString(@"NoInternetMessage", nil)];
-            if([signUpView superview]!=nil)
-                [signUpView removeFromSuperview];
-        }
-        if ([status isEqualToString:@"success"]) {
-            if ([[self purchaseAll] isEqualToString:@"true"]){
-                NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
-                [userinfo setObject:@"true" forKey:@"hasMadeFullPurchase"];
-            }
-            
-        }
-        
-        [self performSelector:@selector(NavigateToWorkoutList) withObject:nil afterDelay:5];
-    
-    }
-    else
-    {
-        [Fitness4MeUtils showAlert:NSLocalizedString(@"NoInternetMessage", nil)];
-        [signUpView removeFromSuperview];
-    }
+    FitnessServerCommunication *fitness= [FitnessServerCommunication sharedState];
+    [fitness UpdateServerWithPurchaseStatus:purchaseStatus hasMadefullpurchase:[self purchaseAll] workoutID:[self.workout WorkoutID] userID:userID activityIndicator:nil progressView:signUpView
+                               onCompletion:^(NSString *isExist) {
+                                   if ([isExist isEqualToString:@"success"]) {
+                                       if ([[self purchaseAll] isEqualToString:@"true"]){
+                                           NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+                                           [userinfo setObject:@"true" forKey:@"hasMadeFullPurchase"];
+                                       }
+                                       
+                                   }
+                                   
+                                   [self performSelector:@selector(NavigateToWorkoutList) withObject:nil afterDelay:5];
+                                   
+                               }
+                                    onError:^(NSError *error) {
+                                        
+                                    }];
 }
 
 
@@ -252,30 +212,19 @@
     if (isReachable){
         
          int  selectedlang=[Fitness4MeUtils getApplicationLanguage] ;
-        NSString *requestString =[NSString stringWithFormat:@"%@videos=yes&workoutid=%@&userlevel=%@&lang=%i",urlPath,[self.workout WorkoutID],userlevel,selectedlang];
-        NSURL *url =[NSURL URLWithString:requestString];
-        
-        ASIFormDataRequest   *request = [ASIFormDataRequest   requestWithURL:url];
-        [request setTimeOutSeconds:15];
-        [request startSynchronous];
-       
-        NSError *error = [request error];
-        if (!error){
-            
-            NSString *response = [request responseString];
-            NSMutableArray *object = [response JSONValue];
-            excersices = [[NSMutableArray alloc]init];
-            [self getWorkoutVideoData:object];
-            [self deleteExcersices];
-            [self insertExcersices];
-            [self getExcersices];
-        }else{
-            [self getExcersices];
-        }
+            FitnessServerCommunication *fitness= [FitnessServerCommunication sharedState];
+            [fitness parserExcersiceDetailsForWorkoutID:[self.workout WorkoutID] userLevel:userlevel language:selectedlang activityIndicator:nil progressView:signUpView onCompletion:^(NSString *responseString) {
+                NSMutableArray *object = [responseString JSONValue];
+                excersices = [[NSMutableArray alloc]init];
+                [self getWorkoutVideoData:object];
+                [self deleteExcersices];
+                [self insertExcersices];
+                [self getExcersices];
+            }onError:^(NSError *error) {
+                [self getExcersices];
+          }];
     }
-    
     else{
-        
         if([signUpView superview]!=nil){
             [signUpView removeFromSuperview];
         }
@@ -578,9 +527,6 @@
     if (stop==[excersicesList count]) {
         [signUpView removeFromSuperview];
     }
-    
-    // NSError *error = [request error];
-    //
 }
 
 // Method to either make a free purchase or in app purchase;
@@ -674,7 +620,7 @@
         productIdentifier = [NSString stringWithFormat:@"com.fitness4me.Fitness4Me.%@",
                              [workout WorkoutID]];
     }
-    SKProduct *validProduct=productIdentifier;
+   // SKProduct *validProduct=productIdentifier;
     SKPayment *payment = [SKPayment paymentWithProductIdentifier:productIdentifier];
     [[SKPaymentQueue defaultQueue] addPayment:payment];
 }

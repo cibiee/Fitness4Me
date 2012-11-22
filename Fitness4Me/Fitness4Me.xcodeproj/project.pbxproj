@@ -197,7 +197,6 @@
 		F5066EB6165B928A00DF8B6B /* termsOfUseDeiPad.html in Resources */ = {isa = PBXBuildFile; fileRef = F5066EA6165B928A00DF8B6B /* termsOfUseDeiPad.html */; };
 		F5066EB7165B928A00DF8B6B /* termsofUseiPad.html in Resources */ = {isa = PBXBuildFile; fileRef = F5066EA7165B928A00DF8B6B /* termsofUseiPad.html */; };
 		F512B7581639093500B922E1 /* TermsOfUse_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F512B75A1639093500B922E1 /* TermsOfUse_iPad.xib */; };
-		F512B75D16391DE800B922E1 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F512B75C16391DE800B922E1 /* Default-568h@2x.png */; };
 		F512B761163927E700B922E1 /* UserLoginViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F512B763163927E700B922E1 /* UserLoginViewController_iPad.xib */; };
 		F5253890163FABC8004F9195 /* ExcersiceIntermediateViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5253892163FABC8004F9195 /* ExcersiceIntermediateViewController_iPad.xib */; };
 		F5253896163FB15B004F9195 /* ExcersicePlayViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5253898163FB15B004F9195 /* ExcersicePlayViewController_iPad.xib */; };
@@ -217,6 +216,8 @@
 		F53305A01654E78900D0BCBE /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F533059C1654E78900D0BCBE /* FMDatabaseAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F53305A11654E78900D0BCBE /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = F533059E1654E78900D0BCBE /* FMResultSet.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F5341CCE161323C8001E9075 /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F5341CCD161323C8001E9075 /* libGoogleAdMobAds.a */; };
+		F535C878165DF2340032BDE4 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F535C875165DEEFC0032BDE4 /* Social.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		F535C87A165E47FD0032BDE4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F535C879165E47FD0032BDE4 /* Default-568h@2x.png */; };
 		F53E75421648FC9600970DB9 /* breathing.png in Resources */ = {isa = PBXBuildFile; fileRef = F53E753B1648FC9600970DB9 /* breathing.png */; };
 		F53E75431648FC9600970DB9 /* drinks.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F53E753C1648FC9600970DB9 /* drinks.jpg */; };
 		F53E75441648FC9600970DB9 /* floor.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F53E753D1648FC9600970DB9 /* floor.jpg */; };
@@ -628,7 +629,6 @@
 		F5066EA6165B928A00DF8B6B /* termsOfUseDeiPad.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = termsOfUseDeiPad.html; sourceTree = "<group>"; };
 		F5066EA7165B928A00DF8B6B /* termsofUseiPad.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = termsofUseiPad.html; sourceTree = "<group>"; };
 		F512B7591639093500B922E1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TermsOfUse_iPad.xib; sourceTree = "<group>"; };
-		F512B75C16391DE800B922E1 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		F512B75E16391EB400B922E1 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/InitialAppLaunchViewController_iPad.xib; sourceTree = "<group>"; };
 		F512B762163927E700B922E1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/UserLoginViewController_iPad.xib; sourceTree = "<group>"; };
 		F512B764163927EF00B922E1 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/UserLoginViewController_iPad.xib; sourceTree = "<group>"; };
@@ -673,6 +673,8 @@
 		F53305AA1654E81600D0BCBE /* GADRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GADRequest.h; path = GoogleAds/GADRequest.h; sourceTree = "<group>"; };
 		F53305AB1654E81600D0BCBE /* GADRequestError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GADRequestError.h; path = GoogleAds/GADRequestError.h; sourceTree = "<group>"; };
 		F5341CCD161323C8001E9075 /* libGoogleAdMobAds.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAdMobAds.a; sourceTree = "<group>"; };
+		F535C875165DEEFC0032BDE4 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		F535C879165E47FD0032BDE4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		F53E753B1648FC9600970DB9 /* breathing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = breathing.png; sourceTree = "<group>"; };
 		F53E753C1648FC9600970DB9 /* drinks.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = drinks.jpg; sourceTree = "<group>"; };
 		F53E753D1648FC9600970DB9 /* floor.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = floor.jpg; sourceTree = "<group>"; };
@@ -826,6 +828,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F535C878165DF2340032BDE4 /* Social.framework in Frameworks */,
 				0BADC5B31553DD0000320687 /* AudioToolbox.framework in Frameworks */,
 				0B19188015491AB90010E4E6 /* AVFoundation.framework in Frameworks */,
 				0B659B451536D7EF006558C2 /* StoreKit.framework in Frameworks */,
@@ -1421,6 +1424,7 @@
 			children = (
 				AE7D67351504DB73001718B5 /* libsqlite3.dylib */,
 				AE7D67331504DB6A001718B5 /* libz.dylib */,
+				F535C875165DEEFC0032BDE4 /* Social.framework */,
 				0BADC5B21553DD0000320687 /* AudioToolbox.framework */,
 				0B19187F15491AB90010E4E6 /* AVFoundation.framework */,
 				AE7D67391504DB84001718B5 /* CFNetwork.framework */,
@@ -1981,7 +1985,7 @@
 		F5A6043D162D300300B2ED1D /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				F512B75C16391DE800B922E1 /* Default-568h@2x.png */,
+				F535C879165E47FD0032BDE4 /* Default-568h@2x.png */,
 				0B9026E4156E4D0700DB211F /* IPHONE */,
 				0B9026B1156E465100DB211F /* IPAD */,
 			);
@@ -2235,7 +2239,6 @@
 				F5F1F19A162FE3D70007D55E /* yes_no_btn_hover_iPad.png in Resources */,
 				F5F1F19B162FE3D70007D55E /* yes_no_btn_iPad.png in Resources */,
 				F512B7581639093500B922E1 /* TermsOfUse_iPad.xib in Resources */,
-				F512B75D16391DE800B922E1 /* Default-568h@2x.png in Resources */,
 				F5A884E716411A2B00AFE158 /* btn_small_hover.png in Resources */,
 				F5A884DF16411A1500AFE158 /* btn_small@2x_hover.png in Resources */,
 				F5A884DB16411A0900AFE158 /* btn_small@2x.png in Resources */,
@@ -2269,6 +2272,7 @@
 				F5066EB5165B928A00DF8B6B /* termsOfUseDe.html in Resources */,
 				F5066EB6165B928A00DF8B6B /* termsOfUseDeiPad.html in Resources */,
 				F5066EB7165B928A00DF8B6B /* termsofUseiPad.html in Resources */,
+				F535C87A165E47FD0032BDE4 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -211,78 +211,58 @@ static float totalDuration=0;
     if (playCount==0) {
         if(initalArrayCount<[aras count]){
             initalArrayCount +=1;
-            
-        }
-        else {
+        }else {
             initalArrayCount = 0;
         }
-        
     }
-    if (![[NSFileManager defaultManager] fileExistsAtPath:storeURL])
-    {
+    if (![[NSFileManager defaultManager] fileExistsAtPath:storeURL]){
         if (initalArrayCount<[aras count]) {
             int count =[[aras objectAtIndex:initalArrayCount-1]repeatIntervel];
             if (count==0) {
                 count=1;
             }
             if (playCount==count) {
-                
                 playCount=0;
             }
             [self initializPlayer];
         }
-    }
-    else {
+    }else {
         if (moviePlayer!=nil) {
             if (playCount==0) {
-                
-                     moviePlayer.view .frame= subview.bounds;
-                               
+                 moviePlayer.view .frame= subview.bounds;
                 moviePlayer.contentURL =[NSURL fileURLWithPath:storeURL];
                 moviePlayer.controlStyle = MPMovieControlStyleNone;
                 [moviePlayer play];
-            }
-            else {
+            }else {
                 [moviePlayer play];
                 moviePlayer.controlStyle = MPMovieControlStyleNone;
             }
-        }
-        else {
+        }else {
             moviePlayer = [[MPMoviePlayerController alloc] init];
             moviePlayer.contentURL =[NSURL fileURLWithPath:storeURL];
             [moviePlayer play];
             moviePlayer.controlStyle = MPMovieControlStyleNone;
-            
-                            moviePlayer.view .frame= subview.bounds;
-                [subview addSubview: moviePlayer.view];
-            
+            moviePlayer.view .frame= subview.bounds;
+            [subview addSubview: moviePlayer.view];
         }
         
         moviePlayer.controlStyle = MPMovieControlStyleNone;
-        
         //Register to receive a notification when the movie has finished playing.
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(moviePlayBackDidFinish:)
                                                      name:MPMoviePlayerPlaybackDidFinishNotification
                                                    object:moviePlayer];
-        
-        
     }
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     NSUInteger numTaps = [[touches anyObject] tapCount];
-    if (numTaps == 1)
-    {
+    if (numTaps == 1){
         if(moviePlayer.controlStyle == MPMovieControlStyleEmbedded)
-        {
             moviePlayer.controlStyle = MPMovieControlStyleNone;
-        }
         else
-        {
             moviePlayer.controlStyle = MPMovieControlModeVolumeOnly;
-        }
     }
 }
 
@@ -313,7 +293,6 @@ static float totalDuration=0;
 - (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex==0) {
-        
         if (moviePlayer!=nil) {
             totalDuration+= [moviePlayer currentPlaybackTime];
             totalDuration =totalDuration;
@@ -327,15 +306,11 @@ static float totalDuration=0;
         
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
             viewController = [[ListWorkoutsViewController alloc]initWithNibName:@"ListWorkoutsViewController" bundle:nil];
-        }
-        else {
+        }else {
             viewController = [[ListWorkoutsViewController alloc]initWithNibName:@"ListWorkoutsViewController_iPad" bundle:nil];
         }
         [self.navigationController pushViewController:viewController animated:YES];
         [viewController release];
-    }
-    else {
-        
     }
 }
 
@@ -391,40 +366,20 @@ static float totalDuration=0;
 -(void)updateStatisticsToServer
 {
     BOOL isReachable = [Fitness4MeUtils isReachable];
-    
     if (isReachable) {
-        [self updateServer];
+        NSString *UrlPath= [NSString GetURlPath];
+        NSString *requestString = [NSString stringWithFormat:@"%@stats=yes&userid=%@&workoutid=%i&duration=%f",UrlPath,userID,WorkoutID,totalDuration];
+        NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+        __block ASIHTTPRequest *requests = [ASIHTTPRequest requestWithURL:url];
+        [requests setCompletionBlock:^{
+        
+        }];
+        [requests setFailedBlock:^{
+         
+        }];
+        [requests startAsynchronous];
     }
-    
-    
 }
-
--(void)updateServer{
-    
-   
-       
-    NSString *UrlPath= [NSString GetURlPath];
-NSLog(@"%f",totalDuration);
-    NSString *requestString = [NSString stringWithFormat:@"%@stats=yes&userid=%@&workoutid=%i&duration=%f",UrlPath,userID,WorkoutID,totalDuration];
-    
-    NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    
-    __block ASIHTTPRequest *requests = [ASIHTTPRequest requestWithURL:url];
-    [requests setCompletionBlock:^{
-        // Use when fetching text data
-        NSString *responseString =[requests responseString];
-        if ([responseString length]>0) {
-            NSLog(@"dfdfdfdfdf%f",totalDuration);
-        }else{
-           NSLog(@"ffff%f",totalDuration);
-        }
-    }];
-    [requests setFailedBlock:^{
-           }];
-    [requests startAsynchronous];
-
-}
-
 
 - (void)viewDidUnload
 {

@@ -27,6 +27,7 @@
     NSString *purchaseMode;
     
     NSMutableArray *workouts;
+    NSMutableArray *searchArray;
     
     UIImageView *imageView;
     
@@ -34,6 +35,7 @@
     ASINetworkQueue  *myQueue;
     Workout *selectedWorkout;
 
+    IBOutlet UISearchBar *searchBar;
     IBOutlet UIView *offerView;
     IBOutlet UIView *signupviews;
     IBOutlet UIView *fullvideoView;
@@ -50,6 +52,9 @@
     __unsafe_unretained  IBOutlet UIView *signUpView;
     __unsafe_unretained IBOutlet UITableView *tableview;
     __unsafe_unretained  IBOutlet UIActivityIndicatorView *activityIndicator;
+    
+    BOOL searching;
+    BOOL letUserSelectRow;
     
 }
 

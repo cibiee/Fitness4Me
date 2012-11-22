@@ -78,7 +78,7 @@
 -(IBAction)DismissKeyboardAway;
 -(IBAction)saveUser:(id)sender;
 -(IBAction)onNavigateToHomeView:(id)sender;
--(IBAction)navigateToAcceptAgreement:(id)sender;
+
 
 -(IBAction)onClickLevel:(id)sender;
 

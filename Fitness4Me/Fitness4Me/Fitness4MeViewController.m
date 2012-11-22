@@ -130,8 +130,6 @@
 
 -(IBAction)navigateToWorkoutListView:(id)sender{
     
-    
-    
     ListWorkoutsViewController *viewController;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
         viewController =[[ListWorkoutsViewController alloc]initWithNibName:@"ListWorkoutsViewController" bundle:nil];
@@ -141,9 +139,6 @@
     [self.navigationController pushViewController:viewController animated:YES];
     
     [viewController release];
-    
-    
-    
 }
 
 //
@@ -162,8 +157,6 @@
     [viewController release];
     FitnessServerCommunication *fitness =[[FitnessServerCommunication alloc]init];
     [fitness getAllvideos];
-    
-    
 }
 
 
@@ -208,7 +201,6 @@
 
 -(IBAction)cancelDownloas:(id)sender
 {
-    
     FitnessServerCommunication *fitness =[FitnessServerCommunication sharedState];
     [fitness cancelDownload];
 }
