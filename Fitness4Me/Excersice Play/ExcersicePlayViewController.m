@@ -23,6 +23,10 @@
     return self;
 }
 
+static int initalArrayCount=0;
+static int playCount=0;
+static float totalDuration=0;
+
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
@@ -51,9 +55,52 @@
     }
     
     moviePlayer.view.backgroundColor =[UIColor  whiteColor];
+    [self showAdMobs];
     
     
-    
+}
+
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:YES];
+    totalDuration=0;
+}
+
+
+-(void)showAdMobs
+{
+    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+    NSString *hasMadeFullPurchase= [userinfo valueForKey:@"hasMadeFullPurchase"];
+    [userinfo setObject:@"false" forKey:@"shouldExit"];
+    if ([hasMadeFullPurchase isEqualToString:@"true"]) {
+        
+    }
+    else {
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+        {
+            
+            bannerView_ = [[GADBannerView alloc]
+                           initWithFrame:CGRectMake(0,-7,
+                                                    self.view.frame.size.width-70,
+                                                    50)];
+            
+        }
+        else {
+            bannerView_ = [[GADBannerView alloc]
+                           initWithFrame:CGRectMake(0,0,
+                                                    self.view.frame.size.height-70,
+                                                    90)];
+            
+        }
+        
+        bannerView_.adUnitID = @"a1506940e575b91";
+        bannerView_.rootViewController = self;
+        [self.view addSubview:bannerView_];
+        
+        // Initiate a generic request to load it with an ad.
+        [bannerView_ loadRequest:[GADRequest request]];
+    }
 }
 
 -(void)getExcersices
@@ -78,6 +125,7 @@
         play.repeatIntervel =[[[arr objectAtIndex:i]PosterRepeatCount]intValue];
         play.videoName =[[arr objectAtIndex:i] PosterName];
         if ([play.videoName length]>0) {
+            
             [aras addObject:play];
         }
         [play release];
@@ -86,6 +134,7 @@
         play.repeatIntervel =[[[arr objectAtIndex:i]RepeatCount]intValue];
         play.videoName =[[arr objectAtIndex:i] Name];
         if ([play.videoName length]>0) {
+            
             [aras addObject:play];
         }
         [play release];
@@ -94,6 +143,7 @@
         play.repeatIntervel =[[[arr objectAtIndex:i]StopRep] intValue];
         play.videoName =[[arr objectAtIndex:i] StopName];
         if ([play.videoName length]>0) {
+            
             [aras addObject:play];
         }
         [play release];
@@ -149,9 +199,7 @@
     
 }
 
-static int initalArrayCount=0;
-static int playCount=0;
-static float totalDuration=0;
+
 
 -(void)initializPlayer
 {
@@ -267,8 +315,9 @@ static float totalDuration=0;
     if (buttonIndex==0) {
         
         if (moviePlayer!=nil) {
-            totalDuration= [moviePlayer currentPlaybackTime];
-            totalDuration =totalDuration*60;
+            totalDuration+= [moviePlayer currentPlaybackTime];
+            totalDuration =totalDuration;
+            [self updateStatisticsToServer];
             [moviePlayer release];
         }
         initalArrayCount=0;
@@ -312,13 +361,15 @@ static float totalDuration=0;
         }
         
         [self initializPlayer];
+        
+        totalDuration+= [moviePlayer currentPlaybackTime];
     }
     else {
         
         initalArrayCount=0;
         playCount=0;
-        totalDuration= [moviePlayer currentPlaybackTime];
-        totalDuration=totalDuration*60;
+        totalDuration+= [moviePlayer currentPlaybackTime];
+        totalDuration=totalDuration;
         [self updateStatisticsToServer];
         
         ExcersicePostPlayViewController *viewController;
@@ -350,18 +401,28 @@ static float totalDuration=0;
 
 -(void)updateServer{
     
+    
+    
     NSString *UrlPath= [NSString GetURlPath];
+    NSLog(@"%f",totalDuration);
     NSString *requestString = [NSString stringWithFormat:@"%@stats=yes&userid=%@&workoutid=%i&duration=%f",UrlPath,userID,WorkoutID,totalDuration];
-    NSURL *url =[NSURL URLWithString:requestString];
-    ASIFormDataRequest   *request = [ASIFormDataRequest   requestWithURL:url];
-    [request startSynchronous];
-    NSError *error = [request error];
-    if (!error){
-        NSString *response = [request responseString];
-        if ([response length]>0) {
-            
+    
+    NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    
+    __block ASIHTTPRequest *requests = [ASIHTTPRequest requestWithURL:url];
+    [requests setCompletionBlock:^{
+        // Use when fetching text data
+        NSString *responseString =[requests responseString];
+        if ([responseString length]>0) {
+            NSLog(@"dfdfdfdfdf%f",totalDuration);
+        }else{
+            NSLog(@"ffff%f",totalDuration);
         }
-    }
+    }];
+    [requests setFailedBlock:^{
+    }];
+    [requests startAsynchronous];
+    
 }
 
 
