@@ -123,7 +123,6 @@
 		0BB653F515F5CF4900B53BBA /* icon-ios-passend-neu.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BB653F415F5CF4900B53BBA /* icon-ios-passend-neu.png */; };
 		0BBCCAB01600A4FA0074493B /* completed_exercise_de.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 0B75CA01160061260031BDDD /* completed_exercise_de.mp4 */; };
 		0BBCCAB11600A4FA0074493B /* completed_exercise.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 0B75CA02160061260031BDDD /* completed_exercise.mp4 */; };
-		0BBCCAB21600A4FA0074493B /* next_exercise_de.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 0B75CA03160061260031BDDD /* next_exercise_de.mp4 */; };
 		0BBCCAB31600A4FA0074493B /* next_exercise.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 0B75CA04160061260031BDDD /* next_exercise.mp4 */; };
 		0BBCCAB41600A4FA0074493B /* otherside_exercise_de.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 0B75CA05160061260031BDDD /* otherside_exercise_de.mp4 */; };
 		0BBCCAB51600A4FA0074493B /* otherside_exercise.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 0B75CA06160061260031BDDD /* otherside_exercise.mp4 */; };
@@ -478,7 +477,6 @@
 		0B69973515284B53002BBA31 /* LandigPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandigPageViewController.m; sourceTree = "<group>"; };
 		0B75CA01160061260031BDDD /* completed_exercise_de.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = completed_exercise_de.mp4; sourceTree = "<group>"; };
 		0B75CA02160061260031BDDD /* completed_exercise.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = completed_exercise.mp4; sourceTree = "<group>"; };
-		0B75CA03160061260031BDDD /* next_exercise_de.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = next_exercise_de.mp4; sourceTree = "<group>"; };
 		0B75CA04160061260031BDDD /* next_exercise.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = next_exercise.mp4; sourceTree = "<group>"; };
 		0B75CA05160061260031BDDD /* otherside_exercise_de.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = otherside_exercise_de.mp4; sourceTree = "<group>"; };
 		0B75CA06160061260031BDDD /* otherside_exercise.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = otherside_exercise.mp4; sourceTree = "<group>"; };
@@ -720,6 +718,7 @@
 		F5428002165399F600520F0C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RatingViewControllerView_iPad.xib; sourceTree = "<group>"; };
 		F5428005165399FA00520F0C /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/RatingViewControllerView_iPad.xib; sourceTree = "<group>"; };
 		F5439A9F163A61F2007A534A /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/Fitness4MeViewController_iPad.xib; sourceTree = "<group>"; };
+		F557AFE8165F2F6F0033759A /* next_exercise_de.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = next_exercise_de.mp4; sourceTree = "<group>"; };
 		F5A60440162D35B800B2ED1D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/InitialAppLaunchViewController_iPad.xib; sourceTree = "<group>"; };
 		F5A60444162D361000B2ED1D /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/app_bg_landscape_iPad.png; sourceTree = "<group>"; };
 		F5A60446162D361300B2ED1D /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/app_bg_landscape_iPad.png; sourceTree = "<group>"; };
@@ -992,9 +991,9 @@
 		0B75CA00160060E80031BDDD /* interMediateVideos */ = {
 			isa = PBXGroup;
 			children = (
+				F557AFE8165F2F6F0033759A /* next_exercise_de.mp4 */,
 				0B75CA01160061260031BDDD /* completed_exercise_de.mp4 */,
 				0B75CA02160061260031BDDD /* completed_exercise.mp4 */,
-				0B75CA03160061260031BDDD /* next_exercise_de.mp4 */,
 				0B75CA04160061260031BDDD /* next_exercise.mp4 */,
 				0B75CA05160061260031BDDD /* otherside_exercise_de.mp4 */,
 				0B75CA06160061260031BDDD /* otherside_exercise.mp4 */,
@@ -2063,7 +2062,6 @@
 			files = (
 				0BBCCAB01600A4FA0074493B /* completed_exercise_de.mp4 in Resources */,
 				0BBCCAB11600A4FA0074493B /* completed_exercise.mp4 in Resources */,
-				0BBCCAB21600A4FA0074493B /* next_exercise_de.mp4 in Resources */,
 				0BBCCAB31600A4FA0074493B /* next_exercise.mp4 in Resources */,
 				0BBCCAB41600A4FA0074493B /* otherside_exercise_de.mp4 in Resources */,
 				0BBCCAB51600A4FA0074493B /* otherside_exercise.mp4 in Resources */,
