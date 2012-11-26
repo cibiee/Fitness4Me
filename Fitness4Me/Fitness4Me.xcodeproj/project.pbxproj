@@ -215,7 +215,6 @@
 		F53305A01654E78900D0BCBE /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F533059C1654E78900D0BCBE /* FMDatabaseAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F53305A11654E78900D0BCBE /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = F533059E1654E78900D0BCBE /* FMResultSet.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F5341CCE161323C8001E9075 /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F5341CCD161323C8001E9075 /* libGoogleAdMobAds.a */; };
-		F535C878165DF2340032BDE4 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F535C875165DEEFC0032BDE4 /* Social.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		F535C87A165E47FD0032BDE4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F535C879165E47FD0032BDE4 /* Default-568h@2x.png */; };
 		F53E75421648FC9600970DB9 /* breathing.png in Resources */ = {isa = PBXBuildFile; fileRef = F53E753B1648FC9600970DB9 /* breathing.png */; };
 		F53E75431648FC9600970DB9 /* drinks.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F53E753C1648FC9600970DB9 /* drinks.jpg */; };
@@ -240,6 +239,7 @@
 		F5427FF416537B2300520F0C /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = F5427FEB16537B2300520F0C /* ASINetworkQueue.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F5427FF716537D4F00520F0C /* NSString+Config.m in Sources */ = {isa = PBXBuildFile; fileRef = F5427FF616537D4F00520F0C /* NSString+Config.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F5428001165399F600520F0C /* RatingViewControllerView_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5428003165399F600520F0C /* RatingViewControllerView_iPad.xib */; };
+		F557B012165F9DD30033759A /* next_exercise_de.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F557AFE8165F2F6F0033759A /* next_exercise_de.mp4 */; };
 		F5A6043F162D35B800B2ED1D /* InitialAppLaunchViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5A60441162D35B800B2ED1D /* InitialAppLaunchViewController_iPad.xib */; };
 		F5A60443162D361000B2ED1D /* app_bg_landscape_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A60445162D361000B2ED1D /* app_bg_landscape_iPad.png */; };
 		F5A60447162D361800B2ED1D /* app_bg_portrait_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A60449162D361800B2ED1D /* app_bg_portrait_iPad.png */; };
@@ -827,7 +827,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F535C878165DF2340032BDE4 /* Social.framework in Frameworks */,
 				0BADC5B31553DD0000320687 /* AudioToolbox.framework in Frameworks */,
 				0B19188015491AB90010E4E6 /* AVFoundation.framework in Frameworks */,
 				0B659B451536D7EF006558C2 /* StoreKit.framework in Frameworks */,
@@ -1052,46 +1051,7 @@
 		0B9026B1156E465100DB211F /* IPAD */ = {
 			isa = PBXGroup;
 			children = (
-				F5C0B373165A1DCA0008B5EA /* landscape_logo.png */,
-				F5A60445162D361000B2ED1D /* app_bg_landscape_iPad.png */,
-				F5A60449162D361800B2ED1D /* app_bg_portrait_iPad.png */,
-				F5F1F16F162FE3D70007D55E /* big_green_container_iPad.png */,
-				F5A6044D162D362000B2ED1D /* btn_landscape_hover_iPad.png */,
-				F5A60451162D362900B2ED1D /* btn_landscape_iPad.png */,
-				F5A60455162D363200B2ED1D /* btn_portrait_hover_iPad.png */,
-				F5A60458162D364700B2ED1D /* btn_portrait_iPad.png */,
-				F5F1F171162FE3D70007D55E /* buttongreenyes_iPad.png */,
-				F5A60491162D369400B2ED1D /* calender_iPad.png */,
-				F5A6048E162D369000B2ED1D /* closePopup_iPad.png */,
-				F5F1F173162FE3D70007D55E /* congrats_iPad.png */,
-				F5A6048B162D368D00B2ED1D /* home_bg_iPad.png */,
-				F5A60488162D368900B2ED1D /* home_logo_iPad.png */,
-				F5A60485162D368500B2ED1D /* home_nav_bot_hover_iPad.png */,
-				F5A60482162D368100B2ED1D /* home_nav_bot_iPad.png */,
-				F5A6047F162D367D00B2ED1D /* home_nav_mid_hover_iPad.png */,
-				F5A6047C162D367900B2ED1D /* home_nav_mid_iPad.png */,
-				F5A60479162D367500B2ED1D /* home_nav_top_hover_iPad.png */,
-				F5A60476162D367200B2ED1D /* home_nav_top_iPad.png */,
-				F5A60473162D366E00B2ED1D /* lady_iPad.png */,
-				F5A60470162D366A00B2ED1D /* ladypopup_iPad.png */,
-				F5A6046D162D366500B2ED1D /* letsgo_iPad.png */,
-				F5A6046A162D366100B2ED1D /* list_item_hover_iPad.png */,
-				F5A60467162D365D00B2ED1D /* list_item_iPad.png */,
-				F5A60464162D365A00B2ED1D /* lock_iPad.png */,
-				F5A60461162D365500B2ED1D /* man_IPad.png */,
-				F5F1F175162FE3D70007D55E /* popup_line_iPad.png */,
-				F5F1F177162FE3D70007D55E /* push-up-on-beach_iPad.png */,
-				F5F1F179162FE3D70007D55E /* second_btn_hove_ipad.png */,
-				F5F1F17B162FE3D70007D55E /* second_btn_iPad.png */,
-				F5F1F17D162FE3D70007D55E /* settings_iPad.png */,
-				F5F1F17F162FE3D70007D55E /* sign-in_ipad.jpg */,
-				F5F1F181162FE3D70007D55E /* small_green_container_iPad.png */,
-				F5A6045B162D364E00B2ED1D /* small_logo_iPad.png */,
-				F5F1F183162FE3D70007D55E /* small_logo_new_iPad.png */,
-				F5F1F187162FE3D70007D55E /* upgrade-landscape_iPad.png */,
-				F5F1F185162FE3D70007D55E /* upgrade_iPad.png */,
-				F5F1F189162FE3D70007D55E /* yes_no_btn_hover_iPad.png */,
-				F5F1F18B162FE3D70007D55E /* yes_no_btn_iPad.png */,
+				F5375B951663339C000F1921 /* 1X */,
 			);
 			name = IPAD;
 			path = Fitness4Me/IPAD;
@@ -1809,6 +1769,53 @@
 			name = GoogleAds;
 			sourceTree = "<group>";
 		};
+		F5375B951663339C000F1921 /* 1X */ = {
+			isa = PBXGroup;
+			children = (
+				F5C0B373165A1DCA0008B5EA /* landscape_logo.png */,
+				F5A60445162D361000B2ED1D /* app_bg_landscape_iPad.png */,
+				F5A60449162D361800B2ED1D /* app_bg_portrait_iPad.png */,
+				F5F1F16F162FE3D70007D55E /* big_green_container_iPad.png */,
+				F5A6044D162D362000B2ED1D /* btn_landscape_hover_iPad.png */,
+				F5A60451162D362900B2ED1D /* btn_landscape_iPad.png */,
+				F5A60455162D363200B2ED1D /* btn_portrait_hover_iPad.png */,
+				F5A60458162D364700B2ED1D /* btn_portrait_iPad.png */,
+				F5F1F171162FE3D70007D55E /* buttongreenyes_iPad.png */,
+				F5A60491162D369400B2ED1D /* calender_iPad.png */,
+				F5A6048E162D369000B2ED1D /* closePopup_iPad.png */,
+				F5F1F173162FE3D70007D55E /* congrats_iPad.png */,
+				F5A6048B162D368D00B2ED1D /* home_bg_iPad.png */,
+				F5A60488162D368900B2ED1D /* home_logo_iPad.png */,
+				F5A60485162D368500B2ED1D /* home_nav_bot_hover_iPad.png */,
+				F5A60482162D368100B2ED1D /* home_nav_bot_iPad.png */,
+				F5A6047F162D367D00B2ED1D /* home_nav_mid_hover_iPad.png */,
+				F5A6047C162D367900B2ED1D /* home_nav_mid_iPad.png */,
+				F5A60479162D367500B2ED1D /* home_nav_top_hover_iPad.png */,
+				F5A60476162D367200B2ED1D /* home_nav_top_iPad.png */,
+				F5A60473162D366E00B2ED1D /* lady_iPad.png */,
+				F5A60470162D366A00B2ED1D /* ladypopup_iPad.png */,
+				F5A6046D162D366500B2ED1D /* letsgo_iPad.png */,
+				F5A6046A162D366100B2ED1D /* list_item_hover_iPad.png */,
+				F5A60467162D365D00B2ED1D /* list_item_iPad.png */,
+				F5A60464162D365A00B2ED1D /* lock_iPad.png */,
+				F5A60461162D365500B2ED1D /* man_IPad.png */,
+				F5F1F175162FE3D70007D55E /* popup_line_iPad.png */,
+				F5F1F177162FE3D70007D55E /* push-up-on-beach_iPad.png */,
+				F5F1F179162FE3D70007D55E /* second_btn_hove_ipad.png */,
+				F5F1F17B162FE3D70007D55E /* second_btn_iPad.png */,
+				F5F1F17D162FE3D70007D55E /* settings_iPad.png */,
+				F5F1F17F162FE3D70007D55E /* sign-in_ipad.jpg */,
+				F5F1F181162FE3D70007D55E /* small_green_container_iPad.png */,
+				F5A6045B162D364E00B2ED1D /* small_logo_iPad.png */,
+				F5F1F183162FE3D70007D55E /* small_logo_new_iPad.png */,
+				F5F1F187162FE3D70007D55E /* upgrade-landscape_iPad.png */,
+				F5F1F185162FE3D70007D55E /* upgrade_iPad.png */,
+				F5F1F189162FE3D70007D55E /* yes_no_btn_hover_iPad.png */,
+				F5F1F18B162FE3D70007D55E /* yes_no_btn_iPad.png */,
+			);
+			name = 1X;
+			sourceTree = "<group>";
+		};
 		F53E753A1648FC9600970DB9 /* images */ = {
 			isa = PBXGroup;
 			children = (
@@ -2060,6 +2067,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F557B012165F9DD30033759A /* next_exercise_de.mp4 in Resources */,
 				0BBCCAB01600A4FA0074493B /* completed_exercise_de.mp4 in Resources */,
 				0BBCCAB11600A4FA0074493B /* completed_exercise.mp4 in Resources */,
 				0BBCCAB31600A4FA0074493B /* next_exercise.mp4 in Resources */,
@@ -3844,8 +3852,8 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				PROVISIONING_PROFILE = "42A6E2DC-4080-4C48-A5EB-8D1437D01B27";
-				"PROVISIONING_PROFILE[sdk=*]" = "42A6E2DC-4080-4C48-A5EB-8D1437D01B27";
+				PROVISIONING_PROFILE = "7BB5F6C2-4A00-47F1-A85C-4FC8F4BD59DB";
+				"PROVISIONING_PROFILE[sdk=*]" = "7BB5F6C2-4A00-47F1-A85C-4FC8F4BD59DB";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -3863,7 +3871,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "42A6E2DC-4080-4C48-A5EB-8D1437D01B27";
+				PROVISIONING_PROFILE = "7BB5F6C2-4A00-47F1-A85C-4FC8F4BD59DB";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -3883,8 +3891,8 @@
 				LIBRARY_SEARCH_PATHS = /Project/Fitness4Me;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "42A6E2DC-4080-4C48-A5EB-8D1437D01B27";
-				"PROVISIONING_PROFILE[sdk=*]" = "42A6E2DC-4080-4C48-A5EB-8D1437D01B27";
+				PROVISIONING_PROFILE = "7BB5F6C2-4A00-47F1-A85C-4FC8F4BD59DB";
+				"PROVISIONING_PROFILE[sdk=*]" = "7BB5F6C2-4A00-47F1-A85C-4FC8F4BD59DB";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
@@ -3904,7 +3912,7 @@
 				LIBRARY_SEARCH_PATHS = /Project/Fitness4Me;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "42A6E2DC-4080-4C48-A5EB-8D1437D01B27";
+				PROVISIONING_PROFILE = "7BB5F6C2-4A00-47F1-A85C-4FC8F4BD59DB";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;

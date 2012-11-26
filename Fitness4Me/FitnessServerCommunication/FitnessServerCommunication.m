@@ -240,7 +240,7 @@ static FitnessServerCommunication *sharedState;
     if (isReachable)
     {
         NSString *UrlPath= [NSString GetURlPath];
-        NSString *requestString =[NSString stringWithFormat:@"%@user_setting=yes&user_name=%@&user_surname=%@&user_email=%@&user_level=%@&user_id=%@",UrlPath,name,@"K",email,userLevel,userID];
+        NSString *requestString =[NSString stringWithFormat:@"%@user_setting=yes&user_name=%@&user_surname=%@&user_email=%@&user_level=%@&user_id=%@",UrlPath,name,@"",email,userLevel,userID];
         NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:
                                           NSUTF8StringEncoding]];
         
@@ -326,6 +326,7 @@ static FitnessServerCommunication *sharedState;
          NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         
         __weak ASIHTTPRequest *requests = [ASIHTTPRequest requestWithURL:url];
+        
         [requests setCompletionBlock:^{
             // Use when fetching text data
             NSString *responseString =[requests responseString];

@@ -38,7 +38,7 @@ typedef void (^errorBlock)(NSString *errorString);
     
     ASIHTTPRequest   *downloadrequest ;
     ASINetworkQueue  *myQueue;
-    
+    ASINetworkQueue  *imageQueue;
     UIProgressView *myProgressIndicator;
 
     NSURLConnection *connection;
@@ -51,6 +51,8 @@ typedef void (^errorBlock)(NSString *errorString);
 @property (nonatomic,retain) id<FitnessServerCommunicationDelegate> delegate;
 @property (nonatomic,retain) NSMutableArray *workouts;
 @property (nonatomic,retain) ASINetworkQueue *myQueue;
+@property (nonatomic,retain) ASINetworkQueue *imageQueue;
+
 
 
 
@@ -77,7 +79,8 @@ typedef void (^errorBlock)(NSString *errorString);
 
 -(void)updateStatisticsToServer:(NSString *)userID  workoutID: (int)workoutID workoutDuration:(float)totalDuration onCompletion:(ResponseBlock)completionBlock onError:(NSError*)errorBlock;
 
--(void) getImageAtPath:(NSString *)imageUrl toDestination:( NSString *)storeURL setDelegate:(UIViewController*)viewController;
+-(void) getImageAtPath:(NSString *)imageUrl toDestination:( NSString *)storeURL;
+
 -(void)getFreePurchaseCount:(int)UserID ;
 -(void)getAllvideos;
 -(void)cancelDownload;

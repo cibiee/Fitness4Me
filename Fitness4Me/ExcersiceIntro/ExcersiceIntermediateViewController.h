@@ -26,7 +26,7 @@
 #define kInAppPurchaseManagerTransactionSucceededNotification @"kInAppPurchaseManagerTransactionSucceededNotification"
 #define kInAppPurchaseProUpgradeProductId @"com.fitness4me.Fitness4Me"
 
-@interface ExcersiceIntermediateViewController : UIViewController<SKProductsRequestDelegate,SKPaymentTransactionObserver,ASIHTTPRequestDelegate>
+@interface ExcersiceIntermediateViewController : UIViewController<SKProductsRequestDelegate,SKPaymentTransactionObserver,ASIHTTPRequestDelegate,FitnessServerCommunicationDelegate>
 {
     BOOL isConected;
     int count;
@@ -45,7 +45,7 @@
     NSMutableArray *excersices;
     NSMutableArray *arr;
     NSMutableArray *excersicesList;
-
+ASINetworkQueue  *imageQueue;
     
     IBOutlet UIImageView *excersiceImageHolder;
     IBOutlet UITextView  *descriptionTextview;
@@ -77,6 +77,7 @@
 @property(retain,nonatomic)NSString *userID;
 @property(retain,nonatomic)NSString *productIdentifier;
 @property (nonatomic,retain) ASINetworkQueue *myQueue;
+@property (nonatomic,retain) ASINetworkQueue *imageQueue;
 
 -(void)downloadVideos:(NSString *)url:(NSString*)name;
 -(void)parseExcersiceDetails;

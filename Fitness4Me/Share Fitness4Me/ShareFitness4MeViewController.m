@@ -71,16 +71,20 @@
         [Fitness4MeUtils createDirectoryatPath:dataPath];
         storeURL= [dataPath stringByAppendingPathComponent :imageName];
         if (![[NSFileManager defaultManager] fileExistsAtPath:storeURL]){
-            NSURL * imageURLs = [NSURL URLWithString:imageUrl];
-            NSData * imageData = [NSData dataWithContentsOfURL:imageURLs];
+            
+            NSURL * imageURL = [NSURL URLWithString:self.imageUrl];
+            NSData * imageData = [NSData dataWithContentsOfURL:imageURL];
             excersiceImageHolder.image = [UIImage imageWithData:imageData];
-            FitnessServerCommunication *fitness =[FitnessServerCommunication sharedState];
-            [fitness getImageAtPath:imageUrl toDestination:storeURL setDelegate:self];
+            ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:self.imageUrl]];
+            [request setDownloadDestinationPath:storeURL];
+            [request setDelegate:self];
+            [request startAsynchronous];
         }else {
             UIImage *im =[[UIImage alloc]initWithContentsOfFile:storeURL];
             excersiceImageHolder.image=im;
         }
-    }else{
+    }
+            else{
         storeURL= [dataPath stringByAppendingPathComponent :[self imageName]];
         if ([[NSFileManager defaultManager] fileExistsAtPath:storeURL]){
             UIImage *im =[[UIImage alloc]initWithContentsOfFile:storeURL];
@@ -101,9 +105,9 @@
     NSString *workoutName=[userinfo stringForKey:@"WorkoutName"];
     NSString *msg;
     if ([Fitness4MeUtils getApplicationLanguage] ==1) {
-         msg =@" just completed the fitness4.Me ";
+         msg =@" just completed the fitness4.me ";
     }else{
-         msg =@" just completed the fitness4.Me ";
+         msg =@" just completed the fitness4.me ";
     }
    
     msg =[name stringByAppendingString:msg];

@@ -91,19 +91,19 @@
         [Fitness4MeUtils showAlert:@"Please select a language !"];
     }else{
         
-//        
-//        [UIView transitionWithView:selectLanguageView duration:1
-//                           options:UIViewAnimationOptionTransitionCurlUp animations:^{
-//                               [selectLanguageView setAlpha:0.0];
-//                               
-//                           }
-//                        completion:^(BOOL finished)
-//         {
+        
+        [UIView transitionWithView:selectLanguageView duration:1
+                           options:UIViewAnimationOptionTransitionCurlUp animations:^{
+                               [selectLanguageView setAlpha:0.0];
+                               
+                           }
+                        completion:^(BOOL finished)
+         {
              [selectLanguageView removeFromSuperview];
+              [self showTermsofUse];
              
-             
-//         }];
-        [self showTermsofUse];
+        }];
+       
     }
 }
 

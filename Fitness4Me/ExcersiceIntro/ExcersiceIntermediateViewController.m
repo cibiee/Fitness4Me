@@ -99,10 +99,13 @@
         // Check If File Does Exists if not download the video
         if (![[NSFileManager defaultManager] fileExistsAtPath:storeURL]){
             
-            UIImage *im =[UIImage imageNamed:@"dummyimg.png"];
-            excersiceImageHolder.image =im;
-            FitnessServerCommunication *fitness =[FitnessServerCommunication sharedState];
-            [fitness getImageAtPath:[self.workout ImageUrl] toDestination:storeURL setDelegate:self];
+            NSURL * imageURL = [NSURL URLWithString:[self. workout ImageUrl]];
+            NSData * imageData = [NSData dataWithContentsOfURL:imageURL];
+            excersiceImageHolder.image = [UIImage imageWithData:imageData];
+            ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:[self.workout ImageUrl]]];
+            [request setDownloadDestinationPath:storeURL];
+            [request setDelegate:self];
+            [request startAsynchronous];
         }else {
             UIImage *im =[[UIImage alloc]initWithContentsOfFile:storeURL];
             excersiceImageHolder.image=im;
@@ -120,6 +123,42 @@
         }
     }
 }
+
+-(void) getImageAtPath:(NSString *)imageUrl toDestination:( NSString *)storeURLs
+{
+    
+    [self.imageQueue setDelegate:self];
+    [self.imageQueue setShowAccurateProgress:YES];
+    [self.imageQueue setRequestDidFinishSelector:@selector(didfinishedDownloadImage:)];
+    [self.imageQueue setRequestDidFailSelector:@selector(requestDidFails:)];
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:imageUrl]];
+    [request setDownloadDestinationPath:storeURLs];
+    [request setTimeOutSeconds:100];
+    [request shouldContinueWhenAppEntersBackground];
+    [imageQueue addOperation:[request copy]];
+    [imageQueue go];
+    
+    
+}
+
+- (void)downloadImageDidfinish:(ASINetworkQueue *)queue
+{
+    if ([[NSFileManager defaultManager] fileExistsAtPath:storeURL]){
+        UIImage *im =[[UIImage alloc]initWithContentsOfFile:storeURL];
+        excersiceImageHolder.image=im;
+        [im release];
+    }else{
+        UIImage *im =[UIImage imageNamed:@"dummyimg.png"];
+        excersiceImageHolder.image =im;
+    }
+}
+
+- (void)requestDidFails:(ASINetworkQueue *)queue
+{
+    
+    
+}
+
 
 
 -(void)InitializeView
@@ -148,6 +187,17 @@
 }
 
 
+- (void)didfinishedDownloadImage
+{
+    if ([[NSFileManager defaultManager] fileExistsAtPath:storeURL]){
+        UIImage *im =[[UIImage alloc]initWithContentsOfFile:storeURL];
+        excersiceImageHolder.image=im;
+        [im release];
+    }else{
+        UIImage *im =[UIImage imageNamed:@"dummyimg.png"];
+        excersiceImageHolder.image =im;
+    }
+}
 //
 //  updated server with the video informations
 //
@@ -577,14 +627,7 @@
 
 -(void)NavigateToWorkoutList
 {
-    ListWorkoutsViewController *viewController;
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
-        viewController = [[ListWorkoutsViewController alloc]initWithNibName:@"ListWorkoutsViewController" bundle:nil];
-    }else {
-        viewController = [[ListWorkoutsViewController alloc]initWithNibName:@"ListWorkoutsViewController_iPad" bundle:nil];
-    }
-    [self.navigationController pushViewController:viewController animated:YES];
-    [viewController release];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
