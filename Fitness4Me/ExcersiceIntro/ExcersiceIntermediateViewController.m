@@ -124,22 +124,7 @@
     }
 }
 
--(void) getImageAtPath:(NSString *)imageUrl toDestination:( NSString *)storeURLs
-{
-    
-    [self.imageQueue setDelegate:self];
-    [self.imageQueue setShowAccurateProgress:YES];
-    [self.imageQueue setRequestDidFinishSelector:@selector(didfinishedDownloadImage:)];
-    [self.imageQueue setRequestDidFailSelector:@selector(requestDidFails:)];
-    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:imageUrl]];
-    [request setDownloadDestinationPath:storeURLs];
-    [request setTimeOutSeconds:100];
-    [request shouldContinueWhenAppEntersBackground];
-    [imageQueue addOperation:[request copy]];
-    [imageQueue go];
-    
-    
-}
+
 
 - (void)downloadImageDidfinish:(ASINetworkQueue *)queue
 {

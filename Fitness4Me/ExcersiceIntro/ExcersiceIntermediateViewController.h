@@ -45,7 +45,7 @@
     NSMutableArray *excersices;
     NSMutableArray *arr;
     NSMutableArray *excersicesList;
-ASINetworkQueue  *imageQueue;
+
     
     IBOutlet UIImageView *excersiceImageHolder;
     IBOutlet UITextView  *descriptionTextview;

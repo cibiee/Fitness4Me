@@ -22,7 +22,7 @@
 @implementation FitnessServerCommunication
 
 static FitnessServerCommunication *sharedState;
-@synthesize delegate,workouts,myQueue;
+@synthesize delegate,workouts,myQueue,imageQueue;
 - (id)init
 {
     self = [super init];

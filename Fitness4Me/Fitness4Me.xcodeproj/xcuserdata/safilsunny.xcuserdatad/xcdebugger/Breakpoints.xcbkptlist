@@ -1217,11 +1217,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ExcersiceIntro/ExcersiceIntermediateViewController.m"
-         timestampString = "375339537.316274"
+         timestampString = "375683756.829479"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "245"
-         endingLineNumber = "245"
+         startingLineNumber = "230"
+         endingLineNumber = "230"
          landmarkName = "-getWorkoutVideoData:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1230,11 +1230,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ExcersiceIntro/ExcersiceIntermediateViewController.m"
-         timestampString = "375339537.316274"
+         timestampString = "375683756.829479"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "292"
-         endingLineNumber = "292"
+         startingLineNumber = "277"
+         endingLineNumber = "277"
          landmarkName = "-initilaizeDatabase"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1243,11 +1243,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ExcersiceIntro/ExcersiceIntermediateViewController.m"
-         timestampString = "375339537.316274"
+         timestampString = "375683756.829479"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "300"
-         endingLineNumber = "300"
+         startingLineNumber = "285"
+         endingLineNumber = "285"
          landmarkName = "-navigateToHome"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1256,11 +1256,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ExcersiceIntro/ExcersiceIntermediateViewController.m"
-         timestampString = "375339537.316274"
+         timestampString = "375683756.829479"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "322"
-         endingLineNumber = "322"
+         startingLineNumber = "307"
+         endingLineNumber = "307"
          landmarkName = "-alertView:willDismissWithButtonIndex:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1269,11 +1269,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ExcersiceIntro/ExcersiceIntermediateViewController.m"
-         timestampString = "375339537.316274"
+         timestampString = "375683756.829479"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "334"
-         endingLineNumber = "334"
+         startingLineNumber = "319"
+         endingLineNumber = "319"
          landmarkName = "-deleteExcersices"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1282,11 +1282,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ExcersiceIntro/ExcersiceIntermediateViewController.m"
-         timestampString = "375339537.316274"
+         timestampString = "375683756.829479"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "346"
-         endingLineNumber = "346"
+         startingLineNumber = "331"
+         endingLineNumber = "331"
          landmarkName = "-getUserDetails"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1295,11 +1295,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ExcersiceIntro/ExcersiceIntermediateViewController.m"
-         timestampString = "375339537.316274"
+         timestampString = "375683756.829479"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "355"
-         endingLineNumber = "355"
+         startingLineNumber = "340"
+         endingLineNumber = "340"
          landmarkName = "-insertExcersices"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1308,11 +1308,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ExcersiceIntro/ExcersiceIntermediateViewController.m"
-         timestampString = "375339537.316274"
+         timestampString = "375683756.829479"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "370"
-         endingLineNumber = "370"
+         startingLineNumber = "355"
+         endingLineNumber = "355"
          landmarkName = "-getExcersices"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1321,11 +1321,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ExcersiceIntro/ExcersiceIntermediateViewController.m"
-         timestampString = "375339537.316274"
+         timestampString = "375683756.829479"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "384"
-         endingLineNumber = "384"
+         startingLineNumber = "369"
+         endingLineNumber = "369"
          landmarkName = "-getUnlockedExcersices"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1334,7 +1334,20 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ExcersiceIntro/ExcersiceIntermediateViewController.m"
-         timestampString = "375339537.316274"
+         timestampString = "375683756.829479"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "361"
+         endingLineNumber = "361"
+         landmarkName = "@implementation ExcersiceIntermediateViewController"
+         landmarkType = "3">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "ExcersiceIntro/ExcersiceIntermediateViewController.m"
+         timestampString = "375683756.829479"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "376"
@@ -1347,24 +1360,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ExcersiceIntro/ExcersiceIntermediateViewController.m"
-         timestampString = "375339537.316274"
+         timestampString = "375683756.829479"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "391"
-         endingLineNumber = "391"
-         landmarkName = "@implementation ExcersiceIntermediateViewController"
-         landmarkType = "3">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "ExcersiceIntro/ExcersiceIntermediateViewController.m"
-         timestampString = "375339537.316274"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "300"
-         endingLineNumber = "300"
+         startingLineNumber = "285"
+         endingLineNumber = "285"
          landmarkName = "-navigateToHome"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1373,11 +1373,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ExcersiceIntro/ExcersiceIntermediateViewController.m"
-         timestampString = "375339537.316274"
+         timestampString = "375683756.829479"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "299"
-         endingLineNumber = "299"
+         startingLineNumber = "284"
+         endingLineNumber = "284"
          landmarkName = "-navigateToHome"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1386,11 +1386,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ExcersiceIntro/ExcersiceIntermediateViewController.m"
-         timestampString = "375339537.316274"
+         timestampString = "375683756.829479"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "579"
-         endingLineNumber = "579"
+         startingLineNumber = "564"
+         endingLineNumber = "564"
          landmarkName = "-requestFailed:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1399,11 +1399,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ExcersiceIntro/ExcersiceIntermediateViewController.m"
-         timestampString = "375339537.316274"
+         timestampString = "375683756.829479"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "605"
-         endingLineNumber = "605"
+         startingLineNumber = "590"
+         endingLineNumber = "590"
          landmarkName = "-UnlockVideos"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1438,11 +1438,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ExcersiceIntro/ExcersiceIntermediateViewController.m"
-         timestampString = "375339537.316274"
+         timestampString = "375683756.829479"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "529"
-         endingLineNumber = "529"
+         startingLineNumber = "514"
+         endingLineNumber = "514"
          landmarkName = "-downloadVideos::"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1451,11 +1451,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ExcersiceIntro/ExcersiceIntermediateViewController.m"
-         timestampString = "375339537.316274"
+         timestampString = "375683756.829479"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "500"
-         endingLineNumber = "500"
+         startingLineNumber = "485"
+         endingLineNumber = "485"
          landmarkName = "-downloadVideos::"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1594,11 +1594,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ExcersiceIntro/ExcersiceIntermediateViewController.m"
-         timestampString = "375339537.316274"
+         timestampString = "375683756.829479"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "365"
-         endingLineNumber = "365"
+         startingLineNumber = "350"
+         endingLineNumber = "350"
          landmarkName = "-getExcersices"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1607,11 +1607,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ExcersiceIntro/ExcersiceIntermediateViewController.m"
-         timestampString = "375339537.316274"
+         timestampString = "375683756.829479"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "366"
-         endingLineNumber = "366"
+         startingLineNumber = "351"
+         endingLineNumber = "351"
          landmarkName = "-getExcersices"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1620,11 +1620,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ExcersiceIntro/ExcersiceIntermediateViewController.m"
-         timestampString = "375339537.316274"
+         timestampString = "375683756.829479"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "270"
-         endingLineNumber = "270"
+         startingLineNumber = "255"
+         endingLineNumber = "255"
          landmarkName = "-parseExcersiceDetails"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1633,11 +1633,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ExcersiceIntro/ExcersiceIntermediateViewController.m"
-         timestampString = "375339537.316274"
+         timestampString = "375683756.829479"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "264"
-         endingLineNumber = "264"
+         startingLineNumber = "249"
+         endingLineNumber = "249"
          landmarkName = "-parseExcersiceDetails"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1646,11 +1646,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ExcersiceIntro/ExcersiceIntermediateViewController.m"
-         timestampString = "375339537.316274"
+         timestampString = "375683756.829479"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "267"
-         endingLineNumber = "267"
+         startingLineNumber = "252"
+         endingLineNumber = "252"
          landmarkName = "-parseExcersiceDetails"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1659,11 +1659,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ExcersiceIntro/ExcersiceIntermediateViewController.m"
-         timestampString = "375339537.316274"
+         timestampString = "375683756.829479"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "608"
-         endingLineNumber = "608"
+         startingLineNumber = "593"
+         endingLineNumber = "593"
          landmarkName = "-UnlockVideos"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1672,11 +1672,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ExcersiceIntro/ExcersiceIntermediateViewController.m"
-         timestampString = "375339537.316274"
+         timestampString = "375683756.829479"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "599"
-         endingLineNumber = "599"
+         startingLineNumber = "584"
+         endingLineNumber = "584"
          landmarkName = "-UnlockVideos"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1763,11 +1763,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ExcersiceIntro/ExcersiceIntermediateViewController.m"
-         timestampString = "375339537.316274"
+         timestampString = "375683756.829479"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "192"
-         endingLineNumber = "192"
+         startingLineNumber = "177"
+         endingLineNumber = "177"
          landmarkName = "-didfinishedDownloadImage"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1776,11 +1776,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ExcersiceIntro/ExcersiceIntermediateViewController.m"
-         timestampString = "375339537.316274"
+         timestampString = "375683756.829479"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "198"
-         endingLineNumber = "198"
+         startingLineNumber = "183"
+         endingLineNumber = "183"
          landmarkName = "-didfinishedDownloadImage"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1789,11 +1789,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ExcersiceIntro/ExcersiceIntermediateViewController.m"
-         timestampString = "375339537.316274"
+         timestampString = "375683756.829479"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "197"
-         endingLineNumber = "197"
+         startingLineNumber = "182"
+         endingLineNumber = "182"
          landmarkName = "-didfinishedDownloadImage"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1808,71 +1808,6 @@
          startingLineNumber = "353"
          endingLineNumber = "353"
          landmarkName = "-getImageAtPath:toDestination:setDelegate:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "ExcersiceIntro/ExcersiceIntermediateViewController.m"
-         timestampString = "375339537.316274"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "152"
-         endingLineNumber = "152"
-         landmarkName = "-downloadImageDidfinish:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "ExcersiceIntro/ExcersiceIntermediateViewController.m"
-         timestampString = "375339537.316274"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "147"
-         endingLineNumber = "147"
-         landmarkName = "-downloadImageDidfinish:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "ExcersiceIntro/ExcersiceIntermediateViewController.m"
-         timestampString = "375339537.316274"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "131"
-         endingLineNumber = "131"
-         landmarkName = "-getImageAtPath:toDestination:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "ExcersiceIntro/ExcersiceIntermediateViewController.m"
-         timestampString = "375339537.316274"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "139"
-         endingLineNumber = "139"
-         landmarkName = "-getImageAtPath:toDestination:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "ExcersiceIntro/ExcersiceIntermediateViewController.m"
-         timestampString = "375339537.316274"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "146"
-         endingLineNumber = "146"
-         landmarkName = "-downloadImageDidfinish:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint

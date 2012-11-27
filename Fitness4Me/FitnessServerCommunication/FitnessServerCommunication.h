@@ -77,9 +77,9 @@ typedef void (^errorBlock)(NSString *errorString);
 
 -(void)parserExcersiceDetailsForWorkoutID:(NSString *)workoutID userLevel:(NSString *)userLevel  language:(int )selectedlanguage activityIndicator:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView onCompletion:(WMLoginResponseBlock)completionBlock onError:(NSError*)errorBlock ;
 
--(void)updateStatisticsToServer:(NSString *)userID  workoutID: (int)workoutID workoutDuration:(float)totalDuration onCompletion:(ResponseBlock)completionBlock onError:(NSError*)errorBlock;
 
--(void) getImageAtPath:(NSString *)imageUrl toDestination:( NSString *)storeURL;
+
+
 
 -(void)getFreePurchaseCount:(int)UserID ;
 -(void)getAllvideos;

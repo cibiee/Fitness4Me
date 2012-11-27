@@ -69,7 +69,7 @@
 
 
 
--(IBAction)unlockOne;
+
 -(IBAction)unlockAll;
 -(IBAction)navigateToHome;
 -(IBAction)later:(id)sender;
