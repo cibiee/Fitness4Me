@@ -27,6 +27,7 @@
     NSString *purchaseMode;
     
     NSMutableArray *workouts;
+    NSMutableArray *searchArray;
     
     UIImageView *imageView;
     
@@ -44,6 +45,13 @@
     __unsafe_unretained IBOutlet UITableView *tableview;
     __unsafe_unretained  IBOutlet UIActivityIndicatorView *activityIndicator;
     
+    
+    
+    IBOutlet UISearchBar *searchBar;
+    BOOL searching;
+    BOOL letUserSelectRow;
+    
+
 }
 
 @property (assign,nonatomic)int UserID;

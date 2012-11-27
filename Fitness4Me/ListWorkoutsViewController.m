@@ -220,6 +220,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        self.tableview.tableHeaderView = searchBar;
+        letUserSelectRow = YES;
+        
+    }
+    else
+    {
+        [searchBar removeFromSuperview];
+    }
+    
+    searchArray =[[NSMutableArray alloc]init];
     [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
     [self setBackround];
 }
@@ -229,13 +240,14 @@
 - (void)viewWillAppear:(BOOL)animated {
     
     [super viewWillAppear:animated];
+    letUserSelectRow = YES;
     [self showRating];
     
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
+    letUserSelectRow = YES;
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     self.UserID =[userinfo integerForKey:@"UserID"];
     [self getExcersices];
@@ -249,6 +261,104 @@
     // e.g. self.myOutlet = nil;
 }
 
+- (void) searchBarTextDidBeginEditing:(UISearchBar *)theSearchBar {
+    
+    searching = YES;
+    letUserSelectRow = YES;
+    searchBar.showsCancelButton = YES;
+    self.tableview.scrollEnabled = NO;
+    
+    self.navigationItem.rightBarButtonItem =nil;
+    
+    
+}
+
+- (NSIndexPath *)tableView :(UITableView *)theTableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if(letUserSelectRow)
+        return indexPath;
+    else
+        return nil;
+}
+
+- (void)searchBar:(UISearchBar *)theSearchBar textDidChange:(NSString *)searchText {
+    
+    //Remove all objects first.
+    [searchArray removeAllObjects];
+    
+    if([searchText length] > 0) {
+        
+        searching = YES;
+        letUserSelectRow = YES;
+        self.tableview.scrollEnabled = NO;
+        [self searchTableView];
+    }
+    else {
+        
+        searching = NO;
+        letUserSelectRow = YES;
+        self.tableview.scrollEnabled = NO;
+        [searchArray removeAllObjects];
+    }
+    
+    [self.tableview reloadData];
+}
+
+
+
+//RootViewController.m
+- (void) searchBarSearchButtonClicked:(UISearchBar *)theSearchBar {
+    
+    [self searchTableView];
+}
+
+- (void) searchTableView {
+    [searchArray removeAllObjects];
+    NSString *searchText = searchBar.text;
+    searchArray = [[NSMutableArray alloc] init];
+    
+    for (Workout *workout in workouts)
+    {
+        NSRange titleResultsRange = [[[workout Name]lowercaseString] rangeOfString:[searchText lowercaseString]];
+        
+        if (titleResultsRange.length > 0)
+            [searchArray addObject:workout];
+    }
+    [self.tableview reloadData];
+    
+}
+
+
+- (BOOL)searchBarShouldEndEditing:(UISearchBar *)theSearchBar {
+    
+    theSearchBar.showsCancelButton = NO;
+    theSearchBar.text=@"";
+    [theSearchBar resignFirstResponder];
+    searching = NO;
+    letUserSelectRow = YES;
+    self.tableview.scrollEnabled = YES;
+    //[searchArray removeAllObjects];
+    // [self.tableview reloadData];
+    
+    return YES;
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)thesearchBar
+
+{
+    thesearchBar.showsCancelButton = NO;
+    thesearchBar.text=@"";
+    [thesearchBar resignFirstResponder];
+    searching = NO;
+    letUserSelectRow = YES;
+    self.tableview.scrollEnabled = YES;
+    [searchArray removeAllObjects];
+    
+    [self.tableview reloadData];
+    
+}
+
+
 
 #pragma mark - Table view data source
 
@@ -260,8 +370,14 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [workouts count];
+    if (searching)
+        return [searchArray count];
+    else {
+        return [workouts count];
+    }
 }
+
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -280,7 +396,14 @@
     cell.backgroundColor =[UIColor clearColor];
     
     Workout *workout = [[[Workout alloc]init]autorelease];
-    workout = [workouts objectAtIndex:indexPath.row];
+    if (searching)
+    {
+        workout = [searchArray objectAtIndex:indexPath.row];
+    }
+    else
+    {
+        workout = [workouts objectAtIndex:indexPath.row];
+    }
     cell.TitleLabel.text = [workout Name];
     cell.DescriptionLabel.text = [workout Description];
     [cell.RateLabel removeFromSuperview];
@@ -332,7 +455,18 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Workout *workout = [workouts objectAtIndex:indexPath.row];
+    Workout *workout;
+    
+    if (searching)
+    {
+        workout = [searchArray objectAtIndex:indexPath.row];
+    }
+    else
+    {
+        workout = [workouts objectAtIndex:indexPath.row];
+    }
+    [self searchBarCancelButtonClicked:searchBar];
+
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     [userinfo setObject:workout.Name forKey:@"WorkoutName"];
     
