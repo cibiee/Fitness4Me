@@ -64,11 +64,11 @@
     NSString *workoutName=[userinfo stringForKey:@"WorkoutName"];
     NSString *msg;
     if ([Fitness4MeUtils getApplicationLanguage] ==1) {
-         msg =@" just completed the fitness4.Me ";
+         msg =@" just completed the fitness4.me ";
     }
     else
     {
-         msg =@" just completed the fitness4.Me ";
+         msg =@" just completed the fitness4.me ";
     }
    
     msg =[name stringByAppendingString:msg];

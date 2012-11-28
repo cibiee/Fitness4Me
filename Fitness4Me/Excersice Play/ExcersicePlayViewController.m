@@ -71,36 +71,9 @@ static float totalDuration=0;
 -(void)showAdMobs
 {
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
-    NSString *hasMadeFullPurchase= [userinfo valueForKey:@"hasMadeFullPurchase"];
+   
     [userinfo setObject:@"false" forKey:@"shouldExit"];
-    if ([hasMadeFullPurchase isEqualToString:@"true"]) {
-        
-    }
-    else {
-        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
-        {
-            
-            bannerView_ = [[GADBannerView alloc]
-                           initWithFrame:CGRectMake(0,-7,
-                                                    self.view.frame.size.width-70,
-                                                    50)];
-            
-        }
-        else {
-            bannerView_ = [[GADBannerView alloc]
-                           initWithFrame:CGRectMake(0,0,
-                                                    self.view.frame.size.height-70,
-                                                    90)];
-            
-        }
-        
-        bannerView_.adUnitID = @"a1506940e575b91";
-        bannerView_.rootViewController = self;
-        [self.view addSubview:bannerView_];
-        
-        // Initiate a generic request to load it with an ad.
-        [bannerView_ loadRequest:[GADRequest request]];
-    }
+    
 }
 
 -(void)getExcersices
