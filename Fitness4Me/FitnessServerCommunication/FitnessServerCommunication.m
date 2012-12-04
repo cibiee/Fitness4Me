@@ -7,10 +7,6 @@
 //
 
 #import "FitnessServerCommunication.h"
-#import "SBJson.h"
-#import "SBJsonParser.h"
-#import "ExcersicePlay.h"
-#import "Excersice.h"
 
 
 @interface FitnessServerCommunication ()
@@ -347,6 +343,72 @@ static FitnessServerCommunication *sharedState;
 
 }
 
+- (void)listEquipments:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView onCompletion:(WMLoginResponseBlock)completionBlock onError:(NSError*)errorBlock
+
+{
+    
+    BOOL isReachable =[Fitness4MeUtils isReachable];
+    if (isReachable)
+    {
+        NSString *UrlPath= [NSString GetURlPath];
+        NSString *requestString =[NSString stringWithFormat:@"%@listequipment=yes&lang=2",UrlPath];
+        NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+        
+        __weak ASIHTTPRequest *requests = [ASIHTTPRequest requestWithURL:url];
+        [requests setCompletionBlock:^{
+            // Use when fetching text data
+            NSString *responseString =[requests responseString];
+            if ([responseString length]>0) {
+                [self parseEquipments:responseString];
+                if (completionBlock) completionBlock(responseString);
+            }else{
+                [self terminateActivities:NSLocalizedString(@"slowdata", nil):activityIndicator:signUpView];
+            }
+        }];
+        [requests setFailedBlock:^{
+            //NSError *error = [requests error];
+            [self terminateActivities:NSLocalizedString(@"requestError", nil):activityIndicator:signUpView];
+        }];
+        [requests startAsynchronous];
+    }else{
+        [self terminateActivities:NSLocalizedString(@"NoInternetMessage", nil):activityIndicator:signUpView];
+    }
+}
+
+
+- (void)listfocus:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView onCompletion:(WMLoginResponseBlock)completionBlock onError:(NSError*)errorBlock
+
+{
+    
+    BOOL isReachable =[Fitness4MeUtils isReachable];
+    if (isReachable)
+    {
+        NSString *UrlPath= [NSString GetURlPath];
+        NSString *requestString =[NSString stringWithFormat:@"%@listmuscles=yes&lang=2",UrlPath];
+        NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+        
+        __weak ASIHTTPRequest *requests = [ASIHTTPRequest requestWithURL:url];
+        [requests setCompletionBlock:^{
+            // Use when fetching text data
+            NSString *responseString =[requests responseString];
+            if ([responseString length]>0) {
+                [self parseFocus:responseString];
+                if (completionBlock) completionBlock(responseString);
+            }else{
+                [self terminateActivities:NSLocalizedString(@"slowdata", nil):activityIndicator:signUpView];
+            }
+        }];
+        [requests setFailedBlock:^{
+            //NSError *error = [requests error];
+            [self terminateActivities:NSLocalizedString(@"requestError", nil):activityIndicator:signUpView];
+        }];
+        [requests startAsynchronous];
+    }else{
+        [self terminateActivities:NSLocalizedString(@"NoInternetMessage", nil):activityIndicator:signUpView];
+    }
+}
+
+
 
 -(void) getImageAtPath:(NSString *)imageUrl toDestination:( NSString *)storeURL setDelegate:(UIViewController*)viewController
 {
@@ -588,6 +650,24 @@ static FitnessServerCommunication *sharedState;
 }
 
 
+-(void)insertEquipments:(NSMutableArray*)equipments
+{
+    equipmentDB =[[EquipmentDB alloc]init];
+    [equipmentDB setUpDatabase];
+    [equipmentDB createDatabase];
+    [equipmentDB insertEquipments:equipments];
+}
+
+
+
+-(void)insertFocus:(NSMutableArray*)muscles
+{
+    focusDB =[[FocusDB alloc]init];
+    [focusDB setUpDatabase];
+    [focusDB createDatabase];
+    [focusDB insertFocusArea:muscles];
+}
+
 
 
 -(void)parseWorkoutList:(NSString*)responseString
@@ -611,6 +691,50 @@ static FitnessServerCommunication *sharedState;
     
 }
 
+
+-(void)parseEquipments:(NSString*)responseString
+{
+    NSMutableArray *object = [responseString JSONValue];
+    NSMutableArray *equipments = [[NSMutableArray alloc]init];
+    NSMutableArray *itemsarray =[object valueForKey:@"equipments"];
+    
+    [itemsarray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSDictionary* item = obj;
+        Equipments *equipment = [[Equipments alloc]init];
+        [equipment setEquipmentID:[item objectForKey:@"equipment_id"]];
+        [equipment setEquipmentName:[item objectForKey:@"equipment_name"]];
+        [equipments addObject:equipment];
+    }];
+    
+    if ([equipments count]>0) {
+        
+        [self insertEquipments:equipments];
+    }
+    
+  //  [self.delegate didRecieveWorkoutList];
+    
+    
+}
+
+-(void)parseFocus:(NSString*)responseString
+{
+    NSMutableArray *object = [responseString JSONValue];
+    NSMutableArray *muscles = [[NSMutableArray alloc]init];
+    NSMutableArray *itemsarray =[object valueForKey:@"muscles"];
+    
+    [itemsarray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSDictionary* item = obj;
+        Focus *focus = [[Focus alloc]init];
+        [focus setMuscleID:[item objectForKey:@"muscle_id"]];
+        [focus setMuscleName:[item objectForKey:@"muscle_name"]];
+        [muscles addObject:focus];
+    }];
+    
+    if ([muscles count]>0) {
+        
+        [self insertFocus:muscles];
+    }
+}
 
 
 

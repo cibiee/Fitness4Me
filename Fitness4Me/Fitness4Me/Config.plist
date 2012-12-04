@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>UrlPath</key>
-	<string>http://fitness4.me/mobile/testjson.php?</string>
+	<string>http://fitness4metesting.com/mobile/version2/jsonversion2.php?</string>
 	<key>VideoUrl</key>
 	<string>http://fitness4.me/</string>
 	<key>IphoneRegistration</key>

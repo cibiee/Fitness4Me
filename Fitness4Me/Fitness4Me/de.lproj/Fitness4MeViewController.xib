@@ -211,7 +211,7 @@ DQ</string>
 					<object class="IBUIButton" id="665810710">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">264</int>
-						<string key="NSFrame">{{25, 249}, {269, 37}}</string>
+						<string key="NSFrame">{{25, 241}, {269, 37}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSNextKeyView" ref="92951516"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -252,7 +252,7 @@ DQ</string>
 					<object class="IBUIButton" id="92951516">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">264</int>
-						<string key="NSFrame">{{25, 286}, {269, 37}}</string>
+						<string key="NSFrame">{{25, 314}, {269, 37}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSNextKeyView" ref="55842793"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -282,10 +282,35 @@ DQ</string>
 						<reference key="IBUIFontDescription" ref="696723278"/>
 						<reference key="IBUIFont" ref="682883270"/>
 					</object>
+					<object class="IBUIButton" id="158918036">
+						<reference key="NSNextResponder" ref="774585933"/>
+						<int key="NSvFlags">264</int>
+						<string key="NSFrame">{{25, 277}, {269, 37}}</string>
+						<reference key="NSSuperview" ref="774585933"/>
+						<string key="NSReuseIdentifierKey">_NS:9</string>
+						<bool key="IBUIOpaque">NO</bool>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<int key="IBUIContentVerticalAlignment">0</int>
+						<double key="IBUITitleEdgeInsets.top">0.0</double>
+						<double key="IBUITitleEdgeInsets.bottom">0.0</double>
+						<double key="IBUITitleEdgeInsets.left">10</double>
+						<double key="IBUITitleEdgeInsets.right">0.0</double>
+						<string key="IBUINormalTitle">Custom Workout</string>
+						<reference key="IBUIHighlightedTitleColor" ref="108433983"/>
+						<object class="NSColor" key="IBUINormalTitleColor">
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MSAxIDEgMC45OQA</bytes>
+						</object>
+						<reference key="IBUINormalTitleShadowColor" ref="17824285"/>
+						<reference key="IBUIHighlightedBackgroundImage" ref="667047983"/>
+						<reference key="IBUINormalBackgroundImage" ref="598192740"/>
+						<reference key="IBUIFontDescription" ref="696723278"/>
+						<reference key="IBUIFont" ref="682883270"/>
+					</object>
 					<object class="IBUIButton" id="55842793">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">264</int>
-						<string key="NSFrame">{{25, 323}, {269, 37}}</string>
+						<string key="NSFrame">{{25, 350}, {269, 37}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSNextKeyView" ref="898456149"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -309,7 +334,7 @@ DQ</string>
 					<object class="IBUIButton" id="898456149">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">264</int>
-						<string key="NSFrame">{{25, 363}, {269, 37}}</string>
+						<string key="NSFrame">{{25, 387}, {269, 37}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -341,7 +366,7 @@ DQ</string>
 					<object class="IBUIImageView" id="525031499">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">264</int>
-						<string key="NSFrame">{{23, 71}, {275, 150}}</string>
+						<string key="NSFrame">{{23, 65}, {275, 150}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSNextKeyView" ref="712719563"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -454,6 +479,15 @@ DQ</string>
 					</object>
 					<int key="connectionID">38</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">navigateToCustomWorkoutListView:</string>
+						<reference key="source" ref="158918036"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">105</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -486,6 +520,7 @@ DQ</string>
 							<reference ref="744172926"/>
 							<reference ref="712719563"/>
 							<reference ref="525031499"/>
+							<reference ref="158918036"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -563,6 +598,12 @@ DQ</string>
 						<reference key="object" ref="155502732"/>
 						<reference key="parent" ref="712719563"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">103</int>
+						<reference key="object" ref="158918036"/>
+						<reference key="parent" ref="774585933"/>
+						<string key="objectName">Work Out</string>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -574,6 +615,9 @@ DQ</string>
 				<reference key="10.IBUserGuides" ref="0"/>
 				<boolean value="NO" key="10.showNotes"/>
 				<string key="102.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="103.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<real value="1" key="103.IBUIButtonInspectorSelectedEdgeInsetMetadataKey"/>
+				<real value="1" key="103.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
 				<string key="17.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<real value="1" key="17.IBUIButtonInspectorSelectedEdgeInsetMetadataKey"/>
 				<real value="1" key="17.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
@@ -599,7 +643,7 @@ DQ</string>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">102</int>
+			<int key="maxID">105</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>

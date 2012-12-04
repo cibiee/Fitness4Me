@@ -99,7 +99,30 @@
     FitnessServerCommunication *fitness =[FitnessServerCommunication sharedState];
     [fitness setDelegate:self];
     [fitness parseWorkoutVideos];
+    [fitness listEquipments:nil progressView:nil
+               onCompletion:^(NSString *responseString) {
+                   if (responseString>0) {
+                       
+                   }
+               } onError:^(NSError *error) {
+                   
+               }];
+    
+    [fitness listfocus:nil progressView:nil
+                             onCompletion:^(NSString *responseString) {
+                                 if (responseString>0) {
+                                     
+                                 }
+                             } onError:^(NSError *error) {
+                                 
+                             }];
+    
+    
+    
+
+
     [fitness getFreevideos];
+    
     fileDownloadProgressView.progress = ((float)0 / (float) 100);
 }
 
@@ -198,6 +221,21 @@
     
     
 }
+
+-(IBAction)navigateToCustomWorkoutListView:(id)sender
+{
+    CustomWorkoutsViewController *viewController;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+        viewController =[[CustomWorkoutsViewController alloc]initWithNibName:@"CustomWorkoutsViewController" bundle:nil];
+    }else {
+        //viewController =[[HintsViewController alloc]initWithNibName:@"CustomizedWorkoutListViewController_iPad" bundle:nil];
+    }
+    [self.navigationController pushViewController:viewController animated:YES];
+    
+    [viewController release];
+
+}
+
 
 -(IBAction)cancelDownloas:(id)sender
 {

@@ -10,13 +10,21 @@
 #import "NSString+Config.h"
 #import "Reachability.h"
 #import "ASIFormDataRequest.h"
+#import "ASINetworkQueue.h"
+#import "Fitness4MeUtils.h"
 #import "SBJson.h"
 #import "SBJsonParser.h"
 #import "Workout.h"
 #import "WorkoutDB.h"
-#import "Fitness4MeUtils.h"
-#import "ASINetworkQueue.h"
 #import "ExcersiceDB.h"
+#import "Excersice.h"
+#import "EquipmentDB.h"
+#import "Equipments.h"
+#import "Focus.h"
+#import "FocusDB.h"
+#import "ExcersicePlay.h"
+
+
 
 typedef void (^WMLoginResponseBlock)(NSString *responseString);
 typedef void (^ResponseBlock)(NSString *isExist);
@@ -27,25 +35,27 @@ typedef void (^errorBlock)(NSString *errorString);
 
 @interface FitnessServerCommunication : NSObject
 {
-     NSMutableArray *workouts;
-     NSMutableArray *workoutVideoLists;
     
+    int stop;
     
-     WorkoutDB *workoutDB;
-     ExcersiceDB *excersiceDB;
+    NSMutableArray *workouts;
+    NSMutableArray *workoutVideoLists;
+    UIProgressView *myProgressIndicator;
+    NSURLConnection *connection;
     
-     int stop;
+    WorkoutDB *workoutDB;
+    ExcersiceDB *excersiceDB;
+    EquipmentDB *equipmentDB;
+    FocusDB *focusDB;
     
     ASIHTTPRequest   *downloadrequest ;
     ASINetworkQueue  *myQueue;
     ASINetworkQueue  *imageQueue;
-    UIProgressView *myProgressIndicator;
-
-    NSURLConnection *connection;
     
-   id<FitnessServerCommunicationDelegate> delegate;
-   
-
+    
+    id<FitnessServerCommunicationDelegate> delegate;
+    
+    
 }
 
 @property (nonatomic,retain) id<FitnessServerCommunicationDelegate> delegate;
@@ -77,7 +87,9 @@ typedef void (^errorBlock)(NSString *errorString);
 
 -(void)parserExcersiceDetailsForWorkoutID:(NSString *)workoutID userLevel:(NSString *)userLevel  language:(int )selectedlanguage activityIndicator:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView onCompletion:(WMLoginResponseBlock)completionBlock onError:(NSError*)errorBlock ;
 
+- (void)listEquipments:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView onCompletion:(WMLoginResponseBlock)completionBlock onError:(NSError*)errorBlock;
 
+- (void)listfocus:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView onCompletion:(WMLoginResponseBlock)completionBlock onError:(NSError*)errorBlock;
 
 
 

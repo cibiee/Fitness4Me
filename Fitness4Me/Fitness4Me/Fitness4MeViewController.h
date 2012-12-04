@@ -13,6 +13,7 @@
 #import "SettingsViewController.h"
 #import "GADBannerView.h"
 #import <QuartzCore/QuartzCore.h>
+#import "CustomWorkoutsViewController.h"
 
 
 @interface Fitness4MeViewController : UIViewController<FitnessServerCommunicationDelegate>
@@ -33,7 +34,7 @@
 
 }
 -(IBAction)cancelDownloas:(id)sender;
-
+-(IBAction)navigateToCustomWorkoutListView:(id)sender;
 -(IBAction)navigateToWorkoutListView:(id)sender;
 -(IBAction)navigateToAboutView:(id)sender;
 -(IBAction)navigateToSettingsView:(id)sender;

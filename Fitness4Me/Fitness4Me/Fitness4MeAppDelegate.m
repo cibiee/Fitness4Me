@@ -43,6 +43,16 @@ int userID;
         
         FitnessServerCommunication *fitnessserverCommunication =[[FitnessServerCommunication alloc]init];
         [fitnessserverCommunication parseFitnessDetails:userID];
+        [fitnessserverCommunication listEquipments:nil progressView:nil
+                                      onCompletion:^(NSString *responseString) {
+                                          if (responseString>0) {
+                                              
+                                          }
+                                      } onError:^(NSError *error) {
+                                          
+                                      }];
+        
+
     }
     else {
         
@@ -267,6 +277,26 @@ int userID;
     if (userID>0){
         FitnessServerCommunication *fitnessserverCommunication =[[FitnessServerCommunication alloc]init];
         [fitnessserverCommunication parseFitnessDetails:userID];
+        [fitnessserverCommunication listEquipments:nil progressView:nil
+                   onCompletion:^(NSString *responseString) {
+                       if (responseString>0) {
+                           
+                       }
+                   } onError:^(NSError *error) {
+                       
+                   }];
+        
+        [fitnessserverCommunication listfocus:nil progressView:nil
+                                      onCompletion:^(NSString *responseString) {
+                                          if (responseString>0) {
+                                              
+                                          }
+                                      } onError:^(NSError *error) {
+                                          
+                                      }];
+        
+        
+
         
         Fitness4MeAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
         UIViewController *topView = appDelegate.navigationController.topViewController;
