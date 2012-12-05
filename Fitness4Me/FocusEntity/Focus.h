@@ -11,4 +11,5 @@
 @interface Focus : NSObject
 @property(strong,nonatomic)NSString *muscleID;
 @property(strong, nonatomic)NSString *muscleName;
+@property(nonatomic)BOOL isChecked;
 @end

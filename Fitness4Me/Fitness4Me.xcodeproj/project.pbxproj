@@ -259,6 +259,10 @@
 		F577DBDB166DDCD60064B920 /* list_edit_box.png in Resources */ = {isa = PBXBuildFile; fileRef = F577DBCD166DDCD60064B920 /* list_edit_box.png */; };
 		F577DBDC166DDCD60064B920 /* package_box.png in Resources */ = {isa = PBXBuildFile; fileRef = F577DBCE166DDCD60064B920 /* package_box.png */; };
 		F577DBDD166DDCD60064B920 /* smiley.png in Resources */ = {isa = PBXBuildFile; fileRef = F577DBCF166DDCD60064B920 /* smiley.png */; };
+		F577DBF0166E05C80064B920 /* FocusViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F577DBEE166E05C80064B920 /* FocusViewController.xib */; };
+		F577DBF1166E06750064B920 /* FocusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F577DBED166E05C80064B920 /* FocusViewController.m */; };
+		F577DBF6166E18B70064B920 /* NameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F577DBF4166E18B70064B920 /* NameViewController.m */; };
+		F577DBF7166E18B70064B920 /* NameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F577DBF5166E18B70064B920 /* NameViewController.xib */; };
 		F5A6043F162D35B800B2ED1D /* InitialAppLaunchViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5A60441162D35B800B2ED1D /* InitialAppLaunchViewController_iPad.xib */; };
 		F5A60443162D361000B2ED1D /* app_bg_landscape_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A60445162D361000B2ED1D /* app_bg_landscape_iPad.png */; };
 		F5A60447162D361800B2ED1D /* app_bg_portrait_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A60449162D361800B2ED1D /* app_bg_portrait_iPad.png */; };
@@ -287,8 +291,6 @@
 		F5A884DB16411A0900AFE158 /* btn_small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A884DD16411A0900AFE158 /* btn_small@2x.png */; };
 		F5A884DF16411A1500AFE158 /* btn_small@2x_hover.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A884E116411A1500AFE158 /* btn_small@2x_hover.png */; };
 		F5A884E716411A2B00AFE158 /* btn_small_hover.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A884E916411A2B00AFE158 /* btn_small_hover.png */; };
-		F5AE76C416671F4600751B65 /* FocusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5AE76C216671F4600751B65 /* FocusViewController.m */; };
-		F5AE76C516671F4600751B65 /* FocusViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5AE76C316671F4600751B65 /* FocusViewController.xib */; };
 		F5B2975D166CC26D00011A7D /* CustomWorkoutAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B2975B166CC26D00011A7D /* CustomWorkoutAddViewController.m */; };
 		F5B2975E166CC26D00011A7D /* CustomWorkoutAddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5B2975C166CC26D00011A7D /* CustomWorkoutAddViewController.xib */; };
 		F5BB87BC16253D2900043059 /* LoadAppstoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5BB87BA16253D2900043059 /* LoadAppstoreViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -319,6 +321,10 @@
 		F5F1F199162FE3D70007D55E /* upgrade-landscape_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = F5F1F187162FE3D70007D55E /* upgrade-landscape_iPad.png */; };
 		F5F1F19A162FE3D70007D55E /* yes_no_btn_hover_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = F5F1F189162FE3D70007D55E /* yes_no_btn_hover_iPad.png */; };
 		F5F1F19B162FE3D70007D55E /* yes_no_btn_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = F5F1F18B162FE3D70007D55E /* yes_no_btn_iPad.png */; };
+		F5F4043C166F16000019C5EA /* WorkoutCreationCompletedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F4043A166F16000019C5EA /* WorkoutCreationCompletedViewController.m */; };
+		F5F4043D166F16000019C5EA /* WorkoutCreationCompletedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5F4043B166F16000019C5EA /* WorkoutCreationCompletedViewController.xib */; };
+		F5F40442166F26800019C5EA /* CustomWorkoutIntermediateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F40440166F26800019C5EA /* CustomWorkoutIntermediateViewController.m */; };
+		F5F40443166F26800019C5EA /* CustomWorkoutIntermediateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5F40441166F26800019C5EA /* CustomWorkoutIntermediateViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -772,6 +778,12 @@
 		F577DBCD166DDCD60064B920 /* list_edit_box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list_edit_box.png; sourceTree = "<group>"; };
 		F577DBCE166DDCD60064B920 /* package_box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = package_box.png; sourceTree = "<group>"; };
 		F577DBCF166DDCD60064B920 /* smiley.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smiley.png; sourceTree = "<group>"; };
+		F577DBEC166E05C80064B920 /* FocusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FocusViewController.h; path = Focus/FocusViewController.h; sourceTree = "<group>"; };
+		F577DBED166E05C80064B920 /* FocusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FocusViewController.m; path = Focus/FocusViewController.m; sourceTree = "<group>"; };
+		F577DBEE166E05C80064B920 /* FocusViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FocusViewController.xib; path = Focus/FocusViewController.xib; sourceTree = "<group>"; };
+		F577DBF3166E18B70064B920 /* NameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NameViewController.h; path = AddName/NameViewController.h; sourceTree = "<group>"; };
+		F577DBF4166E18B70064B920 /* NameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NameViewController.m; path = AddName/NameViewController.m; sourceTree = "<group>"; };
+		F577DBF5166E18B70064B920 /* NameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NameViewController.xib; path = AddName/NameViewController.xib; sourceTree = "<group>"; };
 		F5A60440162D35B800B2ED1D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/InitialAppLaunchViewController_iPad.xib; sourceTree = "<group>"; };
 		F5A60444162D361000B2ED1D /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/app_bg_landscape_iPad.png; sourceTree = "<group>"; };
 		F5A60446162D361300B2ED1D /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/app_bg_landscape_iPad.png; sourceTree = "<group>"; };
@@ -828,9 +840,6 @@
 		F5A884E816411A2B00AFE158 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/btn_small_hover.png; sourceTree = "<group>"; };
 		F5A884EA16411A2F00AFE158 /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/btn_small_hover.png; sourceTree = "<group>"; };
 		F5A884EB1641289500AFE158 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/LoginViewController.xib; sourceTree = "<group>"; };
-		F5AE76C116671F4600751B65 /* FocusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FocusViewController.h; path = Focus/FocusViewController.h; sourceTree = "<group>"; };
-		F5AE76C216671F4600751B65 /* FocusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FocusViewController.m; path = Focus/FocusViewController.m; sourceTree = "<group>"; };
-		F5AE76C316671F4600751B65 /* FocusViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FocusViewController.xib; path = Focus/FocusViewController.xib; sourceTree = "<group>"; };
 		F5B2975A166CC26D00011A7D /* CustomWorkoutAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomWorkoutAddViewController.h; path = AddCustomWokoutLanding/CustomWorkoutAddViewController.h; sourceTree = "<group>"; };
 		F5B2975B166CC26D00011A7D /* CustomWorkoutAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomWorkoutAddViewController.m; path = AddCustomWokoutLanding/CustomWorkoutAddViewController.m; sourceTree = "<group>"; };
 		F5B2975C166CC26D00011A7D /* CustomWorkoutAddViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomWorkoutAddViewController.xib; path = AddCustomWokoutLanding/CustomWorkoutAddViewController.xib; sourceTree = "<group>"; };
@@ -889,6 +898,12 @@
 		F5F1F1A8162FE4200007D55E /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/second_btn_iPad.png; sourceTree = "<group>"; };
 		F5F1F1A9162FE4240007D55E /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/settings_iPad.png; sourceTree = "<group>"; };
 		F5F1F1AA162FE4280007D55E /* de */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = de; path = "de.lproj/sign-in_ipad.jpg"; sourceTree = "<group>"; };
+		F5F40439166F16000019C5EA /* WorkoutCreationCompletedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WorkoutCreationCompletedViewController.h; path = WorkoutCreationCompleted/WorkoutCreationCompletedViewController.h; sourceTree = "<group>"; };
+		F5F4043A166F16000019C5EA /* WorkoutCreationCompletedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WorkoutCreationCompletedViewController.m; path = WorkoutCreationCompleted/WorkoutCreationCompletedViewController.m; sourceTree = "<group>"; };
+		F5F4043B166F16000019C5EA /* WorkoutCreationCompletedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WorkoutCreationCompletedViewController.xib; path = WorkoutCreationCompleted/WorkoutCreationCompletedViewController.xib; sourceTree = "<group>"; };
+		F5F4043F166F26800019C5EA /* CustomWorkoutIntermediateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomWorkoutIntermediateViewController.h; path = CustomWorkoutIntermediate/CustomWorkoutIntermediateViewController.h; sourceTree = "<group>"; };
+		F5F40440166F26800019C5EA /* CustomWorkoutIntermediateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomWorkoutIntermediateViewController.m; path = CustomWorkoutIntermediate/CustomWorkoutIntermediateViewController.m; sourceTree = "<group>"; };
+		F5F40441166F26800019C5EA /* CustomWorkoutIntermediateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomWorkoutIntermediateViewController.xib; path = CustomWorkoutIntermediate/CustomWorkoutIntermediateViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1691,6 +1706,9 @@
 		F5198FFC1665D75E009C3F3D /* Customized Workouts */ = {
 			isa = PBXGroup;
 			children = (
+				F5F4043E166F26180019C5EA /* CustomWorkoutIntermediate */,
+				F5F40437166F15AF0019C5EA /* WorkoutCreationCompleted */,
+				F577DBF2166E185E0064B920 /* CustomWorkoutName */,
 				F5B29758166CC22400011A7D /* AddCustomWorkoutLandingPage */,
 				F5C84712166C8BA200B8EDA6 /* Equipments */,
 				F5C84707166C62FD00B8EDA6 /* Time */,
@@ -2030,6 +2048,16 @@
 			name = FocusEntity;
 			sourceTree = "<group>";
 		};
+		F577DBF2166E185E0064B920 /* CustomWorkoutName */ = {
+			isa = PBXGroup;
+			children = (
+				F577DBF3166E18B70064B920 /* NameViewController.h */,
+				F577DBF4166E18B70064B920 /* NameViewController.m */,
+				F577DBF5166E18B70064B920 /* NameViewController.xib */,
+			);
+			name = CustomWorkoutName;
+			sourceTree = "<group>";
+		};
 		F5A60433162D2CFF00B2ED1D /* UIIPhone */ = {
 			isa = PBXGroup;
 			children = (
@@ -2174,9 +2202,9 @@
 		F5AE76C016671F1700751B65 /* Focus */ = {
 			isa = PBXGroup;
 			children = (
-				F5AE76C116671F4600751B65 /* FocusViewController.h */,
-				F5AE76C216671F4600751B65 /* FocusViewController.m */,
-				F5AE76C316671F4600751B65 /* FocusViewController.xib */,
+				F577DBEC166E05C80064B920 /* FocusViewController.h */,
+				F577DBED166E05C80064B920 /* FocusViewController.m */,
+				F577DBEE166E05C80064B920 /* FocusViewController.xib */,
 			);
 			name = Focus;
 			sourceTree = "<group>";
@@ -2219,6 +2247,26 @@
 				F5C84715166C8E4A00B8EDA6 /* EquipmentViewController.xib */,
 			);
 			name = Equipments;
+			sourceTree = "<group>";
+		};
+		F5F40437166F15AF0019C5EA /* WorkoutCreationCompleted */ = {
+			isa = PBXGroup;
+			children = (
+				F5F40439166F16000019C5EA /* WorkoutCreationCompletedViewController.h */,
+				F5F4043A166F16000019C5EA /* WorkoutCreationCompletedViewController.m */,
+				F5F4043B166F16000019C5EA /* WorkoutCreationCompletedViewController.xib */,
+			);
+			name = WorkoutCreationCompleted;
+			sourceTree = "<group>";
+		};
+		F5F4043E166F26180019C5EA /* CustomWorkoutIntermediate */ = {
+			isa = PBXGroup;
+			children = (
+				F5F4043F166F26800019C5EA /* CustomWorkoutIntermediateViewController.h */,
+				F5F40440166F26800019C5EA /* CustomWorkoutIntermediateViewController.m */,
+				F5F40441166F26800019C5EA /* CustomWorkoutIntermediateViewController.xib */,
+			);
+			name = CustomWorkoutIntermediate;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2485,7 +2533,6 @@
 				F51404BB1664783C00B0B386 /* icon@2x.png in Resources */,
 				F519902716661A0E009C3F3D /* CustomWorkoutsViewController.xib in Resources */,
 				F5393E7F16662FE200D24D7F /* CustomCellContentController.xib in Resources */,
-				F5AE76C516671F4600751B65 /* FocusViewController.xib in Resources */,
 				F5C84711166C829D00B8EDA6 /* TimeViewController.xib in Resources */,
 				F5C84717166C8E4A00B8EDA6 /* EquipmentViewController.xib in Resources */,
 				F5B2975E166CC26D00011A7D /* CustomWorkoutAddViewController.xib in Resources */,
@@ -2503,6 +2550,10 @@
 				F577DBDB166DDCD60064B920 /* list_edit_box.png in Resources */,
 				F577DBDC166DDCD60064B920 /* package_box.png in Resources */,
 				F577DBDD166DDCD60064B920 /* smiley.png in Resources */,
+				F577DBF0166E05C80064B920 /* FocusViewController.xib in Resources */,
+				F577DBF7166E18B70064B920 /* NameViewController.xib in Resources */,
+				F5F4043D166F16000019C5EA /* WorkoutCreationCompletedViewController.xib in Resources */,
+				F5F40443166F26800019C5EA /* CustomWorkoutIntermediateViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2513,6 +2564,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F577DBF1166E06750064B920 /* FocusViewController.m in Sources */,
 				0B4502F11609DCB00068011C /* FeedbackViewController.m in Sources */,
 				0B4502F01609DC8B0068011C /* RatingViewController.m in Sources */,
 				AE7D66B61504D9F4001718B5 /* main.m in Sources */,
@@ -2571,7 +2623,6 @@
 				F53305A11654E78900D0BCBE /* FMResultSet.m in Sources */,
 				F519902516661801009C3F3D /* CustomWorkoutsViewController.m in Sources */,
 				F5393E7D16662EA400D24D7F /* CustomCellContentController.m in Sources */,
-				F5AE76C416671F4600751B65 /* FocusViewController.m in Sources */,
 				F5C84710166C829D00B8EDA6 /* TimeViewController.m in Sources */,
 				F5C84716166C8E4A00B8EDA6 /* EquipmentViewController.m in Sources */,
 				F5C8471A166C968A00B8EDA6 /* Equipments.m in Sources */,
@@ -2579,6 +2630,9 @@
 				F5B2975D166CC26D00011A7D /* CustomWorkoutAddViewController.m in Sources */,
 				F577DBB8166DD71F0064B920 /* FocusDB.m in Sources */,
 				F577DBBD166DD8060064B920 /* Focus.m in Sources */,
+				F577DBF6166E18B70064B920 /* NameViewController.m in Sources */,
+				F5F4043C166F16000019C5EA /* WorkoutCreationCompletedViewController.m in Sources */,
+				F5F40442166F26800019C5EA /* CustomWorkoutIntermediateViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

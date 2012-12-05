@@ -14,7 +14,7 @@
 @end
 
 @implementation FocusViewController
-
+@synthesize workout;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -29,15 +29,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+   
+    
     UIButton *backutton = [UIButton buttonWithType:UIButtonTypeCustom];
     backutton.frame = CGRectMake(0, 0, 58, 30);
     [backutton setBackgroundImage:[UIImage imageNamed:@"back_btn_with_text.png"] forState:UIControlStateNormal];
     [backutton addTarget:self action:@selector(onClickBack:) forControlEvents:UIControlEventTouchDown];
     UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithCustomView:backutton];
     self.navigationBar.leftBarButtonItem = backBtn;
-    
-
-    
+   
+     NSLog(workout.Duration);
     [self.focusTableView.layer setCornerRadius:8];
     [self.focusTableView.layer setBorderColor:[[UIColor blackColor]CGColor]];
     [self.focusTableView.layer setBorderWidth:2];
@@ -48,9 +49,6 @@
 
 -(void)listfocus
 {
-    
-    
-    
     self.focusDB =[[FocusDB alloc]init];
     [ self.focusDB setUpDatabase];
     [ self.focusDB createDatabase];
@@ -87,10 +85,18 @@
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     }
     
-    Focus *focus=[self.muscles objectAtIndex:indexPath.row];
-    [cell.textLabel setText:focus.muscleName];
+    self.focus=[self.muscles objectAtIndex:indexPath.row];
+    [cell.textLabel setText:self.focus.muscleName];
 
+    if (self.focus.isChecked) {
+        cell.accessoryType=UITableViewCellAccessoryCheckmark;
+    }
+    else{
+        cell.accessoryType=UITableViewCellAccessoryNone;
+    }
     
+    
+
     return cell;
 }
 
@@ -99,9 +105,15 @@
 {
 
     if ([[tableView cellForRowAtIndexPath:indexPath] accessoryType] == UITableViewCellAccessoryCheckmark)
+    {
         [[tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryNone];
+        [[self.muscles objectAtIndex:indexPath.row] setIsChecked:NO];
+    }
     else
+    {
         [[tableView cellForRowAtIndexPath:indexPath]setAccessoryType:UITableViewCellAccessoryCheckmark];
+         [[self.muscles objectAtIndex:indexPath.row] setIsChecked:YES];
+    }
    
     
 }
@@ -109,8 +121,28 @@
 
 -(IBAction)onClickNext:(id)sender
 {
+    NSString *str= [[NSString alloc]init];
+     
+    for (Focus *focus in self.muscles) {
+        if ([focus isChecked]) {
+            if ([str length]==0) {
+                str =[str stringByAppendingString:[focus muscleID]];
+            }
+            else{
+                str=[str stringByAppendingString:@","];
+                str =[str stringByAppendingString:[focus muscleID]];
+            }
+            
+        }
+    }
+    Workout *workouts= [[Workout alloc]init];
+    [workouts setDuration:workout.Duration];
+    [workouts setFocus:str];
+    
     EquipmentViewController *viewController =[[EquipmentViewController alloc]initWithNibName:@"EquipmentViewController" bundle:nil];
-    [self.navigationController pushViewController:viewController animated:YES];
+    viewController.workout =[[Workout alloc]init];
+    viewController.workout=workouts;
+   [self.navigationController pushViewController:viewController animated:YES];
 }
 
 -(IBAction)onClickBack:(id)sender{

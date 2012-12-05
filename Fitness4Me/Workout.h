@@ -37,6 +37,8 @@
 @property(retain, nonatomic)NSString *DescriptionBig;
 @property(retain,nonatomic)NSString *ThumbImageUrl;
 @property(retain,nonatomic)NSString *Props;
+@property(retain,nonatomic)NSString *Duration;
+@property(retain,nonatomic)NSString *Focus;
 
 //////
 ///Constructor of the class

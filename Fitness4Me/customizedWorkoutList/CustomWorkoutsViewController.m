@@ -107,14 +107,17 @@
 }
 
 -(IBAction)onClickAdd:(id)sender{
-    
+    CustomWorkoutAddViewController *viewController =[[CustomWorkoutAddViewController alloc]initWithNibName:@"CustomWorkoutAddViewController" bundle:nil];
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 -(IBAction)onClickBack:(id)sender{
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-
+-(IBAction)onClickEdit:(id)sender{
+    
+}
 
 #pragma mark - Table view delegate
 

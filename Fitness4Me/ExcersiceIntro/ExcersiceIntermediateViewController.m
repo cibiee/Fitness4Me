@@ -310,8 +310,6 @@
 
 
 
-//method to  delete the records from  so that it delete all the existing records
-//related to a workout and insert new data
 -(void)deleteExcersices
 {
     [self initilaizeDatabase];
@@ -321,9 +319,7 @@
     [excersiceDB release];
 }
 
-//
-// called for getting User Details
-//
+
 -(void)getUserDetails
 {
     UserDB *userDB =[[UserDB alloc]init];

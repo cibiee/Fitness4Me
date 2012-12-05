@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CustomCellContentController.h"
 #import "TimeViewController.h"
+#import "CustomWorkoutAddViewController.h"
 
 @interface CustomWorkoutsViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITableView *tableView;

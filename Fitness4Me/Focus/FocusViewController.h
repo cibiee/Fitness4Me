@@ -10,13 +10,20 @@
 #import <QuartzCore/QuartzCore.h>
 #import "FocusDB.h"
 #import "Focus.h"
+#import "Workout.h"
 
 @interface FocusViewController : UIViewController
+{
+    Workout *workout;
+}
 
 @property (strong, nonatomic)  FocusDB *focusDB;
-
+@property (retain, nonatomic)Workout *workout;
+@property (strong, nonatomic) Focus *focus;
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigationBar;
 @property (weak, nonatomic) IBOutlet UITableView *focusTableView;
+
+
 -(IBAction)onClickNext:(id)sender;
 -(IBAction)onClickBack:(id)sender;
 @end

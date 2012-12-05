@@ -408,6 +408,44 @@ static FitnessServerCommunication *sharedState;
     }
 }
 
+- (void)saveCustomWorkout:(Workout*)workout  userID:(NSString*)userID userLevel:(NSString *)userLevel language:(int )selectedlanguage  activityIndicator:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView onCompletion:(WMLoginResponseBlock)completionBlock onError:(NSError*)errorBlock
+
+{
+    __block NSString *workoutID;
+    BOOL isReachable =[Fitness4MeUtils isReachable];
+    if (isReachable)
+    {
+        NSString *UrlPath= [NSString GetURlPath];
+        NSString *requestString =[NSString stringWithFormat:@"%@createcustom=yes&user_id=%@&user_level=%@&customname=%@&duration=%@&equipment=%@&focus=%@&lang=%i",UrlPath,userID,userLevel,[workout Name],[workout Duration],[workout Props],[workout Focus],selectedlanguage];
+        NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+        
+        __weak ASIHTTPRequest *requests = [ASIHTTPRequest requestWithURL:url];
+        [requests setCompletionBlock:^{
+            // Use when fetching text data
+            NSString *responseString =[requests responseString];
+            if ([responseString length]>0) {
+                workoutID =[self parseWorkoutID:responseString];
+                if (completionBlock) completionBlock(workoutID);
+            }else{
+                [self terminateActivities:NSLocalizedString(@"slowdata", nil):activityIndicator:signUpView];
+            }
+        }];
+        [requests setFailedBlock:^{
+            //NSError *error = [requests error];
+            [self terminateActivities:NSLocalizedString(@"requestError", nil):activityIndicator:signUpView];
+        }];
+        [requests startAsynchronous];
+    }else{
+        [self terminateActivities:NSLocalizedString(@"NoInternetMessage", nil):activityIndicator:signUpView];
+    }
+}
+
+
+//user_id=117&user_level=1&customname=testgerman&duration=5&equipment=1&focus=3&lang=2
+
+
+
+
 
 
 -(void) getImageAtPath:(NSString *)imageUrl toDestination:( NSString *)storeURL setDelegate:(UIViewController*)viewController
@@ -461,6 +499,7 @@ static FitnessServerCommunication *sharedState;
 }
 
 
+
 -(int)saveUserWithRequestString:(NSString*)requestString activityIndicator:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView
 {
     NSString *userID=@"";
@@ -498,6 +537,8 @@ static FitnessServerCommunication *sharedState;
     
     return [userID intValue];
 }
+
+
 
 
 -(void)getFreePurchaseCount:(int)UserID {
@@ -941,6 +982,18 @@ int finished=0;
     }
     return IsExist;
 }
+
+- (NSString *)parseWorkoutID:(NSString *)responseString
+{
+    NSString *workoutID;
+    NSMutableArray *object = [responseString JSONValue];
+    NSMutableArray *itemsarray =[object valueForKey:@"items"];
+    for (int i=0; i<[itemsarray count]; i++) {
+        workoutID=[[itemsarray objectAtIndex:i] valueForKey:@"custom_workout_id"];
+    }
+    return workoutID;
+}
+
 
 -(void)terminateActivities:(NSString*)message:(UIActivityIndicatorView*)activityIndicator:(UIView*)signUpView{
     

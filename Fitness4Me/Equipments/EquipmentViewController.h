@@ -10,13 +10,18 @@
 #import <QuartzCore/QuartzCore.h>
 #import "EquipmentDB.h"
 #import "Equipments.h"
+#import "Workout.h"
+#import "NameViewController.h"
 
 @interface EquipmentViewController : UIViewController
+{
+    Workout *workout;
+}
 @property (weak, nonatomic) IBOutlet UITableView *equipmentsTableView;
 
 @property (strong, nonatomic)  EquipmentDB *equipmentDB;
 @property (strong, nonatomic)  Equipments *equipment;
-
+@property (strong, nonatomic)Workout *workout;
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigationBar;
 
 -(IBAction)onClickBack:(id)sender;

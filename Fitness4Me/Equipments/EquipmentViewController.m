@@ -14,7 +14,7 @@
 @end
 
 @implementation EquipmentViewController
-
+@synthesize workout;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -32,6 +32,7 @@
     [self.equipmentsTableView.layer setCornerRadius:8];
     [self.equipmentsTableView.layer setBorderColor:[[UIColor blackColor]CGColor]];
     [self.equipmentsTableView.layer setBorderWidth:2];
+    
     
      self.equipments = [[NSMutableArray alloc]init];
     
@@ -139,7 +140,31 @@
 }
 
 -(IBAction)onClickNext:(id)sender{
-   
+    NSString *str= [[NSString alloc]init];
+    
+    for (Equipments *equipment in self.equipments) {
+        if ([equipment isChecked]) {
+            if ([str length]==0) {
+                str =[str stringByAppendingString:[equipment equipmentID]];
+            }
+            else{
+                str=[str stringByAppendingString:@","];
+                str =[str stringByAppendingString:[equipment equipmentID]];
+            }
+            
+        }
+    }
+    
+    Workout *workouts= [[Workout alloc]init];
+    [workouts setDuration:workout.Duration];
+    [workouts setFocus:workout.Focus];
+    [workouts setProps:str];
+     
+    NameViewController *viewController =[[NameViewController alloc]initWithNibName:@"NameViewController" bundle:nil];
+    viewController.workout= [[Workout alloc]init];
+    viewController.workout =workouts;
+    [self.navigationController pushViewController:viewController animated:YES];
+
 }
 
 - (void)viewDidUnload {

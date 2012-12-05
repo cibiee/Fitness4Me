@@ -9,10 +9,13 @@
 #import "CustomWorkoutAddViewController.h"
 
 @interface CustomWorkoutAddViewController ()
-
+@property (strong,nonatomic)NSString *oncePlace;
+@property(strong,nonatomic)NSString *tensPlace;
+@property(strong,nonatomic)NSString *duration;
 @end
 
 @implementation CustomWorkoutAddViewController
+@synthesize workout;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -77,22 +80,29 @@
 
 //PickerViewController.m
 - (void)pickerView:(UIPickerView *)thePickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    //
-    //    if (component==0) {
-    //        NSLog([NSString stringWithFormat:@"%i", row+1]);
-    //
-    //    }
-    //    else{
-    //         NSLog([NSString stringWithFormat:@"%i", row]);
-    //
-    //    }
-}
+    
+        if (component==0) {
+            self.tensPlace = ([NSString stringWithFormat:@"%i", row+1]);
+    
+       }
+       else{
+           self.oncePlace = ([NSString stringWithFormat:@"%i", row]);
+    
+       }
+    
+   }
 
 
 
 -(IBAction)onClickNext:(id)sender
 {
+    
+    self.duration =[self.tensPlace stringByAppendingString:self.oncePlace];
+    Workout *workouts= [[Workout alloc]init];
+    [workouts setDuration:self.duration];
     FocusViewController *viewController =[[FocusViewController alloc]initWithNibName:@"FocusViewController" bundle:nil];
+     viewController.workout =[[Workout alloc]init];
+     viewController .workout=workouts;
     [self.navigationController pushViewController:viewController animated:YES];
 }
 

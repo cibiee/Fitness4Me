@@ -7,11 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-#include "FocusViewController.h"
-@interface CustomWorkoutAddViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UIPickerView *timePickerView;
+#import  "FocusViewController.h"
+#import "Workout.h"
 
+@interface CustomWorkoutAddViewController : UIViewController
+{
+    Workout *workout;
+}
+@property (weak, nonatomic) IBOutlet UIPickerView *timePickerView;
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigationBar;
+
+@property (strong, nonatomic)Workout *workout;
 
 -(IBAction)onClickNext:(id)sender;
 -(IBAction)onClickBack:(id)sender;
