@@ -14,7 +14,7 @@
 @end
 
 @implementation WorkoutCreationCompletedViewController
-@synthesize <#property#>
+@synthesize workout;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
