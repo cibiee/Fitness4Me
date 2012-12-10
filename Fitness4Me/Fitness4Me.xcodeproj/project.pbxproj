@@ -577,7 +577,7 @@
 		0BF04E6115812E84009D819F /* GADCustomEventRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADCustomEventRequest.h; sourceTree = "<group>"; };
 		0BF97ECF1529790500C67DB3 /* ListWorkoutsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListWorkoutsViewController.h; sourceTree = "<group>"; };
 		0BF97ED01529790500C67DB3 /* ListWorkoutsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListWorkoutsViewController.m; sourceTree = "<group>"; };
-		AE7D66A51504D9F4001718B5 /* Fitness4Me.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fitness4Me.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE7D66A51504D9F4001718B5 /* Fitness4Me Lite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fitness4Me Lite.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE7D66A91504D9F4001718B5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AE7D66AB1504D9F4001718B5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AE7D66AD1504D9F4001718B5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -1372,7 +1372,7 @@
 		AE7D66A61504D9F4001718B5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AE7D66A51504D9F4001718B5 /* Fitness4Me.app */,
+				AE7D66A51504D9F4001718B5 /* Fitness4Me Lite.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2032,7 +2032,7 @@
 			);
 			name = Fitness4Me;
 			productName = Fitness4Me;
-			productReference = AE7D66A51504D9F4001718B5 /* Fitness4Me.app */;
+			productReference = AE7D66A51504D9F4001718B5 /* Fitness4Me Lite.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -3834,8 +3834,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Erik Nielsen Holding GmbH";
-				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution: Erik Nielsen Holding GmbH";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Fitness4.me Ltd";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution: Fitness4.me Ltd";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -3850,8 +3850,8 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				PROVISIONING_PROFILE = "57E4F045-A6A3-442B-B82D-EBE534542099";
-				"PROVISIONING_PROFILE[sdk=*]" = "57E4F045-A6A3-442B-B82D-EBE534542099";
+				PROVISIONING_PROFILE = "8526CFDF-D633-4F78-A04D-45726C273DE9";
+				"PROVISIONING_PROFILE[sdk=*]" = "8526CFDF-D633-4F78-A04D-45726C273DE9";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -3860,7 +3860,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Erik Nielsen Holding GmbH";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Fitness4.me Ltd";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -3869,7 +3869,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "57E4F045-A6A3-442B-B82D-EBE534542099";
+				PROVISIONING_PROFILE = "8526CFDF-D633-4F78-A04D-45726C273DE9";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -3879,8 +3879,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Erik Nielsen Holding GmbH";
-				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution: Erik Nielsen Holding GmbH";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Fitness4.me Ltd";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution: Fitness4.me Ltd";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Fitness4Me/Fitness4Me-Prefix.pch";
 				HEADER_SEARCH_PATHS = "/Project/facebook-iphone-sdk/**";
@@ -3888,9 +3888,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = /Project/Fitness4Me;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "57E4F045-A6A3-442B-B82D-EBE534542099";
-				"PROVISIONING_PROFILE[sdk=*]" = "57E4F045-A6A3-442B-B82D-EBE534542099";
+				PRODUCT_NAME = "$(TARGET_NAME) Lite";
+				PROVISIONING_PROFILE = "8526CFDF-D633-4F78-A04D-45726C273DE9";
+				"PROVISIONING_PROFILE[sdk=*]" = "08E59211-FFC4-4C9F-B02C-0C1D3720F074";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
@@ -3901,7 +3901,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Erik Nielsen Holding GmbH";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Fitness4.me Ltd";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Fitness4Me/Fitness4Me-Prefix.pch";
 				HEADER_SEARCH_PATHS = "/Project/facebook-iphone-sdk/**";
@@ -3909,8 +3909,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = /Project/Fitness4Me;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "57E4F045-A6A3-442B-B82D-EBE534542099";
+				PRODUCT_NAME = "$(TARGET_NAME) Lite";
+				PROVISIONING_PROFILE = "8526CFDF-D633-4F78-A04D-45726C273DE9";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
@@ -3927,7 +3927,7 @@
 				AE7D66C21504D9F4001718B5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 		AE7D66C31504D9F4001718B5 /* Build configuration list for PBXNativeTarget "Fitness4Me" */ = {
 			isa = XCConfigurationList;
@@ -3936,7 +3936,7 @@
 				AE7D66C51504D9F4001718B5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

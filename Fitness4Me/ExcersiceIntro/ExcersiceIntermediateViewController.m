@@ -642,10 +642,10 @@
     [self loadStore];
     [self canMakePurchases];
     if ([[self purchaseAll] isEqualToString:@"true"]) {
-        productIdentifier = @"com.fitness4me.Fitness4Me.PurchaseAll";
+        productIdentifier = @"Lite.fitness4.me.PurchaseAll";
     }
     else {
-        productIdentifier = [NSString stringWithFormat:@"com.fitness4me.Fitness4Me.%@",
+        productIdentifier = [NSString stringWithFormat:@"Lite.fitness4.me.%@",
                              [workout WorkoutID]];
     }
    // SKProduct *validProduct=productIdentifier;
