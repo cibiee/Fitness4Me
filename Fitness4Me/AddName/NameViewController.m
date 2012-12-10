@@ -38,6 +38,10 @@
     UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithCustomView:backutton];
     self.navigationBar.leftBarButtonItem = backBtn;
     
+    if ([[workout WorkoutID]intValue]>0) {
+        [self.nameTextfield setText:[workout Name]];
+    }
+    
 
 }
 
@@ -60,10 +64,19 @@
     if ([self.nameTextfield.text length]>0) {
       
         Workout *workouts= [[Workout alloc]init];
+        if ([[workout WorkoutID]intValue]>0) {
+            WorkoutDB *workoutDB =[[WorkoutDB alloc]init];
+            [workoutDB setUpDatabase];
+            [workoutDB createDatabase];
+            workouts =[workoutDB getCustomWorkoutByID:[workout WorkoutID]];
+        }
+
+
         [workouts setDuration:workout.Duration];
         [workouts setFocus:workout.Focus];
         [workouts setProps:workout.Props];
         [workouts setName:self.nameTextfield.text];
+        
         
        
         

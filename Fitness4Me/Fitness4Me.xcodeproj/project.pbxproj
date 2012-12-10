@@ -256,7 +256,6 @@
 		F577DBD8166DDCD60064B920 /* icon_delete.png in Resources */ = {isa = PBXBuildFile; fileRef = F577DBCA166DDCD60064B920 /* icon_delete.png */; };
 		F577DBD9166DDCD60064B920 /* icon_edit.png in Resources */ = {isa = PBXBuildFile; fileRef = F577DBCB166DDCD60064B920 /* icon_edit.png */; };
 		F577DBDA166DDCD60064B920 /* list_box.png in Resources */ = {isa = PBXBuildFile; fileRef = F577DBCC166DDCD60064B920 /* list_box.png */; };
-		F577DBDB166DDCD60064B920 /* list_edit_box.png in Resources */ = {isa = PBXBuildFile; fileRef = F577DBCD166DDCD60064B920 /* list_edit_box.png */; };
 		F577DBDC166DDCD60064B920 /* package_box.png in Resources */ = {isa = PBXBuildFile; fileRef = F577DBCE166DDCD60064B920 /* package_box.png */; };
 		F577DBDD166DDCD60064B920 /* smiley.png in Resources */ = {isa = PBXBuildFile; fileRef = F577DBCF166DDCD60064B920 /* smiley.png */; };
 		F577DBF0166E05C80064B920 /* FocusViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F577DBEE166E05C80064B920 /* FocusViewController.xib */; };
@@ -291,6 +290,10 @@
 		F5A884DB16411A0900AFE158 /* btn_small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A884DD16411A0900AFE158 /* btn_small@2x.png */; };
 		F5A884DF16411A1500AFE158 /* btn_small@2x_hover.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A884E116411A1500AFE158 /* btn_small@2x_hover.png */; };
 		F5A884E716411A2B00AFE158 /* btn_small_hover.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A884E916411A2B00AFE158 /* btn_small_hover.png */; };
+		F5AF28301670906C00C18C34 /* CustomizedWorkoutPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5AF282E1670906C00C18C34 /* CustomizedWorkoutPlayViewController.m */; };
+		F5AF28321670938900C18C34 /* CustomizedWorkoutPlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5AF28341670938900C18C34 /* CustomizedWorkoutPlayViewController.xib */; };
+		F5AF283B16709BDF00C18C34 /* CustomWorkoutEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5AF283916709BDF00C18C34 /* CustomWorkoutEditViewController.m */; };
+		F5AF283C16709BDF00C18C34 /* CustomWorkoutEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5AF283A16709BDF00C18C34 /* CustomWorkoutEditViewController.xib */; };
 		F5B2975D166CC26D00011A7D /* CustomWorkoutAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B2975B166CC26D00011A7D /* CustomWorkoutAddViewController.m */; };
 		F5B2975E166CC26D00011A7D /* CustomWorkoutAddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5B2975C166CC26D00011A7D /* CustomWorkoutAddViewController.xib */; };
 		F5BB87BC16253D2900043059 /* LoadAppstoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5BB87BA16253D2900043059 /* LoadAppstoreViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -306,6 +309,7 @@
 		F5C8471A166C968A00B8EDA6 /* Equipments.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C84719166C968A00B8EDA6 /* Equipments.m */; };
 		F5C8471D166C973300B8EDA6 /* EquipmentDB.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C8471C166C973300B8EDA6 /* EquipmentDB.m */; };
 		F5E8CC06163FF9E100B21A47 /* ShareFitness4MeViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5E8CC08163FF9E100B21A47 /* ShareFitness4MeViewController_iPad.xib */; };
+		F5E92D4B1670C16900F7378F /* list_edit_box.png in Resources */ = {isa = PBXBuildFile; fileRef = F5E92D4A1670C16900F7378F /* list_edit_box.png */; };
 		F5F1F18D162FE3D70007D55E /* big_green_container_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = F5F1F16F162FE3D70007D55E /* big_green_container_iPad.png */; };
 		F5F1F18E162FE3D70007D55E /* buttongreenyes_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = F5F1F171162FE3D70007D55E /* buttongreenyes_iPad.png */; };
 		F5F1F18F162FE3D70007D55E /* congrats_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = F5F1F173162FE3D70007D55E /* congrats_iPad.png */; };
@@ -324,7 +328,7 @@
 		F5F4043C166F16000019C5EA /* WorkoutCreationCompletedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F4043A166F16000019C5EA /* WorkoutCreationCompletedViewController.m */; };
 		F5F4043D166F16000019C5EA /* WorkoutCreationCompletedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5F4043B166F16000019C5EA /* WorkoutCreationCompletedViewController.xib */; };
 		F5F40442166F26800019C5EA /* CustomWorkoutIntermediateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5F40440166F26800019C5EA /* CustomWorkoutIntermediateViewController.m */; };
-		F5F40443166F26800019C5EA /* CustomWorkoutIntermediateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5F40441166F26800019C5EA /* CustomWorkoutIntermediateViewController.xib */; };
+		F5F40461166F69E40019C5EA /* CustomWorkoutIntermediateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5F40463166F69E40019C5EA /* CustomWorkoutIntermediateViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -775,7 +779,6 @@
 		F577DBCA166DDCD60064B920 /* icon_delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_delete.png; sourceTree = "<group>"; };
 		F577DBCB166DDCD60064B920 /* icon_edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_edit.png; sourceTree = "<group>"; };
 		F577DBCC166DDCD60064B920 /* list_box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list_box.png; sourceTree = "<group>"; };
-		F577DBCD166DDCD60064B920 /* list_edit_box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list_edit_box.png; sourceTree = "<group>"; };
 		F577DBCE166DDCD60064B920 /* package_box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = package_box.png; sourceTree = "<group>"; };
 		F577DBCF166DDCD60064B920 /* smiley.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smiley.png; sourceTree = "<group>"; };
 		F577DBEC166E05C80064B920 /* FocusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FocusViewController.h; path = Focus/FocusViewController.h; sourceTree = "<group>"; };
@@ -840,6 +843,13 @@
 		F5A884E816411A2B00AFE158 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/btn_small_hover.png; sourceTree = "<group>"; };
 		F5A884EA16411A2F00AFE158 /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/btn_small_hover.png; sourceTree = "<group>"; };
 		F5A884EB1641289500AFE158 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/LoginViewController.xib; sourceTree = "<group>"; };
+		F5AF282D1670906C00C18C34 /* CustomizedWorkoutPlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomizedWorkoutPlayViewController.h; path = CustomizedWorkoutPlay/CustomizedWorkoutPlayViewController.h; sourceTree = "<group>"; };
+		F5AF282E1670906C00C18C34 /* CustomizedWorkoutPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomizedWorkoutPlayViewController.m; path = CustomizedWorkoutPlay/CustomizedWorkoutPlayViewController.m; sourceTree = "<group>"; };
+		F5AF28331670938900C18C34 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CustomizedWorkoutPlayViewController.xib; sourceTree = "<group>"; };
+		F5AF28351670938D00C18C34 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/CustomizedWorkoutPlayViewController.xib; sourceTree = "<group>"; };
+		F5AF283816709BDF00C18C34 /* CustomWorkoutEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomWorkoutEditViewController.h; path = CustomWorkoutEdit/CustomWorkoutEditViewController.h; sourceTree = "<group>"; };
+		F5AF283916709BDF00C18C34 /* CustomWorkoutEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomWorkoutEditViewController.m; path = CustomWorkoutEdit/CustomWorkoutEditViewController.m; sourceTree = "<group>"; };
+		F5AF283A16709BDF00C18C34 /* CustomWorkoutEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomWorkoutEditViewController.xib; path = CustomWorkoutEdit/CustomWorkoutEditViewController.xib; sourceTree = "<group>"; };
 		F5B2975A166CC26D00011A7D /* CustomWorkoutAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomWorkoutAddViewController.h; path = AddCustomWokoutLanding/CustomWorkoutAddViewController.h; sourceTree = "<group>"; };
 		F5B2975B166CC26D00011A7D /* CustomWorkoutAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomWorkoutAddViewController.m; path = AddCustomWokoutLanding/CustomWorkoutAddViewController.m; sourceTree = "<group>"; };
 		F5B2975C166CC26D00011A7D /* CustomWorkoutAddViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomWorkoutAddViewController.xib; path = AddCustomWokoutLanding/CustomWorkoutAddViewController.xib; sourceTree = "<group>"; };
@@ -868,6 +878,7 @@
 		F5C8471B166C973300B8EDA6 /* EquipmentDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EquipmentDB.h; path = EquipmentDB/EquipmentDB.h; sourceTree = "<group>"; };
 		F5C8471C166C973300B8EDA6 /* EquipmentDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EquipmentDB.m; path = EquipmentDB/EquipmentDB.m; sourceTree = "<group>"; };
 		F5E8CC07163FF9E100B21A47 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ShareFitness4MeViewController_iPad.xib; sourceTree = "<group>"; };
+		F5E92D4A1670C16900F7378F /* list_edit_box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list_edit_box.png; sourceTree = "<group>"; };
 		F5F1F170162FE3D70007D55E /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/big_green_container_iPad.png; sourceTree = "<group>"; };
 		F5F1F172162FE3D70007D55E /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/buttongreenyes_iPad.png; sourceTree = "<group>"; };
 		F5F1F174162FE3D70007D55E /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/congrats_iPad.png; sourceTree = "<group>"; };
@@ -903,7 +914,8 @@
 		F5F4043B166F16000019C5EA /* WorkoutCreationCompletedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WorkoutCreationCompletedViewController.xib; path = WorkoutCreationCompleted/WorkoutCreationCompletedViewController.xib; sourceTree = "<group>"; };
 		F5F4043F166F26800019C5EA /* CustomWorkoutIntermediateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomWorkoutIntermediateViewController.h; path = CustomWorkoutIntermediate/CustomWorkoutIntermediateViewController.h; sourceTree = "<group>"; };
 		F5F40440166F26800019C5EA /* CustomWorkoutIntermediateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomWorkoutIntermediateViewController.m; path = CustomWorkoutIntermediate/CustomWorkoutIntermediateViewController.m; sourceTree = "<group>"; };
-		F5F40441166F26800019C5EA /* CustomWorkoutIntermediateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomWorkoutIntermediateViewController.xib; path = CustomWorkoutIntermediate/CustomWorkoutIntermediateViewController.xib; sourceTree = "<group>"; };
+		F5F40462166F69E40019C5EA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CustomWorkoutIntermediateViewController.xib; sourceTree = "<group>"; };
+		F5F40464166F69EA0019C5EA /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/CustomWorkoutIntermediateViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1159,6 +1171,7 @@
 				F577DBC2166DDCD60064B920 /* back_btn_with_text.png */,
 				F577DBC3166DDCD60064B920 /* back_btnBlack.png */,
 				F577DBC4166DDCD60064B920 /* button_full_width.png */,
+				F5E92D4A1670C16900F7378F /* list_edit_box.png */,
 				F577DBC5166DDCD60064B920 /* button_half_width.png */,
 				F577DBC6166DDCD60064B920 /* continue_btn_with_text.png */,
 				F577DBC7166DDCD60064B920 /* continue_btn.png */,
@@ -1167,7 +1180,6 @@
 				F577DBCA166DDCD60064B920 /* icon_delete.png */,
 				F577DBCB166DDCD60064B920 /* icon_edit.png */,
 				F577DBCC166DDCD60064B920 /* list_box.png */,
-				F577DBCD166DDCD60064B920 /* list_edit_box.png */,
 				F577DBCE166DDCD60064B920 /* package_box.png */,
 				F577DBCF166DDCD60064B920 /* smiley.png */,
 				F53E755116492F5200970DB9 /* back_btn.png */,
@@ -1706,15 +1718,17 @@
 		F5198FFC1665D75E009C3F3D /* Customized Workouts */ = {
 			isa = PBXGroup;
 			children = (
-				F5F4043E166F26180019C5EA /* CustomWorkoutIntermediate */,
-				F5F40437166F15AF0019C5EA /* WorkoutCreationCompleted */,
-				F577DBF2166E185E0064B920 /* CustomWorkoutName */,
 				F5B29758166CC22400011A7D /* AddCustomWorkoutLandingPage */,
-				F5C84712166C8BA200B8EDA6 /* Equipments */,
-				F5C84707166C62FD00B8EDA6 /* Time */,
-				F5AE76C016671F1700751B65 /* Focus */,
-				F5AE76BE16671A4000751B65 /* CustomizedWorkoutLists */,
 				F519901A16661235009C3F3D /* CustomCell */,
+				F5AE76BE16671A4000751B65 /* CustomizedWorkoutLists */,
+				F5AF282B1670903700C18C34 /* CustomizedWorkoutPlay */,
+				F5AF283616709BAE00C18C34 /* CustomWorkoutEdit */,
+				F5F4043E166F26180019C5EA /* CustomWorkoutIntermediate */,
+				F577DBF2166E185E0064B920 /* CustomWorkoutName */,
+				F5C84712166C8BA200B8EDA6 /* Equipments */,
+				F5AE76C016671F1700751B65 /* Focus */,
+				F5C84707166C62FD00B8EDA6 /* Time */,
+				F5F40437166F15AF0019C5EA /* WorkoutCreationCompleted */,
 			);
 			name = "Customized Workouts";
 			sourceTree = "<group>";
@@ -2209,6 +2223,26 @@
 			name = Focus;
 			sourceTree = "<group>";
 		};
+		F5AF282B1670903700C18C34 /* CustomizedWorkoutPlay */ = {
+			isa = PBXGroup;
+			children = (
+				F5AF282D1670906C00C18C34 /* CustomizedWorkoutPlayViewController.h */,
+				F5AF282E1670906C00C18C34 /* CustomizedWorkoutPlayViewController.m */,
+				F5AF28341670938900C18C34 /* CustomizedWorkoutPlayViewController.xib */,
+			);
+			name = CustomizedWorkoutPlay;
+			sourceTree = "<group>";
+		};
+		F5AF283616709BAE00C18C34 /* CustomWorkoutEdit */ = {
+			isa = PBXGroup;
+			children = (
+				F5AF283816709BDF00C18C34 /* CustomWorkoutEditViewController.h */,
+				F5AF283916709BDF00C18C34 /* CustomWorkoutEditViewController.m */,
+				F5AF283A16709BDF00C18C34 /* CustomWorkoutEditViewController.xib */,
+			);
+			name = CustomWorkoutEdit;
+			sourceTree = "<group>";
+		};
 		F5B29758166CC22400011A7D /* AddCustomWorkoutLandingPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -2264,7 +2298,7 @@
 			children = (
 				F5F4043F166F26800019C5EA /* CustomWorkoutIntermediateViewController.h */,
 				F5F40440166F26800019C5EA /* CustomWorkoutIntermediateViewController.m */,
-				F5F40441166F26800019C5EA /* CustomWorkoutIntermediateViewController.xib */,
+				F5F40463166F69E40019C5EA /* CustomWorkoutIntermediateViewController.xib */,
 			);
 			name = CustomWorkoutIntermediate;
 			sourceTree = "<group>";
@@ -2547,13 +2581,15 @@
 				F577DBD8166DDCD60064B920 /* icon_delete.png in Resources */,
 				F577DBD9166DDCD60064B920 /* icon_edit.png in Resources */,
 				F577DBDA166DDCD60064B920 /* list_box.png in Resources */,
-				F577DBDB166DDCD60064B920 /* list_edit_box.png in Resources */,
 				F577DBDC166DDCD60064B920 /* package_box.png in Resources */,
 				F577DBDD166DDCD60064B920 /* smiley.png in Resources */,
 				F577DBF0166E05C80064B920 /* FocusViewController.xib in Resources */,
 				F577DBF7166E18B70064B920 /* NameViewController.xib in Resources */,
 				F5F4043D166F16000019C5EA /* WorkoutCreationCompletedViewController.xib in Resources */,
-				F5F40443166F26800019C5EA /* CustomWorkoutIntermediateViewController.xib in Resources */,
+				F5F40461166F69E40019C5EA /* CustomWorkoutIntermediateViewController.xib in Resources */,
+				F5AF28321670938900C18C34 /* CustomizedWorkoutPlayViewController.xib in Resources */,
+				F5AF283C16709BDF00C18C34 /* CustomWorkoutEditViewController.xib in Resources */,
+				F5E92D4B1670C16900F7378F /* list_edit_box.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2633,6 +2669,8 @@
 				F577DBF6166E18B70064B920 /* NameViewController.m in Sources */,
 				F5F4043C166F16000019C5EA /* WorkoutCreationCompletedViewController.m in Sources */,
 				F5F40442166F26800019C5EA /* CustomWorkoutIntermediateViewController.m in Sources */,
+				F5AF28301670906C00C18C34 /* CustomizedWorkoutPlayViewController.m in Sources */,
+				F5AF283B16709BDF00C18C34 /* CustomWorkoutEditViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3955,6 +3993,16 @@
 			name = btn_small_hover.png;
 			sourceTree = "<group>";
 		};
+		F5AF28341670938900C18C34 /* CustomizedWorkoutPlayViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F5AF28331670938900C18C34 /* en */,
+				F5AF28351670938D00C18C34 /* de */,
+			);
+			name = CustomizedWorkoutPlayViewController.xib;
+			path = CustomizedWorkoutPlay;
+			sourceTree = "<group>";
+		};
 		F5C0B3671659F04D0008B5EA /* SettingsViewController_iPad.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -4124,6 +4172,16 @@
 				F5F1F19D162FE3FC0007D55E /* de */,
 			);
 			name = yes_no_btn_iPad.png;
+			sourceTree = "<group>";
+		};
+		F5F40463166F69E40019C5EA /* CustomWorkoutIntermediateViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F5F40462166F69E40019C5EA /* en */,
+				F5F40464166F69EA0019C5EA /* de */,
+			);
+			name = CustomWorkoutIntermediateViewController.xib;
+			path = CustomWorkoutIntermediate;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -52,7 +52,7 @@
 	// get localized path for file from app bundle
 	NSString *path;
 	NSBundle *thisBundle = [NSBundle mainBundle];
-    NSLog(@"%i",[[UIDevice currentDevice] userInterfaceIdiom]);
+   // NSLog(@"%i",[[UIDevice currentDevice] userInterfaceIdiom]);
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
     {
         

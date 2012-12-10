@@ -8,6 +8,8 @@
 
 #import "FocusViewController.h"
 #import "EquipmentViewController.h"
+#import "WorkoutDB.h"
+#import "FitnessServerCommunication.h"
 
 @interface FocusViewController ()
 @property NSMutableArray *muscles;
@@ -26,6 +28,8 @@
 
 - (void)viewDidLoad
 {
+    
+     
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
@@ -38,31 +42,122 @@
     UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithCustomView:backutton];
     self.navigationBar.leftBarButtonItem = backBtn;
    
-     NSLog(workout.Duration);
+    // NSLog(workout.Duration);
     [self.focusTableView.layer setCornerRadius:8];
     [self.focusTableView.layer setBorderColor:[[UIColor blackColor]CGColor]];
     [self.focusTableView.layer setBorderWidth:2];
     
-    [NSThread detachNewThreadSelector:@selector(listfocus) toTarget:self withObject:nil];
+    [self.activityIndicator startAnimating];
+     [NSThread detachNewThreadSelector:@selector(listfocus) toTarget:self withObject:nil];
+}
+
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    
 }
 
 
 -(void)listfocus
 {
-    self.focusDB =[[FocusDB alloc]init];
+      self.focusDB =[[FocusDB alloc]init];
     [ self.focusDB setUpDatabase];
     [ self.focusDB createDatabase];
-    [ self.focusDB getFocus];
+    
+    [self.focusDB getFocus];
     
     if ([ self.focusDB.muscles count]>0) {
         
-        self.muscles =self.focusDB.muscles  ;
-        [self.focusTableView reloadData];
         
+        if ([[self.workout WorkoutID]intValue]>0) {
+            [self.workout setFocus:[self getfocusIDs:self.focusDB.muscles]];
+           self.muscles = [self prepareTableView:self.focusDB.muscles];
+            
+        }
+        else{
+            self.muscles =self.focusDB.muscles;
+        }
+        
+        [self.focusTableView reloadData];
+        [self.activityIndicator stopAnimating];
+        [self.activityIndicator setHidesWhenStopped:YES];
     }
     
+    else{
+        FitnessServerCommunication *fitness =[FitnessServerCommunication sharedState];
+        [fitness listfocus:self.activityIndicator progressView:nil onCompletion:^(NSString *responseString) {
+            [self listfocus];}
+         onError:^(NSError *error) {
+            
+        }];
+
+    }
     
 }
+
+
+-(NSString *)getfocusIDs:(NSMutableArray *)focuslist
+{
+    NSArray* foo = [[workout Focus] componentsSeparatedByString: @","];
+    
+    //NSLog(@"%@",[workout Focus]);
+    
+    NSString *str=[[NSString alloc]init];
+    
+    for (int k=0; k<foo.count; k++) {
+        
+        for (int i=0; i<focuslist.count; i++) {
+            if([[[focuslist objectAtIndex:i] muscleName] isEqualToString:[foo objectAtIndex:k]] ){
+                if ([str length]==0) {
+                    str =[str stringByAppendingString:[[focuslist objectAtIndex:i] muscleID]];
+                }
+                else{
+                    str=[str stringByAppendingString:@","];
+                    str =[str stringByAppendingString:[[focuslist objectAtIndex:i] muscleID]];
+                }
+
+                
+                break;
+            }
+            
+            
+        }
+        
+    }
+    return str;
+}
+
+
+
+
+
+-(NSMutableArray*)prepareTableView:(NSMutableArray *)focuslist {
+    
+    NSArray* foo = [[workout Focus] componentsSeparatedByString: @","];
+       
+    NSLog(@"%@",[workout WorkoutID]);
+     NSLog(@"%@",[workout Focus]);
+    
+    NSMutableArray *newfocusArray=[[NSMutableArray alloc]init];
+    newfocusArray=focuslist;
+    for (int k=0; k<foo.count; k++) {
+        
+        for (int i=0; i<focuslist.count; i++) {
+           
+            if([[[focuslist objectAtIndex:i] muscleID] isEqualToString:[foo objectAtIndex:k]] ){
+                [[newfocusArray objectAtIndex:i] setIsChecked:YES];
+                  NSLog(@"%@",[[focuslist objectAtIndex:i] muscleID]);
+                break;
+            }
+            
+            
+        }
+        
+    }
+    return newfocusArray;
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -136,6 +231,15 @@
         }
     }
     Workout *workouts= [[Workout alloc]init];
+    
+    if ([[workout WorkoutID]intValue]>0) {
+        WorkoutDB *workoutDB =[[WorkoutDB alloc]init];
+        [workoutDB setUpDatabase];
+        [workoutDB createDatabase];
+        workouts =[workoutDB getCustomWorkoutByID:[workout WorkoutID]];
+    }
+    
+    
     [workouts setDuration:workout.Duration];
     [workouts setFocus:str];
     
@@ -152,6 +256,8 @@
 - (void)viewDidUnload {
     [self setFocusTableView:nil];
     [self setNavigationBar:nil];
+    self.muscles =nil;
+    [self setActivityIndicator:nil];
     [super viewDidUnload];
 }
 @end

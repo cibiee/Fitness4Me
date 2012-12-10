@@ -346,6 +346,13 @@
     if (userID>0){
         FitnessServerCommunication *fitnessserverCommunication =[[FitnessServerCommunication alloc]init];
         [fitnessserverCommunication parseFitnessDetails:userID];
+        
+      [fitnessserverCommunication parseCustomFitnessDetails:userID onCompletion:^{
+          
+      } onError:^(NSError *error) {
+          // [self getExcersices];
+      }];
+        
     }
 }
 

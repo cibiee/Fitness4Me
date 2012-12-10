@@ -36,12 +36,22 @@ FMDatabase * database;
 -(void)getWorkouts;
 
 -(void)insertWorkout:(Workout *)workout;
-
 -(void)insertWorkouts:(NSMutableArray *)workouts;
-
 -(void)deleteWorkout;
-
 -(void)selectWorkout;
-
 -(void)updateWorkout:(NSString *)workoutID:(NSString *)isLocked;
+
+
+-(void)getCustomWorkouts;
+-(void)insertCustomWorkout:(Workout *)workout;
+-(void)insertCustomWorkouts:(NSMutableArray *)workouts;
+-(void)deleteCustomWorkout;
+-(Workout*)getCustomWorkoutByID:(NSString*)workoutID;
+//-(void)selectCustomWorkout;
+//-(void)updateCustomWorkout:(NSString *)workoutID:(NSString *)isLocked;
+
+
+
+
+
 @end

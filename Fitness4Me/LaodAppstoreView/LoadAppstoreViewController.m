@@ -52,7 +52,7 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
  navigationType:(UIWebViewNavigationType)navigationType;
 {
     NSURL *loadURL = [request URL] ;
-    NSLog(@"%@",loadURL);
+   // NSLog(@"%@",loadURL);
     if([[loadURL absoluteString] hasPrefix:@"http://"])
     {
        

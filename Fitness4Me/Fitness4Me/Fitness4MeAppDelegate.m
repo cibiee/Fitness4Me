@@ -297,7 +297,11 @@ int userID;
         
         
 
-        
+        [fitnessserverCommunication parseCustomFitnessDetails:userID onCompletion:^{
+            
+        } onError:^(NSError *error) {
+            // [self getExcersices];
+        }];
         Fitness4MeAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
         UIViewController *topView = appDelegate.navigationController.topViewController;
         if ([topView isKindOfClass:[ListWorkoutsViewController class]]) {

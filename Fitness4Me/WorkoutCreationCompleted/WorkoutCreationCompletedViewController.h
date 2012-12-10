@@ -14,9 +14,11 @@
 #import "SBJSON.h"
 #import "SBJsonParser.h"
 #import "FitnessServerCommunication.h"
+#import "WorkoutDB.h"
 
 @interface WorkoutCreationCompletedViewController : UIViewController
 {
+    
     
     
     Workout *workout;
@@ -49,9 +51,13 @@
 
 }
 
-@property (strong, nonatomic)Workout *workout;
 
+-(IBAction)onClickBack:(id)sender;
 - (IBAction)onClickLetsGo:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (strong, nonatomic)Workout *workout;
+@property (weak, nonatomic) IBOutlet UINavigationItem *navigationBar;
+@property (weak, nonatomic) IBOutlet UIView *progressView;
 
 @end

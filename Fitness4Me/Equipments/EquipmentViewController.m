@@ -7,6 +7,7 @@
 //
 
 #import "EquipmentViewController.h"
+#import "WorkoutDB.h"
 
 @interface EquipmentViewController ()
 @property NSMutableArray *equipments;
@@ -63,9 +64,7 @@
 
 -(void)listEquipments
 {
-    
-   
-    
+
      self.equipmentDB =[[EquipmentDB alloc]init];
     [ self.equipmentDB setUpDatabase];
     [ self.equipmentDB createDatabase];
@@ -73,13 +72,84 @@
     
     if ([ self.equipmentDB.equipments count]>0) {
         
-         self.equipments =self.equipmentDB.equipments ;
+        if ([[self.workout WorkoutID]intValue]>0) {
+            [self.workout setProps:[self getfocusIDs:self.equipmentDB.equipments]];
+            self.equipments = [self prepareTableView:self.equipmentDB.equipments];
+        }
+        else{
+            self.equipments =self.equipmentDB.equipments;
+        }
+        
         [self.equipmentsTableView reloadData];
+
                
     }
     
 
 }
+
+
+
+-(NSString *)getfocusIDs:(NSMutableArray *)focuslist
+{
+    NSArray* foo = [[workout Props] componentsSeparatedByString: @","];
+    
+    //NSLog(@"%@",[workout Focus]);
+    
+    NSString *str=[[NSString alloc]init];
+    
+    for (int k=0; k<foo.count; k++) {
+        
+        for (int i=0; i<focuslist.count; i++) {
+            if([[[focuslist objectAtIndex:i] equipmentName] isEqualToString:[foo objectAtIndex:k]] ){
+                if ([str length]==0) {
+                    str =[str stringByAppendingString:[[focuslist objectAtIndex:i] equipmentID]];
+                }
+                else{
+                    str=[str stringByAppendingString:@","];
+                    str =[str stringByAppendingString:[[focuslist objectAtIndex:i] equipmentID]];
+                }
+                
+                
+                break;
+            }
+            
+            
+        }
+        
+    }
+    return str;
+}
+
+
+
+
+
+-(NSMutableArray*)prepareTableView:(NSMutableArray *)focuslist {
+    
+    NSArray* foo = [[workout Props] componentsSeparatedByString: @","];
+    
+    NSLog(@"%@",[workout Props]);
+    
+    NSMutableArray *newfocusArray=[[NSMutableArray alloc]init];
+    newfocusArray=focuslist;
+    for (int k=0; k<foo.count; k++) {
+        
+        for (int i=0; i<focuslist.count; i++) {
+            
+            if([[[focuslist objectAtIndex:i] equipmentID] isEqualToString:[foo objectAtIndex:k]] ){
+                [[newfocusArray objectAtIndex:i] setIsChecked:YES];
+                break;
+            }
+            
+            
+        }
+        
+    }
+    return newfocusArray;
+}
+
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -141,23 +211,35 @@
 
 -(IBAction)onClickNext:(id)sender{
     NSString *str= [[NSString alloc]init];
-    
+     NSString *name= [[NSString alloc]init];
     for (Equipments *equipment in self.equipments) {
         if ([equipment isChecked]) {
             if ([str length]==0) {
                 str =[str stringByAppendingString:[equipment equipmentID]];
+                name =[name stringByAppendingString:[equipment equipmentName]];
             }
             else{
                 str=[str stringByAppendingString:@","];
                 str =[str stringByAppendingString:[equipment equipmentID]];
+                name=[name stringByAppendingString:@","];
+                name =[name stringByAppendingString:[equipment equipmentName]];
             }
             
         }
     }
     
     Workout *workouts= [[Workout alloc]init];
+    if ([[workout WorkoutID]intValue]>0) {
+        WorkoutDB *workoutDB =[[WorkoutDB alloc]init];
+        [workoutDB setUpDatabase];
+        [workoutDB createDatabase];
+        workouts =[workoutDB getCustomWorkoutByID:[workout WorkoutID]];
+    }
+    
+
     [workouts setDuration:workout.Duration];
     [workouts setFocus:workout.Focus];
+    [workouts setFocusName:name];
     [workouts setProps:str];
      
     NameViewController *viewController =[[NameViewController alloc]initWithNibName:@"NameViewController" bundle:nil];

@@ -52,7 +52,7 @@
     self.muscles=[[NSMutableArray alloc]init];
     
     if(!self.database.open){
-        NSLog(@"Databse not Open");
+       // NSLog(@"Databse not Open");
     }
     
     
@@ -67,12 +67,86 @@
     }
     
     [resultSet close];
-    NSLog(@"%i",[self.muscles count]);
+   // NSLog(@"%i",[self.muscles count]);
     return self.muscles;
     
     
     
 }
+
+
+
+
+
+-(NSString*)getSelectedFocus:(NSString*)muscleID{
+    [self setUpDatabase];
+    [self createDatabase];
+    
+    self.database =[FMDatabase databaseWithPath:self.databasePath];
+    NSString *focus =[[NSString alloc]init];
+    if(!self.database.open){
+      //  NSLog(@"Databse not Open");
+    }
+    
+    NSString *query =[NSString stringWithFormat:@"Select * from focus where muscleID in (%@)",muscleID];
+    FMResultSet *resultSet=[self.database executeQuery:query];
+     
+    
+        while (resultSet.next) {
+            
+        
+        if ([focus length]==0) {
+          
+            focus =[focus stringByAppendingString:[resultSet stringForColumnIndex:1]];
+        }
+       else
+       {
+           focus=[focus stringByAppendingString:@","];
+           focus =[focus stringByAppendingString:[resultSet stringForColumnIndex:1]];
+
+       }
+    }
+      
+    
+    [resultSet close];
+
+    return focus;
+    
+    
+    
+}
+
+-(NSMutableArray*)getFocusArray:(NSString*)muscleName{
+    [self setUpDatabase];
+    [self createDatabase];
+   
+    self.database =[FMDatabase databaseWithPath:self.databasePath];
+    NSMutableArray *focus =[[NSMutableArray alloc]init];
+    if(!self.database.open){
+        NSLog(@"Databse not Open");
+    }
+    
+    NSString *query =[NSString stringWithFormat:@"Select * from focus where muscleName in (%@)",muscleName];
+    FMResultSet *resultSet=[self.database executeQuery:query];
+    
+    
+    while (resultSet.next) {
+        
+    
+        [focus addObject:[resultSet stringForColumnIndex:0]];
+        
+       
+    }
+    
+    
+    [resultSet close];
+    
+    return focus;
+    
+    
+    
+}
+
 
 
 -(void)insertEquipment:(Focus *)focus{
@@ -82,7 +156,7 @@
     if(!self.database.open){
         NSLog(@"Databse not Open");
     }
-     NSLog(@"%@",focus.muscleID);
+    // NSLog(@"%@",focus.muscleID);
     
     [self.database beginTransaction];
     
@@ -131,7 +205,7 @@
     self.database =[FMDatabase databaseWithPath:self.databasePath];
     
     if(!self.database.open){
-        NSLog(@"Databse not Open");
+      //  NSLog(@"Databse not Open");
     }
     
     [self.database beginTransaction];

@@ -1,21 +1,22 @@
 //
-//  CustomWorkoutsViewController.m
+//  CustomWorkoutEditViewController.m
 //  Fitness4Me
 //
-//  Created by Ciby  on 28/11/12.
+//  Created by Ciby  on 06/12/12.
 //
 //
 
-#import "CustomWorkoutsViewController.h"
-#import "FitnessServerCommunication.h"
+#import "CustomWorkoutEditViewController.h"
+#import "CustomWorkoutAddViewController.h"
 
-@interface CustomWorkoutsViewController ()
-
+@interface CustomWorkoutEditViewController ()
 @property NSMutableArray *groupedExcersice;
 @property NSMutableArray *workouts;
+@property int s;
 @end
 
-@implementation CustomWorkoutsViewController
+@implementation CustomWorkoutEditViewController
+
 @synthesize myQueue;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -50,7 +51,7 @@
     
     self.tableView.separatorColor =[UIColor clearColor];
     
-  }
+}
 
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -64,7 +65,7 @@
 
 -(void)getExcersices{
     
-    [activityIndicator startAnimating];
+    //[activityIndicator startAnimating];
     [NSThread detachNewThreadSelector:@selector(ListExcersices) toTarget:self withObject:nil];
 }
 
@@ -83,8 +84,8 @@
         self.workouts = workoutDB.Workouts;
         [self prepareTableView];
         [self.tableView reloadData];
-        [activityIndicator stopAnimating];
-        [activityIndicator setHidesWhenStopped:YES];
+        //  [activityIndicator stopAnimating];
+        // [activityIndicator setHidesWhenStopped:YES];
         
     }
     
@@ -96,49 +97,43 @@
         }
         else {
             
-           // networkNotificationtextView.hidden=NO;
-            [activityIndicator stopAnimating];
-            [activityIndicator removeFromSuperview];
+            // networkNotificationtextView.hidden=NO;
+            // [activityIndicator stopAnimating];
+            // [activityIndicator removeFromSuperview];
             
             return;
         }
     }
     
-   
+    
 }
 
 
 -(void)parseFitnessDetails{
     
-           
-        NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
-        UserID =[userinfo integerForKey:@"UserID"];
     
-         FitnessServerCommunication *fitness =[FitnessServerCommunication sharedState];
-        [fitness parseCustomFitnessDetails:UserID onCompletion:^{
+    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+    UserID =[userinfo integerForKey:@"UserID"];
+    
+    FitnessServerCommunication *fitness =[FitnessServerCommunication sharedState];
+    [fitness parseCustomFitnessDetails:UserID onCompletion:^{
         [self ListExcersices];
         
     }  onError:^(NSError *error) {
         
     }];
-
-
+    
+    
 }
 
 
 -(void)prepareTableView{
-    
     self.groupedExcersice =[[NSMutableArray alloc]init];
-    
-    for(int i=0;i<[workoutDB.Workouts count];i++)
-    {
-        
+    for(int i=0;i<[workoutDB.Workouts count];i++){
         NSArray *arrworkouts = [NSArray arrayWithObjects:[workoutDB.Workouts objectAtIndex:i], nil];
         NSDictionary *workouts = [NSDictionary dictionaryWithObject:arrworkouts forKey:@"workouts"];
         [self.groupedExcersice addObject:workouts];
-        
     }
-    
 }
 
 
@@ -166,8 +161,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-   NSDictionary *dictionary = [self.groupedExcersice objectAtIndex:section];
-   NSArray *array = [dictionary objectForKey:@"workouts"];
+    NSDictionary *dictionary = [self.groupedExcersice objectAtIndex:section];
+    NSArray *array = [dictionary objectForKey:@"workouts"];
     return [array count];
     return 1;
 }
@@ -184,19 +179,21 @@
     }
     
     NSDictionary *dictionary = [self.groupedExcersice objectAtIndex:indexPath.section];
-     NSArray *array = [dictionary objectForKey:@"workouts"];
+    NSArray *array = [dictionary objectForKey:@"workouts"];
     Workout *workout = [[Workout alloc]init];
     workout = [array objectAtIndex:indexPath.row];
     
-  
-    [cell.deleteButton setHidden:YES];
-    [cell.EditButton setHidden:YES];
-    [cell.deleteLabel setHidden:YES];
-    [cell.EditLabel setHidden:YES];
     cell.TitleLabel.text = [workout Name];
     cell.DurationLabel.text = [[workout Duration] stringByAppendingString:@" miuntes."];
     cell.focusLabel.text=[workout Focus];
     cell.ExcersiceImage.image =[self imageForRowAtIndexPath:workout inIndexPath:indexPath];
+    
+    
+    [cell.EditButton setTag:[indexPath section]]  ;
+    [cell.EditButton  addTarget:self action:@selector(onClickEdit:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [cell.deleteButton setTag:[indexPath section]] ;
+    [cell.deleteButton  addTarget:self action:@selector(onClickdelete:) forControlEvents:UIControlEventTouchUpInside];
     return cell;
 }
 
@@ -262,25 +259,65 @@
 }
 
 -(IBAction)onClickEdit:(id)sender{
-    CustomWorkoutEditViewController *viewController =[[CustomWorkoutEditViewController alloc]initWithNibName:@"CustomWorkoutEditViewController" bundle:nil];
+    
+    int s = [sender tag];
+
+    NSDictionary *dictionary = [self.groupedExcersice objectAtIndex:s];
+    NSArray *array = [dictionary objectForKey:@"workouts"];
+    Workout *workout = [[Workout alloc]init];
+    workout = [array objectAtIndex:0];
+    CustomWorkoutAddViewController *viewController =[[CustomWorkoutAddViewController alloc]initWithNibName:@"CustomWorkoutAddViewController" bundle:nil];
+    viewController.workout =[[Workout alloc]init];
+    viewController .workout=workout;
+    NSLog(@"%@",workout.WorkoutID);
     [self.navigationController pushViewController:viewController animated:YES];
 
+}
+
+-(IBAction)onClickdelete:(id)sender{
+    
+    self.s= [sender tag];
+    
+   
+        UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"fitness4.me" message:@"Are you sure you want to delete this workout?"
+                                                           delegate:self cancelButtonTitle:@"ok" otherButtonTitles:@"cancel", nil];
+        [alertview show];
+                        
+   
+}
+
+- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex==0) {
+        NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+        UserID =[userinfo integerForKey:@"UserID"];
+        
+        NSDictionary *dictionary = [self.groupedExcersice objectAtIndex:self.s];
+        NSArray *array = [dictionary objectForKey:@"workouts"];
+        Workout *workout = [[Workout alloc]init];
+        workout = [array objectAtIndex:0];
+        FitnessServerCommunication *fitness =[FitnessServerCommunication sharedState];
+        [fitness deleteCustomWorkout:[workout WorkoutID] userID:UserID activityIndicator:nil progressView:nil onCompletion:^(NSString *responseString) {
+            [self.workouts removeObjectAtIndex:self.s];
+            [self prepareTableView];
+            [self.tableView reloadData];
+            [Fitness4MeUtils showAlert:@"Deleted Sucessfully"];
+            [fitness parseCustomFitnessDetails:UserID onCompletion:^{
+                
+            } onError:^(NSError *error) {
+                // [self getExcersices];
+            }];
+        } onError:^(NSError *error) {
+            // [self getExcersices];
+        }];
+
+    }
+    else {
+        
+    }
 }
 
 #pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSDictionary *dictionary = [self.groupedExcersice objectAtIndex:indexPath.section];
-    NSArray *array = [dictionary objectForKey:@"workouts"];
-    Workout *workout = [[Workout alloc]init];
-    workout = [array objectAtIndex:indexPath.row];
-    CustomWorkoutIntermediateViewController *viewController =[[CustomWorkoutIntermediateViewController alloc]initWithNibName:@"CustomWorkoutIntermediateViewController" bundle:nil];
-    viewController.workout =[[Workout alloc]init];
-    viewController .workout=workout;
-    [self.navigationController pushViewController:viewController animated:YES];
-
-}
 
 
 @end

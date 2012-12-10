@@ -24,6 +24,6 @@
 -(NSMutableArray*)getequipments;
 -(void)insertEquipments:(NSMutableArray *)equipments;
 
-
-
+-(NSString*)getSelectedEquipments:(NSString*)equipmentID;
+-(NSMutableArray*)getEquipmentsArray:(NSString*)equipmentsName;
 @end

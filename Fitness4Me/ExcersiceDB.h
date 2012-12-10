@@ -38,4 +38,17 @@
 
 -(void)deleteExcersice:(int)workoutID;
 
+
+
+-(void)getCustomExcersices:(int)workoutID;
+
+-(void)insertCustomExcersice:(Excersice *)excersice;
+
+-(void)insertCustomExcersices:(NSMutableArray *)excersices;
+
+-(void)insertCustomWorkoutExcersices:(NSMutableArray *)excersices;
+
+-(void)deleteCustomExcersice:(int)workoutID;
+
+
 @end

@@ -22,6 +22,7 @@
 @property (strong, nonatomic) Focus *focus;
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigationBar;
 @property (weak, nonatomic) IBOutlet UITableView *focusTableView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 
 -(IBAction)onClickNext:(id)sender;

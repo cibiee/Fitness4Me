@@ -7,11 +7,13 @@
 //
 
 #import "CustomWorkoutAddViewController.h"
+#import "WorkoutDB.h"
 
 @interface CustomWorkoutAddViewController ()
 @property (strong,nonatomic)NSString *oncePlace;
 @property(strong,nonatomic)NSString *tensPlace;
 @property(strong,nonatomic)NSString *duration;
+@property(strong,nonatomic)NSString *workoutID;
 @end
 
 @implementation CustomWorkoutAddViewController
@@ -39,7 +41,24 @@
     UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithCustomView:backutton];
     self.navigationBar.leftBarButtonItem = backBtn;
     
+    if ([[workout WorkoutID] integerValue]>0 ) {
     
+        int duration = [[workout Duration]intValue];
+        int onceplace = duration % 10;
+        int tensplace= duration/10;
+        self.tensPlace =[NSString stringWithFormat:@"%i",tensplace];
+        self.oncePlace=[NSString stringWithFormat:@"%i",onceplace];
+        self.workoutID =[workout WorkoutID];
+        [self.timePickerView selectRow:tensplace-1 inComponent:0 animated:YES];
+        [self.timePickerView selectRow:onceplace inComponent:1 animated:YES];
+    }
+    else
+    {
+        self.tensPlace =[NSString stringWithFormat:@"%i",1];
+        self.oncePlace=[NSString stringWithFormat:@"%i",0];
+        [self.timePickerView selectRow:0 inComponent:0 animated:YES];
+        [self.timePickerView selectRow:0 inComponent:1 animated:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -96,9 +115,16 @@
 
 -(IBAction)onClickNext:(id)sender
 {
-    
     self.duration =[self.tensPlace stringByAppendingString:self.oncePlace];
     Workout *workouts= [[Workout alloc]init];
+    
+    if ([self.workoutID intValue]>0) {
+        WorkoutDB *workoutDB =[[WorkoutDB alloc]init];
+        [workoutDB setUpDatabase];
+        [workoutDB createDatabase];
+         workouts =[workoutDB getCustomWorkoutByID:self.workoutID];
+    }
+    
     [workouts setDuration:self.duration];
     FocusViewController *viewController =[[FocusViewController alloc]initWithNibName:@"FocusViewController" bundle:nil];
      viewController.workout =[[Workout alloc]init];

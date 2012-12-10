@@ -22,6 +22,8 @@
     NSString *DescriptionBig;
     NSString *ThumbImageUrl;
     NSString *Props;
+   NSString *duration;
+    NSString *focus;
     
 }
 
@@ -39,7 +41,8 @@
 @property(retain,nonatomic)NSString *Props;
 @property(retain,nonatomic)NSString *Duration;
 @property(retain,nonatomic)NSString *Focus;
-
+@property(retain,nonatomic)NSString *PropsName;
+@property(retain,nonatomic)NSString *FocusName;
 //////
 ///Constructor of the class
 // Created 17-Oct-2011
@@ -50,5 +53,5 @@
 //////
 -(id)initWithData:(NSString*)workoutID:(NSString*)name:(NSString *)rate:(NSString*)imageUrl:(NSString*)imageName:(NSString*)isLocked:(NSString*)description:(NSString*)descriptionToDo:(NSString *)lockImageUrl:(NSString*)descriptionBig:(NSString *)thumbImageUrl:(NSString *)Props;
 
-
+-(id)initWithCustomData:(NSString*)workoutID:(NSString*)name:(NSString *)rate:(NSString*)imageUrl:(NSString*)imageName:(NSString*)isLocked:(NSString*)description:(NSString*)descriptionToDo:(NSString *)lockImageUrl:(NSString*)descriptionBig:(NSString *)thumbImageUrl:(NSString *)props:(NSString *)durations:(NSString *)focusarea ;
 @end

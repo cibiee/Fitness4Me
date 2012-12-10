@@ -17,7 +17,7 @@
 
 @property(retain,nonatomic)IBOutlet UILabel *focusLabel;
 
-@property(retain,nonatomic)IBOutlet UILabel *EquipmentLabel;
+//@property(retain,nonatomic)IBOutlet UILabel *EquipmentLabel;
 
 @property(retain,nonatomic)IBOutlet UIImageView *ExcersiceImage;
 
@@ -25,9 +25,18 @@
 
 
 
+@property(retain,nonatomic)IBOutlet UILabel *EditLabel;
+
+@property(retain,nonatomic)IBOutlet UIButton *EditButton;
+
+@property(retain,nonatomic)IBOutlet UILabel *deleteLabel;
+
+@property(retain,nonatomic)IBOutlet UIButton *deleteButton;
+
+
 @property(retain,nonatomic)IBOutlet UILabel *focusLabels;
 
-@property(retain,nonatomic)IBOutlet UILabel *EquipmentLabels;
+//@property(retain,nonatomic)IBOutlet UILabel *EquipmentLabels;
 
 
 

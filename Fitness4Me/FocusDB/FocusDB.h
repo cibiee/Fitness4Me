@@ -24,6 +24,6 @@
 -(NSMutableArray*)getFocus;
 -(void)insertFocusArea:(NSMutableArray *)muscles;
 
-
-
+-(NSString*)getSelectedFocus:(NSString*)muscleID;
+-(NSMutableArray*)getFocusArray:(NSString*)muscleName;
 @end

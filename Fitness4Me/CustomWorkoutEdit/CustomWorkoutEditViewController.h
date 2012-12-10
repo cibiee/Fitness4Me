@@ -1,8 +1,8 @@
 //
-//  CustomWorkoutsViewController.h
+//  CustomWorkoutEditViewController.h
 //  Fitness4Me
 //
-//  Created by Ciby  on 28/11/12.
+//  Created by Ciby  on 06/12/12.
 //
 //
 
@@ -11,7 +11,6 @@
 #import "TimeViewController.h"
 #import "CustomWorkoutAddViewController.h"
 #import "CustomWorkoutIntermediateViewController.h"
-#import "CustomWorkoutEditViewController.h"
 #import "WorkoutDB.h"
 #import "ASIFormDataRequest.h"
 #import "SBJson.h"
@@ -20,8 +19,7 @@
 #import "Fitness4MeViewController.h"
 #import "FitnessServerCommunication.h"
 #import <QuartzCore/QuartzCore.h>
-
-@interface CustomWorkoutsViewController : UIViewController
+@interface CustomWorkoutEditViewController : UIViewController
 {
     int UserID;
     int count;
@@ -32,18 +30,20 @@
     
     NSMutableArray *searchArray;
     
- 
-    IBOutlet UIActivityIndicatorView *activityIndicator;
+    
+    
     WorkoutDB *workoutDB;
     ASINetworkQueue  *myQueue;
     Workout *selectedWorkout;
 }
+    
+    @property (weak, nonatomic) IBOutlet UITableView *tableView;
+    @property (weak, nonatomic) IBOutlet UINavigationItem *navigationBar;
+    @property (nonatomic,retain) ASINetworkQueue *myQueue;
+   
+    -(IBAction)onClickBack:(id)sender;
+-(IBAction)onClickdelete:(id)sender;
+    
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UINavigationItem *navigationBar;
-@property (nonatomic,retain) ASINetworkQueue *myQueue;
--(IBAction)onClickEdit:(id)sender;
--(IBAction)onClickBack:(id)sender;
--(IBAction)onClickAdd:(id)sender;
 
 @end

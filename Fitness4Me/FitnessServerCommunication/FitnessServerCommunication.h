@@ -93,6 +93,11 @@ typedef void (^errorBlock)(NSString *errorString);
 
 - (void)saveCustomWorkout:(Workout*)workout  userID:(NSString*)userID userLevel:(NSString *)userLevel language:(int )selectedlanguage  activityIndicator:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView onCompletion:(WMLoginResponseBlock)completionBlock onError:(NSError*)errorBlock;
 
+- (void)deleteCustomWorkout:(NSString*)workoutID   userID:(int)userID   activityIndicator:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView onCompletion:(WMLoginResponseBlock)completionBlock onError:(NSError*)errorBlock;
+
+
+-(void)parseCustomFitnessDetails:(int)userID onCompletion:(ResponseVoidBlock)completionBlock onError:(NSError*)errorBlock ;
+
 -(void)getFreePurchaseCount:(int)UserID ;
 -(void)getAllvideos;
 -(void)cancelDownload;
