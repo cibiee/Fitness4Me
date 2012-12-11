@@ -77,6 +77,7 @@
 {
     [self setDurationLabel:nil];
     [self setScrollView:nil];
+    [self setFocusLabel:nil];
     [super viewDidUnload];
 }
 
@@ -134,10 +135,28 @@
         propsLabel.text=[self.workout Props];
         [propsLabel sizeToFit];
     }else{
-        propLabel.hidden =YES;
+        propsLabel.text=@"None";
+        [propsLabel sizeToFit];
     }
     
-[self.durationLabel setText:[workout Duration]];
+    if ([[self.workout Focus] length]>0) {
+        self.focusLabel.text=[self.workout Focus];
+        [self.focusLabel sizeToFit];
+    }else{
+       // propLabel.hidden =YES;
+    }
+    
+    NSString *duration=[[workout Duration] stringByAppendingString:@" Minutes"];
+   [self.durationLabel setText:duration];
+    
+    // add continue button
+    backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    backButton.frame = CGRectMake(0, 0, 58, 30);
+    [backButton setBackgroundImage:[UIImage imageNamed:@"back_btn_with_text.png"] forState:UIControlStateNormal];
+    [backButton addTarget:self action:@selector(onClickBack:) forControlEvents:UIControlEventTouchDown];
+    UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+    self.navigationBar.leftBarButtonItem = backBtn;
+
 }
 
 
@@ -190,7 +209,7 @@
         if (!error){
            
             NSString *response = [request responseString];
-            NSLog(response);
+            //NSLog(response);
             NSMutableArray *object = [response JSONValue];
             excersices = [[NSMutableArray alloc]init];
             [self getWorkoutVideoData:object];

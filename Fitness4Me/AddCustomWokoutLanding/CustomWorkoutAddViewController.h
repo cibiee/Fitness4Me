@@ -13,10 +13,13 @@
 @interface CustomWorkoutAddViewController : UIViewController
 {
     Workout *workout;
+    
 }
 @property (weak, nonatomic) IBOutlet UIPickerView *timePickerView;
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigationBar;
-
+@property (weak, nonatomic) IBOutlet UILabel *addWorkoutLabel;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *editLabel;
 @property (strong, nonatomic)Workout *workout;
 
 -(IBAction)onClickNext:(id)sender;

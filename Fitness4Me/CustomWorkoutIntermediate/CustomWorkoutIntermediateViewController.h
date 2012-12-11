@@ -39,17 +39,18 @@ NSMutableArray *excersicesList;
 
 IBOutlet UIImageView *excersiceImageHolder;
 IBOutlet UITextView  *descriptionTextview;
-IBOutlet  UINavigationBar *navigationBars;
+
 IBOutlet UIActivityIndicatorView *activityIndicator;
 IBOutlet UITextView *pleaseWait;
 IBOutlet UIView *signUpView;
 IBOutlet UIButton *letsgoButton;
 IBOutlet UILabel *titleLabel;
-IBOutlet UIBarButtonItem *backButton ;
+//IBOutlet UIBarButtonItem *backButton ;
 IBOutlet UITextView *propsLabel;
 IBOutlet UILabel *propLabel;
 IBOutlet UIView *slownetView;
 IBOutlet UIButton *slownetButton;
+    UIButton *backButton;
 
 ASIHTTPRequest   *downloadrequest ;
 ASINetworkQueue  *myQueue;
@@ -60,7 +61,8 @@ Workout * workout;
 User *user;
 }
 @property (weak, nonatomic) IBOutlet UITextView *durationLabel;
-
+@property (weak, nonatomic) IBOutlet UITextView *focusLabel;
+@property (weak, nonatomic) IBOutlet UINavigationItem *navigationBar;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (retain,nonatomic)Workout *workout;
 @property (retain,nonatomic)NSString *purchaseAll;

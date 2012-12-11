@@ -417,6 +417,14 @@ static FitnessServerCommunication *sharedState;
     BOOL isReachable =[Fitness4MeUtils isReachable];
     if (isReachable)
     {
+        if ([[workout Props]length]>0) {
+            
+        }
+        else
+        {
+            [workout setProps:@" "];
+        }
+        
         NSString *UrlPath= [NSString GetURlPath];
         NSString *requestString;
         if ([[workout WorkoutID]intValue]>0) {

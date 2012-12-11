@@ -15,7 +15,7 @@
 #import "Workout.h"
 #import "AVFoundation/AVFoundation.h"
 #import "ListWorkoutsViewController.h"
-#import "ExcersicePostPlayViewController.h"
+#import "CustomWokoutPostplayViewController.h"
 #import "ASIFormDataRequest.h"
 #import "Statistics.h"
 #import "StatisticsDB.h"

@@ -78,6 +78,7 @@
         }
         else{
             self.equipments =self.equipmentDB.equipments;
+            
         }
         
         [self.equipmentsTableView reloadData];
@@ -211,6 +212,7 @@
 
 -(IBAction)onClickNext:(id)sender{
     NSString *str= [[NSString alloc]init];
+    str =@"";
      NSString *name= [[NSString alloc]init];
     for (Equipments *equipment in self.equipments) {
         if ([equipment isChecked]) {
@@ -240,6 +242,7 @@
     [workouts setDuration:workout.Duration];
     [workouts setFocus:workout.Focus];
     [workouts setFocusName:name];
+    
     [workouts setProps:str];
      
     NameViewController *viewController =[[NameViewController alloc]initWithNibName:@"NameViewController" bundle:nil];

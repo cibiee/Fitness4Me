@@ -216,6 +216,8 @@
 
 -(IBAction)onClickNext:(id)sender
 {
+    
+    
     NSString *str= [[NSString alloc]init];
      
     for (Focus *focus in self.muscles) {
@@ -230,6 +232,9 @@
             
         }
     }
+    if ([str length]>0) {
+        
+        
     Workout *workouts= [[Workout alloc]init];
     
     if ([[workout WorkoutID]intValue]>0) {
@@ -247,6 +252,11 @@
     viewController.workout =[[Workout alloc]init];
     viewController.workout=workouts;
    [self.navigationController pushViewController:viewController animated:YES];
+    }
+ else
+ {
+    [Fitness4MeUtils showAlert:@"Please select an area of focus"];
+ }
 }
 
 -(IBAction)onClickBack:(id)sender{

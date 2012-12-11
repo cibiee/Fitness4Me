@@ -55,6 +55,7 @@
 -(IBAction)onClickBack:(id)sender;
 - (IBAction)onClickLetsGo:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UILabel *creationCompleteLabel;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (strong, nonatomic)Workout *workout;
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigationBar;

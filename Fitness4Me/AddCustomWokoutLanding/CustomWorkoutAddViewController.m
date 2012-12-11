@@ -14,6 +14,7 @@
 @property(strong,nonatomic)NSString *tensPlace;
 @property(strong,nonatomic)NSString *duration;
 @property(strong,nonatomic)NSString *workoutID;
+@property(strong,nonatomic)NSMutableArray *timeArray;
 @end
 
 @implementation CustomWorkoutAddViewController
@@ -32,8 +33,11 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
+    [self.nameLabel setHidden:YES];
+    [self.editLabel setHidden:YES];
     // add continue button
+    
+     self.timeArray =[[NSMutableArray alloc]initWithObjects:@"05",@"10",@"15",@"20",@"25",@"30",@"35",@"40",@"45",@"50",@"55",@"60", nil];
     UIButton *backutton = [UIButton buttonWithType:UIButtonTypeCustom];
     backutton.frame = CGRectMake(0, 0, 58, 30);
     [backutton setBackgroundImage:[UIImage imageNamed:@"back_btn_with_text.png"] forState:UIControlStateNormal];
@@ -44,21 +48,23 @@
     if ([[workout WorkoutID] integerValue]>0 ) {
     
         int duration = [[workout Duration]intValue];
-        int onceplace = duration % 10;
-        int tensplace= duration/10;
-        self.tensPlace =[NSString stringWithFormat:@"%i",tensplace];
-        self.oncePlace=[NSString stringWithFormat:@"%i",onceplace];
-        self.workoutID =[workout WorkoutID];
+        self.duration= [workout Duration];
+        int tensplace= duration/5;
+                self.workoutID =[workout WorkoutID];
         [self.timePickerView selectRow:tensplace-1 inComponent:0 animated:YES];
-        [self.timePickerView selectRow:onceplace inComponent:1 animated:YES];
+       
+        [self.editLabel setHidden:NO];
+        [self.nameLabel setText:[workout Name]];
+        [self.nameLabel setHidden:NO];
+        [self.addWorkoutLabel setHidden:YES];
     }
     else
     {
-        self.tensPlace =[NSString stringWithFormat:@"%i",1];
-        self.oncePlace=[NSString stringWithFormat:@"%i",0];
         [self.timePickerView selectRow:0 inComponent:0 animated:YES];
-        [self.timePickerView selectRow:0 inComponent:1 animated:YES];
+         self.duration= @"5";
     }
+    
+   
 }
 
 - (void)didReceiveMemoryWarning
@@ -70,52 +76,33 @@
 //PickerViewController.m
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)thePickerView {
     
-    return 2;
+    return 1;
 }
 
 - (NSInteger)pickerView:(UIPickerView *)thePickerView numberOfRowsInComponent:(NSInteger)component {
     
-    if (component==0) {
-        return 5;
-    }
-    else{
-        return  10;
-        
-    }
+    return [self.timeArray count];
     
 }
 
 - (NSString *)pickerView:(UIPickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     
-    if (component==0) {
-        return  [NSString stringWithFormat:@"%i", row+1];
-        
-    }
-    else{
-        return  [NSString stringWithFormat:@"%i", row];
-    }
+      return  [self.timeArray objectAtIndex:row];
     
 }
 
 //PickerViewController.m
 - (void)pickerView:(UIPickerView *)thePickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     
-        if (component==0) {
-            self.tensPlace = ([NSString stringWithFormat:@"%i", row+1]);
-    
-       }
-       else{
-           self.oncePlace = ([NSString stringWithFormat:@"%i", row]);
-    
-       }
-    
-   }
+        
+    self.duration = [self.timeArray objectAtIndex:row];
+}
 
 
 
 -(IBAction)onClickNext:(id)sender
 {
-    self.duration =[self.tensPlace stringByAppendingString:self.oncePlace];
+    
     Workout *workouts= [[Workout alloc]init];
     
     if ([self.workoutID intValue]>0) {
@@ -140,6 +127,7 @@
     [self setTimePickerView:nil];
     [self setNavigationBar:nil];
     [self setNavigationBar:nil];
+    [self setAddWorkoutLabel:nil];
     [super viewDidUnload];
 }
 

@@ -38,6 +38,9 @@
     UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithCustomView:backutton];
     self.navigationBar.leftBarButtonItem = backBtn;
     [self setBackground];
+    
+   
+
 }
 
 -(void)setBackground{
@@ -58,6 +61,7 @@
     
     [self getExcersices];
     
+       
 }
 
 
@@ -253,8 +257,28 @@
 
 
 -(IBAction)onClickAdd:(id)sender{
-    CustomWorkoutAddViewController *viewController =[[CustomWorkoutAddViewController alloc]initWithNibName:@"CustomWorkoutAddViewController" bundle:nil];
-    [self.navigationController pushViewController:viewController animated:YES];
+    
+    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+    NSString *hasMadeFullPurchase= [userinfo valueForKey:@"hasMadeFullPurchase"];
+    if ([hasMadeFullPurchase isEqualToString:@"true"]) {
+         
+        CustomWorkoutAddViewController *viewController =[[CustomWorkoutAddViewController alloc]initWithNibName:@"CustomWorkoutAddViewController" bundle:nil];
+        [self.navigationController pushViewController:viewController animated:YES];
+    }
+    else {
+        
+        if ([self.groupedExcersice count]>5) {
+            [Fitness4MeUtils showAlert:@"Become Premium Memebr"];
+        }
+        else{
+            [userinfo setInteger:[self.groupedExcersice count] forKey:@"customCount"];
+            CustomWorkoutAddViewController *viewController =[[CustomWorkoutAddViewController alloc]initWithNibName:@"CustomWorkoutAddViewController" bundle:nil];
+            [self.navigationController pushViewController:viewController animated:YES];
+        }
+    }
+     
+   
+     
 }
 
 -(IBAction)onClickBack:(id)sender{

@@ -36,6 +36,47 @@
     UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithCustomView:backutton];
     self.navigationBar.leftBarButtonItem = backBtn;
     
+    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+    
+    NSString *hasMadeFullPurchase= [userinfo valueForKey:@"hasMadeFullPurchase"];
+    if ([hasMadeFullPurchase isEqualToString:@"true"]) {
+     [self.creationCompleteLabel setText:@"Congratulations!You just designed your customized workouts"];
+    }
+    else {
+        int customCount= [userinfo integerForKey:@"customCount"];
+        NSString *customCountString;
+        
+        switch (customCount) {
+            case 1:
+                
+                customCountString =@"first";
+                break;
+            case 2:
+                
+                customCountString =@"second";
+                break;
+            case 3:
+                
+                customCountString =@"third";
+                break;
+            case 4:
+                
+                customCountString =@"fourth";
+                break;
+            case 5:
+                customCountString =@"last";
+                break;
+                
+            default:
+                break;
+        }
+        
+        
+        [self.creationCompleteLabel setText:[NSString stringWithFormat:@"Congratulations!You just designed  the %@ of your five free customized workouts",customCountString]];
+        
+    }
+                           
+
 
     // Do any additional setup after loading the view from its nib.
 }
@@ -99,6 +140,7 @@
     [self setNavigationBar:nil];
     [self setProgressView:nil];
     [self setActivityIndicator:nil];
+    [self setCreationCompleteLabel:nil];
     [super viewDidUnload];
 }
 @end

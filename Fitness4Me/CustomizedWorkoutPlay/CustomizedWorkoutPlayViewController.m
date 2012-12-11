@@ -302,13 +302,7 @@ static float totalDuration=0;
         initalArrayCount=0;
         playCount=0;
         
-        ListWorkoutsViewController *viewController;
-        
-        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
-            viewController = [[ListWorkoutsViewController alloc]initWithNibName:@"ListWorkoutsViewController" bundle:nil];
-        }else {
-            viewController = [[ListWorkoutsViewController alloc]initWithNibName:@"ListWorkoutsViewController_iPad" bundle:nil];
-        }
+        CustomWorkoutsViewController *viewController =[[CustomWorkoutsViewController alloc]initWithNibName:@"CustomWorkoutsViewController" bundle:nil];
         [self.navigationController pushViewController:viewController animated:YES];
         
     }
@@ -347,13 +341,13 @@ static float totalDuration=0;
         totalDuration=totalDuration;
         [self updateStatisticsToServer];
         
-        ExcersicePostPlayViewController *viewController;
+        CustomWokoutPostplayViewController *viewController;
         
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
-            viewController = [[ExcersicePostPlayViewController alloc]initWithNibName:@"ExcersicePostPlayViewController" bundle:nil];
+            viewController = [[CustomWokoutPostplayViewController alloc]initWithNibName:@"CustomWokoutPostplayViewController" bundle:nil];
         }
         else {
-            viewController = [[ExcersicePostPlayViewController alloc]initWithNibName:@"ExcersicePostPlayViewController_iPad" bundle:nil];
+            viewController = [[CustomWokoutPostplayViewController alloc]initWithNibName:@"CustomWokoutPostplayViewController" bundle:nil];
         }
         
         viewController.workout =self.workout;
@@ -391,14 +385,15 @@ static float totalDuration=0;
     // e.g. self.myOutlet = nil;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return NO;
-}
-
 -(BOOL)shouldAutorotate {
     return NO;
 }
+
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft);
+}
+
 
 @end
