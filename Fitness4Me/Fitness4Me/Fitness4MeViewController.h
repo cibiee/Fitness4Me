@@ -33,6 +33,7 @@
 
 
 }
+- (IBAction)onclickSelfMadeworkout:(id)sender;
 -(IBAction)cancelDownloas:(id)sender;
 -(IBAction)navigateToCustomWorkoutListView:(id)sender;
 -(IBAction)navigateToWorkoutListView:(id)sender;

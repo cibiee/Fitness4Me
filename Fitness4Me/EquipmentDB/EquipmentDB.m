@@ -138,7 +138,10 @@
         else
         {
             equipments=[equipments stringByAppendingString:@","];
-            equipments =[equipments stringByAppendingString:[resultSet stringForColumnIndex:1]];
+            if ([resultSet stringForColumnIndex:1] !=nil) {
+              equipments =[equipments stringByAppendingString:[resultSet stringForColumnIndex:1]];
+            }
+            
             
         }
     }

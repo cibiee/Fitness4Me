@@ -101,8 +101,12 @@
         }
        else
        {
+           
            focus=[focus stringByAppendingString:@","];
-           focus =[focus stringByAppendingString:[resultSet stringForColumnIndex:1]];
+           if ([resultSet stringForColumnIndex:1] !=nil) {
+                focus =[focus stringByAppendingString:[resultSet stringForColumnIndex:1]];
+           }
+          
 
        }
     }

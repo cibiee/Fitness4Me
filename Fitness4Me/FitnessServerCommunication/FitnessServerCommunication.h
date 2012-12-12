@@ -98,6 +98,8 @@ typedef void (^errorBlock)(NSString *errorString);
 
 -(void)parseCustomFitnessDetails:(int)userID onCompletion:(ResponseVoidBlock)completionBlock onError:(NSError*)errorBlock ;
 
+- (void)listExcersiceWithequipments:(NSString*)equipments focus:(NSString*)focus  activityIndicator:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView onCompletion:(WMLoginResponseBlock)completionBlock onError:(NSError*)errorBlock;
+
 -(void)getFreePurchaseCount:(int)UserID ;
 -(void)getAllvideos;
 -(void)cancelDownload;

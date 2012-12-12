@@ -9,6 +9,7 @@
 #import "Fitness4MeViewController.h"
 #import "Fitness4MeUtils.h"
 #import "FitnessServerCommunication.h"
+#import "ExcersiceListViewController.h"
 
 @implementation Fitness4MeViewController
 
@@ -236,6 +237,18 @@
 
 }
 
+
+- (IBAction)onclickSelfMadeworkout:(id)sender {
+     ExcersiceListViewController *viewController;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+        viewController =[[ExcersiceListViewController alloc]initWithNibName:@"ExcersiceListViewController" bundle:nil];
+    }else {
+        viewController =[[ExcersiceListViewController alloc]initWithNibName:@"ExcersiceListViewController" bundle:nil];
+    }
+    [self.navigationController pushViewController:viewController animated:YES];
+    [viewController release];
+
+}
 
 -(IBAction)cancelDownloas:(id)sender
 {

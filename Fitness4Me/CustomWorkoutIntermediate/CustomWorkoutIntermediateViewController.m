@@ -148,7 +148,8 @@
     
     NSString *duration=[[workout Duration] stringByAppendingString:@" Minutes"];
    [self.durationLabel setText:duration];
-    
+    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+    [userinfo setObject:workout.Name forKey:@"WorkoutName"];
     // add continue button
     backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     backButton.frame = CGRectMake(0, 0, 58, 30);

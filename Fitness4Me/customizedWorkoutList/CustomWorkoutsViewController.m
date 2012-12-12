@@ -19,7 +19,7 @@
 @synthesize myQueue;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithNibName:nibNameOrNil bundle:[Fitness4MeUtils getBundle]];
     if (self) {
         // Custom initialization
     }
@@ -295,6 +295,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+   
     NSDictionary *dictionary = [self.groupedExcersice objectAtIndex:indexPath.section];
     NSArray *array = [dictionary objectForKey:@"workouts"];
     Workout *workout = [[Workout alloc]init];
@@ -302,6 +304,7 @@
     CustomWorkoutIntermediateViewController *viewController =[[CustomWorkoutIntermediateViewController alloc]initWithNibName:@"CustomWorkoutIntermediateViewController" bundle:nil];
     viewController.workout =[[Workout alloc]init];
     viewController .workout=workout;
+     [userinfo setObject:workout.Name forKey:@"WorkoutName"];
     [self.navigationController pushViewController:viewController animated:YES];
 
 }

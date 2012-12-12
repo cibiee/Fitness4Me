@@ -16,7 +16,7 @@
 @synthesize workout;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithNibName:nibNameOrNil bundle:[Fitness4MeUtils getBundle]];
     if (self) {
         // Custom initialization
     }
@@ -66,7 +66,8 @@
     else {
         viewController = [[ShareFitness4MeViewController alloc]initWithNibName:@"ShareFitness4MeViewController_iPad" bundle:nil];
     }
-    
+    NSLog([self.workout ImageUrl]);
+    NSLog([self.workout ImageName]);
     viewController.imageUrl =[self.workout ImageUrl];
     viewController.imageName =[self.workout ImageName];
     [self.navigationController pushViewController:viewController animated:YES];

@@ -301,7 +301,7 @@ static float totalDuration=0;
         }
         initalArrayCount=0;
         playCount=0;
-        
+        moviePlayer=nil;
         CustomWorkoutsViewController *viewController =[[CustomWorkoutsViewController alloc]initWithNibName:@"CustomWorkoutsViewController" bundle:nil];
         [self.navigationController pushViewController:viewController animated:YES];
         
