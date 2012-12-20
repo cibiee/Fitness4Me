@@ -23,119 +23,77 @@
     -(void)setUpDatabase
     {
         databaseName =@"Fitness.sqlite";
-        
         NSArray *docPath= NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        
         NSString *docDir =[docPath objectAtIndex:0];
-        
         databasePath =[docDir stringByAppendingPathComponent:databaseName];
     }
-    
-    
     
     
     -(void)createDatabase{
         
         BOOL success;
-        
         NSFileManager *filemanager =[NSFileManager defaultManager];
-        
         success =[filemanager  fileExistsAtPath:databasePath];
-        
-        if(success)
-        {
+        if(success){
             return;
         }
-        
         NSString *databaseFromPath=[[[NSBundle mainBundle]resourcePath]stringByAppendingPathComponent:databaseName];
-        
         [filemanager copyItemAtPath:databaseFromPath toPath:databasePath error:nil];
     }
     
 
 -(NSMutableArray*)getWorkouts{
     
-        
     database =[FMDatabase databaseWithPath:databasePath];
-    
     arrStatistics=[[NSMutableArray alloc]init];
-    
-    // [database setLogsErrors:TRUE];
-    
-    // [database setTraceExecution:TRUE];
-    
-    if(!database.open)
-    {
+    if(!database.open){
         NSLog(@"Databse not Open");
-    }
-    else
-        
-    {
+    }else{
       //  NSLog(@"Database opened sucessfully");
     }
-    
-    
-    
+
     FMResultSet *resultSet=[database executeQuery:@"Select WorkoutID,sum(Duration) from Statistics group by WorkoutID"];
     
-    
-    
-    while(resultSet.next)
-    {
-        
-        NSString * workoutID =[resultSet stringForColumnIndex:0];
-        
-        NSString *duration = [resultSet stringForColumnIndex:1];
-        
-            
-        Statistics *statistics = [[Statistics alloc]initWithData:workoutID:duration];
-        
+    while(resultSet.next){
+        Statistics *statistics =[[Statistics alloc]init];
+        statistics.WorkoutID =[resultSet stringForColumnIndex:0];
+        double duration=[[resultSet stringForColumnIndex:1]doubleValue];
+        statistics .Duration =(float)duration;
         [arrStatistics addObject:statistics];
-        
         [statistics release];
-        
     }
     
     [resultSet close];
-    
-    // [database close];
-    
-    
     return arrStatistics;
-    
 }
 
 
 -(void)insertStatistics:(Statistics *)statistics{
     
     database =[FMDatabase databaseWithPath:databasePath];
-    
-    //  [database setLogsErrors:TRUE];
-    
-    //  [database setTraceExecution:TRUE];
-    
-    if(!database.open)
-    {
+    if(!database.open){
         NSLog(@"Databse not Open");
     }
-    else
-        
-    {
-       // NSLog(@"Database opened sucessfully");
-    }
-    
-    
     [database beginTransaction];
-
-    
     [database executeUpdate:@"INSERT INTO Statistics (WorkoutID,Duration) VALUES (?,?);",
-     
-     statistics.WorkoutID,statistics.Duration, nil];
-
-
+     statistics.WorkoutID,[NSString stringWithFormat:@"%f",statistics.Duration], nil];
     [database commit];
     
+    [database close];
+}
+
+
+-(void)deleteStatistics{
     
+    database =[FMDatabase databaseWithPath:databasePath];
+    if(!database.open){
+        NSLog(@"Databse not Open");
+    }else{
+       // NSLog(@"Database opened sucessfully");
+    }
+    [database beginTransaction];
+    [database executeUpdate:@"Delete from Statistics"];
+    [database commit];
     // Close the database.
     [database close];
     
@@ -143,32 +101,58 @@
 }
 
 
--(void)deleteStatistics{
+-(NSMutableArray*)getCustomWorkouts{
     
     database =[FMDatabase databaseWithPath:databasePath];
+    arrStatistics=[[NSMutableArray alloc]init];
+    if(!database.open){
+        NSLog(@"Databse not Open");
+    }else{
+        //  NSLog(@"Database opened sucessfully");
+    }
     
-    //[database setLogsErrors:TRUE];
+    FMResultSet *resultSet=[database executeQuery:@"Select WorkoutID,sum(Duration) from CustomStatistics group by WorkoutID"];
     
-    // [database setTraceExecution:TRUE];
+    while(resultSet.next){
+        Statistics *statistics =[[Statistics alloc]init];
+        statistics.WorkoutID =[resultSet stringForColumnIndex:0];
+        double duration=[[resultSet stringForColumnIndex:1]doubleValue];
+        statistics .Duration =(float)duration;
+        [arrStatistics addObject:statistics];
+        [statistics release];
+    }
     
-    if(!database.open)
-    {
+    [resultSet close];
+    return arrStatistics;
+}
+
+
+-(void)insertCustomStatistics:(Statistics *)statistics{
+    
+    database =[FMDatabase databaseWithPath:databasePath];
+    if(!database.open){
         NSLog(@"Databse not Open");
     }
-    else
-        
-    {
-       // NSLog(@"Database opened sucessfully");
-    }
-    
-    
     [database beginTransaction];
-    
-    [database executeUpdate:@"Delete from Statistics"];
-    
+    [database executeUpdate:@"INSERT INTO CustomStatistics (WorkoutID,Duration) VALUES (?,?);",
+     statistics.WorkoutID,[NSString stringWithFormat:@"%f",statistics.Duration], nil];
     [database commit];
     
+    [database close];
+}
+
+
+-(void)deleteCustomStatistics{
     
+    database =[FMDatabase databaseWithPath:databasePath];
+    if(!database.open){
+        NSLog(@"Databse not Open");
+    }else{
+        // NSLog(@"Database opened sucessfully");
+    }
+    [database beginTransaction];
+    [database executeUpdate:@"Delete from CustomStatistics"];
+    [database commit];
     // Close the database.
     [database close];
     

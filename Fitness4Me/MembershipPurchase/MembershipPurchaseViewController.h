@@ -16,6 +16,7 @@
     Workout * workout;
 }
 @property (retain,nonatomic)Workout *workout;
+@property (retain,nonatomic)NSString *navigateTo;
 - (IBAction)onClickQuit:(id)sender;
 
 @end

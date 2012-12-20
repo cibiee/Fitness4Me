@@ -40,6 +40,13 @@
     UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithCustomView:backutton];
     self.navigationBar.leftBarButtonItem = backBtn;
    
+    UIButton *nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    nextButton.frame = CGRectMake(0, 0, 58, 30);
+    [nextButton setBackgroundImage:[UIImage imageNamed:@"next_btn_with_text.png"] forState:UIControlStateNormal];
+    [nextButton addTarget:self action:@selector(onClickNext:) forControlEvents:UIControlEventTouchDown];
+    UIBarButtonItem *nextBtn = [[UIBarButtonItem alloc] initWithCustomView:nextButton];
+    self.navigationBar.rightBarButtonItem = nextBtn;
+    
     // NSLog(workout.Duration);
     [self.focusTableView.layer setCornerRadius:8];
     [self.focusTableView.layer setBorderColor:[[UIColor blackColor]CGColor]];
@@ -134,8 +141,7 @@
     
     NSArray* foo = [[workout Focus] componentsSeparatedByString: @","];
        
-    NSLog(@"%@",[workout WorkoutID]);
-     NSLog(@"%@",[workout Focus]);
+   
     
     NSMutableArray *newfocusArray=[[NSMutableArray alloc]init];
     newfocusArray=focuslist;
@@ -145,7 +151,7 @@
            
             if([[[focuslist objectAtIndex:i] muscleID] isEqualToString:[foo objectAtIndex:k]] ){
                 [[newfocusArray objectAtIndex:i] setIsChecked:YES];
-                  NSLog(@"%@",[[focuslist objectAtIndex:i] muscleID]);
+                 
                 break;
             }
             

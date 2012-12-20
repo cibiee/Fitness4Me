@@ -10,17 +10,4 @@
 
 @implementation Statistics
 
-@synthesize WorkoutID,Duration;
-
-
--(id)initWithData:(NSString*)workoutID:(NSString*)duration{
-    self = [super init];
-    if (self)
-    {
-        self.WorkoutID=workoutID;
-        self.Duration=duration;
-    }
-    return self;
-}
-
 @end

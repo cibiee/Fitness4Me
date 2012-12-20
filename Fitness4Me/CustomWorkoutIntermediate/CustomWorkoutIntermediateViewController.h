@@ -19,13 +19,14 @@
 #import "User.h"
 #import "UserDB.h"
 
-@interface CustomWorkoutIntermediateViewController : UIViewController
+@interface CustomWorkoutIntermediateViewController : UIViewController<ASIHTTPRequestDelegate>
 {
 BOOL isConected;
 int count;
-int stop;
 
-NSString *purchaseAll;
+   
+
+
 NSString *dataPath;
 NSString *urlPath;
 NSString *userlevel;
@@ -45,6 +46,9 @@ IBOutlet UITextView *pleaseWait;
 IBOutlet UIView *signUpView;
 IBOutlet UIButton *letsgoButton;
 IBOutlet UILabel *titleLabel;
+    IBOutlet UIProgressView *fileDownloadProgressView;
+
+    IBOutlet UILabel *lblCompleted;
 //IBOutlet UIBarButtonItem *backButton ;
 IBOutlet UITextView *propsLabel;
 IBOutlet UILabel *propLabel;
@@ -54,12 +58,15 @@ IBOutlet UIButton *slownetButton;
 
 ASIHTTPRequest   *downloadrequest ;
 ASINetworkQueue  *myQueue;
-
+int finished;
+int totalCount;
 ExcersiceDB *excersiceDB;
 WorkoutDB *workoutDB;
 Workout * workout;
 User *user;
 }
+
+@property(nonatomic)BOOL navigateBack;
 @property (weak, nonatomic) IBOutlet UITextView *durationLabel;
 @property (weak, nonatomic) IBOutlet UITextView *focusLabel;
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigationBar;

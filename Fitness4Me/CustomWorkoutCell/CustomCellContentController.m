@@ -11,7 +11,7 @@
 
 
 @implementation CustomCellContentController
-@synthesize TitleLabel,ExcersiceImage,focusLabel,DurationLabel,deleteButton,deleteLabel,EditButton,EditLabel;
+@synthesize TitleLabel,ExcersiceImage,focusLabel,DurationLabel,deleteButton,deleteLabel,EditButton,EditLabel,favIcon;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -54,7 +54,9 @@
         
         focusLabel.textColor =[UIColor blackColor];
 
-        focusLabel.numberOfLines=4;
+        focusLabel.numberOfLines=0;
+        
+        [focusLabel sizeToFit];
         
     
         // Initialization code
@@ -62,13 +64,13 @@
         
         self.DurationLabels.textAlignment = UITextAlignmentLeft;
         
-        self.DurationLabels.font = [UIFont systemFontOfSize:13];
+        self.DurationLabels.font = [UIFont boldSystemFontOfSize:13];
         
         self.DurationLabels.backgroundColor =[UIColor clearColor];
         
         self.DurationLabels.textColor =[UIColor blackColor];
         
-        [self.DurationLabels setText:@"Duration"];
+        [self.DurationLabels setText:@"Duration :"];
         
         
         // Initialization code
@@ -76,13 +78,13 @@
         
         self.focusLabels.textAlignment = UITextAlignmentLeft;
         
-        self.focusLabels.font = [UIFont systemFontOfSize:13];
+        self.focusLabels.font = [UIFont boldSystemFontOfSize:13];
         
         self.focusLabels.backgroundColor =[UIColor clearColor];
         
         self.focusLabels.textColor =[UIColor blackColor];
         
-        [self.focusLabels setText:@"Focus"];
+        [self.focusLabels setText:@"Focus :"];
         
 
         // Initialization code
@@ -118,17 +120,20 @@
         
        
         
-        EditButton =[[UIButton alloc]init];
-        deleteButton =[[UIButton alloc]init];
+         EditButton =[[UIButton alloc]init];
+         deleteButton =[[UIButton alloc]init];
         
         [EditButton setImage:[UIImage imageNamed:@"icon_edit.png"] forState:UIControlStateNormal];
         [deleteButton setImage:[UIImage imageNamed:@"icon_delete.png"] forState:UIControlStateNormal];
+        favIcon =[[UIButton alloc]init];
         
+        [favIcon setImage:[UIImage imageNamed:@"smiley.png"] forState:UIControlStateNormal];
+
        
         [self.contentView addSubview:TitleLabel];
         
         
-                
+                 [self.contentView addSubview:favIcon];
         [self.contentView addSubview:ExcersiceImage];
        
         [self.contentView addSubview:focusLabel];
@@ -182,39 +187,36 @@
     ExcersiceImage.frame=frame;
     
     
+    frame= CGRectMake(boundsX+90 ,30, 65, 21);
     
+    self.DurationLabels.frame = frame;
+    
+
     frame= CGRectMake(boundsX+160 ,30, 110, 21);
     
     self.DurationLabel.frame = frame;
 
     
-    frame= CGRectMake(boundsX+160 ,50, contentRect.size.width-210, 65);
+    
+    frame= CGRectMake(boundsX+160 ,47, contentRect.size.width-210, 65);
     
     self.focusLabel.frame = frame;
-
-    
-
-    
-    frame= CGRectMake(boundsX+90 ,30, 55, 21);
-    
-    self.DurationLabels.frame = frame;
-    
-    
-    frame= CGRectMake(boundsX+90 ,50, 55, 65);
+  
+    frame= CGRectMake(boundsX+90 ,47, 55, 65);
     
     self.focusLabels.frame = frame;
+
     
+    frame= CGRectMake(265,10, 32, 32);
     
+    self.favIcon.frame = frame;
     
-    
-    frame= CGRectMake(270 ,80, 25, 25);
+    frame= CGRectMake(265 ,80, 32, 32);
     
     self.EditButton.frame = frame;
     
-    
-    
-    
-    frame= CGRectMake(270 ,50, 25, 25);
+
+    frame= CGRectMake(265 ,45, 32, 32);
     
     self.deleteButton.frame = frame;
     

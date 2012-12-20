@@ -35,23 +35,22 @@
     
     [super viewDidLoad];
     
+   
+    
     [slownetView removeFromSuperview];
     slownetView.layer .cornerRadius =14;
     
-//    [self.scrollView.layer setBorderColor:[[UIColor greenColor]CGColor]];
-//    [self.scrollView.layer setBorderWidth:2];
+
+    finished=0;
+    totalCount=0;
     
-    stop =0;
     stopz=0;
     [self InitializeView];
     urlPath =[NSString GetURlPath];
     self.view.transform = CGAffineTransformConcat(self.view.transform,
                                                   CGAffineTransformMakeRotation(M_PI_2));
     
-    
-    //    User *userstate = [User sharedState];
-    //    User* user= [userstate getUserPreferences];
-    
+
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     self.UserID =[userinfo stringForKey:@"UserID"];
     self.userlevel =[userinfo stringForKey:@"Userlevel"];
@@ -62,13 +61,33 @@
     [letsgoButton setHidden:YES];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [letsgoButton setEnabled:NO];
+    [letsgoButton setHidden:YES];
+    if (self.navigateBack) {
+        [backButton setHidden:NO];
+    }
+    else
+    {
+        [backButton setHidden:YES];
+    }
+
+}
+
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewDidAppear:NO];
     [letsgoButton setEnabled:NO];
     [letsgoButton setHidden:YES];
-    backButton.enabled =NO;
+    if (self.navigateBack) {
+        [backButton setHidden:NO];
+    }
+    else
+    {
+        [backButton setHidden:YES];
+    }
     [self getUserDetails];
 }
 
@@ -179,7 +198,7 @@
     
     
     NSMutableArray *itemsarray =[object valueForKey:@"items"];
-    NSLog(@"%i",itemsarray.count);
+   
     NSString *workoutID =[self.workout WorkoutID];
     int workouts =[workoutID intValue];
     [itemsarray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
@@ -311,6 +330,10 @@
 //method to get Excersices related to a workout
 -(void)getExcersices
 {
+    [self.view addSubview:signUpView];
+    [letsgoButton setEnabled:NO];
+    [letsgoButton setHidden:YES];
+    
     excersicesList = [[NSMutableArray alloc]init];
     [self initilaizeDatabase];
     NSString *workoutID =[self.workout WorkoutID];
@@ -340,83 +363,77 @@
 -(void)startDownload
 {
     
-      
+    [self getCount];
     NSString *videoPath=[NSString getVideoPath];
     
-    dataPath = [Fitness4MeUtils path];
-    
-    if (![[NSFileManager defaultManager] fileExistsAtPath:dataPath]){
-        //Create Folder
-        [[NSFileManager defaultManager] createDirectoryAtPath:dataPath withIntermediateDirectories:NO attributes:nil error:nil];
-    }
-    
+    [fileDownloadProgressView setHidden:YES];
+        
     for (int i=0; i<[excersicesList count]; i++) {
+       
         NSString *PosterUrl= [videoPath stringByAppendingString:[[excersicesList objectAtIndex: i] valueForKey: @"PosterUrl"]];
         NSString *PosterName= [[excersicesList objectAtIndex: i] valueForKey: @"PosterName"];
         [self downloadVideos:PosterUrl:PosterName];
+         
         
+
         NSString *videoUrl = [videoPath stringByAppendingString:[[excersicesList objectAtIndex: i] valueForKey: @"VideoUrl"]];
         NSString *Name =  [[excersicesList objectAtIndex: i] valueForKey: @"Name"];
         [self downloadVideos:videoUrl:Name];
         
-        NSString *stopVideo= [videoPath stringByAppendingString:[[excersicesList objectAtIndex: i]  valueForKey: @"StopVideo"]];
-        NSString *stopName= [[excersicesList objectAtIndex: i]  valueForKey: @"StopName"];
-        if ([stopName length]>0) {
-            [self downloadVideos:stopVideo:stopName];
-        }
+                
         
         NSString *otherSidePoster= [videoPath stringByAppendingString:[[excersicesList objectAtIndex: i] valueForKey: @"OtherSidePoster"]];
         NSString *othersidePosterName= [[excersicesList objectAtIndex: i] valueForKey: @"OthersidePosterName"];
         if ([othersidePosterName length]>0) {
             [self downloadVideos:otherSidePoster:othersidePosterName];
         }
+         
         
         NSString *othersideVideo= [videoPath stringByAppendingString:[[excersicesList objectAtIndex: i] valueForKey: @"OthersideVideo"]];
         NSString *othersideName= [[excersicesList objectAtIndex: i] valueForKey: @"OthersideName"];
         if ([othersideName length]>0) {
             [self downloadVideos:othersideVideo:othersideName];
         }
-        
-        NSString *recoveryVideoUrl= [videoPath stringByAppendingString:[[excersicesList objectAtIndex: i] valueForKey: @"RecoveryVideoUrl"]];
-        NSString *recoveryVideoName= [[excersicesList objectAtIndex: i] valueForKey: @"RecoveryVideoName"];
-        if ([recoveryVideoName length]>0) {
-            [self downloadVideos:recoveryVideoUrl:recoveryVideoName];
-        }
-        
-        NSString *nextVideo= [videoPath stringByAppendingString:[[excersicesList objectAtIndex: i] valueForKey: @"NextVideo"]];
-        NSString *nextName= [[excersicesList objectAtIndex: i] valueForKey: @"NextName"];
-        if ([nextName length]>0) {
-            [self downloadVideos:nextVideo:nextName];
-        }
-        
-        NSString *completedVideo= [videoPath stringByAppendingString:[[excersicesList objectAtIndex: i] valueForKey: @"CompletedVideo"]];
-        NSString *completedName= [[excersicesList objectAtIndex: i] valueForKey: @"CompletedName"];
-        if ([completedName length]>0) {
-            [self downloadVideos:completedVideo:completedName];
-        }
-        
+         
     }
-    stop=stop+1;
-    if ([excersicesList count]>0){
-        [letsgoButton setEnabled:YES];
-        [letsgoButton setHidden:NO];
-        [backButton  setEnabled:YES];
-    }
-    else {
-        [self performSelectorOnMainThread:@selector(ShowVideounAvaialableMessage)
-                               withObject:nil
-                            waitUntilDone:YES];
-    }
-    
-    if (stop==[excersicesList count]) {
-        [signUpView removeFromSuperview];
-        
-    }
-    
-   
+       
 }
 
 
+//method to start Download videos related to a workout
+-(void)getCount
+{
+    
+   [fileDownloadProgressView setHidden:YES];
+    
+    for (int i=0; i<[excersicesList count]; i++) {
+        
+       
+        NSString *PosterName= [[excersicesList objectAtIndex: i] valueForKey: @"PosterName"];
+        if ([PosterName length]>0) {
+            [self getExcersiceCount];
+        }
+        NSString *Name =  [[excersicesList objectAtIndex: i] valueForKey: @"Name"];
+        if ([Name length]>0) {
+            [self getExcersiceCount];
+        }
+        NSString *othersidePosterName= [[excersicesList objectAtIndex: i] valueForKey: @"OthersidePosterName"];
+        if ([othersidePosterName length]>0) {
+            [self getExcersiceCount];
+        }
+        NSString *othersideName= [[excersicesList objectAtIndex: i] valueForKey: @"OthersideName"];
+        if ([othersideName length]>0) {
+            [self getExcersiceCount];
+        }
+        
+    }
+    
+}
+
+-(void)getExcersiceCount
+{
+    totalCount++;
+}
 
 
 int stopz=0;
@@ -427,32 +444,32 @@ int stopz=0;
     NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
     NSString *dataPath1 = [documentsDirectory stringByAppendingPathComponent:@"MyFolder"];
     NSString  *filepath =[dataPath1 stringByAppendingPathComponent :name];
-    
+   
     BOOL isReachable =[Fitness4MeUtils isReachable];
     
     if (isReachable){
         
         // Check If File Does Exists if not download the video
         if (![[NSFileManager defaultManager] fileExistsAtPath:filepath]){
-            ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
-            [request setDownloadDestinationPath:filepath];
-            [request setDelegate:self];
-            [request setTimeOutSeconds:15];
-            [request startSynchronous];
+           
+            self.myQueue = [ASINetworkQueue queue]; 
+            [self.myQueue setDelegate:self];
+            [self.myQueue setShowAccurateProgress:YES];
+            [self.myQueue setRequestDidFinishSelector:@selector(requestDidFinish:)];
+            [self.myQueue setRequestDidFailSelector:@selector(requestDidFail:)];
+            downloadrequest =[ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
+            [downloadrequest setDownloadDestinationPath:filepath];
+            [downloadrequest setTimeOutSeconds:100];
+            [downloadrequest shouldContinueWhenAppEntersBackground];
+            //[downloadrequest startAsynchronous];
+            [myQueue addOperation:downloadrequest];
+            [myQueue go];
+
         }else {
-            stop=stop+1;
-            if (stop==[excersicesList count]) {
-                if([signUpView superview]!=nil){
-                    [signUpView removeFromSuperview];
-                }
-                if ([excersicesList count]>0){
-                    [letsgoButton setEnabled:YES];
-                    [letsgoButton setHidden:NO];
-                    [backButton setEnabled:YES];
-                }
-                
+                        finished=finished+1;
+            [self didfinishedWorkout:finished :totalCount];
             }
-        }
+        
     }
     else {
         
@@ -465,7 +482,7 @@ int stopz=0;
                 
                 [letsgoButton setEnabled:NO];
                 [letsgoButton setHidden:YES];
-                [backButton setEnabled:NO];
+                
                 [self performSelectorOnMainThread:@selector(navigateToHome)
                                        withObject:nil
                                     waitUntilDone:YES];
@@ -475,35 +492,76 @@ int stopz=0;
             
         }
         else {
-            stop=stop+1;
-            if (stop==[excersicesList count]) {
-                if ([excersicesList count]>0){
-                    [letsgoButton setEnabled:YES];
-                    [letsgoButton setHidden:NO];
-                    [backButton setEnabled:YES];
-                }
-            }
+            finished=finished+1;
+            [self didfinishedWorkout:finished :totalCount];
         }
     }
 }
 
 
+- (void)didfinishedWorkout:(int)countCompleted:(int)totalcount
+{
+    
+        
+    
+    if (countCompleted>0) {
+        [fileDownloadProgressView setHidden:NO];
+    }
+
+    [signUpView addSubview:lblCompleted];
+    NSString *s= [NSString stringWithFormat:@"%i / %i",countCompleted,totalcount];
+    NSLog(s);
+    
+    lblCompleted.text =s;
+    if (countCompleted ==totalCount) {
+        [UIView transitionWithView:signUpView duration:1
+                           options:UIViewAnimationOptionTransitionCurlUp animations:^{
+                               [signUpView setAlpha:0.0];
+                               
+                           }
+                        completion:^(BOOL finished)
+         {
+             [signUpView removeFromSuperview];
+             [letsgoButton setEnabled:YES];
+             [letsgoButton setHidden:NO];
+         }];
+        
+        
+    }
+    
+    else
+    {
+        [letsgoButton setEnabled:NO];
+        [letsgoButton setHidden:YES];
+    }
+    
+      
+    fileDownloadProgressView.progress = ((float)countCompleted / (float) totalCount);
+        
+}
 
 
 #pragma mark -ASIHTTPRequest delegate methods
 
-- (void)requestDidFinish:(ASINetworkQueue *)queue
+- (void)requestDidFinish:(ASIHTTPRequest *)queue
 {
-    //    finished=finished+1;
-    //    [self.delegate didfinishedWorkout:finished:totalcount];
-    //
-    //    if (finished==totalcount) {
-    //        [myQueue setDelegate:nil];
-    //        [myQueue cancelAllOperations];
-    //
-    //        [self resetRequest];
-    //    }
     
+    finished=finished+1;
+    [self didfinishedWorkout:finished:totalCount];
+    
+        if (finished==totalCount) {
+          [myQueue setDelegate:nil];
+           [myQueue cancelAllOperations];
+
+          [self resetRequest];
+        }
+    
+}
+
+- (void)resetRequest
+{
+    totalCount=0;
+    finished=0;
 }
 
 
@@ -515,19 +573,12 @@ int stopz=0;
     [signUpView removeFromSuperview];
     [letsgoButton setEnabled:NO];
     [letsgoButton setHidden:YES];
-    [backButton setEnabled:YES];
-}
+    }
 
 
 -(void)requestFailed:(ASIHTTPRequest *)request
 {
-    stop=stop+1;
-    if (stop==[excersicesList count]) {
-        [signUpView removeFromSuperview];
-    }
     
-    // NSError *error = [request error];
-    //
 }
 
 // Method to either make a free purchase or in app purchase;
@@ -576,7 +627,27 @@ int stopz=0;
 
 
 -(IBAction)onClickBack:(id)sender{
+    [self cancelDownload];
     [self.navigationController popViewControllerAnimated:YES];
+    
+}
+
+-(void)cancelDownload {
+    
+//    
+//    for (ASIHTTPRequest *req in ASIHTTPRequest.sharedQueue.operations)
+//    {
+//        [req cancel];
+//        [req setDelegate:nil];
+//        [req clearDelegatesAndCancel];
+//    }
+    [myQueue setDelegate:nil];
+    [myQueue cancelAllOperations];
+    
+    totalCount=0;
+    
+    finished=0;
+    
 }
 
 

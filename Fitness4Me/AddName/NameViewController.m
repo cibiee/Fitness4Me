@@ -38,6 +38,13 @@
     UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithCustomView:backutton];
     self.navigationBar.leftBarButtonItem = backBtn;
     
+    UIButton *nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    nextButton.frame = CGRectMake(0, 0, 58, 30);
+    [nextButton setBackgroundImage:[UIImage imageNamed:@"next_btn_with_text.png"] forState:UIControlStateNormal];
+    [nextButton addTarget:self action:@selector(onClickNext:) forControlEvents:UIControlEventTouchDown];
+    UIBarButtonItem *nextBtn = [[UIBarButtonItem alloc] initWithCustomView:nextButton];
+    self.navigationBar.rightBarButtonItem = nextBtn;
+    
     if ([[workout WorkoutID]intValue]>0) {
         [self.nameTextfield setText:[workout Name]];
     }
@@ -76,7 +83,7 @@
         [workouts setFocus:workout.Focus];
         [workouts setProps:workout.Props];
         [workouts setName:self.nameTextfield.text];
-        
+        NSLog(self.nameTextfield.text);
         
        
         

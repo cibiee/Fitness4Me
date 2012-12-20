@@ -466,6 +466,7 @@
       
         // Check If File Does Exists if not download the video
         if (![[NSFileManager defaultManager] fileExistsAtPath:filepath]){
+            
             ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
             [request setDownloadDestinationPath:filepath];
             [request setDelegate:self];

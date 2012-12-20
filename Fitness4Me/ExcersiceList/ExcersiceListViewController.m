@@ -14,6 +14,8 @@
 @interface ExcersiceListViewController ()
 @property NSMutableArray *excersiceList;
 @property NSMutableArray *groupedExcersice;
+@property int videoCount;
+@property int totalDuration;
 @end
 
 @implementation ExcersiceListViewController
@@ -30,7 +32,11 @@
 - (void)viewDidLoad
 {
     
-    
+    self.videoCount=0;
+    self.totalDuration=0;
+    [self.totalVideoCountLabel setText:[NSString stringWithFormat:@"Number of excersices [%i]",self.videoCount]];
+    [self.durationLabel setText:[NSString stringWithFormat:@"Total Time [%i]",self.totalDuration]];
+
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
@@ -59,14 +65,12 @@
     self.excersiceListTableview.backgroundView = background;
     
     self.excersiceListTableview.separatorColor =[UIColor clearColor];
-    
 }
 
 
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
     
 }
 
@@ -75,7 +79,7 @@
 {
   
     FitnessServerCommunication *fitness =[FitnessServerCommunication sharedState];
-    [fitness listExcersiceWithequipments:@"2" focus:@"3" activityIndicator:self.activityIndicator progressView:nil onCompletion:^(NSString *responseString) {
+    [fitness listExcersiceWithequipments:self.equipments focus:self.focusList activityIndicator:self.activityIndicator progressView:nil onCompletion:^(NSString *responseString) {
         
         if ([responseString length]>0) {
             [self parseCustomWorkoutList:responseString];
@@ -159,7 +163,7 @@
     NSDictionary *dictionary = [self.groupedExcersice objectAtIndex:section];
     NSArray *array = [dictionary objectForKey:@"workouts"];
     return [array count];
-    return 1;
+
 }
 
 
@@ -185,7 +189,7 @@
     [cell.deleteLabel setHidden:YES];
     [cell.EditLabel setHidden:YES];
     cell.TitleLabel.text = [workout name];
-    cell.DurationLabel.text = [[workout time] stringByAppendingString:@" miuntes."];
+    cell.DurationLabel.text = [[workout time] stringByAppendingString:@" minutes."];
     cell.focusLabel.text=[workout focus];
     cell.ExcersiceImage.image =[self imageForRowAtIndexPath:workout inIndexPath:indexPath];
      self.focus=[array objectAtIndex:indexPath.row];
@@ -250,15 +254,22 @@
     if ([[tableView cellForRowAtIndexPath:indexPath] accessoryType] == UITableViewCellAccessoryCheckmark)
     {
         [[tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryNone];
-        [[self.excersiceList objectAtIndex:indexPath.section] setIsChecked:NO];
+        [[self.excersiceList objectAtIndex:indexPath.row] setIsChecked:NO];
+         self.videoCount--;
+         self.totalDuration=self.totalDuration- [[[self.excersiceList objectAtIndex:indexPath.section] time]intValue];
     }
     else
     {
+        NSLog(@"%i",indexPath.section);
         [[tableView cellForRowAtIndexPath:indexPath]setAccessoryType:UITableViewCellAccessoryCheckmark];
         [[self.excersiceList objectAtIndex:indexPath.section] setIsChecked:YES];
+        self.videoCount++;
+        self.totalDuration=self.totalDuration+ [[[self.excersiceList objectAtIndex:indexPath.section] time]intValue];
     }
     
-    
+    [self.totalVideoCountLabel setText:[NSString stringWithFormat:@"Number of excersices [%i]",self.videoCount]];
+    [self.durationLabel setText:[NSString stringWithFormat:@"Total Time [%i]",self.totalDuration]];
+
 }
 
 
@@ -266,45 +277,33 @@
 {
     
     
-//    NSString *str= [[NSString alloc]init];
-//    
-//    for (Focus *focus in self.muscles) {
-//        if ([focus isChecked]) {
-//            if ([str length]==0) {
-//                str =[str stringByAppendingString:[focus muscleID]];
-//            }
-//            else{
-//                str=[str stringByAppendingString:@","];
-//                str =[str stringByAppendingString:[focus muscleID]];
-//            }
-//            
-//        }
-//    }
-//    if ([str length]>0) {
-//        
-//        
-//        Workout *workouts= [[Workout alloc]init];
-//        
-//        if ([[workout WorkoutID]intValue]>0) {
-//            WorkoutDB *workoutDB =[[WorkoutDB alloc]init];
-//            [workoutDB setUpDatabase];
-//            [workoutDB createDatabase];
-//            workouts =[workoutDB getCustomWorkoutByID:[workout WorkoutID]];
-//        }
-//        
-//        
-//        [workouts setDuration:workout.Duration];
-//        [workouts setFocus:str];
-//        
-//        EquipmentViewController *viewController =[[EquipmentViewController alloc]initWithNibName:@"EquipmentViewController" bundle:nil];
-//        viewController.workout =[[Workout alloc]init];
-//        viewController.workout=workouts;
-//        [self.navigationController pushViewController:viewController animated:YES];
-//    }
-//    else
-//    {
-//        [Fitness4MeUtils showAlert:@"Please select an area of focus"];
-//    }
+   
+    NSMutableArray *newWorkoutArray =[[NSMutableArray alloc]init];
+    for (ExcersiceList *excersice in self.excersiceList) {
+        if ([excersice isChecked]) {
+            
+            [newWorkoutArray addObject:excersice];
+                NSLog([excersice time]);
+        }
+    }
+    
+    if ([newWorkoutArray count]>0) {
+        
+    
+    CarouselViewDemoViewController *viewController;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+        viewController =[[CarouselViewDemoViewController alloc]initWithNibName:@"CarouselViewDemoViewController" bundle:nil];
+    }else {
+        viewController =[[CarouselViewDemoViewController alloc]initWithNibName:@"CarouselViewDemoViewController" bundle:nil];
+    }
+        [viewController setDataSourceArray:newWorkoutArray];
+    [self.navigationController pushViewController:viewController animated:YES];
+    
+    }
+    else
+    {
+        [Fitness4MeUtils showAlert:@"Please select an area of focus"];
+    }
 }
 
 -(IBAction)onClickBack:(id)sender{
@@ -313,6 +312,8 @@
 
 - (void)viewDidUnload {
     [self setExcersiceListTableview:nil];
+    [self setDurationLabel:nil];
+    [self setTotalVideoCountLabel:nil];
     [super viewDidUnload];
 }
 @end

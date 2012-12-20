@@ -28,6 +28,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     // add continue button
     UIButton *backutton = [UIButton buttonWithType:UIButtonTypeCustom];
     backutton.frame = CGRectMake(0, 0, 58, 30);
@@ -36,14 +37,18 @@
     UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithCustomView:backutton];
     self.navigationBar.leftBarButtonItem = backBtn;
     
+    if ([[workout WorkoutID]intValue]>0) {
+        [self.creationCompleteLabel setText:@"Save changes and start workout?"];
+    }
+    else
+    {
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
-    
     NSString *hasMadeFullPurchase= [userinfo valueForKey:@"hasMadeFullPurchase"];
     if ([hasMadeFullPurchase isEqualToString:@"true"]) {
      [self.creationCompleteLabel setText:@"Congratulations!You just designed your customized workouts"];
     }
     else {
-        int customCount= [userinfo integerForKey:@"customCount"];
+        int customCount= [userinfo integerForKey:@"customCount"]+1;
         NSString *customCountString;
         
         switch (customCount) {
@@ -70,14 +75,11 @@
             default:
                 break;
         }
-        
-        
-        [self.creationCompleteLabel setText:[NSString stringWithFormat:@"Congratulations!You just designed  the %@ of your five free customized workouts",customCountString]];
-        
+        if ([customCountString length]>0) {
+            [self.creationCompleteLabel setText:[NSString stringWithFormat:@"Congratulations!You just designed  the %@ of your five free customized workouts",customCountString]];
+        }
     }
-                           
-
-
+    }
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -97,6 +99,7 @@
     CustomWorkoutIntermediateViewController *viewController =[[CustomWorkoutIntermediateViewController alloc]initWithNibName:@"CustomWorkoutIntermediateViewController" bundle:nil];
     viewController.workout =[[Workout alloc]init];
     viewController .workout=newWorkout;
+    [viewController setNavigateBack:NO];
     [self.navigationController pushViewController:viewController animated:YES];
 }
 
@@ -115,7 +118,7 @@
         [fitness saveCustomWorkout:workout userID:userID userLevel:userlevel language:selectedLanguage activityIndicator:self.activityIndicator progressView:self.progressView onCompletion:^(NSString *workoutID) {
             if (workoutID>0) {
                 [workout setWorkoutID:workoutID];
-                [fitness  parseCustomFitnessDetails:[userID intValue]  onCompletion:^{
+                [fitness  parseCustomFitnessDetails:[userID intValue]  onCompletion:^(NSString *responseString){
                     [self getNewWorkoutList];
                     
                 } onError:^(NSError *error) {

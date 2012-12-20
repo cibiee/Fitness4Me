@@ -7,6 +7,7 @@
 //
 
 #import "MemberPromoViewController.h"
+#import "CustomWorkoutsViewController.h"
 
 @interface MemberPromoViewController ()
 
@@ -48,29 +49,39 @@
     else {
         viewController = [[MembershipRateViewController alloc]initWithNibName:@"MembershipRateViewController" bundle:nil];
     }
-    
+    [viewController setNavigateTo:[self navigateTo]];
     viewController.workout =self.workout;
     [self.navigationController pushViewController:viewController animated:YES];
 
 }
 
 - (IBAction)onClickNotYet:(id)sender {
-    ShareFitness4MeViewController *viewController;
     
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+    if ([self.navigateTo isEqualToString:@"List"]) {
+        CustomWorkoutsViewController *viewController;
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+            viewController =[[CustomWorkoutsViewController alloc]initWithNibName:@"CustomWorkoutsViewController" bundle:nil];
+        }else {
+            //viewController =[[HintsViewController alloc]initWithNibName:@"CustomizedWorkoutListViewController_iPad" bundle:nil];
+        }
+        
+        [self.navigationController pushViewController:viewController animated:YES];
+        
+        
+    }
+    else
     {
-        
-        viewController = [[ShareFitness4MeViewController alloc]initWithNibName:@"ShareFitness4MeViewController" bundle:nil];
-        
+        ShareFitness4MeViewController *viewController;
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+            viewController = [[ShareFitness4MeViewController alloc]initWithNibName:@"ShareFitness4MeViewController" bundle:nil];
+        }
+        else {
+            viewController = [[ShareFitness4MeViewController alloc]initWithNibName:@"ShareFitness4MeViewController_iPad" bundle:nil];
+        }
+       
+        viewController.imageUrl =[self.workout ImageUrl];
+        viewController.imageName =[self.workout ImageName];
+        [self.navigationController pushViewController:viewController animated:YES];
     }
-    else {
-        viewController = [[ShareFitness4MeViewController alloc]initWithNibName:@"ShareFitness4MeViewController_iPad" bundle:nil];
-    }
-    NSLog([self.workout ImageUrl]);
-    NSLog([self.workout ImageName]);
-    viewController.imageUrl =[self.workout ImageUrl];
-    viewController.imageName =[self.workout ImageName];
-    [self.navigationController pushViewController:viewController animated:YES];
-
 }
 @end

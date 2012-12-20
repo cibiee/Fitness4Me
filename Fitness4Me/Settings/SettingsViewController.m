@@ -193,7 +193,7 @@
             FitnessServerCommunication *fitnessserverCommunication =[[FitnessServerCommunication alloc]init];
             [fitnessserverCommunication parseFitnessDetails:userID];
             [fitnessserverCommunication parseWorkoutVideos];
-            [fitnessserverCommunication parseCustomFitnessDetails:userID onCompletion:^{
+            [fitnessserverCommunication parseCustomFitnessDetails:userID onCompletion:^(NSString *responseString){
                 
             } onError:^(NSError *error) {
                 // [self getExcersices];

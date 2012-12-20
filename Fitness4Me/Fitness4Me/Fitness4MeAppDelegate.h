@@ -10,8 +10,14 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import "User.h"
 #import "UserDB.h"
-#import "ListWorkoutsViewController.h"
 #import "WorkoutDB.h"
+#import "Fitness4MeViewController.h"
+#import "InitialAppLaunchViewController.h"
+#import "FitnessServerCommunication.h"
+#import "Fitness4MeUtils.h"
+#import "StatisticsDB.h"
+#import "Favourite.h"
+#import "CustomFavourites.h"
 
 
 @class Fitness4MeViewController;

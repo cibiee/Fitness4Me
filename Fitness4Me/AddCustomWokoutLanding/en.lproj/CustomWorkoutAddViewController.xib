@@ -57,7 +57,7 @@
 					<object class="IBUIPickerView" id="585863566">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">266</int>
-						<string key="NSFrame">{{44, 183}, {233, 216}}</string>
+						<string key="NSFrame">{{44, 183}, {230, 216}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>

@@ -33,6 +33,7 @@
 
 @property(retain,nonatomic)IBOutlet UIButton *deleteButton;
 
+@property(retain,nonatomic)IBOutlet UIButton *favIcon;
 
 @property(retain,nonatomic)IBOutlet UILabel *focusLabels;
 

@@ -31,7 +31,7 @@
     NSMutableArray *searchArray;
     
     
-    
+     IBOutlet UIActivityIndicatorView *activityIndicator;
     WorkoutDB *workoutDB;
     ASINetworkQueue  *myQueue;
     Workout *selectedWorkout;

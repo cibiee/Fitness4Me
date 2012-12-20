@@ -14,6 +14,7 @@
 #import "GADBannerView.h"
 #import <QuartzCore/QuartzCore.h>
 #import "CustomWorkoutsViewController.h"
+#import "CarouselViewDemoViewController.h"
 
 
 @interface Fitness4MeViewController : UIViewController<FitnessServerCommunicationDelegate>
@@ -33,6 +34,7 @@
 
 
 }
+@property (nonatomic, retain) IBOutlet CarouselViewDemoViewController *viewController;
 - (IBAction)onclickSelfMadeworkout:(id)sender;
 -(IBAction)cancelDownloas:(id)sender;
 -(IBAction)navigateToCustomWorkoutListView:(id)sender;

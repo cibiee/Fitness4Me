@@ -127,7 +127,7 @@
     self.database =[FMDatabase databaseWithPath:self.databasePath];
     NSMutableArray *focus =[[NSMutableArray alloc]init];
     if(!self.database.open){
-        NSLog(@"Databse not Open");
+       // NSLog(@"Databse not Open");
     }
     
     NSString *query =[NSString stringWithFormat:@"Select * from focus where muscleName in (%@)",muscleName];
@@ -158,7 +158,7 @@
     self.database =[FMDatabase databaseWithPath:self.databasePath];
     
     if(!self.database.open){
-        NSLog(@"Databse not Open");
+        //NSLog(@"Databse not Open");
     }
     // NSLog(@"%@",focus.muscleID);
     

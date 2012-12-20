@@ -8,7 +8,8 @@
 
 #import "EquipmentViewController.h"
 #import "WorkoutDB.h"
-
+#import "FitnessServerCommunication.h"
+#import "ExcersiceListViewController.h"
 @interface EquipmentViewController ()
 @property NSMutableArray *equipments;
 @property(strong,nonatomic)NSIndexPath *lastIndex;
@@ -35,16 +36,22 @@
     [self.equipmentsTableView.layer setBorderWidth:2];
     
     
-     self.equipments = [[NSMutableArray alloc]init];
+    self.equipments = [[NSMutableArray alloc]init];
     
     // add continue button
     UIButton *backutton = [UIButton buttonWithType:UIButtonTypeCustom];
     backutton.frame = CGRectMake(0, 0, 58, 30);
     [backutton setBackgroundImage:[UIImage imageNamed:@"back_btn_with_text.png"] forState:UIControlStateNormal];
     [backutton addTarget:self action:@selector(onClickBack:) forControlEvents:UIControlEventTouchDown];
-     UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithCustomView:backutton];
+    UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithCustomView:backutton];
     self.navigationBar.leftBarButtonItem = backBtn;
-
+    
+    UIButton *nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    nextButton.frame = CGRectMake(0, 0, 58, 30);
+    [nextButton setBackgroundImage:[UIImage imageNamed:@"next_btn_with_text.png"] forState:UIControlStateNormal];
+    [nextButton addTarget:self action:@selector(onClickNext:) forControlEvents:UIControlEventTouchDown];
+    UIBarButtonItem *nextBtn = [[UIBarButtonItem alloc] initWithCustomView:nextButton];
+    self.navigationBar.rightBarButtonItem = nextBtn;
     
     [self getEquipments];
 }
@@ -57,15 +64,15 @@
 
 -(void)getEquipments{
     
-   // [activityIndicator startAnimating];
+    // [activityIndicator startAnimating];
     [NSThread detachNewThreadSelector:@selector(listEquipments) toTarget:self withObject:nil];
 }
 
 
 -(void)listEquipments
 {
-
-     self.equipmentDB =[[EquipmentDB alloc]init];
+    
+    self.equipmentDB =[[EquipmentDB alloc]init];
     [ self.equipmentDB setUpDatabase];
     [ self.equipmentDB createDatabase];
     [ self.equipmentDB getequipments];
@@ -82,11 +89,21 @@
         }
         
         [self.equipmentsTableView reloadData];
-
-               
+        
+        
     }
     
-
+    else{
+        FitnessServerCommunication *fitness =[FitnessServerCommunication sharedState];
+        [fitness listEquipments:nil progressView:nil onCompletion:^(NSString *responseString) {
+            [self listEquipments];}
+                        onError:^(NSError *error) {
+                            
+                        }];
+        
+    }
+    
+    
 }
 
 
@@ -130,7 +147,7 @@
     
     NSArray* foo = [[workout Props] componentsSeparatedByString: @","];
     
-    NSLog(@"%@",[workout Props]);
+    
     
     NSMutableArray *newfocusArray=[[NSMutableArray alloc]init];
     newfocusArray=focuslist;
@@ -167,7 +184,7 @@
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         
     }
-   // cell.accessoryType=UITableViewCellAccessoryNone;
+    // cell.accessoryType=UITableViewCellAccessoryNone;
     self.equipment=[self.equipments objectAtIndex:indexPath.row];
     [cell.textLabel setText:self.equipment.equipmentName];
     
@@ -175,10 +192,10 @@
         cell.accessoryType=UITableViewCellAccessoryCheckmark;
     }
     else{
-         cell.accessoryType=UITableViewCellAccessoryNone;
+        cell.accessoryType=UITableViewCellAccessoryNone;
     }
     
-
+    
     return cell;
 }
 
@@ -189,16 +206,16 @@
     if ([[tableView cellForRowAtIndexPath:indexPath] accessoryType] == UITableViewCellAccessoryCheckmark)
     {
         [[tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryNone];
-     [[self.equipments objectAtIndex:indexPath.row] setIsChecked:NO];
+        [[self.equipments objectAtIndex:indexPath.row] setIsChecked:NO];
     }
     else
     {
         [[tableView cellForRowAtIndexPath:indexPath]setAccessoryType:UITableViewCellAccessoryCheckmark];
         
-         [[self.equipments objectAtIndex:indexPath.row] setIsChecked:YES];
+        [[self.equipments objectAtIndex:indexPath.row] setIsChecked:YES];
         
     }
-[self performSelector:@selector(deselect:) withObject:nil afterDelay:0.5f];
+    [self performSelector:@selector(deselect:) withObject:nil afterDelay:0.5f];
 }
 
 - (void) deselect: (id) sender {
@@ -213,7 +230,7 @@
 -(IBAction)onClickNext:(id)sender{
     NSString *str= [[NSString alloc]init];
     str =@"";
-     NSString *name= [[NSString alloc]init];
+    NSString *name= [[NSString alloc]init];
     for (Equipments *equipment in self.equipments) {
         if ([equipment isChecked]) {
             if ([str length]==0) {
@@ -237,19 +254,34 @@
         [workoutDB createDatabase];
         workouts =[workoutDB getCustomWorkoutByID:[workout WorkoutID]];
     }
-    
-
     [workouts setDuration:workout.Duration];
     [workouts setFocus:workout.Focus];
     [workouts setFocusName:name];
-    
     [workouts setProps:str];
-     
-    NameViewController *viewController =[[NameViewController alloc]initWithNibName:@"NameViewController" bundle:nil];
-    viewController.workout= [[Workout alloc]init];
-    viewController.workout =workouts;
-    [self.navigationController pushViewController:viewController animated:YES];
-
+    
+    
+    
+    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+    NSString *workoutType =[userinfo stringForKey:@"workoutType"];
+    
+    if ([workoutType isEqualToString:@"Custom"]) {
+        NameViewController *viewController =[[NameViewController alloc]initWithNibName:@"NameViewController" bundle:nil];
+        viewController.workout= [[Workout alloc]init];
+        viewController.workout =workouts;
+        [self.navigationController pushViewController:viewController animated:YES];
+    }
+    else
+    {
+        ExcersiceListViewController *viewController;
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+            viewController =[[ExcersiceListViewController alloc]initWithNibName:@"ExcersiceListViewController" bundle:nil];
+        }else {
+            viewController =[[ExcersiceListViewController alloc]initWithNibName:@"ExcersiceListViewController" bundle:nil];
+        }
+        [viewController setFocusList:[workout Focus]];
+        [viewController setEquipments:str];
+        [self.navigationController pushViewController:viewController animated:YES];
+    }
 }
 
 - (void)viewDidUnload {

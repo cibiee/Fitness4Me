@@ -16,7 +16,7 @@
 @end
 
 @implementation FitnessServerCommunication
-
+int finished=0;
 static FitnessServerCommunication *sharedState;
 @synthesize delegate,workouts,myQueue,imageQueue;
 - (id)init
@@ -26,9 +26,7 @@ static FitnessServerCommunication *sharedState;
         // Initialization code here.
         downloadrequest = [[ASIHTTPRequest alloc] initWithURL:Nil];
         myQueue =[[ASINetworkQueue alloc]init];
-        
     }
-    
     return self;
 }
 
@@ -44,8 +42,6 @@ static FitnessServerCommunication *sharedState;
         
     }
     return sharedState;
-    
-    
 }
 
 #pragma mark -
@@ -264,12 +260,6 @@ static FitnessServerCommunication *sharedState;
 }
 
 
-
-//
-//  updated server with the video informations
-//
-
-
 - (void)UpdateServerWithPurchaseStatus:(NSString *)purchaseStatus hasMadefullpurchase:(NSString*)purchaseAll workoutID:(NSString*)workoutID  userID:(NSString*)userID  activityIndicator:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView onCompletion:(ResponseBlock)completionBlock onError:(NSError*)errorBlock
 
 {
@@ -308,8 +298,6 @@ static FitnessServerCommunication *sharedState;
         
     }
 }
-
-
 
 - (void)parserExcersiceDetailsForWorkoutID:(NSString *)workoutID userLevel:(NSString *)userLevel  language:(int )selectedlanguage activityIndicator:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView onCompletion:(WMLoginResponseBlock)completionBlock onError:(NSError*)errorBlock {
    
@@ -363,16 +351,16 @@ static FitnessServerCommunication *sharedState;
                 [self parseEquipments:responseString];
                 if (completionBlock) completionBlock(responseString);
             }else{
-                [self terminateActivities:NSLocalizedString(@"slowdata", nil):activityIndicator:signUpView];
+              //  [self terminateActivities:NSLocalizedString(@"slowdata", nil):activityIndicator:signUpView];
             }
         }];
         [requests setFailedBlock:^{
             //NSError *error = [requests error];
-            [self terminateActivities:NSLocalizedString(@"requestError", nil):activityIndicator:signUpView];
+           // [self terminateActivities:NSLocalizedString(@"requestError", nil):activityIndicator:signUpView];
         }];
         [requests startAsynchronous];
     }else{
-        [self terminateActivities:NSLocalizedString(@"NoInternetMessage", nil):activityIndicator:signUpView];
+       // [self terminateActivities:NSLocalizedString(@"NoInternetMessage", nil):activityIndicator:signUpView];
     }
 }
 
@@ -397,16 +385,16 @@ static FitnessServerCommunication *sharedState;
                 [self parseFocus:responseString];
                 if (completionBlock) completionBlock(responseString);
             }else{
-                [self terminateActivities:NSLocalizedString(@"slowdata", nil):activityIndicator:signUpView];
+               // [self terminateActivities:NSLocalizedString(@"slowdata", nil):activityIndicator:signUpView];
             }
         }];
         [requests setFailedBlock:^{
             //NSError *error = [requests error];
-            [self terminateActivities:NSLocalizedString(@"requestError", nil):activityIndicator:signUpView];
+          //  [self terminateActivities:NSLocalizedString(@"requestError", nil):activityIndicator:signUpView];
         }];
         [requests startAsynchronous];
     }else{
-        [self terminateActivities:NSLocalizedString(@"NoInternetMessage", nil):activityIndicator:signUpView];
+        //[self terminateActivities:NSLocalizedString(@"NoInternetMessage", nil):activityIndicator:signUpView];
     }
 }
 
@@ -433,6 +421,7 @@ static FitnessServerCommunication *sharedState;
         else{
          requestString =[NSString stringWithFormat:@"%@createcustom=yes&user_id=%@&user_level=%@&customname=%@&duration=%@&equipment=%@&focus=%@&lang=%i",UrlPath,userID,userLevel,[workout Name],[workout Duration],[workout Props],[workout Focus],selectedlanguage];
         }
+        NSLog(requestString);
         
         NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         
@@ -495,7 +484,7 @@ static FitnessServerCommunication *sharedState;
 
 
 
--(void)parseCustomFitnessDetails:(int)userID onCompletion:(ResponseVoidBlock)completionBlock onError:(NSError*)errorBlock {
+-(void)parseCustomFitnessDetails:(int)userID onCompletion:(ResponseBlock)completionBlock onError:(NSError*)errorBlock {
     
     BOOL isReachable =[Fitness4MeUtils isReachable];
     if (isReachable)
@@ -505,6 +494,44 @@ static FitnessServerCommunication *sharedState;
         
         NSString *requestString = [NSString stringWithFormat:@"%@listcustom=yes&user_id=%i&lang=%i",UrlPath, userID,selectedLanguage];
         
+        NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+        
+        __weak ASIHTTPRequest *requests = [ASIHTTPRequest requestWithURL:url];
+        [requests setCompletionBlock:^{
+            // Use when fetching text data
+            NSString *responseString =[requests responseString];
+            if ([responseString length]>0) {
+                NSLog(responseString);
+                [self parseCustomWorkoutList:responseString];
+                if (completionBlock) completionBlock(responseString);
+            }else{
+               // [self terminateActivities:NSLocalizedString(@"slowdata", nil):nil:nil];
+            }
+        }];
+        [requests setFailedBlock:^{
+            //NSError *error = [requests error];
+            //[self terminateActivities:NSLocalizedString(@"requestError",nil):nil:nil];
+            
+        }];
+        [requests startAsynchronous];
+    }else{
+      //  [self terminateActivities:NSLocalizedString(@"NoInternetMessage", nil):nil:nil];
+        
+    }
+}
+
+
+#pragma mark SELF MADE WORKOUT LIST SERVICES
+
+-(void)parseSelfMadeFitnessDetails:(int)userID onCompletion:(ResponseBlock)completionBlock onError:(NSError*)errorBlock {
+    
+    BOOL isReachable =[Fitness4MeUtils isReachable];
+    if (isReachable)
+    {
+        NSString *UrlPath= [NSString GetURlPath];
+        int  selectedLanguage=[Fitness4MeUtils getApplicationLanguage] ;
+        
+        NSString *requestString = [NSString stringWithFormat:@"%@listcustom=yes&user_id=%i&lang=%i",UrlPath, userID,selectedLanguage];
         
         NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         
@@ -513,20 +540,21 @@ static FitnessServerCommunication *sharedState;
             // Use when fetching text data
             NSString *responseString =[requests responseString];
             if ([responseString length]>0) {
-                [self parseCustomWorkoutList:responseString];
-                if (completionBlock) completionBlock();
+                NSLog(responseString);
+                [self parseSelfMadeWorkoutList:responseString];
+                if (completionBlock) completionBlock(responseString);
             }else{
-                [self terminateActivities:NSLocalizedString(@"slowdata", nil):nil:nil];
+                // [self terminateActivities:NSLocalizedString(@"slowdata", nil):nil:nil];
             }
         }];
         [requests setFailedBlock:^{
             //NSError *error = [requests error];
-            [self terminateActivities:NSLocalizedString(@"requestError",nil):nil:nil];
+            //[self terminateActivities:NSLocalizedString(@"requestError",nil):nil:nil];
             
         }];
         [requests startAsynchronous];
     }else{
-        [self terminateActivities:NSLocalizedString(@"NoInternetMessage", nil):nil:nil];
+        //  [self terminateActivities:NSLocalizedString(@"NoInternetMessage", nil):nil:nil];
         
     }
 }
@@ -543,7 +571,42 @@ static FitnessServerCommunication *sharedState;
         NSString *UrlPath= [NSString GetURlPath];
         NSString *requestString =[NSString stringWithFormat:@"%@listexercises=yes&equipment=%@&focus=%@&lang=%i",UrlPath,equipments,focus,selectedLang];
         NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-        
+      //  NSLog(url);
+        __weak ASIHTTPRequest *requests = [ASIHTTPRequest requestWithURL:url];
+        [requests setCompletionBlock:^{
+            // Use when fetching text data
+            NSString *responseString =[requests responseString];
+            if ([responseString length]>0) {
+                
+                if (completionBlock) completionBlock(responseString);
+            }else{
+                [self terminateActivities:NSLocalizedString(@"slowdata", nil):activityIndicator:signUpView];
+            }
+        }];
+        [requests setFailedBlock:^{
+            //NSError *error = [requests error];
+            [self terminateActivities:NSLocalizedString(@"requestError", nil):activityIndicator:signUpView];
+        }];
+        [requests startAsynchronous];
+    }else{
+        [self terminateActivities:NSLocalizedString(@"NoInternetMessage", nil):activityIndicator:signUpView];
+    }
+}
+
+- (void)setWorkoutfavourite:(NSString*)workoutID UserID:(int)userID Status:(NSString*)status  activityIndicator:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView onCompletion:(WMLoginResponseBlock)completionBlock onError:(NSError*)errorBlock
+
+{
+    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+    userID =[userinfo integerForKey:@"UserID"];
+
+    BOOL isReachable =[Fitness4MeUtils isReachable];
+    if (isReachable)
+    {
+       
+        NSString *UrlPath= [NSString GetURlPath];
+        NSString *requestString =[NSString stringWithFormat:@"%@customfav=yes&user_id=%i&fav_status=%@&custom_workout_id=%@",UrlPath,userID,status,workoutID];
+        NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+        NSLog(requestString);
         __weak ASIHTTPRequest *requests = [ASIHTTPRequest requestWithURL:url];
         [requests setCompletionBlock:^{
             // Use when fetching text data
@@ -568,6 +631,7 @@ static FitnessServerCommunication *sharedState;
 
 
 
+
 -(void) getImageAtPath:(NSString *)imageUrl toDestination:( NSString *)storeURL setDelegate:(UIViewController*)viewController
 {
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:imageUrl]];
@@ -585,7 +649,7 @@ static FitnessServerCommunication *sharedState;
         
         int  selectedLanguage=[Fitness4MeUtils getApplicationLanguage] ;
         
-        NSString *requestString = [NSString stringWithFormat:@"%@listapps=yes&userid=%i&duration=10&lang=%i",urlPath, userID,selectedLanguage];
+        NSString *requestString = [NSString stringWithFormat:@"%@listapps=yes&userid=%i&duration=10&lang=%i&bridgetest=1",urlPath, userID,selectedLanguage];
         
         NSURL *url =[NSURL URLWithString:requestString];
         
@@ -741,7 +805,6 @@ static FitnessServerCommunication *sharedState;
  
     if ([object count]>0) {
         
-    
     NSArray *keyArray =[object allKeys];
     if ([keyArray count]>0) {
         
@@ -785,7 +848,6 @@ static FitnessServerCommunication *sharedState;
 
 -(void)cancelDownload {
     
-    
     for (ASIHTTPRequest *req in ASIHTTPRequest.sharedQueue.operations)
     {
         [req cancel];
@@ -807,20 +869,43 @@ static FitnessServerCommunication *sharedState;
 
 -(void)insertExcersices
 {
-    workoutDB =[[WorkoutDB alloc]init];
-    [workoutDB setUpDatabase];
-    [workoutDB createDatabase];
+    [self setupWorkoutDB];
     [workoutDB insertWorkouts:workouts];
 }
 
 
 -(void)insertCustomExcersices
 {
+    [self setupWorkoutDB];
+    [workoutDB insertCustomWorkouts:workouts];
+}
+
+
+-(void)insertSelfMadeExcersices
+{
+    [self setupWorkoutDB];
+    [workoutDB insertSelfMadeWorkouts:workouts];
+}
+
+-(void)deleteCustomWorkouts
+{
+    [self setupWorkoutDB];
+    [workoutDB deleteCustomWorkout];
+}
+
+-(void)deleteSelfMadeWorkouts
+{
+    [self setupWorkoutDB];
+    [workoutDB deleteSelfMadeWorkout];
+}
+
+- (void)setupWorkoutDB
+{
     workoutDB =[[WorkoutDB alloc]init];
     [workoutDB setUpDatabase];
     [workoutDB createDatabase];
-    [workoutDB insertCustomWorkouts:workouts];
 }
+
 
 
 
@@ -866,17 +951,36 @@ static FitnessServerCommunication *sharedState;
 }
 
 
--(void)parseCustomWorkoutList:(NSString*)responseString
+- (void)praseworkoutArray:(NSString *)responseString
 {
     NSMutableArray *object = [responseString JSONValue];
     workouts = [[NSMutableArray alloc]init];
     NSMutableArray *itemsarray =[object valueForKey:@"items"];
-    
     [itemsarray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         NSDictionary* item = obj;
         
-        [workouts addObject:[[Workout alloc]initWithCustomData:[item objectForKey:@"id"]:[item objectForKey:@"name"]:[item objectForKey:@"rate"]:[item objectForKey:@"image_android"]:[item objectForKey:@"image_name"]:[item objectForKey :@"islocked"]:[item objectForKey:@"description"]:[item objectForKey:@"description_big"]:nil:[item objectForKey:@"description_big"]:[item objectForKey :@"image_thumb"]:[item objectForKey:@"equipment"]:[item objectForKey:@"duration"]:[item objectForKey:@"focus"]]];
+        [workouts addObject:[[Workout alloc]initWithCustomData:[item objectForKey:@"id"]:[item objectForKey:@"name"]:[item objectForKey:@"rate"]:[item objectForKey:@"image_android"]:[item objectForKey:@"image_name"]:[item objectForKey :@"isFav"]:[item objectForKey:@"description"]:[item objectForKey:@"description_big"]:nil:[item objectForKey:@"description_big"]:[item objectForKey :@"image_thumb"]:[item objectForKey:@"equipment"]:[item objectForKey:@"duration"]:[item objectForKey:@"focus"]]];
     }];
+}
+
+-(void)parseCustomWorkoutList:(NSString*)responseString
+{
+    [self praseworkoutArray:responseString];
+    
+    [self deleteCustomWorkouts];
+    
+    if ([workouts count]>0) {
+        
+        [self insertCustomExcersices];
+    }
+}
+
+
+-(void)parseSelfMadeWorkoutList:(NSString*)responseString
+{
+    [self praseworkoutArray:responseString];
+    
+    [self deleteSelfMadeWorkouts];
     
     if ([workouts count]>0) {
         
@@ -891,7 +995,6 @@ static FitnessServerCommunication *sharedState;
     NSMutableArray *object = [responseString JSONValue];
     NSMutableArray *equipments = [[NSMutableArray alloc]init];
     NSMutableArray *itemsarray =[object valueForKey:@"equipments"];
-    
     [itemsarray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         NSDictionary* item = obj;
         Equipments *equipment = [[Equipments alloc]init];
@@ -904,10 +1007,6 @@ static FitnessServerCommunication *sharedState;
         
         [self insertEquipments:equipments];
     }
-    
-  //  [self.delegate didRecieveWorkoutList];
-    
-    
 }
 
 -(void)parseFocus:(NSString*)responseString
@@ -953,32 +1052,23 @@ int excersiceIntroCount=0,excersiceMainCount=0,excersiceOtherCount=0;
         
         
         for (ExcersicePlay *excersice in workouts) {
-            
-            
-            if([excersice.intro length]>0)
-            {
+            if([excersice.intro length]>0){
                 excersiceIntroCount=excersiceIntroCount+1;
                 [self downloadVideos:excersice.intro  :excersice.intro_name];
-                
             }
             
-            if([excersice.main length]>0)
-            {
+            if([excersice.main length]>0){
                 excersiceMainCount=excersiceMainCount+1;
                 [self downloadVideos:excersice.main:excersice.main_name];
             }
             
-            if([excersice.main_other length]>0)
-            {
+            if([excersice.main_other length]>0){
                 excersiceOtherCount=excersiceOtherCount+1;
                 [self downloadVideos:excersice.main_other:excersice.main_other_name];
-                
             }
-            
         }
         totalcount= excersiceIntroCount+excersiceMainCount+excersiceOtherCount;
         [self.delegate didfinishedWorkout:finished:totalcount];
-        
     }
 }
 
@@ -988,8 +1078,6 @@ int excersiceIntroCount=0,excersiceMainCount=0,excersiceOtherCount=0;
     NSDictionary *object = [responseString JSONValue];
     
     NSMutableArray *itemsarray =[object valueForKey:@"workoutvideos"];
-    
-    
     for (int i=0; i<[itemsarray count]; i++) {
         
         [self insertWorkoutVideos :[itemsarray objectAtIndex:i]];
@@ -1037,9 +1125,6 @@ int excersiceIntroCount=0,excersiceMainCount=0,excersiceOtherCount=0;
         if (isReachable){
             // Check If File Does Exists if not download the video
             if (![[NSFileManager defaultManager] fileExistsAtPath:filepath]){
-                
-                //   [self.myQueue cancelAllOperations];
-                
                 [self.myQueue setDelegate:self];
                 [self.myQueue setShowAccurateProgress:YES];
                 [self.myQueue setRequestDidFinishSelector:@selector(requestDidFinish:)];
@@ -1048,29 +1133,19 @@ int excersiceIntroCount=0,excersiceMainCount=0,excersiceOtherCount=0;
                 [downloadrequest setDownloadDestinationPath:filepath];
                 [downloadrequest setTimeOutSeconds:100];
                 [downloadrequest shouldContinueWhenAppEntersBackground];
-                // [downloadrequest startAsynchronous];
                 [myQueue addOperation:[downloadrequest copy]];
                 [myQueue go];
             }
-            
-            else
-            {
+            else{
                 finished=finished+1;
                 [self.delegate didfinishedWorkout:finished:totalcount];
             }
-            
         }
         else{
             [self.delegate didfinishedWorkout:0:0];
         }
-        
     }
 }
-
-
-
-
-int finished=0;
 
 - (void)resetRequest
 {
@@ -1106,7 +1181,6 @@ int finished=0;
 
 - (void)requestDidFail:(ASINetworkQueue *)queue
 {
-    
     [self.delegate didfinishedWorkout:0:0];
     [myQueue setDelegate:nil];
     [myQueue cancelAllOperations];
@@ -1152,18 +1226,14 @@ int finished=0;
     
     [Fitness4MeUtils showAlert:message];
     [self removeActivity:activityIndicator];
-    [self  removeSignupView:signUpView];
+    [self removeSignupView:signUpView];
 }
-
-
 
 -(void)removeActivity:(UIActivityIndicatorView*)activityIndicator;
 {
     [activityIndicator setHidden:YES];
     [activityIndicator stopAnimating];
 }
-
-
 
 -(void)removeSignupView:(UIView*)signUpView{
     [signUpView removeFromSuperview];

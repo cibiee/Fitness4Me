@@ -9,23 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface Statistics : NSObject
-{
-   
-    NSString *WorkoutID;
-    
-    NSString *Duration;
-    
-    
-}
-
-
 @property (nonatomic,retain) NSString *WorkoutID;
-
-
-@property (nonatomic,retain) NSString *Duration;
-
-
-
--(id)initWithData:(NSString*)workoutID:(NSString*)duration;
-
+@property (nonatomic) float Duration;
 @end

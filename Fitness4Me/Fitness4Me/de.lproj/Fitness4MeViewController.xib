@@ -211,7 +211,7 @@ DQ</string>
 					<object class="IBUIButton" id="665810710">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">264</int>
-						<string key="NSFrame">{{25, 241}, {269, 37}}</string>
+						<string key="NSFrame">{{25, 230}, {269, 37}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSNextKeyView" ref="92951516"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -252,7 +252,7 @@ DQ</string>
 					<object class="IBUIButton" id="92951516">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">264</int>
-						<string key="NSFrame">{{25, 314}, {269, 37}}</string>
+						<string key="NSFrame">{{25, 304}, {269, 37}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSNextKeyView" ref="55842793"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -285,7 +285,7 @@ DQ</string>
 					<object class="IBUIButton" id="158918036">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">264</int>
-						<string key="NSFrame">{{25, 277}, {269, 37}}</string>
+						<string key="NSFrame">{{25, 267}, {269, 37}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -310,7 +310,7 @@ DQ</string>
 					<object class="IBUIButton" id="55842793">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">264</int>
-						<string key="NSFrame">{{25, 350}, {269, 37}}</string>
+						<string key="NSFrame">{{25, 342}, {269, 37}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSNextKeyView" ref="898456149"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -334,7 +334,7 @@ DQ</string>
 					<object class="IBUIButton" id="898456149">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">264</int>
-						<string key="NSFrame">{{25, 387}, {269, 37}}</string>
+						<string key="NSFrame">{{25, 379}, {269, 37}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>

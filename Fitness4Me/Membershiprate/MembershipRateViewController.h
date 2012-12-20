@@ -9,13 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "Workout.h"
 #import "ShareFitness4MeViewController.h"
-
+#import "CustomWorkoutsViewController.h"
 
 @interface MembershipRateViewController : UIViewController
 {
     Workout * workout;
 }
 @property (retain,nonatomic)Workout *workout;
+@property (retain,nonatomic)NSString *navigateTo;
 - (IBAction)onClickYes:(id)sender;
 - (IBAction)onClickNotYet:(id)sender;
 

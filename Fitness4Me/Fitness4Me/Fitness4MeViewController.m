@@ -97,9 +97,10 @@
 
 -(void)startDownload
 {
+    
+   
     FitnessServerCommunication *fitness =[FitnessServerCommunication sharedState];
     [fitness setDelegate:self];
-    [fitness parseWorkoutVideos];
     [fitness listEquipments:nil progressView:nil
                onCompletion:^(NSString *responseString) {
                    if (responseString>0) {
@@ -108,22 +109,17 @@
                } onError:^(NSError *error) {
                    
                }];
-    
     [fitness listfocus:nil progressView:nil
-                             onCompletion:^(NSString *responseString) {
-                                 if (responseString>0) {
-                                     
-                                 }
-                             } onError:^(NSError *error) {
-                                 
-                             }];
+          onCompletion:^(NSString *responseString) {
+              if (responseString>0) {
+                  
+              }
+          } onError:^(NSError *error) {
+              
+          }];
     
-    
-    
-
-
+    [fitness parseWorkoutVideos];
     [fitness getFreevideos];
-    
     fileDownloadProgressView.progress = ((float)0 / (float) 100);
 }
 
@@ -142,6 +138,15 @@
                         completion:^(BOOL finished)
          {
              [SyncView removeFromSuperview];
+             NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+             int UserID =[userinfo integerForKey:@"UserID"];
+             FitnessServerCommunication *fitness =[FitnessServerCommunication sharedState];
+             [fitness parseCustomFitnessDetails:UserID onCompletion:^(NSString *responseString){
+                 
+             } onError:^(NSError *error) {
+                 // [self getExcersices];
+             }];
+
          }];
     }
     fileDownloadProgressView.progress = ((float)countCompleted / (float) totalCount);
@@ -226,11 +231,13 @@
 -(IBAction)navigateToCustomWorkoutListView:(id)sender
 {
     CustomWorkoutsViewController *viewController;
+     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
         viewController =[[CustomWorkoutsViewController alloc]initWithNibName:@"CustomWorkoutsViewController" bundle:nil];
     }else {
         //viewController =[[HintsViewController alloc]initWithNibName:@"CustomizedWorkoutListViewController_iPad" bundle:nil];
     }
+   [viewController setWorkoutType:@"Custom"];
     [self.navigationController pushViewController:viewController animated:YES];
     
     [viewController release];
@@ -239,14 +246,21 @@
 
 
 - (IBAction)onclickSelfMadeworkout:(id)sender {
-     ExcersiceListViewController *viewController;
+   
+    CustomWorkoutsViewController *viewController;
+    
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
-        viewController =[[ExcersiceListViewController alloc]initWithNibName:@"ExcersiceListViewController" bundle:nil];
+        viewController =[[CustomWorkoutsViewController alloc]initWithNibName:@"CustomWorkoutsViewController" bundle:nil];
     }else {
-        viewController =[[ExcersiceListViewController alloc]initWithNibName:@"ExcersiceListViewController" bundle:nil];
+        //viewController =[[HintsViewController alloc]initWithNibName:@"CustomizedWorkoutListViewController_iPad" bundle:nil];
     }
+    [viewController setWorkoutType:@"SelfMade"];
     [self.navigationController pushViewController:viewController animated:YES];
+    
     [viewController release];
+    
+    
+//   
 
 }
 

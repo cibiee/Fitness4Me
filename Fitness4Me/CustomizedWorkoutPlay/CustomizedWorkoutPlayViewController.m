@@ -362,7 +362,7 @@ static float totalDuration=0;
     BOOL isReachable = [Fitness4MeUtils isReachable];
     if (isReachable) {
         NSString *UrlPath= [NSString GetURlPath];
-        NSString *requestString = [NSString stringWithFormat:@"%@stats=yes&userid=%@&workoutid=%i&duration=%f",UrlPath,userID,WorkoutID,totalDuration];
+        NSString *requestString = [NSString stringWithFormat:@"%@customstats=yes&userid=%@&workoutid=%i&duration=%f",UrlPath,userID,WorkoutID,totalDuration];
         NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         __block ASIHTTPRequest *requests = [ASIHTTPRequest requestWithURL:url];
         [requests setCompletionBlock:^{
@@ -372,7 +372,17 @@ static float totalDuration=0;
             
         }];
         [requests startAsynchronous];
-    }
+    }else{
+            
+            statisticsDB =[[StatisticsDB alloc]init];
+            [statisticsDB setUpDatabase];
+            [statisticsDB createDatabase];
+            Statistics *statistics =[[Statistics alloc]init];
+            [statistics setDuration:totalDuration];
+            [statistics setWorkoutID:[NSString stringWithFormat:@"%i",WorkoutID]];
+            [statisticsDB insertCustomStatistics:statistics];
+        }
+    
 }
 
 - (void)viewDidUnload

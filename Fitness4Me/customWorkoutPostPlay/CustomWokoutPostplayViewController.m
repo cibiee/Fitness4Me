@@ -81,7 +81,7 @@
             viewController = [[MemberPromoViewController alloc]initWithNibName:@"MemberPromoViewController" bundle:nil];
         }
         
-        
+        [viewController setNavigateTo:@"NotList"];
         viewController.workout =self.workout;
         [self.navigationController pushViewController:viewController animated:YES];
 

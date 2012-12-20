@@ -107,7 +107,7 @@
         FitnessServerCommunication *fitnessserverCommunication =[[FitnessServerCommunication alloc]init];
         [fitnessserverCommunication parseFitnessDetails:userID];
         [fitnessserverCommunication getFreePurchaseCount:userID];
-        [fitnessserverCommunication parseCustomFitnessDetails:userID onCompletion:^{
+        [fitnessserverCommunication parseCustomFitnessDetails:userID onCompletion:^(NSString *responseString){
             
         } onError:^(NSError *error) {
             // [self getExcersices];

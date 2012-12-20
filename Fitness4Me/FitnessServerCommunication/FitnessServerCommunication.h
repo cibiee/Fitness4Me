@@ -39,8 +39,7 @@ typedef void (^errorBlock)(NSString *errorString);
     int stop;
     
     NSMutableArray *workouts;
-    NSMutableArray *workoutVideoLists;
-    UIProgressView *myProgressIndicator;
+      
     NSURLConnection *connection;
     
     WorkoutDB *workoutDB;
@@ -96,15 +95,36 @@ typedef void (^errorBlock)(NSString *errorString);
 - (void)deleteCustomWorkout:(NSString*)workoutID   userID:(int)userID   activityIndicator:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView onCompletion:(WMLoginResponseBlock)completionBlock onError:(NSError*)errorBlock;
 
 
--(void)parseCustomFitnessDetails:(int)userID onCompletion:(ResponseVoidBlock)completionBlock onError:(NSError*)errorBlock ;
+-(void)parseCustomFitnessDetails:(int)userID onCompletion:(ResponseBlock)completionBlock onError:(NSError*)errorBlock ;
 
 - (void)listExcersiceWithequipments:(NSString*)equipments focus:(NSString*)focus  activityIndicator:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView onCompletion:(WMLoginResponseBlock)completionBlock onError:(NSError*)errorBlock;
 
+- (void)setWorkoutfavourite:(NSString*)workoutID UserID:(int)userID Status:(NSString*)status  activityIndicator:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView onCompletion:(WMLoginResponseBlock)completionBlock onError:(NSError*)errorBlock;
+
+
+-(int)saveUserWithRequestString:(NSString*)requestString activityIndicator:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView;
+
+
+
+#pragma mark SELF MADE WORKOUT LIST SERVICES
+
+
+/*-------------------------SELF MADE WORKOUT LIST SERVICES---------------------------------------------------*/
+
+-(void)parseSelfMadeFitnessDetails:(int)userID onCompletion:(ResponseBlock)completionBlock onError:(NSError*)errorBlock;
+
+
+
+/*--------------------------SELF MADE WORKOUT LIST SERVICES---------------------------------------------------*/
+
+
+
+#pragma mark-
+-(void)downloadVideos:(NSString *)url:(NSString*)name;
 -(void)getFreePurchaseCount:(int)UserID ;
 -(void)getAllvideos;
 -(void)cancelDownload;
 -(void)getFreevideos;
--(int)saveUserWithRequestString:(NSString*)requestString activityIndicator:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView;
 
 @end
 @protocol FitnessServerCommunicationDelegate <NSObject>

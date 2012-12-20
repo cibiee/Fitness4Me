@@ -29,7 +29,6 @@
 +(void)showAdMobPrelogin:(UIViewController*)viewController;
 +(void)navigateToHomeView:(UIViewController*)selfViewController;
 +(void) createDirectoryatPath:(NSString *)dataPath;
-
 +(NSString *)path;
 +(NSBundle*)getBundle;
 

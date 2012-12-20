@@ -26,7 +26,10 @@
 -(void)createDatabase;
 
 -(NSMutableArray*)getWorkouts;
-
 -(void)insertStatistics:(Statistics *)statistics;
+-(void)deleteStatistics;
 
+-(NSMutableArray*)getCustomWorkouts;
+-(void)insertCustomStatistics:(Statistics *)statistics;
+-(void)deleteCustomStatistics;
 @end

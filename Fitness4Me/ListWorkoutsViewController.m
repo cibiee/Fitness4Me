@@ -584,13 +584,15 @@
     if (![[NSFileManager defaultManager] fileExistsAtPath:storeURL]){
         UIImage *im =[UIImage imageNamed:@"dummyimg.png"];
          excersiceImageHolder.image =im;
+         self.myQueue = [ASINetworkQueue queue];
         [self.myQueue setDelegate:self];
         [self.myQueue setShowAccurateProgress:YES];
         [self.myQueue setRequestDidFinishSelector:@selector(requestFinisheds:)];
-        ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:[workout ThumbImageUrl]]];
+        
+        ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:[[workout ThumbImageUrl]stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
         [request setDownloadDestinationPath:storeURL];
         [request setDelegate:self];
-        [request startAsynchronous];
+        //[request startAsynchronous];
         [myQueue addOperation:[request copy]];
         [myQueue go];
     }else {
@@ -625,7 +627,7 @@
         [request setDownloadDestinationPath:storeURL];
         [request setDelegate:self];
         [request startAsynchronous];
-        [myQueue addOperation:[request copy]];
+        [myQueue addOperation:request];
         [myQueue go];
     }    
 }

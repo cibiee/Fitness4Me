@@ -379,6 +379,17 @@ static float totalDuration=0;
         }];
         [requests startAsynchronous];
     }
+    
+    else{
+    
+        statisticsDB =[[StatisticsDB alloc]init];
+        [statisticsDB setUpDatabase];
+        [statisticsDB createDatabase];
+        Statistics *statistics =[[Statistics alloc]init];
+        [statistics setDuration:totalDuration];
+        [statistics setWorkoutID:[NSString stringWithFormat:@"%i",WorkoutID]];
+        [statisticsDB insertStatistics:statistics];
+   }
 }
 
 - (void)viewDidUnload
