@@ -58,6 +58,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *creationCompleteLabel;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (strong, nonatomic)Workout *workout;
+@property (strong, nonatomic)NSString *workoutName;
+@property (strong, nonatomic)NSString *collectionString;
+@property (strong, nonatomic)NSString *workoutID;
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigationBar;
 @property (weak, nonatomic) IBOutlet UIView *progressView;
 

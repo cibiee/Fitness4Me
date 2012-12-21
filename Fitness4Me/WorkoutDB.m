@@ -373,9 +373,11 @@
     
     database =[FMDatabase databaseWithPath:databasePath];
     if(!database.open){
-        //  NSLog(@"Databse not Open");
+          NSLog(@"Databse not Open");
     }
-    
+     [database setLogsErrors:TRUE];
+     [database setTraceExecution:TRUE];
+
     
     [database beginTransaction];
     [database executeUpdate:@"INSERT INTO SelfMadeExcersice (WorkoutID,Name,Description,Rate,IsLocked,DescriptionToDo,ImageUrl,ImageName,DescriptionBig,ImageThumbUrl,Props,Duration,Focus) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?);",
@@ -390,7 +392,7 @@
 -(void)insertSelfMadeWorkouts:(NSMutableArray *)workouts
 {
     int workoutCount =workouts.count;
-    [self deleteCustomWorkout];
+    [self deleteSelfMadeWorkout];
     
     Workout *workout;
     
@@ -411,7 +413,7 @@
         workout.Props = [[workouts objectAtIndex: count] valueForKey: @"Props"];
         workout.Duration = [[workouts objectAtIndex: count] valueForKey: @"Duration"];
         workout.Focus = [[workouts objectAtIndex: count] valueForKey: @"Focus"];
-        [self insertCustomWorkout:workout];
+        [self insertSelfMadeWorkout:workout];
         [workout release];
         
     }
@@ -438,7 +440,7 @@
         NSString *description = [resultSet stringForColumnIndex:2];
         NSString *rate =  [resultSet stringForColumnIndex:3];
         NSString *islocked;
-        NSString *lockimageUrl;
+        NSString *lockimageUrl=@"";
         islocked =[resultSet stringForColumnIndex:4];
         NSString *descriptionToDo = [resultSet stringForColumnIndex:5];
         NSString *ImageUrl = [resultSet stringForColumnIndex:6];
@@ -524,7 +526,7 @@
         //NSLog(@"Databse not Open");
     }
     [database beginTransaction];
-    [database executeUpdate:@"Delete from SelfMadeWorkout"];
+    [database executeUpdate:@"Delete from SelfMadeExcersice"];
     [database commit];
     // Close the database.
     [database close];

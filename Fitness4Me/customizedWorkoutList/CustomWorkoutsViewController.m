@@ -170,11 +170,13 @@
     [super viewDidLoad];
     [self setTabbarItems];
     [self setBackground];
+   
+
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+     [self getExcersices];
     [super viewDidAppear:animated];
-    [self getExcersices];
 }
 
 - (void)didReceiveMemoryWarning

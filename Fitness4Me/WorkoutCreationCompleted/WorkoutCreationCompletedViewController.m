@@ -107,15 +107,16 @@
     
     [self.view addSubview:self.progressView];
     [self.activityIndicator startAnimating];
-    
+    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
    
-        NSUserDefaults *userInfo =[NSUserDefaults standardUserDefaults];
-       
-        userID=  [userInfo stringForKey:@"UserID"];
-        userlevel =[userInfo stringForKey:@"Userlevel"];
-        int  selectedLanguage=[Fitness4MeUtils getApplicationLanguage] ;
-        FitnessServerCommunication *fitness= [FitnessServerCommunication sharedState];
-        [fitness saveCustomWorkout:workout userID:userID userLevel:userlevel language:selectedLanguage activityIndicator:self.activityIndicator progressView:self.progressView onCompletion:^(NSString *workoutID) {
+    
+    userID=  [userinfo stringForKey:@"UserID"];
+    userlevel =[userinfo stringForKey:@"Userlevel"];
+    NSString *workoutType =[userinfo stringForKey:@"workoutType"];
+    int  selectedLanguage=[Fitness4MeUtils getApplicationLanguage] ;
+    FitnessServerCommunication *fitness= [FitnessServerCommunication sharedState];
+    if ([workoutType isEqualToString:@"Custom"]) {
+               [fitness saveCustomWorkout:workout userID:userID userLevel:userlevel language:selectedLanguage activityIndicator:self.activityIndicator progressView:self.progressView onCompletion:^(NSString *workoutID) {
             if (workoutID>0) {
                 [workout setWorkoutID:workoutID];
                 [fitness  parseCustomFitnessDetails:[userID intValue]  onCompletion:^(NSString *responseString){
@@ -129,6 +130,24 @@
         }onError:^(NSError *error) {
             // [self getExcersices];
         }];
+    }
+    else{
+        
+        [fitness saveSelfMadeWorkout:self.workoutName workoutCollection:self.collectionString workoutID:self.workoutID userID:userID userLevel:userlevel language:selectedLanguage activityIndicator:self.activityIndicator progressView:self.progressView onCompletion:^(NSString *responseString) {
+            if (responseString>0) {
+                [workout setWorkoutID:responseString];
+                [fitness  parseSelfMadeFitnessDetails:[userID intValue]  onCompletion:^(NSString *responseString){
+                   // [self getNewWorkoutList];
+                    
+                } onError:^(NSError *error) {
+                    // [self getExcersices];
+                }];
+            }
+            
+        }onError:^(NSError *error) {
+            // [self getExcersices];
+        }];
+    }
 }
 
 

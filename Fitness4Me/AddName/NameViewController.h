@@ -15,7 +15,7 @@
 {
     Workout *workout;
 }
-
+@property(strong,nonatomic) NSString *collectionString;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextfield;
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigationBar;
 @property (strong, nonatomic)Workout *workout;

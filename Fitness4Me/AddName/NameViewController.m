@@ -68,39 +68,45 @@
     [super viewDidUnload];
 }
 - (IBAction)onClickNext:(id)sender {
+    
     if ([self.nameTextfield.text length]>0) {
-      
-        Workout *workouts= [[Workout alloc]init];
-        if ([[workout WorkoutID]intValue]>0) {
-            WorkoutDB *workoutDB =[[WorkoutDB alloc]init];
-            [workoutDB setUpDatabase];
-            [workoutDB createDatabase];
-            workouts =[workoutDB getCustomWorkoutByID:[workout WorkoutID]];
-        }
-
-
-        [workouts setDuration:workout.Duration];
-        [workouts setFocus:workout.Focus];
-        [workouts setProps:workout.Props];
-        [workouts setName:self.nameTextfield.text];
-        NSLog(self.nameTextfield.text);
+        NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+        NSString *workoutType =[userinfo stringForKey:@"workoutType"];
         
-       
-        
-
+        if ([workoutType isEqualToString:@"Custom"])
+            
+        {
+            Workout *workouts= [[Workout alloc]init];
+            if ([[workout WorkoutID]intValue]>0) {
+                WorkoutDB *workoutDB =[[WorkoutDB alloc]init];
+                [workoutDB setUpDatabase];
+                [workoutDB createDatabase];
+                workouts =[workoutDB getCustomWorkoutByID:[workout WorkoutID]];
+            }
+            [workouts setDuration:workout.Duration];
+            [workouts setFocus:workout.Focus];
+            [workouts setProps:workout.Props];
+            [workouts setName:self.nameTextfield.text];
+            
             WorkoutCreationCompletedViewController *viewController =[[WorkoutCreationCompletedViewController alloc]initWithNibName:@"WorkoutCreationCompletedViewController" bundle:nil];
             viewController.workout= [[Workout alloc]init];
             viewController.workout =workouts;
             [self.navigationController pushViewController:viewController animated:YES];
-            
-                
+        }
+        else
+        {
+            WorkoutCreationCompletedViewController *viewController =[[WorkoutCreationCompletedViewController alloc]initWithNibName:@"WorkoutCreationCompletedViewController" bundle:nil];
+            [viewController setWorkoutName:self.nameTextfield.text];
+            [viewController setCollectionString:self.collectionString];
+            [viewController setWorkoutID:[workout WorkoutID]];
+            [self.navigationController pushViewController:viewController animated:YES];
+        }
     }
     else
     {
         [Fitness4MeUtils showAlert:@"Please Provide a Name for the workout"];
     }
-    
-    
+
 }
 
 -(IBAction)onClickBack:(id)sender{

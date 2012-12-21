@@ -37,7 +37,7 @@
     
     [super viewDidLoad];
     
-    [Fitness4MeUtils showAdMob:self];
+   // [Fitness4MeUtils showAdMob:self];
     
     [SyncView removeFromSuperview];
     SyncView.layer.cornerRadius =14;

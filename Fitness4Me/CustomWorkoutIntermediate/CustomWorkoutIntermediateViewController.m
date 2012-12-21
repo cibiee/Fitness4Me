@@ -210,17 +210,13 @@
 }
 
 -(void)parseExcersiceDetails{
-    
-  
-    
-    
+
     BOOL isReachable =[Fitness4MeUtils isReachable];
     if (isReachable){
         
         int  selectedlang=[Fitness4MeUtils getApplicationLanguage] ;
         NSString *requestString =[NSString stringWithFormat:@"%@customvideos=yes&custom_workout_id=%@&user_level=%@&lang=%i&user_id=%@",urlPath,[self.workout WorkoutID],userlevel,selectedlang,userID];
         NSURL *url =[NSURL URLWithString:requestString];
-        
         ASIFormDataRequest   *request = [ASIFormDataRequest   requestWithURL:url];
         [request setTimeOutSeconds:15];
         [request startSynchronous];
@@ -249,8 +245,6 @@
       
         [self getExcersices];
     }
-    
-   
 }
 
 
@@ -273,22 +267,17 @@
 
 -(void)ShowVideounAvaialableMessage
 {
-    
     UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"fitness4.me" message:NSLocalizedString(@"VideoUnavailable", nil)
                                                        delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alertview show];
-    
-    
 }
 
 
 - (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex==0) {
-        
         [self NavigateToWorkoutList];
     }
-    
 }
 
 
@@ -301,7 +290,6 @@
     NSString *workoutID =[self.workout WorkoutID];
     int workouts =[workoutID intValue];
     [excersiceDB deleteCustomExcersice:workouts];
-    
 }
 
 //
@@ -314,7 +302,6 @@
     [userDB createDatabase];
     user =[[User alloc]init];
     user= userDB.getUser;
-    
 }
 
 
@@ -323,7 +310,6 @@
 {
     [self initilaizeDatabase];
     [excersiceDB insertCustomExcersices:excersices];
-    
 }
 
 
@@ -333,13 +319,11 @@
     [self.view addSubview:signUpView];
     [letsgoButton setEnabled:NO];
     [letsgoButton setHidden:YES];
-    
     excersicesList = [[NSMutableArray alloc]init];
     [self initilaizeDatabase];
     NSString *workoutID =[self.workout WorkoutID];
     int workouts =[workoutID intValue];
     [excersiceDB getCustomExcersices:workouts];
-    
     if([excersiceDB.Excersices count]>0){
         excersicesList =excersiceDB.Excersices;
     }
@@ -354,7 +338,7 @@
     [workoutDB setUpDatabase];
     [workoutDB createDatabase];
     [workoutDB selectWorkout];
-    count = [workoutDB temp];
+     count = [workoutDB temp];
         
 }
 

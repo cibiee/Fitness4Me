@@ -23,7 +23,7 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.dataSourceArray = [[NSMutableArray alloc]init];
-
+        
     }
     return self;
 }
@@ -31,7 +31,7 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
 
 
 - (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];    
+    [super didReceiveMemoryWarning];
 }
 
 #pragma mark - View lifecycle
@@ -40,7 +40,7 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
     [super viewDidLoad];
     self.view.transform = CGAffineTransformConcat(self.view.transform, CGAffineTransformMakeRotation(M_PI_2));
     [self.recoverySegmentControl setSelectedSegmentIndex:-1];
-
+    
     // add continue button
     UIButton *backutton = [UIButton buttonWithType:UIButtonTypeCustom];
     backutton.frame = CGRectMake(0, 0, 58, 30);
@@ -56,12 +56,12 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
     UIBarButtonItem *nextBtn = [[UIBarButtonItem alloc] initWithCustomView:nextButton];
     self.navigationBar.rightBarButtonItem = nextBtn;
     
-
+    
     
 	[_removeSelectedButton setEnabled:NO];
 	
     _carouselView = [[CarouselView alloc] initWithFrame:CGRectMake(2, 50, 480, 120)
-                                             dataSource:self 
+                                             dataSource:self
                                                delegate:self];
     _carouselView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 	_dataSourceArray =self.dataSourceArray;
@@ -77,7 +77,7 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
 #pragma mark - Carousel DataSource
 
 - (NSInteger)numberOfColumnsForCarouselView:(CarouselView *)carouselView {
-
+    
     return [_dataSourceArray count];
 }
 
@@ -105,9 +105,9 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
 
 #pragma - Helper Methods
 
-- (NSString *)randomString {	
+- (NSString *)randomString {
 	NSMutableString *randomString = [NSMutableString stringWithCapacity:10];
-
+    
 	for (int i=0; i<10; i++) {
 		[randomString appendFormat: @"%c", [letters characterAtIndex: rand()%[letters length]]];
 	}
@@ -144,7 +144,7 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
             break;
     }
     [self.recoverySegmentControl setSelectedSegmentIndex:-1];
-
+    
 }
 
 -(IBAction)onClickBack:(id)sender{
@@ -153,60 +153,79 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
 
 
 -(IBAction)onClickNext:(id)sender{
-//    NSString *str= [[NSString alloc]init];
-//    str =@"";
-//    NSString *name= [[NSString alloc]init];
-//    for (Equipments *equipment in self.equipments) {
-//        if ([equipment isChecked]) {
-//            if ([str length]==0) {
-//                str =[str stringByAppendingString:[equipment equipmentID]];
-//                name =[name stringByAppendingString:[equipment equipmentName]];
-//            }
-//            else{
-//                str=[str stringByAppendingString:@","];
-//                str =[str stringByAppendingString:[equipment equipmentID]];
-//                name=[name stringByAppendingString:@","];
-//                name =[name stringByAppendingString:[equipment equipmentName]];
-//            }
-//            
-//        }
-//    }
-//    
-//    Workout *workouts= [[Workout alloc]init];
-//    if ([[workout WorkoutID]intValue]>0) {
-//        WorkoutDB *workoutDB =[[WorkoutDB alloc]init];
-//        [workoutDB setUpDatabase];
-//        [workoutDB createDatabase];
-//        workouts =[workoutDB getCustomWorkoutByID:[workout WorkoutID]];
-//    }
-//    [workouts setDuration:workout.Duration];
-//    [workouts setFocus:workout.Focus];
-//    [workouts setFocusName:name];
-//    [workouts setProps:str];
-//    
-//    
-//    
-//    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
-//    NSString *workoutType =[userinfo stringForKey:@"workoutType"];
-//    
-//    if ([workoutType isEqualToString:@"Custom"]) {
-        NameViewController *viewController =[[NameViewController alloc]initWithNibName:@"NameViewController" bundle:nil];
-        viewController.workout= [[Workout alloc]init];
-        viewController.workout =workouts;
-        [self.navigationController pushViewController:viewController animated:YES];
-//    }
-//    else
-//    {
-//        ExcersiceListViewController *viewController;
-//        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
-//            viewController =[[ExcersiceListViewController alloc]initWithNibName:@"ExcersiceListViewController" bundle:nil];
-//        }else {
-//            viewController =[[ExcersiceListViewController alloc]initWithNibName:@"ExcersiceListViewController" bundle:nil];
-//        }
-//        [viewController setFocusList:[workout Focus]];
-//        [viewController setEquipments:str];
-//        [self.navigationController pushViewController:viewController animated:YES];
-//    }
+    //    NSString *str= [[NSString alloc]init];
+    //    str =@"";
+    //    NSString *name= [[NSString alloc]init];
+    //    for (Equipments *equipment in self.equipments) {
+    //        if ([equipment isChecked]) {
+    //            if ([str length]==0) {
+    //                str =[str stringByAppendingString:[equipment equipmentID]];
+    //                name =[name stringByAppendingString:[equipment equipmentName]];
+    //            }
+    //            else{
+    //                str=[str stringByAppendingString:@","];
+    //                str =[str stringByAppendingString:[equipment equipmentID]];
+    //                name=[name stringByAppendingString:@","];
+    //                name =[name stringByAppendingString:[equipment equipmentName]];
+    //            }
+    //
+    //        }
+    //    }
+    //
+    //    Workout *workouts= [[Workout alloc]init];
+    //    if ([[workout WorkoutID]intValue]>0) {
+    //        WorkoutDB *workoutDB =[[WorkoutDB alloc]init];
+    //        [workoutDB setUpDatabase];
+    //        [workoutDB createDatabase];
+    //        workouts =[workoutDB getCustomWorkoutByID:[workout WorkoutID]];
+    //    }
+    //    [workouts setDuration:workout.Duration];
+    //    [workouts setFocus:workout.Focus];
+    //    [workouts setFocusName:name];
+    //    [workouts setProps:str];
+    //
+    //
+    //
+    //    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+    //    NSString *workoutType =[userinfo stringForKey:@"workoutType"];
+    //
+    //    if ([workoutType isEqualToString:@"Custom"]) {
+    
+    NSString *str= [[NSString alloc]init];
+    for (ExcersiceList *excerlist in _dataSourceArray) {
+        
+        if ([str length]==0) {
+            NSLog([excerlist excersiceID]);
+            str =[str stringByAppendingString:[excerlist excersiceID]];
+            NSLog(str);
+            
+        }
+        else{
+            NSLog([excerlist excersiceID]);
+            str=[str stringByAppendingString:@","];
+            str =[str stringByAppendingString:[excerlist excersiceID]];
+        }
+    }
+    
+    NSLog(@"dfdfd%@",str);
+    NameViewController *viewController =[[NameViewController alloc]initWithNibName:@"NameViewController" bundle:nil];
+    viewController.workout= [[Workout alloc]init];
+    viewController.workout =nil;
+    [viewController setCollectionString:str];
+    [self.navigationController pushViewController:viewController animated:YES];
+    //    }
+    //    else
+    //    {
+    //        ExcersiceListViewController *viewController;
+    //        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+    //            viewController =[[ExcersiceListViewController alloc]initWithNibName:@"ExcersiceListViewController" bundle:nil];
+    //        }else {
+    //            viewController =[[ExcersiceListViewController alloc]initWithNibName:@"ExcersiceListViewController" bundle:nil];
+    //        }
+    //        [viewController setFocusList:[workout Focus]];
+    //        [viewController setEquipments:str];
+    //        [self.navigationController pushViewController:viewController animated:YES];
+    //    }
 }
 
 
@@ -245,8 +264,8 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
 
 - (IBAction)removeMultipleColumns {
 	if ([_dataSourceArray count] < 3) {
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Not Enough Data" 
-														message:@"Need at least 3 columns to be able to delete multiple" 
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Not Enough Data"
+														message:@"Need at least 3 columns to be able to delete multiple"
 													   delegate:nil
 											  cancelButtonTitle:@"OK"
 											  otherButtonTitles:nil];

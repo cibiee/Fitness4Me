@@ -531,7 +531,7 @@ static FitnessServerCommunication *sharedState;
         NSString *UrlPath= [NSString GetURlPath];
         int  selectedLanguage=[Fitness4MeUtils getApplicationLanguage] ;
         
-        NSString *requestString = [NSString stringWithFormat:@"%@listcustom=yes&user_id=%i&lang=%i",UrlPath, userID,selectedLanguage];
+        NSString *requestString = [NSString stringWithFormat:@"%@selfmadelist=yes&userid=%i&lang=%i",UrlPath, userID,selectedLanguage];
         
         NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         
@@ -592,6 +592,50 @@ static FitnessServerCommunication *sharedState;
         [self terminateActivities:NSLocalizedString(@"NoInternetMessage", nil):activityIndicator:signUpView];
     }
 }
+
+
+- (void)saveSelfMadeWorkout:(NSString*)workoutName workoutCollection:(NSString*)workoutCollection workoutID:(NSString*)workoutID   userID:(NSString*)userID userLevel:(NSString *)userLevel language:(int )selectedlanguage  activityIndicator:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView onCompletion:(WMLoginResponseBlock)completionBlock onError:(NSError*)errorBlock
+
+{
+    
+    BOOL isReachable =[Fitness4MeUtils isReachable];
+    if (isReachable)
+    {
+        
+        NSString *UrlPath= [NSString GetURlPath];
+        NSString *requestString;
+        if ([workoutID intValue]>0) {
+            //           requestString =[NSString stringWithFormat:@"%@editcustom=yes&user_id=%@&user_level=%@&customname=%@&duration=%@&equipment=%@&focus=%@&lang=%i&custom_workout_id=%@",UrlPath,userID,userLevel,[workout Name],[workout Duration],[workout Props],[workout Focus],selectedlanguage,[workout WorkoutID]];
+        }
+        else{
+            requestString =[NSString stringWithFormat:@"%@createselfmade=yes&userid=%@&user_level=%@&selfmadename=%@&collection=%@&lang=%i",UrlPath,userID,userLevel,workoutName,workoutCollection,selectedlanguage];
+            
+        }
+        NSLog(requestString);
+        
+        NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+        
+        __weak ASIHTTPRequest *requests = [ASIHTTPRequest requestWithURL:url];
+        [requests setCompletionBlock:^{
+            // Use when fetching text data
+            NSString *responseString =[requests responseString];
+            if ([responseString length]>0) {
+                
+                if (completionBlock) completionBlock([self parseWorkoutID:responseString]);
+            }else{
+                [self terminateActivities:NSLocalizedString(@"slowdata", nil):activityIndicator:signUpView];
+            }
+        }];
+        [requests setFailedBlock:^{
+            //NSError *error = [requests error];
+            [self terminateActivities:NSLocalizedString(@"requestError", nil):activityIndicator:signUpView];
+        }];
+        [requests startAsynchronous];
+    }else{
+        [self terminateActivities:NSLocalizedString(@"NoInternetMessage", nil):activityIndicator:signUpView];
+    }
+}
+
 
 - (void)setWorkoutfavourite:(NSString*)workoutID UserID:(int)userID Status:(NSString*)status  activityIndicator:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView onCompletion:(WMLoginResponseBlock)completionBlock onError:(NSError*)errorBlock
 
@@ -984,7 +1028,7 @@ static FitnessServerCommunication *sharedState;
     
     if ([workouts count]>0) {
         
-        [self insertCustomExcersices];
+        [self insertSelfMadeExcersices];
     }
 }
 

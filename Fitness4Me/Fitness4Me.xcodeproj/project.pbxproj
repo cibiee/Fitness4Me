@@ -736,8 +736,6 @@
 		F50B05FE16819556006FC355 /* CarouselView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarouselView.m; sourceTree = "<group>"; };
 		F50B060916819BA3006FC355 /* CarouselViewDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarouselViewDemoViewController.h; sourceTree = "<group>"; };
 		F50B060A16819BA3006FC355 /* CarouselViewDemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarouselViewDemoViewController.m; sourceTree = "<group>"; };
-		F50B060F16819F9B006FC355 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CarouselViewDemoViewController_i.xib; sourceTree = "<group>"; };
-		F50B061116819FA1006FC355 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/CarouselViewDemoViewController_i.xib; sourceTree = "<group>"; };
 		F50B061316819FF2006FC355 /* CarouselViewDemoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CarouselViewDemoViewController.xib; sourceTree = "<group>"; };
 		F512B7591639093500B922E1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TermsOfUse_iPad.xib; sourceTree = "<group>"; };
 		F512B75E16391EB400B922E1 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/InitialAppLaunchViewController_iPad.xib; sourceTree = "<group>"; };
@@ -1842,7 +1840,6 @@
 			children = (
 				F50B060916819BA3006FC355 /* CarouselViewDemoViewController.h */,
 				F50B060A16819BA3006FC355 /* CarouselViewDemoViewController.m */,
-				F50B061016819F9B006FC355 /* CarouselViewDemoViewController_i.xib */,
 				F50B061316819FF2006FC355 /* CarouselViewDemoViewController.xib */,
 			);
 			name = SelectedWorkouts;
@@ -4048,15 +4045,6 @@
 				F5085452167886060094F314 /* de */,
 			);
 			name = button_half_width.png;
-			sourceTree = "<group>";
-		};
-		F50B061016819F9B006FC355 /* CarouselViewDemoViewController_i.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F50B060F16819F9B006FC355 /* en */,
-				F50B061116819FA1006FC355 /* de */,
-			);
-			name = CarouselViewDemoViewController_i.xib;
 			sourceTree = "<group>";
 		};
 		F512B75A1639093500B922E1 /* TermsOfUse_iPad.xib */ = {
