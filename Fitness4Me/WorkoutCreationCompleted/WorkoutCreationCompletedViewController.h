@@ -38,7 +38,7 @@
     NSString *userlevel;
     NSString *userID;
     
-
+   
     
     NSMutableArray *excersices;
     NSMutableArray *arr;
@@ -51,10 +51,13 @@
 
 }
 
+- (IBAction)savetoList:(id)sender;
 
 -(IBAction)onClickBack:(id)sender;
 - (IBAction)onClickLetsGo:(id)sender;
-
+@property (weak, nonatomic) IBOutlet UIButton *saveandStartbutton;
+@property(strong,nonatomic)NSString *workoutType;
+@property (weak, nonatomic) IBOutlet UIButton *saveToListButton;
 @property (weak, nonatomic) IBOutlet UILabel *creationCompleteLabel;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (strong, nonatomic)Workout *workout;

@@ -107,10 +107,16 @@ static float totalDuration=0;
 
 -(void)getExcersices
 {
+    
+    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+    self.workoutType =[userinfo stringForKey:@"workoutType"];
     excersiceDB =[[ExcersiceDB alloc]init];
     [excersiceDB setUpDatabase];
     [excersiceDB createDatabase];
+    if ([self.workoutType isEqualToString:@"Custom"])
     [excersiceDB getCustomExcersices:WorkoutID];
+    else
+     [excersiceDB getSelfMadeExcersices:WorkoutID];
     arr = [[NSMutableArray alloc]init];
     arr =excersiceDB.Excersices;
     [self MakeArrayforViewing ];

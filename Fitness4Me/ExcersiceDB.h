@@ -25,30 +25,23 @@
 @property (retain,nonatomic) NSMutableArray *Excersices;
 
 -(void)setUpDatabase;
-
 -(void)createDatabase;
-
 -(void)getExcersices:(int)workoutID;
-
 -(void)insertExcersice:(Excersice *)excersice;
-
 -(void)insertExcersices:(NSMutableArray *)excersices;
-
 -(void)insertWorkoutExcersices:(NSMutableArray *)excersices;
-
 -(void)deleteExcersice:(int)workoutID;
 
-
-
 -(void)getCustomExcersices:(int)workoutID;
-
 -(void)insertCustomExcersice:(Excersice *)excersice;
-
 -(void)insertCustomExcersices:(NSMutableArray *)excersices;
-
 -(void)insertCustomWorkoutExcersices:(NSMutableArray *)excersices;
-
 -(void)deleteCustomExcersice:(int)workoutID;
 
+-(void)getSelfMadeExcersices:(int)workoutID;
+-(void)insertSelfMadeExcersice:(Excersice *)excersice;
+-(void)insertSelfMadeExcersices:(NSMutableArray *)excersices;
+-(void)insertSelfMadeWorkoutExcersices:(NSMutableArray *)excersices;
+-(void)deleteSelfMadeExcersice:(int)workoutID;
 
 @end

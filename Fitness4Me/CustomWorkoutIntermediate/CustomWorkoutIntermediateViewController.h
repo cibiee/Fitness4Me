@@ -77,7 +77,7 @@ User *user;
 @property(retain,nonatomic)NSString *userID;
 @property(retain,nonatomic)NSString *productIdentifier;
 @property (nonatomic,retain) ASINetworkQueue *myQueue;
-
+@property(strong,nonatomic)NSString *workoutType;
 -(void)downloadVideos:(NSString *)url:(NSString*)name;
 -(void)parseExcersiceDetails;
 -(void)startDownload;

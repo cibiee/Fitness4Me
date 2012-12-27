@@ -195,19 +195,19 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
     for (ExcersiceList *excerlist in _dataSourceArray) {
         
         if ([str length]==0) {
-            NSLog([excerlist excersiceID]);
+//NSLog([excerlist excersiceID]);
             str =[str stringByAppendingString:[excerlist excersiceID]];
-            NSLog(str);
+           // NSLog(str);
             
         }
         else{
-            NSLog([excerlist excersiceID]);
+          //  NSLog([excerlist excersiceID]);
             str=[str stringByAppendingString:@","];
             str =[str stringByAppendingString:[excerlist excersiceID]];
         }
     }
     
-    NSLog(@"dfdfd%@",str);
+   // NSLog(@"dfdfd%@",str);
     NameViewController *viewController =[[NameViewController alloc]initWithNibName:@"NameViewController" bundle:nil];
     viewController.workout= [[Workout alloc]init];
     viewController.workout =nil;

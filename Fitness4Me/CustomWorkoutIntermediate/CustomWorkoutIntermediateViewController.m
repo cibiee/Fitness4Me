@@ -35,12 +35,9 @@
     
     [super viewDidLoad];
     
-   
-    
     [slownetView removeFromSuperview];
     slownetView.layer .cornerRadius =14;
     
-
     finished=0;
     totalCount=0;
     
@@ -49,8 +46,6 @@
     urlPath =[NSString GetURlPath];
     self.view.transform = CGAffineTransformConcat(self.view.transform,
                                                   CGAffineTransformMakeRotation(M_PI_2));
-    
-
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     self.UserID =[userinfo stringForKey:@"UserID"];
     self.userlevel =[userinfo stringForKey:@"Userlevel"];
@@ -196,27 +191,32 @@
 
 - (void)getWorkoutVideoData:(NSMutableArray *)object {
     
-    
     NSMutableArray *itemsarray =[object valueForKey:@"items"];
-   
     NSString *workoutID =[self.workout WorkoutID];
     int workouts =[workoutID intValue];
     [itemsarray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         NSDictionary* item = obj;
         [excersices addObject: [[Excersice alloc]initWithData:workouts:[item objectForKey :@"poster_video"]:[item objectForKey:@"poster_name"]:[item objectForKey:@"poster_rep"]:[item objectForKey:@"main_video"]:[item objectForKey:@"video_name"]:[item objectForKey:@"main_rep"]:[item objectForKey:@"stop_video"]:[ item objectForKey:@"stop_name"]:[item objectForKey:@"stop_rep"]:[item objectForKey:@"otherside_poster"]:[item objectForKey:@"otherside_postername"]:[item objectForKey:@"otherside_posterrep"]:[item objectForKey:@"otherside_video"]:[item objectForKey:@"otherside_name"]:[item objectForKey:@"otherside_rep"]:[ item objectForKey:@"recovery_video"]:[ item objectForKey:@"recovery_video_name"]:[item objectForKey :@"next_video"]:[item objectForKey:@"next_name"]:[item objectForKey :@"next_rep"]:[item objectForKey:@"completed_video"]:[item objectForKey :@"completed_name"]:[ item valueForKey:@"completed_rep"]]];
     }];
-    
-    
 }
 
 -(void)parseExcersiceDetails{
 
+    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+    self.workoutType =[userinfo stringForKey:@"workoutType"];
+    
     BOOL isReachable =[Fitness4MeUtils isReachable];
     if (isReachable){
-        
+        NSString *requestString;
         int  selectedlang=[Fitness4MeUtils getApplicationLanguage] ;
-        NSString *requestString =[NSString stringWithFormat:@"%@customvideos=yes&custom_workout_id=%@&user_level=%@&lang=%i&user_id=%@",urlPath,[self.workout WorkoutID],userlevel,selectedlang,userID];
-        NSURL *url =[NSURL URLWithString:requestString];
+        if ([self.workoutType isEqualToString:@"Custom"]) {
+             requestString =[NSString stringWithFormat:@"%@customvideos=yes&custom_workout_id=%@&user_level=%@&lang=%i&user_id=%@",urlPath,[self.workout WorkoutID],userlevel,selectedlang,userID];
+        }
+        else
+        {
+              requestString =[NSString stringWithFormat:@"%@listselfvideos=yes&self_workout_id=%@&user_level=%@&lang=%i&userid=%@",urlPath,[self.workout WorkoutID],userlevel,selectedlang,userID];
+        }
+               NSURL *url =[NSURL URLWithString:requestString];
         ASIFormDataRequest   *request = [ASIFormDataRequest   requestWithURL:url];
         [request setTimeOutSeconds:15];
         [request startSynchronous];
@@ -289,7 +289,10 @@
     [self initilaizeDatabase];
     NSString *workoutID =[self.workout WorkoutID];
     int workouts =[workoutID intValue];
+     if ([self.workoutType isEqualToString:@"Custom"])
     [excersiceDB deleteCustomExcersice:workouts];
+    else
+    [excersiceDB deleteSelfMadeExcersice:workouts];
 }
 
 //
@@ -309,7 +312,10 @@
 -(void)insertExcersices
 {
     [self initilaizeDatabase];
+    if ([self.workoutType isEqualToString:@"Custom"])
     [excersiceDB insertCustomExcersices:excersices];
+    else
+      [excersiceDB insertSelfMadeExcersices:excersices];
 }
 
 
@@ -323,7 +329,11 @@
     [self initilaizeDatabase];
     NSString *workoutID =[self.workout WorkoutID];
     int workouts =[workoutID intValue];
+    if ([self.workoutType isEqualToString:@"Custom"])
     [excersiceDB getCustomExcersices:workouts];
+    else
+      [excersiceDB getSelfMadeExcersices:workouts];
+    
     if([excersiceDB.Excersices count]>0){
         excersicesList =excersiceDB.Excersices;
     }

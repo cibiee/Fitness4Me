@@ -9,6 +9,7 @@
 #import "WorkoutCreationCompletedViewController.h"
 #import "FitnessServerCommunication.h"
 #import "CustomWorkoutIntermediateViewController.h"
+#import "CustomWorkoutsViewController.h"
 
 @interface WorkoutCreationCompletedViewController ()
 
@@ -80,6 +81,11 @@
         }
     }
     }
+    self.saveandStartbutton.titleLabel.textAlignment=UITextAlignmentCenter;
+    self.saveandStartbutton.titleLabel.lineBreakMode=UILineBreakModeCharacterWrap;
+    
+    self.saveToListButton.titleLabel.textAlignment=UITextAlignmentCenter;
+    self.saveToListButton.titleLabel.lineBreakMode=UILineBreakModeCharacterWrap;
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -95,7 +101,11 @@
     [workoutDB setUpDatabase];
     [workoutDB createDatabase];
     newWorkout =[[Workout alloc]init];
-    newWorkout =[workoutDB getCustomWorkoutByID:[workout WorkoutID]];
+     if ([self.workoutType isEqualToString:@"Custom"]){
+     newWorkout =[workoutDB getCustomWorkoutByID:[workout WorkoutID]];
+     }else{
+        newWorkout=[workoutDB getSelfMadeByID:[workout WorkoutID]];
+    }
     CustomWorkoutIntermediateViewController *viewController =[[CustomWorkoutIntermediateViewController alloc]initWithNibName:@"CustomWorkoutIntermediateViewController" bundle:nil];
     viewController.workout =[[Workout alloc]init];
     viewController .workout=newWorkout;
@@ -103,24 +113,36 @@
     [self.navigationController pushViewController:viewController animated:YES];
 }
 
-- (IBAction)onClickLetsGo:(id)sender {
-    
+- (void)NavigateToWorkoutList {
+   
+    CustomWorkoutsViewController *viewController =[[CustomWorkoutsViewController alloc]initWithNibName:@"CustomWorkoutsViewController" bundle:nil];
+    [self.navigationController pushViewController:viewController animated:YES];
+}
+
+
+- (void)saveWorkoutsandNavigateTo:(NSString*)navigateTo {
     [self.view addSubview:self.progressView];
     [self.activityIndicator startAnimating];
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
-   
+    
     
     userID=  [userinfo stringForKey:@"UserID"];
     userlevel =[userinfo stringForKey:@"Userlevel"];
-    NSString *workoutType =[userinfo stringForKey:@"workoutType"];
+    self.workoutType =[userinfo stringForKey:@"workoutType"];
     int  selectedLanguage=[Fitness4MeUtils getApplicationLanguage] ;
     FitnessServerCommunication *fitness= [FitnessServerCommunication sharedState];
-    if ([workoutType isEqualToString:@"Custom"]) {
-               [fitness saveCustomWorkout:workout userID:userID userLevel:userlevel language:selectedLanguage activityIndicator:self.activityIndicator progressView:self.progressView onCompletion:^(NSString *workoutID) {
+    if ([self.workoutType isEqualToString:@"Custom"]) {
+        [fitness saveCustomWorkout:workout userID:userID userLevel:userlevel language:selectedLanguage activityIndicator:self.activityIndicator progressView:self.progressView onCompletion:^(NSString *workoutID) {
             if (workoutID>0) {
                 [workout setWorkoutID:workoutID];
                 [fitness  parseCustomFitnessDetails:[userID intValue]  onCompletion:^(NSString *responseString){
+                    if ([navigateTo isEqualToString:@"List"]) {
+                        [self NavigateToWorkoutList];
+                    }
+                    else
+                    {
                     [self getNewWorkoutList];
+                    }
                     
                 } onError:^(NSError *error) {
                     // [self getExcersices];
@@ -137,7 +159,14 @@
             if (responseString>0) {
                 [workout setWorkoutID:responseString];
                 [fitness  parseSelfMadeFitnessDetails:[userID intValue]  onCompletion:^(NSString *responseString){
-                   // [self getNewWorkoutList];
+                    if ([navigateTo isEqualToString:@"List"]) {
+                        [self NavigateToWorkoutList];
+                    }
+                    else
+                    {
+                        [self getNewWorkoutList];
+                    }
+
                     
                 } onError:^(NSError *error) {
                     // [self getExcersices];
@@ -150,7 +179,14 @@
     }
 }
 
+- (IBAction)onClickLetsGo:(id)sender {
+    
+    [self saveWorkoutsandNavigateTo:@"videoPlay"];
+}
 
+- (IBAction)savetoList:(id)sender{
+      [self saveWorkoutsandNavigateTo:@"List"];
+}
 
 
 -(IBAction)onClickBack:(id)sender{
@@ -163,6 +199,8 @@
     [self setProgressView:nil];
     [self setActivityIndicator:nil];
     [self setCreationCompleteLabel:nil];
+    [self setSaveToListButton:nil];
+    [self setSaveandStartbutton:nil];
     [super viewDidUnload];
 }
 @end
