@@ -66,5 +66,6 @@
 @property (strong, nonatomic)NSString *workoutID;
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigationBar;
 @property (weak, nonatomic) IBOutlet UIView *progressView;
-
+@property(strong,nonatomic) NSString *focusList;
+@property(strong,nonatomic) NSString *equipments;
 @end

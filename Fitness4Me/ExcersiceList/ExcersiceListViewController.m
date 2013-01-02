@@ -260,7 +260,7 @@
     }
     else
     {
-        NSLog(@"%i",indexPath.section);
+       
         [[tableView cellForRowAtIndexPath:indexPath]setAccessoryType:UITableViewCellAccessoryCheckmark];
         [[self.excersiceList objectAtIndex:indexPath.section] setIsChecked:YES];
         self.videoCount++;
@@ -281,28 +281,25 @@
     NSMutableArray *newWorkoutArray =[[NSMutableArray alloc]init];
     for (ExcersiceList *excersice in self.excersiceList) {
         if ([excersice isChecked]) {
-            
             [newWorkoutArray addObject:excersice];
-                NSLog([excersice time]);
         }
     }
-    
     if ([newWorkoutArray count]>0) {
-        
-    
     CarouselViewDemoViewController *viewController;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
         viewController =[[CarouselViewDemoViewController alloc]initWithNibName:@"CarouselViewDemoViewController" bundle:nil];
     }else {
         viewController =[[CarouselViewDemoViewController alloc]initWithNibName:@"CarouselViewDemoViewController" bundle:nil];
     }
+        [viewController setEquipments:self.equipments];
+        [viewController setFocusList:self.focusList];
         [viewController setDataSourceArray:newWorkoutArray];
     [self.navigationController pushViewController:viewController animated:YES];
     
     }
     else
     {
-        [Fitness4MeUtils showAlert:@"Please select an area of focus"];
+        [Fitness4MeUtils showAlert:@"Please select the excersice"];
     }
 }
 

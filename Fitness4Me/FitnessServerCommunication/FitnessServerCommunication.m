@@ -421,7 +421,7 @@ static FitnessServerCommunication *sharedState;
         else{
          requestString =[NSString stringWithFormat:@"%@createcustom=yes&user_id=%@&user_level=%@&customname=%@&duration=%@&equipment=%@&focus=%@&lang=%i",UrlPath,userID,userLevel,[workout Name],[workout Duration],[workout Props],[workout Focus],selectedlanguage];
         }
-        NSLog(requestString);
+      //  NSLog(requestString);
         
         NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         
@@ -501,7 +501,7 @@ static FitnessServerCommunication *sharedState;
             // Use when fetching text data
             NSString *responseString =[requests responseString];
             if ([responseString length]>0) {
-                NSLog(responseString);
+             //   NSLog(responseString);
                 [self parseCustomWorkoutList:responseString];
                 if (completionBlock) completionBlock(responseString);
             }else{
@@ -521,7 +521,7 @@ static FitnessServerCommunication *sharedState;
 }
 
 
-#pragma mark SELF MADE WORKOUT LIST SERVICES
+#pragma mark SELF MADE WORKOUT 
 
 -(void)parseSelfMadeFitnessDetails:(int)userID onCompletion:(ResponseBlock)completionBlock onError:(NSError*)errorBlock {
     
@@ -540,7 +540,7 @@ static FitnessServerCommunication *sharedState;
             // Use when fetching text data
             NSString *responseString =[requests responseString];
             if ([responseString length]>0) {
-                NSLog(responseString);
+              //  NSLog(responseString);
                 [self parseSelfMadeWorkoutList:responseString];
                 if (completionBlock) completionBlock(responseString);
             }else{
@@ -594,10 +594,10 @@ static FitnessServerCommunication *sharedState;
 }
 
 
-- (void)saveSelfMadeWorkout:(NSString*)workoutName workoutCollection:(NSString*)workoutCollection workoutID:(NSString*)workoutID   userID:(NSString*)userID userLevel:(NSString *)userLevel language:(int )selectedlanguage  activityIndicator:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView onCompletion:(WMLoginResponseBlock)completionBlock onError:(NSError*)errorBlock
+- (void)saveSelfMadeWorkout:(NSString*)workoutName workoutCollection:(NSString*)workoutCollection workoutID:(NSString*)workoutID   userID:(NSString*)userID userLevel:(NSString *)userLevel language:(int )selectedlanguage focus:(NSString *)focus equipments:(NSString *)equipments activityIndicator:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView onCompletion:(WMLoginResponseBlock)completionBlock onError:(NSError*)errorBlock
 
 {
-    
+    __block NSString *workoutsID;
     BOOL isReachable =[Fitness4MeUtils isReachable];
     if (isReachable)
     {
@@ -608,10 +608,11 @@ static FitnessServerCommunication *sharedState;
             //           requestString =[NSString stringWithFormat:@"%@editcustom=yes&user_id=%@&user_level=%@&customname=%@&duration=%@&equipment=%@&focus=%@&lang=%i&custom_workout_id=%@",UrlPath,userID,userLevel,[workout Name],[workout Duration],[workout Props],[workout Focus],selectedlanguage,[workout WorkoutID]];
         }
         else{
-            requestString =[NSString stringWithFormat:@"%@createselfmade=yes&userid=%@&user_level=%@&selfmadename=%@&collection=%@&lang=%i",UrlPath,userID,userLevel,workoutName,workoutCollection,selectedlanguage];
+            
+            requestString =[NSString stringWithFormat:@"%@createselfmade=yes&userid=%@&user_level=%@&selfmadename=%@&collection=%@&lang=%i&focus=%@&equip=%@",UrlPath,userID,userLevel,workoutName,workoutCollection,selectedlanguage,focus,equipments];
             
         }
-        NSLog(requestString);
+      //  NSLog(requestString);
         
         NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         
@@ -620,8 +621,46 @@ static FitnessServerCommunication *sharedState;
             // Use when fetching text data
             NSString *responseString =[requests responseString];
             if ([responseString length]>0) {
-                
-                if (completionBlock) completionBlock([self parseWorkoutID:responseString]);
+               // NSLog(responseString);
+                  workoutsID =[self parseWorkoutID:responseString];
+                if (completionBlock) completionBlock(workoutsID);
+            }else{
+                [self terminateActivities:NSLocalizedString(@"slowdata", nil):activityIndicator:signUpView];
+            }
+        }];
+        [requests setFailedBlock:^{
+            //NSError *error = [requests error];
+            [self terminateActivities:NSLocalizedString(@"requestError", nil):activityIndicator:signUpView];
+        }];
+        [requests startAsynchronous];
+    }else{
+        [self terminateActivities:NSLocalizedString(@"NoInternetMessage", nil):activityIndicator:signUpView];
+    }
+}
+
+
+- (void)deleteSelfMadeWorkout:(NSString*)workoutID  userID:(int)userID   activityIndicator:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView onCompletion:(WMLoginResponseBlock)completionBlock onError:(NSError*)errorBlock
+
+{
+    __block NSString *IsExist;
+    
+    BOOL isReachable =[Fitness4MeUtils isReachable];
+    if (isReachable)
+    {
+        NSString *UrlPath= [NSString GetURlPath];
+        NSString *requestString;
+        
+        requestString =[NSString stringWithFormat:@"%@deleteself=yes&user_id=%i&self_workout_ids=%@",UrlPath,userID,workoutID];
+       
+        NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+        
+        __weak ASIHTTPRequest *requests = [ASIHTTPRequest requestWithURL:url];
+        [requests setCompletionBlock:^{
+            // Use when fetching text data
+            NSString *responseString =[requests responseString];
+            if ([responseString length]>0) {
+                IsExist=[self Isvalid:responseString];
+                if (completionBlock) completionBlock(IsExist);
             }else{
                 [self terminateActivities:NSLocalizedString(@"slowdata", nil):activityIndicator:signUpView];
             }
@@ -642,15 +681,52 @@ static FitnessServerCommunication *sharedState;
 {
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     userID =[userinfo integerForKey:@"UserID"];
+    
+    BOOL isReachable =[Fitness4MeUtils isReachable];
+    if (isReachable)
+    {
+        
+        NSString *UrlPath= [NSString GetURlPath];
+        NSString *requestString =[NSString stringWithFormat:@"%@customfav=yes&user_id=%i&fav_status=%@&custom_workout_id=%@",UrlPath,userID,status,workoutID];
+        NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+       // NSLog(requestString);
+        __weak ASIHTTPRequest *requests = [ASIHTTPRequest requestWithURL:url];
+        [requests setCompletionBlock:^{
+            // Use when fetching text data
+            NSString *responseString =[requests responseString];
+            if ([responseString length]>0) {
+                
+                if (completionBlock) completionBlock(responseString);
+            }else{
+                [self terminateActivities:NSLocalizedString(@"slowdata", nil):activityIndicator:signUpView];
+            }
+        }];
+        [requests setFailedBlock:^{
+            //NSError *error = [requests error];
+            [self terminateActivities:NSLocalizedString(@"requestError", nil):activityIndicator:signUpView];
+        }];
+        [requests startAsynchronous];
+    }else{
+        [self terminateActivities:NSLocalizedString(@"NoInternetMessage", nil):activityIndicator:signUpView];
+    }
+}
+
+
+
+- (void)setSelfMadeWorkoutfavourite:(NSString*)workoutID UserID:(int)userID Status:(NSString*)status  activityIndicator:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView onCompletion:(WMLoginResponseBlock)completionBlock onError:(NSError*)errorBlock
+
+{
+    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+    userID =[userinfo integerForKey:@"UserID"];
 
     BOOL isReachable =[Fitness4MeUtils isReachable];
     if (isReachable)
     {
-       
+      
         NSString *UrlPath= [NSString GetURlPath];
-        NSString *requestString =[NSString stringWithFormat:@"%@customfav=yes&user_id=%i&fav_status=%@&custom_workout_id=%@",UrlPath,userID,status,workoutID];
+        NSString *requestString =[NSString stringWithFormat:@"%@selffav=yes&user_id=%i&fav_status=%@&self_workout_id=%@",UrlPath,userID,status,workoutID];
         NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-        NSLog(requestString);
+   //     NSLog(requestString);
         __weak ASIHTTPRequest *requests = [ASIHTTPRequest requestWithURL:url];
         [requests setCompletionBlock:^{
             // Use when fetching text data

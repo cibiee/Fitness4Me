@@ -238,6 +238,9 @@
         //viewController =[[HintsViewController alloc]initWithNibName:@"CustomizedWorkoutListViewController_iPad" bundle:nil];
     }
    [viewController setWorkoutType:@"Custom"];
+    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+    [userinfo setObject:@"Custom" forKey:@"workoutType"];
+
     [self.navigationController pushViewController:viewController animated:YES];
     
     [viewController release];
@@ -254,6 +257,9 @@
     }else {
         //viewController =[[HintsViewController alloc]initWithNibName:@"CustomizedWorkoutListViewController_iPad" bundle:nil];
     }
+    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+    [userinfo setObject:@"SelfMade" forKey:@"workoutType"];
+
     [viewController setWorkoutType:@"SelfMade"];
     [self.navigationController pushViewController:viewController animated:YES];
     

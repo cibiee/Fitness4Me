@@ -102,9 +102,9 @@
     [workoutDB createDatabase];
     newWorkout =[[Workout alloc]init];
      if ([self.workoutType isEqualToString:@"Custom"]){
-     newWorkout =[workoutDB getCustomWorkoutByID:[workout WorkoutID]];
+     newWorkout =[workoutDB getCustomWorkoutByID:self.workoutID];
      }else{
-        newWorkout=[workoutDB getSelfMadeByID:[workout WorkoutID]];
+        newWorkout=[workoutDB getSelfMadeByID:self.workoutID];
     }
     CustomWorkoutIntermediateViewController *viewController =[[CustomWorkoutIntermediateViewController alloc]initWithNibName:@"CustomWorkoutIntermediateViewController" bundle:nil];
     viewController.workout =[[Workout alloc]init];
@@ -115,7 +115,15 @@
 
 - (void)NavigateToWorkoutList {
    
+    
     CustomWorkoutsViewController *viewController =[[CustomWorkoutsViewController alloc]initWithNibName:@"CustomWorkoutsViewController" bundle:nil];
+        if ([self.workoutType isEqualToString:@"Custom"]){
+        [viewController setWorkoutType:@"Custom"];
+        }
+    else
+    {
+        [viewController setWorkoutType:@"SelfMade"];
+    }
     [self.navigationController pushViewController:viewController animated:YES];
 }
 
@@ -135,6 +143,7 @@
         [fitness saveCustomWorkout:workout userID:userID userLevel:userlevel language:selectedLanguage activityIndicator:self.activityIndicator progressView:self.progressView onCompletion:^(NSString *workoutID) {
             if (workoutID>0) {
                 [workout setWorkoutID:workoutID];
+                self.workoutID=workoutID;
                 [fitness  parseCustomFitnessDetails:[userID intValue]  onCompletion:^(NSString *responseString){
                     if ([navigateTo isEqualToString:@"List"]) {
                         [self NavigateToWorkoutList];
@@ -155,9 +164,10 @@
     }
     else{
         
-        [fitness saveSelfMadeWorkout:self.workoutName workoutCollection:self.collectionString workoutID:self.workoutID userID:userID userLevel:userlevel language:selectedLanguage activityIndicator:self.activityIndicator progressView:self.progressView onCompletion:^(NSString *responseString) {
-            if (responseString>0) {
-                [workout setWorkoutID:responseString];
+        [fitness saveSelfMadeWorkout:self.workoutName workoutCollection:self.collectionString workoutID:self.workoutID userID:userID userLevel:userlevel language:selectedLanguage focus:self.focusList equipments:self.equipments activityIndicator:self.activityIndicator progressView:self.progressView onCompletion:^(NSString *workoutID) {
+            if (workoutID>0) {
+                [workout setWorkoutID:workoutID];
+                self.workoutID=workoutID;
                 [fitness  parseSelfMadeFitnessDetails:[userID intValue]  onCompletion:^(NSString *responseString){
                     if ([navigateTo isEqualToString:@"List"]) {
                         [self NavigateToWorkoutList];

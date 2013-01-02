@@ -76,40 +76,39 @@
 -(void)ListExcersices
 {
     
-    
-    
     workoutDB =[[WorkoutDB alloc]init];
     [workoutDB setUpDatabase];
     [workoutDB createDatabase];
-    [workoutDB getCustomWorkouts];
+    
+    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+    [userinfo setObject:self.workoutType forKey:@"workoutType"];
+    
+    if ([self.workoutType isEqualToString:@"SelfMade"]){
+        [workoutDB getSelfMadeWorkouts];
+    }else{
+        [workoutDB getCustomWorkouts];
+    }
     
     if ([workoutDB.Workouts count]>0) {
-        
+        [self.tableView setHidden:NO];
         self.workouts = workoutDB.Workouts;
         [self prepareTableView];
         [self.tableView reloadData];
-          [activityIndicator stopAnimating];
+        [activityIndicator stopAnimating];
         [activityIndicator setHidesWhenStopped:YES];
-        
-    }
-    
-    else {
-        
+    }else {
         BOOL isReachable =[Fitness4MeUtils isReachable];
         if (isReachable){
+            self.workouts =nil;
+            [self.tableView reloadData];
+            [self.tableView setHidden:YES];
             [NSThread detachNewThreadSelector:@selector(parseFitnessDetails) toTarget:self withObject:nil];
-        }
-        else {
-            
-            // networkNotificationtextView.hidden=NO;
-             [activityIndicator stopAnimating];
-             [activityIndicator removeFromSuperview];
-            
+        }else {
+            [activityIndicator stopAnimating];
+            [activityIndicator removeFromSuperview];
             return;
         }
     }
-    
-    
 }
 
 
@@ -117,7 +116,9 @@
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     UserID =[userinfo integerForKey:@"UserID"];
     FitnessServerCommunication *fitness =[FitnessServerCommunication sharedState];
-    [fitness parseCustomFitnessDetails:UserID onCompletion:^(NSString *responseString){
+    if ([self.workoutType isEqualToString:@"SelfMade"]){
+    
+    [fitness parseSelfMadeFitnessDetails:UserID onCompletion:^(NSString *responseString){
         if ([responseString length]>0) {
             [self parseCustomWorkoutList:responseString];
         }
@@ -125,6 +126,19 @@
     }  onError:^(NSError *error) {
         
     }];
+    }
+    else
+    {
+        [fitness parseCustomFitnessDetails:UserID onCompletion:^(NSString *responseString){
+            if ([responseString length]>0) {
+                [self parseCustomWorkoutList:responseString];
+            }
+            
+        }  onError:^(NSError *error) {
+            
+        }];
+
+    }
 }
 
 
@@ -311,12 +325,21 @@
     NSArray *array = [dictionary objectForKey:@"workouts"];
     Workout *workout = [[Workout alloc]init];
     workout = [array objectAtIndex:0];
-    CustomWorkoutAddViewController *viewController =[[CustomWorkoutAddViewController alloc]initWithNibName:@"CustomWorkoutAddViewController" bundle:nil];
-    viewController.workout =[[Workout alloc]init];
-    viewController .workout=workout;
-    NSLog(@"%@",workout.WorkoutID);
-    [self.navigationController pushViewController:viewController animated:YES];
-    
+    if ([self.workoutType isEqualToString:@"SelfMade"]) {
+        FocusViewController *viewController =[[FocusViewController alloc]initWithNibName:@"FocusViewController" bundle:nil];
+        viewController.workout =[[Workout alloc]init];
+        viewController .workout=workout;
+        [self.navigationController pushViewController:viewController animated:YES];
+    }
+    else
+    {
+        CustomWorkoutAddViewController *viewController =[[CustomWorkoutAddViewController alloc]initWithNibName:@"CustomWorkoutAddViewController" bundle:nil];
+        viewController.workout =[[Workout alloc]init];
+        viewController .workout=workout;
+        NSLog(@"%@",workout.WorkoutID);
+        
+        [self.navigationController pushViewController:viewController animated:YES];
+    }
 }
 
 - (CustomFavourites *)deleteFavStatus:(Favourite *)fav {
@@ -376,13 +399,27 @@
         
         
         __weak FitnessServerCommunication *fitness=[FitnessServerCommunication  sharedState];
+        
+        if ([self.workoutType isEqualToString:@"SelfMade"]){
+            [fitness setSelfMadeWorkoutfavourite:[workout WorkoutID] UserID:UserID Status:statusInt activityIndicator:nil progressView:nil onCompletion:^(NSString *responseString) {
+                
+                
+            } onError:^(NSError *error) {
+                
+            }];
+            [self parseFitnessDetails];
+        }
+        
+        else
+        {
         [fitness setWorkoutfavourite:[workout WorkoutID] UserID:UserID Status:statusInt activityIndicator:nil progressView:nil onCompletion:^(NSString *responseString) {
-          
+            
             
         } onError:^(NSError *error) {
             
         }];
-          [self parseFitnessDetails];
+        [self parseFitnessDetails];
+        }
     }
     else
     {
@@ -418,19 +455,40 @@
         Workout *workout = [[Workout alloc]init];
         workout = [array objectAtIndex:0];
         FitnessServerCommunication *fitness =[FitnessServerCommunication sharedState];
-        [fitness deleteCustomWorkout:[workout WorkoutID] userID:UserID activityIndicator:nil progressView:nil onCompletion:^(NSString *responseString) {
-            [self.workouts removeObjectAtIndex:self.s];
-            [self prepareTableView];
-            [self.tableView reloadData];
-            [Fitness4MeUtils showAlert:@"Deleted Sucessfully"];
-            [fitness parseCustomFitnessDetails:UserID onCompletion:^(NSString *responseString){
-                
+        
+        if ([self.workoutType isEqualToString:@"SelfMade"]){
+            
+            [fitness deleteSelfMadeWorkout:[workout WorkoutID] userID:UserID activityIndicator:nil progressView:nil onCompletion:^(NSString *responseString) {
+                [self.workouts removeObjectAtIndex:self.s];
+                [self prepareTableView];
+                [self.tableView reloadData];
+                [Fitness4MeUtils showAlert:@"Deleted Sucessfully"];
+                [fitness parseSelfMadeFitnessDetails:UserID onCompletion:^(NSString *responseString){
+                    
+                } onError:^(NSError *error) {
+                    // [self getExcersices];
+                }];
             } onError:^(NSError *error) {
                 // [self getExcersices];
             }];
-        } onError:^(NSError *error) {
-            // [self getExcersices];
-        }];
+        }
+        else
+        {
+            
+            [fitness deleteCustomWorkout:[workout WorkoutID] userID:UserID activityIndicator:nil progressView:nil onCompletion:^(NSString *responseString) {
+                [self.workouts removeObjectAtIndex:self.s];
+                [self prepareTableView];
+                [self.tableView reloadData];
+                [Fitness4MeUtils showAlert:@"Deleted Sucessfully"];
+                [fitness parseCustomFitnessDetails:UserID onCompletion:^(NSString *responseString){
+                    
+                } onError:^(NSError *error) {
+                    // [self getExcersices];
+                }];
+            } onError:^(NSError *error) {
+                // [self getExcersices];
+            }];
+        }
         
     }
     else {

@@ -17,16 +17,16 @@
 	IBOutlet UIButton *_removeSelectedButton;
      Workout *workout;
 }
+@property (weak, nonatomic) IBOutlet UISegmentedControl *moveSegmentControl;
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigationBar;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *recoverySegmentControl;
 @property (strong, nonatomic)Workout *workout;
 @property (nonatomic, retain) NSMutableArray *dataSourceArray;
-
+@property(strong,nonatomic) NSString *focusList;
+@property(strong,nonatomic) NSString *equipments;
+- (IBAction)onClickMove:(id)sender;
 -(IBAction)onClickBack:(id)sender;
 -(IBAction) segmentedControlIndexChanged;
-- (IBAction)cleanRecyclePool;
-- (IBAction)addColumn;
-- (IBAction)addMultipleColumns;
 - (IBAction)removeSelectedColumn;
 - (IBAction)removeMultipleColumns;
 

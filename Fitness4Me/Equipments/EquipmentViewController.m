@@ -252,7 +252,16 @@
         WorkoutDB *workoutDB =[[WorkoutDB alloc]init];
         [workoutDB setUpDatabase];
         [workoutDB createDatabase];
+        NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+        NSString *workoutType =[userinfo stringForKey:@"workoutType"];
+        
+        if ([workoutType isEqualToString:@"Custom"]) {
         workouts =[workoutDB getCustomWorkoutByID:[workout WorkoutID]];
+        }
+        else
+        {
+            workouts =[workoutDB getSelfMadeByID:[workout WorkoutID]];
+        }
     }
     [workouts setDuration:workout.Duration];
     [workouts setFocus:workout.Focus];

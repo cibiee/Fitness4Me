@@ -59,7 +59,7 @@ typedef enum {
 
 - (void)insertColumnsAtIndexes:(NSArray *)indexes withColumnAnimation:(APCarouselViewColumnAnimation)animation;
 - (void)deleteColumnsAtIndexes:(NSArray *)indexes withColumnAnimation:(APCarouselViewColumnAnimation)animation;
-
+- (void)deleteAllColumnswithColumnAnimation:(APCarouselViewColumnAnimation)animation;
 - (NSArray *)visibleCells;
 
 

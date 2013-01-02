@@ -18,7 +18,10 @@
 @property(strong,nonatomic) NSString *collectionString;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextfield;
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigationBar;
+
 @property (strong, nonatomic)Workout *workout;
+@property(strong,nonatomic) NSString *focusList;
+@property(strong,nonatomic) NSString *equipments;
 - (IBAction)dismissKeyboard:(id)sender;
 - (IBAction)onClickNext:(id)sender;
 - (IBAction)onClickBack:(id)sender;

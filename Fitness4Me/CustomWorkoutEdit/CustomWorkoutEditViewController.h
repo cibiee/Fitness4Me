@@ -36,7 +36,7 @@
     ASINetworkQueue  *myQueue;
     Workout *selectedWorkout;
 }
-    
+    @property(strong,nonatomic)NSString *workoutType;
     @property (weak, nonatomic) IBOutlet UITableView *tableView;
     @property (weak, nonatomic) IBOutlet UINavigationItem *navigationBar;
     @property (nonatomic,retain) ASINetworkQueue *myQueue;

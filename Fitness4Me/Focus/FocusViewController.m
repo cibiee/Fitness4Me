@@ -245,7 +245,17 @@
         WorkoutDB *workoutDB =[[WorkoutDB alloc]init];
         [workoutDB setUpDatabase];
         [workoutDB createDatabase];
-        workouts =[workoutDB getCustomWorkoutByID:[workout WorkoutID]];
+        NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+        NSString *workoutType =[userinfo stringForKey:@"workoutType"];
+        
+        
+        if ([workoutType isEqualToString:@"Custom"]) {
+            workouts =[workoutDB getCustomWorkoutByID:[workout WorkoutID]];
+        }
+        else
+        {
+            workouts =[workoutDB getSelfMadeByID:[workout WorkoutID]];
+        }
     }
     
     
@@ -259,7 +269,7 @@
     }
  else
  {
-    [Fitness4MeUtils showAlert:@"Please select an area of focus"];
+    [Fitness4MeUtils showAlert:@"Please select atleast one area of focus"];
  }
 }
 

@@ -15,7 +15,7 @@
 @implementation CarouselViewDemoViewController
 @synthesize workout;
 
-@synthesize dataSourceArray = _dataSourceArray;
+//@synthesize dataSourceArray = _dataSourceArray;
 
 NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -40,7 +40,7 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
     [super viewDidLoad];
     self.view.transform = CGAffineTransformConcat(self.view.transform, CGAffineTransformMakeRotation(M_PI_2));
     [self.recoverySegmentControl setSelectedSegmentIndex:-1];
-    
+    [self.moveSegmentControl setSelectedSegmentIndex:-1];
     // add continue button
     UIButton *backutton = [UIButton buttonWithType:UIButtonTypeCustom];
     backutton.frame = CGRectMake(0, 0, 58, 30);
@@ -64,12 +64,13 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
                                              dataSource:self
                                                delegate:self];
     _carouselView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-	_dataSourceArray =self.dataSourceArray;
+	//_dataSourceArray =nil;
 	[self.view addSubview:_carouselView];
 }
 
 - (void)viewDidUnload {
     [self setRecoverySegmentControl:nil];
+    [self setMoveSegmentControl:nil];
     [super viewDidUnload];
 }
 
@@ -78,7 +79,7 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
 
 - (NSInteger)numberOfColumnsForCarouselView:(CarouselView *)carouselView {
     
-    return [_dataSourceArray count];
+    return [self.dataSourceArray count];
 }
 
 - (CarouselViewCell *)carouselView:(CarouselView *)carouselView cellForColumnAtIndex:(NSInteger)index {
@@ -86,7 +87,7 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
     CarouselViewCell *cell = [carouselView dequeueReusableCell];
     if (cell == nil) {
         cell = [[CarouselViewCell alloc] init];
-        ExcersiceList *excersiceList= [_dataSourceArray objectAtIndex:index];
+        ExcersiceList *excersiceList= [self.dataSourceArray objectAtIndex:index];
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
         NSString *dataPath = [documentsDirectory stringByAppendingPathComponent:@"MyFolder/SelfMadeThumbs"];
@@ -103,17 +104,7 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
 	[_removeSelectedButton setEnabled:YES];
 }
 
-#pragma - Helper Methods
 
-- (NSString *)randomString {
-	NSMutableString *randomString = [NSMutableString stringWithCapacity:10];
-    
-	for (int i=0; i<10; i++) {
-		[randomString appendFormat: @"%c", [letters characterAtIndex: rand()%[letters length]]];
-	}
-	
-	return randomString;
-}
 
 #pragma mark - IBActions
 
@@ -125,26 +116,75 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
     NSNumber *selectedIndex = [NSNumber numberWithInt:[_carouselView indexOfSelectedCell]+1];
     NSNumber *index = selectedIndex;
     ExcersiceList *list= [[ExcersiceList alloc]init];
-    switch (self.recoverySegmentControl.selectedSegmentIndex) {
-        case 0:
-            list.name=@"recovery 15";
-            list.imageName= @"dummyimg.png";
-            [_dataSourceArray insertObject:list atIndex:[index intValue]];
-            
-            [_carouselView insertColumnsAtIndexes:[NSArray arrayWithObject:index] withColumnAnimation:_animationSegmentedControl.selectedSegmentIndex];
-            break;
-        case 1:
-            list.name=@"recovery 30";
-            list.imageName= @"dummyimg.png";
-            [_dataSourceArray insertObject:list atIndex:[index intValue]];
-            [_carouselView insertColumnsAtIndexes:[NSArray arrayWithObject:index] withColumnAnimation:_animationSegmentedControl.selectedSegmentIndex];
-            break;
-            
-        default:
-            break;
+    NSMutableArray *arrays= [[NSMutableArray alloc]init];
+    if ([index intValue]>0) {
+        
+        [_carouselView deleteAllColumnswithColumnAnimation:_animationSegmentedControl.selectedSegmentIndex];
+        switch (self.recoverySegmentControl.selectedSegmentIndex) {
+            case 0:
+                
+                list.name=@"recovery 15";
+                list.imageName= @"dummyimg.png";
+                list.excersiceID=@"rec15";
+                [self.dataSourceArray insertObject:list atIndex:[index intValue]];
+                
+                for (int i = 0; i < [self.dataSourceArray count]; i++) {
+                    [arrays addObject:[NSNumber numberWithInt:i]];
+                }
+                [_carouselView insertColumnsAtIndexes:arrays withColumnAnimation:_animationSegmentedControl.selectedSegmentIndex];
+                
+                break;
+            case 1:
+                list.name=@"recovery 30";
+                list.imageName= @"dummyimg.png";
+                list.excersiceID=@"rec30";
+                [self.dataSourceArray insertObject:list atIndex:[index intValue]];
+                for (int i = 0; i < [self.dataSourceArray count]; i++) {
+                    [arrays addObject:[NSNumber numberWithInt:i]];
+                }
+                [_carouselView insertColumnsAtIndexes:arrays withColumnAnimation:_animationSegmentedControl.selectedSegmentIndex];
+                
+                break;
+                
+            default:
+                break;
+        }
     }
     [self.recoverySegmentControl setSelectedSegmentIndex:-1];
     
+}
+
+- (IBAction)onClickMove:(id)sender {
+    int selectedIndex =[_carouselView indexOfSelectedCell];
+    NSMutableArray *arrays= [[NSMutableArray alloc]init];
+    switch (self.moveSegmentControl.selectedSegmentIndex) {
+        case 0:
+            if (selectedIndex>0) {
+                [_carouselView deleteAllColumnswithColumnAnimation:_animationSegmentedControl.selectedSegmentIndex];
+                [self.dataSourceArray exchangeObjectAtIndex:selectedIndex withObjectAtIndex:selectedIndex-1];
+                for (int i = 0; i < [self.dataSourceArray count]; i++) {
+                    [arrays addObject:[NSNumber numberWithInt:i]];
+                }
+                [_carouselView insertColumnsAtIndexes:arrays withColumnAnimation:_animationSegmentedControl.selectedSegmentIndex];
+            }
+            
+            break;
+        case 1:
+            
+            if (selectedIndex<[self.dataSourceArray count]-1) {
+                [_carouselView deleteAllColumnswithColumnAnimation:_animationSegmentedControl.selectedSegmentIndex];
+                [self.dataSourceArray exchangeObjectAtIndex:selectedIndex withObjectAtIndex:selectedIndex+1];
+                for (int i = 0; i < [self.dataSourceArray count]; i++) {
+                    [arrays addObject:[NSNumber numberWithInt:i]];
+                }
+                [_carouselView insertColumnsAtIndexes:arrays withColumnAnimation:_animationSegmentedControl.selectedSegmentIndex];
+            }
+            break;
+        default:
+            break;
+    }
+    
+    [self.moveSegmentControl setSelectedSegmentIndex:-1];
 }
 
 -(IBAction)onClickBack:(id)sender{
@@ -153,117 +193,51 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
 
 
 -(IBAction)onClickNext:(id)sender{
-    //    NSString *str= [[NSString alloc]init];
-    //    str =@"";
-    //    NSString *name= [[NSString alloc]init];
-    //    for (Equipments *equipment in self.equipments) {
-    //        if ([equipment isChecked]) {
-    //            if ([str length]==0) {
-    //                str =[str stringByAppendingString:[equipment equipmentID]];
-    //                name =[name stringByAppendingString:[equipment equipmentName]];
-    //            }
-    //            else{
-    //                str=[str stringByAppendingString:@","];
-    //                str =[str stringByAppendingString:[equipment equipmentID]];
-    //                name=[name stringByAppendingString:@","];
-    //                name =[name stringByAppendingString:[equipment equipmentName]];
-    //            }
-    //
-    //        }
-    //    }
-    //
-    //    Workout *workouts= [[Workout alloc]init];
-    //    if ([[workout WorkoutID]intValue]>0) {
-    //        WorkoutDB *workoutDB =[[WorkoutDB alloc]init];
-    //        [workoutDB setUpDatabase];
-    //        [workoutDB createDatabase];
-    //        workouts =[workoutDB getCustomWorkoutByID:[workout WorkoutID]];
-    //    }
-    //    [workouts setDuration:workout.Duration];
-    //    [workouts setFocus:workout.Focus];
-    //    [workouts setFocusName:name];
-    //    [workouts setProps:str];
-    //
-    //
-    //
-    //    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
-    //    NSString *workoutType =[userinfo stringForKey:@"workoutType"];
-    //
-    //    if ([workoutType isEqualToString:@"Custom"]) {
     
     NSString *str= [[NSString alloc]init];
-    for (ExcersiceList *excerlist in _dataSourceArray) {
+    for (ExcersiceList *excerlist in self.dataSourceArray) {
         
         if ([str length]==0) {
-//NSLog([excerlist excersiceID]);
             str =[str stringByAppendingString:[excerlist excersiceID]];
-           // NSLog(str);
-            
         }
         else{
-          //  NSLog([excerlist excersiceID]);
             str=[str stringByAppendingString:@","];
             str =[str stringByAppendingString:[excerlist excersiceID]];
         }
     }
     
-   // NSLog(@"dfdfd%@",str);
     NameViewController *viewController =[[NameViewController alloc]initWithNibName:@"NameViewController" bundle:nil];
     viewController.workout= [[Workout alloc]init];
     viewController.workout =nil;
     [viewController setCollectionString:str];
+    [viewController setEquipments:self.equipments];
+    [viewController setFocusList:self.focusList];
+
     [self.navigationController pushViewController:viewController animated:YES];
-    //    }
-    //    else
-    //    {
-    //        ExcersiceListViewController *viewController;
-    //        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
-    //            viewController =[[ExcersiceListViewController alloc]initWithNibName:@"ExcersiceListViewController" bundle:nil];
-    //        }else {
-    //            viewController =[[ExcersiceListViewController alloc]initWithNibName:@"ExcersiceListViewController" bundle:nil];
-    //        }
-    //        [viewController setFocusList:[workout Focus]];
-    //        [viewController setEquipments:str];
-    //        [self.navigationController pushViewController:viewController animated:YES];
-    //    }
 }
 
 
-- (IBAction)addColumn {
-    NSNumber *selectedIndex = [NSNumber numberWithInt:[_carouselView indexOfSelectedCell]+1];
-	NSNumber *index = selectedIndex;
-	//NSString *newObj = [self randomString];
-    ExcersiceList *list= [[ExcersiceList alloc]init];
-    
-    list.name=@"recovery 15";
-    list.imageName= @"dummyimg.png";
-	[_dataSourceArray insertObject:list atIndex:[index intValue]];
-	
-    [_carouselView insertColumnsAtIndexes:[NSArray arrayWithObject:index] withColumnAnimation:_animationSegmentedControl.selectedSegmentIndex];
-}
 
-- (IBAction)addMultipleColumns {
-	NSMutableArray *array = [NSMutableArray array];
-	
-	for (int i = 0; i < 5; i++) {
-		NSString *newObj = [self randomString];
-		[_dataSourceArray insertObject:newObj atIndex:0];
-		[array addObject:[NSNumber numberWithInt:i]];
-	}
-	
-	[_carouselView insertColumnsAtIndexes:array withColumnAnimation:_animationSegmentedControl.selectedSegmentIndex];
-}
+
 
 - (IBAction)removeSelectedColumn {
-	NSNumber *selectedIndex = [NSNumber numberWithInt:[_carouselView indexOfSelectedCell]];
-	[_dataSourceArray removeObjectAtIndex:[selectedIndex intValue]];
-	[_carouselView deleteColumnsAtIndexes:[NSArray arrayWithObject:selectedIndex] withColumnAnimation:_animationSegmentedControl.selectedSegmentIndex];
-	
-	[_removeSelectedButton setEnabled:NO];
+    if ([_dataSourceArray count]>0) {
+        NSMutableArray *arrays= [[NSMutableArray alloc]init];
+        NSNumber *selectedIndex = [NSNumber numberWithInt:[_carouselView indexOfSelectedCell]];
+        [self.dataSourceArray removeObjectAtIndex:[selectedIndex intValue]];
+        [_carouselView deleteAllColumnswithColumnAnimation:_animationSegmentedControl.selectedSegmentIndex];
+        
+        for (int i = 0; i < [self.dataSourceArray count]; i++) {
+            [arrays addObject:[NSNumber numberWithInt:i]];
+        }
+        [_carouselView insertColumnsAtIndexes:arrays withColumnAnimation:_animationSegmentedControl.selectedSegmentIndex];
+	    [_removeSelectedButton setEnabled:NO];
+        
+    }
 }
 
 - (IBAction)removeMultipleColumns {
-	if ([_dataSourceArray count] < 3) {
+	if ([self.dataSourceArray count] < 3) {
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Not Enough Data"
 														message:@"Need at least 3 columns to be able to delete multiple"
 													   delegate:nil
@@ -276,7 +250,7 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
 	NSMutableArray *array = [NSMutableArray array];
 	
 	for (int i = 0; i < 3; i++) {
-		[_dataSourceArray removeObjectAtIndex:0];
+		[self.dataSourceArray removeObjectAtIndex:0];
 		[array addObject:[NSNumber numberWithInt:i]];
 	}
 	

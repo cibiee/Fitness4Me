@@ -99,6 +99,8 @@
             [viewController setWorkoutName:self.nameTextfield.text];
             [viewController setCollectionString:self.collectionString];
             [viewController setWorkoutID:[workout WorkoutID]];
+            [viewController setEquipments:self.equipments];
+            [viewController setFocusList:self.focusList];
             [self.navigationController pushViewController:viewController animated:YES];
         }
     }

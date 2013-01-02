@@ -150,7 +150,7 @@ IGZyZWUgY3VzdG9taXplZCB3b3Jrb3V0cw0KDQo</string>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
-						<string key="IBUINormalTitle">Save and start  workout</string>
+						<string key="IBUINormalTitle">Save and start   workout</string>
 						<reference key="IBUIHighlightedTitleColor" ref="988455223"/>
 						<reference key="IBUINormalTitleColor" ref="988455223"/>
 						<object class="NSColor" key="IBUINormalTitleShadowColor" id="319122980">
@@ -177,7 +177,7 @@ IGZyZWUgY3VzdG9taXplZCB3b3Jrb3V0cw0KDQo</string>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{106, 253}, {96, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
-						<reference key="NSNextKeyView" ref="296794821"/>
+						<reference key="NSNextKeyView" ref="100166625"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -205,12 +205,13 @@ IGZyZWUgY3VzdG9taXplZCB3b3Jrb3V0cw0KDQo</string>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{20, 291}, {125, 78}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
+						<reference key="NSNextKeyView" ref="296794821"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
-						<string key="IBUINormalTitle">Save to list and continue</string>
+						<string key="IBUINormalTitle">Save to list and  continue</string>
 						<reference key="IBUIHighlightedTitleColor" ref="988455223"/>
 						<reference key="IBUINormalTitleColor" ref="988455223"/>
 						<reference key="IBUINormalTitleShadowColor" ref="319122980"/>
@@ -305,9 +306,9 @@ IGZyZWUgY3VzdG9taXplZCB3b3Jrb3V0cw0KDQo</string>
 						<string key="label">savetoList:</string>
 						<reference key="source" ref="100166625"/>
 						<reference key="destination" ref="372490531"/>
-						<int key="IBEventType">4</int>
+						<int key="IBEventType">7</int>
 					</object>
-					<int key="connectionID">29</int>
+					<int key="connectionID">30</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -427,7 +428,7 @@ IGZyZWUgY3VzdG9taXplZCB3b3Jrb3V0cw0KDQo</string>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">29</int>
+			<int key="maxID">30</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>

@@ -298,6 +298,13 @@ int userID;
             // [self getExcersices];
         }];
         
+        
+        [fitnessserverCommunication parseSelfMadeFitnessDetails:userID onCompletion:^(NSString *responseString){
+            
+        } onError:^(NSError *error) {
+            // [self getExcersices];
+        }];
+        
          [self updateStatisticsToServer];
          [self updateCustomStatisticsToServer];
         Fitness4MeAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];

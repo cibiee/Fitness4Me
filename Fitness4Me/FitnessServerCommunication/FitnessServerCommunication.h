@@ -115,7 +115,11 @@ typedef void (^errorBlock)(NSString *errorString);
 - (void)listExcersiceWithequipments:(NSString*)equipments focus:(NSString*)focus  activityIndicator:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView onCompletion:(WMLoginResponseBlock)completionBlock onError:(NSError*)errorBlock;
 
 
-- (void)saveSelfMadeWorkout:(NSString*)workoutName workoutCollection:(NSString*)workoutCollection workoutID:(NSString*)workoutID   userID:(NSString*)userID userLevel:(NSString *)userLevel language:(int )selectedlanguage  activityIndicator:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView onCompletion:(WMLoginResponseBlock)completionBlock onError:(NSError*)errorBlock;
+- (void)saveSelfMadeWorkout:(NSString*)workoutName workoutCollection:(NSString*)workoutCollection workoutID:(NSString*)workoutID   userID:(NSString*)userID userLevel:(NSString *)userLevel language:(int )selectedlanguage focus:(NSString *)focus equipments:(NSString *)equipments activityIndicator:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView onCompletion:(WMLoginResponseBlock)completionBlock onError:(NSError*)errorBlock;
+
+- (void)deleteSelfMadeWorkout:(NSString*)workoutID  userID:(int)userID   activityIndicator:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView onCompletion:(WMLoginResponseBlock)completionBlock onError:(NSError*)errorBlock;
+
+- (void)setSelfMadeWorkoutfavourite:(NSString*)workoutID UserID:(int)userID Status:(NSString*)status  activityIndicator:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView onCompletion:(WMLoginResponseBlock)completionBlock onError:(NSError*)errorBlock;
 
 /*--------------------------SELF MADE WORKOUT LIST SERVICES---------------------------------------------------*/
 

@@ -375,8 +375,8 @@
     if(!database.open){
           NSLog(@"Databse not Open");
     }
-     [database setLogsErrors:TRUE];
-     [database setTraceExecution:TRUE];
+     //[database setLogsErrors:TRUE];
+    // [database setTraceExecution:TRUE];
 
     
     [database beginTransaction];
@@ -481,7 +481,7 @@
         NSString *description = [resultSet stringForColumnIndex:2];
         NSString *rate =  [resultSet stringForColumnIndex:3];
         NSString *islocked;
-        NSString *lockimageUrl;
+        NSString *lockimageUrl=@"";
         islocked =[resultSet stringForColumnIndex:4];
         NSString *descriptionToDo = [resultSet stringForColumnIndex:5];
         NSString *ImageUrl = [resultSet stringForColumnIndex:6];

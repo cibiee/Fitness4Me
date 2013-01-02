@@ -336,7 +336,7 @@
 
 -(void)showPremium
 {
-    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"Upgrade" message:NSLocalizedString(@"Become premium member to create mor custom workouts", nil)
+    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"Upgrade" message:NSLocalizedString(@"Become premium member to create more custom workouts", nil)
                                                        delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
     [alertview show];
     
@@ -433,21 +433,35 @@
     BOOL isReachable = [Fitness4MeUtils isReachable];
     if (isReachable) {
         
+        
         __weak FitnessServerCommunication *fitness=[FitnessServerCommunication  sharedState];
-        [fitness setWorkoutfavourite:[workout WorkoutID] UserID:UserID Status:statusInt activityIndicator:nil progressView:nil onCompletion:^(NSString *responseString) {
-            
-            
-        } onError:^(NSError *error) {
-            
-        }];
-        [self parseFitnessDetails];
+        
+        if ([self.workoutType isEqualToString:@"SelfMade"]){
+            [fitness setSelfMadeWorkoutfavourite:[workout WorkoutID] UserID:UserID Status:statusInt activityIndicator:nil progressView:nil onCompletion:^(NSString *responseString) {
+                
+                
+            } onError:^(NSError *error) {
+                
+            }];
+            [self parseFitnessDetails];
+        }
+        
+        else
+        {
+            [fitness setWorkoutfavourite:[workout WorkoutID] UserID:UserID Status:statusInt activityIndicator:nil progressView:nil onCompletion:^(NSString *responseString) {
+                
+                
+            } onError:^(NSError *error) {
+                
+            }];
+            [self parseFitnessDetails];
+        }
     }
     else
     {
         CustomFavourites *customFavourites;
         customFavourites = [self deleteFavStatus:fav];
         [self insertFavStatus:fav];
-        
         [self updateWorkout:workout];
     }
 }
@@ -466,6 +480,7 @@
 
 -(IBAction)onClickEdit:(id)sender{
     CustomWorkoutEditViewController *viewController =[[CustomWorkoutEditViewController alloc]initWithNibName:@"CustomWorkoutEditViewController" bundle:nil];
+    [viewController setWorkoutType:self.workoutType];
     [self.navigationController pushViewController:viewController animated:YES];
     
 }
