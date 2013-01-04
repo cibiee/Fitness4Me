@@ -77,9 +77,7 @@
             path = [thisBundle pathForResource:@"aboutusDe_Ipad" ofType:@"html"];
         }
     }
-    
-    
-	// make a file: URL out of the path
+
 	NSURL *instructionsURL = [NSURL fileURLWithPath:path];
 	[webView loadRequest:[NSURLRequest requestWithURL:instructionsURL]];
     
@@ -138,32 +136,19 @@
     NSString *path;
 	NSBundle *thisBundle = [NSBundle mainBundle];
     
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
-    {
-        
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad){
         if (selectedLang ==2) {
-            
             path = [thisBundle pathForResource:@"termsOfUseDeiPad" ofType:@"html"];
-            
         }else{
             path = [thisBundle pathForResource:@"termsofUseiPad" ofType:@"html"];
-            
         }
-    }
-    else {
-        
+    }else {
         if (selectedLang ==2) {
-            
             path = [thisBundle pathForResource:@"termsOfUseDe" ofType:@"html"];
-            
         }else{
             path = [thisBundle pathForResource:@"termsofUse" ofType:@"html"];
-            
         }
-        
-    
     }
-
    	NSURL *instructionsURL = [NSURL fileURLWithPath:path];
 	[webView loadRequest:[NSURLRequest requestWithURL:instructionsURL]];
 }
@@ -178,17 +163,13 @@
     int selectedLang= [Fitness4MeUtils getApplicationLanguage];
     NSString *path;
     NSBundle *thisBundle = [NSBundle mainBundle];
-    
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
-    {
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
         if (selectedLang ==2) {
             path = [thisBundle pathForResource:@"PrivacyPolicyDe" ofType:@"html"];
         }else{
             path = [thisBundle pathForResource:@"PrivacyPolicy" ofType:@"html"];
         }
-        
-    }
-    else {
+    }else {
         if (selectedLang ==2) {
             path = [thisBundle pathForResource:@"PrivacyPolicyDeiPad" ofType:@"html"];
         }else{
@@ -196,9 +177,6 @@
         }
 
     }
-
-    
-   
     NSURL *instructionsURL = [NSURL fileURLWithPath:path];
     [webView loadRequest:[NSURLRequest requestWithURL:instructionsURL]];
     

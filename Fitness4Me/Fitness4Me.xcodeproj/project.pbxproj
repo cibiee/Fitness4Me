@@ -216,6 +216,16 @@
 		F5085449167885F30094F314 /* continue_btn_with_text.png in Resources */ = {isa = PBXBuildFile; fileRef = F508544B167885F30094F314 /* continue_btn_with_text.png */; };
 		F508544F167886030094F314 /* button_half_width.png in Resources */ = {isa = PBXBuildFile; fileRef = F5085451167886030094F314 /* button_half_width.png */; };
 		F5085461167898610094F314 /* CustomExcersiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5085460167898610094F314 /* CustomExcersiceCell.m */; };
+		F509271B1695829100072169 /* MembershipStayFitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F50927191695829100072169 /* MembershipStayFitViewController.m */; };
+		F509271C1695829100072169 /* MembershipStayFitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F509271A1695829100072169 /* MembershipStayFitViewController.xib */; };
+		F50927211695863600072169 /* MembershipPersonliazedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F509271F1695863600072169 /* MembershipPersonliazedViewController.m */; };
+		F50927221695863600072169 /* MembershipPersonliazedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F50927201695863600072169 /* MembershipPersonliazedViewController.xib */; };
+		F5092727169588F300072169 /* MembershipCreateOwnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5092725169588F300072169 /* MembershipCreateOwnViewController.m */; };
+		F5092728169588F300072169 /* MembershipCreateOwnViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5092726169588F300072169 /* MembershipCreateOwnViewController.xib */; };
+		F509272D16958EFA00072169 /* MembershipPersonalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F509272B16958EFA00072169 /* MembershipPersonalViewController.m */; };
+		F509272E16958EFA00072169 /* MembershipPersonalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F509272C16958EFA00072169 /* MembershipPersonalViewController.xib */; };
+		F5092732169599BC00072169 /* MemverRateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5092730169599BB00072169 /* MemverRateViewController.m */; };
+		F5092733169599BC00072169 /* MemverRateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5092731169599BC00072169 /* MemverRateViewController.xib */; };
 		F50B05FB1681951C006FC355 /* CarouselViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F50B05FA1681951C006FC355 /* CarouselViewCell.m */; };
 		F50B060D16819EC7006FC355 /* CarouselViewDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F50B060A16819BA3006FC355 /* CarouselViewDemoViewController.m */; };
 		F50B060E16819ED8006FC355 /* CarouselView.m in Sources */ = {isa = PBXBuildFile; fileRef = F50B05FE16819556006FC355 /* CarouselView.m */; };
@@ -730,6 +740,21 @@
 		F508545D167886280094F314 /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/logo_new_side.png; sourceTree = "<group>"; };
 		F508545F167898610094F314 /* CustomExcersiceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomExcersiceCell.h; path = CustomlistCell/CustomExcersiceCell.h; sourceTree = "<group>"; };
 		F5085460167898610094F314 /* CustomExcersiceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomExcersiceCell.m; path = CustomlistCell/CustomExcersiceCell.m; sourceTree = "<group>"; };
+		F50927181695829100072169 /* MembershipStayFitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MembershipStayFitViewController.h; path = MemebershipStayFit/MembershipStayFitViewController.h; sourceTree = "<group>"; };
+		F50927191695829100072169 /* MembershipStayFitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MembershipStayFitViewController.m; path = MemebershipStayFit/MembershipStayFitViewController.m; sourceTree = "<group>"; };
+		F509271A1695829100072169 /* MembershipStayFitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MembershipStayFitViewController.xib; path = MemebershipStayFit/MembershipStayFitViewController.xib; sourceTree = "<group>"; };
+		F509271E1695863600072169 /* MembershipPersonliazedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MembershipPersonliazedViewController.h; path = MembershipPersonliazed/MembershipPersonliazedViewController.h; sourceTree = "<group>"; };
+		F509271F1695863600072169 /* MembershipPersonliazedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MembershipPersonliazedViewController.m; path = MembershipPersonliazed/MembershipPersonliazedViewController.m; sourceTree = "<group>"; };
+		F50927201695863600072169 /* MembershipPersonliazedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MembershipPersonliazedViewController.xib; path = MembershipPersonliazed/MembershipPersonliazedViewController.xib; sourceTree = "<group>"; };
+		F5092724169588F300072169 /* MembershipCreateOwnViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MembershipCreateOwnViewController.h; path = MembershipCreateOwn/MembershipCreateOwnViewController.h; sourceTree = "<group>"; };
+		F5092725169588F300072169 /* MembershipCreateOwnViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MembershipCreateOwnViewController.m; path = MembershipCreateOwn/MembershipCreateOwnViewController.m; sourceTree = "<group>"; };
+		F5092726169588F300072169 /* MembershipCreateOwnViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MembershipCreateOwnViewController.xib; path = MembershipCreateOwn/MembershipCreateOwnViewController.xib; sourceTree = "<group>"; };
+		F509272A16958EFA00072169 /* MembershipPersonalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MembershipPersonalViewController.h; path = MembershipPersonalGym/MembershipPersonalViewController.h; sourceTree = "<group>"; };
+		F509272B16958EFA00072169 /* MembershipPersonalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MembershipPersonalViewController.m; path = MembershipPersonalGym/MembershipPersonalViewController.m; sourceTree = "<group>"; };
+		F509272C16958EFA00072169 /* MembershipPersonalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MembershipPersonalViewController.xib; path = MembershipPersonalGym/MembershipPersonalViewController.xib; sourceTree = "<group>"; };
+		F509272F169599BB00072169 /* MemverRateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MemverRateViewController.h; path = MemberRate/MemverRateViewController.h; sourceTree = "<group>"; };
+		F5092730169599BB00072169 /* MemverRateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MemverRateViewController.m; path = MemberRate/MemverRateViewController.m; sourceTree = "<group>"; };
+		F5092731169599BC00072169 /* MemverRateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MemverRateViewController.xib; path = MemberRate/MemverRateViewController.xib; sourceTree = "<group>"; };
 		F50B05F91681951C006FC355 /* CarouselViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CarouselViewCell.h; path = ../../Users/safilsunny/sd/CarouselViewDemo/CarouselViewCell.h; sourceTree = "<group>"; };
 		F50B05FA1681951C006FC355 /* CarouselViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CarouselViewCell.m; path = ../../Users/safilsunny/sd/CarouselViewDemo/CarouselViewCell.m; sourceTree = "<group>"; };
 		F50B05FD16819556006FC355 /* CarouselView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarouselView.h; sourceTree = "<group>"; };
@@ -1769,17 +1794,6 @@
 			name = ShareFitness4Me;
 			sourceTree = "<group>";
 		};
-		F5085416167853040094F314 /* SelfmadeWorkout */ = {
-			isa = PBXGroup;
-			children = (
-				F50B05FF16819698006FC355 /* SelectedWorkouts */,
-				F50B05F616819430006FC355 /* carousel */,
-				F508545E1678982E0094F314 /* customExcersiceListCell */,
-				F50854171678532D0094F314 /* ExcersiceList */,
-			);
-			name = SelfmadeWorkout;
-			sourceTree = "<group>";
-		};
 		F50854171678532D0094F314 /* ExcersiceList */ = {
 			isa = PBXGroup;
 			children = (
@@ -1806,6 +1820,136 @@
 				F5085460167898610094F314 /* CustomExcersiceCell.m */,
 			);
 			name = customExcersiceListCell;
+			sourceTree = "<group>";
+		};
+		F509270B169579D700072169 /* SignUp/Settings */ = {
+			isa = PBXGroup;
+			children = (
+				F5A6043E162D304100B2ED1D /* Initial App Launch */,
+				F52538A1163FB3E3004F9195 /* Landing Page */,
+				F5A60436162D2D3500B2ED1D /* Login */,
+				F5A60439162D2D4500B2ED1D /* Settings */,
+				F5A60435162D2D3200B2ED1D /* SignUp */,
+				F5A60438162D2D4300B2ED1D /* Social Network */,
+			);
+			name = SignUp/Settings;
+			sourceTree = "<group>";
+		};
+		F509270C16957A0F00072169 /* AboutsUs/Privacy */ = {
+			isa = PBXGroup;
+			children = (
+				F5A60434162D2D1F00B2ED1D /* About Us */,
+				F525389C163FB262004F9195 /* HintsAndTips */,
+				F5A60437162D2D3800B2ED1D /* Terms */,
+			);
+			name = AboutsUs/Privacy;
+			sourceTree = "<group>";
+		};
+		F509270D16957A3E00072169 /* Rating/Feedback */ = {
+			isa = PBXGroup;
+			children = (
+				F52538A2163FB4AA004F9195 /* Feedback */,
+				F525389F163FB35A004F9195 /* Rating */,
+				F52538A0163FB3B8004F9195 /* Thanks */,
+			);
+			name = Rating/Feedback;
+			sourceTree = "<group>";
+		};
+		F509270E16957AB500072169 /* Custom Components */ = {
+			isa = PBXGroup;
+			children = (
+				F508545E1678982E0094F314 /* customExcersiceListCell */,
+				F519901A16661235009C3F3D /* CustomCell */,
+				F50B05F616819430006FC355 /* carousel */,
+			);
+			name = "Custom Components";
+			sourceTree = "<group>";
+		};
+		F509270F16957AEC00072169 /* Memberships */ = {
+			isa = PBXGroup;
+			children = (
+				F509272916958DCB00072169 /* MembershipPersonalGym */,
+				F5092723169588C800072169 /* MembershipCreateOwn */,
+				F509271D1695859100072169 /* MemebershipPersonalized */,
+				F50927121695814200072169 /* MemershipStayFit */,
+				F55C7FF21677264B00C817A8 /* MemberPromo */,
+				F55C7FFE16773BEB00C817A8 /* MembershipPurchase */,
+				F55C7FF81677343500C817A8 /* MembershipRate */,
+				F509272F169599BB00072169 /* MemverRateViewController.h */,
+				F5092730169599BB00072169 /* MemverRateViewController.m */,
+				F5092731169599BC00072169 /* MemverRateViewController.xib */,
+			);
+			name = Memberships;
+			sourceTree = "<group>";
+		};
+		F509271016957BED00072169 /* 10MinsWorkout Screens */ = {
+			isa = PBXGroup;
+			children = (
+				F5253884163F9E21004F9195 /* Excersice Intermediate */,
+				F5253895163FB118004F9195 /* Excersice Play */,
+				F50854171678532D0094F314 /* ExcersiceList */,
+				F525389B163FB1E3004F9195 /* ExcersicePost Play */,
+				F5439AA1163A66B3007A534A /* List Workouts */,
+			);
+			name = "10MinsWorkout Screens";
+			sourceTree = "<group>";
+		};
+		F509271116957C2500072169 /* Custom/Selfmade Screens */ = {
+			isa = PBXGroup;
+			children = (
+				F5B29758166CC22400011A7D /* AddCustomWorkoutLandingPage */,
+				F50B05FF16819698006FC355 /* SelectedWorkouts */,
+				F55C7FE7167718EB00C817A8 /* CustomWorkout */,
+				F5C84712166C8BA200B8EDA6 /* Equipments */,
+				F5AE76C016671F1700751B65 /* Focus */,
+				F5F40437166F15AF0019C5EA /* WorkoutCreationCompleted */,
+				F5AF283616709BAE00C18C34 /* WorkoutEdit */,
+				F5F4043E166F26180019C5EA /* WorkoutIntermediate */,
+				F5AE76BE16671A4000751B65 /* WorkoutLists */,
+				F577DBF2166E185E0064B920 /* WorkoutName */,
+				F5AF282B1670903700C18C34 /* WorkoutPlay */,
+			);
+			name = "Custom/Selfmade Screens";
+			sourceTree = "<group>";
+		};
+		F50927121695814200072169 /* MemershipStayFit */ = {
+			isa = PBXGroup;
+			children = (
+				F50927181695829100072169 /* MembershipStayFitViewController.h */,
+				F50927191695829100072169 /* MembershipStayFitViewController.m */,
+				F509271A1695829100072169 /* MembershipStayFitViewController.xib */,
+			);
+			name = MemershipStayFit;
+			sourceTree = "<group>";
+		};
+		F509271D1695859100072169 /* MemebershipPersonalized */ = {
+			isa = PBXGroup;
+			children = (
+				F509271E1695863600072169 /* MembershipPersonliazedViewController.h */,
+				F509271F1695863600072169 /* MembershipPersonliazedViewController.m */,
+				F50927201695863600072169 /* MembershipPersonliazedViewController.xib */,
+			);
+			name = MemebershipPersonalized;
+			sourceTree = "<group>";
+		};
+		F5092723169588C800072169 /* MembershipCreateOwn */ = {
+			isa = PBXGroup;
+			children = (
+				F5092724169588F300072169 /* MembershipCreateOwnViewController.h */,
+				F5092725169588F300072169 /* MembershipCreateOwnViewController.m */,
+				F5092726169588F300072169 /* MembershipCreateOwnViewController.xib */,
+			);
+			name = MembershipCreateOwn;
+			sourceTree = "<group>";
+		};
+		F509272916958DCB00072169 /* MembershipPersonalGym */ = {
+			isa = PBXGroup;
+			children = (
+				F509272A16958EFA00072169 /* MembershipPersonalViewController.h */,
+				F509272B16958EFA00072169 /* MembershipPersonalViewController.m */,
+				F509272C16958EFA00072169 /* MembershipPersonalViewController.xib */,
+			);
+			name = MembershipPersonalGym;
 			sourceTree = "<group>";
 		};
 		F50B05F616819430006FC355 /* carousel */ = {
@@ -1868,27 +2012,6 @@
 				AE7D66B91504D9F4001718B5 /* Fitness4MeAppDelegate.m */,
 			);
 			name = AppDelegate;
-			sourceTree = "<group>";
-		};
-		F5198FFC1665D75E009C3F3D /* Customized Workouts */ = {
-			isa = PBXGroup;
-			children = (
-				F5B29758166CC22400011A7D /* AddCustomWorkoutLandingPage */,
-				F519901A16661235009C3F3D /* CustomCell */,
-				F5AE76BE16671A4000751B65 /* CustomizedWorkoutLists */,
-				F5AF282B1670903700C18C34 /* CustomizedWorkoutPlay */,
-				F55C7FE7167718EB00C817A8 /* CustomWorkout */,
-				F5AF283616709BAE00C18C34 /* CustomWorkoutEdit */,
-				F5F4043E166F26180019C5EA /* CustomWorkoutIntermediate */,
-				F577DBF2166E185E0064B920 /* CustomWorkoutName */,
-				F5C84712166C8BA200B8EDA6 /* Equipments */,
-				F5AE76C016671F1700751B65 /* Focus */,
-				F55C7FF21677264B00C817A8 /* MemberPromo */,
-				F55C7FFE16773BEB00C817A8 /* MembershipPurchase */,
-				F55C7FF81677343500C817A8 /* MembershipRate */,
-				F5F40437166F15AF0019C5EA /* WorkoutCreationCompleted */,
-			);
-			name = "Customized Workouts";
 			sourceTree = "<group>";
 		};
 		F519901A16661235009C3F3D /* CustomCell */ = {
@@ -2260,38 +2383,27 @@
 			name = FocusEntity;
 			sourceTree = "<group>";
 		};
-		F577DBF2166E185E0064B920 /* CustomWorkoutName */ = {
+		F577DBF2166E185E0064B920 /* WorkoutName */ = {
 			isa = PBXGroup;
 			children = (
 				F577DBF3166E18B70064B920 /* NameViewController.h */,
 				F577DBF4166E18B70064B920 /* NameViewController.m */,
 				F50853FE167844890094F314 /* NameViewController.xib */,
 			);
-			name = CustomWorkoutName;
+			name = WorkoutName;
 			sourceTree = "<group>";
 		};
 		F5A60433162D2CFF00B2ED1D /* UIIPhone */ = {
 			isa = PBXGroup;
 			children = (
-				F5085416167853040094F314 /* SelfmadeWorkout */,
-				F5198FFC1665D75E009C3F3D /* Customized Workouts */,
-				F5A60434162D2D1F00B2ED1D /* About Us */,
-				F5253884163F9E21004F9195 /* Excersice Intermediate */,
-				F5253895163FB118004F9195 /* Excersice Play */,
-				F525389B163FB1E3004F9195 /* ExcersicePost Play */,
-				F52538A2163FB4AA004F9195 /* Feedback */,
-				F525389C163FB262004F9195 /* HintsAndTips */,
+				F509271016957BED00072169 /* 10MinsWorkout Screens */,
+				F509270C16957A0F00072169 /* AboutsUs/Privacy */,
+				F509270E16957AB500072169 /* Custom Components */,
+				F509271116957C2500072169 /* Custom/Selfmade Screens */,
 				F5439A9C163A5D88007A534A /* Home */,
-				F5A6043E162D304100B2ED1D /* Initial App Launch */,
-				F52538A1163FB3E3004F9195 /* Landing Page */,
-				F5439AA1163A66B3007A534A /* List Workouts */,
-				F5A60436162D2D3500B2ED1D /* Login */,
-				F525389F163FB35A004F9195 /* Rating */,
-				F5A60439162D2D4500B2ED1D /* Settings */,
-				F5A60435162D2D3200B2ED1D /* SignUp */,
-				F5A60438162D2D4300B2ED1D /* Social Network */,
-				F5A60437162D2D3800B2ED1D /* Terms */,
-				F52538A0163FB3B8004F9195 /* Thanks */,
+				F509270F16957AEC00072169 /* Memberships */,
+				F509270D16957A3E00072169 /* Rating/Feedback */,
+				F509270B169579D700072169 /* SignUp/Settings */,
 			);
 			name = UIIPhone;
 			sourceTree = "<group>";
@@ -2402,14 +2514,14 @@
 			name = "Initial App Launch";
 			sourceTree = "<group>";
 		};
-		F5AE76BE16671A4000751B65 /* CustomizedWorkoutLists */ = {
+		F5AE76BE16671A4000751B65 /* WorkoutLists */ = {
 			isa = PBXGroup;
 			children = (
 				F519902216661800009C3F3D /* CustomWorkoutsViewController.h */,
 				F519902316661800009C3F3D /* CustomWorkoutsViewController.m */,
 				F519902916661A0E009C3F3D /* CustomWorkoutsViewController.xib */,
 			);
-			name = CustomizedWorkoutLists;
+			name = WorkoutLists;
 			sourceTree = "<group>";
 		};
 		F5AE76C016671F1700751B65 /* Focus */ = {
@@ -2422,24 +2534,24 @@
 			name = Focus;
 			sourceTree = "<group>";
 		};
-		F5AF282B1670903700C18C34 /* CustomizedWorkoutPlay */ = {
+		F5AF282B1670903700C18C34 /* WorkoutPlay */ = {
 			isa = PBXGroup;
 			children = (
 				F5AF282D1670906C00C18C34 /* CustomizedWorkoutPlayViewController.h */,
 				F5AF282E1670906C00C18C34 /* CustomizedWorkoutPlayViewController.m */,
 				F5AF28341670938900C18C34 /* CustomizedWorkoutPlayViewController.xib */,
 			);
-			name = CustomizedWorkoutPlay;
+			name = WorkoutPlay;
 			sourceTree = "<group>";
 		};
-		F5AF283616709BAE00C18C34 /* CustomWorkoutEdit */ = {
+		F5AF283616709BAE00C18C34 /* WorkoutEdit */ = {
 			isa = PBXGroup;
 			children = (
 				F5AF283816709BDF00C18C34 /* CustomWorkoutEditViewController.h */,
 				F5AF283916709BDF00C18C34 /* CustomWorkoutEditViewController.m */,
 				F5085403167844AC0094F314 /* CustomWorkoutEditViewController.xib */,
 			);
-			name = CustomWorkoutEdit;
+			name = WorkoutEdit;
 			sourceTree = "<group>";
 		};
 		F5B29758166CC22400011A7D /* AddCustomWorkoutLandingPage */ = {
@@ -2509,14 +2621,14 @@
 			name = WorkoutCreationCompleted;
 			sourceTree = "<group>";
 		};
-		F5F4043E166F26180019C5EA /* CustomWorkoutIntermediate */ = {
+		F5F4043E166F26180019C5EA /* WorkoutIntermediate */ = {
 			isa = PBXGroup;
 			children = (
 				F5F4043F166F26800019C5EA /* CustomWorkoutIntermediateViewController.h */,
 				F5F40440166F26800019C5EA /* CustomWorkoutIntermediateViewController.m */,
 				F5A9998F1675E77D00E238D9 /* CustomWorkoutIntermediateViewController.xib */,
 			);
-			name = CustomWorkoutIntermediate;
+			name = WorkoutIntermediate;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2812,6 +2924,11 @@
 				F508541C167856A90094F314 /* ExcersiceListViewController.xib in Resources */,
 				F554A2631679E4D700E268B5 /* next_btn_with_text.png in Resources */,
 				F50B061416819FF2006FC355 /* CarouselViewDemoViewController.xib in Resources */,
+				F509271C1695829100072169 /* MembershipStayFitViewController.xib in Resources */,
+				F50927221695863600072169 /* MembershipPersonliazedViewController.xib in Resources */,
+				F5092728169588F300072169 /* MembershipCreateOwnViewController.xib in Resources */,
+				F509272E16958EFA00072169 /* MembershipPersonalViewController.xib in Resources */,
+				F5092733169599BC00072169 /* MemverRateViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2905,6 +3022,11 @@
 				F5D7691C167F0C4F003C079A /* CustomFavourites.m in Sources */,
 				F5D76920167F0CAB003C079A /* Favourite.m in Sources */,
 				F50B05FB1681951C006FC355 /* CarouselViewCell.m in Sources */,
+				F509271B1695829100072169 /* MembershipStayFitViewController.m in Sources */,
+				F50927211695863600072169 /* MembershipPersonliazedViewController.m in Sources */,
+				F5092727169588F300072169 /* MembershipCreateOwnViewController.m in Sources */,
+				F509272D16958EFA00072169 /* MembershipPersonalViewController.m in Sources */,
+				F5092732169599BC00072169 /* MemverRateViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
