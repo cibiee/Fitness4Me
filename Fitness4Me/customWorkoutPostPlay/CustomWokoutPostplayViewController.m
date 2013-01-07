@@ -48,6 +48,7 @@
     
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     NSString *hasMadeFullPurchase= [userinfo valueForKey:@"hasMadeFullPurchase"];
+    
     if ([hasMadeFullPurchase isEqualToString:@"true"]) {
               
         ShareFitness4MeViewController *viewController;

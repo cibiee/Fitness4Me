@@ -23,7 +23,7 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.dataSourceArray = [[NSMutableArray alloc]init];
-        
+        userinfo=[NSUserDefaults standardUserDefaults];
     }
     return self;
 }
@@ -56,7 +56,8 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
     UIBarButtonItem *nextBtn = [[UIBarButtonItem alloc] initWithCustomView:nextButton];
     self.navigationBar.rightBarButtonItem = nextBtn;
     
-    
+     
+     
     
 	[_removeSelectedButton setEnabled:NO];
 	
@@ -180,6 +181,12 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
                 [_carouselView insertColumnsAtIndexes:arrays withColumnAnimation:_animationSegmentedControl.selectedSegmentIndex];
             }
             break;
+            
+            
+        case 2:
+            
+            [self removeSelectedColumn];
+            break;
         default:
             break;
     }
@@ -206,6 +213,8 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
         }
     }
     
+    [userinfo setObject:str forKey:@"SelectedWorkouts"];
+   
     NameViewController *viewController =[[NameViewController alloc]initWithNibName:@"NameViewController" bundle:nil];
     viewController.workout= [[Workout alloc]init];
     viewController.workout =nil;
@@ -233,7 +242,30 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
         [_carouselView insertColumnsAtIndexes:arrays withColumnAnimation:_animationSegmentedControl.selectedSegmentIndex];
 	    [_removeSelectedButton setEnabled:NO];
         
+  
+    
+    
+    NSString *str= [[NSString alloc]init];
+    for (ExcersiceList *excerlist in self.dataSourceArray) {
+        
+        if ([str length]==0) {
+            
+            str =[str stringByAppendingString:[excerlist excersiceID]];
+           
+        }
+        else{
+            str=[str stringByAppendingString:@","];
+            str =[str stringByAppendingString:[excerlist excersiceID]];
+             
+        }
     }
+    
+    [userinfo setObject:str forKey:@"SelectedWorkouts"];
+    
+     NSString *selectedWorkouts = [userinfo objectForKey:@"SelectedWorkouts"];
+        NSLog(selectedWorkouts);
+          }
+    
 }
 
 - (IBAction)removeMultipleColumns {

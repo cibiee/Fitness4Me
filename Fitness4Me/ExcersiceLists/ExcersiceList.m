@@ -9,7 +9,15 @@
 #import "ExcersiceList.h"
 
 @implementation ExcersiceList
-
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        self.isChecked =NO;
+    }
+    
+    return self;
+}
 
 
 @end

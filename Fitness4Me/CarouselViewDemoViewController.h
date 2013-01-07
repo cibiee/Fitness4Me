@@ -16,6 +16,7 @@
 	IBOutlet UISegmentedControl *_animationSegmentedControl;
 	IBOutlet UIButton *_removeSelectedButton;
      Workout *workout;
+    NSUserDefaults *userinfo;
 }
 @property (weak, nonatomic) IBOutlet UISegmentedControl *moveSegmentControl;
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigationBar;

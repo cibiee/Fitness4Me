@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Workout.h"
+#import "ShareFitness4MeViewController.h"
+#import "CustomWorkoutsViewController.h"
 
 @interface MemverRateViewController : UIViewController
+
+@property (retain,nonatomic)Workout *workout;
+@property (retain,nonatomic)NSString *navigateTo;
+- (IBAction)onClickNotYet:(id)sender;
+- (IBAction)onClickShowYouTube:(id)sender;
+- (IBAction)onClickTellMeMore:(id)sender;
 
 @end

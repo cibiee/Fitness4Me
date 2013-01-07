@@ -1858,9 +1858,9 @@
 		F509270E16957AB500072169 /* Custom Components */ = {
 			isa = PBXGroup;
 			children = (
-				F508545E1678982E0094F314 /* customExcersiceListCell */,
-				F519901A16661235009C3F3D /* CustomCell */,
 				F50B05F616819430006FC355 /* carousel */,
+				F519901A16661235009C3F3D /* CustomCell */,
+				F508545E1678982E0094F314 /* customExcersiceListCell */,
 			);
 			name = "Custom Components";
 			sourceTree = "<group>";
@@ -1868,16 +1868,14 @@
 		F509270F16957AEC00072169 /* Memberships */ = {
 			isa = PBXGroup;
 			children = (
-				F509272916958DCB00072169 /* MembershipPersonalGym */,
-				F5092723169588C800072169 /* MembershipCreateOwn */,
-				F509271D1695859100072169 /* MemebershipPersonalized */,
-				F50927121695814200072169 /* MemershipStayFit */,
 				F55C7FF21677264B00C817A8 /* MemberPromo */,
+				F5B1C919169A9BB600148477 /* MemberRate */,
+				F5092723169588C800072169 /* MembershipCreateOwn */,
+				F509272916958DCB00072169 /* MembershipPersonalGym */,
 				F55C7FFE16773BEB00C817A8 /* MembershipPurchase */,
 				F55C7FF81677343500C817A8 /* MembershipRate */,
-				F509272F169599BB00072169 /* MemverRateViewController.h */,
-				F5092730169599BB00072169 /* MemverRateViewController.m */,
-				F5092731169599BC00072169 /* MemverRateViewController.xib */,
+				F509271D1695859100072169 /* MemebershipPersonalized */,
+				F50927121695814200072169 /* MemershipStayFit */,
 			);
 			name = Memberships;
 			sourceTree = "<group>";
@@ -1887,7 +1885,6 @@
 			children = (
 				F5253884163F9E21004F9195 /* Excersice Intermediate */,
 				F5253895163FB118004F9195 /* Excersice Play */,
-				F50854171678532D0094F314 /* ExcersiceList */,
 				F525389B163FB1E3004F9195 /* ExcersicePost Play */,
 				F5439AA1163A66B3007A534A /* List Workouts */,
 			);
@@ -1898,10 +1895,11 @@
 			isa = PBXGroup;
 			children = (
 				F5B29758166CC22400011A7D /* AddCustomWorkoutLandingPage */,
-				F50B05FF16819698006FC355 /* SelectedWorkouts */,
 				F55C7FE7167718EB00C817A8 /* CustomWorkout */,
 				F5C84712166C8BA200B8EDA6 /* Equipments */,
+				F50854171678532D0094F314 /* ExcersiceList */,
 				F5AE76C016671F1700751B65 /* Focus */,
+				F50B05FF16819698006FC355 /* SelectedWorkouts */,
 				F5F40437166F15AF0019C5EA /* WorkoutCreationCompleted */,
 				F5AF283616709BAE00C18C34 /* WorkoutEdit */,
 				F5F4043E166F26180019C5EA /* WorkoutIntermediate */,
@@ -2552,6 +2550,16 @@
 				F5085403167844AC0094F314 /* CustomWorkoutEditViewController.xib */,
 			);
 			name = WorkoutEdit;
+			sourceTree = "<group>";
+		};
+		F5B1C919169A9BB600148477 /* MemberRate */ = {
+			isa = PBXGroup;
+			children = (
+				F509272F169599BB00072169 /* MemverRateViewController.h */,
+				F5092730169599BB00072169 /* MemverRateViewController.m */,
+				F5092731169599BC00072169 /* MemverRateViewController.xib */,
+			);
+			name = MemberRate;
 			sourceTree = "<group>";
 		};
 		F5B29758166CC22400011A7D /* AddCustomWorkoutLandingPage */ = {

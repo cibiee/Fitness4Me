@@ -16,7 +16,7 @@
 {
      ASINetworkQueue  *myQueue;
      NSString *dataPath;
-    
+     NSUserDefaults *userinfo;
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *durationLabel;

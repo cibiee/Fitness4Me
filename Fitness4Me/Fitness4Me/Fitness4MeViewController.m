@@ -240,7 +240,7 @@
    [viewController setWorkoutType:@"Custom"];
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     [userinfo setObject:@"Custom" forKey:@"workoutType"];
-
+[userinfo setObject:@"" forKey:@"SelectedWorkouts"];
     [self.navigationController pushViewController:viewController animated:YES];
     
     [viewController release];
@@ -259,7 +259,7 @@
     }
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     [userinfo setObject:@"SelfMade" forKey:@"workoutType"];
-
+[userinfo setObject:@"" forKey:@"SelectedWorkouts"];
     [viewController setWorkoutType:@"SelfMade"];
     [self.navigationController pushViewController:viewController animated:YES];
     

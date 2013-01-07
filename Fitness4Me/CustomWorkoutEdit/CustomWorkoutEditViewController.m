@@ -10,6 +10,7 @@
 #import "CustomWorkoutAddViewController.h"
 #import "Favourite.h"
 #import "CustomFavourites.h"
+#import "ExcersiceListViewController.h"
 
 @interface CustomWorkoutEditViewController ()
 @property NSMutableArray *groupedExcersice;
@@ -326,10 +327,19 @@
     Workout *workout = [[Workout alloc]init];
     workout = [array objectAtIndex:0];
     if ([self.workoutType isEqualToString:@"SelfMade"]) {
-        FocusViewController *viewController =[[FocusViewController alloc]initWithNibName:@"FocusViewController" bundle:nil];
-        viewController.workout =[[Workout alloc]init];
-        viewController .workout=workout;
+        ExcersiceListViewController *viewController;
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+            viewController =[[ExcersiceListViewController alloc]initWithNibName:@"ExcersiceListViewController" bundle:nil];
+        }else {
+            viewController =[[ExcersiceListViewController alloc]initWithNibName:@"ExcersiceListViewController" bundle:nil];
+        }
+        [viewController setFocusList:[workout Focus]];
+        [viewController setEquipments:[workout Props]];
         [self.navigationController pushViewController:viewController animated:YES];
+//        FocusViewController *viewController =[[FocusViewController alloc]initWithNibName:@"FocusViewController" bundle:nil];
+//        viewController.workout =[[Workout alloc]init];
+//        viewController .workout=workout;
+//        [self.navigationController pushViewController:viewController animated:YES];
     }
     else
     {

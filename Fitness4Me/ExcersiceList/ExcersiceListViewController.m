@@ -25,6 +25,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+         userinfo=[NSUserDefaults standardUserDefaults];
     }
     return self;
 }
@@ -36,7 +37,7 @@
     self.totalDuration=0;
     [self.totalVideoCountLabel setText:[NSString stringWithFormat:@"Number of excersices [%i]",self.videoCount]];
     [self.durationLabel setText:[NSString stringWithFormat:@"Total Time [%i]",self.totalDuration]];
-
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
@@ -53,7 +54,7 @@
     [self.excersiceListTableview.layer setBorderWidth:2];
     [self setBackground];
     [self.activityIndicator startAnimating];
-    [NSThread detachNewThreadSelector:@selector(listExcersice) toTarget:self withObject:nil];
+    
 }
 
 -(void)setBackground{
@@ -71,7 +72,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
+    self.excersiceList = [[NSMutableArray alloc]init];
+    [NSThread detachNewThreadSelector:@selector(listExcersice) toTarget:self withObject:nil];
 }
 
 
@@ -84,6 +86,8 @@
         if ([responseString length]>0) {
             [self parseCustomWorkoutList:responseString];
             if ([self.excersiceList count]>0) {
+                
+                 self.excersiceList = [self prepareData:self.excersiceList];
                 [self prepareTableView];
                 
                 [self.excersiceListTableview reloadData];
@@ -124,7 +128,34 @@
     
 }
 
-
+-(NSMutableArray*)prepareData:(NSMutableArray *)excersicelist {
+    
+     NSString *selectedWorkouts = [userinfo objectForKey:@"SelectedWorkouts"];
+     NSArray* foo = [selectedWorkouts componentsSeparatedByString: @","];
+     self.totalDuration=0;
+     self.videoCount=0;
+    
+     NSMutableArray *newfocusArray=[[NSMutableArray alloc]init];
+     newfocusArray=excersicelist;
+     for (int k=0; k<foo.count; k++) {
+        
+        for (int i=0; i<excersicelist.count; i++) {
+            
+            if([[[excersicelist objectAtIndex:i] excersiceID] isEqualToString:[foo objectAtIndex:k]] ){
+                [[newfocusArray objectAtIndex:i] setIsChecked:YES];
+                self.totalDuration=self.totalDuration+ [[[self.excersiceList objectAtIndex:i] time]intValue];
+                self.videoCount++;
+                break;
+            }
+            
+            
+        }
+        
+    }
+     [self.totalVideoCountLabel setText:[NSString stringWithFormat:@"Number of excersices [%i]",self.videoCount]];
+     [self.durationLabel setText:[NSString stringWithFormat:@"Total Time [%i]",self.totalDuration]];
+    return newfocusArray;
+}
 
 
 
@@ -135,8 +166,11 @@
     for(int i=0;i<[self.excersiceList count];i++)
     {
         
+        
         NSArray *arrworkouts = [NSArray arrayWithObjects:[self.excersiceList objectAtIndex:i], nil];
+        
         NSDictionary *workouts = [NSDictionary dictionaryWithObject:arrworkouts forKey:@"workouts"];
+
         [self.groupedExcersice addObject:workouts];
         
     }
@@ -192,8 +226,8 @@
     cell.DurationLabel.text = [[workout time] stringByAppendingString:@" minutes."];
     cell.focusLabel.text=[workout focus];
     cell.ExcersiceImage.image =[self imageForRowAtIndexPath:workout inIndexPath:indexPath];
-     self.focus=[array objectAtIndex:indexPath.row];
-    if (self.focus.isChecked) {
+    // self.focus=[array objectAtIndex:indexPath.row];
+    if (workout.isChecked) {
         cell.accessoryType=UITableViewCellAccessoryCheckmark;
     }
     else{
@@ -254,7 +288,7 @@
     if ([[tableView cellForRowAtIndexPath:indexPath] accessoryType] == UITableViewCellAccessoryCheckmark)
     {
         [[tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryNone];
-        [[self.excersiceList objectAtIndex:indexPath.row] setIsChecked:NO];
+        [[self.excersiceList objectAtIndex:indexPath.section] setIsChecked:NO];
          self.videoCount--;
          self.totalDuration=self.totalDuration- [[[self.excersiceList objectAtIndex:indexPath.section] time]intValue];
     }
@@ -266,24 +300,40 @@
         self.videoCount++;
         self.totalDuration=self.totalDuration+ [[[self.excersiceList objectAtIndex:indexPath.section] time]intValue];
     }
+    [self performSelector:@selector(deselect:) withObject:nil afterDelay:0.5f];
     
     [self.totalVideoCountLabel setText:[NSString stringWithFormat:@"Number of excersices [%i]",self.videoCount]];
     [self.durationLabel setText:[NSString stringWithFormat:@"Total Time [%i]",self.totalDuration]];
 
 }
 
+- (void) deselect: (id) sender {
+    [self.excersiceListTableview deselectRowAtIndexPath:[self.excersiceListTableview indexPathForSelectedRow] animated:YES];
+}
+
 
 -(IBAction)onClickNext:(id)sender
 {
-    
-    
-   
+    NSString *str= [[NSString alloc]init];
+    str =@"";
     NSMutableArray *newWorkoutArray =[[NSMutableArray alloc]init];
     for (ExcersiceList *excersice in self.excersiceList) {
         if ([excersice isChecked]) {
+            if ([str length]==0) {
+                str =[str stringByAppendingString:[excersice excersiceID]];
+                
+            }
+            else{
+                str=[str stringByAppendingString:@","];
+                str =[str stringByAppendingString:[excersice excersiceID]];
+                
+            }
             [newWorkoutArray addObject:excersice];
         }
     }
+    
+    
+    [userinfo setObject:str forKey:@"SelectedWorkouts"];
     if ([newWorkoutArray count]>0) {
     CarouselViewDemoViewController *viewController;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
@@ -311,6 +361,9 @@
     [self setExcersiceListTableview:nil];
     [self setDurationLabel:nil];
     [self setTotalVideoCountLabel:nil];
+    [self setExcersiceList:nil];
+    [self setTotalDuration:nil];
+    [self setVideoCount:nil];
     [super viewDidUnload];
 }
 @end
