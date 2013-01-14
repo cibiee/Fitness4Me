@@ -79,27 +79,21 @@ static float totalDuration=0;
         
     }
     else {
-        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
-        {
-            
+          if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
             bannerView_ = [[GADBannerView alloc]
                            initWithFrame:CGRectMake(0,-7,
                                                     self.view.frame.size.width-70,
                                                     50)];
-            
-        }
-        else {
+        }else {
             bannerView_ = [[GADBannerView alloc]
                            initWithFrame:CGRectMake(0,0,
                                                     self.view.frame.size.height-70,
                                                     90)];
-            
         }
         
         bannerView_.adUnitID = @"a1506940e575b91";
         bannerView_.rootViewController = self;
         [self.view addSubview:bannerView_];
-        
         // Initiate a generic request to load it with an ad.
         [bannerView_ loadRequest:[GADRequest request]];
     }
@@ -133,25 +127,20 @@ static float totalDuration=0;
         play.repeatIntervel =[[[arr objectAtIndex:i]PosterRepeatCount]intValue];
         play.videoName =[[arr objectAtIndex:i] PosterName];
         if ([play.videoName length]>0) {
-            
             [aras addObject:play];
         }
-        
         
         play =[[ExcersicePlay alloc]init];
         play.repeatIntervel =[[[arr objectAtIndex:i]RepeatCount]intValue];
         play.videoName =[[arr objectAtIndex:i] Name];
         if ([play.videoName length]>0) {
-            
             [aras addObject:play];
         }
        
-        
         play =[[ExcersicePlay alloc]init];
         play.repeatIntervel =[[[arr objectAtIndex:i]StopRep] intValue];
         play.videoName =[[arr objectAtIndex:i] StopName];
         if ([play.videoName length]>0) {
-            
             [aras addObject:play];
         }
                 
@@ -159,7 +148,6 @@ static float totalDuration=0;
         play.repeatIntervel =[[[arr objectAtIndex:i]OthersidePosterRep]intValue];
         play.videoName =[[arr objectAtIndex:i] OthersidePosterName];
         if ([play.videoName length]>0) {
-            
             [aras addObject:play];
         }
                 
@@ -167,42 +155,30 @@ static float totalDuration=0;
         play.repeatIntervel =[[[arr objectAtIndex:i]OthersideRep]intValue];
         play.videoName =[[arr objectAtIndex:i] OthersideName];
         if ([play.videoName length]>0) {
-            
             [aras addObject:play];
         }
-        
         
         play =[[ExcersicePlay alloc]init];
         play.repeatIntervel =1;
         play.videoName =[[arr objectAtIndex:i] RecoveryVideoName];
         if ([play.videoName length]>0) {
-            
             [aras addObject:play];
         }
-        
-       
         
         play =[[ExcersicePlay alloc]init];
         play.repeatIntervel =[[[arr objectAtIndex:i]NextRep]intValue];
         play.videoName =[[arr objectAtIndex:i] NextName];
         if ([play.videoName length]>0) {
-            
             [aras addObject:play];
         }
-        
-        
         
         play =[[ExcersicePlay alloc]init];
         play.repeatIntervel =[[[arr objectAtIndex:i]CompletedRep]intValue];
         play.videoName =[[arr objectAtIndex:i] CompletedName];
         if ([play.videoName length]>0) {
-            
             [aras addObject:play];
         }
-        
-    
     }
-    
 }
 
 

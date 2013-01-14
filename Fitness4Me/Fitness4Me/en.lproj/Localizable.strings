@@ -15,34 +15,29 @@
 "UsernameExits"     ="Username already exists";
 "ExitMsg"           ="You are about to exit fitness4me. Are you sure?";
 "fullDownloadMsg"   ="Download all remaining workouts.Depending on your internet connection this might take several minutes";
-
 "usernameAlphanumeric"="Username should be alphanumeric and cannot have space";
-
-
 "PasswordAlphanumeric"="Password should be alphanumeric and cannot have space";
-
-
 "workoutsthroughsettingsmsg"="You can choose to download all your remaining workouts through the settings";
-
 "nullfeedbackmsg"=" Please enter a feedback.";
 "exitVideo"   ="You are about to exit the video. Are you sure?";
 "VideoUnavailable"   ="Workout video unavailable.Download videos while internet is available.";
 "resumeDownload"   ="We are trying to download your workout,but  your internet connections seems to be slow.We recommend that you cancel the download and resume when you have faster internet.";
-
 "validateemailUsername"="Email/Username is not valid";
-
-
 "mandatory"="All fields are mandatory";
-
 "invalidaMail"="email is not valid";
-
-
-
 "slowdata"="Response not recieved from server due to  slow intenet connection.Please try again when you have a  better internet speed";
 "requestError"="Request error occurred.Our support team will be notified about this error. Please try again later.";
-
 "advancedLevelMessage" ="Please wait while I am downloading your 5 free workouts on advanced level.Depending on the quality of your internet connection, this may take several minutes";
-
 "beginnerLevelMessage" ="Please wait while I am downloading your 5 free workouts on beginner level.Depending on the quality of your internet connection, this may take several minutes";
-
 "experLevelMessage" ="Please wait while I am downloading your 5 free workouts on expert level.Depending on the quality of your internet connection, this may take several minutes";
+/*-------------------------------------------------------------------------------------------------------------------------*/
+
+"NameNull" ="Please Provide a Name for the workout.";
+"numberOfExcersice"= "Number of Excersice";
+"totalTime"= "Total Time";
+"Done"= "Done";
+"premiumWorkout" ="Become member to create more workouts!";
+"deleteWorkout"="Are You sure you want to delete this workut?";
+"deletedSucessfully"="Deleted Sucessfully";
+"creationCustomizedCompleteMsg"="Congratulations!You just designed  the %@ of your five free customized workouts";
+"editMessage"="Save changes and start workout?";

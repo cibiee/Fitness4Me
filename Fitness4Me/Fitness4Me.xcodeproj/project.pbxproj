@@ -201,7 +201,6 @@
 		F508540E167844E10094F314 /* MemberPromoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5085410167844E10094F314 /* MemberPromoViewController.xib */; };
 		F5085412167844ED0094F314 /* MembershipRateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5085414167844ED0094F314 /* MembershipRateViewController.xib */; };
 		F508541B167856A90094F314 /* ExcersiceListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5085419167856A90094F314 /* ExcersiceListViewController.m */; };
-		F508541C167856A90094F314 /* ExcersiceListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F508541A167856A90094F314 /* ExcersiceListViewController.xib */; };
 		F50854201678628F0094F314 /* ExcersiceList.m in Sources */ = {isa = PBXBuildFile; fileRef = F508541F1678628F0094F314 /* ExcersiceList.m */; };
 		F5085422167885C50094F314 /* back_btn_with_text.png in Resources */ = {isa = PBXBuildFile; fileRef = F5085424167885C50094F314 /* back_btn_with_text.png */; };
 		F5085425167885C90094F314 /* back_btnBlack.png in Resources */ = {isa = PBXBuildFile; fileRef = F5085427167885C90094F314 /* back_btnBlack.png */; };
@@ -217,19 +216,14 @@
 		F508544F167886030094F314 /* button_half_width.png in Resources */ = {isa = PBXBuildFile; fileRef = F5085451167886030094F314 /* button_half_width.png */; };
 		F5085461167898610094F314 /* CustomExcersiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5085460167898610094F314 /* CustomExcersiceCell.m */; };
 		F509271B1695829100072169 /* MembershipStayFitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F50927191695829100072169 /* MembershipStayFitViewController.m */; };
-		F509271C1695829100072169 /* MembershipStayFitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F509271A1695829100072169 /* MembershipStayFitViewController.xib */; };
 		F50927211695863600072169 /* MembershipPersonliazedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F509271F1695863600072169 /* MembershipPersonliazedViewController.m */; };
-		F50927221695863600072169 /* MembershipPersonliazedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F50927201695863600072169 /* MembershipPersonliazedViewController.xib */; };
 		F5092727169588F300072169 /* MembershipCreateOwnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5092725169588F300072169 /* MembershipCreateOwnViewController.m */; };
-		F5092728169588F300072169 /* MembershipCreateOwnViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5092726169588F300072169 /* MembershipCreateOwnViewController.xib */; };
 		F509272D16958EFA00072169 /* MembershipPersonalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F509272B16958EFA00072169 /* MembershipPersonalViewController.m */; };
 		F509272E16958EFA00072169 /* MembershipPersonalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F509272C16958EFA00072169 /* MembershipPersonalViewController.xib */; };
 		F5092732169599BC00072169 /* MemverRateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5092730169599BB00072169 /* MemverRateViewController.m */; };
-		F5092733169599BC00072169 /* MemverRateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5092731169599BC00072169 /* MemverRateViewController.xib */; };
 		F50B05FB1681951C006FC355 /* CarouselViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F50B05FA1681951C006FC355 /* CarouselViewCell.m */; };
 		F50B060D16819EC7006FC355 /* CarouselViewDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F50B060A16819BA3006FC355 /* CarouselViewDemoViewController.m */; };
 		F50B060E16819ED8006FC355 /* CarouselView.m in Sources */ = {isa = PBXBuildFile; fileRef = F50B05FE16819556006FC355 /* CarouselView.m */; };
-		F50B061416819FF2006FC355 /* CarouselViewDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F50B061316819FF2006FC355 /* CarouselViewDemoViewController.xib */; };
 		F512B7581639093500B922E1 /* TermsOfUse_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F512B75A1639093500B922E1 /* TermsOfUse_iPad.xib */; };
 		F512B761163927E700B922E1 /* UserLoginViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F512B763163927E700B922E1 /* UserLoginViewController_iPad.xib */; };
 		F51404B81664783C00B0B386 /* icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = F51404B41664783C00B0B386 /* icon-72.png */; };
@@ -288,8 +282,14 @@
 		F55C7FF61677267000C817A8 /* MemberPromoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F55C7FF41677267000C817A8 /* MemberPromoViewController.m */; };
 		F55C7FFC1677357200C817A8 /* MembershipRateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F55C7FFA1677357200C817A8 /* MembershipRateViewController.m */; };
 		F55C800216773C1E00C817A8 /* MembershipPurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F55C800016773C1E00C817A8 /* MembershipPurchaseViewController.m */; };
-		F55C800316773C1E00C817A8 /* MembershipPurchaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F55C800116773C1E00C817A8 /* MembershipPurchaseViewController.xib */; };
 		F55C80091677498C00C817A8 /* CustomWokoutPostplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F55C80071677498C00C817A8 /* CustomWokoutPostplayViewController.m */; };
+		F56075E9169FD88A001C770B /* ExcersiceListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F56075EB169FD88A001C770B /* ExcersiceListViewController.xib */; };
+		F56075EE169FE392001C770B /* CarouselViewDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F56075F0169FE392001C770B /* CarouselViewDemoViewController.xib */; };
+		F56075F216A00A5F001C770B /* MemverRateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F56075F416A00A5F001C770B /* MemverRateViewController.xib */; };
+		F56075F616A00A71001C770B /* MembershipCreateOwnViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F56075F816A00A71001C770B /* MembershipCreateOwnViewController.xib */; };
+		F56075FA16A00A85001C770B /* MembershipPurchaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F56075FC16A00A85001C770B /* MembershipPurchaseViewController.xib */; };
+		F56075FE16A00A95001C770B /* MembershipPersonliazedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F560760016A00A95001C770B /* MembershipPersonliazedViewController.xib */; };
+		F560760216A00AB0001C770B /* MembershipStayFitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F560760416A00AB0001C770B /* MembershipStayFitViewController.xib */; };
 		F577DBB8166DD71F0064B920 /* FocusDB.m in Sources */ = {isa = PBXBuildFile; fileRef = F577DBB7166DD71F0064B920 /* FocusDB.m */; };
 		F577DBBD166DD8060064B920 /* Focus.m in Sources */ = {isa = PBXBuildFile; fileRef = F577DBBC166DD8060064B920 /* Focus.m */; };
 		F577DBF1166E06750064B920 /* FocusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F577DBED166E05C80064B920 /* FocusViewController.m */; };
@@ -524,7 +524,6 @@
 		0B608E5015D18494002B2A56 /* Fitness4MeUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Fitness4MeUtils.m; path = Utils/Fitness4MeUtils.m; sourceTree = "<group>"; };
 		0B659B441536D7EF006558C2 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		0B65F9181601AA1100AAA88B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/InitialAppLaunchViewController.xib; sourceTree = "<group>"; };
-		0B65F91C1601AC6100AAA88B /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/Fitness4MeViewController.xib; sourceTree = "<group>"; };
 		0B65F91E1601B1F000AAA88B /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/SettingsViewController.xib; sourceTree = "<group>"; };
 		0B65F91F1601B23600AAA88B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SettingsViewController.xib; sourceTree = "<group>"; };
 		0B65F9211601B5C200AAA88B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FeedbackViewController.xib; sourceTree = "<group>"; };
@@ -690,7 +689,6 @@
 		F5066EA6165B928A00DF8B6B /* termsOfUseDeiPad.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = termsOfUseDeiPad.html; sourceTree = "<group>"; };
 		F5066EA7165B928A00DF8B6B /* termsofUseiPad.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = termsofUseiPad.html; sourceTree = "<group>"; };
 		F50853F1167844600094F314 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/WorkoutCreationCompletedViewController.xib; sourceTree = "<group>"; };
-		F50853F3167844630094F314 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/WorkoutCreationCompletedViewController.xib; sourceTree = "<group>"; };
 		F50853F51678446E0094F314 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FocusViewController.xib; sourceTree = "<group>"; };
 		F50853F7167844730094F314 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/FocusViewController.xib; sourceTree = "<group>"; };
 		F50853F91678447B0094F314 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/EquipmentViewController.xib; sourceTree = "<group>"; };
@@ -701,16 +699,13 @@
 		F5085404167844AF0094F314 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/CustomWorkoutEditViewController.xib; sourceTree = "<group>"; };
 		F5085405167844BB0094F314 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/CustomWorkoutsViewController.xib; sourceTree = "<group>"; };
 		F5085407167844C60094F314 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CustomWorkoutAddViewController.xib; sourceTree = "<group>"; };
-		F5085409167844CB0094F314 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/CustomWorkoutAddViewController.xib; sourceTree = "<group>"; };
 		F508540B167844D10094F314 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CustomWokoutPostplayViewController.xib; sourceTree = "<group>"; };
-		F508540D167844D90094F314 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/CustomWokoutPostplayViewController.xib; sourceTree = "<group>"; };
 		F508540F167844E10094F314 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MemberPromoViewController.xib; sourceTree = "<group>"; };
 		F5085411167844E50094F314 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/MemberPromoViewController.xib; sourceTree = "<group>"; };
 		F5085413167844ED0094F314 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MembershipRateViewController.xib; sourceTree = "<group>"; };
 		F5085415167845330094F314 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/MembershipRateViewController.xib; sourceTree = "<group>"; };
 		F5085418167856A90094F314 /* ExcersiceListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExcersiceListViewController.h; path = ExcersiceList/ExcersiceListViewController.h; sourceTree = "<group>"; };
 		F5085419167856A90094F314 /* ExcersiceListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExcersiceListViewController.m; path = ExcersiceList/ExcersiceListViewController.m; sourceTree = "<group>"; };
-		F508541A167856A90094F314 /* ExcersiceListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ExcersiceListViewController.xib; path = ExcersiceList/ExcersiceListViewController.xib; sourceTree = "<group>"; };
 		F508541E1678628F0094F314 /* ExcersiceList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExcersiceList.h; path = ExcersiceLists/ExcersiceList.h; sourceTree = "<group>"; };
 		F508541F1678628F0094F314 /* ExcersiceList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExcersiceList.m; path = ExcersiceLists/ExcersiceList.m; sourceTree = "<group>"; };
 		F50854211678673C0094F314 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/CustomizedWorkoutPlayViewController.xib; sourceTree = "<group>"; };
@@ -742,26 +737,21 @@
 		F5085460167898610094F314 /* CustomExcersiceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomExcersiceCell.m; path = CustomlistCell/CustomExcersiceCell.m; sourceTree = "<group>"; };
 		F50927181695829100072169 /* MembershipStayFitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MembershipStayFitViewController.h; path = MemebershipStayFit/MembershipStayFitViewController.h; sourceTree = "<group>"; };
 		F50927191695829100072169 /* MembershipStayFitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MembershipStayFitViewController.m; path = MemebershipStayFit/MembershipStayFitViewController.m; sourceTree = "<group>"; };
-		F509271A1695829100072169 /* MembershipStayFitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MembershipStayFitViewController.xib; path = MemebershipStayFit/MembershipStayFitViewController.xib; sourceTree = "<group>"; };
 		F509271E1695863600072169 /* MembershipPersonliazedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MembershipPersonliazedViewController.h; path = MembershipPersonliazed/MembershipPersonliazedViewController.h; sourceTree = "<group>"; };
 		F509271F1695863600072169 /* MembershipPersonliazedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MembershipPersonliazedViewController.m; path = MembershipPersonliazed/MembershipPersonliazedViewController.m; sourceTree = "<group>"; };
-		F50927201695863600072169 /* MembershipPersonliazedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MembershipPersonliazedViewController.xib; path = MembershipPersonliazed/MembershipPersonliazedViewController.xib; sourceTree = "<group>"; };
 		F5092724169588F300072169 /* MembershipCreateOwnViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MembershipCreateOwnViewController.h; path = MembershipCreateOwn/MembershipCreateOwnViewController.h; sourceTree = "<group>"; };
 		F5092725169588F300072169 /* MembershipCreateOwnViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MembershipCreateOwnViewController.m; path = MembershipCreateOwn/MembershipCreateOwnViewController.m; sourceTree = "<group>"; };
-		F5092726169588F300072169 /* MembershipCreateOwnViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MembershipCreateOwnViewController.xib; path = MembershipCreateOwn/MembershipCreateOwnViewController.xib; sourceTree = "<group>"; };
 		F509272A16958EFA00072169 /* MembershipPersonalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MembershipPersonalViewController.h; path = MembershipPersonalGym/MembershipPersonalViewController.h; sourceTree = "<group>"; };
 		F509272B16958EFA00072169 /* MembershipPersonalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MembershipPersonalViewController.m; path = MembershipPersonalGym/MembershipPersonalViewController.m; sourceTree = "<group>"; };
 		F509272C16958EFA00072169 /* MembershipPersonalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MembershipPersonalViewController.xib; path = MembershipPersonalGym/MembershipPersonalViewController.xib; sourceTree = "<group>"; };
 		F509272F169599BB00072169 /* MemverRateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MemverRateViewController.h; path = MemberRate/MemverRateViewController.h; sourceTree = "<group>"; };
 		F5092730169599BB00072169 /* MemverRateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MemverRateViewController.m; path = MemberRate/MemverRateViewController.m; sourceTree = "<group>"; };
-		F5092731169599BC00072169 /* MemverRateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MemverRateViewController.xib; path = MemberRate/MemverRateViewController.xib; sourceTree = "<group>"; };
 		F50B05F91681951C006FC355 /* CarouselViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CarouselViewCell.h; path = ../../Users/safilsunny/sd/CarouselViewDemo/CarouselViewCell.h; sourceTree = "<group>"; };
 		F50B05FA1681951C006FC355 /* CarouselViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CarouselViewCell.m; path = ../../Users/safilsunny/sd/CarouselViewDemo/CarouselViewCell.m; sourceTree = "<group>"; };
 		F50B05FD16819556006FC355 /* CarouselView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarouselView.h; sourceTree = "<group>"; };
 		F50B05FE16819556006FC355 /* CarouselView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarouselView.m; sourceTree = "<group>"; };
 		F50B060916819BA3006FC355 /* CarouselViewDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarouselViewDemoViewController.h; sourceTree = "<group>"; };
 		F50B060A16819BA3006FC355 /* CarouselViewDemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarouselViewDemoViewController.m; sourceTree = "<group>"; };
-		F50B061316819FF2006FC355 /* CarouselViewDemoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CarouselViewDemoViewController.xib; sourceTree = "<group>"; };
 		F512B7591639093500B922E1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TermsOfUse_iPad.xib; sourceTree = "<group>"; };
 		F512B75E16391EB400B922E1 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/InitialAppLaunchViewController_iPad.xib; sourceTree = "<group>"; };
 		F512B762163927E700B922E1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/UserLoginViewController_iPad.xib; sourceTree = "<group>"; };
@@ -878,9 +868,26 @@
 		F55C7FFA1677357200C817A8 /* MembershipRateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MembershipRateViewController.m; path = Membershiprate/MembershipRateViewController.m; sourceTree = "<group>"; };
 		F55C7FFF16773C1E00C817A8 /* MembershipPurchaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MembershipPurchaseViewController.h; path = MembershipPurchase/MembershipPurchaseViewController.h; sourceTree = "<group>"; };
 		F55C800016773C1E00C817A8 /* MembershipPurchaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MembershipPurchaseViewController.m; path = MembershipPurchase/MembershipPurchaseViewController.m; sourceTree = "<group>"; };
-		F55C800116773C1E00C817A8 /* MembershipPurchaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MembershipPurchaseViewController.xib; path = MembershipPurchase/MembershipPurchaseViewController.xib; sourceTree = "<group>"; };
 		F55C80061677498C00C817A8 /* CustomWokoutPostplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomWokoutPostplayViewController.h; path = customWorkoutPostPlay/CustomWokoutPostplayViewController.h; sourceTree = "<group>"; };
 		F55C80071677498C00C817A8 /* CustomWokoutPostplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomWokoutPostplayViewController.m; path = customWorkoutPostPlay/CustomWokoutPostplayViewController.m; sourceTree = "<group>"; };
+		F56075E7169FCE53001C770B /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/CustomWorkoutAddViewController.xib; sourceTree = "<group>"; };
+		F56075E8169FD42D001C770B /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/CustomWokoutPostplayViewController.xib; sourceTree = "<group>"; };
+		F56075EA169FD88A001C770B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ExcersiceListViewController.xib; sourceTree = "<group>"; };
+		F56075EC169FD88F001C770B /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/ExcersiceListViewController.xib; sourceTree = "<group>"; };
+		F56075ED169FD94C001C770B /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/WorkoutCreationCompletedViewController.xib; sourceTree = "<group>"; };
+		F56075EF169FE392001C770B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CarouselViewDemoViewController.xib; sourceTree = "<group>"; };
+		F56075F1169FE396001C770B /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/CarouselViewDemoViewController.xib; sourceTree = "<group>"; };
+		F56075F316A00A5F001C770B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MemverRateViewController.xib; sourceTree = "<group>"; };
+		F56075F516A00A63001C770B /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/MemverRateViewController.xib; sourceTree = "<group>"; };
+		F56075F716A00A71001C770B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MembershipCreateOwnViewController.xib; sourceTree = "<group>"; };
+		F56075F916A00A75001C770B /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/MembershipCreateOwnViewController.xib; sourceTree = "<group>"; };
+		F56075FB16A00A85001C770B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MembershipPurchaseViewController.xib; sourceTree = "<group>"; };
+		F56075FD16A00A8A001C770B /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/MembershipPurchaseViewController.xib; sourceTree = "<group>"; };
+		F56075FF16A00A95001C770B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MembershipPersonliazedViewController.xib; sourceTree = "<group>"; };
+		F560760116A00AA2001C770B /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/MembershipPersonliazedViewController.xib; sourceTree = "<group>"; };
+		F560760316A00AB0001C770B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MembershipStayFitViewController.xib; sourceTree = "<group>"; };
+		F560760516A00AB6001C770B /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/MembershipStayFitViewController.xib; sourceTree = "<group>"; };
+		F560760616A0130A001C770B /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/Fitness4MeViewController.xib; sourceTree = "<group>"; };
 		F577DBB6166DD71F0064B920 /* FocusDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FocusDB.h; path = FocusDB/FocusDB.h; sourceTree = "<group>"; };
 		F577DBB7166DD71F0064B920 /* FocusDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FocusDB.m; path = FocusDB/FocusDB.m; sourceTree = "<group>"; };
 		F577DBBB166DD8060064B920 /* Focus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Focus.h; path = FocusEntity/Focus.h; sourceTree = "<group>"; };
@@ -1799,7 +1806,7 @@
 			children = (
 				F5085418167856A90094F314 /* ExcersiceListViewController.h */,
 				F5085419167856A90094F314 /* ExcersiceListViewController.m */,
-				F508541A167856A90094F314 /* ExcersiceListViewController.xib */,
+				F56075EB169FD88A001C770B /* ExcersiceListViewController.xib */,
 			);
 			name = ExcersiceList;
 			sourceTree = "<group>";
@@ -1915,7 +1922,7 @@
 			children = (
 				F50927181695829100072169 /* MembershipStayFitViewController.h */,
 				F50927191695829100072169 /* MembershipStayFitViewController.m */,
-				F509271A1695829100072169 /* MembershipStayFitViewController.xib */,
+				F560760416A00AB0001C770B /* MembershipStayFitViewController.xib */,
 			);
 			name = MemershipStayFit;
 			sourceTree = "<group>";
@@ -1925,7 +1932,7 @@
 			children = (
 				F509271E1695863600072169 /* MembershipPersonliazedViewController.h */,
 				F509271F1695863600072169 /* MembershipPersonliazedViewController.m */,
-				F50927201695863600072169 /* MembershipPersonliazedViewController.xib */,
+				F560760016A00A95001C770B /* MembershipPersonliazedViewController.xib */,
 			);
 			name = MemebershipPersonalized;
 			sourceTree = "<group>";
@@ -1935,7 +1942,7 @@
 			children = (
 				F5092724169588F300072169 /* MembershipCreateOwnViewController.h */,
 				F5092725169588F300072169 /* MembershipCreateOwnViewController.m */,
-				F5092726169588F300072169 /* MembershipCreateOwnViewController.xib */,
+				F56075F816A00A71001C770B /* MembershipCreateOwnViewController.xib */,
 			);
 			name = MembershipCreateOwn;
 			sourceTree = "<group>";
@@ -1982,7 +1989,7 @@
 			children = (
 				F50B060916819BA3006FC355 /* CarouselViewDemoViewController.h */,
 				F50B060A16819BA3006FC355 /* CarouselViewDemoViewController.m */,
-				F50B061316819FF2006FC355 /* CarouselViewDemoViewController.xib */,
+				F56075F0169FE392001C770B /* CarouselViewDemoViewController.xib */,
 			);
 			name = SelectedWorkouts;
 			sourceTree = "<group>";
@@ -2340,7 +2347,7 @@
 			children = (
 				F55C7FFF16773C1E00C817A8 /* MembershipPurchaseViewController.h */,
 				F55C800016773C1E00C817A8 /* MembershipPurchaseViewController.m */,
-				F55C800116773C1E00C817A8 /* MembershipPurchaseViewController.xib */,
+				F56075FC16A00A85001C770B /* MembershipPurchaseViewController.xib */,
 			);
 			name = MembershipPurchase;
 			sourceTree = "<group>";
@@ -2557,7 +2564,7 @@
 			children = (
 				F509272F169599BB00072169 /* MemverRateViewController.h */,
 				F5092730169599BB00072169 /* MemverRateViewController.m */,
-				F5092731169599BC00072169 /* MemverRateViewController.xib */,
+				F56075F416A00A5F001C770B /* MemverRateViewController.xib */,
 			);
 			name = MemberRate;
 			sourceTree = "<group>";
@@ -2927,16 +2934,16 @@
 				F5A9998D1675E77D00E238D9 /* CustomWorkoutIntermediateViewController.xib in Resources */,
 				F508540E167844E10094F314 /* MemberPromoViewController.xib in Resources */,
 				F5085412167844ED0094F314 /* MembershipRateViewController.xib in Resources */,
-				F55C800316773C1E00C817A8 /* MembershipPurchaseViewController.xib in Resources */,
+				F56075FA16A00A85001C770B /* MembershipPurchaseViewController.xib in Resources */,
 				F508540A167844D10094F314 /* CustomWokoutPostplayViewController.xib in Resources */,
-				F508541C167856A90094F314 /* ExcersiceListViewController.xib in Resources */,
+				F56075E9169FD88A001C770B /* ExcersiceListViewController.xib in Resources */,
 				F554A2631679E4D700E268B5 /* next_btn_with_text.png in Resources */,
-				F50B061416819FF2006FC355 /* CarouselViewDemoViewController.xib in Resources */,
-				F509271C1695829100072169 /* MembershipStayFitViewController.xib in Resources */,
-				F50927221695863600072169 /* MembershipPersonliazedViewController.xib in Resources */,
-				F5092728169588F300072169 /* MembershipCreateOwnViewController.xib in Resources */,
+				F56075EE169FE392001C770B /* CarouselViewDemoViewController.xib in Resources */,
+				F560760216A00AB0001C770B /* MembershipStayFitViewController.xib in Resources */,
+				F56075FE16A00A95001C770B /* MembershipPersonliazedViewController.xib in Resources */,
+				F56075F616A00A71001C770B /* MembershipCreateOwnViewController.xib in Resources */,
 				F509272E16958EFA00072169 /* MembershipPersonalViewController.xib in Resources */,
-				F5092733169599BC00072169 /* MemverRateViewController.xib in Resources */,
+				F56075F216A00A5F001C770B /* MemverRateViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3973,7 +3980,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				AE7D66BF1504D9F4001718B5 /* en */,
-				0B65F91C1601AC6100AAA88B /* de */,
+				F560760616A0130A001C770B /* de */,
 			);
 			name = Fitness4MeViewController.xib;
 			path = Fitness4Me;
@@ -3983,7 +3990,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F50853F1167844600094F314 /* en */,
-				F50853F3167844630094F314 /* de */,
+				F56075ED169FD94C001C770B /* de */,
 			);
 			name = WorkoutCreationCompletedViewController.xib;
 			path = WorkoutCreationCompleted;
@@ -4033,7 +4040,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F5085407167844C60094F314 /* en */,
-				F5085409167844CB0094F314 /* de */,
+				F56075E7169FCE53001C770B /* de */,
 			);
 			name = CustomWorkoutAddViewController.xib;
 			path = AddCustomWokoutLanding;
@@ -4043,7 +4050,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F508540B167844D10094F314 /* en */,
-				F508540D167844D90094F314 /* de */,
+				F56075E8169FD42D001C770B /* de */,
 			);
 			name = CustomWokoutPostplayViewController.xib;
 			path = customWorkoutPostPlay;
@@ -4338,6 +4345,75 @@
 				F554A25D1679B61500E268B5 /* de */,
 			);
 			name = icon_edit.png;
+			sourceTree = "<group>";
+		};
+		F56075EB169FD88A001C770B /* ExcersiceListViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F56075EA169FD88A001C770B /* en */,
+				F56075EC169FD88F001C770B /* de */,
+			);
+			name = ExcersiceListViewController.xib;
+			path = ExcersiceList;
+			sourceTree = "<group>";
+		};
+		F56075F0169FE392001C770B /* CarouselViewDemoViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F56075EF169FE392001C770B /* en */,
+				F56075F1169FE396001C770B /* de */,
+			);
+			name = CarouselViewDemoViewController.xib;
+			sourceTree = "<group>";
+		};
+		F56075F416A00A5F001C770B /* MemverRateViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F56075F316A00A5F001C770B /* en */,
+				F56075F516A00A63001C770B /* de */,
+			);
+			name = MemverRateViewController.xib;
+			path = MemberRate;
+			sourceTree = "<group>";
+		};
+		F56075F816A00A71001C770B /* MembershipCreateOwnViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F56075F716A00A71001C770B /* en */,
+				F56075F916A00A75001C770B /* de */,
+			);
+			name = MembershipCreateOwnViewController.xib;
+			path = MembershipCreateOwn;
+			sourceTree = "<group>";
+		};
+		F56075FC16A00A85001C770B /* MembershipPurchaseViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F56075FB16A00A85001C770B /* en */,
+				F56075FD16A00A8A001C770B /* de */,
+			);
+			name = MembershipPurchaseViewController.xib;
+			path = MembershipPurchase;
+			sourceTree = "<group>";
+		};
+		F560760016A00A95001C770B /* MembershipPersonliazedViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F56075FF16A00A95001C770B /* en */,
+				F560760116A00AA2001C770B /* de */,
+			);
+			name = MembershipPersonliazedViewController.xib;
+			path = MembershipPersonliazed;
+			sourceTree = "<group>";
+		};
+		F560760416A00AB0001C770B /* MembershipStayFitViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F560760316A00AB0001C770B /* en */,
+				F560760516A00AB6001C770B /* de */,
+			);
+			name = MembershipStayFitViewController.xib;
+			path = MemebershipStayFit;
 			sourceTree = "<group>";
 		};
 		F5A60441162D35B800B2ED1D /* InitialAppLaunchViewController_iPad.xib */ = {

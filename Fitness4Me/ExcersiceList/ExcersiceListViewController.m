@@ -10,6 +10,7 @@
 #import "ExcersiceListViewController.h"
 #import "ExcersiceList.h"
 #import "FitnessServerCommunication.h"
+#import "FitnessServer.h"
 
 @interface ExcersiceListViewController ()
 @property NSMutableArray *excersiceList;
@@ -22,10 +23,17 @@
 @synthesize myQueue;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithNibName:nibNameOrNil bundle:[Fitness4MeUtils getBundle]];
     if (self) {
         // Custom initialization
-         userinfo=[NSUserDefaults standardUserDefaults];
+        userinfo=[NSUserDefaults standardUserDefaults];
+        if ([GlobalArray count]>0) {
+            
+        }
+        else{
+            GlobalArray =[[NSMutableArray alloc]init];
+        }
+        
     }
     return self;
 }
@@ -79,17 +87,15 @@
 
 -(void)listExcersice
 {
-  
+    
     FitnessServerCommunication *fitness =[FitnessServerCommunication sharedState];
     [fitness listExcersiceWithequipments:self.equipments focus:self.focusList activityIndicator:self.activityIndicator progressView:nil onCompletion:^(NSString *responseString) {
         
         if ([responseString length]>0) {
             [self parseCustomWorkoutList:responseString];
             if ([self.excersiceList count]>0) {
-                
-                 self.excersiceList = [self prepareData:self.excersiceList];
+                self.excersiceList = [self prepareData:self.excersiceList];
                 [self prepareTableView];
-                
                 [self.excersiceListTableview reloadData];
                 [self.activityIndicator stopAnimating];
                 [self.activityIndicator setHidesWhenStopped:YES];
@@ -99,9 +105,6 @@
     } onError:^(NSError *error) {
         
     }];
-    
-
- 
 }
 
 
@@ -110,7 +113,6 @@
     NSMutableArray *object = [responseString JSONValue];
     self.excersiceList = [[NSMutableArray alloc]init];
     NSMutableArray *itemsarray =[object valueForKey:@"exercises"];
-    
     [itemsarray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         NSDictionary* item = obj;
         ExcersiceList *excersiceLists =[[ExcersiceList alloc]init];
@@ -130,51 +132,45 @@
 
 -(NSMutableArray*)prepareData:(NSMutableArray *)excersicelist {
     
-     NSString *selectedWorkouts = [userinfo objectForKey:@"SelectedWorkouts"];
-     NSArray* foo = [selectedWorkouts componentsSeparatedByString: @","];
-     self.totalDuration=0;
-     self.videoCount=0;
+    NSString *selectedWorkouts = [userinfo objectForKey:@"SelectedWorkouts"];
+    NSArray* foo = [selectedWorkouts componentsSeparatedByString: @","];
+    self.totalDuration=0;
+    self.videoCount=0;
     
-     NSMutableArray *newfocusArray=[[NSMutableArray alloc]init];
-     newfocusArray=excersicelist;
-     for (int k=0; k<foo.count; k++) {
-        
+    NSMutableArray *newfocusArray=[[NSMutableArray alloc]init];
+    newfocusArray=excersicelist;
+    for (int k=0; k<foo.count; k++) {
         for (int i=0; i<excersicelist.count; i++) {
-            
             if([[[excersicelist objectAtIndex:i] excersiceID] isEqualToString:[foo objectAtIndex:k]] ){
                 [[newfocusArray objectAtIndex:i] setIsChecked:YES];
-                self.totalDuration=self.totalDuration+ [[[self.excersiceList objectAtIndex:i] time]intValue];
+                if ([GlobalArray count]>0) {
+                    if ([[[GlobalArray objectAtIndex:k]excersiceID]isEqualToString:[[excersicelist objectAtIndex:i] excersiceID]]) {
+                        
+                    }else{
+                        [GlobalArray addObject:[excersicelist objectAtIndex:k]];
+                    }
+                }
+                self.totalDuration=self.totalDuration+ [[[self.excersiceList objectAtIndex:k] time]intValue];
                 self.videoCount++;
                 break;
             }
-            
-            
         }
-        
     }
-     [self.totalVideoCountLabel setText:[NSString stringWithFormat:@"Number of excersices [%i]",self.videoCount]];
-     [self.durationLabel setText:[NSString stringWithFormat:@"Total Time [%i]",self.totalDuration]];
+    
+    [self.totalVideoCountLabel setText:[NSString stringWithFormat:@"%@ [%i]",NSLocalizedString(@"numberOfExcersice", nil),self.videoCount]];
+    [self.durationLabel setText:[NSString stringWithFormat:@"%@ [%i]",NSLocalizedString(@"totalTime", nil),self.totalDuration]];
     return newfocusArray;
 }
 
 
 
 -(void)prepareTableView{
-    
     self.groupedExcersice =[[NSMutableArray alloc]init];
-    
-    for(int i=0;i<[self.excersiceList count];i++)
-    {
-        
-        
+    for(int i=0;i<[self.excersiceList count];i++){
         NSArray *arrworkouts = [NSArray arrayWithObjects:[self.excersiceList objectAtIndex:i], nil];
-        
         NSDictionary *workouts = [NSDictionary dictionaryWithObject:arrworkouts forKey:@"workouts"];
-
         [self.groupedExcersice addObject:workouts];
-        
     }
-    
 }
 
 
@@ -188,7 +184,6 @@
 {
     //Return the number of sections.
     return [self.groupedExcersice  count];
-    
 }
 
 
@@ -197,7 +192,6 @@
     NSDictionary *dictionary = [self.groupedExcersice objectAtIndex:section];
     NSArray *array = [dictionary objectForKey:@"workouts"];
     return [array count];
-
 }
 
 
@@ -205,10 +199,7 @@
 {
     static NSString *MyIdentifier = @"mycell";
     CustomExcersiceCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
-    
-    
-    if (cell == nil)
-    {
+    if (cell == nil){
         cell = [[CustomExcersiceCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:MyIdentifier];
     }
     
@@ -226,15 +217,12 @@
     cell.DurationLabel.text = [[workout time] stringByAppendingString:@" minutes."];
     cell.focusLabel.text=[workout focus];
     cell.ExcersiceImage.image =[self imageForRowAtIndexPath:workout inIndexPath:indexPath];
-    // self.focus=[array objectAtIndex:indexPath.row];
     if (workout.isChecked) {
         cell.accessoryType=UITableViewCellAccessoryCheckmark;
     }
     else{
         cell.accessoryType=UITableViewCellAccessoryNone;
     }
-    
-    
     return cell;
 }
 
@@ -253,13 +241,12 @@
     dataPath = [documentsDirectory stringByAppendingPathComponent:@"MyFolder/SelfMadeThumbs"];
     
     if (![[NSFileManager defaultManager] fileExistsAtPath:dataPath]){
-        //Create Folder
         [[NSFileManager defaultManager] createDirectoryAtPath:dataPath withIntermediateDirectories:YES attributes:nil error:nil];
     }
     
     NSString  *storeURL= [dataPath stringByAppendingPathComponent :[workout imageName]];
     UIImageView *excersiceImageHolder =[[UIImageView alloc]init];
-    // Check If File Does Exists if not download the video
+    
     if (![[NSFileManager defaultManager] fileExistsAtPath:storeURL]){
         UIImage *im =[UIImage imageNamed:@"dummyimg.png"];
         excersiceImageHolder.image =im;
@@ -285,27 +272,63 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    if ([[tableView cellForRowAtIndexPath:indexPath] accessoryType] == UITableViewCellAccessoryCheckmark)
-    {
+    if ([[tableView cellForRowAtIndexPath:indexPath] accessoryType] == UITableViewCellAccessoryCheckmark){
         [[tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryNone];
         [[self.excersiceList objectAtIndex:indexPath.section] setIsChecked:NO];
-         self.videoCount--;
-         self.totalDuration=self.totalDuration- [[[self.excersiceList objectAtIndex:indexPath.section] time]intValue];
-    }
-    else
-    {
-       
+        [self removeExcerisce:[[self.excersiceList objectAtIndex:indexPath.section] excersiceID]];
+        self.videoCount--;
+        self.totalDuration=self.totalDuration- [[[self.excersiceList objectAtIndex:indexPath.section] time]intValue];
+    }else{
+        
         [[tableView cellForRowAtIndexPath:indexPath]setAccessoryType:UITableViewCellAccessoryCheckmark];
         [[self.excersiceList objectAtIndex:indexPath.section] setIsChecked:YES];
+        [self AddExcersice:[self.excersiceList objectAtIndex:indexPath.section]];
         self.videoCount++;
         self.totalDuration=self.totalDuration+ [[[self.excersiceList objectAtIndex:indexPath.section] time]intValue];
     }
     [self performSelector:@selector(deselect:) withObject:nil afterDelay:0.5f];
-    
     [self.totalVideoCountLabel setText:[NSString stringWithFormat:@"Number of excersices [%i]",self.videoCount]];
     [self.durationLabel setText:[NSString stringWithFormat:@"Total Time [%i]",self.totalDuration]];
-
+    
 }
+
+-(void)removeExcerisce:(NSString*)ExcersiceID
+
+{
+    NSMutableArray *foundObjects = [NSMutableArray array];
+    if ([GlobalArray count]>0) {
+        for (ExcersiceList *excersices in GlobalArray)
+        {
+            NSLog(@"Excersices ID %@",[excersices excersiceID]);
+            if ([[excersices excersiceID] isEqualToString:ExcersiceID]) {
+                [foundObjects addObject:excersices];
+                break;
+            }
+        }
+        [GlobalArray removeObjectsInArray:foundObjects];
+    }
+}
+
+
+-(void)AddExcersice:(ExcersiceList*)excersice
+
+{
+    if ([GlobalArray count]>0) {
+        for (ExcersiceList *excersices in GlobalArray)
+        {
+            if ([[excersices excersiceID] isEqualToString:[excersice excersiceID]]) {
+                break;
+            }else{
+                [GlobalArray addObject:excersice];
+                break;
+            }
+        }
+    }else{
+        [GlobalArray addObject:excersice];
+    }
+}
+
+
 
 - (void) deselect: (id) sender {
     [self.excersiceListTableview deselectRowAtIndexPath:[self.excersiceListTableview indexPathForSelectedRow] animated:YES];
@@ -316,39 +339,31 @@
 {
     NSString *str= [[NSString alloc]init];
     str =@"";
-    NSMutableArray *newWorkoutArray =[[NSMutableArray alloc]init];
     for (ExcersiceList *excersice in self.excersiceList) {
         if ([excersice isChecked]) {
             if ([str length]==0) {
                 str =[str stringByAppendingString:[excersice excersiceID]];
-                
-            }
-            else{
+            }else{
                 str=[str stringByAppendingString:@","];
                 str =[str stringByAppendingString:[excersice excersiceID]];
-                
             }
-            [newWorkoutArray addObject:excersice];
         }
     }
     
-    
     [userinfo setObject:str forKey:@"SelectedWorkouts"];
-    if ([newWorkoutArray count]>0) {
-    CarouselViewDemoViewController *viewController;
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
-        viewController =[[CarouselViewDemoViewController alloc]initWithNibName:@"CarouselViewDemoViewController" bundle:nil];
-    }else {
-        viewController =[[CarouselViewDemoViewController alloc]initWithNibName:@"CarouselViewDemoViewController" bundle:nil];
-    }
+    if ([GlobalArray count]>0) {
+        CarouselViewDemoViewController *viewController;
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+            viewController =[[CarouselViewDemoViewController alloc]initWithNibName:@"CarouselViewDemoViewController" bundle:nil];
+        }else {
+            viewController =[[CarouselViewDemoViewController alloc]initWithNibName:@"CarouselViewDemoViewController" bundle:nil];
+        }
         [viewController setEquipments:self.equipments];
         [viewController setFocusList:self.focusList];
-        [viewController setDataSourceArray:newWorkoutArray];
-    [self.navigationController pushViewController:viewController animated:YES];
-    
-    }
-    else
-    {
+        [viewController setDataSourceArray:GlobalArray];
+        [self.navigationController pushViewController:viewController animated:YES];
+        
+    }else{
         [Fitness4MeUtils showAlert:@"Please select the excersice"];
     }
 }
@@ -362,8 +377,8 @@
     [self setDurationLabel:nil];
     [self setTotalVideoCountLabel:nil];
     [self setExcersiceList:nil];
-    [self setTotalDuration:nil];
-    [self setVideoCount:nil];
+    [self setTotalDuration:0];
+    [self setVideoCount:0];
     [super viewDidUnload];
 }
 @end

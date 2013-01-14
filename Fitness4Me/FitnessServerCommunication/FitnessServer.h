@@ -11,3 +11,4 @@
 @interface FitnessServer : NSObject
 
 @end
+NSMutableArray *GlobalArray;

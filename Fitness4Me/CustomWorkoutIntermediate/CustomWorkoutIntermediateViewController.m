@@ -504,8 +504,7 @@ int stopz=0;
 
     [signUpView addSubview:lblCompleted];
     NSString *s= [NSString stringWithFormat:@"%i / %i",countCompleted,totalcount];
-    NSLog(s);
-    
+       
     lblCompleted.text =s;
     if (countCompleted ==totalCount) {
         [UIView transitionWithView:signUpView duration:1

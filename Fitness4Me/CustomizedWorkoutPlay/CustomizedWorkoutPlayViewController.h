@@ -57,10 +57,10 @@
 @property (retain,nonatomic)Workout *workout;
 @property(retain,nonatomic)NSString *userID;
 @property(strong,nonatomic)NSString *workoutType;
+
 -(void)initializPlayer;
 -(void)getExcersices;
 -(void)MakeArrayforViewing;
-
 -(IBAction)onClickBack:(id)sender;
 
 

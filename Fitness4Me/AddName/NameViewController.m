@@ -48,8 +48,6 @@
     if ([[workout WorkoutID]intValue]>0) {
         [self.nameTextfield setText:[workout Name]];
     }
-    
-
 }
 
 - (void)didReceiveMemoryWarning
@@ -72,10 +70,7 @@
     if ([self.nameTextfield.text length]>0) {
         NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
         NSString *workoutType =[userinfo stringForKey:@"workoutType"];
-        
-        if ([workoutType isEqualToString:@"Custom"])
-            
-        {
+        if ([workoutType isEqualToString:@"Custom"]){
             Workout *workouts= [[Workout alloc]init];
             if ([[workout WorkoutID]intValue]>0) {
                 WorkoutDB *workoutDB =[[WorkoutDB alloc]init];
@@ -87,14 +82,11 @@
             [workouts setFocus:workout.Focus];
             [workouts setProps:workout.Props];
             [workouts setName:self.nameTextfield.text];
-            
             WorkoutCreationCompletedViewController *viewController =[[WorkoutCreationCompletedViewController alloc]initWithNibName:@"WorkoutCreationCompletedViewController" bundle:nil];
             viewController.workout= [[Workout alloc]init];
             viewController.workout =workouts;
             [self.navigationController pushViewController:viewController animated:YES];
-        }
-        else
-        {
+        }else{
             WorkoutCreationCompletedViewController *viewController =[[WorkoutCreationCompletedViewController alloc]initWithNibName:@"WorkoutCreationCompletedViewController" bundle:nil];
             [viewController setWorkoutName:self.nameTextfield.text];
             [viewController setCollectionString:self.collectionString];
@@ -103,10 +95,8 @@
             [viewController setFocusList:self.focusList];
             [self.navigationController pushViewController:viewController animated:YES];
         }
-    }
-    else
-    {
-        [Fitness4MeUtils showAlert:@"Please Provide a Name for the workout"];
+    }else{
+        [Fitness4MeUtils showAlert:NSLocalizedString(@"NameNull", nil)];
     }
 
 }

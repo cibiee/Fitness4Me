@@ -170,8 +170,6 @@
     [super viewDidLoad];
     [self setTabbarItems];
     [self setBackground];
-   
-
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -292,42 +290,52 @@
 }
 
 
+- (void)navigateToFocus {
+    FocusViewController *viewController =[[FocusViewController alloc]initWithNibName:@"FocusViewController" bundle:nil];
+    viewController .workout=nil;
+    [self.navigationController pushViewController:viewController animated:YES];
+}
+
+- (void)navigateToCustomWorkoutAdd {
+    CustomWorkoutAddViewController *viewController =[[CustomWorkoutAddViewController alloc]initWithNibName:@"CustomWorkoutAddViewController" bundle:nil];
+    [self.navigationController pushViewController:viewController animated:YES];
+}
+
 -(IBAction)onClickAdd:(id)sender{
     
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     NSString *hasMadeFullPurchase= [userinfo valueForKey:@"hasMadeFullPurchase"];
-    if ([hasMadeFullPurchase isEqualToString:@"true"]) {
-        
+    NSString *isMember =[userinfo valueForKey:@"isMember"];
+    
+    if ([isMember isEqualToString:@"true"]) {
         if ([self.workoutType isEqualToString:@"SelfMade"]) {
-            FocusViewController *viewController =[[FocusViewController alloc]initWithNibName:@"FocusViewController" bundle:nil];
-            viewController .workout=nil;
-            [self.navigationController pushViewController:viewController animated:YES];
-
+            [self navigateToFocus];
+        }else{
+            [self navigateToCustomWorkoutAdd];
         }
-        else
-        {
-            CustomWorkoutAddViewController *viewController =[[CustomWorkoutAddViewController alloc]initWithNibName:@"CustomWorkoutAddViewController" bundle:nil];
-            [self.navigationController pushViewController:viewController animated:YES];
-        }
-        
-    }
-    else {
-        
-        if ([self.groupedExcersice count]>=5) {
-            [self showPremium];
-        }
-        else{
+    }else{
+        if ([hasMadeFullPurchase isEqualToString:@"true"]) {
+            
             if ([self.workoutType isEqualToString:@"SelfMade"]) {
-                FocusViewController *viewController =[[FocusViewController alloc]initWithNibName:@"FocusViewController" bundle:nil];
-                viewController .workout=nil;
-                [self.navigationController pushViewController:viewController animated:YES];
-                
+                [self navigateToFocus];
             }
-            else
-            {
-            [userinfo setInteger:[self.groupedExcersice count] forKey:@"customCount"];
-            CustomWorkoutAddViewController *viewController =[[CustomWorkoutAddViewController alloc]initWithNibName:@"CustomWorkoutAddViewController" bundle:nil];
-            [self.navigationController pushViewController:viewController animated:YES];
+            else{
+                [self navigateToCustomWorkoutAdd];
+            }
+        }else {
+            if ([self.groupedExcersice count]>=5) {
+                [self showPremium];
+            }else{
+                if ([self.workoutType isEqualToString:@"SelfMade"]) {
+                    FocusViewController *viewController =[[FocusViewController alloc]initWithNibName:@"FocusViewController" bundle:nil];
+                    viewController .workout=nil;
+                    [self.navigationController pushViewController:viewController animated:YES];
+                    
+                }else{
+                    [userinfo setInteger:[self.groupedExcersice count] forKey:@"customCount"];
+                    CustomWorkoutAddViewController *viewController =[[CustomWorkoutAddViewController alloc]initWithNibName:@"CustomWorkoutAddViewController" bundle:nil];
+                    [self.navigationController pushViewController:viewController animated:YES];
+                }
             }
         }
     }
@@ -336,11 +344,9 @@
 
 -(void)showPremium
 {
-    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"Upgrade" message:NSLocalizedString(@"Become premium member to create more custom workouts", nil)
+    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"Upgrade" message:NSLocalizedString(@"premiumWorkout", nil)
                                                        delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
     [alertview show];
-    
-    
 }
 
 
@@ -350,12 +356,9 @@
     if (buttonIndex==1) {
         MemberPromoViewController *viewController;
         
-        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
-        {
-            
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
             viewController = [[MemberPromoViewController alloc]initWithNibName:@"MemberPromoViewController" bundle:nil];
-            
-        }
+            }
         else {
             viewController = [[MemberPromoViewController alloc]initWithNibName:@"MemberPromoViewController" bundle:nil];
         }
@@ -363,17 +366,11 @@
         [viewController setNavigateTo:@"List"];
         viewController.workout =nil;
         [self.navigationController pushViewController:viewController animated:YES];
-        
-        
-        
-        
     }
     else {
         
     }
 }
-
-
 
 
 - (CustomFavourites *)deleteFavStatus:(Favourite *)fav {
@@ -390,9 +387,6 @@
     [customFavourites createDatabase];
     [customFavourites insertfavourite:fav];
 }
-
-
-
 
 - (void)updateWorkout:(Workout *)workout {
     workoutDB =[[WorkoutDB alloc]init];
@@ -414,16 +408,11 @@
     NSString *statusInt=0;
     if ([status isEqualToString:@"true"]) {
         [[self.workouts objectAtIndex:s] setIsLocked:@"false"];
-        
         [fav setStatus:0];
         [fav setWorkoutID:[workout WorkoutID]];
-        
-        
         statusInt=@"0";
         [SetFaveButton setImage:[UIImage imageNamed:@"smiley_disabled"] forState:UIControlStateNormal];
-    }
-    else
-    {
+    }else{
         [[self.workouts objectAtIndex:s] setIsLocked:@"true"];
         statusInt=@"1";
         [fav setStatus:1];
@@ -432,22 +421,16 @@
     }
     BOOL isReachable = [Fitness4MeUtils isReachable];
     if (isReachable) {
-        
-        
         __weak FitnessServerCommunication *fitness=[FitnessServerCommunication  sharedState];
         
         if ([self.workoutType isEqualToString:@"SelfMade"]){
             [fitness setSelfMadeWorkoutfavourite:[workout WorkoutID] UserID:UserID Status:statusInt activityIndicator:nil progressView:nil onCompletion:^(NSString *responseString) {
                 
-                
             } onError:^(NSError *error) {
                 
             }];
             [self parseFitnessDetails];
-        }
-        
-        else
-        {
+        }else{
             [fitness setWorkoutfavourite:[workout WorkoutID] UserID:UserID Status:statusInt activityIndicator:nil progressView:nil onCompletion:^(NSString *responseString) {
                 
                 
@@ -456,9 +439,7 @@
             }];
             [self parseFitnessDetails];
         }
-    }
-    else
-    {
+    }else{
         CustomFavourites *customFavourites;
         customFavourites = [self deleteFavStatus:fav];
         [self insertFavStatus:fav];
@@ -479,10 +460,17 @@
 }
 
 -(IBAction)onClickEdit:(id)sender{
-    CustomWorkoutEditViewController *viewController =[[CustomWorkoutEditViewController alloc]initWithNibName:@"CustomWorkoutEditViewController" bundle:nil];
-    [viewController setWorkoutType:self.workoutType];
-    [self.navigationController pushViewController:viewController animated:YES];
     
+    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+    NSString *isMember =[userinfo valueForKey:@"isMember"];
+
+    if ([isMember isEqualToString:@"true"]) {
+        CustomWorkoutEditViewController *viewController =[[CustomWorkoutEditViewController alloc]initWithNibName:@"CustomWorkoutEditViewController" bundle:nil];
+        [viewController setWorkoutType:self.workoutType];
+        [self.navigationController pushViewController:viewController animated:YES];
+    }else{
+        [self showPremium];
+    }
 }
 
 #pragma mark - Table view delegate

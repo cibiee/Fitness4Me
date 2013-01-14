@@ -13,19 +13,15 @@
 @interface ExcersiceDB : NSObject
 {
     NSMutableArray *Excersices;
-    
     NSString * databasePath;
-    
     NSString * databaseName;
-    
     FMDatabase * database;
-    
-    
 }
 @property (retain,nonatomic) NSMutableArray *Excersices;
 
 -(void)setUpDatabase;
 -(void)createDatabase;
+
 -(void)getExcersices:(int)workoutID;
 -(void)insertExcersice:(Excersice *)excersice;
 -(void)insertExcersices:(NSMutableArray *)excersices;
@@ -41,7 +37,7 @@
 -(void)getSelfMadeExcersices:(int)workoutID;
 -(void)insertSelfMadeExcersice:(Excersice *)excersice;
 -(void)insertSelfMadeExcersices:(NSMutableArray *)excersices;
--(void)insertSelfMadeWorkoutExcersices:(NSMutableArray *)excersices;
+
 -(void)deleteSelfMadeExcersice:(int)workoutID;
 
 @end

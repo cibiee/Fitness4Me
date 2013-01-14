@@ -9,49 +9,91 @@
 
 
 "NoInternetMessage" ="Es besteht keine Internetverbindung - bitte versuche es später.";
-
 "UsernameNull"      ="Benützername/Passwort bitte ausfüllen.";
-
 "twitterConfigure"  ="Bitte den Twitter Zugang in dein Gerät konfigurieren";
-
 "emailExists"       ="E-Mail Adresse existiert bereits";
-
 "UsernameExits"     ="Benutzername existiert bereits";
-
 "ProfileUpdated"    ="Profile Updated";
-
 "ExitMsg"           ="Möchtest du wirklich fitness4.me verlassen?";
-
 "fullDownloadMsg"   ="Lade alle übrigen Workouts herunter. Dies könnte mehrere Minuten dauern, abhängig von Deiner Internet Verbindung.";
-
 "usernameAlphanumeric"="Benutzername muss alphanumerischen";
-
 "PasswordAlphanumeric"="Password muss alphanumerischen";
-
 "workoutsthroughsettingsmsg"="Du kannst später alle Workouts unter Einstellungen herunterladen";
-
 "nullfeedbackmsg"="Sende uns bitte ein Feedback";
-
 "exitVideo"   ="Du bist dabei das Video zu beenden, bist Du sicher?";
-
 "VideoUnavailable"   ="Workout Video ist gerade nicht verfügbar.Downloade die Videos während einer guten Internet Verbindung.";
-
 "resumeDownload"   ="Wir versuchen Dein Workout herunter zu laden, aber Deine Internet Verbindungen scheint langsam zu sein.Wir empfehlen Dir, den Download abzubrechen, starte ihn  wieder, wenn Du eine gute Internet Verbindung zur Verfügung hast..";
-
 "validateemailUsername"="E-Mail / Benutzername nicht gültig.";
-
 "mandatory"="Alle Felder sind Pflichtfelder.";
-
 "invalidaMail"="E-Mail ist nicht gültig";
-
 "slowdata"="Antwort aufgrund einer zu langsamen Internet Verbindung im Moment leider nicht möglich Bitte erneut versuchen, wenn du eine bessere Internet Verbindung hast.";
-
 "requestError"="Fehlermeldung .Unser Support Team wurde dieser Fehler weiter geleitet.Bitte versuche es später erneut.";
-
-
 "advancedLevelMessage" ="Bitte warte, bis Deine 5 kostenlose Workouts Fortgeschrittenen Niveau  heruntergeladen sind. Je nach Qualität deiner Internetverbindung kann dies einige Minuten dauern";
-
 "beginnerLevelMessage" ="Bitte warte, bis Deine 5 kostenlose Workouts Anfänger Niveau  heruntergeladen sind. Je nach Qualität deiner Internetverbindung kann dies einige Minuten dauern";
-
 "experLevelMessage" ="Bitte warte, bis Deine 5 kostenlose Workouts Profi Niveau  heruntergeladen sind. Je nach Qualität deiner Internetverbindung kann dies einige Minuten dauern";
 
+/*------------------------------------------------------------------------------------------------------------------------*/
+"NameNull" ="Please Provide a Name for the workout.";
+"numberOfExcersice"= "Anzahl der Übungen";
+"totalTime"= "Gesamtzeit";
+"Done"= "Erledigt";
+"premiumWorkout" ="Werde Premium-Mitglied um noch mehr maßgeschneiderte Workouts zu erstellen!";
+"deleteWorkout"="Bist du sicher, dass du dieses Workout löschen möchtest?";
+"deletedSucessfully"="Deleted Sucessfully";
+"editMessage"="Speichern und Workout starten?";
+"creationCustomizedCompleteMsg"="Gratulation! Du hast gerade das %@ deiner fünf kostenlosen personalisierten Workouts erstellt.";
+/*3. Selbst erstellte Workouts
+4. Erstelle dein eigenes Workout in fünf einfachen Schritten.
+Wähle die Muskeln aus, die du trainieren möchtest
+Sag uns, welche Hilfsmittel dir zur Verfügung stehen
+Markiere die Übungen, die in deinem Workout enthalten sein sollen
+Du kannst jederzeit auf die Filterfunktion zurückgreifen, wenn du etwas ändern möchtest. Die bereits hinzugefügten Übungen gehen nicht verloren.
+Wähle die Reihenfolge deiner Übungen und füge die benötigten Erholungsphasen hinzu.
+Gib dem Workout einen Namen
+Und beginne zu trainieren! Nicht wieder zeigen.
+5. Welche Muskeln möchtest du trainieren?
+6. Welche Hilfsmittel stehen dir zur Verfügung?
+7. Wähle die Übungen für dein Workout*/
+
+/*11. Bewege dich nach links
+12. Bewege dich nach rechst
+13. Füge 30 Sekunden Pause ein
+14. Benenne das Workout
+15. Auf der Liste speichern
+16. Speichern und Workout starten
+17.
+Version2
+1. Wilkommen bei der fitness4.me Premium Version.
+2. Personalisierte Workouts
+3. Dauer
+4. Schwerpunkt
+5. Hilfsmittel
+6. Bearbeiten
+￼￼
+7. Neues Workout hinzufügen
+8. Bist du sicher, dass du dieses Workout löschen möchtest?
+9. Erhalte dein personalisiertes Workout in vier einfachen Schritten.
+10. Wieviel Zeit hast du?
+11. Wo liegt dein Schwerpunkt?
+12. Welche Hilfsmittel stehen dir zur Verfügung?
+13. Wie möchtest du dieses Workout benennen?
+14. Gratulation! Du hast gerade das (erste) deiner fünf kostenlosen personalisierten Workouts
+erstellt. Startklar?
+15. Speichern und Workout starten
+16. Dein persönliches Fitnessstudio,
+das dir überallhin folgt.
+Werde ein Fitness4.me Mitglied und erhalte unbegrenzt personalisierte Wokouts
+unbegrenzt selbst erstellte Wokouts
+Zugang zu unzähligen vordefinierten Workouts Zugang zu mehr als 500 Übungen
+Kostenlose App- und Cross-Platform-Synchronisation. Trainiere ÜBERALL und JEDERZEIT
+17. Erzähl mir mehr
+18. Nicht jetzt
+19. Eine Fitness4.me Mitgliedschaft ist alles was du brauchst, um in Form zu kommen oder fit zu
+bleiben. Du brauchst kein Fitnessstudio oder teures Equipment.
+Trainiere ÜBERALL und JEDERZEIT Melde dich jetzt an!
+20. Zeig mir das Fitness4.me Video
+21. Sag uns, wieviel Zeit du hast und was du trainieren möchtest.
+Und wir designen das perfekte Workout für dich.
+Wir wählen aus unserer riesigen Datenbank genau die Übungen aus, die zu deiner Zeitvorgabe und deinem Trainingsziel passen.
+22. Wieviel ist dir dein persönliches Fitnesstudio wert? Wieviel zahlst du beim nächstgelegenen Fitnessstudio? Wieviel Zeit und Benzin kostet es, um dort hinzugelangen? Wie oft gehst du dorthin?
+Wieviel würdest du monatlich ausgeben, damit alles was du brauchst Platz in deiner Hosentasche findet?*/

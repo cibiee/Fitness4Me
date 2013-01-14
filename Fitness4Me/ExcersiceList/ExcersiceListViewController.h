@@ -28,4 +28,6 @@
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property(strong,nonatomic) NSString *focusList;
 @property(strong,nonatomic) NSString *equipments;
+@property(strong,nonatomic)NSMutableArray *excersiceNewList;
+
 @end

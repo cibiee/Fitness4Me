@@ -9,7 +9,8 @@
 #import "CarouselViewDemoViewController.h"
 #import "ExcersiceList.h"
 #import "NameViewController.h"
-
+#import "FitnessServer.h"
+#import  "FocusViewController.h"
 
 
 @implementation CarouselViewDemoViewController
@@ -20,7 +21,7 @@
 NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithNibName:nibNameOrNil bundle:[Fitness4MeUtils getBundle]];
     if (self) {
         self.dataSourceArray = [[NSMutableArray alloc]init];
         userinfo=[NSUserDefaults standardUserDefaults];
@@ -48,24 +49,23 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
     [backutton addTarget:self action:@selector(onClickBack:) forControlEvents:UIControlEventTouchDown];
     UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithCustomView:backutton];
     self.navigationBar.leftBarButtonItem = backBtn;
-    
-    UIButton *nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    nextButton.frame = CGRectMake(0, 0, 58, 30);
-    [nextButton setBackgroundImage:[UIImage imageNamed:@"next_btn_with_text.png"] forState:UIControlStateNormal];
-    [nextButton addTarget:self action:@selector(onClickNext:) forControlEvents:UIControlEventTouchDown];
-    UIBarButtonItem *nextBtn = [[UIBarButtonItem alloc] initWithCustomView:nextButton];
-    self.navigationBar.rightBarButtonItem = nextBtn;
-    
-     
-     
+    if ([[self operationMode] isEqualToString:@"Edit"]) {
+        
+    }else{
+        UIButton *nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        nextButton.frame = CGRectMake(0, 0, 58, 30);
+        [nextButton setBackgroundImage:[UIImage imageNamed:@"next_btn_with_text.png"] forState:UIControlStateNormal];
+        [nextButton addTarget:self action:@selector(onClickNext:) forControlEvents:UIControlEventTouchDown];
+        UIBarButtonItem *nextBtn = [[UIBarButtonItem alloc] initWithCustomView:nextButton];
+        self.navigationBar.rightBarButtonItem = nextBtn;
+    }
     
 	[_removeSelectedButton setEnabled:NO];
-	
     _carouselView = [[CarouselView alloc] initWithFrame:CGRectMake(2, 50, 480, 120)
                                              dataSource:self
                                                delegate:self];
     _carouselView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-	//_dataSourceArray =nil;
+	
 	[self.view addSubview:_carouselView];
 }
 
@@ -80,7 +80,7 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
 
 - (NSInteger)numberOfColumnsForCarouselView:(CarouselView *)carouselView {
     
-    return [self.dataSourceArray count];
+    return [GlobalArray count];
 }
 
 - (CarouselViewCell *)carouselView:(CarouselView *)carouselView cellForColumnAtIndex:(NSInteger)index {
@@ -88,9 +88,12 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
     CarouselViewCell *cell = [carouselView dequeueReusableCell];
     if (cell == nil) {
         cell = [[CarouselViewCell alloc] init];
-        ExcersiceList *excersiceList= [self.dataSourceArray objectAtIndex:index];
+        ExcersiceList *excersiceList =[[ExcersiceList alloc]init];
+        excersiceList= [GlobalArray objectAtIndex:index];
+        
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
+       
         NSString *dataPath = [documentsDirectory stringByAppendingPathComponent:@"MyFolder/SelfMadeThumbs"];
         NSString  *storeURL= [dataPath stringByAppendingPathComponent :[excersiceList imageName]];
         cell.ExcersiceImage.image= [[UIImage alloc]initWithContentsOfFile:storeURL];
@@ -127,9 +130,9 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
                 list.name=@"recovery 15";
                 list.imageName= @"dummyimg.png";
                 list.excersiceID=@"rec15";
-                [self.dataSourceArray insertObject:list atIndex:[index intValue]];
+                [GlobalArray insertObject:list atIndex:[index intValue]];
                 
-                for (int i = 0; i < [self.dataSourceArray count]; i++) {
+                for (int i = 0; i < [GlobalArray count]; i++) {
                     [arrays addObject:[NSNumber numberWithInt:i]];
                 }
                 [_carouselView insertColumnsAtIndexes:arrays withColumnAnimation:_animationSegmentedControl.selectedSegmentIndex];
@@ -139,8 +142,8 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
                 list.name=@"recovery 30";
                 list.imageName= @"dummyimg.png";
                 list.excersiceID=@"rec30";
-                [self.dataSourceArray insertObject:list atIndex:[index intValue]];
-                for (int i = 0; i < [self.dataSourceArray count]; i++) {
+                [GlobalArray insertObject:list atIndex:[index intValue]];
+                for (int i = 0; i < [GlobalArray count]; i++) {
                     [arrays addObject:[NSNumber numberWithInt:i]];
                 }
                 [_carouselView insertColumnsAtIndexes:arrays withColumnAnimation:_animationSegmentedControl.selectedSegmentIndex];
@@ -162,8 +165,8 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
         case 0:
             if (selectedIndex>0) {
                 [_carouselView deleteAllColumnswithColumnAnimation:_animationSegmentedControl.selectedSegmentIndex];
-                [self.dataSourceArray exchangeObjectAtIndex:selectedIndex withObjectAtIndex:selectedIndex-1];
-                for (int i = 0; i < [self.dataSourceArray count]; i++) {
+                [GlobalArray exchangeObjectAtIndex:selectedIndex withObjectAtIndex:selectedIndex-1];
+                for (int i = 0; i < [GlobalArray count]; i++) {
                     [arrays addObject:[NSNumber numberWithInt:i]];
                 }
                 [_carouselView insertColumnsAtIndexes:arrays withColumnAnimation:_animationSegmentedControl.selectedSegmentIndex];
@@ -172,10 +175,10 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
             break;
         case 1:
             
-            if (selectedIndex<[self.dataSourceArray count]-1) {
+            if (selectedIndex<[GlobalArray count]-1) {
                 [_carouselView deleteAllColumnswithColumnAnimation:_animationSegmentedControl.selectedSegmentIndex];
-                [self.dataSourceArray exchangeObjectAtIndex:selectedIndex withObjectAtIndex:selectedIndex+1];
-                for (int i = 0; i < [self.dataSourceArray count]; i++) {
+                [GlobalArray exchangeObjectAtIndex:selectedIndex withObjectAtIndex:selectedIndex+1];
+                for (int i = 0; i < [GlobalArray count]; i++) {
                     [arrays addObject:[NSNumber numberWithInt:i]];
                 }
                 [_carouselView insertColumnsAtIndexes:arrays withColumnAnimation:_animationSegmentedControl.selectedSegmentIndex];
@@ -202,7 +205,7 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
 -(IBAction)onClickNext:(id)sender{
     
     NSString *str= [[NSString alloc]init];
-    for (ExcersiceList *excerlist in self.dataSourceArray) {
+    for (ExcersiceList *excerlist in GlobalArray) {
         
         if ([str length]==0) {
             str =[str stringByAppendingString:[excerlist excersiceID]];
@@ -226,68 +229,43 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
 }
 
 
-
-
-
 - (IBAction)removeSelectedColumn {
-    if ([_dataSourceArray count]>0) {
+    if ([GlobalArray count]>0) {
         NSMutableArray *arrays= [[NSMutableArray alloc]init];
         NSNumber *selectedIndex = [NSNumber numberWithInt:[_carouselView indexOfSelectedCell]];
-        [self.dataSourceArray removeObjectAtIndex:[selectedIndex intValue]];
+        [GlobalArray removeObjectAtIndex:[selectedIndex intValue]];
         [_carouselView deleteAllColumnswithColumnAnimation:_animationSegmentedControl.selectedSegmentIndex];
         
-        for (int i = 0; i < [self.dataSourceArray count]; i++) {
+        for (int i = 0; i < [GlobalArray count]; i++) {
             [arrays addObject:[NSNumber numberWithInt:i]];
         }
         [_carouselView insertColumnsAtIndexes:arrays withColumnAnimation:_animationSegmentedControl.selectedSegmentIndex];
 	    [_removeSelectedButton setEnabled:NO];
-        
-  
-    
     
     NSString *str= [[NSString alloc]init];
-    for (ExcersiceList *excerlist in self.dataSourceArray) {
-        
+    for (ExcersiceList *excerlist in GlobalArray) {
         if ([str length]==0) {
-            
             str =[str stringByAppendingString:[excerlist excersiceID]];
-           
         }
         else{
             str=[str stringByAppendingString:@","];
             str =[str stringByAppendingString:[excerlist excersiceID]];
-             
         }
     }
     
     [userinfo setObject:str forKey:@"SelectedWorkouts"];
-    
-     NSString *selectedWorkouts = [userinfo objectForKey:@"SelectedWorkouts"];
-        NSLog(selectedWorkouts);
-          }
+    }
     
 }
 
-- (IBAction)removeMultipleColumns {
-	if ([self.dataSourceArray count] < 3) {
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Not Enough Data"
-														message:@"Need at least 3 columns to be able to delete multiple"
-													   delegate:nil
-											  cancelButtonTitle:@"OK"
-											  otherButtonTitles:nil];
-		[alert show];
-		return;
-	}
-	
-	NSMutableArray *array = [NSMutableArray array];
-	
-	for (int i = 0; i < 3; i++) {
-		[self.dataSourceArray removeObjectAtIndex:0];
-		[array addObject:[NSNumber numberWithInt:i]];
-	}
-	
-	[_carouselView deleteColumnsAtIndexes:array withColumnAnimation:_animationSegmentedControl.selectedSegmentIndex];
-	
+
+
+- (IBAction)addMoreExcersices:(id)sender {
+    FocusViewController *viewController =[[FocusViewController alloc]initWithNibName:@"FocusViewController" bundle:nil];
+    viewController.workout =[[Workout alloc]init];
+    viewController .workout=self.workout;
+    [self.navigationController pushViewController:viewController animated:YES];
+
 }
 
 

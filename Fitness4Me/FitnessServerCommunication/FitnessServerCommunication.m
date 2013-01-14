@@ -748,6 +748,39 @@ static FitnessServerCommunication *sharedState;
     }
 }
 
+- (void)listExcersiceFwithworkoutID:(NSString*)workoutIDs   activityIndicator:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView onCompletion:(WMLoginResponseBlock)completionBlock onError:(NSError*)errorBlock
+{
+    
+    int selectedLang=[Fitness4MeUtils getApplicationLanguage];
+    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+    int userID =[userinfo integerForKey:@"UserID"];
+    BOOL isReachable =[Fitness4MeUtils isReachable];
+    if (isReachable)
+    {
+        NSString *UrlPath= [NSString GetURlPath];
+        NSString *requestString =[NSString stringWithFormat:@"%@workoutExercises=yes&user_id=%i&self_workout_ids=%@&lang=%i",UrlPath,userID,workoutIDs,selectedLang];
+        NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+        //  NSLog(url);
+        __weak ASIHTTPRequest *requests = [ASIHTTPRequest requestWithURL:url];
+        [requests setCompletionBlock:^{
+            // Use when fetching text data
+            NSString *responseString =[requests responseString];
+            if ([responseString length]>0) {
+                
+                if (completionBlock) completionBlock(responseString);
+            }else{
+                [self terminateActivities:NSLocalizedString(@"slowdata", nil):activityIndicator:signUpView];
+            }
+        }];
+        [requests setFailedBlock:^{
+            //NSError *error = [requests error];
+            [self terminateActivities:NSLocalizedString(@"requestError", nil):activityIndicator:signUpView];
+        }];
+        [requests startAsynchronous];
+    }else{
+        [self terminateActivities:NSLocalizedString(@"NoInternetMessage", nil):activityIndicator:signUpView];
+    }
+}
 
 
 

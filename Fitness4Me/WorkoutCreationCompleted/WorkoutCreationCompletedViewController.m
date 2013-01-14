@@ -39,14 +39,14 @@
     self.navigationBar.leftBarButtonItem = backBtn;
     
     if ([[workout WorkoutID]intValue]>0) {
-        [self.creationCompleteLabel setText:@"Save changes and start workout?"];
+        [self.creationCompleteLabel setText:NSLocalizedString(@"editMessage", nil)];
     }
     else
     {
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     NSString *hasMadeFullPurchase= [userinfo valueForKey:@"hasMadeFullPurchase"];
     if ([hasMadeFullPurchase isEqualToString:@"true"]) {
-     [self.creationCompleteLabel setText:@"Congratulations!You just designed your customized workouts"];
+     [self.creationCompleteLabel setText:NSLocalizedString(@"creationCustomizedCompleteMsg", nil)];
     }
     else {
         int customCount= [userinfo integerForKey:@"customCount"]+1;
@@ -77,7 +77,7 @@
                 break;
         }
         if ([customCountString length]>0) {
-            [self.creationCompleteLabel setText:[NSString stringWithFormat:@"Congratulations!You just designed  the %@ of your five free customized workouts",customCountString]];
+            [self.creationCompleteLabel setText:[NSString stringWithFormat:NSLocalizedString(@"creationCustomizedCompleteMsg", nil),customCountString]];
         }
     }
     }

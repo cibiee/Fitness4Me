@@ -78,7 +78,8 @@
              nameOfTheUser:[item objectForKey:@"fname"]
           levelofExpertise: [item objectForKey:@"level"]
            mailIdOfTheUser:[item objectForKey:@"email"]
-       hasDoneFullPruchase:[item objectForKey:@"fullpurchase"]];
+       hasDoneFullPruchase:[item objectForKey:@"fullpurchase"]
+             member:[item objectForKey:@"member"]];
             
             FitnessServerCommunication *fitness= [FitnessServerCommunication sharedState];
             [fitness registerDeviceWithUserID:userID andSignUpView:signUpView onCompletion:^{
@@ -124,8 +125,7 @@
 }
 
 
--(void)saveUser:(NSString *)username nameOfTheUser:(NSString *) name levelofExpertise :(NSString *)userlevel  mailIdOfTheUser:
-(NSString *)email  hasDoneFullPruchase :(NSString *)fullpurchase
+-(void)saveUser:(NSString *)username nameOfTheUser:(NSString *) name levelofExpertise :(NSString *)userlevel  mailIdOfTheUser:(NSString *)email  hasDoneFullPruchase :(NSString *)fullpurchase member:(NSString*)member
 {
     UserDB *userDB =[[UserDB alloc]init];
     [userDB setUpDatabase];
@@ -145,6 +145,8 @@
     [userInfo setInteger:userID  forKey:@"UserID"];
     [userInfo setObject:email  forKey:@"email"];
     [userInfo setObject:fullpurchase forKey:@"hasMadeFullPurchase"];
+    [userInfo setObject:member forKey:@"isMember"];
+    
     
 }
 

@@ -11,7 +11,8 @@
 #import "Favourite.h"
 #import "CustomFavourites.h"
 #import "ExcersiceListViewController.h"
-
+#import "CarouselViewDemoViewController.h"
+#import "FitnessServer.h"
 @interface CustomWorkoutEditViewController ()
 @property NSMutableArray *groupedExcersice;
 @property NSMutableArray *workouts;
@@ -26,6 +27,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:[Fitness4MeUtils getBundle]];
     if (self) {
         // Custom initialization
+        GlobalArray =[[NSMutableArray alloc]init];
     }
     return self;
 }
@@ -233,13 +235,10 @@
     if ([[workout IsLocked] isEqualToString:@"true"]) {
         [cell.favIcon setImage:[UIImage imageNamed:@"smiley"] forState:UIControlStateNormal];
     }
-    else
-    {
+    else{
         [cell.favIcon setImage:[UIImage imageNamed:@"smiley_disabled"] forState:UIControlStateNormal];
         
     }
-    
-    
     [cell.favIcon setTag:[indexPath section]];
     [cell.favIcon  addTarget:self action:@selector(onClicksetFavourite:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -326,20 +325,50 @@
     NSArray *array = [dictionary objectForKey:@"workouts"];
     Workout *workout = [[Workout alloc]init];
     workout = [array objectAtIndex:0];
+    
+   
+    
     if ([self.workoutType isEqualToString:@"SelfMade"]) {
-        ExcersiceListViewController *viewController;
-        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
-            viewController =[[ExcersiceListViewController alloc]initWithNibName:@"ExcersiceListViewController" bundle:nil];
-        }else {
-            viewController =[[ExcersiceListViewController alloc]initWithNibName:@"ExcersiceListViewController" bundle:nil];
-        }
-        [viewController setFocusList:[workout Focus]];
-        [viewController setEquipments:[workout Props]];
-        [self.navigationController pushViewController:viewController animated:YES];
-//        FocusViewController *viewController =[[FocusViewController alloc]initWithNibName:@"FocusViewController" bundle:nil];
-//        viewController.workout =[[Workout alloc]init];
-//        viewController .workout=workout;
-//        [self.navigationController pushViewController:viewController animated:YES];
+        
+        FitnessServerCommunication *fitness =[FitnessServerCommunication sharedState];
+        [fitness listExcersiceFwithworkoutID:[workout WorkoutID] activityIndicator:nil progressView:nil onCompletion:^(NSString *responseString) {
+            NSString *str= [[NSString alloc]init];
+
+           [self praseworkoutArray:responseString];
+            if ([GlobalArray count]>0) {
+                for (ExcersiceList *excerlist in GlobalArray) {
+                    
+                    if ([str length]==0) {
+                        
+                        str =[str stringByAppendingString:[excerlist excersiceID]];
+                        
+                    }
+                    else{
+                        str=[str stringByAppendingString:@","];
+                        str =[str stringByAppendingString:[excerlist excersiceID]];
+                        
+                    }
+                }
+        NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];           
+        [userinfo setObject:str forKey:@"SelectedWorkouts"];
+                CarouselViewDemoViewController *viewController;
+                if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+                    viewController =[[CarouselViewDemoViewController alloc]initWithNibName:@"CarouselViewDemoViewController" bundle:nil];
+                }else {
+                    viewController =[[CarouselViewDemoViewController alloc]initWithNibName:@"CarouselViewDemoViewController" bundle:nil];
+                }
+                 [viewController setOperationMode:@"Edit"];
+                viewController.workout =[[Workout alloc]init];
+                viewController .workout =workout;
+                [viewController setDataSourceArray:GlobalArray];
+                [self.navigationController pushViewController:viewController animated:YES];
+                
+            }
+            
+        } onError:^(NSError *error) {
+            
+        }];
+       
     }
     else
     {
@@ -351,6 +380,38 @@
         [self.navigationController pushViewController:viewController animated:YES];
     }
 }
+
+
+- (void)praseworkoutArray:(NSString *)responseString
+{
+    NSMutableArray *object = [responseString JSONValue];
+    GlobalArray = [[NSMutableArray alloc]init];
+    NSMutableArray *itemsarray =[object valueForKey:@"items"];
+    [itemsarray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSDictionary* item = obj;
+        ExcersiceList *excersice=[[ExcersiceList alloc]init];
+        if ([[item objectForKey:@"exerciseID"] length]>0) {
+            
+       
+        [excersice setExcersiceID:[item objectForKey:@"exerciseID"]];
+        [excersice setName:[item objectForKey:@"name"]];
+        [excersice setImageUrl:[item objectForKey:@"image"]];
+        [excersice setImageName:[item objectForKey:@"imageName"]];
+        //[excersice setExcersiceID:[item objectForKey:@"exerciseID"]];
+         }
+        else if ([[item objectForKey:@"recovery"] length]>0)
+        {
+            
+            [excersice setExcersiceID:[item objectForKey:@"recovery"]];
+            [excersice setName:@"recoverI5"];
+            [excersice setImageUrl:[item objectForKey:@"image"]];
+            [excersice setImageName:[item objectForKey:@"imageName"]];
+        }
+        
+        [GlobalArray addObject:excersice];
+    }];
+    
+  }
 
 - (CustomFavourites *)deleteFavStatus:(Favourite *)fav {
     CustomFavourites *customFavourites =[[CustomFavourites alloc]init];
@@ -443,15 +504,10 @@
 
 
 -(IBAction)onClickdelete:(id)sender{
-    
     self.s= [sender tag];
-    
-    
-    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"fitness4.me" message:@"Are you sure you want to delete this workout?"
-                                                       delegate:self cancelButtonTitle:@"ok" otherButtonTitles:@"cancel", nil];
+    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"fitness4.me" message:NSLocalizedString(@"deleteWorkout", nil)
+    delegate:self cancelButtonTitle:@"ok" otherButtonTitles:@"cancel", nil];
     [alertview show];
-    
-    
 }
 
 - (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex
@@ -472,7 +528,7 @@
                 [self.workouts removeObjectAtIndex:self.s];
                 [self prepareTableView];
                 [self.tableView reloadData];
-                [Fitness4MeUtils showAlert:@"Deleted Sucessfully"];
+                [Fitness4MeUtils showAlert:NSLocalizedString(@"deletedSucessfully", nil)];
                 [fitness parseSelfMadeFitnessDetails:UserID onCompletion:^(NSString *responseString){
                     
                 } onError:^(NSError *error) {
@@ -489,7 +545,7 @@
                 [self.workouts removeObjectAtIndex:self.s];
                 [self prepareTableView];
                 [self.tableView reloadData];
-                [Fitness4MeUtils showAlert:@"Deleted Sucessfully"];
+                 [Fitness4MeUtils showAlert:NSLocalizedString(@"deletedSucessfully", nil)];
                 [fitness parseCustomFitnessDetails:UserID onCompletion:^(NSString *responseString){
                     
                 } onError:^(NSError *error) {

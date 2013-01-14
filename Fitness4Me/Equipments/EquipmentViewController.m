@@ -71,39 +71,28 @@
 
 -(void)listEquipments
 {
-    
     self.equipmentDB =[[EquipmentDB alloc]init];
     [ self.equipmentDB setUpDatabase];
     [ self.equipmentDB createDatabase];
     [ self.equipmentDB getequipments];
     
     if ([ self.equipmentDB.equipments count]>0) {
-        
         if ([[self.workout WorkoutID]intValue]>0) {
             [self.workout setProps:[self getfocusIDs:self.equipmentDB.equipments]];
             self.equipments = [self prepareTableView:self.equipmentDB.equipments];
         }
         else{
             self.equipments =self.equipmentDB.equipments;
-            
         }
-        
         [self.equipmentsTableView reloadData];
-        
-        
-    }
-    
-    else{
+    }else{
         FitnessServerCommunication *fitness =[FitnessServerCommunication sharedState];
         [fitness listEquipments:nil progressView:nil onCompletion:^(NSString *responseString) {
             [self listEquipments];}
                         onError:^(NSError *error) {
                             
                         }];
-        
-    }
-    
-    
+        }
 }
 
 
@@ -111,58 +100,36 @@
 -(NSString *)getfocusIDs:(NSMutableArray *)focuslist
 {
     NSArray* foo = [[workout Props] componentsSeparatedByString: @","];
-    
-    //NSLog(@"%@",[workout Focus]);
-    
     NSString *str=[[NSString alloc]init];
-    
     for (int k=0; k<foo.count; k++) {
-        
         for (int i=0; i<focuslist.count; i++) {
             if([[[focuslist objectAtIndex:i] equipmentName] isEqualToString:[foo objectAtIndex:k]] ){
                 if ([str length]==0) {
                     str =[str stringByAppendingString:[[focuslist objectAtIndex:i] equipmentID]];
-                }
-                else{
+                }else{
                     str=[str stringByAppendingString:@","];
                     str =[str stringByAppendingString:[[focuslist objectAtIndex:i] equipmentID]];
                 }
-                
-                
                 break;
             }
-            
-            
         }
-        
     }
     return str;
 }
 
 
-
-
-
 -(NSMutableArray*)prepareTableView:(NSMutableArray *)focuslist {
     
     NSArray* foo = [[workout Props] componentsSeparatedByString: @","];
-    
-    
-    
     NSMutableArray *newfocusArray=[[NSMutableArray alloc]init];
     newfocusArray=focuslist;
     for (int k=0; k<foo.count; k++) {
-        
         for (int i=0; i<focuslist.count; i++) {
-            
             if([[[focuslist objectAtIndex:i] equipmentID] isEqualToString:[foo objectAtIndex:k]] ){
                 [[newfocusArray objectAtIndex:i] setIsChecked:YES];
                 break;
             }
-            
-            
         }
-        
     }
     return newfocusArray;
 }
@@ -184,18 +151,14 @@
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         
     }
-    // cell.accessoryType=UITableViewCellAccessoryNone;
     self.equipment=[self.equipments objectAtIndex:indexPath.row];
     [cell.textLabel setText:self.equipment.equipmentName];
-    
     if (self.equipment.isChecked) {
         cell.accessoryType=UITableViewCellAccessoryCheckmark;
     }
     else{
         cell.accessoryType=UITableViewCellAccessoryNone;
     }
-    
-    
     return cell;
 }
 
@@ -203,17 +166,13 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    if ([[tableView cellForRowAtIndexPath:indexPath] accessoryType] == UITableViewCellAccessoryCheckmark)
-    {
+    if ([[tableView cellForRowAtIndexPath:indexPath] accessoryType] == UITableViewCellAccessoryCheckmark){
         [[tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryNone];
         [[self.equipments objectAtIndex:indexPath.row] setIsChecked:NO];
     }
-    else
-    {
+    else{
         [[tableView cellForRowAtIndexPath:indexPath]setAccessoryType:UITableViewCellAccessoryCheckmark];
-        
         [[self.equipments objectAtIndex:indexPath.row] setIsChecked:YES];
-        
     }
     [self performSelector:@selector(deselect:) withObject:nil afterDelay:0.5f];
 }
@@ -222,54 +181,7 @@
     [self.equipmentsTableView deselectRowAtIndexPath:[self.equipmentsTableView indexPathForSelectedRow] animated:YES];
 }
 
-
--(IBAction)onClickBack:(id)sender{
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
--(IBAction)onClickNext:(id)sender{
-    NSString *str= [[NSString alloc]init];
-    str =@"";
-    NSString *name= [[NSString alloc]init];
-    for (Equipments *equipment in self.equipments) {
-        if ([equipment isChecked]) {
-            if ([str length]==0) {
-                str =[str stringByAppendingString:[equipment equipmentID]];
-                name =[name stringByAppendingString:[equipment equipmentName]];
-            }
-            else{
-                str=[str stringByAppendingString:@","];
-                str =[str stringByAppendingString:[equipment equipmentID]];
-                name=[name stringByAppendingString:@","];
-                name =[name stringByAppendingString:[equipment equipmentName]];
-            }
-            
-        }
-    }
-    
-    Workout *workouts= [[Workout alloc]init];
-    if ([[workout WorkoutID]intValue]>0) {
-        WorkoutDB *workoutDB =[[WorkoutDB alloc]init];
-        [workoutDB setUpDatabase];
-        [workoutDB createDatabase];
-        NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
-        NSString *workoutType =[userinfo stringForKey:@"workoutType"];
-        
-        if ([workoutType isEqualToString:@"Custom"]) {
-        workouts =[workoutDB getCustomWorkoutByID:[workout WorkoutID]];
-        }
-        else
-        {
-            workouts =[workoutDB getSelfMadeByID:[workout WorkoutID]];
-        }
-    }
-    [workouts setDuration:workout.Duration];
-    [workouts setFocus:workout.Focus];
-    [workouts setFocusName:name];
-    [workouts setProps:str];
-    
-    
-    
+- (void)navigateTo:(NSString *)str workouts:(Workout *)workouts {
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     NSString *workoutType =[userinfo stringForKey:@"workoutType"];
     
@@ -291,6 +203,54 @@
         [viewController setEquipments:str];
         [self.navigationController pushViewController:viewController animated:YES];
     }
+}
+
+-(IBAction)onClickBack:(id)sender{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+
+-(IBAction)onClickNext:(id)sender{
+    NSString *str= [[NSString alloc]init];
+    str =@"";
+    NSString *name= [[NSString alloc]init];
+    for (Equipments *equipment in self.equipments) {
+        if ([equipment isChecked]) {
+            if ([str length]==0) {
+                str =[str stringByAppendingString:[equipment equipmentID]];
+                name =[name stringByAppendingString:[equipment equipmentName]];
+            }
+            else{
+                str=[str stringByAppendingString:@","];
+                str =[str stringByAppendingString:[equipment equipmentID]];
+                name=[name stringByAppendingString:@","];
+                name =[name stringByAppendingString:[equipment equipmentName]];
+            }
+        }
+    }
+    
+    Workout *workouts= [[Workout alloc]init];
+    if ([[workout WorkoutID]intValue]>0) {
+        WorkoutDB *workoutDB =[[WorkoutDB alloc]init];
+        [workoutDB setUpDatabase];
+        [workoutDB createDatabase];
+        NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+        NSString *workoutType =[userinfo stringForKey:@"workoutType"];
+        
+        if ([workoutType isEqualToString:@"Custom"]) {
+        workouts =[workoutDB getCustomWorkoutByID:[workout WorkoutID]];
+        }
+        else{
+            workouts =[workoutDB getSelfMadeByID:[workout WorkoutID]];
+        }
+    }
+    [workouts setDuration:workout.Duration];
+    [workouts setFocus:workout.Focus];
+    [workouts setFocusName:name];
+    [workouts setProps:str];
+
+    [self navigateTo:str workouts:workouts];
 }
 
 - (void)viewDidUnload {

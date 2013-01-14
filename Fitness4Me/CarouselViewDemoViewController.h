@@ -9,6 +9,7 @@
 #import "CarouselView.h"
 #import "CarouselViewCell.h"
 #import "Workout.h"
+#import "ExcersiceList.h"
 
 @interface CarouselViewDemoViewController : UIViewController <CarouselViewDataSource, CarouselViewDelegate> {
     CarouselView *_carouselView;
@@ -25,10 +26,13 @@
 @property (nonatomic, retain) NSMutableArray *dataSourceArray;
 @property(strong,nonatomic) NSString *focusList;
 @property(strong,nonatomic) NSString *equipments;
+@property(strong,nonatomic)NSString *operationMode;
+
 - (IBAction)onClickMove:(id)sender;
 -(IBAction)onClickBack:(id)sender;
 -(IBAction) segmentedControlIndexChanged;
 - (IBAction)removeSelectedColumn;
-- (IBAction)removeMultipleColumns;
+- (IBAction)addMoreExcersices:(id)sender;
 
 @end
+

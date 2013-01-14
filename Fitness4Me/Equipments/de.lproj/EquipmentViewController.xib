@@ -57,7 +57,7 @@
 					<object class="IBUITableView" id="371390653">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">274</int>
-						<string key="NSFrame">{{54, 79}, {213, 380}}</string>
+						<string key="NSFrame">{{54, 101}, {213, 358}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor" id="106507287">
@@ -106,7 +106,7 @@
 					<object class="IBUILabel" id="646987547">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{30, 43}, {260, 34}}</string>
+						<string key="NSFrame">{{12, 42}, {297, 51}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSNextKeyView" ref="371390653"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -115,10 +115,12 @@
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string key="IBUIText">How much time do u have ?</string>
+						<string key="IBUIText">Welche Hilfsmittel stehen dir zur Verfügung?</string>
 						<reference key="IBUITextColor" ref="106507287"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">0</int>
+						<int key="IBUINumberOfLines">2</int>
+						<int key="IBUITextAlignment">1</int>
 						<object class="IBUIFontDescription" key="IBUIFontDescription">
 							<int key="type">1</int>
 							<double key="pointSize">20</double>
@@ -129,6 +131,7 @@
 							<int key="NSfFlags">16</int>
 						</object>
 						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
+						<double key="preferredMaxLayoutWidth">297</double>
 					</object>
 				</array>
 				<string key="NSFrame">{{0, 20}, {320, 460}}</string>

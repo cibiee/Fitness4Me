@@ -62,7 +62,7 @@ typedef void (^errorBlock)(NSString *errorString);
 @property (nonatomic,retain) ASINetworkQueue *myQueue;
 @property (nonatomic,retain) ASINetworkQueue *imageQueue;
 
-
+@property (nonatomic,retain) NSMutableArray *ExcersiceList;
 
 
 + (FitnessServerCommunication *)sharedState;
@@ -120,6 +120,8 @@ typedef void (^errorBlock)(NSString *errorString);
 - (void)deleteSelfMadeWorkout:(NSString*)workoutID  userID:(int)userID   activityIndicator:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView onCompletion:(WMLoginResponseBlock)completionBlock onError:(NSError*)errorBlock;
 
 - (void)setSelfMadeWorkoutfavourite:(NSString*)workoutID UserID:(int)userID Status:(NSString*)status  activityIndicator:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView onCompletion:(WMLoginResponseBlock)completionBlock onError:(NSError*)errorBlock;
+
+- (void)listExcersiceFwithworkoutID:(NSString*)workoutIDs   activityIndicator:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView onCompletion:(WMLoginResponseBlock)completionBlock onError:(NSError*)errorBlock;
 
 /*--------------------------SELF MADE WORKOUT LIST SERVICES---------------------------------------------------*/
 

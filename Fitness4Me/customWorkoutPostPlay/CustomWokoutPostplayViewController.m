@@ -63,8 +63,6 @@
             viewController = [[ShareFitness4MeViewController alloc]initWithNibName:@"ShareFitness4MeViewController_iPad" bundle:nil];
         }
         
-        //NSLog(<#id, ...#>)
-        
         viewController.imageUrl =[self.workout ImageUrl];
         viewController.imageName =[self.workout ImageName];
         [self.navigationController pushViewController:viewController animated:YES];
