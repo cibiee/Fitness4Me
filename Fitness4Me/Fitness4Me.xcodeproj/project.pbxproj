@@ -277,7 +277,6 @@
 		F554A25F1679BBCA00E268B5 /* smiley.png in Resources */ = {isa = PBXBuildFile; fileRef = F554A2581679B60700E268B5 /* smiley.png */; };
 		F554A2601679BBCA00E268B5 /* smiley_disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = F554A2541679B5FF00E268B5 /* smiley_disabled.png */; };
 		F554A2611679BBCA00E268B5 /* icon_delete.png in Resources */ = {isa = PBXBuildFile; fileRef = F554A2501679B5F500E268B5 /* icon_delete.png */; };
-		F554A2631679E4D700E268B5 /* next_btn_with_text.png in Resources */ = {isa = PBXBuildFile; fileRef = F554A2621679E4D700E268B5 /* next_btn_with_text.png */; };
 		F557B012165F9DD30033759A /* next_exercise_de.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F557AFE8165F2F6F0033759A /* next_exercise_de.mp4 */; };
 		F55C7FF61677267000C817A8 /* MemberPromoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F55C7FF41677267000C817A8 /* MemberPromoViewController.m */; };
 		F55C7FFC1677357200C817A8 /* MembershipRateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F55C7FFA1677357200C817A8 /* MembershipRateViewController.m */; };
@@ -294,6 +293,11 @@
 		F577DBBD166DD8060064B920 /* Focus.m in Sources */ = {isa = PBXBuildFile; fileRef = F577DBBC166DD8060064B920 /* Focus.m */; };
 		F577DBF1166E06750064B920 /* FocusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F577DBED166E05C80064B920 /* FocusViewController.m */; };
 		F577DBF6166E18B70064B920 /* NameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F577DBF4166E18B70064B920 /* NameViewController.m */; };
+		F5998AFC16A5229B00E4FEC1 /* CustomInitialLaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5998AFA16A5229B00E4FEC1 /* CustomInitialLaunchViewController.m */; };
+		F5998AFD16A5229B00E4FEC1 /* CustomInitialLaunchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5998AFB16A5229B00E4FEC1 /* CustomInitialLaunchViewController.xib */; };
+		F5998B0216A5343C00E4FEC1 /* checkbox_checked.png in Resources */ = {isa = PBXBuildFile; fileRef = F5998B0416A5343C00E4FEC1 /* checkbox_checked.png */; };
+		F5998B0516A5344000E4FEC1 /* checkbox.png in Resources */ = {isa = PBXBuildFile; fileRef = F5998B0716A5344000E4FEC1 /* checkbox.png */; };
+		F5998B0816A5344300E4FEC1 /* next_btn_with_text.png in Resources */ = {isa = PBXBuildFile; fileRef = F5998B0A16A5344300E4FEC1 /* next_btn_with_text.png */; };
 		F5A6043F162D35B800B2ED1D /* InitialAppLaunchViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5A60441162D35B800B2ED1D /* InitialAppLaunchViewController_iPad.xib */; };
 		F5A60443162D361000B2ED1D /* app_bg_landscape_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A60445162D361000B2ED1D /* app_bg_landscape_iPad.png */; };
 		F5A60447162D361800B2ED1D /* app_bg_portrait_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = F5A60449162D361800B2ED1D /* app_bg_portrait_iPad.png */; };
@@ -327,6 +331,7 @@
 		F5AF28321670938900C18C34 /* CustomizedWorkoutPlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5AF28341670938900C18C34 /* CustomizedWorkoutPlayViewController.xib */; };
 		F5AF283B16709BDF00C18C34 /* CustomWorkoutEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5AF283916709BDF00C18C34 /* CustomWorkoutEditViewController.m */; };
 		F5B2975D166CC26D00011A7D /* CustomWorkoutAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B2975B166CC26D00011A7D /* CustomWorkoutAddViewController.m */; };
+		F5B400D316A67D740002444E /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = F5B400D516A67D740002444E /* button.png */; };
 		F5BB87BC16253D2900043059 /* LoadAppstoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5BB87BA16253D2900043059 /* LoadAppstoreViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F5BB87BD16253D2900043059 /* LoadAppstoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5BB87BB16253D2900043059 /* LoadAppstoreViewController.xib */; };
 		F5C0B3691659F04D0008B5EA /* SettingsViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5C0B3671659F04D0008B5EA /* SettingsViewController_iPad.xib */; };
@@ -630,7 +635,7 @@
 		0BD4846416036C3600D3AFB8 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/TermsOfUse.xib; sourceTree = "<group>"; };
 		0BD4846616036D3900D3AFB8 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/AboutViewController.xib; sourceTree = "<group>"; };
 		0BD4A2DA15C6459500F1FCB7 /* FitnessServerCommunication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FitnessServerCommunication.h; path = FitnessServerCommunication/FitnessServerCommunication.h; sourceTree = "<group>"; };
-		0BD4A2DB15C6459500F1FCB7 /* FitnessServerCommunication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FitnessServerCommunication.m; path = FitnessServerCommunication/FitnessServerCommunication.m; sourceTree = "<group>"; };
+		0BD4A2DB15C6459500F1FCB7 /* FitnessServerCommunication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FitnessServerCommunication.m; path = FitnessServerCommunication/FitnessServerCommunication.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		0BDAE8D0156A01AB0041CC96 /* Statistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Statistics.h; sourceTree = "<group>"; };
 		0BDAE8D1156A01AB0041CC96 /* Statistics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Statistics.m; sourceTree = "<group>"; };
 		0BDAE8D4156A08EA0041CC96 /* StatisticsDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatisticsDB.h; sourceTree = "<group>"; };
@@ -860,7 +865,6 @@
 		F554A2591679B60A00E268B5 /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/smiley.png; sourceTree = "<group>"; };
 		F554A25B1679B60F00E268B5 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/icon_edit.png; sourceTree = "<group>"; };
 		F554A25D1679B61500E268B5 /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/icon_edit.png; sourceTree = "<group>"; };
-		F554A2621679E4D700E268B5 /* next_btn_with_text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = next_btn_with_text.png; sourceTree = "<group>"; };
 		F557AFE8165F2F6F0033759A /* next_exercise_de.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = next_exercise_de.mp4; sourceTree = "<group>"; };
 		F55C7FF31677266F00C817A8 /* MemberPromoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MemberPromoViewController.h; path = MemberPromo/MemberPromoViewController.h; sourceTree = "<group>"; };
 		F55C7FF41677267000C817A8 /* MemberPromoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MemberPromoViewController.m; path = MemberPromo/MemberPromoViewController.m; sourceTree = "<group>"; };
@@ -876,7 +880,6 @@
 		F56075EC169FD88F001C770B /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/ExcersiceListViewController.xib; sourceTree = "<group>"; };
 		F56075ED169FD94C001C770B /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/WorkoutCreationCompletedViewController.xib; sourceTree = "<group>"; };
 		F56075EF169FE392001C770B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CarouselViewDemoViewController.xib; sourceTree = "<group>"; };
-		F56075F1169FE396001C770B /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/CarouselViewDemoViewController.xib; sourceTree = "<group>"; };
 		F56075F316A00A5F001C770B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MemverRateViewController.xib; sourceTree = "<group>"; };
 		F56075F516A00A63001C770B /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/MemverRateViewController.xib; sourceTree = "<group>"; };
 		F56075F716A00A71001C770B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MembershipCreateOwnViewController.xib; sourceTree = "<group>"; };
@@ -896,6 +899,15 @@
 		F577DBED166E05C80064B920 /* FocusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FocusViewController.m; path = Focus/FocusViewController.m; sourceTree = "<group>"; };
 		F577DBF3166E18B70064B920 /* NameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NameViewController.h; path = AddName/NameViewController.h; sourceTree = "<group>"; };
 		F577DBF4166E18B70064B920 /* NameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NameViewController.m; path = AddName/NameViewController.m; sourceTree = "<group>"; };
+		F5998AF916A5229B00E4FEC1 /* CustomInitialLaunchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomInitialLaunchViewController.h; path = CustomInitialLaunch/CustomInitialLaunchViewController.h; sourceTree = "<group>"; };
+		F5998AFA16A5229B00E4FEC1 /* CustomInitialLaunchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomInitialLaunchViewController.m; path = CustomInitialLaunch/CustomInitialLaunchViewController.m; sourceTree = "<group>"; };
+		F5998AFB16A5229B00E4FEC1 /* CustomInitialLaunchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomInitialLaunchViewController.xib; path = CustomInitialLaunch/CustomInitialLaunchViewController.xib; sourceTree = "<group>"; };
+		F5998B0316A5343C00E4FEC1 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/checkbox_checked.png; sourceTree = "<group>"; };
+		F5998B0616A5344000E4FEC1 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/checkbox.png; sourceTree = "<group>"; };
+		F5998B0916A5344300E4FEC1 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/next_btn_with_text.png; sourceTree = "<group>"; };
+		F5998B0B16A5344600E4FEC1 /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/checkbox_checked.png; sourceTree = "<group>"; };
+		F5998B0C16A5344A00E4FEC1 /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/checkbox.png; sourceTree = "<group>"; };
+		F5998B0D16A5344D00E4FEC1 /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/next_btn_with_text.png; sourceTree = "<group>"; };
 		F5A5CC1A167B224000AF90A2 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/CustomWorkoutIntermediateViewController.xib; sourceTree = "<group>"; };
 		F5A60440162D35B800B2ED1D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/InitialAppLaunchViewController_iPad.xib; sourceTree = "<group>"; };
 		F5A60444162D361000B2ED1D /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/app_bg_landscape_iPad.png; sourceTree = "<group>"; };
@@ -961,6 +973,9 @@
 		F5AF283916709BDF00C18C34 /* CustomWorkoutEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomWorkoutEditViewController.m; path = CustomWorkoutEdit/CustomWorkoutEditViewController.m; sourceTree = "<group>"; };
 		F5B2975A166CC26D00011A7D /* CustomWorkoutAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomWorkoutAddViewController.h; path = AddCustomWokoutLanding/CustomWorkoutAddViewController.h; sourceTree = "<group>"; };
 		F5B2975B166CC26D00011A7D /* CustomWorkoutAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomWorkoutAddViewController.m; path = AddCustomWokoutLanding/CustomWorkoutAddViewController.m; sourceTree = "<group>"; };
+		F5B400D416A67D740002444E /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/button.png; sourceTree = "<group>"; };
+		F5B400D616A67D780002444E /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/button.png; sourceTree = "<group>"; };
+		F5B400D716A6B3D10002444E /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/CarouselViewDemoViewController.xib; sourceTree = "<group>"; };
 		F5BB87B916253D2900043059 /* LoadAppstoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadAppstoreViewController.h; path = LaodAppstoreView/LoadAppstoreViewController.h; sourceTree = "<group>"; };
 		F5BB87BA16253D2900043059 /* LoadAppstoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoadAppstoreViewController.m; path = LaodAppstoreView/LoadAppstoreViewController.m; sourceTree = "<group>"; };
 		F5BB87BB16253D2900043059 /* LoadAppstoreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoadAppstoreViewController.xib; path = LaodAppstoreView/LoadAppstoreViewController.xib; sourceTree = "<group>"; };
@@ -1275,7 +1290,10 @@
 		0B9026E5156E4D0700DB211F /* 1X */ = {
 			isa = PBXGroup;
 			children = (
-				F554A2621679E4D700E268B5 /* next_btn_with_text.png */,
+				F5B400D516A67D740002444E /* button.png */,
+				F5998B0416A5343C00E4FEC1 /* checkbox_checked.png */,
+				F5998B0716A5344000E4FEC1 /* checkbox.png */,
+				F5998B0A16A5344300E4FEC1 /* next_btn_with_text.png */,
 				F554A25C1679B60F00E268B5 /* icon_edit.png */,
 				F554A2581679B60700E268B5 /* smiley.png */,
 				F554A2541679B5FF00E268B5 /* smiley_disabled.png */,
@@ -1901,6 +1919,7 @@
 		F509271116957C2500072169 /* Custom/Selfmade Screens */ = {
 			isa = PBXGroup;
 			children = (
+				F5998AF716A521F400E4FEC1 /* CustomWorkoutLaunchingScreens */,
 				F5B29758166CC22400011A7D /* AddCustomWorkoutLandingPage */,
 				F55C7FE7167718EB00C817A8 /* CustomWorkout */,
 				F5C84712166C8BA200B8EDA6 /* Equipments */,
@@ -2396,6 +2415,16 @@
 				F50853FE167844890094F314 /* NameViewController.xib */,
 			);
 			name = WorkoutName;
+			sourceTree = "<group>";
+		};
+		F5998AF716A521F400E4FEC1 /* CustomWorkoutLaunchingScreens */ = {
+			isa = PBXGroup;
+			children = (
+				F5998AF916A5229B00E4FEC1 /* CustomInitialLaunchViewController.h */,
+				F5998AFA16A5229B00E4FEC1 /* CustomInitialLaunchViewController.m */,
+				F5998AFB16A5229B00E4FEC1 /* CustomInitialLaunchViewController.xib */,
+			);
+			name = CustomWorkoutLaunchingScreens;
 			sourceTree = "<group>";
 		};
 		F5A60433162D2CFF00B2ED1D /* UIIPhone */ = {
@@ -2937,13 +2966,17 @@
 				F56075FA16A00A85001C770B /* MembershipPurchaseViewController.xib in Resources */,
 				F508540A167844D10094F314 /* CustomWokoutPostplayViewController.xib in Resources */,
 				F56075E9169FD88A001C770B /* ExcersiceListViewController.xib in Resources */,
-				F554A2631679E4D700E268B5 /* next_btn_with_text.png in Resources */,
+				F5998B0816A5344300E4FEC1 /* next_btn_with_text.png in Resources */,
 				F56075EE169FE392001C770B /* CarouselViewDemoViewController.xib in Resources */,
 				F560760216A00AB0001C770B /* MembershipStayFitViewController.xib in Resources */,
 				F56075FE16A00A95001C770B /* MembershipPersonliazedViewController.xib in Resources */,
 				F56075F616A00A71001C770B /* MembershipCreateOwnViewController.xib in Resources */,
 				F509272E16958EFA00072169 /* MembershipPersonalViewController.xib in Resources */,
 				F56075F216A00A5F001C770B /* MemverRateViewController.xib in Resources */,
+				F5998AFD16A5229B00E4FEC1 /* CustomInitialLaunchViewController.xib in Resources */,
+				F5998B0216A5343C00E4FEC1 /* checkbox_checked.png in Resources */,
+				F5998B0516A5344000E4FEC1 /* checkbox.png in Resources */,
+				F5B400D316A67D740002444E /* button.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3042,6 +3075,7 @@
 				F5092727169588F300072169 /* MembershipCreateOwnViewController.m in Sources */,
 				F509272D16958EFA00072169 /* MembershipPersonalViewController.m in Sources */,
 				F5092732169599BC00072169 /* MemverRateViewController.m in Sources */,
+				F5998AFC16A5229B00E4FEC1 /* CustomInitialLaunchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4361,7 +4395,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F56075EF169FE392001C770B /* en */,
-				F56075F1169FE396001C770B /* de */,
+				F5B400D716A6B3D10002444E /* de */,
 			);
 			name = CarouselViewDemoViewController.xib;
 			sourceTree = "<group>";
@@ -4414,6 +4448,33 @@
 			);
 			name = MembershipStayFitViewController.xib;
 			path = MemebershipStayFit;
+			sourceTree = "<group>";
+		};
+		F5998B0416A5343C00E4FEC1 /* checkbox_checked.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F5998B0316A5343C00E4FEC1 /* en */,
+				F5998B0B16A5344600E4FEC1 /* de */,
+			);
+			name = checkbox_checked.png;
+			sourceTree = "<group>";
+		};
+		F5998B0716A5344000E4FEC1 /* checkbox.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F5998B0616A5344000E4FEC1 /* en */,
+				F5998B0C16A5344A00E4FEC1 /* de */,
+			);
+			name = checkbox.png;
+			sourceTree = "<group>";
+		};
+		F5998B0A16A5344300E4FEC1 /* next_btn_with_text.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F5998B0916A5344300E4FEC1 /* en */,
+				F5998B0D16A5344D00E4FEC1 /* de */,
+			);
+			name = next_btn_with_text.png;
 			sourceTree = "<group>";
 		};
 		F5A60441162D35B800B2ED1D /* InitialAppLaunchViewController_iPad.xib */ = {
@@ -4686,6 +4747,15 @@
 			);
 			name = CustomizedWorkoutPlayViewController.xib;
 			path = CustomizedWorkoutPlay;
+			sourceTree = "<group>";
+		};
+		F5B400D516A67D740002444E /* button.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F5B400D416A67D740002444E /* en */,
+				F5B400D616A67D780002444E /* de */,
+			);
+			name = button.png;
 			sourceTree = "<group>";
 		};
 		F5C0B3671659F04D0008B5EA /* SettingsViewController_iPad.xib */ = {

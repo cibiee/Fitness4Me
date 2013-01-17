@@ -114,4 +114,80 @@
     
 }
 
+
+
+
+-(NSMutableArray*)getSelfMadeWorkouts{
+    
+    database =[FMDatabase databaseWithPath:databasePath];
+    arrStatistics=[[NSMutableArray alloc]init];
+    if(!database.open){
+        NSLog(@"Databse not Open");
+    }else{
+        //  NSLog(@"Database opened sucessfully");
+    }
+    
+    FMResultSet *resultSet=[database executeQuery:@"Select * from SelfMadeFavourites"];
+    while(resultSet.next){
+        Favourite *favourite =[[Favourite alloc]init];
+        favourite.WorkoutID =[resultSet stringForColumnIndex:0];
+        favourite.status  =[[resultSet stringForColumnIndex:1]intValue];
+        [arrStatistics addObject:favourite];
+        
+    }
+    [resultSet close];
+    return arrStatistics;
+}
+
+
+-(void)insertSelfMadefavourite:(Favourite *)favourite{
+    
+    database =[FMDatabase databaseWithPath:databasePath];
+    if(!database.open){
+        NSLog(@"Databse not Open");
+    }
+    [database beginTransaction];
+    [database executeUpdate:@"INSERT INTO SelfMadeFavourites (workoutID,status) VALUES (?,?);",
+     favourite.workoutID,[NSString stringWithFormat:@"%i",favourite.status], nil];
+    [database commit];
+    
+    [database close];
+}
+
+
+-(void)deleteSelfMadefavourite{
+    
+    database =[FMDatabase databaseWithPath:databasePath];
+    if(!database.open){
+        NSLog(@"Databse not Open");
+    }else{
+        // NSLog(@"Database opened sucessfully");
+    }
+    [database beginTransaction];
+    [database executeUpdate:@"Delete from SelfMadeFavourites"];
+    [database commit];
+    // Close the database.
+    [database close];
+    
+    
+}
+
+-(void)deleteSelfMadefavouritewithID:(NSString*)workoutID{
+    
+    database =[FMDatabase databaseWithPath:databasePath];
+    if(!database.open){
+        NSLog(@"Databse not Open");
+    }else{
+        // NSLog(@"Database opened sucessfully");
+    }
+    [database beginTransaction];
+    NSString *query =[NSString stringWithFormat:@"Delete from SelfMadeFavourites where workoutID = %@",workoutID];
+    [database executeUpdate:query];
+    [database commit];
+    // Close the database.
+    [database close];
+    
+    
+}
+
 @end

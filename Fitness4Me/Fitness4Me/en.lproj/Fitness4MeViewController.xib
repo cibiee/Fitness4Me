@@ -231,7 +231,7 @@ aGlzIG1heSB0YWtlIHNldmVyYWwgbWludXRlcy4KA</string>
 						<double key="IBUITitleEdgeInsets.bottom">0.0</double>
 						<double key="IBUITitleEdgeInsets.left">10</double>
 						<double key="IBUITitleEdgeInsets.right">0.0</double>
-						<string key="IBUINormalTitle">10 Minute Workouts</string>
+						<string key="IBUINormalTitle">Quick Workouts</string>
 						<reference key="IBUIHighlightedTitleColor" ref="108433983"/>
 						<reference key="IBUINormalTitleColor" ref="108433983"/>
 						<object class="NSColor" key="IBUINormalTitleShadowColor" id="17824285">

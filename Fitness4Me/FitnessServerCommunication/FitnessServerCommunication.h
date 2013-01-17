@@ -123,6 +123,9 @@ typedef void (^errorBlock)(NSString *errorString);
 
 - (void)listExcersiceFwithworkoutID:(NSString*)workoutIDs   activityIndicator:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView onCompletion:(WMLoginResponseBlock)completionBlock onError:(NSError*)errorBlock;
 
+- (void)GetUserTypeWithactivityIndicator:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView onCompletion:(WMLoginResponseBlock)completionBlock onError:(NSError*)errorBlock;
+
+
 /*--------------------------SELF MADE WORKOUT LIST SERVICES---------------------------------------------------*/
 
 

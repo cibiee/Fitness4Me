@@ -7,12 +7,11 @@
 //
 
 #import "CarouselViewDemoViewController.h"
-#import "ExcersiceList.h"
-#import "NameViewController.h"
-#import "FitnessServer.h"
-#import  "FocusViewController.h"
 
 
+@interface CarouselViewDemoViewController ()
+
+@end
 @implementation CarouselViewDemoViewController
 @synthesize workout;
 
@@ -39,6 +38,11 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self.backgroundLabel.layer setCornerRadius:10];
+    [self.totalVideoCountLabel setText:[NSString stringWithFormat:@"Number of excersices [%i]",self.videoCount]];
+    [self.durationLabel setText:[NSString stringWithFormat:@"Total Time [%@]",[Fitness4MeUtils displayTimeWithSecond:self.totalDuration]]];
+
     self.view.transform = CGAffineTransformConcat(self.view.transform, CGAffineTransformMakeRotation(M_PI_2));
     [self.recoverySegmentControl setSelectedSegmentIndex:-1];
     [self.moveSegmentControl setSelectedSegmentIndex:-1];
@@ -49,15 +53,20 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
     [backutton addTarget:self action:@selector(onClickBack:) forControlEvents:UIControlEventTouchDown];
     UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithCustomView:backutton];
     self.navigationBar.leftBarButtonItem = backBtn;
-    if ([[self operationMode] isEqualToString:@"Edit"]) {
+    
+    UIButton *nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    nextButton.frame = CGRectMake(0, 0, 58, 30);
+    [nextButton setBackgroundImage:[UIImage imageNamed:@"next_btn_with_text.png"] forState:UIControlStateNormal];
+    [nextButton addTarget:self action:@selector(onClickNext:) forControlEvents:UIControlEventTouchDown];
+    UIBarButtonItem *nextBtn = [[UIBarButtonItem alloc] initWithCustomView:nextButton];
+    self.navigationBar.rightBarButtonItem = nextBtn;
+    
+    if ([self.operationMode isEqualToString:@"Edit"]) {
         
-    }else{
-        UIButton *nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        nextButton.frame = CGRectMake(0, 0, 58, 30);
-        [nextButton setBackgroundImage:[UIImage imageNamed:@"next_btn_with_text.png"] forState:UIControlStateNormal];
-        [nextButton addTarget:self action:@selector(onClickNext:) forControlEvents:UIControlEventTouchDown];
-        UIBarButtonItem *nextBtn = [[UIBarButtonItem alloc] initWithCustomView:nextButton];
-        self.navigationBar.rightBarButtonItem = nextBtn;
+    }
+    else
+    {
+        [self.addMoreButton removeFromSuperview];
     }
     
 	[_removeSelectedButton setEnabled:NO];
@@ -72,6 +81,7 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
 - (void)viewDidUnload {
     [self setRecoverySegmentControl:nil];
     [self setMoveSegmentControl:nil];
+    [self setBackgroundLabel:nil];
     [super viewDidUnload];
 }
 
@@ -93,7 +103,7 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
         
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
-       
+        
         NSString *dataPath = [documentsDirectory stringByAppendingPathComponent:@"MyFolder/SelfMadeThumbs"];
         NSString  *storeURL= [dataPath stringByAppendingPathComponent :[excersiceList imageName]];
         cell.ExcersiceImage.image= [[UIImage alloc]initWithContentsOfFile:storeURL];
@@ -130,11 +140,15 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
                 list.name=@"recovery 15";
                 list.imageName= @"dummyimg.png";
                 list.excersiceID=@"rec15";
+                 list.time=@"900";
+                list.repetitions=@"1";
                 [GlobalArray insertObject:list atIndex:[index intValue]];
                 
                 for (int i = 0; i < [GlobalArray count]; i++) {
                     [arrays addObject:[NSNumber numberWithInt:i]];
                 }
+                self.videoCount++;
+                 self.totalDuration=self.totalDuration+ 900;
                 [_carouselView insertColumnsAtIndexes:arrays withColumnAnimation:_animationSegmentedControl.selectedSegmentIndex];
                 
                 break;
@@ -142,11 +156,17 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
                 list.name=@"recovery 30";
                 list.imageName= @"dummyimg.png";
                 list.excersiceID=@"rec30";
+                list.time=@"1800";
+                list.repetitions=@"1";
                 [GlobalArray insertObject:list atIndex:[index intValue]];
                 for (int i = 0; i < [GlobalArray count]; i++) {
                     [arrays addObject:[NSNumber numberWithInt:i]];
                 }
+                self.videoCount++;
+                self.totalDuration=self.totalDuration+ 1800;
                 [_carouselView insertColumnsAtIndexes:arrays withColumnAnimation:_animationSegmentedControl.selectedSegmentIndex];
+                
+                
                 
                 break;
                 
@@ -154,6 +174,10 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
                 break;
         }
     }
+    [self.durationLabel setText:[NSString stringWithFormat:@"Total Time [%@]",[Fitness4MeUtils displayTimeWithSecond:self.totalDuration]]];
+ 
+    //[Fitness4MeUtils displayTimeWithSecond:self.totalDuration];
+    
     [self.recoverySegmentControl setSelectedSegmentIndex:-1];
     
 }
@@ -217,44 +241,53 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
     }
     
     [userinfo setObject:str forKey:@"SelectedWorkouts"];
-   
+    
     NameViewController *viewController =[[NameViewController alloc]initWithNibName:@"NameViewController" bundle:nil];
     viewController.workout= [[Workout alloc]init];
     viewController.workout =nil;
     [viewController setCollectionString:str];
     [viewController setEquipments:self.equipments];
     [viewController setFocusList:self.focusList];
-
+    
     [self.navigationController pushViewController:viewController animated:YES];
 }
 
 
 - (IBAction)removeSelectedColumn {
-    if ([GlobalArray count]>0) {
+    if ([GlobalArray count]>1) {
         NSMutableArray *arrays= [[NSMutableArray alloc]init];
         NSNumber *selectedIndex = [NSNumber numberWithInt:[_carouselView indexOfSelectedCell]];
+        self.videoCount--;
+        self.totalDuration=self.totalDuration- ([[[GlobalArray objectAtIndex:[_carouselView indexOfSelectedCell]] time]intValue]*[[[GlobalArray objectAtIndex:[_carouselView indexOfSelectedCell]] repetitions]intValue]);
         [GlobalArray removeObjectAtIndex:[selectedIndex intValue]];
         [_carouselView deleteAllColumnswithColumnAnimation:_animationSegmentedControl.selectedSegmentIndex];
-        
+       
         for (int i = 0; i < [GlobalArray count]; i++) {
             [arrays addObject:[NSNumber numberWithInt:i]];
+            
+          
         }
+        [self.totalVideoCountLabel setText:[NSString stringWithFormat:@"Number of excersices [%i]",self.videoCount]];
+        [self.durationLabel setText:[NSString stringWithFormat:@"Total Time [%@]",[Fitness4MeUtils displayTimeWithSecond:self.totalDuration]]];
+
+
         [_carouselView insertColumnsAtIndexes:arrays withColumnAnimation:_animationSegmentedControl.selectedSegmentIndex];
 	    [_removeSelectedButton setEnabled:NO];
-    
-    NSString *str= [[NSString alloc]init];
-    for (ExcersiceList *excerlist in GlobalArray) {
-        if ([str length]==0) {
-            str =[str stringByAppendingString:[excerlist excersiceID]];
+        
+        NSString *str= [[NSString alloc]init];
+        for (ExcersiceList *excerlist in GlobalArray) {
+            if ([str length]==0) {
+                str =[str stringByAppendingString:[excerlist excersiceID]];
+            }
+            else{
+                str=[str stringByAppendingString:@","];
+                str =[str stringByAppendingString:[excerlist excersiceID]];
+            }
         }
-        else{
-            str=[str stringByAppendingString:@","];
-            str =[str stringByAppendingString:[excerlist excersiceID]];
-        }
+       
+        [userinfo setObject:str forKey:@"SelectedWorkouts"];
     }
     
-    [userinfo setObject:str forKey:@"SelectedWorkouts"];
-    }
     
 }
 
@@ -265,7 +298,7 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
     viewController.workout =[[Workout alloc]init];
     viewController .workout=self.workout;
     [self.navigationController pushViewController:viewController animated:YES];
-
+    
 }
 
 

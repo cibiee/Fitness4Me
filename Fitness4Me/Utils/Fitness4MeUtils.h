@@ -31,5 +31,6 @@
 +(void) createDirectoryatPath:(NSString *)dataPath;
 +(NSString *)path;
 +(NSBundle*)getBundle;
++(NSString*)displayTimeWithSecond:(NSInteger)seconds;
 
 @end

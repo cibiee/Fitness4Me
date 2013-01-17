@@ -30,6 +30,9 @@
 {
     [super viewDidLoad];
     
+    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+    NSString *isMember =[userinfo valueForKey:@"isMember"];
+    self.workoutType =[userinfo stringForKey:@"workoutType"];
     // add continue button
     UIButton *backutton = [UIButton buttonWithType:UIButtonTypeCustom];
     backutton.frame = CGRectMake(0, 0, 58, 30);
@@ -43,46 +46,79 @@
     }
     else
     {
-    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
-    NSString *hasMadeFullPurchase= [userinfo valueForKey:@"hasMadeFullPurchase"];
-    if ([hasMadeFullPurchase isEqualToString:@"true"]) {
-     [self.creationCompleteLabel setText:NSLocalizedString(@"creationCustomizedCompleteMsg", nil)];
-    }
-    else {
-        int customCount= [userinfo integerForKey:@"customCount"]+1;
-        NSString *customCountString;
         
-        switch (customCount) {
-            case 1:
-                
-                customCountString =@"first";
-                break;
-            case 2:
-                
-                customCountString =@"second";
-                break;
-            case 3:
-                
-                customCountString =@"third";
-                break;
-            case 4:
-                
-                customCountString =@"fourth";
-                break;
-            case 5:
-                customCountString =@"last";
-                break;
-                
-            default:
-                break;
+        if ([isMember isEqualToString:@"true"]) {
+            if ([self.workoutType isEqualToString:@"SelfMade"]) {
+                [self.creationCompleteLabel  setText:@"You just designed your selfmade workout"];
+            }
+            else
+            {
+                [self.creationCompleteLabel  setText:@"You just designed your custom workout"];
+            }
+            
         }
-        if ([customCountString length]>0) {
-            [self.creationCompleteLabel setText:[NSString stringWithFormat:NSLocalizedString(@"creationCustomizedCompleteMsg", nil),customCountString]];
+        else
+        {
+            NSLog(self.workoutType);
+            if ([self.workoutType isEqualToString:@"SelfMade"]) {
+                [self.creationCompleteLabel setText:@"You just designed your selfmade workout"];
+            }
+            else
+            {
+                
+                int customCount= [userinfo integerForKey:@"customCount"]+1;
+                NSString *customCountString;
+                
+                switch (customCount) {
+                    case 1:
+                        
+                        customCountString =@"first";
+                        break;
+                    case 2:
+                        
+                        customCountString =@"second";
+                        break;
+                    case 3:
+                        
+                        customCountString =@"third";
+                        break;
+                    case 4:
+                        
+                        customCountString =@"fourth";
+                        break;
+                    case 5:
+                        customCountString =@"last";
+                        break;
+                        
+                    default:
+                        break;
+                }
+                if ([customCountString length]>0) {
+                    
+                    NSString *msg= NSLocalizedString(@"creationCustomizedCompleteMsg", nil);
+                    [self.creationCompleteLabel setText:[NSString stringWithFormat:msg,customCountString]];
+                }
+            }
         }
     }
-    }
+    
     self.saveandStartbutton.titleLabel.textAlignment=UITextAlignmentCenter;
     self.saveandStartbutton.titleLabel.lineBreakMode=UILineBreakModeCharacterWrap;
+    
+    
+    
+    
+    if ([self.workoutType isEqualToString:@"SelfMade"])
+    {
+        if ([isMember isEqualToString:@"true"]) {
+            [self.saveToListButton setHidden:NO];
+        }
+        else{
+            [self.saveToListButton setHidden:YES];
+            [self.saveandStartbutton setFrame:CGRectMake(86, 290,125 , 78)];
+            
+        }
+    }
     
     self.saveToListButton.titleLabel.textAlignment=UITextAlignmentCenter;
     self.saveToListButton.titleLabel.lineBreakMode=UILineBreakModeCharacterWrap;
@@ -101,9 +137,9 @@
     [workoutDB setUpDatabase];
     [workoutDB createDatabase];
     newWorkout =[[Workout alloc]init];
-     if ([self.workoutType isEqualToString:@"Custom"]){
-     newWorkout =[workoutDB getCustomWorkoutByID:self.workoutID];
-     }else{
+    if ([self.workoutType isEqualToString:@"Custom"]){
+        newWorkout =[workoutDB getCustomWorkoutByID:self.workoutID];
+    }else{
         newWorkout=[workoutDB getSelfMadeByID:self.workoutID];
     }
     CustomWorkoutIntermediateViewController *viewController =[[CustomWorkoutIntermediateViewController alloc]initWithNibName:@"CustomWorkoutIntermediateViewController" bundle:nil];
@@ -114,12 +150,12 @@
 }
 
 - (void)NavigateToWorkoutList {
-   
+    
     
     CustomWorkoutsViewController *viewController =[[CustomWorkoutsViewController alloc]initWithNibName:@"CustomWorkoutsViewController" bundle:nil];
-        if ([self.workoutType isEqualToString:@"Custom"]){
+    if ([self.workoutType isEqualToString:@"Custom"]){
         [viewController setWorkoutType:@"Custom"];
-        }
+    }
     else
     {
         [viewController setWorkoutType:@"SelfMade"];
@@ -150,7 +186,7 @@
                     }
                     else
                     {
-                    [self getNewWorkoutList];
+                        [self getNewWorkoutList];
                     }
                     
                 } onError:^(NSError *error) {
@@ -168,6 +204,8 @@
             if (workoutID>0) {
                 [workout setWorkoutID:workoutID];
                 self.workoutID=workoutID;
+                GlobalArray =[[NSMutableArray alloc]init];
+                [userinfo setObject:@"" forKey:@"SelectedWorkouts"];
                 [fitness  parseSelfMadeFitnessDetails:[userID intValue]  onCompletion:^(NSString *responseString){
                     if ([navigateTo isEqualToString:@"List"]) {
                         [self NavigateToWorkoutList];
@@ -176,7 +214,7 @@
                     {
                         [self getNewWorkoutList];
                     }
-
+                    
                     
                 } onError:^(NSError *error) {
                     // [self getExcersices];
@@ -195,7 +233,7 @@
 }
 
 - (IBAction)savetoList:(id)sender{
-      [self saveWorkoutsandNavigateTo:@"List"];
+    [self saveWorkoutsandNavigateTo:@"List"];
 }
 
 

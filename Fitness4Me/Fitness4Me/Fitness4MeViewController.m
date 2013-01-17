@@ -10,7 +10,7 @@
 #import "Fitness4MeUtils.h"
 #import "FitnessServerCommunication.h"
 #import "ExcersiceListViewController.h"
-
+#import "CustomInitialLaunchViewController.h"
 @implementation Fitness4MeViewController
 
 - (void)didReceiveMemoryWarning
@@ -34,11 +34,7 @@
 
 - (void)viewDidLoad
 {
-    
     [super viewDidLoad];
-    
-   // [Fitness4MeUtils showAdMob:self];
-    
     [SyncView removeFromSuperview];
     SyncView.layer.cornerRadius =14;
     SyncView.layer.borderWidth = 2;
@@ -54,9 +50,6 @@
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
     dataPath= [documentsDirectory stringByAppendingPathComponent:@"MyFolder"];
-    
-    
-    
     if (![[NSFileManager defaultManager] fileExistsAtPath:dataPath]){
         //Create Folder
         [[NSFileManager defaultManager] createDirectoryAtPath:dataPath withIntermediateDirectories:YES attributes:nil error:nil];
@@ -98,7 +91,7 @@
 -(void)startDownload
 {
     
-   
+    
     FitnessServerCommunication *fitness =[FitnessServerCommunication sharedState];
     [fitness setDelegate:self];
     [fitness listEquipments:nil progressView:nil
@@ -146,16 +139,12 @@
              } onError:^(NSError *error) {
                  // [self getExcersices];
              }];
-
+             
          }];
     }
     fileDownloadProgressView.progress = ((float)countCompleted / (float) totalCount);
 }
 
-
-//
-// called for  navigating To WorkoutListView
-//
 
 -(IBAction)navigateToWorkoutListView:(id)sender{
     
@@ -166,16 +155,13 @@
         viewController =[[ListWorkoutsViewController alloc]initWithNibName:@"ListWorkoutsViewController_iPad" bundle:nil];
     }
     [self.navigationController pushViewController:viewController animated:YES];
-    
     [viewController release];
 }
 
-//
-// called for  navigating To WorkoutListView
-//
+
 
 -(IBAction)navigateToAboutView:(id)sender{
-  
+    
     AboutViewController *viewController;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
         viewController =[[AboutViewController alloc]initWithNibName:@"AboutViewController" bundle:nil];
@@ -188,11 +174,6 @@
     [fitness getAllvideos];
 }
 
-
-
-//
-// called for  navigating To WorkoutListView
-//
 
 -(IBAction)navigateToSettingsView:(id)sender{
     
@@ -208,9 +189,6 @@
     
 }
 
-//
-// called for  navigating To WorkoutListView
-//
 
 -(IBAction)navigateToHintstView:(id)sender{
     
@@ -231,43 +209,61 @@
 -(IBAction)navigateToCustomWorkoutListView:(id)sender
 {
     CustomWorkoutsViewController *viewController;
-     
+    
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
         viewController =[[CustomWorkoutsViewController alloc]initWithNibName:@"CustomWorkoutsViewController" bundle:nil];
     }else {
         //viewController =[[HintsViewController alloc]initWithNibName:@"CustomizedWorkoutListViewController_iPad" bundle:nil];
     }
-   [viewController setWorkoutType:@"Custom"];
+    [viewController setWorkoutType:@"Custom"];
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     [userinfo setObject:@"Custom" forKey:@"workoutType"];
-[userinfo setObject:@"" forKey:@"SelectedWorkouts"];
+    [userinfo setObject:@"" forKey:@"SelectedWorkouts"];
     [self.navigationController pushViewController:viewController animated:YES];
     
     [viewController release];
-
+    
 }
 
 
 - (IBAction)onclickSelfMadeworkout:(id)sender {
-   
-    CustomWorkoutsViewController *viewController;
-    
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
-        viewController =[[CustomWorkoutsViewController alloc]initWithNibName:@"CustomWorkoutsViewController" bundle:nil];
-    }else {
-        //viewController =[[HintsViewController alloc]initWithNibName:@"CustomizedWorkoutListViewController_iPad" bundle:nil];
-    }
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
-    [userinfo setObject:@"SelfMade" forKey:@"workoutType"];
-[userinfo setObject:@"" forKey:@"SelectedWorkouts"];
-    [viewController setWorkoutType:@"SelfMade"];
-    [self.navigationController pushViewController:viewController animated:YES];
+    NSString *isDontShow =[userinfo stringForKey:@"DontShow"];
     
-    [viewController release];
-    
-    
-//   
-
+    if ([isDontShow isEqualToString:@"true"]) {
+        
+        
+        CustomWorkoutsViewController *viewController;
+        
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+            viewController =[[CustomWorkoutsViewController alloc]initWithNibName:@"CustomWorkoutsViewController" bundle:nil];
+        }else {
+            //viewController =[[HintsViewController alloc]initWithNibName:@"CustomizedWorkoutListViewController_iPad" bundle:nil];
+        }
+        
+        [userinfo setObject:@"SelfMade" forKey:@"workoutType"];
+        [userinfo setObject:@"" forKey:@"SelectedWorkouts"];
+        [viewController setWorkoutType:@"SelfMade"];
+        [self.navigationController pushViewController:viewController animated:YES];
+        
+        [viewController release];
+    }
+    else{
+        CustomInitialLaunchViewController *viewController;
+        
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+            viewController =[[CustomInitialLaunchViewController alloc]initWithNibName:@"CustomInitialLaunchViewController" bundle:nil];
+        }else {
+            //viewController =[[HintsViewController alloc]initWithNibName:@"CustomizedWorkoutListViewController_iPad" bundle:nil];
+        }
+        NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+        [userinfo setObject:@"SelfMade" forKey:@"workoutType"];
+        [userinfo setObject:@"" forKey:@"SelectedWorkouts"];
+        //  [viewController setWorkoutType:@"SelfMade"];
+        [self.navigationController pushViewController:viewController animated:YES];
+        
+        [viewController release];
+    }
 }
 
 -(IBAction)cancelDownloas:(id)sender

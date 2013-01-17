@@ -32,4 +32,8 @@
 -(NSMutableArray*)getCustomWorkouts;
 -(void)insertCustomStatistics:(Statistics *)statistics;
 -(void)deleteCustomStatistics;
+
+-(NSMutableArray*)getSelfMadeWorkouts;
+-(void)insertSelfMadeStatistics:(Statistics *)statistics;
+-(void)deleteSelfMadeStatistics;
 @end

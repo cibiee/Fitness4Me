@@ -18,6 +18,7 @@
 
 @property NSMutableArray *groupedExcersice;
 @property NSMutableArray *workouts;
+
 @end
 
 @implementation CustomWorkoutsViewController
@@ -26,6 +27,8 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:[Fitness4MeUtils getBundle]];
     if (self) {
+        fitness =[FitnessServerCommunication sharedState];
+         userinfo =[NSUserDefaults standardUserDefaults];
         //  self.workoutType=[[NSString alloc]init];
         // Custom initialization
     }
@@ -67,8 +70,6 @@
     workoutDB =[[WorkoutDB alloc]init];
     [workoutDB setUpDatabase];
     [workoutDB createDatabase];
-
-    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     [userinfo setObject:self.workoutType forKey:@"workoutType"];
 
     if ([self.workoutType isEqualToString:@"SelfMade"]){
@@ -101,9 +102,8 @@
 
 
 -(void)parseFitnessDetails{
-    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+   
     UserID =[userinfo integerForKey:@"UserID"];
-    FitnessServerCommunication *fitness =[FitnessServerCommunication sharedState];
     if ([self.workoutType isEqualToString:@"SelfMade"]) {
         [fitness parseSelfMadeFitnessDetails:UserID onCompletion:^(NSString *responseString){
             if ([responseString length]>0) {
@@ -301,11 +301,26 @@
     [self.navigationController pushViewController:viewController animated:YES];
 }
 
+-(NSString*)canCreate
+{
+   __block NSString *canCreate;
+    [fitness GetUserTypeWithactivityIndicator:nil progressView:nil onCompletion:^(NSString *responseString) {
+        canCreate =responseString;
+    } onError:^(NSError *error){
+        
+    }];
+    return canCreate;
+}
+
+
 -(IBAction)onClickAdd:(id)sender{
     
-    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+   
     NSString *hasMadeFullPurchase= [userinfo valueForKey:@"hasMadeFullPurchase"];
     NSString *isMember =[userinfo valueForKey:@"isMember"];
+    NSString *canCreate=[[NSString alloc]init];
+    NSLog(isMember);
+    canCreate=[self canCreate];
     
     if ([isMember isEqualToString:@"true"]) {
         if ([self.workoutType isEqualToString:@"SelfMade"]) {
@@ -323,19 +338,22 @@
                 [self navigateToCustomWorkoutAdd];
             }
         }else {
+            
             if ([self.groupedExcersice count]>=5) {
                 [self showPremium];
-            }else{
+            }
+            else{
                 if ([self.workoutType isEqualToString:@"SelfMade"]) {
-                    FocusViewController *viewController =[[FocusViewController alloc]initWithNibName:@"FocusViewController" bundle:nil];
-                    viewController .workout=nil;
-                    [self.navigationController pushViewController:viewController animated:YES];
-                    
-                }else{
-                    [userinfo setInteger:[self.groupedExcersice count] forKey:@"customCount"];
-                    CustomWorkoutAddViewController *viewController =[[CustomWorkoutAddViewController alloc]initWithNibName:@"CustomWorkoutAddViewController" bundle:nil];
-                    [self.navigationController pushViewController:viewController animated:YES];
+                    if ([canCreate isEqualToString:@"true"]) {
+                    [self navigateToFocus];
+                    }
                 }
+                
+                else{
+                
+                    [userinfo setInteger:[self.groupedExcersice count] forKey:@"customCount"];
+                    [self navigateToCustomWorkoutAdd];
+                    }
             }
         }
     }
@@ -377,7 +395,14 @@
     CustomFavourites *customFavourites =[[CustomFavourites alloc]init];
     [customFavourites setUpDatabase];
     [customFavourites createDatabase];
-    [customFavourites deletefavouritewithID:[fav workoutID]];
+    if ([self.workoutType isEqualToString:@"SelfMade"]){
+        [customFavourites deleteSelfMadefavouritewithID:[fav workoutID]];
+    }
+    else{
+        [customFavourites deletefavouritewithID:[fav workoutID]];
+    }
+    
+    
     return customFavourites;
 }
 
@@ -385,14 +410,26 @@
     CustomFavourites *customFavourites =[[CustomFavourites alloc]init];
     [customFavourites setUpDatabase];
     [customFavourites createDatabase];
-    [customFavourites insertfavourite:fav];
+    if ([self.workoutType isEqualToString:@"SelfMade"]){
+        [customFavourites insertSelfMadefavourite:fav];
+    }
+    else{
+        [customFavourites insertfavourite:fav];
+    }
+    
 }
 
 - (void)updateWorkout:(Workout *)workout {
     workoutDB =[[WorkoutDB alloc]init];
     [workoutDB setUpDatabase];
     [workoutDB createDatabase];
-    [workoutDB updateCustomWorkout:[workout WorkoutID] :[workout IsLocked]];
+    if ([self.workoutType isEqualToString:@"SelfMade"]){
+        [workoutDB updateCustomWorkout:[workout WorkoutID] :[workout IsLocked]];
+    }
+    else{
+        [workoutDB updateSelfMadeWorkout:[workout WorkoutID] :[workout IsLocked]];
+    }
+    
 }
 
 -(IBAction)onClicksetFavourite:(id)sender{
@@ -402,15 +439,16 @@
     NSDictionary *dictionary = [self.groupedExcersice objectAtIndex:s];
     NSArray *array = [dictionary objectForKey:@"workouts"];
     Workout *workout = [[Workout alloc]init];
-    workout = [array objectAtIndex:0];
     Favourite *fav= [[Favourite alloc]init];
+    workout = [array objectAtIndex:0];
+    
     NSString *status =[workout IsLocked];;
     NSString *statusInt=0;
     if ([status isEqualToString:@"true"]) {
         [[self.workouts objectAtIndex:s] setIsLocked:@"false"];
+        statusInt=@"0";
         [fav setStatus:0];
         [fav setWorkoutID:[workout WorkoutID]];
-        statusInt=@"0";
         [SetFaveButton setImage:[UIImage imageNamed:@"smiley_disabled"] forState:UIControlStateNormal];
     }else{
         [[self.workouts objectAtIndex:s] setIsLocked:@"true"];
@@ -421,21 +459,14 @@
     }
     BOOL isReachable = [Fitness4MeUtils isReachable];
     if (isReachable) {
-        __weak FitnessServerCommunication *fitness=[FitnessServerCommunication  sharedState];
-        
         if ([self.workoutType isEqualToString:@"SelfMade"]){
             [fitness setSelfMadeWorkoutfavourite:[workout WorkoutID] UserID:UserID Status:statusInt activityIndicator:nil progressView:nil onCompletion:^(NSString *responseString) {
-                
             } onError:^(NSError *error) {
-                
             }];
             [self parseFitnessDetails];
         }else{
             [fitness setWorkoutfavourite:[workout WorkoutID] UserID:UserID Status:statusInt activityIndicator:nil progressView:nil onCompletion:^(NSString *responseString) {
-                
-                
             } onError:^(NSError *error) {
-                
             }];
             [self parseFitnessDetails];
         }
@@ -445,6 +476,7 @@
         [self insertFavStatus:fav];
         [self updateWorkout:workout];
     }
+    
 }
 
 
@@ -460,15 +492,12 @@
 }
 
 -(IBAction)onClickEdit:(id)sender{
-    
-    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     NSString *isMember =[userinfo valueForKey:@"isMember"];
-
     if ([isMember isEqualToString:@"true"]) {
         CustomWorkoutEditViewController *viewController =[[CustomWorkoutEditViewController alloc]initWithNibName:@"CustomWorkoutEditViewController" bundle:nil];
         [viewController setWorkoutType:self.workoutType];
         [self.navigationController pushViewController:viewController animated:YES];
-    }else{
+   }else{
         [self showPremium];
     }
 }
@@ -477,8 +506,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
-    
     NSDictionary *dictionary = [self.groupedExcersice objectAtIndex:indexPath.section];
     NSArray *array = [dictionary objectForKey:@"workouts"];
     Workout *workout = [[Workout alloc]init];
@@ -489,7 +516,6 @@
     [viewController setNavigateBack:YES];
     [userinfo setObject:workout.Name forKey:@"WorkoutName"];
     [self.navigationController pushViewController:viewController animated:YES];
-    
 }
 
 

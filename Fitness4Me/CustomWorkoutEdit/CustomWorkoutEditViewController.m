@@ -17,6 +17,8 @@
 @property NSMutableArray *groupedExcersice;
 @property NSMutableArray *workouts;
 @property int s;
+@property int videoCount;
+@property int totalDuration;
 @end
 
 @implementation CustomWorkoutEditViewController
@@ -83,7 +85,7 @@
     [workoutDB setUpDatabase];
     [workoutDB createDatabase];
     
-    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     [userinfo setObject:self.workoutType forKey:@"workoutType"];
     
     if ([self.workoutType isEqualToString:@"SelfMade"]){
@@ -341,16 +343,23 @@
                     if ([str length]==0) {
                         
                         str =[str stringByAppendingString:[excerlist excersiceID]];
+                        self.videoCount++;
+                        self.totalDuration=self.totalDuration+ ([[excerlist time]intValue]*[[excerlist repetitions]intValue]);
+
                         
                     }
                     else{
                         str=[str stringByAppendingString:@","];
                         str =[str stringByAppendingString:[excerlist excersiceID]];
+                        self.videoCount++;
+                        self.totalDuration=self.totalDuration+ ([[excerlist time]intValue]*[[excerlist repetitions]intValue]);
+                        
+
                         
                     }
                 }
-        NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];           
-        [userinfo setObject:str forKey:@"SelectedWorkouts"];
+                 NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];           
+                 [userinfo setObject:str forKey:@"SelectedWorkouts"];
                 CarouselViewDemoViewController *viewController;
                 if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
                     viewController =[[CarouselViewDemoViewController alloc]initWithNibName:@"CarouselViewDemoViewController" bundle:nil];
@@ -358,10 +367,12 @@
                     viewController =[[CarouselViewDemoViewController alloc]initWithNibName:@"CarouselViewDemoViewController" bundle:nil];
                 }
                  [viewController setOperationMode:@"Edit"];
-                viewController.workout =[[Workout alloc]init];
-                viewController .workout =workout;
-                [viewController setDataSourceArray:GlobalArray];
-                [self.navigationController pushViewController:viewController animated:YES];
+                 viewController.workout =[[Workout alloc]init];
+                 viewController .workout =workout;
+                [viewController setTotalDuration:self.totalDuration];
+                [viewController setVideoCount:self.videoCount];
+                 [viewController setDataSourceArray:GlobalArray];
+                 [self.navigationController pushViewController:viewController animated:YES];
                 
             }
             
@@ -390,22 +401,38 @@
     [itemsarray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         NSDictionary* item = obj;
         ExcersiceList *excersice=[[ExcersiceList alloc]init];
+        
         if ([[item objectForKey:@"exerciseID"] length]>0) {
             
-       
         [excersice setExcersiceID:[item objectForKey:@"exerciseID"]];
         [excersice setName:[item objectForKey:@"name"]];
         [excersice setImageUrl:[item objectForKey:@"image"]];
         [excersice setImageName:[item objectForKey:@"imageName"]];
-        //[excersice setExcersiceID:[item objectForKey:@"exerciseID"]];
+        [excersice setRepetitions:[item objectForKey:@"repetition"]];
+        [excersice setTime:[item objectForKey:@"duration"]];
          }
         else if ([[item objectForKey:@"recovery"] length]>0)
         {
+            if ([[item objectForKey:@"recovery"] isEqualToString:@"rec30"]) {
+                [excersice setRepetitions:@"1"];
+                [excersice setTime:@"1800"];
+                [excersice setExcersiceID:[item objectForKey:@"recovery"]];
+                [excersice setName:@"recovery30"];
+                [excersice setExcersiceID:@"rec30"];
+                [excersice setImageUrl:[item objectForKey:@"image"]];
+                [excersice setImageName:[item objectForKey:@"imageName"]];
+            }
+            else
+            {
+                [excersice setRepetitions:@"1"];
+                [excersice setTime:@"900"];
+                [excersice setExcersiceID:[item objectForKey:@"recovery"]];
+                [excersice setName:@"recovery15"];
+                [excersice setExcersiceID:@"rec15"];
+                [excersice setImageUrl:[item objectForKey:@"image"]];
+                [excersice setImageName:[item objectForKey:@"imageName"]];
+            }
             
-            [excersice setExcersiceID:[item objectForKey:@"recovery"]];
-            [excersice setName:@"recoverI5"];
-            [excersice setImageUrl:[item objectForKey:@"image"]];
-            [excersice setImageName:[item objectForKey:@"imageName"]];
         }
         
         [GlobalArray addObject:excersice];
@@ -417,7 +444,14 @@
     CustomFavourites *customFavourites =[[CustomFavourites alloc]init];
     [customFavourites setUpDatabase];
     [customFavourites createDatabase];
-    [customFavourites deletefavouritewithID:[fav workoutID]];
+     if ([self.workoutType isEqualToString:@"SelfMade"]){
+         [customFavourites deleteSelfMadefavouritewithID:[fav workoutID]];
+     }
+     else{
+         [customFavourites deletefavouritewithID:[fav workoutID]];
+     }
+    
+    
     return customFavourites;
 }
 
@@ -425,14 +459,26 @@
     CustomFavourites *customFavourites =[[CustomFavourites alloc]init];
     [customFavourites setUpDatabase];
     [customFavourites createDatabase];
-    [customFavourites insertfavourite:fav];
+     if ([self.workoutType isEqualToString:@"SelfMade"]){
+         [customFavourites insertSelfMadefavourite:fav];
+     }
+     else{
+          [customFavourites insertfavourite:fav];
+     }
+   
 }
 
 - (void)updateWorkout:(Workout *)workout {
     workoutDB =[[WorkoutDB alloc]init];
     [workoutDB setUpDatabase];
     [workoutDB createDatabase];
-    [workoutDB updateCustomWorkout:[workout WorkoutID] :[workout IsLocked]];
+    if ([self.workoutType isEqualToString:@"SelfMade"]){
+        [workoutDB updateCustomWorkout:[workout WorkoutID] :[workout IsLocked]];
+    }
+    else{
+        [workoutDB updateSelfMadeWorkout:[workout WorkoutID] :[workout IsLocked]];
+    }
+    
 }
 
 -(IBAction)onClicksetFavourite:(id)sender{
@@ -467,20 +513,13 @@
     
     BOOL isReachable = [Fitness4MeUtils isReachable];
     if (isReachable) {
-        
-        
         __weak FitnessServerCommunication *fitness=[FitnessServerCommunication  sharedState];
-        
         if ([self.workoutType isEqualToString:@"SelfMade"]){
             [fitness setSelfMadeWorkoutfavourite:[workout WorkoutID] UserID:UserID Status:statusInt activityIndicator:nil progressView:nil onCompletion:^(NSString *responseString) {
-                
-                
             } onError:^(NSError *error) {
-                
             }];
             [self parseFitnessDetails];
         }
-        
         else
         {
         [fitness setWorkoutfavourite:[workout WorkoutID] UserID:UserID Status:statusInt activityIndicator:nil progressView:nil onCompletion:^(NSString *responseString) {

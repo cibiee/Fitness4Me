@@ -44,7 +44,7 @@
     self.videoCount=0;
     self.totalDuration=0;
     [self.totalVideoCountLabel setText:[NSString stringWithFormat:@"Number of excersices [%i]",self.videoCount]];
-    [self.durationLabel setText:[NSString stringWithFormat:@"Total Time [%i]",self.totalDuration]];
+   [self.durationLabel setText:[NSString stringWithFormat:@"Total Time [%@]",[Fitness4MeUtils displayTimeWithSecond:self.totalDuration]]];
     
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -123,6 +123,7 @@
         [excersiceLists setName:[item objectForKey:@"exerciseName"]];
         [excersiceLists setFocus:[item objectForKey:@"exerciseFocus"]];
         [excersiceLists setEquipments:[item objectForKey:@"exerciseEquipments"]];
+        [excersiceLists setRepetitions:[item objectForKey:@"exerciseRepetitions"]];
         [self.excersiceList addObject:excersiceLists];
         
     }];
@@ -145,20 +146,21 @@
                 [[newfocusArray objectAtIndex:i] setIsChecked:YES];
                 if ([GlobalArray count]>0) {
                     if ([[[GlobalArray objectAtIndex:k]excersiceID]isEqualToString:[[excersicelist objectAtIndex:i] excersiceID]]) {
-                        
+                        self.totalDuration=self.totalDuration+ ([[[self.excersiceList objectAtIndex:k] time]intValue]*[[[self.excersiceList objectAtIndex:k] repetitions]intValue]);
+                        self.videoCount++;
+
                     }else{
                         [GlobalArray addObject:[excersicelist objectAtIndex:k]];
-                    }
+                                           }
                 }
-                self.totalDuration=self.totalDuration+ [[[self.excersiceList objectAtIndex:k] time]intValue];
-                self.videoCount++;
+                
                 break;
             }
         }
     }
     
     [self.totalVideoCountLabel setText:[NSString stringWithFormat:@"%@ [%i]",NSLocalizedString(@"numberOfExcersice", nil),self.videoCount]];
-    [self.durationLabel setText:[NSString stringWithFormat:@"%@ [%i]",NSLocalizedString(@"totalTime", nil),self.totalDuration]];
+    [self.durationLabel setText:[NSString stringWithFormat:@"Total Time [%@]",[Fitness4MeUtils displayTimeWithSecond:self.totalDuration]]];
     return newfocusArray;
 }
 
@@ -277,18 +279,18 @@
         [[self.excersiceList objectAtIndex:indexPath.section] setIsChecked:NO];
         [self removeExcerisce:[[self.excersiceList objectAtIndex:indexPath.section] excersiceID]];
         self.videoCount--;
-        self.totalDuration=self.totalDuration- [[[self.excersiceList objectAtIndex:indexPath.section] time]intValue];
+        self.totalDuration=self.totalDuration- ([[[self.excersiceList objectAtIndex:indexPath.section] time]intValue]*[[[self.excersiceList objectAtIndex:indexPath.section] repetitions]intValue]);
     }else{
         
         [[tableView cellForRowAtIndexPath:indexPath]setAccessoryType:UITableViewCellAccessoryCheckmark];
         [[self.excersiceList objectAtIndex:indexPath.section] setIsChecked:YES];
         [self AddExcersice:[self.excersiceList objectAtIndex:indexPath.section]];
         self.videoCount++;
-        self.totalDuration=self.totalDuration+ [[[self.excersiceList objectAtIndex:indexPath.section] time]intValue];
+        self.totalDuration=self.totalDuration+ ([[[self.excersiceList objectAtIndex:indexPath.section] time]intValue]*[[[self.excersiceList objectAtIndex:indexPath.section] repetitions]intValue]);
     }
     [self performSelector:@selector(deselect:) withObject:nil afterDelay:0.5f];
     [self.totalVideoCountLabel setText:[NSString stringWithFormat:@"Number of excersices [%i]",self.videoCount]];
-    [self.durationLabel setText:[NSString stringWithFormat:@"Total Time [%i]",self.totalDuration]];
+   [self.durationLabel setText:[NSString stringWithFormat:@"Total Time [%@]",[Fitness4MeUtils displayTimeWithSecond:self.totalDuration]]];
     
 }
 
@@ -361,6 +363,9 @@
         [viewController setEquipments:self.equipments];
         [viewController setFocusList:self.focusList];
         [viewController setDataSourceArray:GlobalArray];
+        [viewController setTotalDuration:self.totalDuration];
+        [viewController setVideoCount:self.videoCount];
+        
         [self.navigationController pushViewController:viewController animated:YES];
         
     }else{

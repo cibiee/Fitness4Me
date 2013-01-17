@@ -18,6 +18,6 @@
 @property(strong,nonatomic)NSString *imageUrl;
 @property(strong,nonatomic)NSString *imageName;
 @property(nonatomic)BOOL isChecked;
-
+@property(strong,nonatomic)NSString *repetitions;
 
 @end

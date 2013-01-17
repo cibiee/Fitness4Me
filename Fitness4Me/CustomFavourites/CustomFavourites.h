@@ -30,4 +30,9 @@
 -(void)deletefavourite;
 -(void)deletefavouritewithID:(NSString*)workoutID;
 
+
+-(NSMutableArray*)getSelfMadeWorkouts;
+-(void)insertSelfMadefavourite:(Favourite *)favourite;
+-(void)deleteSelfMadefavourite;
+-(void)deleteSelfMadefavouritewithID:(NSString*)workoutID;
 @end

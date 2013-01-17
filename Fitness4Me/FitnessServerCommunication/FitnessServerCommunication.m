@@ -563,13 +563,13 @@ static FitnessServerCommunication *sharedState;
 - (void)listExcersiceWithequipments:(NSString*)equipments focus:(NSString*)focus  activityIndicator:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView onCompletion:(WMLoginResponseBlock)completionBlock onError:(NSError*)errorBlock
 
 {
-   
+    int userLevel=[Fitness4MeUtils getuserLevel];
     int selectedLang=[Fitness4MeUtils getApplicationLanguage];
     BOOL isReachable =[Fitness4MeUtils isReachable];
     if (isReachable)
     {
         NSString *UrlPath= [NSString GetURlPath];
-        NSString *requestString =[NSString stringWithFormat:@"%@listexercises=yes&equipment=%@&focus=%@&lang=%i",UrlPath,equipments,focus,selectedLang];
+        NSString *requestString =[NSString stringWithFormat:@"%@listexercises=yes&equipment=%@&focus=%@&lang=%i&user_level=%i",UrlPath,equipments,focus,selectedLang,userLevel];
         NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
       //  NSLog(url);
         __weak ASIHTTPRequest *requests = [ASIHTTPRequest requestWithURL:url];
@@ -782,8 +782,43 @@ static FitnessServerCommunication *sharedState;
     }
 }
 
+- (void)GetUserTypeWithactivityIndicator:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView onCompletion:(WMLoginResponseBlock)completionBlock onError:(NSError*)errorBlock
+{
+    
+    __block NSString* canCreate;
+    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+    int userID =[userinfo integerForKey:@"UserID"];
+    BOOL isReachable =[Fitness4MeUtils isReachable];
+    if (isReachable)
+    {
+        NSString *UrlPath= [NSString GetURlPath];
+        NSString *requestString =[NSString stringWithFormat:@"%@checkmemberstatus=yes&user_id=%i",UrlPath,userID];
+        NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+        //  NSLog(url);
+        __weak ASIHTTPRequest *requests = [ASIHTTPRequest requestWithURL:url];
+        [requests setCompletionBlock:^{
+            // Use when fetching text data
+            NSString *responseString =[requests responseString];
+            if ([responseString length]>0) {
+                canCreate =[self getMemberType:responseString];
+                if (completionBlock) completionBlock(canCreate);
+            }else{
+                [self terminateActivities:NSLocalizedString(@"slowdata", nil):activityIndicator:signUpView];
+            }
+        }];
+        [requests setFailedBlock:^{
+            //NSError *error = [requests error];
+            [self terminateActivities:NSLocalizedString(@"requestError", nil):activityIndicator:signUpView];
+        }];
+        [requests startAsynchronous];
+    }else{
+        [self terminateActivities:NSLocalizedString(@"NoInternetMessage", nil):activityIndicator:signUpView];
+    }
+}
 
 
+
+/*----------------------------------------------------------------------------------------------------------------*/
 
 -(void) getImageAtPath:(NSString *)imageUrl toDestination:( NSString *)storeURL setDelegate:(UIViewController*)viewController
 {
@@ -1094,14 +1129,13 @@ static FitnessServerCommunication *sharedState;
     }];
     
     if ([workouts count]>0) {
-        
         [self insertExcersices];
     }
-    
     [self.delegate didRecieveWorkoutList];
-    
-    
 }
+
+
+
 
 
 - (void)praseworkoutArray:(NSString *)responseString
@@ -1119,11 +1153,8 @@ static FitnessServerCommunication *sharedState;
 -(void)parseCustomWorkoutList:(NSString*)responseString
 {
     [self praseworkoutArray:responseString];
-    
     [self deleteCustomWorkouts];
-    
     if ([workouts count]>0) {
-        
         [self insertCustomExcersices];
     }
 }
@@ -1132,11 +1163,8 @@ static FitnessServerCommunication *sharedState;
 -(void)parseSelfMadeWorkoutList:(NSString*)responseString
 {
     [self praseworkoutArray:responseString];
-    
     [self deleteSelfMadeWorkouts];
-    
     if ([workouts count]>0) {
-        
         [self insertSelfMadeExcersices];
     }
 }
@@ -1157,7 +1185,6 @@ static FitnessServerCommunication *sharedState;
     }];
     
     if ([equipments count]>0) {
-        
         [self insertEquipments:equipments];
     }
 }
@@ -1372,6 +1399,17 @@ int excersiceIntroCount=0,excersiceMainCount=0,excersiceOtherCount=0;
         workoutID=[[itemsarray objectAtIndex:i] valueForKey:@"custom_workout_id"];
     }
     return workoutID;
+}
+
+- (NSString *)getMemberType:(NSString *)responseString
+{
+    NSString *canCreate;
+    NSMutableArray *object = [responseString JSONValue];
+    NSMutableArray *itemsarray =[object valueForKey:@"items"];
+    for (int i=0; i<[itemsarray count]; i++) {
+        canCreate=[[itemsarray objectAtIndex:i] valueForKey:@"selfmadetrial"];
+    }
+    return canCreate;
 }
 
 

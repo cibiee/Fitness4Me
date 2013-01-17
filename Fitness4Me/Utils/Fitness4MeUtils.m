@@ -247,24 +247,33 @@
     NSString* path;
     NSBundle* languageBundle;
     if (selectedLang==1) {
-        
         path= [[NSBundle mainBundle] pathForResource:@"en" ofType:@"lproj"];
-        
         languageBundle = [NSBundle bundleWithPath:path];
-        
-        // self = [[Fitness4MeViewController alloc] initWithNibName:@"Fitness4MeViewController" bundle:languageBundle];
     }
     else
     {
         path= [[NSBundle mainBundle] pathForResource:@"de" ofType:@"lproj"];
-        
         languageBundle = [NSBundle bundleWithPath:path];
-        
-        
-        
     }
     return languageBundle;
 }
 
+
++(NSString*)displayTimeWithSecond:(NSInteger)seconds
+{
+    NSInteger remindMinute = seconds / 60;
+    NSInteger remindHours = remindMinute / 60;
+    
+    NSInteger remindMinutes = seconds - (remindHours * 3600);
+    NSInteger remindMinuteNew = remindMinutes / 60;
+    
+    NSInteger remindSecond = seconds - (remindMinuteNew * 60) - (remindHours * 3600);
+    
+    NSString *duration = [NSString stringWithFormat:@"%i:%i:%i",remindHours,remindMinuteNew,remindSecond];
+    
+    return duration;
+    
+   
+}
 
 @end

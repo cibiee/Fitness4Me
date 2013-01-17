@@ -98,8 +98,8 @@
 -(void)updateUser:(NSString*)userlevel{
     
     database =[FMDatabase databaseWithPath:databasePath];
-     [database setLogsErrors:TRUE];
-     [database setTraceExecution:TRUE];
+    // [database setLogsErrors:TRUE];
+    // [database setTraceExecution:TRUE];
     if(!database.open){
         NSLog(@"Databse not Open");
     }

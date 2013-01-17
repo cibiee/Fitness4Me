@@ -341,10 +341,25 @@ static float totalDuration=0;
 
 -(void)updateStatisticsToServer
 {
+    
+    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+    NSString* workoutType = [userinfo stringForKey:workoutType];
     BOOL isReachable = [Fitness4MeUtils isReachable];
     if (isReachable) {
+        NSString *requestString;
         NSString *UrlPath= [NSString GetURlPath];
-        NSString *requestString = [NSString stringWithFormat:@"%@customstats=yes&userid=%@&workoutid=%i&duration=%f",UrlPath,userID,WorkoutID,totalDuration];
+        
+        
+        if ([workoutType isEqualToString:@"SelfMade"]){
+            requestString= [NSString stringWithFormat:@"%@selfstats=yes&userid=%@&workoutid=%i&duration=%f",UrlPath,userID,WorkoutID,totalDuration];
+            
+        }
+        
+        else{
+            requestString= [NSString stringWithFormat:@"%@customstats=yes&userid=%@&workoutid=%i&duration=%f",UrlPath,userID,WorkoutID,totalDuration];
+        }
+        
+        
         NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         __block ASIHTTPRequest *requests = [ASIHTTPRequest requestWithURL:url];
         [requests setCompletionBlock:^{
@@ -355,15 +370,20 @@ static float totalDuration=0;
         }];
         [requests startAsynchronous];
     }else{
-            
-            statisticsDB =[[StatisticsDB alloc]init];
-            [statisticsDB setUpDatabase];
-            [statisticsDB createDatabase];
-            Statistics *statistics =[[Statistics alloc]init];
-            [statistics setDuration:totalDuration];
-            [statistics setWorkoutID:[NSString stringWithFormat:@"%i",WorkoutID]];
+        
+        statisticsDB =[[StatisticsDB alloc]init];
+        [statisticsDB setUpDatabase];
+        [statisticsDB createDatabase];
+        Statistics *statistics =[[Statistics alloc]init];
+        [statistics setDuration:totalDuration];
+        [statistics setWorkoutID:[NSString stringWithFormat:@"%i",WorkoutID]];
+        if ([workoutType isEqualToString:@"SelfMade"]){
+            [statisticsDB insertSelfMadeStatistics:statistics];
+        }
+        else{
             [statisticsDB insertCustomStatistics:statistics];
         }
+    }
     
 }
 

@@ -161,6 +161,7 @@ int userID;
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     [userinfo setInteger:0  forKey:@"UserID"];
     [userinfo setObject:@"true" forKey:@"showDownload"];
+    [userinfo setObject:@"true" forKey:@"canCreate"];
     [[UIApplication sharedApplication] unregisterForRemoteNotifications];
     
     NSString *fullVideoDownloadlater=[userinfo stringForKey:@"fullVideoDownloadlater"];
@@ -270,6 +271,7 @@ int userID;
     
     if (userID>0){
         [self updateFavouritesToServer];
+        [self updateSelfMadeFavouritesToServer];
         FitnessServerCommunication *fitnessserverCommunication =[[FitnessServerCommunication alloc]init];
         [fitnessserverCommunication parseFitnessDetails:userID];
         [fitnessserverCommunication listEquipments:nil progressView:nil
@@ -307,6 +309,7 @@ int userID;
         
          [self updateStatisticsToServer];
          [self updateCustomStatisticsToServer];
+         [self updateSelfMadeStatisticsToServer];
         Fitness4MeAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
         UIViewController *topView = appDelegate.navigationController.topViewController;
         if ([topView isKindOfClass:[ListWorkoutsViewController class]]||[topView isKindOfClass:[CustomWorkoutsViewController class]]||[topView isKindOfClass:[CustomWorkoutEditViewController class]]) {
@@ -315,6 +318,10 @@ int userID;
     }
     
 }
+
+
+
+
 
 
 -(void)updateStatisticsToServer
@@ -365,6 +372,7 @@ int userID;
     }
 }
 
+
 -(NSMutableArray*)getStatistics
 {
     NSMutableArray * offlineWorkouts= [[NSMutableArray alloc]init];
@@ -375,6 +383,7 @@ int userID;
     return offlineWorkouts;
 }
 
+
 -(void)deleteStatistics
 {
     
@@ -384,6 +393,7 @@ int userID;
     [statisticsDB  deleteStatistics];
     
 }
+
 
 
 -(void)updateCustomStatisticsToServer
@@ -440,7 +450,7 @@ int userID;
     StatisticsDB  *statisticsDB =[[StatisticsDB alloc]init];
     [statisticsDB setUpDatabase];
     [statisticsDB createDatabase];
-    offlineWorkouts=  [statisticsDB  getWorkouts];
+    offlineWorkouts=  [statisticsDB  getCustomWorkouts];
     return offlineWorkouts;
 }
 
@@ -450,9 +460,80 @@ int userID;
     StatisticsDB  *statisticsDB =[[StatisticsDB alloc]init];
     [statisticsDB setUpDatabase];
     [statisticsDB createDatabase];
-    [statisticsDB  deleteStatistics];
+    [statisticsDB  deleteCustomStatistics];
     
 }
+
+-(void)updateSelfMadeStatisticsToServer
+{
+    NSMutableArray *offlineworkouts =[self getSelfMadeStatistics];
+    NSString *workouts = [[NSString alloc]init];
+    NSString *tdurations  = [[NSString alloc]init];
+    if ([offlineworkouts count]>0) {
+        
+        for (Statistics *obj in offlineworkouts) {
+            Statistics* item = obj;
+            
+            if ([workouts length]==0) {
+                workouts =[workouts stringByAppendingString:item.WorkoutID];
+                tdurations =[tdurations stringByAppendingString:[NSString stringWithFormat:@"%f",item.Duration]];
+            }
+            else{
+                workouts=[workouts stringByAppendingString:@","];
+                workouts =[workouts stringByAppendingString:item.WorkoutID];
+                tdurations=[tdurations stringByAppendingString:@","];
+                tdurations =[tdurations stringByAppendingString:[NSString stringWithFormat:@"%f",item.Duration]];
+            }
+            
+            
+        };
+        
+    }
+    
+    if ([workouts length]>0) {
+        BOOL isReachable = [Fitness4MeUtils isReachable];
+        if (isReachable) {
+            NSString *UrlPath= [NSString GetURlPath];
+            NSString *requestString = [NSString stringWithFormat:@"%@selfstats=yes&userid=%i&workoutid=%@&duration=%@",UrlPath,userID,workouts,tdurations];
+            NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+            __block ASIHTTPRequest *requests = [ASIHTTPRequest requestWithURL:url];
+            [requests setCompletionBlock:^{
+                // Use when fetching text data
+                NSString *responseString =[requests responseString];
+                if ([responseString length]>0) {
+                    [self deleteSelfMadeStatistics];
+                }
+            }];
+            [requests setFailedBlock:^{
+                
+            }];
+            [requests startAsynchronous];
+        }
+    }
+}
+
+-(NSMutableArray*)getSelfMadeStatistics
+{
+    NSMutableArray * offlineWorkouts= [[NSMutableArray alloc]init];
+    StatisticsDB  *statisticsDB =[[StatisticsDB alloc]init];
+    [statisticsDB setUpDatabase];
+    [statisticsDB createDatabase];
+    offlineWorkouts=  [statisticsDB  getSelfMadeWorkouts];
+    return offlineWorkouts;
+}
+
+-(void)deleteSelfMadeStatistics
+{
+    
+    StatisticsDB  *statisticsDB =[[StatisticsDB alloc]init];
+    [statisticsDB setUpDatabase];
+    [statisticsDB createDatabase];
+    [statisticsDB  deleteSelfMadeStatistics];
+    
+}
+
+
+
 
 
 -(void)updateFavouritesToServer
@@ -523,6 +604,75 @@ int userID;
     
 }
 
+
+
+-(void)updateSelfMadeFavouritesToServer
+{
+    NSMutableArray *offlineworkouts =[self getFavourites];
+    NSString *workouts = [[NSString alloc]init];
+    NSString *tdurations  = [[NSString alloc]init];
+    if ([offlineworkouts count]>0) {
+        
+        for (Favourite *obj in offlineworkouts) {
+            Favourite* item = obj;
+            
+            if ([workouts length]==0) {
+                workouts =[workouts stringByAppendingString:item.workoutID];
+                tdurations =[tdurations stringByAppendingString:[NSString stringWithFormat:@"%i",item.status]];
+            }
+            else{
+                workouts=[workouts stringByAppendingString:@","];
+                workouts =[workouts stringByAppendingString:item.workoutID];
+                tdurations=[tdurations stringByAppendingString:@","];
+                tdurations =[tdurations stringByAppendingString:[NSString stringWithFormat:@"%i",item.status]];
+            }
+            
+            
+        };
+        
+    }
+    
+    if ([workouts length]>0) {
+        BOOL isReachable = [Fitness4MeUtils isReachable];
+        if (isReachable) {
+            NSString *UrlPath= [NSString GetURlPath];
+            NSString *requestString = [NSString stringWithFormat:@"%@customfav=yes&user_id=%i&custom_workout_id=%@&fav_status=%@",UrlPath,userID,workouts,tdurations];
+            NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+            __block ASIHTTPRequest *requests = [ASIHTTPRequest requestWithURL:url];
+            [requests setCompletionBlock:^{
+                // Use when fetching text data
+                NSString *responseString =[requests responseString];
+                if ([responseString length]>0) {
+                    [self deletefavourites];
+                }
+            }];
+            [requests setFailedBlock:^{
+                
+            }];
+            [requests startAsynchronous];
+        }
+    }
+}
+
+-(NSMutableArray*)getSelfMadeFavourites
+{
+    NSMutableArray * offlineWorkouts= [[NSMutableArray alloc]init];
+    CustomFavourites  *customFavourites =[[CustomFavourites alloc]init];
+    [customFavourites setUpDatabase];
+    [customFavourites createDatabase];
+    offlineWorkouts=  [customFavourites  getSelfMadeWorkouts];
+    return offlineWorkouts;
+}
+
+-(void)deleteSelfMadefavourites
+{
+    
+    CustomFavourites  *customFavourites =[[CustomFavourites alloc]init];
+    [customFavourites setUpDatabase];
+    [customFavourites createDatabase];
+    [customFavourites  deleteSelfMadefavourite];
+    
+}
 
 
 

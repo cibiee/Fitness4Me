@@ -194,8 +194,7 @@
         viewController = [[ListWorkoutsViewController alloc]initWithNibName:@"ListWorkoutsViewController_iPad" bundle:nil];
     }
     
-    
-    
+
     [self.navigationController pushViewController:viewController animated:YES];
 }
 

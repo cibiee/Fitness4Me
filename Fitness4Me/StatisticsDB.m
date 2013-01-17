@@ -161,6 +161,63 @@
 
 
 
+-(NSMutableArray*)getSelfMadeWorkouts{
+    
+    database =[FMDatabase databaseWithPath:databasePath];
+    arrStatistics=[[NSMutableArray alloc]init];
+    if(!database.open){
+        NSLog(@"Databse not Open");
+    }else{
+        //  NSLog(@"Database opened sucessfully");
+    }
+    
+    FMResultSet *resultSet=[database executeQuery:@"Select WorkoutID,sum(Duration) from SelfMadeStatistics group by WorkoutID"];
+    
+    while(resultSet.next){
+        Statistics *statistics =[[Statistics alloc]init];
+        statistics.WorkoutID =[resultSet stringForColumnIndex:0];
+        double duration=[[resultSet stringForColumnIndex:1]doubleValue];
+        statistics .Duration =(float)duration;
+        [arrStatistics addObject:statistics];
+        [statistics release];
+    }
+    
+    [resultSet close];
+    return arrStatistics;
+}
+
+
+-(void)insertSelfMadeStatistics:(Statistics *)statistics{
+    
+    database =[FMDatabase databaseWithPath:databasePath];
+    if(!database.open){
+        NSLog(@"Databse not Open");
+    }
+    [database beginTransaction];
+    [database executeUpdate:@"INSERT INTO SelfMadeStatistics (WorkoutID,Duration) VALUES (?,?);",
+     statistics.WorkoutID,[NSString stringWithFormat:@"%f",statistics.Duration], nil];
+    [database commit];
+    
+    [database close];
+}
+
+
+-(void)deleteSelfMadeStatistics{
+    
+    database =[FMDatabase databaseWithPath:databasePath];
+    if(!database.open){
+        NSLog(@"Databse not Open");
+    }else{
+        // NSLog(@"Database opened sucessfully");
+    }
+    [database beginTransaction];
+    [database executeUpdate:@"Delete from SelfMadeStatistics"];
+    [database commit];
+    // Close the database.
+    [database close];
+    
+    
+}
 
 
 @end

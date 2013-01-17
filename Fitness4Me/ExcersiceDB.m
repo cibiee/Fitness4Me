@@ -48,6 +48,11 @@
 -(void)getExcersices:(int)workoutID{
     
     database =[FMDatabase databaseWithPath:databasePath];
+    if(!database.open){
+        NSLog(@"Databse not Open");
+    }else{
+        // NSLog(@"Database opened sucessfully");
+    }
     Excersices=[[NSMutableArray alloc]init];
     NSString *query=[NSString stringWithFormat:@"Select * from Excersice where WorkoutID =%i",workoutID];
     FMResultSet *resultSet=[database executeQuery:query];
@@ -90,7 +95,14 @@
 -(void)insertExcersice:(Excersice *)excersice{
     
     database =[FMDatabase databaseWithPath:databasePath];
+    if(!database.open){
+        NSLog(@"Databse not Open");
+    }else{
+        // NSLog(@"Database opened sucessfully");
+    }
     [database beginTransaction];
+   // [database setLogsErrors:TRUE];
+   // [database setTraceExecution:TRUE];
     NSString *WorkoutID =[NSString stringWithFormat:@"%i", excersice.WorkoutID];
     [database executeUpdate:@"INSERT INTO Excersice (WorkoutID,PosterUrl,PosterName,PosterRepeatCount,VideoUrl,Name,RepeatCount,StopVideo,StopName,StopRep,OtherSidePoster,OthersidePosterName,OthersidePosterRep,OtherSideVideo,OthersideName,OthersideRep,RecoveryVideoName,RecoveryVideoUrl,NextVideo,NextName,NextRep,CompletedVideo,CompletedName,CompletedRep) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);",WorkoutID,excersice.PosterUrl,excersice.PosterName,excersice.PosterRepeatCount,excersice.VideoUrl,excersice.Name,excersice.RepeatCount,excersice.StopVideo,excersice.StopName,excersice.StopRep,excersice.OtherSidePoster,excersice.OthersidePosterName,excersice.OthersidePosterRep,excersice.OthersideVideo,excersice.OthersideName,excersice.OthersideRep,excersice.RecoveryVideoName,excersice.RecoveryVideoUrl,excersice.NextVideo,excersice.NextName,excersice.NextRep,excersice.CompletedVideo,excersice.CompletedName,excersice.CompletedRep, nil];
     [database commit];
@@ -182,6 +194,12 @@
 -(void)deleteExcersice:(int)workoutID{
     
     database =[FMDatabase databaseWithPath:databasePath];
+    
+    if(!database.open){
+        NSLog(@"Databse not Open");
+    }else{
+        // NSLog(@"Database opened sucessfully");
+    }
     [database beginTransaction];
     NSString *query=[NSString stringWithFormat:@"Delete from Excersice where WorkoutID =%i",workoutID];
     [database executeUpdate:query];
@@ -194,6 +212,11 @@
 -(void)getCustomExcersices:(int)workoutID{
     
     database =[FMDatabase databaseWithPath:databasePath];
+    if(!database.open){
+        NSLog(@"Databse not Open");
+    }else{
+        // NSLog(@"Database opened sucessfully");
+    }
     Excersices=[[NSMutableArray alloc]init];
     NSString *query=[NSString stringWithFormat:@"Select * from CustomExcersice where WorkoutID =%i",workoutID];
     FMResultSet *resultSet=[database executeQuery:query];
@@ -233,7 +256,14 @@
 -(void)insertCustomExcersice:(Excersice *)excersice{
     
     database =[FMDatabase databaseWithPath:databasePath];
+    if(!database.open){
+        NSLog(@"Databse not Open");
+    }else{
+        // NSLog(@"Database opened sucessfully");
+    }
     [database beginTransaction];
+   // [database setLogsErrors:TRUE];
+   // [database setTraceExecution:TRUE];
     NSString *WorkoutID =[NSString stringWithFormat:@"%i", excersice.WorkoutID];
     [database executeUpdate:@"INSERT INTO CustomExcersice (WorkoutID,PosterUrl,PosterName,PosterRepeatCount,VideoUrl,Name,RepeatCount,StopVideo,StopName,StopRep,OtherSidePoster,OthersidePosterName,OthersidePosterRep,OtherSideVideo,OthersideName,OthersideRep,RecoveryVideoName,RecoveryVideoUrl,NextVideo,NextName,NextRep,CompletedVideo,CompletedName,CompletedRep) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);",WorkoutID,excersice.PosterUrl,excersice.PosterName,excersice.PosterRepeatCount,excersice.VideoUrl,excersice.Name,excersice.RepeatCount,excersice.StopVideo,excersice.StopName,excersice.StopRep,excersice.OtherSidePoster,excersice.OthersidePosterName,excersice.OthersidePosterRep,excersice.OthersideVideo,excersice.OthersideName,excersice.OthersideRep,excersice.RecoveryVideoName,excersice.RecoveryVideoUrl,excersice.NextVideo,excersice.NextName,excersice.NextRep,excersice.CompletedVideo,excersice.CompletedName,excersice.CompletedRep, nil];
     [database commit];
@@ -327,6 +357,11 @@
 -(void)deleteCustomExcersice:(int)workoutID{
     
     database =[FMDatabase databaseWithPath:databasePath];
+    if(!database.open){
+        NSLog(@"Databse not Open");
+    }else{
+        // NSLog(@"Database opened sucessfully");
+    }
     [database beginTransaction];
     NSString *query=[NSString stringWithFormat:@"Delete from CustomExcersice where WorkoutID =%i",workoutID];
     [database executeUpdate:query];
@@ -340,6 +375,11 @@
 -(void)getSelfMadeExcersices:(int)workoutID{
     
     database =[FMDatabase databaseWithPath:databasePath];
+    if(!database.open){
+        NSLog(@"Databse not Open");
+    }else{
+        // NSLog(@"Database opened sucessfully");
+    }
     Excersices=[[NSMutableArray alloc]init];
     NSString *query=[NSString stringWithFormat:@"Select * from SelfMadeWorkout where WorkoutID =%i",workoutID];
     FMResultSet *resultSet=[database executeQuery:query];
@@ -379,8 +419,13 @@
 -(void)insertSelfMadeExcersice:(Excersice *)excersice{
     
     database =[FMDatabase databaseWithPath:databasePath];
-    [database setLogsErrors:TRUE];
-    [database setTraceExecution:TRUE];
+    if(!database.open){
+        NSLog(@"Databse not Open");
+    }else{
+        // NSLog(@"Database opened sucessfully");
+    }
+  //  [database setLogsErrors:TRUE];
+   // [database setTraceExecution:TRUE];
     [database beginTransaction];
     NSString *WorkoutID =[NSString stringWithFormat:@"%i", excersice.WorkoutID];
     [database executeUpdate:@"INSERT INTO SelfMadeWorkout (WorkoutID,PosterUrl,PosterName,PosterRepeatCount,VideoUrl,Name,RepeatCount,StopVideo,StopName,StopRep,OtherSidePoster,OthersidePosterName,OthersidePosterRep,OtherSideVideo,OthersideName,OthersideRep,RecoveryVideoName,RecoveryVideoUrl,NextVideo,NextName,NextRep,CompletedVideo,CompletedName,CompletedRep) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);",WorkoutID,excersice.PosterUrl,excersice.PosterName,excersice.PosterRepeatCount,excersice.VideoUrl,excersice.Name,excersice.RepeatCount,excersice.StopVideo,excersice.StopName,excersice.StopRep,excersice.OtherSidePoster,excersice.OthersidePosterName,excersice.OthersidePosterRep,excersice.OthersideVideo,excersice.OthersideName,excersice.OthersideRep,excersice.RecoveryVideoName,excersice.RecoveryVideoUrl,excersice.NextVideo,excersice.NextName,excersice.NextRep,excersice.CompletedVideo,excersice.CompletedName,excersice.CompletedRep, nil];
@@ -436,6 +481,11 @@
 -(void)deleteSelfMadeExcersice:(int)workoutID{
     
     database =[FMDatabase databaseWithPath:databasePath];
+    if(!database.open){
+        NSLog(@"Databse not Open");
+    }else{
+        // NSLog(@"Database opened sucessfully");
+    }
     [database beginTransaction];
      NSString *query=[NSString stringWithFormat:@"Delete from SelfMadeWorkout where WorkoutID =%i",workoutID];
     [database executeUpdate:query];

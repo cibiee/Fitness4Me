@@ -127,6 +127,7 @@
 
 -(void)saveUser:(NSString *)username nameOfTheUser:(NSString *) name levelofExpertise :(NSString *)userlevel  mailIdOfTheUser:(NSString *)email  hasDoneFullPruchase :(NSString *)fullpurchase member:(NSString*)member
 {
+    NSLog(member);
     UserDB *userDB =[[UserDB alloc]init];
     [userDB setUpDatabase];
     [userDB createDatabase];

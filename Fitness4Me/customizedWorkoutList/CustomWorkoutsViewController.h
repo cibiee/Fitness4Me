@@ -27,15 +27,15 @@
     
     NSString *dataPath;
     NSString *purchaseMode;
-    
-    
+    NSUserDefaults *userinfo;
     NSMutableArray *searchArray;
     
- 
-    IBOutlet UIActivityIndicatorView *activityIndicator;
+    FitnessServerCommunication *fitness;
     WorkoutDB *workoutDB;
     ASINetworkQueue  *myQueue;
     Workout *selectedWorkout;
+    
+    IBOutlet UIActivityIndicatorView *activityIndicator;
 }
 @property(strong,nonatomic)NSString *workoutType;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;

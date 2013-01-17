@@ -18,16 +18,17 @@
      NSString *dataPath;
      NSUserDefaults *userinfo;
 }
-
-@property (weak, nonatomic) IBOutlet UILabel *durationLabel;
-@property (weak, nonatomic) IBOutlet UILabel *totalVideoCountLabel;
 @property (nonatomic,retain) ASINetworkQueue *myQueue;
 @property (strong, nonatomic)ExcersiceList *focus;
-@property (weak, nonatomic) IBOutlet UINavigationItem *navigationBar;
-@property (weak, nonatomic) IBOutlet UITableView *excersiceListTableview;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property(strong,nonatomic) NSString *focusList;
 @property(strong,nonatomic) NSString *equipments;
 @property(strong,nonatomic)NSMutableArray *excersiceNewList;
+
+@property (weak, nonatomic) IBOutlet UILabel *durationLabel;
+@property (weak, nonatomic) IBOutlet UILabel *totalVideoCountLabel;
+@property (weak, nonatomic) IBOutlet UINavigationItem *navigationBar;
+@property (weak, nonatomic) IBOutlet UITableView *excersiceListTableview;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+
 
 @end
