@@ -459,7 +459,7 @@
 //method to Download videos related to a workout
 -(void)downloadVideos:(NSString *)url:(NSString*)name{
     
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
     NSString *dataPath1 = [documentsDirectory stringByAppendingPathComponent:@"MyFolder"];
     NSString  *filepath =[dataPath1 stringByAppendingPathComponent :name];

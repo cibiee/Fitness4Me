@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Reachability.h"
+#import  <sys/xattr.h>
 
 @interface Fitness4MeUtils : UIViewController
 {

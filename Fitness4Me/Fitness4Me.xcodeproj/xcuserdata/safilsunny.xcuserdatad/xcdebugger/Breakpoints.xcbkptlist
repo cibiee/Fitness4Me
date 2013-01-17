@@ -1412,11 +1412,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Utils/Fitness4MeUtils.m"
-         timestampString = "375258635.60475"
+         timestampString = "380095252.449468"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "208"
-         endingLineNumber = "208"
+         startingLineNumber = "232"
+         endingLineNumber = "232"
          landmarkName = "+isReachable"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1425,11 +1425,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Utils/Fitness4MeUtils.m"
-         timestampString = "375258635.60475"
+         timestampString = "380095252.449468"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "212"
-         endingLineNumber = "212"
+         startingLineNumber = "236"
+         endingLineNumber = "236"
          landmarkName = "+isReachable"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1821,6 +1821,19 @@
          startingLineNumber = "54"
          endingLineNumber = "54"
          landmarkName = "-onNavigateToHomeView:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Fitness4Me/Fitness4MeViewController.m"
+         timestampString = "380091594.343598"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "96"
+         endingLineNumber = "96"
+         landmarkName = "-addSkipBackupAttributeToItemAtURL:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

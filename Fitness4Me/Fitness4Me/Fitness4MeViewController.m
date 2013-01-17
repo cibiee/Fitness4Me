@@ -9,7 +9,7 @@
 #import "Fitness4MeViewController.h"
 #import "Fitness4MeUtils.h"
 #import "FitnessServerCommunication.h"
-
+#import  <sys/xattr.h>
 @implementation Fitness4MeViewController
 
 - (void)didReceiveMemoryWarning
@@ -50,7 +50,7 @@
     
     
     BOOL success;
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
     dataPath= [documentsDirectory stringByAppendingPathComponent:@"MyFolder"];
     
@@ -61,6 +61,10 @@
         [[NSFileManager defaultManager] createDirectoryAtPath:dataPath withIntermediateDirectories:YES attributes:nil error:nil];
         
     }
+    
+     NSURL *pathURL= [NSURL fileURLWithPath:dataPath];
+    
+    [self addSkipBackupAttributeToItemAtURL:pathURL];
     
     for (NSString *name in VideoArray) {
         NSString *datapath1=[[[NSBundle mainBundle]resourcePath]stringByAppendingPathComponent:name];
@@ -76,7 +80,22 @@
     
 }
 
-
+- (BOOL)addSkipBackupAttributeToItemAtURL:(NSURL *)URL
+{
+    if (&NSURLIsExcludedFromBackupKey == nil) { // iOS <= 5.0.1
+        const char* filePath = [[URL path] fileSystemRepresentation];
+        
+        const char* attrName = "com.apple.MobileBackup";
+        u_int8_t attrValue = 1;
+        
+        int result = setxattr(filePath, attrName, &attrValue, sizeof(attrValue), 0, 0);
+        return result == 0;
+    } else { // iOS >= 5.1
+        
+        NSLog(@"%d",[URL setResourceValue:[NSNumber numberWithBool:YES] forKey:NSURLIsExcludedFromBackupKey error:nil]);
+        return [URL setResourceValue:[NSNumber numberWithBool:YES] forKey:NSURLIsExcludedFromBackupKey error:nil];
+    }
+}
 
 
 -(void)freeVideoDownload{
@@ -201,8 +220,19 @@
 
 -(IBAction)cancelDownloas:(id)sender
 {
+    [UIView transitionWithView:SyncView duration:1
+                       options:UIViewAnimationOptionTransitionCurlUp animations:^{
+                           [SyncView setAlpha:0.0];
+                           
+                       }
+                    completion:^(BOOL finished)
+     {
+         [SyncView removeFromSuperview];
+     }];
+
     FitnessServerCommunication *fitness =[FitnessServerCommunication sharedState];
     [fitness cancelDownload];
+    
 }
 
 
