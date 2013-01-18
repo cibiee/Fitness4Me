@@ -269,7 +269,7 @@
 - (UIImage *)imageForRowAtIndexPath:(Workout *)workout inIndexPath:(NSIndexPath *)indexPath
 {
     
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
     dataPath = [documentsDirectory stringByAppendingPathComponent:@"MyFolder/Thumbs"];
     
@@ -325,10 +325,10 @@
     
     NSDictionary *dictionary = [self.groupedExcersice objectAtIndex:s];
     NSArray *array = [dictionary objectForKey:@"workouts"];
-    Workout *workout = [[Workout alloc]init];
+    __block Workout *workout = [[Workout alloc]init];
     workout = [array objectAtIndex:0];
     
-   
+    
     
     if ([self.workoutType isEqualToString:@"SelfMade"]) {
         
@@ -354,8 +354,6 @@
                         self.videoCount++;
                         self.totalDuration=self.totalDuration+ ([[excerlist time]intValue]*[[excerlist repetitions]intValue]);
                         
-
-                        
                     }
                 }
                  NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];           
@@ -369,7 +367,10 @@
                  [viewController setOperationMode:@"Edit"];
                  viewController.workout =[[Workout alloc]init];
                  viewController .workout =workout;
-                [viewController setTotalDuration:self.totalDuration];
+                
+                 [viewController setTotalDuration:self.totalDuration];
+                [viewController setEquipments:[workout Props]];
+                [viewController setFocusList:[workout Focus]];
                 [viewController setVideoCount:self.videoCount];
                  [viewController setDataSourceArray:GlobalArray];
                  [self.navigationController pushViewController:viewController animated:YES];
@@ -417,20 +418,20 @@
                 [excersice setRepetitions:@"1"];
                 [excersice setTime:@"1800"];
                 [excersice setExcersiceID:[item objectForKey:@"recovery"]];
-                [excersice setName:@"recovery30"];
+                [excersice setName:@"recovery 30"];
                 [excersice setExcersiceID:@"rec30"];
                 [excersice setImageUrl:[item objectForKey:@"image"]];
-                [excersice setImageName:[item objectForKey:@"imageName"]];
+                [excersice setImageName:@"page.png"];
             }
             else
             {
                 [excersice setRepetitions:@"1"];
                 [excersice setTime:@"900"];
                 [excersice setExcersiceID:[item objectForKey:@"recovery"]];
-                [excersice setName:@"recovery15"];
+                [excersice setName:@"recovery 15"];
                 [excersice setExcersiceID:@"rec15"];
                 [excersice setImageUrl:[item objectForKey:@"image"]];
-                [excersice setImageName:[item objectForKey:@"imageName"]];
+                [excersice setImageName:[item objectForKey:@"page.png"]];
             }
             
         }

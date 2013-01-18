@@ -10,13 +10,16 @@
 #import "Workout.h"
 #import "ShareFitness4MeViewController.h"
 #import "CustomWorkoutsViewController.h"
-
+#import "ListWorkoutsViewController.h"
 @interface MembershipRateViewController : UIViewController
 {
     Workout * workout;
 }
+@property(strong,nonatomic)NSString *workoutType;
 @property (retain,nonatomic)Workout *workout;
 @property (retain,nonatomic)NSString *navigateTo;
+@property (weak, nonatomic) IBOutlet UIButton *tellmeMoreButton;
+@property (weak, nonatomic) IBOutlet UIButton *showMoreButton;
 - (IBAction)onClickYes:(id)sender;
 - (IBAction)onClickNotYet:(id)sender;
 

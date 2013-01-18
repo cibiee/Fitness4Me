@@ -17,6 +17,7 @@
 }
 @property (retain,nonatomic)Workout *workout;
 @property (retain,nonatomic)NSString *navigateTo;
+@property(strong,nonatomic)NSString *workoutType;
 - (IBAction)onClickTellMeMore:(id)sender;
 - (IBAction)onClickNotYet:(id)sender;
 

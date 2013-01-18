@@ -16,7 +16,7 @@
     GADBannerView *bannerView_;
 }
 @property (retain,nonatomic)Workout *workout;
-
+@property(strong,nonatomic)NSString *workoutType;
 - (IBAction)onClickDoAnotherWokout:(id)sender;
 - (IBAction)onClickCOntinue:(id)sender;
 

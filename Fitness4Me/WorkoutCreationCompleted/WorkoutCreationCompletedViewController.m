@@ -199,7 +199,7 @@
         }];
     }
     else{
-        
+        NSLog(self.workoutID);
         [fitness saveSelfMadeWorkout:self.workoutName workoutCollection:self.collectionString workoutID:self.workoutID userID:userID userLevel:userlevel language:selectedLanguage focus:self.focusList equipments:self.equipments activityIndicator:self.activityIndicator progressView:self.progressView onCompletion:^(NSString *workoutID) {
             if (workoutID>0) {
                 [workout setWorkoutID:workoutID];

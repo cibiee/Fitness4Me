@@ -62,8 +62,33 @@
     [self.excersiceListTableview.layer setBorderWidth:2];
     [self setBackground];
     [self.activityIndicator startAnimating];
-    
+    [self createSelfmadeImageDirectory];
 }
+
+- (void)createSelfmadeImageDirectory
+{
+    BOOL success;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
+    dataPath = [documentsDirectory stringByAppendingPathComponent:@"MyFolder/SelfMadeThumbs"];
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:dataPath]){
+        [[NSFileManager defaultManager] createDirectoryAtPath:dataPath withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    
+    NSString *datapath1=[[[NSBundle mainBundle]resourcePath]stringByAppendingPathComponent:@"page.png"];
+    NSString *datapath2=[dataPath stringByAppendingPathComponent:@"page.png"];
+    NSFileManager *filemanager =[NSFileManager defaultManager];
+    success =[filemanager  fileExistsAtPath:datapath1];
+    if(success){
+        if (![[NSFileManager defaultManager] fileExistsAtPath:datapath2]){
+            [filemanager copyItemAtPath:datapath1 toPath:datapath2 error:nil];
+        }
+    }
+}
+
+
+
 
 -(void)setBackground{
     self.excersiceListTableview.backgroundColor =[UIColor clearColor];
@@ -146,18 +171,25 @@
                 [[newfocusArray objectAtIndex:i] setIsChecked:YES];
                 if ([GlobalArray count]>0) {
                     if ([[[GlobalArray objectAtIndex:k]excersiceID]isEqualToString:[[excersicelist objectAtIndex:i] excersiceID]]) {
-                        self.totalDuration=self.totalDuration+ ([[[self.excersiceList objectAtIndex:k] time]intValue]*[[[self.excersiceList objectAtIndex:k] repetitions]intValue]);
-                        self.videoCount++;
+                       
 
                     }else{
                         [GlobalArray addObject:[excersicelist objectAtIndex:k]];
-                                           }
+                    }
                 }
                 
                 break;
             }
         }
     }
+
+    for (ExcersiceList *excersice in GlobalArray) {
+        self.totalDuration =self.totalDuration+ ([[excersice time]intValue]*[[excersice repetitions]intValue]);
+        self.videoCount++;
+    }
+    
+    
+    
     
     [self.totalVideoCountLabel setText:[NSString stringWithFormat:@"%@ [%i]",NSLocalizedString(@"numberOfExcersice", nil),self.videoCount]];
     [self.durationLabel setText:[NSString stringWithFormat:@"Total Time [%@]",[Fitness4MeUtils displayTimeWithSecond:self.totalDuration]]];
@@ -238,7 +270,7 @@
 - (UIImage *)imageForRowAtIndexPath:(ExcersiceList *)workout inIndexPath:(NSIndexPath *)indexPath
 {
     
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
     dataPath = [documentsDirectory stringByAppendingPathComponent:@"MyFolder/SelfMadeThumbs"];
     
@@ -269,6 +301,12 @@
 	
     return excersiceImageHolder.image;
     
+}
+
+
+- (void)requestFinisheds:(ASINetworkQueue *)queue
+{
+    [self.excersiceListTableview reloadData];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

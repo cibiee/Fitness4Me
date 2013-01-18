@@ -219,11 +219,8 @@
 		F50927211695863600072169 /* MembershipPersonliazedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F509271F1695863600072169 /* MembershipPersonliazedViewController.m */; };
 		F5092727169588F300072169 /* MembershipCreateOwnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5092725169588F300072169 /* MembershipCreateOwnViewController.m */; };
 		F509272D16958EFA00072169 /* MembershipPersonalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F509272B16958EFA00072169 /* MembershipPersonalViewController.m */; };
-		F509272E16958EFA00072169 /* MembershipPersonalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F509272C16958EFA00072169 /* MembershipPersonalViewController.xib */; };
 		F5092732169599BC00072169 /* MemverRateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5092730169599BB00072169 /* MemverRateViewController.m */; };
-		F50B05FB1681951C006FC355 /* CarouselViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F50B05FA1681951C006FC355 /* CarouselViewCell.m */; };
 		F50B060D16819EC7006FC355 /* CarouselViewDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F50B060A16819BA3006FC355 /* CarouselViewDemoViewController.m */; };
-		F50B060E16819ED8006FC355 /* CarouselView.m in Sources */ = {isa = PBXBuildFile; fileRef = F50B05FE16819556006FC355 /* CarouselView.m */; };
 		F512B7581639093500B922E1 /* TermsOfUse_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F512B75A1639093500B922E1 /* TermsOfUse_iPad.xib */; };
 		F512B761163927E700B922E1 /* UserLoginViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F512B763163927E700B922E1 /* UserLoginViewController_iPad.xib */; };
 		F51404B81664783C00B0B386 /* icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = F51404B41664783C00B0B386 /* icon-72.png */; };
@@ -249,6 +246,7 @@
 		F533059F1654E78900D0BCBE /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = F533059A1654E78900D0BCBE /* FMDatabase.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F53305A01654E78900D0BCBE /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F533059C1654E78900D0BCBE /* FMDatabaseAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F53305A11654E78900D0BCBE /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = F533059E1654E78900D0BCBE /* FMResultSet.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F533DCCF16A7FC7000A4B72E /* MembershipPersonalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F533DCD116A7FC7000A4B72E /* MembershipPersonalViewController.xib */; };
 		F5341CCE161323C8001E9075 /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F5341CCD161323C8001E9075 /* libGoogleAdMobAds.a */; };
 		F535C87A165E47FD0032BDE4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F535C879165E47FD0032BDE4 /* Default-568h@2x.png */; };
 		F5393E7D16662EA400D24D7F /* CustomCellContentController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5393E7C16662EA400D24D7F /* CustomCellContentController.m */; };
@@ -293,6 +291,10 @@
 		F577DBBD166DD8060064B920 /* Focus.m in Sources */ = {isa = PBXBuildFile; fileRef = F577DBBC166DD8060064B920 /* Focus.m */; };
 		F577DBF1166E06750064B920 /* FocusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F577DBED166E05C80064B920 /* FocusViewController.m */; };
 		F577DBF6166E18B70064B920 /* NameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F577DBF4166E18B70064B920 /* NameViewController.m */; };
+		F58761CA16A90CA400475F54 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = F58761C716A909D800475F54 /* iCarousel.m */; };
+		F58761D816A90F9700475F54 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F58761D716A90F9700475F54 /* QuartzCore.framework */; };
+		F58761DB16A913BC00475F54 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = F58761D916A913BC00475F54 /* background.png */; };
+		F58761DC16A913BC00475F54 /* page.png in Resources */ = {isa = PBXBuildFile; fileRef = F58761DA16A913BC00475F54 /* page.png */; };
 		F5998AFC16A5229B00E4FEC1 /* CustomInitialLaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5998AFA16A5229B00E4FEC1 /* CustomInitialLaunchViewController.m */; };
 		F5998AFD16A5229B00E4FEC1 /* CustomInitialLaunchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5998AFB16A5229B00E4FEC1 /* CustomInitialLaunchViewController.xib */; };
 		F5998B0216A5343C00E4FEC1 /* checkbox_checked.png in Resources */ = {isa = PBXBuildFile; fileRef = F5998B0416A5343C00E4FEC1 /* checkbox_checked.png */; };
@@ -748,13 +750,8 @@
 		F5092725169588F300072169 /* MembershipCreateOwnViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MembershipCreateOwnViewController.m; path = MembershipCreateOwn/MembershipCreateOwnViewController.m; sourceTree = "<group>"; };
 		F509272A16958EFA00072169 /* MembershipPersonalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MembershipPersonalViewController.h; path = MembershipPersonalGym/MembershipPersonalViewController.h; sourceTree = "<group>"; };
 		F509272B16958EFA00072169 /* MembershipPersonalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MembershipPersonalViewController.m; path = MembershipPersonalGym/MembershipPersonalViewController.m; sourceTree = "<group>"; };
-		F509272C16958EFA00072169 /* MembershipPersonalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MembershipPersonalViewController.xib; path = MembershipPersonalGym/MembershipPersonalViewController.xib; sourceTree = "<group>"; };
 		F509272F169599BB00072169 /* MemverRateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MemverRateViewController.h; path = MemberRate/MemverRateViewController.h; sourceTree = "<group>"; };
 		F5092730169599BB00072169 /* MemverRateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MemverRateViewController.m; path = MemberRate/MemverRateViewController.m; sourceTree = "<group>"; };
-		F50B05F91681951C006FC355 /* CarouselViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CarouselViewCell.h; path = ../../Users/safilsunny/sd/CarouselViewDemo/CarouselViewCell.h; sourceTree = "<group>"; };
-		F50B05FA1681951C006FC355 /* CarouselViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CarouselViewCell.m; path = ../../Users/safilsunny/sd/CarouselViewDemo/CarouselViewCell.m; sourceTree = "<group>"; };
-		F50B05FD16819556006FC355 /* CarouselView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarouselView.h; sourceTree = "<group>"; };
-		F50B05FE16819556006FC355 /* CarouselView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarouselView.m; sourceTree = "<group>"; };
 		F50B060916819BA3006FC355 /* CarouselViewDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarouselViewDemoViewController.h; sourceTree = "<group>"; };
 		F50B060A16819BA3006FC355 /* CarouselViewDemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarouselViewDemoViewController.m; sourceTree = "<group>"; };
 		F512B7591639093500B922E1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TermsOfUse_iPad.xib; sourceTree = "<group>"; };
@@ -808,6 +805,8 @@
 		F53305A91654E81600D0BCBE /* GADInterstitialDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GADInterstitialDelegate.h; path = GoogleAds/GADInterstitialDelegate.h; sourceTree = "<group>"; };
 		F53305AA1654E81600D0BCBE /* GADRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GADRequest.h; path = GoogleAds/GADRequest.h; sourceTree = "<group>"; };
 		F53305AB1654E81600D0BCBE /* GADRequestError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GADRequestError.h; path = GoogleAds/GADRequestError.h; sourceTree = "<group>"; };
+		F533DCD016A7FC7000A4B72E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MembershipPersonalViewController.xib; sourceTree = "<group>"; };
+		F533DCD316A7FC7600A4B72E /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/MembershipPersonalViewController.xib; sourceTree = "<group>"; };
 		F5341CCD161323C8001E9075 /* libGoogleAdMobAds.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAdMobAds.a; sourceTree = "<group>"; };
 		F535C875165DEEFC0032BDE4 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		F535C879165E47FD0032BDE4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -899,6 +898,11 @@
 		F577DBED166E05C80064B920 /* FocusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FocusViewController.m; path = Focus/FocusViewController.m; sourceTree = "<group>"; };
 		F577DBF3166E18B70064B920 /* NameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NameViewController.h; path = AddName/NameViewController.h; sourceTree = "<group>"; };
 		F577DBF4166E18B70064B920 /* NameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NameViewController.m; path = AddName/NameViewController.m; sourceTree = "<group>"; };
+		F58761C616A909D800475F54 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iCarousel.h; path = iCarousel/iCarousel.h; sourceTree = "<group>"; };
+		F58761C716A909D800475F54 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iCarousel.m; path = iCarousel/iCarousel.m; sourceTree = "<group>"; };
+		F58761D716A90F9700475F54 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		F58761D916A913BC00475F54 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		F58761DA16A913BC00475F54 /* page.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = page.png; sourceTree = "<group>"; };
 		F5998AF916A5229B00E4FEC1 /* CustomInitialLaunchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomInitialLaunchViewController.h; path = CustomInitialLaunch/CustomInitialLaunchViewController.h; sourceTree = "<group>"; };
 		F5998AFA16A5229B00E4FEC1 /* CustomInitialLaunchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomInitialLaunchViewController.m; path = CustomInitialLaunch/CustomInitialLaunchViewController.m; sourceTree = "<group>"; };
 		F5998AFB16A5229B00E4FEC1 /* CustomInitialLaunchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomInitialLaunchViewController.xib; path = CustomInitialLaunch/CustomInitialLaunchViewController.xib; sourceTree = "<group>"; };
@@ -1044,6 +1048,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F58761D816A90F9700475F54 /* QuartzCore.framework in Frameworks */,
 				0BADC5B31553DD0000320687 /* AudioToolbox.framework in Frameworks */,
 				0B19188015491AB90010E4E6 /* AVFoundation.framework in Frameworks */,
 				0B659B451536D7EF006558C2 /* StoreKit.framework in Frameworks */,
@@ -1597,6 +1602,7 @@
 		AE7D669A1504D9F3001718B5 = {
 			isa = PBXGroup;
 			children = (
+				F58761D716A90F9700475F54 /* QuartzCore.framework */,
 				F512B76516392A4700B922E1 /* AppDelegate */,
 				0BBCCABE1600B20C0074493B /* Entities */,
 				AE7D66AF1504D9F4001718B5 /* Fitness4Me */,
@@ -1971,7 +1977,7 @@
 			children = (
 				F509272A16958EFA00072169 /* MembershipPersonalViewController.h */,
 				F509272B16958EFA00072169 /* MembershipPersonalViewController.m */,
-				F509272C16958EFA00072169 /* MembershipPersonalViewController.xib */,
+				F533DCD116A7FC7000A4B72E /* MembershipPersonalViewController.xib */,
 			);
 			name = MembershipPersonalGym;
 			sourceTree = "<group>";
@@ -1979,33 +1985,17 @@
 		F50B05F616819430006FC355 /* carousel */ = {
 			isa = PBXGroup;
 			children = (
-				F50B05FC16819528006FC355 /* CarouselView */,
-				F50B05F8168194F7006FC355 /* CarouselViewCell */,
+				F58761C616A909D800475F54 /* iCarousel.h */,
+				F58761C716A909D800475F54 /* iCarousel.m */,
 			);
 			name = carousel;
-			sourceTree = "<group>";
-		};
-		F50B05F8168194F7006FC355 /* CarouselViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				F50B05F91681951C006FC355 /* CarouselViewCell.h */,
-				F50B05FA1681951C006FC355 /* CarouselViewCell.m */,
-			);
-			name = CarouselViewCell;
-			sourceTree = "<group>";
-		};
-		F50B05FC16819528006FC355 /* CarouselView */ = {
-			isa = PBXGroup;
-			children = (
-				F50B05FD16819556006FC355 /* CarouselView.h */,
-				F50B05FE16819556006FC355 /* CarouselView.m */,
-			);
-			name = CarouselView;
 			sourceTree = "<group>";
 		};
 		F50B05FF16819698006FC355 /* SelectedWorkouts */ = {
 			isa = PBXGroup;
 			children = (
+				F58761D916A913BC00475F54 /* background.png */,
+				F58761DA16A913BC00475F54 /* page.png */,
 				F50B060916819BA3006FC355 /* CarouselViewDemoViewController.h */,
 				F50B060A16819BA3006FC355 /* CarouselViewDemoViewController.m */,
 				F56075F0169FE392001C770B /* CarouselViewDemoViewController.xib */,
@@ -2971,12 +2961,14 @@
 				F560760216A00AB0001C770B /* MembershipStayFitViewController.xib in Resources */,
 				F56075FE16A00A95001C770B /* MembershipPersonliazedViewController.xib in Resources */,
 				F56075F616A00A71001C770B /* MembershipCreateOwnViewController.xib in Resources */,
-				F509272E16958EFA00072169 /* MembershipPersonalViewController.xib in Resources */,
+				F533DCCF16A7FC7000A4B72E /* MembershipPersonalViewController.xib in Resources */,
 				F56075F216A00A5F001C770B /* MemverRateViewController.xib in Resources */,
 				F5998AFD16A5229B00E4FEC1 /* CustomInitialLaunchViewController.xib in Resources */,
 				F5998B0216A5343C00E4FEC1 /* checkbox_checked.png in Resources */,
 				F5998B0516A5344000E4FEC1 /* checkbox.png in Resources */,
 				F5B400D316A67D740002444E /* button.png in Resources */,
+				F58761DB16A913BC00475F54 /* background.png in Resources */,
+				F58761DC16A913BC00475F54 /* page.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2987,7 +2979,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F50B060E16819ED8006FC355 /* CarouselView.m in Sources */,
+				F58761CA16A90CA400475F54 /* iCarousel.m in Sources */,
 				F50B060D16819EC7006FC355 /* CarouselViewDemoViewController.m in Sources */,
 				F577DBF1166E06750064B920 /* FocusViewController.m in Sources */,
 				0B4502F11609DCB00068011C /* FeedbackViewController.m in Sources */,
@@ -3069,7 +3061,6 @@
 				F5D76918167EE83A003C079A /* FitnessServer.m in Sources */,
 				F5D7691C167F0C4F003C079A /* CustomFavourites.m in Sources */,
 				F5D76920167F0CAB003C079A /* Favourite.m in Sources */,
-				F50B05FB1681951C006FC355 /* CarouselViewCell.m in Sources */,
 				F509271B1695829100072169 /* MembershipStayFitViewController.m in Sources */,
 				F50927211695863600072169 /* MembershipPersonliazedViewController.m in Sources */,
 				F5092727169588F300072169 /* MembershipCreateOwnViewController.m in Sources */,
@@ -4327,6 +4318,16 @@
 			name = LandigPageViewController_iPad.xib;
 			sourceTree = "<group>";
 		};
+		F533DCD116A7FC7000A4B72E /* MembershipPersonalViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F533DCD016A7FC7000A4B72E /* en */,
+				F533DCD316A7FC7600A4B72E /* de */,
+			);
+			name = MembershipPersonalViewController.xib;
+			path = MembershipPersonalGym;
+			sourceTree = "<group>";
+		};
 		F53E754D1649276E00970DB9 /* btn_small.png */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -4951,7 +4952,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PROVISIONING_PROFILE = "0626DB34-D70F-4FF9-8581-2264428037B9";
 				"PROVISIONING_PROFILE[sdk=*]" = "0626DB34-D70F-4FF9-8581-2264428037B9";
 				SDKROOT = iphoneos;
@@ -4969,7 +4970,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "0626DB34-D70F-4FF9-8581-2264428037B9";
 				SDKROOT = iphoneos;
@@ -4987,7 +4988,7 @@
 				GCC_PREFIX_HEADER = "Fitness4Me/Fitness4Me-Prefix.pch";
 				HEADER_SEARCH_PATHS = "/Project/facebook-iphone-sdk/**";
 				INFOPLIST_FILE = "Fitness4Me/Fitness4Me-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = /Project/Fitness4Me;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -5008,7 +5009,7 @@
 				GCC_PREFIX_HEADER = "Fitness4Me/Fitness4Me-Prefix.pch";
 				HEADER_SEARCH_PATHS = "/Project/facebook-iphone-sdk/**";
 				INFOPLIST_FILE = "Fitness4Me/Fitness4Me-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = /Project/Fitness4Me;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";

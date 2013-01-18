@@ -45,7 +45,7 @@
 @property (retain,nonatomic) NSString *imageName;
 @property (nonatomic, copy) NSString *facebookName;
 @property(retain,nonatomic)NSString *imageUrl;
-
+@property(strong,nonatomic)NSString *workoutType;
 
 -(IBAction)shareAppOnTwitter :(id)sender;
 -(IBAction)shareAppOnFacebook :(id)sender;

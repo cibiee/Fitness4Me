@@ -124,13 +124,13 @@ bnRocyBmb3IgZnJlZQA</string>
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">button_half_width.png</string>
 						</object>
-						<object class="IBUIFontDescription" key="IBUIFontDescription" id="728739958">
+						<object class="IBUIFontDescription" key="IBUIFontDescription" id="754469679">
 							<int key="type">2</int>
-							<double key="pointSize">15</double>
+							<double key="pointSize">13</double>
 						</object>
-						<object class="NSFont" key="IBUIFont" id="569873305">
+						<object class="NSFont" key="IBUIFont" id="1046263191">
 							<string key="NSName">Helvetica-Bold</string>
-							<double key="NSSize">15</double>
+							<double key="NSSize">13</double>
 							<int key="NSfFlags">16</int>
 						</object>
 					</object>
@@ -149,8 +149,15 @@ bnRocyBmb3IgZnJlZQA</string>
 						<reference key="IBUINormalTitleColor" ref="1009354193"/>
 						<reference key="IBUINormalTitleShadowColor" ref="732593103"/>
 						<reference key="IBUINormalBackgroundImage" ref="230480598"/>
-						<reference key="IBUIFontDescription" ref="728739958"/>
-						<reference key="IBUIFont" ref="569873305"/>
+						<object class="IBUIFontDescription" key="IBUIFontDescription">
+							<int key="type">2</int>
+							<double key="pointSize">15</double>
+						</object>
+						<object class="NSFont" key="IBUIFont">
+							<string key="NSName">Helvetica-Bold</string>
+							<double key="NSSize">15</double>
+							<int key="NSfFlags">16</int>
+						</object>
 					</object>
 					<object class="IBUIButton" id="559367729">
 						<reference key="NSNextResponder" ref="254193821"/>
@@ -170,8 +177,8 @@ bnRocyBmb3IgZnJlZQA</string>
 						</object>
 						<reference key="IBUINormalTitleShadowColor" ref="732593103"/>
 						<reference key="IBUINormalBackgroundImage" ref="230480598"/>
-						<reference key="IBUIFontDescription" ref="728739958"/>
-						<reference key="IBUIFont" ref="569873305"/>
+						<reference key="IBUIFontDescription" ref="754469679"/>
+						<reference key="IBUIFont" ref="1046263191"/>
 					</object>
 				</array>
 				<string key="NSFrame">{{0, 20}, {320, 460}}</string>
@@ -197,6 +204,14 @@ bnRocyBmb3IgZnJlZQA</string>
 						<reference key="destination" ref="254193821"/>
 					</object>
 					<int key="connectionID">43</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">tellmeMoreButton</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="567938743"/>
+					</object>
+					<int key="connectionID">65</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -309,7 +324,7 @@ bnRocyBmb3IgZnJlZQA</string>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">64</int>
+			<int key="maxID">65</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>

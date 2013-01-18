@@ -7,13 +7,14 @@
 //
 
 #import "CarouselViewDemoViewController.h"
+#import "ASIHTTPRequest.h"
 
 
 @interface CarouselViewDemoViewController ()
 
 @end
 @implementation CarouselViewDemoViewController
-@synthesize workout;
+@synthesize workout,myQueue;
 
 //@synthesize dataSourceArray = _dataSourceArray;
 
@@ -42,7 +43,7 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
     [self.backgroundLabel.layer setCornerRadius:10];
     [self.totalVideoCountLabel setText:[NSString stringWithFormat:@"Number of excersices [%i]",self.videoCount]];
     [self.durationLabel setText:[NSString stringWithFormat:@"Total Time [%@]",[Fitness4MeUtils displayTimeWithSecond:self.totalDuration]]];
-
+    
     self.view.transform = CGAffineTransformConcat(self.view.transform, CGAffineTransformMakeRotation(M_PI_2));
     [self.recoverySegmentControl setSelectedSegmentIndex:-1];
     [self.moveSegmentControl setSelectedSegmentIndex:-1];
@@ -68,14 +69,11 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
     {
         [self.addMoreButton removeFromSuperview];
     }
-    
-	[_removeSelectedButton setEnabled:NO];
-    _carouselView = [[CarouselView alloc] initWithFrame:CGRectMake(2, 50, 480, 120)
-                                             dataSource:self
-                                               delegate:self];
-    _carouselView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-	
-	[self.view addSubview:_carouselView];
+
+    if([GlobalArray count]>2)
+    {
+     [self.carousel scrollToItemAtIndex:[GlobalArray count]-2 animated:NO];
+    }
 }
 
 - (void)viewDidUnload {
@@ -86,138 +84,175 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
 }
 
 
-#pragma mark - Carousel DataSource
+#pragma mark -
+#pragma mark iCarousel methods
 
-- (NSInteger)numberOfColumnsForCarouselView:(CarouselView *)carouselView {
-    
+- (NSUInteger)numberOfItemsInCarousel:(iCarousel *)carousel
+{
+    //return the total number of items in the carousel
     return [GlobalArray count];
 }
 
-- (CarouselViewCell *)carouselView:(CarouselView *)carouselView cellForColumnAtIndex:(NSInteger)index {
+- (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSUInteger)index reusingView:(UIView *)view
+{
+    UILabel *label = nil;
     
-    CarouselViewCell *cell = [carouselView dequeueReusableCell];
-    if (cell == nil) {
-        cell = [[CarouselViewCell alloc] init];
-        ExcersiceList *excersiceList =[[ExcersiceList alloc]init];
-        excersiceList= [GlobalArray objectAtIndex:index];
+    
+    //create new view if no view is available for recycling
+    if (view == nil)
+    {
+        view = [[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)] autorelease];
+        ((UIImageView *)view).image = [self imageForRowAtIndexPath:[GlobalArray objectAtIndex:index] inIndexPath:index];
+        view.contentMode = UIViewContentModeTop;
+        label = [[[UILabel alloc] initWithFrame:CGRectMake(10, 0, 80, 30)] autorelease];
+        label.backgroundColor = [UIColor clearColor];
+        label.font = [label.font fontWithSize:12];
+        label.tag = 1;
+        label.textColor=[UIColor blackColor];
+        [view addSubview:label];
         
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
-        
-        NSString *dataPath = [documentsDirectory stringByAppendingPathComponent:@"MyFolder/SelfMadeThumbs"];
-        NSString  *storeURL= [dataPath stringByAppendingPathComponent :[excersiceList imageName]];
-        cell.ExcersiceImage.image= [[UIImage alloc]initWithContentsOfFile:storeURL];
-        [cell.titleLabel setText:[excersiceList name]];
     }
-    return cell;
+    else
+    {
+        //get a reference to the label in the recycled view
+        label = (UILabel *)[view viewWithTag:1];
+        
+    }
+    
+    //set item label
+    //remember to always set any properties of your carousel item
+    //views outside of the `if (view == nil) {...}` check otherwise
+    //you'll get weird issues with carousel item content appearing
+    //in the wrong place in the carousel
+    label.text = [[GlobalArray objectAtIndex:index] name];
+    
+    return view;
 }
 
-#pragma mark - CarouselView Delegate
 
-- (void)carouselView:(CarouselView *)carouselView didSelectCellAtIndex:(NSInteger)index {
-	[_removeSelectedButton setEnabled:YES];
+- (UIImage *)imageForRowAtIndexPath:(ExcersiceList *)excersiceList inIndexPath:(NSUInteger)indexPath
+{
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
+    dataPath = [documentsDirectory stringByAppendingPathComponent:@"MyFolder/SelfMadeThumbs"];
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:dataPath]){
+        [[NSFileManager defaultManager] createDirectoryAtPath:dataPath withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    
+    NSString  *storeURL= [dataPath stringByAppendingPathComponent :[excersiceList imageName]];
+    UIImageView *excersiceImageHolder =[[UIImageView alloc]init];
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:storeURL]){
+        UIImage *im =[UIImage imageNamed:@"page.png"];
+        excersiceImageHolder.image =im;
+        [self.myQueue setDelegate:self];
+        [self.myQueue setShowAccurateProgress:YES];
+        [self.myQueue setRequestDidFinishSelector:@selector(requestFinisheds:)];
+        ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:[excersiceList imageUrl]]];
+        [request setDownloadDestinationPath:storeURL];
+        [request setDelegate:self];
+        [request startAsynchronous];
+        [myQueue addOperation:[request copy]];
+        [myQueue go];
+    }else {
+        UIImage *im =[[UIImage alloc]initWithContentsOfFile:storeURL];
+        excersiceImageHolder.image=im;
+    }
+	
+    return excersiceImageHolder.image;
+    
 }
 
+- (void)requestFinisheds:(ASINetworkQueue *)queue
+{
+    [self.carousel reloadData];
+}
+
+
+#pragma mark - Carousel DataSource
+
+- (void)carousel: (iCarousel *)_carousel didSelectItemAtIndex:(NSInteger)index
+{
+    [self.carousel itemViewAtIndex:index].alpha=.8f;
+    [self.carousel itemViewAtIndex: self.selectedIndex].alpha=1; 
+     self.selectedIndex=index;
+}
 
 
 #pragma mark - IBActions
 
-- (IBAction)cleanRecyclePool {
-    [_carouselView cleanCellsRecyclePool];
-}
 
 -(IBAction) segmentedControlIndexChanged{
-    NSNumber *selectedIndex = [NSNumber numberWithInt:[_carouselView indexOfSelectedCell]+1];
-    NSNumber *index = selectedIndex;
+    
+    
     ExcersiceList *list= [[ExcersiceList alloc]init];
-    NSMutableArray *arrays= [[NSMutableArray alloc]init];
-    if ([index intValue]>0) {
+    
+    if (self.selectedIndex >0) {
         
-        [_carouselView deleteAllColumnswithColumnAnimation:_animationSegmentedControl.selectedSegmentIndex];
+        
         switch (self.recoverySegmentControl.selectedSegmentIndex) {
             case 0:
                 
                 list.name=@"recovery 15";
-                list.imageName= @"dummyimg.png";
+                list.imageName= @"page.png";
                 list.excersiceID=@"rec15";
-                 list.time=@"900";
+                list.time=@"900";
                 list.repetitions=@"1";
-                [GlobalArray insertObject:list atIndex:[index intValue]];
-                
-                for (int i = 0; i < [GlobalArray count]; i++) {
-                    [arrays addObject:[NSNumber numberWithInt:i]];
-                }
+                [GlobalArray insertObject:list atIndex: self.selectedIndex];
                 self.videoCount++;
-                 self.totalDuration=self.totalDuration+ 900;
-                [_carouselView insertColumnsAtIndexes:arrays withColumnAnimation:_animationSegmentedControl.selectedSegmentIndex];
+                self.totalDuration=self.totalDuration+ 900;
+                
                 
                 break;
             case 1:
                 list.name=@"recovery 30";
-                list.imageName= @"dummyimg.png";
+                list.imageName= @"page.png";
                 list.excersiceID=@"rec30";
                 list.time=@"1800";
                 list.repetitions=@"1";
-                [GlobalArray insertObject:list atIndex:[index intValue]];
-                for (int i = 0; i < [GlobalArray count]; i++) {
-                    [arrays addObject:[NSNumber numberWithInt:i]];
-                }
+                [GlobalArray insertObject:list atIndex: self.selectedIndex];
                 self.videoCount++;
                 self.totalDuration=self.totalDuration+ 1800;
-                [_carouselView insertColumnsAtIndexes:arrays withColumnAnimation:_animationSegmentedControl.selectedSegmentIndex];
-                
-                
-                
                 break;
                 
             default:
                 break;
         }
     }
-    [self.durationLabel setText:[NSString stringWithFormat:@"Total Time [%@]",[Fitness4MeUtils displayTimeWithSecond:self.totalDuration]]];
- 
-    //[Fitness4MeUtils displayTimeWithSecond:self.totalDuration];
     
+    [self.carousel reloadData];
+    [self.durationLabel setText:[NSString stringWithFormat:@"Total Time [%@]",[Fitness4MeUtils displayTimeWithSecond:self.totalDuration]]];
     [self.recoverySegmentControl setSelectedSegmentIndex:-1];
     
 }
 
 - (IBAction)onClickMove:(id)sender {
-    int selectedIndex =[_carouselView indexOfSelectedCell];
-    NSMutableArray *arrays= [[NSMutableArray alloc]init];
     switch (self.moveSegmentControl.selectedSegmentIndex) {
         case 0:
-            if (selectedIndex>0) {
-                [_carouselView deleteAllColumnswithColumnAnimation:_animationSegmentedControl.selectedSegmentIndex];
-                [GlobalArray exchangeObjectAtIndex:selectedIndex withObjectAtIndex:selectedIndex-1];
-                for (int i = 0; i < [GlobalArray count]; i++) {
-                    [arrays addObject:[NSNumber numberWithInt:i]];
-                }
-                [_carouselView insertColumnsAtIndexes:arrays withColumnAnimation:_animationSegmentedControl.selectedSegmentIndex];
+            if ( self.selectedIndex>0) {
+                [GlobalArray exchangeObjectAtIndex: self.selectedIndex withObjectAtIndex: self.selectedIndex-1];
             }
             
             break;
         case 1:
             
-            if (selectedIndex<[GlobalArray count]-1) {
-                [_carouselView deleteAllColumnswithColumnAnimation:_animationSegmentedControl.selectedSegmentIndex];
-                [GlobalArray exchangeObjectAtIndex:selectedIndex withObjectAtIndex:selectedIndex+1];
-                for (int i = 0; i < [GlobalArray count]; i++) {
-                    [arrays addObject:[NSNumber numberWithInt:i]];
-                }
-                [_carouselView insertColumnsAtIndexes:arrays withColumnAnimation:_animationSegmentedControl.selectedSegmentIndex];
+            if (self.selectedIndex<[GlobalArray count]-1) {
+                
+                [GlobalArray exchangeObjectAtIndex:self.selectedIndex withObjectAtIndex:self.selectedIndex+1];
+                
             }
             break;
             
             
         case 2:
-            
             [self removeSelectedColumn];
             break;
         default:
             break;
     }
-    
+    [self.carousel reloadData];
     [self.moveSegmentControl setSelectedSegmentIndex:-1];
 }
 
@@ -244,9 +279,10 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
     
     NameViewController *viewController =[[NameViewController alloc]initWithNibName:@"NameViewController" bundle:nil];
     viewController.workout= [[Workout alloc]init];
-    viewController.workout =nil;
+    viewController.workout =self.workout;
     [viewController setCollectionString:str];
     [viewController setEquipments:self.equipments];
+    
     [viewController setFocusList:self.focusList];
     
     [self.navigationController pushViewController:viewController animated:YES];
@@ -255,24 +291,12 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
 
 - (IBAction)removeSelectedColumn {
     if ([GlobalArray count]>1) {
-        NSMutableArray *arrays= [[NSMutableArray alloc]init];
-        NSNumber *selectedIndex = [NSNumber numberWithInt:[_carouselView indexOfSelectedCell]];
         self.videoCount--;
-        self.totalDuration=self.totalDuration- ([[[GlobalArray objectAtIndex:[_carouselView indexOfSelectedCell]] time]intValue]*[[[GlobalArray objectAtIndex:[_carouselView indexOfSelectedCell]] repetitions]intValue]);
-        [GlobalArray removeObjectAtIndex:[selectedIndex intValue]];
-        [_carouselView deleteAllColumnswithColumnAnimation:_animationSegmentedControl.selectedSegmentIndex];
-       
-        for (int i = 0; i < [GlobalArray count]; i++) {
-            [arrays addObject:[NSNumber numberWithInt:i]];
-            
-          
-        }
+        self.totalDuration=self.totalDuration- ([[[GlobalArray objectAtIndex:self.selectedIndex] time]intValue]*[[[GlobalArray objectAtIndex:self.selectedIndex] repetitions]intValue]);
+        [GlobalArray removeObjectAtIndex:self.selectedIndex];
         [self.totalVideoCountLabel setText:[NSString stringWithFormat:@"Number of excersices [%i]",self.videoCount]];
         [self.durationLabel setText:[NSString stringWithFormat:@"Total Time [%@]",[Fitness4MeUtils displayTimeWithSecond:self.totalDuration]]];
-
-
-        [_carouselView insertColumnsAtIndexes:arrays withColumnAnimation:_animationSegmentedControl.selectedSegmentIndex];
-	    [_removeSelectedButton setEnabled:NO];
+        
         
         NSString *str= [[NSString alloc]init];
         for (ExcersiceList *excerlist in GlobalArray) {
@@ -284,7 +308,7 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
                 str =[str stringByAppendingString:[excerlist excersiceID]];
             }
         }
-       
+        
         [userinfo setObject:str forKey:@"SelectedWorkouts"];
     }
     

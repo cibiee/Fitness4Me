@@ -116,11 +116,13 @@
             NSURL * imageURL = [NSURL URLWithString:[self. workout ImageUrl]];
             NSData * imageData = [NSData dataWithContentsOfURL:imageURL];
             excersiceImageHolder.image = [UIImage imageWithData:imageData];
+            NSURL *url =[NSURL URLWithString:[[self.workout ImageUrl] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
             
-            ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:[workout ImageUrl]]];
+            ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
             [request setDownloadDestinationPath:storeURL];
             [request setDelegate:self];
             [request startAsynchronous];
+            [request setDidFinishSelector:@selector(downloadImageDidfinish:)];
         }else {
             UIImage *im =[[UIImage alloc]initWithContentsOfFile:storeURL];
             excersiceImageHolder.image=im;
@@ -137,7 +139,19 @@
         }
     }
 }
-
+- (void)downloadImageDidfinish:(ASIHTTPRequest *)queue
+{
+    NSString  *storeURL= [dataPath stringByAppendingPathComponent :[self.workout ImageName]];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:storeURL]){
+        UIImage *im =[[UIImage alloc]initWithContentsOfFile:storeURL];
+        excersiceImageHolder.image=im;
+        
+        
+    }else{
+        UIImage *im =[UIImage imageNamed:@"dummyimg.png"];
+        excersiceImageHolder.image =im;
+    }
+}
 -(void)InitializeView
 {
     [self showWorkoutImage];
@@ -437,7 +451,7 @@ int stopz=0;
 //method to Download videos related to a workout
 -(void)downloadVideos:(NSString *)url:(NSString*)name{
     
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
     NSString *dataPath1 = [documentsDirectory stringByAppendingPathComponent:@"MyFolder"];
     NSString  *filepath =[dataPath1 stringByAppendingPathComponent :name];

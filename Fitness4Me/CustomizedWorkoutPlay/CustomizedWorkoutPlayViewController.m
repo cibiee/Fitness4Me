@@ -186,7 +186,7 @@ static float totalDuration=0;
 -(void)initializPlayer
 {
     
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
     NSString *dataPath = [documentsDirectory stringByAppendingPathComponent:@"MyFolder"];
     storeURL =  [dataPath stringByAppendingPathComponent :[[aras objectAtIndex:initalArrayCount]videoName]];

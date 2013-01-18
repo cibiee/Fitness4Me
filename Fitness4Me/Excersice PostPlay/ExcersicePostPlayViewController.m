@@ -10,7 +10,7 @@
 #import "ExcersicePostPlayViewController.h"
 #import "ListWorkoutsViewController.h"
 #import "ShareFitness4MeViewController.h"
-
+#import "MemberPromoViewController.h"
 
 @implementation ExcersicePostPlayViewController
 
@@ -45,7 +45,7 @@
 
 -(void)initializeView
 {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     
     NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
     
@@ -130,7 +130,7 @@
 -(void)showAdMobs{
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     
-    NSString *hasMadeFullPurchase= [userinfo valueForKey:@"hasMadeFullPurchase"];
+    NSString *hasMadeFullPurchase= [userinfo valueForKey:@"isMember"];
     
     
     if ([hasMadeFullPurchase isEqualToString:@"true"]) {
@@ -140,8 +140,6 @@
     else {
         
         [self performSelector:@selector(showUpgradeView) withObject:nil afterDelay:2];
-
-        
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
         {
             
@@ -177,7 +175,20 @@
 
  -(void)showUpgradeView
 {
-    [self.view addSubview:upgradeView];
+    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+    [userinfo setObject:@"QuickWorkouts" forKey:@"workoutType"];
+    MemberPromoViewController *viewController;
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+        viewController = [[MemberPromoViewController alloc]initWithNibName:@"MemberPromoViewController" bundle:nil];
+    }
+    else {
+        viewController = [[MemberPromoViewController alloc]initWithNibName:@"MemberPromoViewController" bundle:nil];
+    }
+    
+    [viewController setNavigateTo:@"NotList"];
+    viewController.workout =self.workout;
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 -(IBAction)navigateToListView:(id)sender{
@@ -203,6 +214,8 @@
    
 -(IBAction)navigateToShareAppView:(id)sender{
     
+    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+    [userinfo setObject:@"QuickWorkouts" forKey:@"workoutType"];
     ShareFitness4MeViewController *viewController;
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
@@ -217,6 +230,7 @@
     
     viewController.imageUrl =[self.workout ImageUrl];
     viewController.imageName =[self.workout ImageName];
+    viewController.workoutType=@"QuickWorkouts";
     [self.navigationController pushViewController:viewController animated:YES];
     
 

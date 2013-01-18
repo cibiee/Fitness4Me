@@ -22,7 +22,7 @@
 -(void)setUpDatabase
 {
     databaseName =@"Fitness.sqlite";
-    NSArray *docPath= NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSArray *docPath= NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     NSString *docDir =[docPath objectAtIndex:0];
     databasePath =[docDir stringByAppendingPathComponent:databaseName];
 }

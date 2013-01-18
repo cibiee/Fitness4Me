@@ -254,7 +254,7 @@
 
 - (UIImage *)imageForRowAtIndexPath:(Workout *)workout inIndexPath:(NSIndexPath *)indexPath
 {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
     dataPath = [documentsDirectory stringByAppendingPathComponent:@"MyFolder/Thumbs"];
     
@@ -315,11 +315,9 @@
 
 -(IBAction)onClickAdd:(id)sender{
     
-   
-    NSString *hasMadeFullPurchase= [userinfo valueForKey:@"hasMadeFullPurchase"];
     NSString *isMember =[userinfo valueForKey:@"isMember"];
     NSString *canCreate=[[NSString alloc]init];
-    NSLog(isMember);
+    
     canCreate=[self canCreate];
     
     if ([isMember isEqualToString:@"true"]) {
@@ -329,34 +327,27 @@
             [self navigateToCustomWorkoutAdd];
         }
     }else{
-        if ([hasMadeFullPurchase isEqualToString:@"true"]) {
-            
+        if ([self.groupedExcersice count]>=5) {
+            [self showPremium];
+        }
+        else{
             if ([self.workoutType isEqualToString:@"SelfMade"]) {
-                [self navigateToFocus];
-            }
-            else{
-                [self navigateToCustomWorkoutAdd];
-            }
-        }else {
-            
-            if ([self.groupedExcersice count]>=5) {
-                [self showPremium];
-            }
-            else{
-                if ([self.workoutType isEqualToString:@"SelfMade"]) {
-                    if ([canCreate isEqualToString:@"true"]) {
+                if ([canCreate isEqualToString:@"true"]) {
                     [self navigateToFocus];
-                    }
                 }
-                
                 else{
+                    [self showPremium];
+                }
+            }
+            
+            else{
                 
-                    [userinfo setInteger:[self.groupedExcersice count] forKey:@"customCount"];
-                    [self navigateToCustomWorkoutAdd];
-                    }
+                [userinfo setInteger:[self.groupedExcersice count] forKey:@"customCount"];
+                [self navigateToCustomWorkoutAdd];
             }
         }
     }
+    
 }
 
 

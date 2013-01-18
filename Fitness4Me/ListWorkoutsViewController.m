@@ -9,7 +9,7 @@
 #import "ListWorkoutsViewController.h"
 #import "NSString+Config.h"
 #import "Fitness4MeUtils.h"
-
+#import "MemberPromoViewController.h"
 
 @implementation ListWorkoutsViewController
 
@@ -326,8 +326,19 @@
 #pragma mark - view overload methods
 
 
+- (void)startFullVideoDownload:(NSString *)fullvideoDownload
+{
+    if ([fullvideoDownload isEqualToString:@"false"]) {
+        [self.view addSubview:fullvideoView];
+        [activityIndicator setHidden:NO];
+        [activityIndicator startAnimating];
+        [NSThread detachNewThreadSelector:@selector(parseFitnessDetails) toTarget:self withObject:nil];
+    }
+}
+
 - (void)viewDidLoad
 {
+    
     [super viewDidLoad];
     [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
     [self setBackround];
@@ -347,15 +358,14 @@
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     NSString *hasMadeFullPurchase= [userinfo valueForKey:@"hasMadeFullPurchase"];
     NSString *fullvideoDownload= [userinfo valueForKey:@"fullVideoDownloadlater"];
-    
-    if ([hasMadeFullPurchase isEqualToString:@"true"]) {
+    NSString *isMember= [userinfo valueForKey:@"isMember"];
+    [userinfo setObject:@"QuickWorkouts" forKey:@"workoutType"];
+    if ([isMember isEqualToString:@"true"]) {
+        [self startFullVideoDownload:fullvideoDownload];
+    }
+    else if ([hasMadeFullPurchase isEqualToString:@"true"]) {
         
-        if ([fullvideoDownload isEqualToString:@"false"]) {
-            [self.view addSubview:fullvideoView];
-            [activityIndicator setHidden:NO];
-            [activityIndicator startAnimating];
-            [NSThread detachNewThreadSelector:@selector(parseFitnessDetails) toTarget:self withObject:nil];
-        }
+        [self startFullVideoDownload:fullvideoDownload];
         
     }
 }
@@ -569,7 +579,7 @@
 - (UIImage *)imageForRowAtIndexPath:(Workout *)workout inIndexPath:(NSIndexPath *)indexPath
 {
 
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
     dataPath = [documentsDirectory stringByAppendingPathComponent:@"MyFolder/Thumbs"];
     
@@ -608,7 +618,7 @@
 
 - (void)mainImageForRowAtIndexPath:(Workout *)workout
 {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
     dataPath = [documentsDirectory stringByAppendingPathComponent:@"MyFolder"];
     
@@ -704,19 +714,19 @@
     BOOL isReachable =[Fitness4MeUtils isReachable];
     if (isReachable){
         
-        [offerView removeFromSuperview];
-        ExcersiceIntermediateViewController *viewController;
-        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-            viewController =[[ExcersiceIntermediateViewController alloc]initWithNibName:@"ExcersiceIntermediateViewController" bundle:nil];
-        }else{
-            viewController =[[ExcersiceIntermediateViewController alloc]initWithNibName:@"ExcersiceIntermediateViewController_iPad" bundle:nil];
+        MemberPromoViewController *viewController;
+        
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+            viewController = [[MemberPromoViewController alloc]initWithNibName:@"MemberPromoViewController" bundle:nil];
+        }
+        else {
+            viewController = [[MemberPromoViewController alloc]initWithNibName:@"MemberPromoViewController" bundle:nil];
         }
         
-        viewController.purchaseAll =@"true";
-        viewController.workout =selectedWorkout;
+        [viewController setNavigateTo:@"List"];
+        viewController.workout =nil;
         [self.navigationController pushViewController:viewController animated:YES];
-        
-        [viewController release];
+
     }else {
         
         [offerView removeFromSuperview];

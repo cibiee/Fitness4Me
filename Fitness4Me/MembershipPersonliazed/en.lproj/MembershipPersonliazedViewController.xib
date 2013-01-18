@@ -125,13 +125,13 @@ aXNlcyB0aGF0IGZpdHMgeW91ciB0aW1lIGFuZCBleGVyY2lzZSB0YXJnZXQuDQoAA</string>
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">button_half_width.png</string>
 						</object>
-						<object class="IBUIFontDescription" key="IBUIFontDescription" id="547990862">
+						<object class="IBUIFontDescription" key="IBUIFontDescription" id="1027831527">
 							<int key="type">2</int>
-							<double key="pointSize">15</double>
+							<double key="pointSize">13</double>
 						</object>
-						<object class="NSFont" key="IBUIFont" id="478250934">
+						<object class="NSFont" key="IBUIFont" id="1056683735">
 							<string key="NSName">Helvetica-Bold</string>
-							<double key="NSSize">15</double>
+							<double key="NSSize">13</double>
 							<int key="NSfFlags">16</int>
 						</object>
 					</object>
@@ -151,8 +151,15 @@ aXNlcyB0aGF0IGZpdHMgeW91ciB0aW1lIGFuZCBleGVyY2lzZSB0YXJnZXQuDQoAA</string>
 						<reference key="IBUINormalTitleColor" ref="405708100"/>
 						<reference key="IBUINormalTitleShadowColor" ref="491626911"/>
 						<reference key="IBUINormalBackgroundImage" ref="144136442"/>
-						<reference key="IBUIFontDescription" ref="547990862"/>
-						<reference key="IBUIFont" ref="478250934"/>
+						<object class="IBUIFontDescription" key="IBUIFontDescription">
+							<int key="type">2</int>
+							<double key="pointSize">15</double>
+						</object>
+						<object class="NSFont" key="IBUIFont">
+							<string key="NSName">Helvetica-Bold</string>
+							<double key="NSSize">15</double>
+							<int key="NSfFlags">16</int>
+						</object>
 					</object>
 					<object class="IBUIButton" id="587420410">
 						<reference key="NSNextResponder" ref="113237118"/>
@@ -172,8 +179,8 @@ aXNlcyB0aGF0IGZpdHMgeW91ciB0aW1lIGFuZCBleGVyY2lzZSB0YXJnZXQuDQoAA</string>
 						</object>
 						<reference key="IBUINormalTitleShadowColor" ref="491626911"/>
 						<reference key="IBUINormalBackgroundImage" ref="144136442"/>
-						<reference key="IBUIFontDescription" ref="547990862"/>
-						<reference key="IBUIFont" ref="478250934"/>
+						<reference key="IBUIFontDescription" ref="1027831527"/>
+						<reference key="IBUIFont" ref="1056683735"/>
 					</object>
 					<object class="IBUILabel" id="643995125">
 						<reference key="NSNextResponder" ref="113237118"/>
@@ -230,6 +237,32 @@ aXNlcyB0aGF0IGZpdHMgeW91ciB0aW1lIGFuZCBleGVyY2lzZSB0YXJnZXQuDQoAA</string>
 						<reference key="destination" ref="113237118"/>
 					</object>
 					<int key="connectionID">12</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">tellmeMoreButton</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="225986075"/>
+					</object>
+					<int key="connectionID">14</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">onClickNotYet:</string>
+						<reference key="source" ref="587420410"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">15</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">onClickTellMeMore:</string>
+						<reference key="source" ref="225986075"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">13</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -325,7 +358,7 @@ aXNlcyB0aGF0IGZpdHMgeW91ciB0aW1lIGFuZCBleGVyY2lzZSB0YXJnZXQuDQoAA</string>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">12</int>
+			<int key="maxID">15</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>

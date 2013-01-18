@@ -605,7 +605,10 @@ static FitnessServerCommunication *sharedState;
         NSString *UrlPath= [NSString GetURlPath];
         NSString *requestString;
         if ([workoutID intValue]>0) {
-            //           requestString =[NSString stringWithFormat:@"%@editcustom=yes&user_id=%@&user_level=%@&customname=%@&duration=%@&equipment=%@&focus=%@&lang=%i&custom_workout_id=%@",UrlPath,userID,userLevel,[workout Name],[workout Duration],[workout Props],[workout Focus],selectedlanguage,[workout WorkoutID]];
+            
+        
+            
+        requestString =[NSString stringWithFormat:@"%@editselfworkout=yes&userid=%@&user_level=%@&collection=%@&selfmadename=%@&equip=%@&focus=%@&lang=%i&self_workout_id=%@",UrlPath,userID,userLevel,workoutCollection,workoutName,equipments,focus,selectedlanguage,workoutID];
         }
         else{
             
