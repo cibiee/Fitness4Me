@@ -29,7 +29,7 @@
     NSString *purchaseMode;
     NSUserDefaults *userinfo;
     NSMutableArray *searchArray;
-    
+    NSString *canCreate;
     FitnessServerCommunication *fitness;
     WorkoutDB *workoutDB;
     ASINetworkQueue  *myQueue;
@@ -37,12 +37,16 @@
     
     IBOutlet UIActivityIndicatorView *activityIndicator;
 }
+- (IBAction)onClickOk:(id)sender;
+- (IBAction)onClickClose:(id)sender;
+-(IBAction)onClickEdit:(id)sender;
+-(IBAction)onClickBack:(id)sender;
+-(IBAction)onClickAdd:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UIView *memberView;
 @property(strong,nonatomic)NSString *workoutType;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigationBar;
 @property (nonatomic,retain) ASINetworkQueue *myQueue;
--(IBAction)onClickEdit:(id)sender;
--(IBAction)onClickBack:(id)sender;
--(IBAction)onClickAdd:(id)sender;
 
 @end

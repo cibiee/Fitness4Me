@@ -69,10 +69,10 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
     {
         [self.addMoreButton removeFromSuperview];
     }
-
+    self.carousel.type = iCarouselTypeCoverFlow2;
     if([GlobalArray count]>2)
     {
-     [self.carousel scrollToItemAtIndex:[GlobalArray count]-2 animated:NO];
+     [self.carousel scrollToItemAtIndex:1 animated:NO];
     }
 }
 
@@ -89,6 +89,7 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
 
 - (NSUInteger)numberOfItemsInCarousel:(iCarousel *)carousel
 {
+   
     //return the total number of items in the carousel
     return [GlobalArray count];
 }
@@ -96,20 +97,21 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSUInteger)index reusingView:(UIView *)view
 {
     UILabel *label = nil;
-    
+   // UIImageView *excersiceImage=nil;
     
     //create new view if no view is available for recycling
     if (view == nil)
     {
-        view = [[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)] autorelease];
-        ((UIImageView *)view).image = [self imageForRowAtIndexPath:[GlobalArray objectAtIndex:index] inIndexPath:index];
+        view = [[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 150, 150)] autorelease];
+       // ((UIImageView *)view).image = [self imageForRowAtIndexPath:[GlobalArray objectAtIndex:index] inIndexPath:index];
         view.contentMode = UIViewContentModeTop;
-        label = [[[UILabel alloc] initWithFrame:CGRectMake(10, 0, 80, 30)] autorelease];
+        label = [[[UILabel alloc] initWithFrame:CGRectMake(10, 0, 130, 30)] autorelease];
         label.backgroundColor = [UIColor clearColor];
         label.font = [label.font fontWithSize:12];
         label.tag = 1;
         label.textColor=[UIColor blackColor];
         [view addSubview:label];
+        //excersiceImage=[[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 150, 150)] autorelease];
         
     }
     else
@@ -125,7 +127,7 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
     //you'll get weird issues with carousel item content appearing
     //in the wrong place in the carousel
     label.text = [[GlobalArray objectAtIndex:index] name];
-    
+     ((UIImageView *)view).image = [self imageForRowAtIndexPath:[GlobalArray objectAtIndex:index] inIndexPath:index];
     return view;
 }
 
@@ -198,7 +200,7 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
                 list.name=@"recovery 15";
                 list.imageName= @"page.png";
                 list.excersiceID=@"rec15";
-                list.time=@"900";
+                list.time=@"15";
                 list.repetitions=@"1";
                 [GlobalArray insertObject:list atIndex: self.selectedIndex];
                 self.videoCount++;
@@ -210,7 +212,7 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
                 list.name=@"recovery 30";
                 list.imageName= @"page.png";
                 list.excersiceID=@"rec30";
-                list.time=@"1800";
+                list.time=@"30";
                 list.repetitions=@"1";
                 [GlobalArray insertObject:list atIndex: self.selectedIndex];
                 self.videoCount++;
@@ -253,6 +255,7 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
             break;
     }
     [self.carousel reloadData];
+    self.selectedIndex=-1;
     [self.moveSegmentControl setSelectedSegmentIndex:-1];
 }
 
@@ -290,29 +293,61 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
 
 
 - (IBAction)removeSelectedColumn {
-    if ([GlobalArray count]>1) {
-        self.videoCount--;
-        self.totalDuration=self.totalDuration- ([[[GlobalArray objectAtIndex:self.selectedIndex] time]intValue]*[[[GlobalArray objectAtIndex:self.selectedIndex] repetitions]intValue]);
-        [GlobalArray removeObjectAtIndex:self.selectedIndex];
-        [self.totalVideoCountLabel setText:[NSString stringWithFormat:@"Number of excersices [%i]",self.videoCount]];
-        [self.durationLabel setText:[NSString stringWithFormat:@"Total Time [%@]",[Fitness4MeUtils displayTimeWithSecond:self.totalDuration]]];
+    if (self.selectedIndex >-1) {
         
-        
-        NSString *str= [[NSString alloc]init];
-        for (ExcersiceList *excerlist in GlobalArray) {
-            if ([str length]==0) {
-                str =[str stringByAppendingString:[excerlist excersiceID]];
+        if ([GlobalArray count]>1) {
+            self.videoCount--;
+            self.totalDuration=self.totalDuration- ([[[GlobalArray objectAtIndex:self.selectedIndex] time]intValue]*[[[GlobalArray objectAtIndex:self.selectedIndex] repetitions]intValue]);
+            [GlobalArray removeObjectAtIndex:self.selectedIndex];
+            [self.totalVideoCountLabel setText:[NSString stringWithFormat:@"Number of excersices [%i]",self.videoCount]];
+            [self.durationLabel setText:[NSString stringWithFormat:@"Total Time [%@]",[Fitness4MeUtils displayTimeWithSecond:self.totalDuration]]];
+            
+            
+            NSString *str= [[NSString alloc]init];
+            for (ExcersiceList *excerlist in GlobalArray) {
+                if ([str length]==0) {
+                    str =[str stringByAppendingString:[excerlist excersiceID]];
+                }
+                else{
+                    str=[str stringByAppendingString:@","];
+                    str =[str stringByAppendingString:[excerlist excersiceID]];
+                }
             }
-            else{
-                str=[str stringByAppendingString:@","];
-                str =[str stringByAppendingString:[excerlist excersiceID]];
-            }
+            
+            [userinfo setObject:str forKey:@"SelectedWorkouts"];
         }
-        
-        [userinfo setObject:str forKey:@"SelectedWorkouts"];
-    }
+        else{
+            [self showAlertwithMsg:@"Not enough workouts to be removed"];
+        }
+    
+}
+else{
+    [self showAlertwithMsg:NSLocalizedString(@"Please Select the workout to be removed", nil)];
+}
+
+}
+
+
+-(void)showAlertwithMsg:(NSString*)message
+{
+    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"fitness4.me" message:message
+                                                       delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alertview show];
+    [UIView beginAnimations:@"" context:nil];
+    [UIView setAnimationDuration:0.0];
+    alertview.transform = CGAffineTransformRotate(alertview.transform, 3.14159/2);
+    [UIView commitAnimations];
     
     
+}
+
+- (void)didPresentAlertView:(UIAlertView *)alertView
+{
+    // UIAlertView in landscape mode
+    [UIView beginAnimations:@"" context:nil];
+    [UIView setAnimationDuration:0.0];
+    alertView.transform = CGAffineTransformRotate(alertView.transform, 3.14159/2);
+    [UIView commitAnimations];
 }
 
 

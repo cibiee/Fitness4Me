@@ -78,7 +78,7 @@
              nameOfTheUser:[item objectForKey:@"fname"]
           levelofExpertise: [item objectForKey:@"level"]
            mailIdOfTheUser:[item objectForKey:@"email"]
-       hasDoneFullPruchase:[item objectForKey:@"fullpurchase"]
+           hasDoneFullPruchase:[item objectForKey:@"fullpurchase"]
              member:[item objectForKey:@"member"]];
             
             FitnessServerCommunication *fitness= [FitnessServerCommunication sharedState];
@@ -127,7 +127,6 @@
 
 -(void)saveUser:(NSString *)username nameOfTheUser:(NSString *) name levelofExpertise :(NSString *)userlevel  mailIdOfTheUser:(NSString *)email  hasDoneFullPruchase :(NSString *)fullpurchase member:(NSString*)member
 {
-    NSLog(member);
     UserDB *userDB =[[UserDB alloc]init];
     [userDB setUpDatabase];
     [userDB createDatabase];

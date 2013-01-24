@@ -110,7 +110,7 @@ typedef void (^errorBlock)(NSString *errorString);
 
 /*-------------------------SELF MADE WORKOUT LIST SERVICES---------------------------------------------------*/
 
--(void)parseSelfMadeFitnessDetails:(int)userID onCompletion:(ResponseBlock)completionBlock onError:(NSError*)errorBlock;
+-(void)parseSelfMadeFitnessDetails:(int)userID  trail:(NSString*)trail onCompletion:(ResponseBlock)completionBlock onError:(NSError*)errorBlock;
 
 - (void)listExcersiceWithequipments:(NSString*)equipments focus:(NSString*)focus  activityIndicator:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView onCompletion:(WMLoginResponseBlock)completionBlock onError:(NSError*)errorBlock;
 

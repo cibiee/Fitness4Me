@@ -25,7 +25,7 @@
 "validateemailUsername"="Email/Username is not valid";
 "mandatory"="All fields are mandatory";
 "invalidaMail"="email is not valid";
-"slowdata"="Response not recieved from server due to  slow intenet connection.Please try again when you have a  better internet speed";
+"slowdata"="Response not recieved from server due to  slow internet connection.Please try again when you have a  better internet speed";
 "requestError"="Request error occurred.Our support team will be notified about this error. Please try again later.";
 "advancedLevelMessage" ="Please wait while I am downloading your 5 free workouts on advanced level.Depending on the quality of your internet connection, this may take several minutes";
 "beginnerLevelMessage" ="Please wait while I am downloading your 5 free workouts on beginner level.Depending on the quality of your internet connection, this may take several minutes";
@@ -41,3 +41,4 @@
 "deletedSucessfully"="Deleted Sucessfully";
 "creationCustomizedCompleteMsg"="Congratulations!You just designed  the %@ of your five free customized workouts";
 "editMessage"="Save changes and start workout?";
+"focusMessage"="Please select a focus";

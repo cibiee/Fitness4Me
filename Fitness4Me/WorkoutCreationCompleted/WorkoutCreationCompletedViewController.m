@@ -59,7 +59,7 @@
         }
         else
         {
-            NSLog(self.workoutType);
+            
             if ([self.workoutType isEqualToString:@"SelfMade"]) {
                 [self.creationCompleteLabel setText:@"You just designed your selfmade workout"];
             }
@@ -178,16 +178,12 @@
     if ([self.workoutType isEqualToString:@"Custom"]) {
         [fitness saveCustomWorkout:workout userID:userID userLevel:userlevel language:selectedLanguage activityIndicator:self.activityIndicator progressView:self.progressView onCompletion:^(NSString *workoutID) {
             if (workoutID>0) {
+               
+                
                 [workout setWorkoutID:workoutID];
                 self.workoutID=workoutID;
                 [fitness  parseCustomFitnessDetails:[userID intValue]  onCompletion:^(NSString *responseString){
-                    if ([navigateTo isEqualToString:@"List"]) {
-                        [self NavigateToWorkoutList];
-                    }
-                    else
-                    {
-                        [self getNewWorkoutList];
-                    }
+                    
                     
                 } onError:^(NSError *error) {
                     // [self getExcersices];
@@ -197,16 +193,43 @@
         }onError:^(NSError *error) {
             // [self getExcersices];
         }];
+        
+        if ([navigateTo isEqualToString:@"List"]) {
+            [self NavigateToWorkoutList];
+        }
+        else
+        {
+            [self getNewWorkoutList];
+        }
     }
     else{
-        NSLog(self.workoutID);
         [fitness saveSelfMadeWorkout:self.workoutName workoutCollection:self.collectionString workoutID:self.workoutID userID:userID userLevel:userlevel language:selectedLanguage focus:self.focusList equipments:self.equipments activityIndicator:self.activityIndicator progressView:self.progressView onCompletion:^(NSString *workoutID) {
             if (workoutID>0) {
                 [workout setWorkoutID:workoutID];
+                
                 self.workoutID=workoutID;
+                NSString *trail;
+                NSString *isMember =[userinfo valueForKey:@"isMember"];
+                if ([isMember isEqualToString:@"true"]) {
+                    trail=@"0";
+                }
+                else{
+                    
+                    int trailCount =[userinfo integerForKey:@"trailCount"];
+                    if (trailCount==0) {
+                        trail=@"1";
+                    }
+                    else{
+                        trail=@"0";
+                        
+                    }
+                    
+                    trailCount++;
+                    [userinfo setInteger:trailCount forKey:@"trialCount"];
+                }
                 GlobalArray =[[NSMutableArray alloc]init];
                 [userinfo setObject:@"" forKey:@"SelectedWorkouts"];
-                [fitness  parseSelfMadeFitnessDetails:[userID intValue]  onCompletion:^(NSString *responseString){
+                [fitness  parseSelfMadeFitnessDetails:[userID intValue] trail:trail onCompletion:^(NSString *responseString){
                     if ([navigateTo isEqualToString:@"List"]) {
                         [self NavigateToWorkoutList];
                     }
@@ -214,6 +237,7 @@
                     {
                         [self getNewWorkoutList];
                     }
+                    
                     
                     
                 } onError:^(NSError *error) {
@@ -224,6 +248,7 @@
         }onError:^(NSError *error) {
             // [self getExcersices];
         }];
+        
     }
 }
 

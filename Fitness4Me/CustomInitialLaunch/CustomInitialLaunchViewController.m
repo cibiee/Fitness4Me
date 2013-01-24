@@ -18,7 +18,7 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithNibName:nibNameOrNil bundle:[Fitness4MeUtils getBundle]];
     if (self) {
         // Custom initialization
     }
@@ -41,11 +41,20 @@
 
 -(IBAction)onClickNext:(id)sender
 {
-    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+    
+    CustomWorkoutsViewController *viewController;
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+        viewController =[[CustomWorkoutsViewController alloc]initWithNibName:@"CustomWorkoutsViewController" bundle:nil];
+    }else {
+        //viewController =[[HintsViewController alloc]initWithNibName:@"CustomizedWorkoutListViewController_iPad" bundle:nil];
+    }
+     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     [userinfo setObject:@"SelfMade" forKey:@"workoutType"];
     [userinfo setObject:@"" forKey:@"SelectedWorkouts"];
-    FocusViewController *viewController =[[FocusViewController alloc]initWithNibName:@"FocusViewController" bundle:nil];
-    viewController .workout=nil;
+    [viewController setWorkoutType:@"SelfMade"];
+    GlobalArray=nil;
+    GlobalArray=[[NSMutableArray alloc]init];
     [self.navigationController pushViewController:viewController animated:YES];
 }
 

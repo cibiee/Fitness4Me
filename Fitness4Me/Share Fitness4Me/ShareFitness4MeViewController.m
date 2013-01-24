@@ -103,11 +103,12 @@
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     name=[userinfo stringForKey:@"Name"];
     NSString *workoutName=[userinfo stringForKey:@"WorkoutName"];
+    NSString *workoutType=[userinfo stringForKey:@"workoutType"];
     NSString *msg;
     if ([Fitness4MeUtils getApplicationLanguage] ==1) {
-         msg =@" just completed the fitness4.me ";
+         msg =[NSString stringWithFormat:@" just completed the %@ fitness4.me ",workoutType];
     }else{
-         msg =@" just completed the fitness4.me ";
+         msg =[NSString stringWithFormat:@" just completed the %@ fitness4.me ",workoutType];
     }
    
     msg =[name stringByAppendingString:msg];

@@ -10,14 +10,18 @@
 #import "Workout.h"
 #import "ShareFitness4MeViewController.h"
 #import "ListWorkoutsViewController.h"
-
-@interface MembershipPurchaseViewController : UIViewController
+#import <StoreKit/StoreKit.h>
+@interface MembershipPurchaseViewController : UIViewController<SKProductsRequestDelegate,SKPaymentTransactionObserver>
 {
     Workout * workout;
+    SKProduct *proUpgradeProduct;
+    SKProductsRequest *productsRequest;
+    NSString *productIdentifier;
 }
 @property(strong,nonatomic)NSString *workoutType;
 @property (retain,nonatomic)Workout *workout;
 @property (retain,nonatomic)NSString *navigateTo;
 - (IBAction)onClickQuit:(id)sender;
+- (IBAction)onClicksubscribe:(id)sender;
 
 @end

@@ -86,7 +86,7 @@
         return result == 0;
     } else { // iOS >= 5.1
         
-        NSLog(@"%d",[URL setResourceValue:[NSNumber numberWithBool:YES] forKey:NSURLIsExcludedFromBackupKey error:nil]);
+       // NSLog(@"%d",[URL setResourceValue:[NSNumber numberWithBool:YES] forKey:NSURLIsExcludedFromBackupKey error:nil]);
         return [URL setResourceValue:[NSNumber numberWithBool:YES] forKey:NSURLIsExcludedFromBackupKey error:nil];
     }
 }
@@ -264,6 +264,8 @@
         [userinfo setObject:@"SelfMade" forKey:@"workoutType"];
         [userinfo setObject:@"" forKey:@"SelectedWorkouts"];
         [viewController setWorkoutType:@"SelfMade"];
+        GlobalArray=nil;
+        GlobalArray=[[NSMutableArray alloc]init];
         [self.navigationController pushViewController:viewController animated:YES];
         
         [viewController release];

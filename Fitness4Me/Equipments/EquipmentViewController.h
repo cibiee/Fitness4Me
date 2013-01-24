@@ -16,6 +16,7 @@
 @interface EquipmentViewController : UIViewController
 {
     Workout *workout;
+    NSUserDefaults *userinfo;
 }
 @property (weak, nonatomic) IBOutlet UITableView *equipmentsTableView;
 

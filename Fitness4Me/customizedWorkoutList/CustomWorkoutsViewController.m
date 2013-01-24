@@ -18,7 +18,7 @@
 
 @property NSMutableArray *groupedExcersice;
 @property NSMutableArray *workouts;
-
+@property (strong,nonatomic)NSString* canCreatetrials;
 @end
 
 @implementation CustomWorkoutsViewController
@@ -66,7 +66,12 @@
 
 -(void)ListExcersices
 {
+    NSString *canCreates=[[NSString alloc]init];
+    canCreates=[self canCreate];
     
+    NSString *isMember =[userinfo valueForKey:@"isMember"];
+    if ([isMember isEqualToString:@"true"]) {
+ 
     workoutDB =[[WorkoutDB alloc]init];
     [workoutDB setUpDatabase];
     [workoutDB createDatabase];
@@ -98,6 +103,11 @@
             return;
         }
     }
+    }else{
+        [activityIndicator stopAnimating];
+        [activityIndicator setHidesWhenStopped:YES];
+        [self showPremium];
+    }
 }
 
 
@@ -105,7 +115,7 @@
    
     UserID =[userinfo integerForKey:@"UserID"];
     if ([self.workoutType isEqualToString:@"SelfMade"]) {
-        [fitness parseSelfMadeFitnessDetails:UserID onCompletion:^(NSString *responseString){
+        [fitness parseSelfMadeFitnessDetails:UserID trail:@"0" onCompletion:^(NSString *responseString){
             if ([responseString length]>0) {
                 [self parseCustomWorkoutList:responseString];
             }
@@ -186,6 +196,7 @@
 - (void)viewDidUnload {
     [self setTableView:nil];
     [self setNavigationBar:nil];
+    [self setMemberView:nil];
     [super viewDidUnload];
 }
 
@@ -222,7 +233,7 @@
     [cell.deleteLabel setHidden:YES];
     [cell.EditLabel setHidden:YES];
     cell.TitleLabel.text = [workout Name];
-    cell.DurationLabel.text = [[workout Duration] stringByAppendingString:@" minutes."];
+    cell.DurationLabel.text = [NSString stringWithFormat:@"%@",[Fitness4MeUtils displayTimeWithSecond:[[workout Duration]intValue]]];
     cell.focusLabel.text=[workout Focus];
     cell.ExcersiceImage.image =[self imageForRowAtIndexPath:workout inIndexPath:indexPath];
     
@@ -303,12 +314,17 @@
 
 -(NSString*)canCreate
 {
-   __block NSString *canCreate;
+    
+  self.canCreatetrials=@"";
     [fitness GetUserTypeWithactivityIndicator:nil progressView:nil onCompletion:^(NSString *responseString) {
+                canCreate=[[NSString alloc]init];
         canCreate =responseString;
+        
+
     } onError:^(NSError *error){
         
     }];
+     NSLog(@"--sdsdsd--%@-----",self.canCreatetrials);
     return canCreate;
 }
 
@@ -316,10 +332,13 @@
 -(IBAction)onClickAdd:(id)sender{
     
     NSString *isMember =[userinfo valueForKey:@"isMember"];
-    NSString *canCreate=[[NSString alloc]init];
-    
-    canCreate=[self canCreate];
-    
+    NSString *canCreatetrial=[[NSString alloc]init];
+    [userinfo setObject:@"" forKey:@"SelectedEquipments"];
+    [userinfo setObject:@"" forKey:@"Selectedfocus"];
+     canCreatetrial=[self canCreate];
+    NSLog(@"----%@-----",canCreatetrial);
+
+
     if ([isMember isEqualToString:@"true"]) {
         if ([self.workoutType isEqualToString:@"SelfMade"]) {
             [self navigateToFocus];
@@ -331,8 +350,9 @@
             [self showPremium];
         }
         else{
+            NSLog(@"----%@-----",canCreatetrial);
             if ([self.workoutType isEqualToString:@"SelfMade"]) {
-                if ([canCreate isEqualToString:@"true"]) {
+                if ([canCreatetrial isEqualToString:@"false"]) {
                     [self navigateToFocus];
                 }
                 else{
@@ -348,14 +368,15 @@
         }
     }
     
+    [userinfo setObject:@"" forKey:@"SelectedWorkouts"];
+    GlobalArray=[[NSMutableArray alloc]init];
 }
 
 
 -(void)showPremium
 {
-    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"Upgrade" message:NSLocalizedString(@"premiumWorkout", nil)
-                                                       delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
-    [alertview show];
+    [self.memberView setHidden:NO];
+    [self.view addSubview:self.memberView];
 }
 
 
@@ -363,18 +384,7 @@
 - (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex==1) {
-        MemberPromoViewController *viewController;
-        
-        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
-            viewController = [[MemberPromoViewController alloc]initWithNibName:@"MemberPromoViewController" bundle:nil];
-            }
-        else {
-            viewController = [[MemberPromoViewController alloc]initWithNibName:@"MemberPromoViewController" bundle:nil];
-        }
-        
-        [viewController setNavigateTo:@"List"];
-        viewController.workout =nil;
-        [self.navigationController pushViewController:viewController animated:YES];
+       
     }
     else {
         
@@ -483,6 +493,12 @@
 }
 
 -(IBAction)onClickEdit:(id)sender{
+    
+    NSString *canCreate=[[NSString alloc]init];
+    canCreate=[self canCreate];
+    [userinfo setObject:@"" forKey:@"SelectedEquipments"];
+    [userinfo setObject:@"" forKey:@"Selectedfocus"];
+
     NSString *isMember =[userinfo valueForKey:@"isMember"];
     if ([isMember isEqualToString:@"true"]) {
         CustomWorkoutEditViewController *viewController =[[CustomWorkoutEditViewController alloc]initWithNibName:@"CustomWorkoutEditViewController" bundle:nil];
@@ -510,4 +526,22 @@
 }
 
 
+- (IBAction)onClickOk:(id)sender {
+    MemberPromoViewController *viewController;
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+        viewController = [[MemberPromoViewController alloc]initWithNibName:@"MemberPromoViewController" bundle:nil];
+    }
+    else {
+        viewController = [[MemberPromoViewController alloc]initWithNibName:@"MemberPromoViewController" bundle:nil];
+    }
+    
+    [viewController setNavigateTo:@"List"];
+    viewController.workout =nil;
+    [self.navigationController pushViewController:viewController animated:YES];
+}
+
+- (IBAction)onClickClose:(id)sender {
+    [self.memberView setHidden:YES];
+}
 @end

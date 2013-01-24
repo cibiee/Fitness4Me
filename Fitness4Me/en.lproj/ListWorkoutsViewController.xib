@@ -248,13 +248,13 @@ bmxvYWQgcHVzaCBjYW5jZWw</string>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<object class="NSCustomResource" key="IBUIImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">upgrade.jpg</string>
+									<string key="NSResourceName">upgrade.png</string>
 								</object>
 							</object>
 							<object class="IBUIButton" id="588233018">
 								<reference key="NSNextResponder" ref="949199748"/>
 								<int key="NSvFlags">264</int>
-								<string key="NSFrame">{{111, 175}, {163, 40}}</string>
+								<string key="NSFrame">{{111, 181}, {163, 40}}</string>
 								<reference key="NSSuperview" ref="949199748"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -268,18 +268,18 @@ bmxvYWQgcHVzaCBjYW5jZWw</string>
 									<bytes key="NSRGB">MSAxIDEgMC45OQA</bytes>
 								</object>
 								<reference key="IBUINormalTitleShadowColor" ref="998059416"/>
-								<object class="NSCustomResource" key="IBUIHighlightedBackgroundImage" id="569304658">
+								<object class="NSCustomResource" key="IBUIHighlightedBackgroundImage" id="594391015">
 									<string key="NSClassName">NSImage</string>
 									<string key="NSResourceName">buttongreenyes.png</string>
 								</object>
-								<reference key="IBUINormalBackgroundImage" ref="569304658"/>
+								<reference key="IBUINormalBackgroundImage" ref="594391015"/>
 								<reference key="IBUIFontDescription" ref="355328614"/>
 								<reference key="IBUIFont" ref="670375280"/>
 							</object>
 							<object class="IBUITextView" id="844868470">
 								<reference key="NSNextResponder" ref="949199748"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{86, 107}, {198, 60}}</string>
+								<string key="NSFrame">{{102, 107}, {174, 70}}</string>
 								<reference key="NSSuperview" ref="949199748"/>
 								<reference key="NSNextKeyView" ref="438634147"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -287,7 +287,7 @@ bmxvYWQgcHVzaCBjYW5jZWw</string>
 								<bool key="IBUIMultipleTouchEnabled">YES</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<bool key="IBUIEditable">NO</bool>
-								<string key="IBUIText">and get 30 new and challenging workouts for just 4.99 $</string>
+								<string key="IBUIText">Become premium member to create more custom workouts</string>
 								<object class="NSColor" key="IBUITextColor" id="258449437">
 									<int key="NSColorSpace">3</int>
 									<bytes key="NSWhite">MAA</bytes>
@@ -369,8 +369,8 @@ bmxvYWQgcHVzaCBjYW5jZWw</string>
 									<bytes key="NSRGB">MSAxIDEgMC45OQA</bytes>
 								</object>
 								<reference key="IBUINormalTitleShadowColor" ref="998059416"/>
-								<reference key="IBUIHighlightedBackgroundImage" ref="569304658"/>
-								<reference key="IBUINormalBackgroundImage" ref="569304658"/>
+								<reference key="IBUIHighlightedBackgroundImage" ref="594391015"/>
+								<reference key="IBUINormalBackgroundImage" ref="594391015"/>
 								<reference key="IBUIFontDescription" ref="355328614"/>
 								<reference key="IBUIFont" ref="670375280"/>
 							</object>
@@ -392,8 +392,8 @@ bmxvYWQgcHVzaCBjYW5jZWw</string>
 									<bytes key="NSRGB">MSAxIDEgMC45OQA</bytes>
 								</object>
 								<reference key="IBUINormalTitleShadowColor" ref="998059416"/>
-								<reference key="IBUIHighlightedBackgroundImage" ref="569304658"/>
-								<reference key="IBUINormalBackgroundImage" ref="569304658"/>
+								<reference key="IBUIHighlightedBackgroundImage" ref="594391015"/>
+								<reference key="IBUINormalBackgroundImage" ref="594391015"/>
 								<reference key="IBUIFontDescription" ref="355328614"/>
 								<reference key="IBUIFont" ref="670375280"/>
 							</object>
@@ -808,9 +808,9 @@ bmxvYWQgcHVzaCBjYW5jZWw</string>
 							<reference ref="278378571"/>
 							<reference ref="611473719"/>
 							<reference ref="893112336"/>
-							<reference ref="949199748"/>
 							<reference ref="841307047"/>
 							<reference ref="691860226"/>
+							<reference ref="949199748"/>
 							<reference ref="1018839068"/>
 						</array>
 						<reference key="parent" ref="0"/>
@@ -897,9 +897,9 @@ bmxvYWQgcHVzaCBjYW5jZWw</string>
 						<array class="NSMutableArray" key="children">
 							<reference ref="858960751"/>
 							<reference ref="1047965517"/>
-							<reference ref="844868470"/>
 							<reference ref="588233018"/>
 							<reference ref="438634147"/>
+							<reference ref="844868470"/>
 						</array>
 						<reference key="parent" ref="191373211"/>
 					</object>
@@ -1056,7 +1056,7 @@ bmxvYWQgcHVzaCBjYW5jZWw</string>
 			<string key="buttongreenyes.png">{163, 40}</string>
 			<string key="closePopup.png">{27, 27}</string>
 			<string key="congrats.png">{290, 430}</string>
-			<string key="upgrade.jpg">{280, 233}</string>
+			<string key="upgrade.png">{280, 233}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">1930</string>
 	</data>

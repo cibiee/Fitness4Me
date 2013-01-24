@@ -44,7 +44,7 @@
     self.videoCount=0;
     self.totalDuration=0;
     [self.totalVideoCountLabel setText:[NSString stringWithFormat:@"Number of excersices [%i]",self.videoCount]];
-   [self.durationLabel setText:[NSString stringWithFormat:@"Total Time [%@]",[Fitness4MeUtils displayTimeWithSecond:self.totalDuration]]];
+    [self.durationLabel setText:[NSString stringWithFormat:@"Total Time [%@]",[Fitness4MeUtils displayTimeWithSecond:self.totalDuration]]];
     
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -115,7 +115,7 @@
     
     FitnessServerCommunication *fitness =[FitnessServerCommunication sharedState];
     [fitness listExcersiceWithequipments:self.equipments focus:self.focusList activityIndicator:self.activityIndicator progressView:nil onCompletion:^(NSString *responseString) {
-        
+        NSLog(responseString);
         if ([responseString length]>0) {
             [self parseCustomWorkoutList:responseString];
             if ([self.excersiceList count]>0) {
@@ -142,12 +142,38 @@
         NSDictionary* item = obj;
         ExcersiceList *excersiceLists =[[ExcersiceList alloc]init];
         [excersiceLists setExcersiceID:[item objectForKey:@"id"]];
-        [excersiceLists setImageUrl:[item objectForKey:@"imageThumb"]];
+        [excersiceLists setImageUrl:[item objectForKey:@"image"]];
         [excersiceLists setImageName:[item objectForKey:@"imageThumbName"]];
-        [excersiceLists setTime:[item objectForKey:@"exerciseTime"]];
-        [excersiceLists setName:[item objectForKey:@"exerciseName"]];
-        [excersiceLists setFocus:[item objectForKey:@"exerciseFocus"]];
-        [excersiceLists setEquipments:[item objectForKey:@"exerciseEquipments"]];
+        
+        if ([[item objectForKey:@"exerciseTime"] length]>0) {
+            [excersiceLists setTime:[item objectForKey:@"exerciseTime"]];
+        }
+        else{
+            [excersiceLists setTime:@"Time unavailable"];
+        }
+        
+        if ([[item objectForKey:@"exerciseName"] length]>0) {
+            [excersiceLists setName:[item objectForKey:@"exerciseName"]];
+        }
+        else{
+            [excersiceLists setName:@"Name unavailable"];
+        }
+        
+        if (![[item objectForKey:@"exerciseFocus"] isEqualToString:@""]) {
+            [excersiceLists setFocus:[item objectForKey:@"exerciseFocus"]];
+        }
+        else{
+            [excersiceLists setFocus:@"Focus unavailable"];
+        }
+        
+        if (![[item objectForKey:@"exerciseEquipments"]isEqualToString:@""]) {
+            [excersiceLists setEquipments:[item objectForKey:@"exerciseEquipments"]];
+        }
+        
+        else{
+            [excersiceLists setEquipments:@"Equipments unavailable"];
+        }
+        
         [excersiceLists setRepetitions:[item objectForKey:@"exerciseRepetitions"]];
         [self.excersiceList addObject:excersiceLists];
         
@@ -159,6 +185,7 @@
 -(NSMutableArray*)prepareData:(NSMutableArray *)excersicelist {
     
     NSString *selectedWorkouts = [userinfo objectForKey:@"SelectedWorkouts"];
+    
     NSArray* foo = [selectedWorkouts componentsSeparatedByString: @","];
     self.totalDuration=0;
     self.videoCount=0;
@@ -169,31 +196,41 @@
         for (int i=0; i<excersicelist.count; i++) {
             if([[[excersicelist objectAtIndex:i] excersiceID] isEqualToString:[foo objectAtIndex:k]] ){
                 [[newfocusArray objectAtIndex:i] setIsChecked:YES];
-                if ([GlobalArray count]>0) {
-                    if ([[[GlobalArray objectAtIndex:k]excersiceID]isEqualToString:[[excersicelist objectAtIndex:i] excersiceID]]) {
-                       
-
-                    }else{
-                        [GlobalArray addObject:[excersicelist objectAtIndex:k]];
-                    }
-                }
-                
-                break;
+                if (![self addToGlobalArray:[excersicelist objectAtIndex:i]]) {
+                    [GlobalArray addObject:[excersicelist objectAtIndex:i]];
+                }  
+                 break;
             }
         }
     }
-
+    
     for (ExcersiceList *excersice in GlobalArray) {
         self.totalDuration =self.totalDuration+ ([[excersice time]intValue]*[[excersice repetitions]intValue]);
         self.videoCount++;
     }
     
-    
+   
     
     
     [self.totalVideoCountLabel setText:[NSString stringWithFormat:@"%@ [%i]",NSLocalizedString(@"numberOfExcersice", nil),self.videoCount]];
     [self.durationLabel setText:[NSString stringWithFormat:@"Total Time [%@]",[Fitness4MeUtils displayTimeWithSecond:self.totalDuration]]];
     return newfocusArray;
+}
+
+
+-(BOOL)addToGlobalArray:(ExcersiceList*)selectedExcersicxe{
+    BOOL isExist=false;
+    if ([GlobalArray count]>0) {
+        for (int k=0; k<[GlobalArray count]; k++)
+        {
+        if ([[[GlobalArray objectAtIndex:k]excersiceID]isEqualToString:[selectedExcersicxe excersiceID]]) {
+            NSLog(@"erere%@",[[GlobalArray objectAtIndex:k]excersiceID]);
+            isExist=true;
+            break;
+         }
+        }
+        }
+    return isExist;
 }
 
 
@@ -247,15 +284,20 @@
     [cell.EditButton setHidden:YES];
     [cell.deleteLabel setHidden:YES];
     [cell.EditLabel setHidden:YES];
-    cell.TitleLabel.text = [workout name];
-    cell.DurationLabel.text = [[workout time] stringByAppendingString:@" minutes."];
-    cell.focusLabel.text=[workout focus];
-    cell.ExcersiceImage.image =[self imageForRowAtIndexPath:workout inIndexPath:indexPath];
-    if (workout.isChecked) {
-        cell.accessoryType=UITableViewCellAccessoryCheckmark;
-    }
-    else{
-        cell.accessoryType=UITableViewCellAccessoryNone;
+    if([workout name])
+    {
+        cell.TitleLabel.text = [workout name];
+        int totalDurations=([[[self.excersiceList objectAtIndex:indexPath.section] time]intValue]*[[[self.excersiceList objectAtIndex:indexPath.section] repetitions]intValue]);
+        [cell.DurationLabel setText:[NSString stringWithFormat:@"%@",[Fitness4MeUtils displayTimeWithSecond:totalDurations]]];
+        cell.focusLabel.text=[workout focus];
+        
+        cell.ExcersiceImage.image =[self imageForRowAtIndexPath:workout inIndexPath:indexPath];
+        if (workout.isChecked) {
+            cell.accessoryType=UITableViewCellAccessoryCheckmark;
+        }
+        else{
+            cell.accessoryType=UITableViewCellAccessoryNone;
+        }
     }
     return cell;
 }
@@ -328,7 +370,7 @@
     }
     [self performSelector:@selector(deselect:) withObject:nil afterDelay:0.5f];
     [self.totalVideoCountLabel setText:[NSString stringWithFormat:@"Number of excersices [%i]",self.videoCount]];
-   [self.durationLabel setText:[NSString stringWithFormat:@"Total Time [%@]",[Fitness4MeUtils displayTimeWithSecond:self.totalDuration]]];
+    [self.durationLabel setText:[NSString stringWithFormat:@"Total Time [%@]",[Fitness4MeUtils displayTimeWithSecond:self.totalDuration]]];
     
 }
 
@@ -412,6 +454,20 @@
 }
 
 -(IBAction)onClickBack:(id)sender{
+    NSString *str= [[NSString alloc]init];
+    str =@"";
+    for (ExcersiceList *excersice in self.excersiceList) {
+        if ([excersice isChecked]) {
+            if ([str length]==0) {
+                str =[str stringByAppendingString:[excersice excersiceID]];
+            }else{
+                str=[str stringByAppendingString:@","];
+                str =[str stringByAppendingString:[excersice excersiceID]];
+            }
+        }
+    }
+    
+    [userinfo setObject:str forKey:@"SelectedWorkouts"];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

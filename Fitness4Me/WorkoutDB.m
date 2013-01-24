@@ -375,8 +375,8 @@
     if(!database.open){
           NSLog(@"Databse not Open");
     }
-     //[database setLogsErrors:TRUE];
-    // [database setTraceExecution:TRUE];
+     [database setLogsErrors:TRUE];
+     [database setTraceExecution:TRUE];
 
     
     [database beginTransaction];
@@ -468,7 +468,7 @@
     Workout *workout;
     
     if(!database.open){
-        //  NSLog(@"Databse not Open");
+          NSLog(@"Databse not Open");
     }
     
     NSString *query =[NSString stringWithFormat:@"Select * from SelfMadeExcersice where WorkoutID in (%@)",workoutID];

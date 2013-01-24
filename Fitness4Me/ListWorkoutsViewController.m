@@ -270,12 +270,10 @@
     [workoutDB getWorkouts];
     
     if ([workoutDB.Workouts count]>0) {
-        
         workouts = workoutDB.Workouts;
         [tableview reloadData];
         [activityIndicator stopAnimating];
         [activityIndicator setHidesWhenStopped:YES];
-        
     }
     
     else {
@@ -285,11 +283,9 @@
             [NSThread detachNewThreadSelector:@selector(parseFitnessDetails) toTarget:self withObject:nil];
         }
         else {
-            
             networkNotificationtextView.hidden=NO;
             [activityIndicator stopAnimating];
             [activityIndicator removeFromSuperview];
-            
             return;
         }
     }

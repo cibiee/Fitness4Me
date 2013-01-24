@@ -523,7 +523,7 @@ static FitnessServerCommunication *sharedState;
 
 #pragma mark SELF MADE WORKOUT 
 
--(void)parseSelfMadeFitnessDetails:(int)userID onCompletion:(ResponseBlock)completionBlock onError:(NSError*)errorBlock {
+-(void)parseSelfMadeFitnessDetails:(int)userID trail:(NSString*)trail onCompletion:(ResponseBlock)completionBlock onError:(NSError*)errorBlock {
     
     BOOL isReachable =[Fitness4MeUtils isReachable];
     if (isReachable)
@@ -531,17 +531,16 @@ static FitnessServerCommunication *sharedState;
         NSString *UrlPath= [NSString GetURlPath];
         int  selectedLanguage=[Fitness4MeUtils getApplicationLanguage] ;
         
-        NSString *requestString = [NSString stringWithFormat:@"%@selfmadelist=yes&userid=%i&lang=%i",UrlPath, userID,selectedLanguage];
+        NSString *requestString = [NSString stringWithFormat:@"%@selfmadelist=yes&userid=%i&lang=%i&trial=%@",UrlPath, userID,selectedLanguage,trail];
         
         NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-        
+       
         __weak ASIHTTPRequest *requests = [ASIHTTPRequest requestWithURL:url];
         [requests setCompletionBlock:^{
             // Use when fetching text data
             NSString *responseString =[requests responseString];
             if ([responseString length]>0) {
-              //  NSLog(responseString);
-                [self parseSelfMadeWorkoutList:responseString];
+               [self parseSelfMadeWorkoutList:responseString];
                 if (completionBlock) completionBlock(responseString);
             }else{
                 // [self terminateActivities:NSLocalizedString(@"slowdata", nil):nil:nil];
@@ -571,11 +570,12 @@ static FitnessServerCommunication *sharedState;
         NSString *UrlPath= [NSString GetURlPath];
         NSString *requestString =[NSString stringWithFormat:@"%@listexercises=yes&equipment=%@&focus=%@&lang=%i&user_level=%i",UrlPath,equipments,focus,selectedLang,userLevel];
         NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-      //  NSLog(url);
+      
         __weak ASIHTTPRequest *requests = [ASIHTTPRequest requestWithURL:url];
         [requests setCompletionBlock:^{
             // Use when fetching text data
             NSString *responseString =[requests responseString];
+            
             if ([responseString length]>0) {
                 
                 if (completionBlock) completionBlock(responseString);
@@ -788,7 +788,7 @@ static FitnessServerCommunication *sharedState;
 - (void)GetUserTypeWithactivityIndicator:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView onCompletion:(WMLoginResponseBlock)completionBlock onError:(NSError*)errorBlock
 {
     
-    __block NSString* canCreate;
+    __block NSString* canCreate=[[NSString alloc]init];
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     int userID =[userinfo integerForKey:@"UserID"];
     BOOL isReachable =[Fitness4MeUtils isReachable];
@@ -804,6 +804,7 @@ static FitnessServerCommunication *sharedState;
             NSString *responseString =[requests responseString];
             if ([responseString length]>0) {
                 canCreate =[self getMemberType:responseString];
+                NSLog(canCreate);
                 if (completionBlock) completionBlock(canCreate);
             }else{
                 [self terminateActivities:NSLocalizedString(@"slowdata", nil):activityIndicator:signUpView];
@@ -1406,12 +1407,36 @@ int excersiceIntroCount=0,excersiceMainCount=0,excersiceOtherCount=0;
 
 - (NSString *)getMemberType:(NSString *)responseString
 {
-    NSString *canCreate;
+    NSLog(responseString);
+    NSUserDefaults *userInfo =[NSUserDefaults standardUserDefaults];
+    NSString *canCreate=[[NSString alloc]init];
+    NSString *isMember=[[NSString alloc]init];
     NSMutableArray *object = [responseString JSONValue];
     NSMutableArray *itemsarray =[object valueForKey:@"items"];
     for (int i=0; i<[itemsarray count]; i++) {
-        canCreate=[[itemsarray objectAtIndex:i] valueForKey:@"selfmadetrial"];
+        canCreate=[[itemsarray objectAtIndex:i] objectForKey:@"selfmadetrial"];
+        if ([[[itemsarray objectAtIndex:i] valueForKey:@"selfmadetrial"]intValue] ==0) {
+            canCreate =@"false";
+        }
+        else if ([[[itemsarray objectAtIndex:i] valueForKey:@"selfmadetrial"]intValue] ==1) {
+            canCreate =@"true";
+        }
+        
+       
+        isMember=[[itemsarray objectAtIndex:i] objectForKey:@"member"];
+        
+        if ([[[itemsarray objectAtIndex:i] valueForKey:@"member"]intValue] ==0) {
+            isMember =@"false";
+        }
+        else if ([[[itemsarray objectAtIndex:i] valueForKey:@"member"]intValue] ==1) {
+            isMember =@"true";
+        }
+         NSLog(@"%@",canCreate);
+
+        NSLog(@"%@",isMember);
     }
+    [userInfo setObject:isMember forKey:@"isMember"];
+   
     return canCreate;
 }
 

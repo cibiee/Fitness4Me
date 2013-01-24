@@ -22,6 +22,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:[Fitness4MeUtils getBundle]];
     if (self) {
         // Custom initialization
+         userinfo=[NSUserDefaults standardUserDefaults];
     }
     return self;
 }
@@ -81,7 +82,14 @@
             
         }
         else{
+            
             self.muscles =self.focusDB.muscles;
+            NSString *selectedWorkouts = [userinfo objectForKey:@"Selectedfocus"];
+            if ([selectedWorkouts length]>0) {
+
+            self.muscles = [self prepareData:self.focusDB.muscles];
+            }
+
         }
         
         [self.focusTableView reloadData];
@@ -99,6 +107,25 @@
 
     }
     
+}
+
+-(NSMutableArray*)prepareData:(NSMutableArray *)excersicelist {
+    
+    NSString *selectedWorkouts = [userinfo objectForKey:@"Selectedfocus"];
+    NSArray* foo = [selectedWorkouts componentsSeparatedByString: @","];
+        
+    NSMutableArray *newfocusArray=[[NSMutableArray alloc]init];
+    newfocusArray=excersicelist;
+    for (int k=0; k<foo.count; k++) {
+        for (int i=0; i<excersicelist.count; i++) {
+            if([[[excersicelist objectAtIndex:i] muscleID] isEqualToString:[foo objectAtIndex:k]] ){
+                [[newfocusArray objectAtIndex:i] setIsChecked:YES];
+                break;
+            }
+        }
+    }
+    
+    return newfocusArray;
 }
 
 
@@ -237,7 +264,7 @@
         }
     }
     if ([str length]>0) {
-        
+     [userinfo setObject:str forKey:@"Selectedfocus"];    
         
     Workout *workouts= [[Workout alloc]init];
     
@@ -245,7 +272,7 @@
         WorkoutDB *workoutDB =[[WorkoutDB alloc]init];
         [workoutDB setUpDatabase];
         [workoutDB createDatabase];
-        NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+       
         NSString *workoutType =[userinfo stringForKey:@"workoutType"];
         
         
@@ -269,11 +296,12 @@
     }
  else
  {
-    [Fitness4MeUtils showAlert:@"Please select atleast one area of focus"];
+    [Fitness4MeUtils showAlert:NSLocalizedString(@"focusMessage", nil)];
  }
 }
 
 -(IBAction)onClickBack:(id)sender{
+     [userinfo setObject:@"" forKey:@"Selectedfocus"];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

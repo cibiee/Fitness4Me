@@ -22,6 +22,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:[Fitness4MeUtils getBundle]];
     if (self) {
         // Custom initialization
+        userinfo=[NSUserDefaults standardUserDefaults];
     }
     return self;
 }
@@ -83,6 +84,10 @@
         }
         else{
             self.equipments =self.equipmentDB.equipments;
+             NSString *selectedWorkouts = [userinfo objectForKey:@"SelectedEquipments"];
+            if ([selectedWorkouts length]>0) {
+             self.equipments = [self prepareData:self.equipmentDB.equipments];
+            }
         }
         [self.equipmentsTableView reloadData];
     }else{
@@ -95,6 +100,24 @@
         }
 }
 
+-(NSMutableArray*)prepareData:(NSMutableArray *)excersicelist {
+    
+    NSString *selectedWorkouts = [userinfo objectForKey:@"SelectedEquipments"];
+    NSMutableArray *newfocusArray=[[NSMutableArray alloc]init];
+    NSArray* foo = [selectedWorkouts componentsSeparatedByString: @","];
+    newfocusArray=excersicelist;
+    for (int k=0; k<foo.count; k++) {
+        for (int i=0; i<excersicelist.count; i++) {
+            if([[[excersicelist objectAtIndex:i] equipmentID] isEqualToString:[foo objectAtIndex:k]] ){
+                [[newfocusArray objectAtIndex:i] setIsChecked:YES];
+                break;
+            }
+        }
+    
+    }
+
+    return newfocusArray;
+}
 
 
 -(NSString *)getfocusIDs:(NSMutableArray *)focuslist
@@ -182,7 +205,7 @@
 }
 
 - (void)navigateTo:(NSString *)str workouts:(Workout *)workouts {
-    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+   
     NSString *workoutType =[userinfo stringForKey:@"workoutType"];
     
     if ([workoutType isEqualToString:@"Custom"]) {
@@ -206,6 +229,22 @@
 }
 
 -(IBAction)onClickBack:(id)sender{
+    NSString *str= [[NSString alloc]init];
+    str =@"";
+   
+    for (Equipments *equipment in self.equipments) {
+        if ([equipment isChecked]) {
+            if ([str length]==0) {
+                str =[str stringByAppendingString:[equipment equipmentID]];
+            }
+            else{
+                str=[str stringByAppendingString:@","];
+                str =[str stringByAppendingString:[equipment equipmentID]];
+               
+            }
+        }
+    }
+    [userinfo setObject:str forKey:@"SelectedEquipments"];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -229,13 +268,13 @@
             }
         }
     }
-    
+    [userinfo setObject:str forKey:@"SelectedEquipments"];  
     Workout *workouts= [[Workout alloc]init];
     if ([[workout WorkoutID]intValue]>0) {
         WorkoutDB *workoutDB =[[WorkoutDB alloc]init];
         [workoutDB setUpDatabase];
         [workoutDB createDatabase];
-        NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+       
         NSString *workoutType =[userinfo stringForKey:@"workoutType"];
         
         if ([workoutType isEqualToString:@"Custom"]) {

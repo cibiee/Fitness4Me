@@ -77,10 +77,10 @@
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string type="base64-UTF8" key="IBUIText">LVVubGltaXRlZCBwZXJzb25hbGl6ZWQgd29ya291dHMNCi1VbmxpbWl0ZWQgc2VsZi1tYWRlIHdvcmtv
-dXRzDQotQWNjZXNzIHRvIGh1bmRyZWRzIG9mIHByZWRlZmluZWQgd29ya291dHMNCi1BY2Nlc3MgdG8g
-bW9yZSB0aGFuIDUwMCBleGVyY2lzZXMNCi1GcmVlIGFwcHMgYW5kIGNyb3NzLXBsYXRmb3JtIHN5bmNo
-cm9uaXphdGlvbi4</string>
+						<string type="base64-UTF8" key="IBUIText">LXVuYmVncmVuenQgcGVyc29uYWxpc2llcnRlIFdva291dHMNCi11bmJlZ3Jlbnp0IHNlbGJzdCBlcnN0
+ZWxsdGUgV29rb3V0cw0KLVp1Z2FuZyB6dSB1bnphzIhobGlnZW4gdm9yZGVmaW5pZXJ0ZW4gV29ya291
+dHMNCi1adWdhbmcgenUgbWVociBhbHMgNTAwIFXMiGJ1bmdlbg0KLW9zdGVubG9zZSBBcHAtIHVuZCBD
+cm9zcy1QbGF0Zm9ybS1TeW5jaHJvbmlzYXRpb24uA</string>
 						<object class="NSColor" key="IBUITextColor" id="736438047">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MQA</bytes>
@@ -103,7 +103,7 @@ cm9uaXphdGlvbi4</string>
 					<object class="IBUILabel" id="1005395026">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{40, 57}, {240, 36}}</string>
+						<string key="NSFrame">{{0, 57}, {320, 54}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSNextKeyView" ref="457613532"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -112,7 +112,7 @@ cm9uaXphdGlvbi4</string>
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string key="IBUIText">Your own personal gym</string>
+						<string type="base64-UTF8" key="IBUIText">IERlaW4gcGVyc2/MiG5saWNoZXMgRml0bmVzc3N0dWRpbw0</string>
 						<reference key="IBUITextColor" ref="736438047"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">0</int>
@@ -128,7 +128,7 @@ cm9uaXphdGlvbi4</string>
 							<int key="NSfFlags">16</int>
 						</object>
 						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
-						<double key="preferredMaxLayoutWidth">240</double>
+						<double key="preferredMaxLayoutWidth">320</double>
 					</object>
 					<object class="IBUILabel" id="457613532">
 						<reference key="NSNextResponder" ref="191373211"/>
@@ -141,7 +141,7 @@ cm9uaXphdGlvbi4</string>
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string key="IBUIText">Become a member of Fitness4.me and get</string>
+						<string key="IBUIText">Werde ein Fitness4.me Mitglied und erhalte</string>
 						<reference key="IBUITextColor" ref="736438047"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">0</int>
@@ -162,7 +162,7 @@ cm9uaXphdGlvbi4</string>
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string key="IBUIText">That will follow you anywhere you go!</string>
+						<string key="IBUIText">das dir überallhin folgt.</string>
 						<reference key="IBUITextColor" ref="736438047"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">0</int>
@@ -174,7 +174,7 @@ cm9uaXphdGlvbi4</string>
 					<object class="IBUILabel" id="22166583">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{31, 343}, {285, 21}}</string>
+						<string key="NSFrame">{{31, 343}, {280, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -182,7 +182,7 @@ cm9uaXphdGlvbi4</string>
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string type="base64-UTF8" key="IBUIText">V29ya291dCBBTllUSU1FIGFuZCBBTllXSEVSRQ0KAA</string>
+						<string key="IBUIText">Trainiere ÜBERALL und JEDERZEIT</string>
 						<reference key="IBUITextColor" ref="736438047"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">0</int>
@@ -200,7 +200,7 @@ cm9uaXphdGlvbi4</string>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
-						<string key="IBUINormalTitle">Tell Me More</string>
+						<string key="IBUINormalTitle">Erzähl mir mehr</string>
 						<reference key="IBUIHighlightedTitleColor" ref="736438047"/>
 						<object class="NSColor" key="IBUINormalTitleColor">
 							<int key="NSColorSpace">3</int>
@@ -234,7 +234,7 @@ cm9uaXphdGlvbi4</string>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
-						<string key="IBUINormalTitle">Not Yet</string>
+						<string key="IBUINormalTitle">Nicht jetzt</string>
 						<reference key="IBUIHighlightedTitleColor" ref="736438047"/>
 						<object class="NSColor" key="IBUINormalTitleColor">
 							<int key="NSColorSpace">1</int>

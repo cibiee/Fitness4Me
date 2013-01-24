@@ -52,14 +52,14 @@ int userID;
     [userinfo setObject:token forKey:@"deviceToken"];
     
 #endif
-    
+ //f47b47efb86a4050815e36c6aa93fce0
 }
 
 - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
 {
     
 #if !TARGET_IPHONE_SIMULATOR
-	NSLog(@"Failed to get token, error: %@", error);
+	//NSLog(@"Failed to get token, error: %@", error);
 #endif
 }
 
@@ -99,6 +99,7 @@ int userID;
             NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
             [userinfo setObject:@"true" forKey:@"hasMadeFullPurchase"];
             [userinfo setObject:@"true" forKey:@"hasUpdations"];
+            [userinfo setObject:@"true" forKey:@"isMember"];
         }else {
             [userinfo setObject:@"true" forKey:@"hasUpdations"];
         }
@@ -163,7 +164,7 @@ int userID;
     [userinfo setObject:@"true" forKey:@"showDownload"];
     [userinfo setObject:@"true" forKey:@"canCreate"];
     [[UIApplication sharedApplication] unregisterForRemoteNotifications];
-    
+    [userinfo setInteger:0  forKey:@"trailCount"];
     NSString *fullVideoDownloadlater=[userinfo stringForKey:@"fullVideoDownloadlater"];
     NSString *showSyncView=[userinfo stringForKey:@"showSyncView"];
     
@@ -227,6 +228,7 @@ int userID;
     [userinfo setObject:[user Username] forKey:@"Username"];
     [userinfo setInteger:userID  forKey:@"UserID"];
     [userinfo setObject:user.Userlevel  forKey:@"Userlevel"];
+     [userinfo setInteger:0  forKey:@"trialCount"];
 }
 
 -(void)dealloc
@@ -301,7 +303,7 @@ int userID;
         }];
         
         
-        [fitnessserverCommunication parseSelfMadeFitnessDetails:userID onCompletion:^(NSString *responseString){
+        [fitnessserverCommunication parseSelfMadeFitnessDetails :userID  trail:@"0"  onCompletion:^(NSString *responseString){
             
         } onError:^(NSError *error) {
             // [self getExcersices];

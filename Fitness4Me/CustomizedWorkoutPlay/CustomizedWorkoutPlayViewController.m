@@ -343,7 +343,7 @@ static float totalDuration=0;
 {
     
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
-    NSString* workoutType = [userinfo stringForKey:workoutType];
+    NSString* workoutType = [userinfo stringForKey:@"workoutType"];
     BOOL isReachable = [Fitness4MeUtils isReachable];
     if (isReachable) {
         NSString *requestString;

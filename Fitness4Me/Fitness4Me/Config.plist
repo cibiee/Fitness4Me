@@ -7,7 +7,7 @@
 	<key>VideoUrl</key>
 	<string>http://fitness4.me/</string>
 	<key>IphoneRegistration</key>
-	<string>http://fitness4.me/mobile/</string>
+	<string>http://fitness4metesting.com/mobile/</string>
 	<key>applicationUsedCount</key>
 	<string>0</string>
 </dict>

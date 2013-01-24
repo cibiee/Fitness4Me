@@ -90,7 +90,7 @@
             WorkoutCreationCompletedViewController *viewController =[[WorkoutCreationCompletedViewController alloc]initWithNibName:@"WorkoutCreationCompletedViewController" bundle:nil];
             [viewController setWorkoutName:self.nameTextfield.text];
             [viewController setCollectionString:self.collectionString];
-            NSLog([workout WorkoutID]);
+            
             [viewController setWorkoutID:[workout WorkoutID]];
             [viewController setEquipments:self.equipments];
            

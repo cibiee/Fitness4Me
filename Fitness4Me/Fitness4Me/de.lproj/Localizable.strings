@@ -42,6 +42,8 @@
 "deletedSucessfully"="Deleted Sucessfully";
 "editMessage"="Speichern und Workout starten?";
 "creationCustomizedCompleteMsg"="Gratulation! Du hast gerade das %@ deiner fünf kostenlosen personalisierten Workouts erstellt.";
+"focusMessage"="Bitte wähle einen Schwerpunkt";
+
 /*3. Selbst erstellte Workouts
 4. Erstelle dein eigenes Workout in fünf einfachen Schritten.
 Wähle die Muskeln aus, die du trainieren möchtest

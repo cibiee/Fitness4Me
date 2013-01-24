@@ -174,8 +174,9 @@
        // propLabel.hidden =YES;
     }
     
-    NSString *duration=[[workout Duration] stringByAppendingString:@" Minutes"];
-   [self.durationLabel setText:duration];
+  //  NSString *duration=[[workout Duration] stringByAppendingString:@" Minutes"];
+   
+    [self.durationLabel setText:[NSString stringWithFormat:@"%@",[Fitness4MeUtils displayTimeWithSecond:[[workout Duration]intValue]]]];
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     [userinfo setObject:workout.Name forKey:@"WorkoutName"];
     // add continue button

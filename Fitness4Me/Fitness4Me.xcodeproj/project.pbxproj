@@ -276,6 +276,9 @@
 		F554A2601679BBCA00E268B5 /* smiley_disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = F554A2541679B5FF00E268B5 /* smiley_disabled.png */; };
 		F554A2611679BBCA00E268B5 /* icon_delete.png in Resources */ = {isa = PBXBuildFile; fileRef = F554A2501679B5F500E268B5 /* icon_delete.png */; };
 		F557B012165F9DD30033759A /* next_exercise_de.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F557AFE8165F2F6F0033759A /* next_exercise_de.mp4 */; };
+		F55B76F916AD1B180034F967 /* CustomInitialLaunchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F55B76FB16AD1B180034F967 /* CustomInitialLaunchViewController.xib */; };
+		F55B76FF16AD2F5B0034F967 /* page.png in Resources */ = {isa = PBXBuildFile; fileRef = F55B76FE16AD2F5B0034F967 /* page.png */; };
+		F55B770216AD444D0034F967 /* upgrade.png in Resources */ = {isa = PBXBuildFile; fileRef = F55B770016AD444D0034F967 /* upgrade.png */; };
 		F55C7FF61677267000C817A8 /* MemberPromoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F55C7FF41677267000C817A8 /* MemberPromoViewController.m */; };
 		F55C7FFC1677357200C817A8 /* MembershipRateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F55C7FFA1677357200C817A8 /* MembershipRateViewController.m */; };
 		F55C800216773C1E00C817A8 /* MembershipPurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F55C800016773C1E00C817A8 /* MembershipPurchaseViewController.m */; };
@@ -293,10 +296,8 @@
 		F577DBF6166E18B70064B920 /* NameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F577DBF4166E18B70064B920 /* NameViewController.m */; };
 		F58761CA16A90CA400475F54 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = F58761C716A909D800475F54 /* iCarousel.m */; };
 		F58761D816A90F9700475F54 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F58761D716A90F9700475F54 /* QuartzCore.framework */; };
-		F58761DB16A913BC00475F54 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = F58761D916A913BC00475F54 /* background.png */; };
-		F58761DC16A913BC00475F54 /* page.png in Resources */ = {isa = PBXBuildFile; fileRef = F58761DA16A913BC00475F54 /* page.png */; };
+		F58761E516A9506100475F54 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = F58761E716A9506100475F54 /* background.png */; };
 		F5998AFC16A5229B00E4FEC1 /* CustomInitialLaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5998AFA16A5229B00E4FEC1 /* CustomInitialLaunchViewController.m */; };
-		F5998AFD16A5229B00E4FEC1 /* CustomInitialLaunchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5998AFB16A5229B00E4FEC1 /* CustomInitialLaunchViewController.xib */; };
 		F5998B0216A5343C00E4FEC1 /* checkbox_checked.png in Resources */ = {isa = PBXBuildFile; fileRef = F5998B0416A5343C00E4FEC1 /* checkbox_checked.png */; };
 		F5998B0516A5344000E4FEC1 /* checkbox.png in Resources */ = {isa = PBXBuildFile; fileRef = F5998B0716A5344000E4FEC1 /* checkbox.png */; };
 		F5998B0816A5344300E4FEC1 /* next_btn_with_text.png in Resources */ = {isa = PBXBuildFile; fileRef = F5998B0A16A5344300E4FEC1 /* next_btn_with_text.png */; };
@@ -865,6 +866,13 @@
 		F554A25B1679B60F00E268B5 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/icon_edit.png; sourceTree = "<group>"; };
 		F554A25D1679B61500E268B5 /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/icon_edit.png; sourceTree = "<group>"; };
 		F557AFE8165F2F6F0033759A /* next_exercise_de.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = next_exercise_de.mp4; sourceTree = "<group>"; };
+		F55B76EF16ACF6490034F967 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/CarouselViewDemoViewController.xib; sourceTree = "<group>"; };
+		F55B76F016ACFEF90034F967 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/Fitness4MeViewController.xib; sourceTree = "<group>"; };
+		F55B76FA16AD1B180034F967 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CustomInitialLaunchViewController.xib; sourceTree = "<group>"; };
+		F55B76FD16AD1B1D0034F967 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/CustomInitialLaunchViewController.xib; sourceTree = "<group>"; };
+		F55B76FE16AD2F5B0034F967 /* page.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = page.png; sourceTree = "<group>"; };
+		F55B770116AD444D0034F967 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/upgrade.png; sourceTree = "<group>"; };
+		F55B770316AD445C0034F967 /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/upgrade.png; sourceTree = "<group>"; };
 		F55C7FF31677266F00C817A8 /* MemberPromoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MemberPromoViewController.h; path = MemberPromo/MemberPromoViewController.h; sourceTree = "<group>"; };
 		F55C7FF41677267000C817A8 /* MemberPromoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MemberPromoViewController.m; path = MemberPromo/MemberPromoViewController.m; sourceTree = "<group>"; };
 		F55C7FF91677357200C817A8 /* MembershipRateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MembershipRateViewController.h; path = Membershiprate/MembershipRateViewController.h; sourceTree = "<group>"; };
@@ -889,7 +897,6 @@
 		F560760116A00AA2001C770B /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/MembershipPersonliazedViewController.xib; sourceTree = "<group>"; };
 		F560760316A00AB0001C770B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MembershipStayFitViewController.xib; sourceTree = "<group>"; };
 		F560760516A00AB6001C770B /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/MembershipStayFitViewController.xib; sourceTree = "<group>"; };
-		F560760616A0130A001C770B /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/Fitness4MeViewController.xib; sourceTree = "<group>"; };
 		F577DBB6166DD71F0064B920 /* FocusDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FocusDB.h; path = FocusDB/FocusDB.h; sourceTree = "<group>"; };
 		F577DBB7166DD71F0064B920 /* FocusDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FocusDB.m; path = FocusDB/FocusDB.m; sourceTree = "<group>"; };
 		F577DBBB166DD8060064B920 /* Focus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Focus.h; path = FocusEntity/Focus.h; sourceTree = "<group>"; };
@@ -901,11 +908,10 @@
 		F58761C616A909D800475F54 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iCarousel.h; path = iCarousel/iCarousel.h; sourceTree = "<group>"; };
 		F58761C716A909D800475F54 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iCarousel.m; path = iCarousel/iCarousel.m; sourceTree = "<group>"; };
 		F58761D716A90F9700475F54 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		F58761D916A913BC00475F54 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
-		F58761DA16A913BC00475F54 /* page.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = page.png; sourceTree = "<group>"; };
+		F58761E616A9506100475F54 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/background.png; sourceTree = "<group>"; };
+		F58761E816A9506500475F54 /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/background.png; sourceTree = "<group>"; };
 		F5998AF916A5229B00E4FEC1 /* CustomInitialLaunchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomInitialLaunchViewController.h; path = CustomInitialLaunch/CustomInitialLaunchViewController.h; sourceTree = "<group>"; };
 		F5998AFA16A5229B00E4FEC1 /* CustomInitialLaunchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomInitialLaunchViewController.m; path = CustomInitialLaunch/CustomInitialLaunchViewController.m; sourceTree = "<group>"; };
-		F5998AFB16A5229B00E4FEC1 /* CustomInitialLaunchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomInitialLaunchViewController.xib; path = CustomInitialLaunch/CustomInitialLaunchViewController.xib; sourceTree = "<group>"; };
 		F5998B0316A5343C00E4FEC1 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/checkbox_checked.png; sourceTree = "<group>"; };
 		F5998B0616A5344000E4FEC1 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/checkbox.png; sourceTree = "<group>"; };
 		F5998B0916A5344300E4FEC1 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/next_btn_with_text.png; sourceTree = "<group>"; };
@@ -979,7 +985,6 @@
 		F5B2975B166CC26D00011A7D /* CustomWorkoutAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomWorkoutAddViewController.m; path = AddCustomWokoutLanding/CustomWorkoutAddViewController.m; sourceTree = "<group>"; };
 		F5B400D416A67D740002444E /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/button.png; sourceTree = "<group>"; };
 		F5B400D616A67D780002444E /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/button.png; sourceTree = "<group>"; };
-		F5B400D716A6B3D10002444E /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/CarouselViewDemoViewController.xib; sourceTree = "<group>"; };
 		F5BB87B916253D2900043059 /* LoadAppstoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadAppstoreViewController.h; path = LaodAppstoreView/LoadAppstoreViewController.h; sourceTree = "<group>"; };
 		F5BB87BA16253D2900043059 /* LoadAppstoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoadAppstoreViewController.m; path = LaodAppstoreView/LoadAppstoreViewController.m; sourceTree = "<group>"; };
 		F5BB87BB16253D2900043059 /* LoadAppstoreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoadAppstoreViewController.xib; path = LaodAppstoreView/LoadAppstoreViewController.xib; sourceTree = "<group>"; };
@@ -1295,6 +1300,7 @@
 		0B9026E5156E4D0700DB211F /* 1X */ = {
 			isa = PBXGroup;
 			children = (
+				F55B770016AD444D0034F967 /* upgrade.png */,
 				F5B400D516A67D740002444E /* button.png */,
 				F5998B0416A5343C00E4FEC1 /* checkbox_checked.png */,
 				F5998B0716A5344000E4FEC1 /* checkbox.png */,
@@ -1602,6 +1608,7 @@
 		AE7D669A1504D9F3001718B5 = {
 			isa = PBXGroup;
 			children = (
+				F55B76FE16AD2F5B0034F967 /* page.png */,
 				F58761D716A90F9700475F54 /* QuartzCore.framework */,
 				F512B76516392A4700B922E1 /* AppDelegate */,
 				0BBCCABE1600B20C0074493B /* Entities */,
@@ -1766,7 +1773,6 @@
 		AE7D673F1504DEAC001718B5 /* UserInterface */ = {
 			isa = PBXGroup;
 			children = (
-				F519902C16662365009C3F3D /* CustomWorkoutArea */,
 				0BADC5981553C41B00320687 /* About */,
 				AE7D672B1504DA6D001718B5 /* CellContent */,
 				AE6BE52215062D39009ED219 /* ExcersiceIntermediate */,
@@ -1994,8 +2000,7 @@
 		F50B05FF16819698006FC355 /* SelectedWorkouts */ = {
 			isa = PBXGroup;
 			children = (
-				F58761D916A913BC00475F54 /* background.png */,
-				F58761DA16A913BC00475F54 /* page.png */,
+				F58761E716A9506100475F54 /* background.png */,
 				F50B060916819BA3006FC355 /* CarouselViewDemoViewController.h */,
 				F50B060A16819BA3006FC355 /* CarouselViewDemoViewController.m */,
 				F56075F0169FE392001C770B /* CarouselViewDemoViewController.xib */,
@@ -2036,13 +2041,6 @@
 				F5393E7C16662EA400D24D7F /* CustomCellContentController.m */,
 			);
 			name = CustomCell;
-			sourceTree = "<group>";
-		};
-		F519902C16662365009C3F3D /* CustomWorkoutArea */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = CustomWorkoutArea;
 			sourceTree = "<group>";
 		};
 		F5253882163F9DCF004F9195 /* ExcersiceIntermediate */ = {
@@ -2412,7 +2410,7 @@
 			children = (
 				F5998AF916A5229B00E4FEC1 /* CustomInitialLaunchViewController.h */,
 				F5998AFA16A5229B00E4FEC1 /* CustomInitialLaunchViewController.m */,
-				F5998AFB16A5229B00E4FEC1 /* CustomInitialLaunchViewController.xib */,
+				F55B76FB16AD1B180034F967 /* CustomInitialLaunchViewController.xib */,
 			);
 			name = CustomWorkoutLaunchingScreens;
 			sourceTree = "<group>";
@@ -2963,12 +2961,13 @@
 				F56075F616A00A71001C770B /* MembershipCreateOwnViewController.xib in Resources */,
 				F533DCCF16A7FC7000A4B72E /* MembershipPersonalViewController.xib in Resources */,
 				F56075F216A00A5F001C770B /* MemverRateViewController.xib in Resources */,
-				F5998AFD16A5229B00E4FEC1 /* CustomInitialLaunchViewController.xib in Resources */,
+				F55B76F916AD1B180034F967 /* CustomInitialLaunchViewController.xib in Resources */,
 				F5998B0216A5343C00E4FEC1 /* checkbox_checked.png in Resources */,
 				F5998B0516A5344000E4FEC1 /* checkbox.png in Resources */,
 				F5B400D316A67D740002444E /* button.png in Resources */,
-				F58761DB16A913BC00475F54 /* background.png in Resources */,
-				F58761DC16A913BC00475F54 /* page.png in Resources */,
+				F58761E516A9506100475F54 /* background.png in Resources */,
+				F55B76FF16AD2F5B0034F967 /* page.png in Resources */,
+				F55B770216AD444D0034F967 /* upgrade.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4005,7 +4004,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				AE7D66BF1504D9F4001718B5 /* en */,
-				F560760616A0130A001C770B /* de */,
+				F55B76F016ACFEF90034F967 /* de */,
 			);
 			name = Fitness4MeViewController.xib;
 			path = Fitness4Me;
@@ -4382,6 +4381,25 @@
 			name = icon_edit.png;
 			sourceTree = "<group>";
 		};
+		F55B76FB16AD1B180034F967 /* CustomInitialLaunchViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F55B76FA16AD1B180034F967 /* en */,
+				F55B76FD16AD1B1D0034F967 /* de */,
+			);
+			name = CustomInitialLaunchViewController.xib;
+			path = CustomInitialLaunch;
+			sourceTree = "<group>";
+		};
+		F55B770016AD444D0034F967 /* upgrade.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F55B770116AD444D0034F967 /* en */,
+				F55B770316AD445C0034F967 /* de */,
+			);
+			name = upgrade.png;
+			sourceTree = "<group>";
+		};
 		F56075EB169FD88A001C770B /* ExcersiceListViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -4396,7 +4414,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F56075EF169FE392001C770B /* en */,
-				F5B400D716A6B3D10002444E /* de */,
+				F55B76EF16ACF6490034F967 /* de */,
 			);
 			name = CarouselViewDemoViewController.xib;
 			sourceTree = "<group>";
@@ -4449,6 +4467,15 @@
 			);
 			name = MembershipStayFitViewController.xib;
 			path = MemebershipStayFit;
+			sourceTree = "<group>";
+		};
+		F58761E716A9506100475F54 /* background.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F58761E616A9506100475F54 /* en */,
+				F58761E816A9506500475F54 /* de */,
+			);
+			name = background.png;
 			sourceTree = "<group>";
 		};
 		F5998B0416A5343C00E4FEC1 /* checkbox_checked.png */ = {
@@ -4952,7 +4979,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PROVISIONING_PROFILE = "0626DB34-D70F-4FF9-8581-2264428037B9";
 				"PROVISIONING_PROFILE[sdk=*]" = "0626DB34-D70F-4FF9-8581-2264428037B9";
 				SDKROOT = iphoneos;
@@ -4970,7 +4997,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "0626DB34-D70F-4FF9-8581-2264428037B9";
 				SDKROOT = iphoneos;
@@ -4988,7 +5015,7 @@
 				GCC_PREFIX_HEADER = "Fitness4Me/Fitness4Me-Prefix.pch";
 				HEADER_SEARCH_PATHS = "/Project/facebook-iphone-sdk/**";
 				INFOPLIST_FILE = "Fitness4Me/Fitness4Me-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = /Project/Fitness4Me;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -5009,7 +5036,7 @@
 				GCC_PREFIX_HEADER = "Fitness4Me/Fitness4Me-Prefix.pch";
 				HEADER_SEARCH_PATHS = "/Project/facebook-iphone-sdk/**";
 				INFOPLIST_FILE = "Fitness4Me/Fitness4Me-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = /Project/Fitness4Me;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";

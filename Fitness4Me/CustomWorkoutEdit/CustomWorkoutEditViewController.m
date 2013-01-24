@@ -123,7 +123,7 @@
     FitnessServerCommunication *fitness =[FitnessServerCommunication sharedState];
     if ([self.workoutType isEqualToString:@"SelfMade"]){
     
-    [fitness parseSelfMadeFitnessDetails:UserID onCompletion:^(NSString *responseString){
+    [fitness parseSelfMadeFitnessDetails:UserID trail:@"0"  onCompletion:^(NSString *responseString){
         if ([responseString length]>0) {
             [self parseCustomWorkoutList:responseString];
         }
@@ -230,7 +230,7 @@
     workout = [array objectAtIndex:indexPath.row];
     
     cell.TitleLabel.text = [workout Name];
-    cell.DurationLabel.text = [[workout Duration] stringByAppendingString:@" miuntes."];
+    cell.DurationLabel.text = [NSString stringWithFormat:@"%@",[Fitness4MeUtils displayTimeWithSecond:[[workout Duration]intValue]]];
     cell.focusLabel.text=[workout Focus];
     cell.ExcersiceImage.image =[self imageForRowAtIndexPath:workout inIndexPath:indexPath];
     
@@ -416,7 +416,7 @@
         {
             if ([[item objectForKey:@"recovery"] isEqualToString:@"rec30"]) {
                 [excersice setRepetitions:@"1"];
-                [excersice setTime:@"1800"];
+                [excersice setTime:@"30"];
                 [excersice setExcersiceID:[item objectForKey:@"recovery"]];
                 [excersice setName:@"recovery 30"];
                 [excersice setExcersiceID:@"rec30"];
@@ -426,7 +426,7 @@
             else
             {
                 [excersice setRepetitions:@"1"];
-                [excersice setTime:@"900"];
+                [excersice setTime:@"15"];
                 [excersice setExcersiceID:[item objectForKey:@"recovery"]];
                 [excersice setName:@"recovery 15"];
                 [excersice setExcersiceID:@"rec15"];
@@ -569,7 +569,7 @@
                 [self prepareTableView];
                 [self.tableView reloadData];
                 [Fitness4MeUtils showAlert:NSLocalizedString(@"deletedSucessfully", nil)];
-                [fitness parseSelfMadeFitnessDetails:UserID onCompletion:^(NSString *responseString){
+                [fitness parseSelfMadeFitnessDetails:UserID trail:@"0" onCompletion:^(NSString *responseString){
                     
                 } onError:^(NSError *error) {
                     // [self getExcersices];

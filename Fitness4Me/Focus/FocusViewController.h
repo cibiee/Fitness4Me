@@ -15,6 +15,7 @@
 @interface FocusViewController : UIViewController
 {
     Workout *workout;
+     NSUserDefaults *userinfo;
 }
 
 @property (strong, nonatomic)  FocusDB *focusDB;
