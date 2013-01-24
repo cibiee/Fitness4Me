@@ -128,7 +128,7 @@
 								<bool key="IBUIMultipleTouchEnabled">YES</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<bool key="IBUIEditable">NO</bool>
-								<string key="IBUIText">and get 30 new and challenging workouts for just 4.99 $</string>
+								<string key="IBUIText">and get 30 new and challenging workouts for just 5.99  $</string>
 								<object class="NSColor" key="IBUITextColor" id="958472056">
 									<int key="NSColorSpace">3</int>
 									<bytes key="NSWhite">MAA</bytes>

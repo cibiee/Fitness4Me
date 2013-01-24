@@ -273,7 +273,7 @@
     [self loadStore];
     [self canMakePurchases];
     
-        productIdentifier = @"com.fitness4me.Fitness4Me.PurchaseAll";
+        productIdentifier = @"Lite.fitness4.me.FullPurchase";
    
     SKPayment *payment = [SKPayment paymentWithProductIdentifier:productIdentifier];
     [[SKPaymentQueue defaultQueue] addPayment:payment];

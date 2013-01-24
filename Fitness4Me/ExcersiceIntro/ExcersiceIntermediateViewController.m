@@ -612,7 +612,16 @@
 
 -(void)NavigateToWorkoutList
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    ListWorkoutsViewController *viewController;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+        viewController =[[ListWorkoutsViewController alloc]initWithNibName:@"ListWorkoutsViewController" bundle:nil];
+    }else {
+        viewController =[[ListWorkoutsViewController alloc]initWithNibName:@"ListWorkoutsViewController_iPad" bundle:nil];
+    }
+    [self.navigationController pushViewController:viewController animated:YES];
+    
+    [viewController release];
+
 }
 
 
@@ -642,10 +651,10 @@
     [self loadStore];
     [self canMakePurchases];
     if ([[self purchaseAll] isEqualToString:@"true"]) {
-        productIdentifier = @"com.fitness4me.Fitness4Me.PurchaseAll";
+        productIdentifier = @"Lite.fitness4.me.FullPurchase";
     }
     else {
-        productIdentifier = [NSString stringWithFormat:@"com.fitness4me.Fitness4Me.%@",
+        productIdentifier = [NSString stringWithFormat:@"Lite.fitness4.me.%@",
                              [workout WorkoutID]];
     }
    // SKProduct *validProduct=productIdentifier;

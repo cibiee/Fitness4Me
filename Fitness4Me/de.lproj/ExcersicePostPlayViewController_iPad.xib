@@ -161,7 +161,7 @@
 								<int key="IBUIContentMode">7</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-								<string key="IBUIText">Erhalte das komplette Paket mit 30 Workouts  für nur 4.99 $</string>
+								<string key="IBUIText">Erhalte das komplette Paket mit 30 Workouts  für nur 5.99  $</string>
 								<reference key="IBUITextColor" ref="739551877"/>
 								<nil key="IBUIHighlightedColor"/>
 								<int key="IBUIBaselineAdjustment">0</int>

@@ -156,7 +156,7 @@
 								<int key="IBUIContentMode">7</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<string key="IBUIText">and get 30 new and challenging workouts for just 4.99 $</string>
+								<string key="IBUIText">and get 30 new and challenging workouts for just 5.99 $</string>
 								<reference key="IBUITextColor" ref="713951369"/>
 								<nil key="IBUIHighlightedColor"/>
 								<int key="IBUIBaselineAdjustment">0</int>
