@@ -35,6 +35,7 @@
 @property (strong, nonatomic)Workout *workout;
 @property(strong,nonatomic) NSString *focusList;
 @property(strong,nonatomic) NSString *equipments;
+@property(strong,nonatomic) NSString *name;
 @property(strong,nonatomic)NSString *operationMode;
 @property (nonatomic, retain) NSMutableArray *dataSourceArray;
 @property (weak, nonatomic) IBOutlet UILabel *backgroundLabel;

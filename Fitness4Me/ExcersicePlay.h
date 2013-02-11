@@ -32,6 +32,6 @@
 @property (nonatomic,retain) NSString *main_other;
 @property (nonatomic,retain) NSString *main_other_name;
 
--(id)initWithData:(NSString*)intros:(NSString*)intro_names:(NSString *)mains:(NSString*)main_names:(NSString*)main_others:(NSString*)main_other_names;
+-(id)initWithData:(NSString*)intros :(NSString*)intro_names :(NSString *)mains :(NSString*)main_names :(NSString*)main_others :(NSString*)main_other_names;
 
 @end

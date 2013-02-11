@@ -38,35 +38,82 @@
     return self;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:NO];
+    // add continue button
+    UIButton *backutton = [UIButton buttonWithType:UIButtonTypeCustom];
+    backutton.frame = CGRectMake(0, 0, 58, 30);
+    [backutton setBackgroundImage:[UIImage imageNamed:@"back_btnBlack.png"] forState:UIControlStateNormal];
+    
+    [backutton setTitle:NSLocalizedStringWithDefaultValue(@"back", nil,[Fitness4MeUtils getBundle], nil, nil) forState:UIControlStateNormal];
+    [backutton.titleLabel setFont:[UIFont systemFontOfSize:14]];
+    [backutton.titleLabel setTextAlignment:UITextAlignmentRight];
+    [backutton addTarget:self action:@selector(onClickBack:) forControlEvents:UIControlEventTouchDown];
+    UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithCustomView:backutton];
+    self.navigationBar.leftBarButtonItem = backBtn;
+    
+    UIButton *nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    nextButton.frame = CGRectMake(0, 0, 58, 30);
+    [nextButton setBackgroundImage:[UIImage imageNamed:@"next_btn_with_text.png"] forState:UIControlStateNormal];
+    [nextButton setTitle:NSLocalizedStringWithDefaultValue(@"next", nil,[Fitness4MeUtils getBundle], nil, nil) forState:UIControlStateNormal];
+    [nextButton.titleLabel setFont:[UIFont systemFontOfSize:13]];
+    [nextButton.titleLabel setTextAlignment:UITextAlignmentRight];
+    [nextButton addTarget:self action:@selector(onClickNext:) forControlEvents:UIControlEventTouchDown];
+    UIBarButtonItem *nextBtn = [[UIBarButtonItem alloc] initWithCustomView:nextButton];
+    self.navigationBar.rightBarButtonItem = nextBtn;
+    
+}
+
 - (void)viewDidLoad
 {
     
     self.videoCount=0;
     self.totalDuration=0;
-    [self.totalVideoCountLabel setText:[NSString stringWithFormat:@"Number of excersices [%i]",self.videoCount]];
-    [self.durationLabel setText:[NSString stringWithFormat:@"Total Time [%@]",[Fitness4MeUtils displayTimeWithSecond:self.totalDuration]]];
+    [self.totalVideoCountLabel setText:[NSString stringWithFormat:@"Number of excersices %i",self.videoCount]];
+    [self.durationLabel setText:[NSString stringWithFormat:@"Total Time %@",[Fitness4MeUtils displayTimeWithSecond:self.totalDuration]]];
     
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
     UIButton *backutton = [UIButton buttonWithType:UIButtonTypeCustom];
     backutton.frame = CGRectMake(0, 0, 58, 30);
-    [backutton setBackgroundImage:[UIImage imageNamed:@"back_btn_with_text.png"] forState:UIControlStateNormal];
+    [backutton setBackgroundImage:[UIImage imageNamed:@"back_btnBlack.png"] forState:UIControlStateNormal];
+    [backutton setTitle:NSLocalizedStringWithDefaultValue(@"back", nil,[Fitness4MeUtils getBundle], nil, nil) forState:UIControlStateNormal];
+    [backutton.titleLabel setFont:[UIFont systemFontOfSize:14]];
+    [backutton.titleLabel setTextAlignment:UITextAlignmentRight];
     [backutton addTarget:self action:@selector(onClickBack:) forControlEvents:UIControlEventTouchDown];
     UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithCustomView:backutton];
     self.navigationBar.leftBarButtonItem = backBtn;
+    
+    UIButton *nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    nextButton.frame = CGRectMake(0, 0, 58, 30);
+    [nextButton setBackgroundImage:[UIImage imageNamed:@"next_btn_with_text.png"] forState:UIControlStateNormal];
+    [nextButton setTitle:NSLocalizedStringWithDefaultValue(@"next", nil,[Fitness4MeUtils getBundle], nil, nil) forState:UIControlStateNormal];
+    [nextButton.titleLabel setFont:[UIFont systemFontOfSize:13]];
+    [nextButton.titleLabel setTextAlignment:UITextAlignmentRight];
+    [nextButton addTarget:self action:@selector(onClickNext:) forControlEvents:UIControlEventTouchDown];
+    UIBarButtonItem *nextBtn = [[UIBarButtonItem alloc] initWithCustomView:nextButton];
+    self.navigationBar.rightBarButtonItem = nextBtn;
+
     
     // NSLog(workout.Duration);
     [self.excersiceListTableview.layer setCornerRadius:8];
     [self.excersiceListTableview.layer setBorderColor:[[UIColor blackColor]CGColor]];
     [self.excersiceListTableview.layer setBorderWidth:2];
     [self setBackground];
+    [self.view addSubview:self.screenLockView];
     [self.activityIndicator startAnimating];
     [self createSelfmadeImageDirectory];
 }
 
 - (void)createSelfmadeImageDirectory
 {
+    
+    
+    NSArray *VideoArray =[NSArray arrayWithObjects:@"page_15.png",@"page_30.png",nil];
+    
+
     BOOL success;
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
@@ -75,9 +122,9 @@
     if (![[NSFileManager defaultManager] fileExistsAtPath:dataPath]){
         [[NSFileManager defaultManager] createDirectoryAtPath:dataPath withIntermediateDirectories:YES attributes:nil error:nil];
     }
-    
-    NSString *datapath1=[[[NSBundle mainBundle]resourcePath]stringByAppendingPathComponent:@"page.png"];
-    NSString *datapath2=[dataPath stringByAppendingPathComponent:@"page.png"];
+     for (NSString *name in VideoArray) {
+    NSString *datapath1=[[[NSBundle mainBundle]resourcePath]stringByAppendingPathComponent:name];
+    NSString *datapath2=[dataPath stringByAppendingPathComponent:name];
     NSFileManager *filemanager =[NSFileManager defaultManager];
     success =[filemanager  fileExistsAtPath:datapath1];
     if(success){
@@ -85,6 +132,7 @@
             [filemanager copyItemAtPath:datapath1 toPath:datapath2 error:nil];
         }
     }
+     }
 }
 
 
@@ -97,33 +145,36 @@
     UIImage  *backgroundImage= [UIImage imageNamed:@"home_bg.png"];
     background.image=backgroundImage;
     self.excersiceListTableview.backgroundView = background;
-    
     self.excersiceListTableview.separatorColor =[UIColor clearColor];
 }
 
 
 
-- (void)viewWillAppear:(BOOL)animated {
+
+
+-(void)viewDidAppear:(BOOL)animated
+{
     [super viewDidAppear:animated];
+    [self.view addSubview:self.screenLockView];
+    [self.activityIndicator startAnimating];
+    [self.screenLockView  setHidden:NO];
     self.excersiceList = [[NSMutableArray alloc]init];
     [NSThread detachNewThreadSelector:@selector(listExcersice) toTarget:self withObject:nil];
-}
 
+}
 
 -(void)listExcersice
 {
     
     FitnessServerCommunication *fitness =[FitnessServerCommunication sharedState];
-    [fitness listExcersiceWithequipments:self.equipments focus:self.focusList activityIndicator:self.activityIndicator progressView:nil onCompletion:^(NSString *responseString) {
-        NSLog(responseString);
+    [fitness listExcersiceWithequipments:self.equipments focus:self.focusList activityIndicator:self.activityIndicator progressView:self.screenLockView onCompletion:^(NSString *responseString) {
+        
         if ([responseString length]>0) {
             [self parseCustomWorkoutList:responseString];
             if ([self.excersiceList count]>0) {
                 self.excersiceList = [self prepareData:self.excersiceList];
                 [self prepareTableView];
                 [self.excersiceListTableview reloadData];
-                [self.activityIndicator stopAnimating];
-                [self.activityIndicator setHidesWhenStopped:YES];
             }
         }
         
@@ -183,7 +234,7 @@
 }
 
 -(NSMutableArray*)prepareData:(NSMutableArray *)excersicelist {
-    
+   
     NSString *selectedWorkouts = [userinfo objectForKey:@"SelectedWorkouts"];
     
     NSArray* foo = [selectedWorkouts componentsSeparatedByString: @","];
@@ -206,14 +257,21 @@
     
     for (ExcersiceList *excersice in GlobalArray) {
         self.totalDuration =self.totalDuration+ ([[excersice time]intValue]*[[excersice repetitions]intValue]);
+        if ([[excersice excersiceID] isEqualToString:@"rec15"]||[[excersice excersiceID] isEqualToString:@"rec30"]) {
+            
+        }
+        else{
         self.videoCount++;
+        }
     }
     
    
+    [self.activityIndicator stopAnimating];
+    [self.activityIndicator setHidesWhenStopped:YES];
+    [self.screenLockView setHidden:YES];
     
-    
-    [self.totalVideoCountLabel setText:[NSString stringWithFormat:@"%@ [%i]",NSLocalizedString(@"numberOfExcersice", nil),self.videoCount]];
-    [self.durationLabel setText:[NSString stringWithFormat:@"Total Time [%@]",[Fitness4MeUtils displayTimeWithSecond:self.totalDuration]]];
+    [self.totalVideoCountLabel setText:[NSString stringWithFormat:@"%@ %i",NSLocalizedStringWithDefaultValue(@"numberOfExcersice", nil,[Fitness4MeUtils getBundle], nil, nil),self.videoCount]];
+    [self.durationLabel setText:[NSString stringWithFormat:@"Total Time %@",[Fitness4MeUtils displayTimeWithSecond:self.totalDuration]]];
     return newfocusArray;
 }
 
@@ -224,7 +282,7 @@
         for (int k=0; k<[GlobalArray count]; k++)
         {
         if ([[[GlobalArray objectAtIndex:k]excersiceID]isEqualToString:[selectedExcersicxe excersiceID]]) {
-            NSLog(@"erere%@",[[GlobalArray objectAtIndex:k]excersiceID]);
+            
             isExist=true;
             break;
          }
@@ -369,8 +427,8 @@
         self.totalDuration=self.totalDuration+ ([[[self.excersiceList objectAtIndex:indexPath.section] time]intValue]*[[[self.excersiceList objectAtIndex:indexPath.section] repetitions]intValue]);
     }
     [self performSelector:@selector(deselect:) withObject:nil afterDelay:0.5f];
-    [self.totalVideoCountLabel setText:[NSString stringWithFormat:@"Number of excersices [%i]",self.videoCount]];
-    [self.durationLabel setText:[NSString stringWithFormat:@"Total Time [%@]",[Fitness4MeUtils displayTimeWithSecond:self.totalDuration]]];
+    [self.totalVideoCountLabel setText:[NSString stringWithFormat:@"Number of excersices %i",self.videoCount]];
+    [self.durationLabel setText:[NSString stringWithFormat:@"Total Time %@",[Fitness4MeUtils displayTimeWithSecond:self.totalDuration]]];
     
 }
 
@@ -381,7 +439,7 @@
     if ([GlobalArray count]>0) {
         for (ExcersiceList *excersices in GlobalArray)
         {
-            NSLog(@"Excersices ID %@",[excersices excersiceID]);
+           
             if ([[excersices excersiceID] isEqualToString:ExcersiceID]) {
                 [foundObjects addObject:excersices];
                 break;
@@ -432,6 +490,7 @@
         }
     }
     
+    
     [userinfo setObject:str forKey:@"SelectedWorkouts"];
     if ([GlobalArray count]>0) {
         CarouselViewDemoViewController *viewController;
@@ -445,7 +504,8 @@
         [viewController setDataSourceArray:GlobalArray];
         [viewController setTotalDuration:self.totalDuration];
         [viewController setVideoCount:self.videoCount];
-        
+        [viewController setName:self.name];
+        viewController.workout= self.workout;
         [self.navigationController pushViewController:viewController animated:YES];
         
     }else{
@@ -478,6 +538,7 @@
     [self setExcersiceList:nil];
     [self setTotalDuration:0];
     [self setVideoCount:0];
+    [self setScreenLockView:nil];
     [super viewDidUnload];
 }
 @end

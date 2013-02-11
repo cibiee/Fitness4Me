@@ -21,6 +21,7 @@
 
 @property (strong, nonatomic)Workout *workout;
 @property(strong,nonatomic) NSString *focusList;
+@property(strong,nonatomic) NSString *name;
 @property(strong,nonatomic) NSString *equipments;
 - (IBAction)dismissKeyboard:(id)sender;
 - (IBAction)onClickNext:(id)sender;

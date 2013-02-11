@@ -68,10 +68,6 @@
     }
     
 
-    
-   
-
-
 	// make a file: URL out of the path
 	NSURL *instructionsURL = [NSURL fileURLWithPath:path];
 	[webView loadRequest:[NSURLRequest requestWithURL:instructionsURL]];

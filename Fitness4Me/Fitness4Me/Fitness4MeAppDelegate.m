@@ -21,9 +21,7 @@ int userID;
 {
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    [self getUserDetails];
-    
+   [self getUserDetails];
     userID = [user UserID];
     if (userID>0) {
         application.applicationIconBadgeNumber = 0;
@@ -52,7 +50,6 @@ int userID;
     [userinfo setObject:token forKey:@"deviceToken"];
     
 #endif
- //f47b47efb86a4050815e36c6aa93fce0
 }
 
 - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
@@ -100,6 +97,7 @@ int userID;
             [userinfo setObject:@"true" forKey:@"hasMadeFullPurchase"];
             [userinfo setObject:@"true" forKey:@"hasUpdations"];
             [userinfo setObject:@"true" forKey:@"isMember"];
+            [userinfo setObject:@"dontSubscribe" forKey:@"yearly"];
         }else {
             [userinfo setObject:@"true" forKey:@"hasUpdations"];
         }
@@ -129,11 +127,11 @@ int userID;
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     [self updateData];
+    [self showMembership];
     /*
      Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
      */
 }
-
 
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
@@ -228,13 +226,12 @@ int userID;
     [userinfo setObject:[user Username] forKey:@"Username"];
     [userinfo setInteger:userID  forKey:@"UserID"];
     [userinfo setObject:user.Userlevel  forKey:@"Userlevel"];
-     [userinfo setInteger:0  forKey:@"trialCount"];
+    [userinfo setInteger:0  forKey:@"trialCount"];
 }
 
 -(void)dealloc
 {
     [super dealloc];
-    
     [_navigationController release];
     [_fitness4MeViewController release];
     [_viewController release];
@@ -245,7 +242,6 @@ int userID;
 
 -(void)getUserDetails
 {
-    
     UserDB *userDB =[[UserDB alloc]init];
     [userDB setUpDatabase];
     [userDB createDatabase];
@@ -268,10 +264,9 @@ int userID;
 -(void)updateData
 {
     [self getUserDetails];
-    
     userID = [user UserID];
-    
     if (userID>0){
+       
         [self updateFavouritesToServer];
         [self updateSelfMadeFavouritesToServer];
         FitnessServerCommunication *fitnessserverCommunication =[[FitnessServerCommunication alloc]init];
@@ -293,22 +288,18 @@ int userID;
                                  } onError:^(NSError *error) {
                                      
                                  }];
-        
-        
-        
         [fitnessserverCommunication parseCustomFitnessDetails:userID onCompletion:^(NSString *responseString){
             
         } onError:^(NSError *error) {
             // [self getExcersices];
         }];
         
-        
         [fitnessserverCommunication parseSelfMadeFitnessDetails :userID  trail:@"0"  onCompletion:^(NSString *responseString){
             
         } onError:^(NSError *error) {
             // [self getExcersices];
         }];
-        
+          
          [self updateStatisticsToServer];
          [self updateCustomStatisticsToServer];
          [self updateSelfMadeStatisticsToServer];
@@ -321,21 +312,14 @@ int userID;
     
 }
 
-
-
-
-
-
 -(void)updateStatisticsToServer
 {
    NSMutableArray *offlineworkouts =[self getStatistics];
     NSString *workouts = [[NSString alloc]init];
     NSString *tdurations  = [[NSString alloc]init];
     if ([offlineworkouts count]>0) {
-        
         for (Statistics *obj in offlineworkouts) {
             Statistics* item = obj;
-          
             if ([workouts length]==0) {
                 workouts =[workouts stringByAppendingString:item.WorkoutID];
                 tdurations =[tdurations stringByAppendingString:[NSString stringWithFormat:@"%f",item.Duration]];
@@ -346,10 +330,7 @@ int userID;
                                 tdurations=[tdurations stringByAppendingString:@","];
                 tdurations =[tdurations stringByAppendingString:[NSString stringWithFormat:@"%f",item.Duration]];
             }
-            
-            
         };
-      
     }
     
     if ([workouts length]>0) {
@@ -385,15 +366,12 @@ int userID;
     return offlineWorkouts;
 }
 
-
 -(void)deleteStatistics
 {
-    
     StatisticsDB  *statisticsDB =[[StatisticsDB alloc]init];
     [statisticsDB setUpDatabase];
     [statisticsDB createDatabase];
     [statisticsDB  deleteStatistics];
-    
 }
 
 
@@ -418,10 +396,7 @@ int userID;
                 tdurations=[tdurations stringByAppendingString:@","];
                 tdurations =[tdurations stringByAppendingString:[NSString stringWithFormat:@"%f",item.Duration]];
             }
-            
-            
         };
-        
     }
     
     if ([workouts length]>0) {
@@ -458,12 +433,10 @@ int userID;
 
 -(void)deleteCustomStatistics
 {
-    
     StatisticsDB  *statisticsDB =[[StatisticsDB alloc]init];
     [statisticsDB setUpDatabase];
     [statisticsDB createDatabase];
     [statisticsDB  deleteCustomStatistics];
-    
 }
 
 -(void)updateSelfMadeStatisticsToServer
@@ -472,10 +445,8 @@ int userID;
     NSString *workouts = [[NSString alloc]init];
     NSString *tdurations  = [[NSString alloc]init];
     if ([offlineworkouts count]>0) {
-        
         for (Statistics *obj in offlineworkouts) {
             Statistics* item = obj;
-            
             if ([workouts length]==0) {
                 workouts =[workouts stringByAppendingString:item.WorkoutID];
                 tdurations =[tdurations stringByAppendingString:[NSString stringWithFormat:@"%f",item.Duration]];
@@ -486,10 +457,7 @@ int userID;
                 tdurations=[tdurations stringByAppendingString:@","];
                 tdurations =[tdurations stringByAppendingString:[NSString stringWithFormat:@"%f",item.Duration]];
             }
-            
-            
         };
-        
     }
     
     if ([workouts length]>0) {
@@ -526,17 +494,11 @@ int userID;
 
 -(void)deleteSelfMadeStatistics
 {
-    
     StatisticsDB  *statisticsDB =[[StatisticsDB alloc]init];
     [statisticsDB setUpDatabase];
     [statisticsDB createDatabase];
     [statisticsDB  deleteSelfMadeStatistics];
-    
 }
-
-
-
-
 
 -(void)updateFavouritesToServer
 {
@@ -598,12 +560,10 @@ int userID;
 
 -(void)deletefavourites
 {
-    
     CustomFavourites  *customFavourites =[[CustomFavourites alloc]init];
     [customFavourites setUpDatabase];
     [customFavourites createDatabase];
     [customFavourites  deletefavourite];
-    
 }
 
 
@@ -614,7 +574,6 @@ int userID;
     NSString *workouts = [[NSString alloc]init];
     NSString *tdurations  = [[NSString alloc]init];
     if ([offlineworkouts count]>0) {
-        
         for (Favourite *obj in offlineworkouts) {
             Favourite* item = obj;
             
@@ -628,10 +587,7 @@ int userID;
                 tdurations=[tdurations stringByAppendingString:@","];
                 tdurations =[tdurations stringByAppendingString:[NSString stringWithFormat:@"%i",item.status]];
             }
-            
-            
         };
-        
     }
     
     if ([workouts length]>0) {
@@ -668,21 +624,47 @@ int userID;
 
 -(void)deleteSelfMadefavourites
 {
-    
     CustomFavourites  *customFavourites =[[CustomFavourites alloc]init];
     [customFavourites setUpDatabase];
     [customFavourites createDatabase];
     [customFavourites  deleteSelfMadefavourite];
-    
 }
 
 
+-(void)showMembership
+{
+    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+    NSString *isMember =[userinfo objectForKey:@"isMember"];
+    if ([isMember isEqualToString:@"true"]) {
+        FitnessServerCommunication *fitness =[FitnessServerCommunication sharedState];
+        [fitness getMembershipRemainingDays:nil progressView:nil onCompletion:^(NSString *responseString) {
+            [self getMembershipRemainingDays:responseString];
+        } onError:^(NSError *error) {
+            
+        }];
+    }
+    
+}
 
-
-
-
-
-
+- (void)getMembershipRemainingDays:(NSString *)responseString
+{
+     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+    remainisgDays=[[NSString alloc]init];
+    NSMutableArray *object = [responseString JSONValue];
+    NSLog(responseString);
+    NSMutableArray *itemsarray =[object valueForKey:@"items"];
+    for (int i=0; i<[itemsarray count]; i++) {
+        remainisgDays =[[itemsarray objectAtIndex:0] valueForKey:@"days"];
+        NSLog(@"%i",[remainisgDays intValue]);
+    }
+    
+    if ([remainisgDays intValue]<=0) {
+        [userinfo setObject:@"Subscribe" forKey:@"yearly"];
+        
+        [self navigateToHome];
+    }
+     [userinfo setInteger:[remainisgDays intValue] forKey:@"remainingDays"];
+}
 
 
 @end

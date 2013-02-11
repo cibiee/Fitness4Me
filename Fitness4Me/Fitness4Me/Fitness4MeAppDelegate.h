@@ -27,7 +27,7 @@
 {
     User *user;
     WorkoutDB *workoutDB;
-    
+      NSString* remainisgDays;
 }
 
 

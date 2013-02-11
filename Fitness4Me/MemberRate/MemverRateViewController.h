@@ -20,5 +20,6 @@
 - (IBAction)onClickNotYet:(id)sender;
 - (IBAction)onClickShowYouTube:(id)sender;
 - (IBAction)onClickTellMeMore:(id)sender;
+- (IBAction)onClickSkipToPurchase:(id)sender;
 
 @end

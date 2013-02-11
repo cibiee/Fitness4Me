@@ -103,13 +103,13 @@
     // Function Description:  The constructor of the class.
     ///
     //////
--(id)initWithData:(int)workoutID:(NSString*)posterUrl:(NSString*)posterName:(NSString *)posterRepeatCount:(NSString*)videoUrl:(NSString*)name:(NSString *)repeatCount:
-    (NSString*)stopVideo:(NSString*)stopName:(NSString*)stopRep:
-    (NSString*)otherSidePoster:(NSString*)othersidePosterName:(NSString*)othersidePosterRep:
-     (NSString*)othersideVideo:(NSString*)othersideName:(NSString*)othersideRep:
-    (NSString*)recoveryVideoUrl:(NSString*)recoveryVideoName:
-    (NSString*)nextVideo:(NSString*)nextName:(NSString*)nextRep:
-    (NSString*)completedVideo:(NSString*)completedName:(NSString*)completedRep;
+-(id)initWithData:(int)workoutID :(NSString*)posterUrl :(NSString*)posterName :(NSString *)posterRepeatCount :(NSString*)videoUrl :(NSString*)name :(NSString *)repeatCount :
+    (NSString*)stopVideo :(NSString*)stopName :(NSString*)stopRep :
+    (NSString*)otherSidePoster :(NSString*)othersidePosterName :(NSString*)othersidePosterRep :
+     (NSString*)othersideVideo :(NSString*)othersideName :(NSString*)othersideRep :
+    (NSString*)recoveryVideoUrl :(NSString*)recoveryVideoName :
+    (NSString*)nextVideo :(NSString*)nextName :(NSString*)nextRep :
+    (NSString*)completedVideo :(NSString*)completedName :(NSString*)completedRep;
 
 
 @end

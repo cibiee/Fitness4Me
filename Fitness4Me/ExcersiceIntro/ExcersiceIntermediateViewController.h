@@ -16,7 +16,6 @@
 #import "ASINetworkQueue.h"
 #import "SBJSON.h"
 #import "SBJsonParser.h"
-#import <StoreKit/StoreKit.h>
 #import "User.h"
 #import "UserDB.h"
 #import "FitnessServerCommunication.h"
@@ -26,7 +25,7 @@
 #define kInAppPurchaseManagerTransactionSucceededNotification @"kInAppPurchaseManagerTransactionSucceededNotification"
 #define kInAppPurchaseProUpgradeProductId @"com.fitness4me.Fitness4Me"
 
-@interface ExcersiceIntermediateViewController : UIViewController<SKProductsRequestDelegate,SKPaymentTransactionObserver,ASIHTTPRequestDelegate,FitnessServerCommunicationDelegate>
+@interface ExcersiceIntermediateViewController : UIViewController<ASIHTTPRequestDelegate,FitnessServerCommunicationDelegate>
 {
     BOOL isConected;
     int count;
@@ -38,10 +37,7 @@
     NSString *userlevel;
     NSString *userID;
 
-    SKProduct *proUpgradeProduct;
-    SKProductsRequest *productsRequest;
-    NSString *productIdentifier;
-    
+      
     NSMutableArray *excersices;
     NSMutableArray *arr;
     NSMutableArray *excersicesList;
@@ -75,19 +71,14 @@
 @property (retain,nonatomic)NSString *purchaseAll;
 @property(retain,nonatomic)NSString *userlevel;
 @property(retain,nonatomic)NSString *userID;
-@property(retain,nonatomic)NSString *productIdentifier;
+
 @property (nonatomic,retain) ASINetworkQueue *myQueue;
 @property (nonatomic,retain) ASINetworkQueue *imageQueue;
 
--(void)downloadVideos:(NSString *)url:(NSString*)name;
+-(void)downloadVideos:(NSString *)url :(NSString*)name;
 -(void)parseExcersiceDetails;
 -(void)startDownload;
 -(void)getExcersices;
--(void)getUnlockedExcersices;
--(void)loadStore;
--(void)purchaseProUpgrade;
--(BOOL)canMakePurchases;
-
 
 -(IBAction)onClickOK:(id)sender;
 -(IBAction)NavigateToMoviePlayer:(id)sender;

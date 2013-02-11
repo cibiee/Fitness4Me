@@ -59,7 +59,7 @@
                           
                       }];
     }else{
-        [Fitness4MeUtils showAlert:NSLocalizedString(@"nullfeedbackmsg", nil)];
+        [Fitness4MeUtils showAlert:NSLocalizedStringWithDefaultValue(@"nullfeedbackmsg", nil,[Fitness4MeUtils getBundle], nil, nil)];
     }
     
 }

@@ -15,15 +15,15 @@
 #import <QuartzCore/QuartzCore.h>
 #import "CustomWorkoutsViewController.h"
 #import "CarouselViewDemoViewController.h"
+#import <StoreKit/StoreKit.h>
 
-
-@interface Fitness4MeViewController : UIViewController<FitnessServerCommunicationDelegate>
+@interface Fitness4MeViewController : UIViewController<FitnessServerCommunicationDelegate,SKProductsRequestDelegate,SKPaymentTransactionObserver>
 
 {
      GADBannerView *bannerView_;
     IBOutlet UIButton *hintsAdviceButton;
     NSString *dataPath ;
-    
+    NSString* remainisgDays;
     IBOutlet UIView *SyncView;
     
     IBOutlet UIProgressView *fileDownloadProgressView;
@@ -32,10 +32,13 @@
     IBOutlet UILabel *lblCompleted;
     ///IBOutlet UITextView freeDownload
 
-
+    SKProduct *proUpgradeProduct;
+    SKProduct *product;
+    NSString *productIdentifier;
+    SKProductsRequest *productsRequest;
 }
 @property (nonatomic, retain) IBOutlet CarouselViewDemoViewController *viewController;
-- (IBAction)onclickSelfMadeworkout:(id)sender;
+-(IBAction)onclickSelfMadeworkout:(id)sender;
 -(IBAction)cancelDownloas:(id)sender;
 -(IBAction)navigateToCustomWorkoutListView:(id)sender;
 -(IBAction)navigateToWorkoutListView:(id)sender;

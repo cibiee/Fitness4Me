@@ -76,6 +76,9 @@
 -(IBAction)cancelTransaction;
 -(IBAction)cancelDownloas:(id)sender;
 -(IBAction)fullVideoDownload:(id)sender;
+- (IBAction)onClickSkipToPurchase:(id)sender ;
+
+-(IBAction)onClickDurations:(id)sender;
 @end
 
 @protocol ListWorkoutsDelegate <NSObject>

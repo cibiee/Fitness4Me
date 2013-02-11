@@ -30,12 +30,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    
     self.view.transform = CGAffineTransformConcat(self.view.transform, CGAffineTransformMakeRotation(M_PI_2));
-    
-    
     [self initializeView];
-    
     [upgradeView removeFromSuperview];
     [signUpView removeFromSuperview];
     
@@ -46,9 +42,7 @@
 -(void)initializeView
 {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-    
     NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
-    
     dataPath = [documentsDirectory stringByAppendingPathComponent:@"MyFolder"];
     
     
@@ -157,7 +151,7 @@
             
         }
         // Specify the ad's "unit identifier." This is your AdMob Publisher ID.
-        bannerView_.adUnitID = @"a1506940e575b91";
+        bannerView_.adUnitID = @"a150efb4cbe1a0a";
         
         // Let the runtime know which UIViewController to restore after taking
         // the user wherever the ad goes and add it to the view hierarchy.
@@ -244,249 +238,12 @@
 
 -(IBAction)startActivity
 {
-
     [upgradeView removeFromSuperview];
-    
     [activityIndicator startAnimating];
     [activityIndicator setHidden:NO];
-    
-    
-        [self.view addSubview:signUpView];
+    [self.view addSubview:signUpView];
    
-    
-    [NSThread detachNewThreadSelector:@selector(purchaseProUpgrade) toTarget:self withObject:nil];
 }
-
-
-
-#pragma   mark In App purchase methods
-#pragma   loadStore
-- (void)loadStore
-{
-    
-    // restarts any purchases if they were interrupted last time the app was open
-    [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
-}
-
-
-//
-// call this before making a purchase
-//
-- (BOOL)canMakePurchases
-{
-    return [SKPaymentQueue canMakePayments];
-}
-
-
-//
-// kick off the upgrade transaction
-//
-- (void)purchaseProUpgrade
-{
-    [self loadStore];
-    [self canMakePurchases];
-    
-        productIdentifier = @"com.fitness4me.Fitness4Me.PurchaseAll";
-   
-    SKPayment *payment = [SKPayment paymentWithProductIdentifier:productIdentifier];
-    [[SKPaymentQueue defaultQueue] addPayment:payment];
-}
-
-
-//
-// saves a record of the transaction by storing the receipt to disk
-//
-- (void)recordTransaction:(SKPaymentTransaction *)transaction
-{
-    if ([transaction.payment.productIdentifier isEqualToString:productIdentifier])
-    {
-        // save the transaction receipt to disk
-        [[NSUserDefaults standardUserDefaults] setValue:transaction.transactionReceipt forKey:@"proUpgradeTransactionReceipt"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
-}
-
-//
-// enable pro features
-//
-- (void)provideContent:(NSString *)productId
-{
-    if ([productId isEqualToString:productIdentifier])
-    {
-        // enable the pro features
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isProUpgradePurchased" ];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
-}
-
-//
-// removes the transaction from the queue and posts a notification with the transaction result
-//
-- (void)finishTransaction:(SKPaymentTransaction *)transaction wasSuccessful:(BOOL)wasSuccessful
-{
-    // remove the transaction from the payment queue.
-    [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
-    NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:transaction, @"transaction" , nil];
-    if (wasSuccessful){
-        // update the server with the purchased details
-        [self UpdateServer:@"true"];
-        transaction =nil;
-        // send out a notification that we’ve finished the transaction
-        [[NSNotificationCenter defaultCenter] postNotificationName:kInAppPurchaseManagerTransactionSucceededNotification object:self userInfo:userInfo];
-        [signUpView removeFromSuperview];
-        NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
-        [userinfo setObject:@"false" forKey:@"fullVideoDownloadlater"];
-    }
-    else{
-        // send out a notification for the failed transaction
-        [[NSNotificationCenter defaultCenter] postNotificationName:kInAppPurchaseManagerTransactionFailedNotification object:self userInfo:userInfo];
-        [signUpView removeFromSuperview];
-    }
-}
-
-//
-// called when the transaction was successful
-//
-- (void)completeTransaction:(SKPaymentTransaction *)transaction
-{
-    [self recordTransaction:transaction];
-    [self provideContent:transaction.payment.productIdentifier];
-    [self finishTransaction:transaction wasSuccessful:YES];
-}
-
-//
-// called when a transaction has been restored and and successfully completed
-//
-- (void)restoreTransaction:(SKPaymentTransaction *)transaction
-{
-    [self recordTransaction:transaction.originalTransaction];
-    [self provideContent:transaction.originalTransaction.payment.productIdentifier];
-    [self finishTransaction:transaction wasSuccessful:YES];
-}
-
-//
-// called when a transaction has failed
-//
-- (void)failedTransaction:(SKPaymentTransaction *)transaction
-{
-    
-   
-   // NSLog(@"failedTransaction : %@", [transaction.error localizedDescription]);
-    if (transaction.error.code != SKErrorPaymentCancelled)
-    {
-        // error!
-        [self finishTransaction:transaction wasSuccessful:NO];
-        [signUpView removeFromSuperview];
-
-    }
-    else
-    {
-        // this is fine, the user just cancelled, so don’t notify
-        [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
-        [signUpView removeFromSuperview];
-
-            }
-}
-
-#pragma mark -
-#pragma mark SKPaymentTransactionObserver methods
-
-//
-// called when the transaction status is updated
-//
-- (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions
-{
-    for (SKPaymentTransaction *transaction in transactions){
-        switch (transaction.transactionState)
-        {
-            case SKPaymentTransactionStatePurchased:
-                [self completeTransaction:transaction];
-                break;
-            case SKPaymentTransactionStateFailed:
-                [self failedTransaction:transaction];
-                break;
-            case SKPaymentTransactionStateRestored:
-                [self restoreTransaction:transaction];
-                break;
-            default:
-                break;
-        }
-    }
-}
-
-
-
-
--(void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response
-{
-    
-}
-
-
-//
-//  updated server with the video informations
-//
--(void)UpdateServer:(NSString *)purchaseStatus;
-{
-    
-    
-    BOOL isReachable =[Fitness4MeUtils isReachable];
-    if (isReachable){
-        
-        
-        NSString *status ;
-        NSString *requestString;
-        urlPath =[NSString GetURlPath];
-        NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
-        self.UserID =[userinfo stringForKey:@"UserID"];
-        
-       requestString=  [NSString stringWithFormat:@"%@unlockiphone=yes&userid=%@&workoutid=%@&purchase_status=%@&type=all",urlPath,userID,@"''",purchaseStatus];
-               
-        NSURL *url =[NSURL URLWithString:requestString];
-        ASIFormDataRequest   *request = [ASIFormDataRequest   requestWithURL:url];
-        [request startSynchronous];
-        NSError *error = [request error];
-        
-        if (!error){
-            NSString *response = [request responseString];
-            NSMutableArray *object = [response JSONValue];
-            NSMutableArray *itemsarray =[object valueForKey:@"items"];
-            for (int i=0; i<[itemsarray count]; i++) {
-                status = [[itemsarray objectAtIndex:i] valueForKey:@"status"];
-            }
-        }
-        else{
-            
-            [Fitness4MeUtils showAlert:NSLocalizedString(@"NoInternetMessage", nil)];
-        }
-        
-        if ([status isEqualToString:@"success"]) {
-           
-                NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
-                [userinfo setObject:@"true" forKey:@"hasMadeFullPurchase"];
-                [self updateWorkout:@"false"];
-            }
-    }
-    
-    else
-    {
-        [Fitness4MeUtils showAlert:NSLocalizedString(@"NoInternetMessage", nil)];
-
-    }
-}
-
--(void)updateWorkout:(NSString *)purchaseStatus
-{
-     workoutDB =[[WorkoutDB alloc]init];
-    [workoutDB setUpDatabase];
-    [workoutDB createDatabase];
-    
-    [workoutDB updateWorkout:@"All":purchaseStatus];
-    
-    
-}
-
-
 
 
 - (void)viewDidUnload

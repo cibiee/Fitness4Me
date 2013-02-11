@@ -26,6 +26,10 @@
     return self;
 }
 
+
+
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -36,24 +40,28 @@
     // add continue button
     UIButton *backutton = [UIButton buttonWithType:UIButtonTypeCustom];
     backutton.frame = CGRectMake(0, 0, 58, 30);
-    [backutton setBackgroundImage:[UIImage imageNamed:@"back_btn_with_text.png"] forState:UIControlStateNormal];
+    [backutton setBackgroundImage:[UIImage imageNamed:@"back_btnBlack.png"] forState:UIControlStateNormal];
+    
+    
+    [backutton setTitle:NSLocalizedStringWithDefaultValue(@"back", nil,[Fitness4MeUtils getBundle], nil, nil) forState:UIControlStateNormal];
+    [backutton.titleLabel setFont:[UIFont systemFontOfSize:14]];
+    [backutton.titleLabel setTextAlignment:UITextAlignmentRight];
     [backutton addTarget:self action:@selector(onClickBack:) forControlEvents:UIControlEventTouchDown];
     UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithCustomView:backutton];
     self.navigationBar.leftBarButtonItem = backBtn;
-    
     if ([[workout WorkoutID]intValue]>0) {
-        [self.creationCompleteLabel setText:NSLocalizedString(@"editMessage", nil)];
+        [self.creationCompleteLabel setText:NSLocalizedStringWithDefaultValue(@"editMessage", nil,[Fitness4MeUtils getBundle], nil, nil)];
     }
     else
     {
         
         if ([isMember isEqualToString:@"true"]) {
             if ([self.workoutType isEqualToString:@"SelfMade"]) {
-                [self.creationCompleteLabel  setText:@"You just designed your selfmade workout"];
+                [self.creationCompleteLabel  setText:NSLocalizedStringWithDefaultValue(@"creationCompleteMsgSelfMade", nil,[Fitness4MeUtils getBundle], nil, nil)];
             }
             else
             {
-                [self.creationCompleteLabel  setText:@"You just designed your custom workout"];
+                [self.creationCompleteLabel  setText:NSLocalizedStringWithDefaultValue(@"creationCompleteMsgCustom", nil,[Fitness4MeUtils getBundle], nil, nil)];
             }
             
         }
@@ -61,7 +69,7 @@
         {
             
             if ([self.workoutType isEqualToString:@"SelfMade"]) {
-                [self.creationCompleteLabel setText:@"You just designed your selfmade workout"];
+               [self.creationCompleteLabel  setText:NSLocalizedStringWithDefaultValue(@"creationCompleteMsgSelfMade", nil,[Fitness4MeUtils getBundle], nil, nil)];
             }
             else
             {
@@ -72,22 +80,22 @@
                 switch (customCount) {
                     case 1:
                         
-                        customCountString =@"first";
+                        customCountString =NSLocalizedStringWithDefaultValue(@"first", nil,[Fitness4MeUtils getBundle], nil, nil);
                         break;
                     case 2:
                         
-                        customCountString =@"second";
+                        customCountString =NSLocalizedStringWithDefaultValue(@"second", nil,[Fitness4MeUtils getBundle], nil, nil);
                         break;
                     case 3:
                         
-                        customCountString =@"third";
+                        customCountString =NSLocalizedStringWithDefaultValue(@"third", nil,[Fitness4MeUtils getBundle], nil, nil);
                         break;
                     case 4:
                         
-                        customCountString =@"fourth";
+                        customCountString =NSLocalizedStringWithDefaultValue(@"fourth", nil,[Fitness4MeUtils getBundle], nil, nil);
                         break;
                     case 5:
-                        customCountString =@"last";
+                        customCountString =NSLocalizedStringWithDefaultValue(@"last", nil,[Fitness4MeUtils getBundle], nil, nil);
                         break;
                         
                     default:
@@ -95,7 +103,7 @@
                 }
                 if ([customCountString length]>0) {
                     
-                    NSString *msg= NSLocalizedString(@"creationCustomizedCompleteMsg", nil);
+                    NSString *msg= NSLocalizedStringWithDefaultValue(@"creationCustomizedCompleteMsg", nil,[Fitness4MeUtils getBundle], nil, nil);
                     [self.creationCompleteLabel setText:[NSString stringWithFormat:msg,customCountString]];
                 }
             }
@@ -116,7 +124,7 @@
         else{
             [self.saveToListButton setHidden:YES];
             [self.saveandStartbutton setFrame:CGRectMake(86, 290,125 , 78)];
-            
+            [self.saveandStartbutton setTitle:NSLocalizedStringWithDefaultValue(@"startWorkout", nil,[Fitness4MeUtils getBundle], nil, nil) forState:UIControlStateNormal];
         }
     }
     
@@ -183,7 +191,13 @@
                 [workout setWorkoutID:workoutID];
                 self.workoutID=workoutID;
                 [fitness  parseCustomFitnessDetails:[userID intValue]  onCompletion:^(NSString *responseString){
-                    
+                    if ([navigateTo isEqualToString:@"List"]) {
+                        [self NavigateToWorkoutList];
+                    }
+                    else
+                    {
+                        [self getNewWorkoutList];
+                    }
                     
                 } onError:^(NSError *error) {
                     // [self getExcersices];
@@ -194,13 +208,7 @@
             // [self getExcersices];
         }];
         
-        if ([navigateTo isEqualToString:@"List"]) {
-            [self NavigateToWorkoutList];
-        }
-        else
-        {
-            [self getNewWorkoutList];
-        }
+      
     }
     else{
         [fitness saveSelfMadeWorkout:self.workoutName workoutCollection:self.collectionString workoutID:self.workoutID userID:userID userLevel:userlevel language:selectedLanguage focus:self.focusList equipments:self.equipments activityIndicator:self.activityIndicator progressView:self.progressView onCompletion:^(NSString *workoutID) {

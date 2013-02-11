@@ -12,6 +12,7 @@
 #import "ExcersiceListViewController.h"
 #import "CustomInitialLaunchViewController.h"
 #include <sys/xattr.h>
+#include "FitnessServer.h"
 @implementation Fitness4MeViewController
 
 - (void)didReceiveMemoryWarning
@@ -42,8 +43,15 @@
     SyncView.layer.borderColor = [UIColor whiteColor].CGColor;
     
     [self freeVideoDownload];
-    
-    
+    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+    NSString *membershipPurchase =[userinfo objectForKey:@"yearly"];
+    NSString *isMember =[userinfo objectForKey:@"isMember"];
+     int remianingdays =[userinfo integerForKey:@"remainingDays"];
+
+    NSString *MembershipPlan =[userinfo objectForKey:@"MembershipPlan"];
+    if ([membershipPurchase isEqualToString:@"Subscribe"]) {
+        [self showAlertwithMsg:@"Your fitness4.me membership has expierd. please renew your subscription"];
+    }
     NSArray *VideoArray =[NSArray arrayWithObjects:@"completed_exercise_de.mp4",@"completed_exercise.mp4",@"next_exercise_de.mp4",@"next_exercise.mp4",@"otherside_exercise_de.mp4",@"otherside_exercise.mp4",@"recovery_15_de.mp4",@"recovery_15.mp4",@"recovery_30_de.mp4",@"recovery_30.mp4",@"stop_exercise_de.mp4",@"stop_exercise.mp4",nil];
     
     
@@ -72,7 +80,46 @@
         }
     }
     
+    
+    if ([isMember isEqualToString:@"true"]) {
+        if ([MembershipPlan isEqualToString:@"1"]||[MembershipPlan isEqualToString:@"2"]||[MembershipPlan isEqualToString:@"100"]) {
+            if (remianingdays<=0) {
+                [self verifyReceiptsWithPlan:MembershipPlan];
+            }
+            
+        }
+    }
+    
 }
+
+- (void)verifyReceiptsWithPlan:(NSString*)planID {
+    
+  
+    FitnessServer *fitness= [FitnessServer sharedState];
+    [fitness verifyReciptwithPlanID:planID  activitIndicator:nil progressView:nil onCompletion:^(NSString *response) {
+        FitnessServerCommunication *fitnessServer=[FitnessServerCommunication sharedState];
+        [fitnessServer GetUserTypeWithactivityIndicator:nil progressView:nil onCompletion:^(NSString *responseString) {
+            
+        }onError:^(NSError *error) {
+            
+        }];
+        
+    } onError:^(NSError *error) {
+        
+    }];
+    
+  
+}
+
+-(void)checkPurchasedItems
+{
+    [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
+}//You Call This Function
+
+//Then this delegate Funtion Will be fired
+
+
+
 
 - (BOOL)addSkipBackupAttributeToItemAtURL:(NSURL *)URL
 {
@@ -136,7 +183,7 @@
 }
 
 
-- (void)didfinishedWorkout:(int)countCompleted:(int)totalCount
+- (void)didfinishedWorkout:(int)countCompleted :(int)totalCount
 {
     [SyncView addSubview:lblCompleted];
     NSString *s= [NSString stringWithFormat:@"%i / %i",countCompleted,totalCount];
@@ -162,10 +209,37 @@
          }];
     }
     fileDownloadProgressView.progress = ((float)countCompleted / (float) totalCount);
+   
 }
 
 
+
+
+- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex==0) {
+        [self purchaseProUpgrade];
+    }
+    else {
+        exit(0);
+    }
+}
+
+
+-(void)showAlertwithMsg:(NSString*)message
+{
+    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"fitness4.me" message:message
+                                                       delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alertview show];
+    
+    
+}
+
+
+
+
 -(IBAction)navigateToWorkoutListView:(id)sender{
+    
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     [userinfo setObject:@"QuickWorkouts" forKey:@"workoutType"];
     ListWorkoutsViewController *viewController;
@@ -228,7 +302,7 @@
 
 -(IBAction)navigateToCustomWorkoutListView:(id)sender
 {
-    CustomWorkoutsViewController *viewController;
+    CustomWorkoutsViewController *viewController =nil;
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
         viewController =[[CustomWorkoutsViewController alloc]initWithNibName:@"CustomWorkoutsViewController" bundle:nil];
@@ -253,7 +327,7 @@
     if ([isDontShow isEqualToString:@"true"]) {
         
         
-        CustomWorkoutsViewController *viewController;
+        CustomWorkoutsViewController *viewController = nil;
         
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
             viewController =[[CustomWorkoutsViewController alloc]initWithNibName:@"CustomWorkoutsViewController" bundle:nil];
@@ -271,7 +345,7 @@
         [viewController release];
     }
     else{
-        CustomInitialLaunchViewController *viewController;
+        CustomInitialLaunchViewController *viewController=nil;
         
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
             viewController =[[CustomInitialLaunchViewController alloc]initWithNibName:@"CustomInitialLaunchViewController" bundle:nil];
@@ -303,6 +377,7 @@
      }];
     FitnessServerCommunication *fitness =[FitnessServerCommunication sharedState];
     [fitness cancelDownload];
+    
 }
 
 
@@ -318,7 +393,6 @@
 {
     
     [self .navigationController setNavigationBarHidden:YES animated:NO];
-    
     [super viewWillAppear:animated];
 }
 
@@ -337,5 +411,248 @@
 -(BOOL)shouldAutorotate {
     return NO;
 }
+
+
+
+#pragma   mark In App purchase methods
+#pragma   loadStore
+- (void)loadStore
+{
+    // restarts any purchases if they were interrupted last time the app was open
+    [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+}
+
+
+//
+// call this before making a purchase
+//
+- (BOOL)canMakePurchases
+{
+    return [SKPaymentQueue canMakePayments];
+}
+
+
+//
+// kick off the upgrade transaction
+//
+- (void)purchaseProUpgrade
+{
+    [self loadStore];
+    [self canMakePurchases];
+    
+    productIdentifier =@"Yearl";
+    // SKProduct *validProduct=productIdentifier;
+    SKPayment *payment = [SKPayment paymentWithProductIdentifier:productIdentifier];
+    [[SKPaymentQueue defaultQueue] addPayment:payment];
+}
+
+
+//
+// saves a record of the transaction by storing the receipt to disk
+//
+- (void)recordTransaction:(SKPaymentTransaction *)transaction
+{
+    if ([transaction.payment.productIdentifier isEqualToString:productIdentifier])
+    {
+        
+        // save the transaction receipt to disk
+        [[NSUserDefaults standardUserDefaults] setValue:transaction.transactionReceipt forKey:@"proUpgradeTransactionReceipt"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    
+      BOOL s=[self verifyReceipt:transaction];
+    if (s==YES) {
+        
+    }
+}
+
+//
+// enable pro features
+//
+- (void)provideContent:(NSString *)productId
+{
+    if ([productId isEqualToString:productIdentifier])
+    {
+        // enable the pro features
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isProUpgradePurchased" ];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+}
+
+//
+// removes the transaction from the queue and posts a notification with the transaction result
+//
+- (void)finishTransaction:(SKPaymentTransaction *)transaction wasSuccessful:(BOOL)wasSuccessful
+{
+    // remove the transaction from the payment queue.
+    [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+     NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:transaction, @"transaction" , nil];
+    if (wasSuccessful){
+        
+       // [self sendMembership];
+        // update the server with the purchased details
+          NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+        [userinfo setObject:@"dontSubscribe" forKey:@"yearly"];
+        [self sendMembershipPlanID:@"100" membershipStatus:@"true" msg:@"Congratulations!Be part of the fitness4.me"];
+        transaction =nil;
+        // send out a notification that we’ve finished the transaction
+        [[NSNotificationCenter defaultCenter] postNotificationName:kInAppPurchaseManagerTransactionSucceededNotification object:self userInfo:userInfo];
+        
+        
+    }
+    else{
+        
+        // send out a notification for the failed transaction
+        [[NSNotificationCenter defaultCenter] postNotificationName:kInAppPurchaseManagerTransactionFailedNotification object:self userInfo:userInfo];
+    }
+}
+
+-(void)sendMembershipPlanID:(NSString*)planID membershipStatus:(NSString*)status msg:(NSString*)message{
+    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+    FitnessServer *fitness =[FitnessServer sharedState];
+    [fitness membershipPlanUser:planID activityIndicator:nil progressView:nil onCompletion:^(NSString *status) {
+        if ([status length]>0) {
+            if ([status isEqualToString:@"success"]) {
+                [userinfo setObject:status forKey:@"isMember"];
+                [userinfo setObject:planID forKey:@"MembershipPlan"];
+                [Fitness4MeUtils showAlert:message];
+            }
+        }
+    }  onError:^(NSError *error) {
+        
+    }];
+    
+}
+
+//
+// called when the transaction was successful
+//
+- (void)completeTransaction:(SKPaymentTransaction *)transaction
+{
+    [self recordTransaction:transaction];
+    [self provideContent:transaction.payment.productIdentifier];
+    [self finishTransaction:transaction wasSuccessful:YES];
+}
+
+//
+// called when a transaction has been restored and and successfully completed
+//
+- (void)restoreTransaction:(SKPaymentTransaction *)transaction
+{
+    [self recordTransaction:transaction.originalTransaction];
+    [self provideContent:transaction.originalTransaction.payment.productIdentifier];
+   [self finishTransaction:transaction wasSuccessful:YES];
+}
+
+
+- (BOOL)verifyReceipt:(SKPaymentTransaction *)transaction {
+    
+    __block BOOL isValid;
+    NSString *jsonObjectString = [self encode:(uint8_t *)transaction.transactionReceipt.bytes length:transaction.transactionReceipt.length];
+    FitnessServer *fitness= [FitnessServer sharedState];
+    [fitness storeRecipt:jsonObjectString activitIndicator:nil progressView:nil onCompletion:^(NSString *response) {
+        isValid =YES;
+    } onError:^(NSError *error) {
+        
+    }];
+    
+    return isValid;
+}
+
+- (NSString *)encode:(const uint8_t *)input length:(NSInteger)length {
+    static char table[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+    
+    NSMutableData *data = [NSMutableData dataWithLength:((length + 2) / 3) * 4];
+    uint8_t *output = (uint8_t *)data.mutableBytes;
+    
+    for (NSInteger i = 0; i < length; i += 3) {
+        NSInteger value = 0;
+        for (NSInteger j = i; j < (i + 3); j++) {
+            value <<= 8;
+            
+            if (j < length) {
+                value |= (0xFF & input[j]);
+            }
+        }
+        
+        NSInteger index = (i / 3) * 4;
+        output[index + 0] =                    table[(value >> 18) & 0x3F];
+        output[index + 1] =                    table[(value >> 12) & 0x3F];
+        output[index + 2] = (i + 1) < length ? table[(value >> 6)  & 0x3F] : '=';
+        output[index + 3] = (i + 2) < length ? table[(value >> 0)  & 0x3F] : '=';
+    }
+    
+    return [[[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding] autorelease];
+}
+
+//
+// called when a transaction has failed
+//
+- (void)failedTransaction:(SKPaymentTransaction *)transaction
+{
+    
+    NSLog(@"failedTransaction : %@", [transaction.error localizedDescription]);
+    if (transaction.error.code != SKErrorPaymentCancelled)
+    {
+        // error!
+        [self finishTransaction:transaction wasSuccessful:NO];
+        
+    }
+    else
+    {
+        
+        // this is fine, the user just cancelled, so don’t notify
+        [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+        [self sendMembershipPlanID:@"0" membershipStatus:@"false" msg:@"You have cancelled the fitness4.me membership plan"];
+       //  NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+       // [userinfo setObject:@"dontSubscribe" forKey:@"yearly"];
+    }
+}
+
+#pragma mark -
+#pragma mark SKPaymentTransactionObserver methods
+
+//
+// called when the transaction status is updated
+//
+- (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions
+{
+    for (SKPaymentTransaction *transaction in transactions){
+        switch (transaction.transactionState)
+        {
+            case SKPaymentTransactionStatePurchased:
+                [self completeTransaction:transaction];
+                break;
+            case SKPaymentTransactionStateFailed:
+                [self failedTransaction:transaction];
+                break;
+            case SKPaymentTransactionStateRestored:
+                [self restoreTransaction:transaction];
+                break;
+            default:
+                break;
+        }
+    }
+}
+
+
+-(void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response
+{
+    SKProduct *validProduct = nil;
+    
+    int counts = [response.products count];
+    
+    
+    if (counts>0) {
+        
+        validProduct = [response.products objectAtIndex:0];
+        //SKPayment *payment = [SKPayment paymentWithProductIdentifier:@"appUpdate1"];
+        // [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+        // [[SKPaymentQueue defaultQueue] addPayment:payment]; // <-- KA CHING!
+        // NSLog (@"payment proccessed I think");
+    }
+    
+}
+
 
 @end

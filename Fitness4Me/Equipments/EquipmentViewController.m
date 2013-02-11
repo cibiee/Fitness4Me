@@ -27,6 +27,24 @@
     return self;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:NO];
+    // add continue button
+    UIButton *backutton = [UIButton buttonWithType:UIButtonTypeCustom];
+    backutton.frame = CGRectMake(0, 0, 58, 30);
+    [backutton setBackgroundImage:[UIImage imageNamed:@"back_btnBlack.png"] forState:UIControlStateNormal];
+    
+    [backutton setTitle:NSLocalizedStringWithDefaultValue(@"back", nil,[Fitness4MeUtils getBundle], nil, nil) forState:UIControlStateNormal];
+    [backutton.titleLabel setFont:[UIFont systemFontOfSize:14]];
+    [backutton.titleLabel setTextAlignment:UITextAlignmentRight];
+    [backutton addTarget:self action:@selector(onClickBack:) forControlEvents:UIControlEventTouchDown];
+    UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithCustomView:backutton];
+    self.navigationBar.leftBarButtonItem = backBtn;
+    
+    
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -42,7 +60,10 @@
     // add continue button
     UIButton *backutton = [UIButton buttonWithType:UIButtonTypeCustom];
     backutton.frame = CGRectMake(0, 0, 58, 30);
-    [backutton setBackgroundImage:[UIImage imageNamed:@"back_btn_with_text.png"] forState:UIControlStateNormal];
+    [backutton setBackgroundImage:[UIImage imageNamed:@"back_btnBlack.png"] forState:UIControlStateNormal];
+    [backutton setTitle:NSLocalizedStringWithDefaultValue(@"back", nil,[Fitness4MeUtils getBundle], nil, nil) forState:UIControlStateNormal];
+    [backutton.titleLabel setFont:[UIFont systemFontOfSize:14]];
+    [backutton.titleLabel setTextAlignment:UITextAlignmentRight];
     [backutton addTarget:self action:@selector(onClickBack:) forControlEvents:UIControlEventTouchDown];
     UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithCustomView:backutton];
     self.navigationBar.leftBarButtonItem = backBtn;
@@ -50,6 +71,9 @@
     UIButton *nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
     nextButton.frame = CGRectMake(0, 0, 58, 30);
     [nextButton setBackgroundImage:[UIImage imageNamed:@"next_btn_with_text.png"] forState:UIControlStateNormal];
+    [nextButton setTitle:NSLocalizedStringWithDefaultValue(@"next", nil,[Fitness4MeUtils getBundle], nil, nil) forState:UIControlStateNormal];
+    [nextButton.titleLabel setFont:[UIFont systemFontOfSize:13]];
+    [nextButton.titleLabel setTextAlignment:UITextAlignmentRight];
     [nextButton addTarget:self action:@selector(onClickNext:) forControlEvents:UIControlEventTouchDown];
     UIBarButtonItem *nextBtn = [[UIBarButtonItem alloc] initWithCustomView:nextButton];
     self.navigationBar.rightBarButtonItem = nextBtn;
@@ -212,6 +236,7 @@
         NameViewController *viewController =[[NameViewController alloc]initWithNibName:@"NameViewController" bundle:nil];
         viewController.workout= [[Workout alloc]init];
         viewController.workout =workouts;
+        [viewController setName:[workout Name]];
         [self.navigationController pushViewController:viewController animated:YES];
     }
     else
@@ -224,6 +249,9 @@
         }
         [viewController setFocusList:[workout Focus]];
         [viewController setEquipments:str];
+        [viewController setName:[workout Name]];
+        viewController.workout= [[Workout alloc]init];
+        viewController.workout =workouts;
         [self.navigationController pushViewController:viewController animated:YES];
     }
 }
@@ -288,7 +316,8 @@
     [workouts setFocus:workout.Focus];
     [workouts setFocusName:name];
     [workouts setProps:str];
-
+    
+  
     [self navigateTo:str workouts:workouts];
 }
 

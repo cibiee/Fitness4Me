@@ -23,7 +23,7 @@
 }
 
 
--(id)initWithData:(NSString*)intros:(NSString*)intro_names:(NSString *)mains:(NSString*)main_names:(NSString*)main_others:(NSString*)main_other_names
+-(id)initWithData:(NSString*)intros :(NSString*)intro_names :(NSString *)mains :(NSString*)main_names :(NSString*)main_others :(NSString*)main_other_names
 {
     
     self.intro =intros;

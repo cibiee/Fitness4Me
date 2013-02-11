@@ -127,7 +127,7 @@
     if (emailTextField.text.length>0){
         isValid=  [Fitness4MeUtils validEmail:emailTextField.text];
         if (isValid==NO) {
-            [self terminateActivity:NSLocalizedString(@"invalidaMail", nil)];
+            [self terminateActivity:NSLocalizedStringWithDefaultValue(@"invalidaMail", nil,[Fitness4MeUtils getBundle], nil, nil)];
         }
         else {
             
@@ -136,7 +136,7 @@
             [fitness isValidEmail:emailTextField.text andActivityIndicator:emailactivityIndicator onCompletion:^(NSString *IsExist) {
                 if ([IsExist isEqualToString:@"true"]) {
                     isValid =NO;
-                    [self terminateActivity:NSLocalizedString(@"emailExists", nil)];
+                    [self terminateActivity:NSLocalizedStringWithDefaultValue(@"emailExists", nil,[Fitness4MeUtils getBundle], nil, nil)];
                     [emailactivityIndicator stopAnimating];
                 }
                 else {
@@ -180,11 +180,11 @@
                 if(isLevelChanged ==YES){
                     freeVideo =@"true";
                     if ([userlevel isEqualToString:@"1"]) {
-                        [lblFreedownloadmessageTextView setText:NSLocalizedString(@"beginnerLevelMessage", nil)];
+                        [lblFreedownloadmessageTextView setText:NSLocalizedStringWithDefaultValue(@"beginnerLevelMessage", nil,[Fitness4MeUtils getBundle], nil, nil)];
                     }else  if ([userlevel isEqualToString:@"2"]){
-                        [lblFreedownloadmessageTextView setText:NSLocalizedString(@"advancedLevelMessage", nil)];
+                        [lblFreedownloadmessageTextView setText:NSLocalizedStringWithDefaultValue(@"advancedLevelMessage", nil,[Fitness4MeUtils getBundle], nil, nil)];
                     }else{
-                        [lblFreedownloadmessageTextView setText:NSLocalizedString(@"experLevelMessage", nil)];
+                        [lblFreedownloadmessageTextView setText:NSLocalizedStringWithDefaultValue(@"experLevelMessage", nil,[Fitness4MeUtils getBundle], nil, nil)];
                     }
                     [self freeVideoDownload];
                 }
@@ -243,7 +243,7 @@
            }];
 }
 
--(void)saveUser:(NSString *)username:(NSString *) name :(NSString *)userlevels :
+-(void)saveUser:(NSString *)username :(NSString *) name :(NSString *)userlevels :
 (NSString *)email :(NSString *)fullpurchase
 {
     UserDB *userDB =[[UserDB alloc]init];
@@ -373,7 +373,7 @@
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     [userinfo setObject:@"true" forKey:@"fullVideoDownloadlater"];
     [NSThread detachNewThreadSelector:@selector(startDownload) toTarget:self withObject:nil];
-    [Fitness4MeUtils showAlert:NSLocalizedString(@"fullDownloadMsg", nil)];
+    [Fitness4MeUtils showAlert:NSLocalizedStringWithDefaultValue(@"fullDownloadMsg", nil,[Fitness4MeUtils getBundle], nil, nil)];
 }
 
 
@@ -391,14 +391,14 @@
 {
     [self  startActivity];
     if([nameTextField.text length] ==0 ||[emailTextField.text length]==0){
-        [Fitness4MeUtils showAlert:NSLocalizedString(@"mandatory", Nil)];
+        [Fitness4MeUtils showAlert:NSLocalizedStringWithDefaultValue(@"mandatory", Nil,[Fitness4MeUtils getBundle], nil, nil)];
         [signUpView removeFromSuperview];
         return;
     }
     if (isValid ==NO) {
         
-        [Fitness4MeUtils showAlert:NSLocalizedString(@"validateemailUsername", Nil)];
-        [errorLabel setText:NSLocalizedString(@"validateemailUsername", Nil)];
+        [Fitness4MeUtils showAlert:NSLocalizedStringWithDefaultValue(@"validateemailUsername", Nil,[Fitness4MeUtils getBundle], nil, nil)];
+        [errorLabel setText:NSLocalizedStringWithDefaultValue(@"validateemailUsername", Nil,[Fitness4MeUtils getBundle], nil, nil)];
         [errorIndicator setHidden: NO];
         [signUpView removeFromSuperview];
         return;
@@ -447,7 +447,7 @@
 
 -(IBAction)onClickNo{
     [profileUpdatedView removeFromSuperview];
-    [Fitness4MeUtils showAlert:NSLocalizedString(@"workoutsthroughsettingsmsg", nil)];
+    [Fitness4MeUtils showAlert:NSLocalizedStringWithDefaultValue(@"workoutsthroughsettingsmsg", nil,[Fitness4MeUtils getBundle], nil, nil)];
 }
 
 -(IBAction)navigateToRating{
@@ -471,7 +471,7 @@
             [updateButton setEnabled:YES];
             [emailTextField becomeFirstResponder];
         }else{
-            [Fitness4MeUtils showAlert:NSLocalizedString(@"mandatory", nil)];
+            [Fitness4MeUtils showAlert:NSLocalizedStringWithDefaultValue(@"mandatory", nil,[Fitness4MeUtils getBundle], nil, nil)];
             [updateButton setEnabled:NO];
             [nameTextField becomeFirstResponder];
         }
@@ -482,7 +482,7 @@
         if (emailTextField.text.length>0){
             [updateButton setEnabled:YES];
         }else{
-            [Fitness4MeUtils showAlert:NSLocalizedString(@"mandatory", nil)];
+            [Fitness4MeUtils showAlert:NSLocalizedStringWithDefaultValue(@"mandatory", nil,[Fitness4MeUtils getBundle], nil, nil)];
             [updateButton setEnabled:NO];
             [emailTextField becomeFirstResponder];
         }
@@ -526,7 +526,7 @@
 
 #pragma mark - fitness communication delegate Methods
 
-- (void)didfinishedWorkout:(int)countCompleted:(int)totalCount
+- (void)didfinishedWorkout:(int)countCompleted :(int)totalCount
 {
 
     if ([freeVideo isEqualToString:@"false"]) {

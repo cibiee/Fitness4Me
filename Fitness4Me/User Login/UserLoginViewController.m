@@ -24,13 +24,35 @@
 
 #pragma mark - view oveloaded Method
 
+-(void)viewDidAppear:(BOOL)animated{
+    
+    [super viewDidAppear:YES];
+
+    UIButton *backutton = [UIButton buttonWithType:UIButtonTypeCustom];
+     backutton.frame = CGRectMake(0, 0, 58, 30);
+    [backutton setBackgroundImage:[UIImage imageNamed:@"back_btnBlack.png"] forState:UIControlStateNormal];
+//    int selectedLanguage=[Fitness4MeUtils getApplicationLanguage];
+//    if (selectedLanguage==1) {
+//        [backutton setTitle:@"Back" forState:UIControlStateNormal];
+//    }
+//    else{
+       [backutton setTitle:NSLocalizedStringWithDefaultValue(@"back", nil, [Fitness4MeUtils getBundle], nil, nil)forState:UIControlStateNormal];
+//    }
+//    
+    [backutton.titleLabel setFont:[UIFont systemFontOfSize:14]];
+    [backutton.titleLabel setTextAlignment:UITextAlignmentRight];
+    [backutton addTarget:self action:@selector(onClickBack:) forControlEvents:UIControlEventTouchDown];
+    UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithCustomView:backutton];
+    [[UIApplication sharedApplication]  registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert)];
+    self.navigationBar.leftBarButtonItem = backBtn;
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     [Fitness4MeUtils showAdMobPrelogin:self];
-    [[UIApplication sharedApplication]  registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert)];
+    
     [activityIndicator setHidden:YES];
 }
 
@@ -49,7 +71,7 @@
 {
     userID=0;
     if (usernameTextField.text.length ==0 ||passwordTextField.text.length ==0){
-        [Fitness4MeUtils showAlert:NSLocalizedString(@"UsernameNull", nil)];
+        [Fitness4MeUtils showAlert:NSLocalizedStringWithDefaultValue(@"UsernameNull", nil, [Fitness4MeUtils getBundle], nil, nil)];
         [signUpView removeFromSuperview];
     }
     else
@@ -94,7 +116,7 @@
             NSString *message;
             message=[item objectForKey:@"message"];
             if([message length]==0){
-                message=NSLocalizedString(@"NoInternetMessage", nil);
+                message=NSLocalizedStringWithDefaultValue(@"NoInternetMessage", nil,[Fitness4MeUtils getBundle], nil, nil);
             }[self termainateActivityIndicator];
             [Fitness4MeUtils showAlert:message];
         }
@@ -177,7 +199,7 @@
         if (usernameTextField.text.length>0){
             [passwordTextField becomeFirstResponder];
         }else{
-            [Fitness4MeUtils showAlert:NSLocalizedString(@"mandatory", nil)];
+            [Fitness4MeUtils showAlert:NSLocalizedStringWithDefaultValue(@"mandatory", nil,[Fitness4MeUtils getBundle], nil, nil)];
             [usernameTextField becomeFirstResponder];
         }
     }
@@ -187,7 +209,7 @@
         if (passwordTextField.text.length>0){
             [textField resignFirstResponder];
         }else{
-            [Fitness4MeUtils showAlert:NSLocalizedString(@"mandatory", nil)];
+            [Fitness4MeUtils showAlert:NSLocalizedStringWithDefaultValue(@"mandatory", nil,[Fitness4MeUtils getBundle], nil, nil)];
             [passwordTextField becomeFirstResponder];
         }
     }

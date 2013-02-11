@@ -51,7 +51,7 @@ static User *sharedState;
 }
 
 -(User*)getUserPreferences{
-    User *user;
+    User *user = [[User alloc]init];
     
      NSUserDefaults *userInfo =[NSUserDefaults standardUserDefaults];
     [user setName:[userInfo valueForKey:@"Name"]];

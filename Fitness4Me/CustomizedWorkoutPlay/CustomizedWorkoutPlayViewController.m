@@ -45,7 +45,7 @@ static float totalDuration=0;
     [self getExcersices];
     self.view.transform = CGAffineTransformConcat(self.view.transform, CGAffineTransformMakeRotation(M_PI_2));
     screenBounds = [[UIScreen mainScreen] bounds];
-    NSLog(@"%f",screenBounds.size.height);
+   
     if (screenBounds.size.height == 568)
     {
         [subview5 removeFromSuperview];
@@ -91,7 +91,7 @@ static float totalDuration=0;
                                                     90)];
         }
         
-        bannerView_.adUnitID = @"a1506940e575b91";
+        bannerView_.adUnitID = @"a150efb4cbe1a0a";
         bannerView_.rootViewController = self;
         [self.view addSubview:bannerView_];
         // Initiate a generic request to load it with an ad.
@@ -251,7 +251,7 @@ static float totalDuration=0;
 -(void)showAlert
 {
     
-    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"Fitness4Me" message:NSLocalizedString(@"exitVideo", nil)
+    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"Fitness4Me" message:NSLocalizedStringWithDefaultValue(@"exitVideo", nil,[Fitness4MeUtils getBundle], nil, nil)
                                                        delegate:self cancelButtonTitle:@"OK" otherButtonTitles:@"Cancel", nil];
     [alertview show];
     [UIView beginAnimations:@"" context:nil];
@@ -284,7 +284,9 @@ static float totalDuration=0;
         initalArrayCount=0;
         playCount=0;
         moviePlayer=nil;
+        
         CustomWorkoutsViewController *viewController =[[CustomWorkoutsViewController alloc]initWithNibName:@"CustomWorkoutsViewController" bundle:nil];
+        viewController.workoutType =self.workoutType;
         [self.navigationController pushViewController:viewController animated:YES];
         
     }

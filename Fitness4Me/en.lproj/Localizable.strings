@@ -30,15 +30,38 @@
 "advancedLevelMessage" ="Please wait while I am downloading your 5 free workouts on advanced level.Depending on the quality of your internet connection, this may take several minutes";
 "beginnerLevelMessage" ="Please wait while I am downloading your 5 free workouts on beginner level.Depending on the quality of your internet connection, this may take several minutes";
 "experLevelMessage" ="Please wait while I am downloading your 5 free workouts on expert level.Depending on the quality of your internet connection, this may take several minutes";
-/*-------------------------------------------------------------------------------------------------------------------------*/
+
 
 "NameNull" ="Please Provide a Name for the workout.";
 "numberOfExcersice"= "Number of Excersice";
 "totalTime"= "Total Time";
 "Done"= "Done";
 "premiumWorkout" ="Become member to create more workouts!";
-"deleteWorkout"="Are You sure you want to delete this workut?";
+"deleteWorkout"="Are You sure you want to delete this workout?";
 "deletedSucessfully"="Deleted Sucessfully";
-"creationCustomizedCompleteMsg"="Congratulations!You just designed  the %@ of your five free customized workouts";
+"creationCustomizedCompleteMsg"="Congratulations!You just designed  the %@ of your five free personalized workouts";
 "editMessage"="Save changes and start workout?";
 "focusMessage"="Please select a focus";
+
+
+"monthlyDescription"="That is less than a meal at your local fastfood restaurant and considerably better for your body.You can cancel anytime!";
+"supersaver1Description"="PrePay for 12 months and get 3 months free.Workout Anytime Anywhere 15 months.";
+"supersaver2Description"="Prepay 18 months and get 6 months free. Workout Anytime Anywhere 24 months.";
+"supersaver3Description"="Prepay 24 months and get 12 months free.Workout Anytime Anywhere for 3 years";
+
+"creationCompleteMsgCustom"="Congratulations!You just designed your personalized workout";
+"creationCompleteMsgSelfMade"="Congratulations!You just designed your selfmade workout";
+"next"="Next";
+"back"="Back";
+"first"="first";
+"second"="second";
+"third"="third";
+"fourth"="fourth";
+"last"="last";
+"startWorkout"="Start Workout";
+
+"cannoteditMessage"="As a non-premium member you cannot edit workouts.           This funtionality is only available for users with full membership .                  Sign up today and get access to even more quick workouts and exercises .               And you can save an unlimited number of personalized and self-made workouts.";
+"trailMessage"="As a non-premium member you cannot save this workout.                          But you are welcome to try out this great feature.                         As a premium member you will have access to even more exercises and quick  workouts .                                       And you can save an unlimited amount of personalized and self-made workouts.";
+"trailEndMessage"="Sorry, but you have already used your trial Self-Made Workout. This funtionality is only available for users with full membership.                   Sign up today and get access to even more quick workouts and exercises.                     And you can save an unlimited number of personalized and self-made workouts.";
+
+"trail5EndMessage"="Sorry, you have already created your five trial personalized Workout. This funtionality is only available for users with full membership.                   Sign up today and get access to even more quick workouts and exercises.                     And you can save an unlimited number of personalized and self-made workouts.";

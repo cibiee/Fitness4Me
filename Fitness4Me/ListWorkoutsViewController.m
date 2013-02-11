@@ -10,7 +10,9 @@
 #import "NSString+Config.h"
 #import "Fitness4MeUtils.h"
 #import "MemberPromoViewController.h"
-
+@interface ListWorkoutsViewController ()
+@property (nonatomic,retain)NSString *duration;
+@end
 @implementation ListWorkoutsViewController
 
 @synthesize UserID,activityIndicator,signUpView,tableview,myQueue;
@@ -21,6 +23,7 @@
     if (self) {
         // Custom initialization
         myQueue=[[ASINetworkQueue alloc]init];
+        self.duration=[[NSString alloc]init];
     }
     return self;
 }
@@ -104,7 +107,7 @@
     
     [itemsarray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         NSDictionary* item = obj;
-        [workouts addObject:[[Workout alloc]initWithData:[item objectForKey:@"id"]:[item objectForKey:@"name"]:[item objectForKey:@"rate"]:[item objectForKey:@"image_android"]:[item objectForKey:@"image_name"]:[item objectForKey :@"islocked"]:[item objectForKey:@"description"]:[item objectForKey:@"description_big"]:nil:[item objectForKey:@"description_big"]:[item objectForKey :@"image_thumb"]:[item objectForKey:@"props"]]];
+        [workouts addObject:[[Workout alloc]initWithData:[item objectForKey:@"id"]:[item objectForKey:@"name"]:[item objectForKey:@"rate"]:[item objectForKey:@"image_android"]:[item objectForKey:@"image_name"]:[item objectForKey :@"islocked"]:[item objectForKey:@"description"]:[item objectForKey:@"description_big"]:nil:[item objectForKey:@"description_big"]:[item objectForKey :@"image_thumb"]:[item objectForKey:@"props"]:[item objectForKey:@"duration"]]];
     }];
     
 }
@@ -171,7 +174,7 @@
 
 -(void)terminateActivity
 {
-    [Fitness4MeUtils showAlert:NSLocalizedString(@"NoInternetMessage", nil)];
+    [Fitness4MeUtils showAlert:NSLocalizedStringWithDefaultValue(@"NoInternetMessage", nil,[Fitness4MeUtils getBundle], nil, nil)];
     [activityIndicator stopAnimating];
     [activityIndicator removeFromSuperview];
 }
@@ -222,11 +225,27 @@
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     [userinfo setObject:@"true" forKey:@"fullVideoDownloadlater"];
     [userinfo setObject:@"true" forKey:@"showDownload"];
-    [Fitness4MeUtils showAlert:NSLocalizedString(@"workoutsthroughsettingsmsg", nil)];
+    [Fitness4MeUtils showAlert:NSLocalizedStringWithDefaultValue(@"workoutsthroughsettingsmsg", nil,[Fitness4MeUtils getBundle], nil, nil)];
 
 }
 
-
+- (IBAction)onClickSkipToPurchase:(id)sender {
+    MembershipPurchaseViewController *viewController;
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+    {
+        
+        viewController = [[MembershipPurchaseViewController alloc]initWithNibName:@"MembershipPurchaseViewController" bundle:nil];
+        
+    }
+    else {
+        viewController = [[MembershipPurchaseViewController alloc]initWithNibName:@"MembershipPurchaseViewController" bundle:nil];
+    }
+    [viewController setNavigateTo:@"List"];
+    viewController.workout =nil;
+    [self.navigationController pushViewController:viewController animated:YES];
+    
+}
  
 
 -(IBAction)cancelDownloas:(id)sender
@@ -243,7 +262,7 @@
 }
 
 
-- (void)didfinishedWorkout:(int)countCompleted:(int)totalCount
+- (void)didfinishedWorkout:(int)countCompleted :(int)totalCount
 {
     [signupviews addSubview:lblCompleted];
     NSString *s= [NSString stringWithFormat:@"%i / %i",countCompleted,totalCount];
@@ -267,7 +286,7 @@
     workoutDB =[[WorkoutDB alloc]init];
     [workoutDB setUpDatabase];
     [workoutDB createDatabase];
-    [workoutDB getWorkouts];
+    [workoutDB getWorkoutsOfDuration:self.duration];
     
     if ([workoutDB.Workouts count]>0) {
         workouts = workoutDB.Workouts;
@@ -299,6 +318,9 @@
     tableview.separatorStyle =UITableViewStylePlain;
     [pool drain];
 }
+
+
+
 
 -(void)navigateToHome{
     
@@ -364,6 +386,7 @@
         [self startFullVideoDownload:fullvideoDownload];
         
     }
+    self.duration=@"10";
 }
 
 
@@ -704,6 +727,37 @@
     selectedWorkout=nil;
 }
 
+
+
+-(IBAction)onClickDurations:(id)sender
+{
+    
+    NSInteger restorationId = [sender  tag];
+    
+    if (restorationId ==10) {
+                
+       self.duration=@"10";
+    }
+    else if (restorationId  ==20) {
+        
+        self.duration=@"20"; 
+        
+    }
+    else if (restorationId  ==30) {
+        
+        self.duration=@"30";  
+    }
+    [activityIndicator setHidden:NO];
+    [activityIndicator startAnimating];
+    [NSThread detachNewThreadSelector:@selector(ListExcersices) toTarget:self withObject:nil];
+    
+}
+
+
+
+
+
+
 -(IBAction)unlockAll
 {
     
@@ -726,7 +780,7 @@
     }else {
         
         [offerView removeFromSuperview];
-        [Fitness4MeUtils showAlert:NSLocalizedString(@"NoInternetMessage", nil)];
+        [Fitness4MeUtils showAlert:NSLocalizedStringWithDefaultValue(@"NoInternetMessage", nil,[Fitness4MeUtils getBundle], nil, nil)];
     }
     
 }

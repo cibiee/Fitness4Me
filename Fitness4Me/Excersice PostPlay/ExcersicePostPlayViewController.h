@@ -10,10 +10,9 @@
 #import "Excersice.h"
 #import "Workout.h"
 #import "GADBannerView.h"
-#import <StoreKit/StoreKit.h>
 #import "WorkoutDB.h"
 
-@interface ExcersicePostPlayViewController : UIViewController<SKProductsRequestDelegate,SKPaymentTransactionObserver>
+@interface ExcersicePostPlayViewController : UIViewController
 
 {
     IBOutlet UIButton *listVideoButton;
@@ -35,9 +34,7 @@
     Workout * workout;
     GADBannerView *bannerView_;
     WorkoutDB *workoutDB;
-    SKProduct *proUpgradeProduct;
-    SKProductsRequest *productsRequest;
-    NSString *productIdentifier;
+   
     
 
 }

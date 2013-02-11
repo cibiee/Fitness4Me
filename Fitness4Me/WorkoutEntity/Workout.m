@@ -30,7 +30,7 @@
 ///
 //////
 
--(id)initWithData:(NSString*)workoutID:(NSString*)name:(NSString *)rate:(NSString*)imageUrl:(NSString*)imageName:(NSString*)isLocked:(NSString*)description:(NSString*)descriptionToDo:(NSString *)lockImageUrl:(NSString*)descriptionBig:(NSString *)thumbImageUrl:(NSString *)props
+-(id)initWithData:(NSString*)workoutID :(NSString*)name :(NSString *)rate :(NSString*)imageUrl :(NSString*)imageName :(NSString*)isLocked :(NSString*)description :(NSString*)descriptionToDo :(NSString *)lockImageUrl :(NSString*)descriptionBig :(NSString *)thumbImageUrl :(NSString *)props :(NSString *)durations
 
 {
     
@@ -45,11 +45,12 @@
     self.LockImageUrl=lockImageUrl;
     self.DescriptionBig=descriptionBig;
     self.ThumbImageUrl=thumbImageUrl;
-     self.Props=props;
+    self.Props=props;
+    self.Duration=durations;
         return self;
 }
 
--(id)initWithCustomData:(NSString*)workoutID:(NSString*)name:(NSString *)rate:(NSString*)imageUrl:(NSString*)imageName:(NSString*)isLocked:(NSString*)description:(NSString*)descriptionToDo:(NSString *)lockImageUrl:(NSString*)descriptionBig:(NSString *)thumbImageUrl:(NSString *)props:(NSString *)durations:(NSString *)focusarea 
+-(id)initWithCustomData:(NSString*)workoutID :(NSString*)name :(NSString *)rate :(NSString*)imageUrl :(NSString*)imageName :(NSString*)isLocked :(NSString*)description :(NSString*)descriptionToDo :(NSString *)lockImageUrl :(NSString*)descriptionBig :(NSString *)thumbImageUrl :(NSString *)props :(NSString *)durations :(NSString *)focusarea 
 
 {
     

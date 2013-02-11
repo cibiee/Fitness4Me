@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="8.00">
 	<data>
-		<int key="IBDocument.SystemTarget">1536</int>
+		<int key="IBDocument.SystemTarget">1552</int>
 		<string key="IBDocument.SystemVersion">12C60</string>
-		<string key="IBDocument.InterfaceBuilderVersion">2844</string>
+		<string key="IBDocument.InterfaceBuilderVersion">3084</string>
 		<string key="IBDocument.AppKitVersion">1187.34</string>
 		<string key="IBDocument.HIToolboxVersion">625.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">1930</string>
+			<string key="NS.object.0">2083</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>IBProxyObject</string>
@@ -125,7 +125,7 @@
 								<int key="IBUIContentMode">7</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<string key="IBUIText">Upgrade</string>
+								<string key="IBUIText">Member</string>
 								<object class="NSColor" key="IBUITextColor" id="713951369">
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MCAwIDAAA</bytes>
@@ -156,7 +156,7 @@
 								<int key="IBUIContentMode">7</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<string key="IBUIText">and get 30 new and challenging workouts for just 4.99 $</string>
+								<string key="IBUIText">Become premium member to unlock more workouts</string>
 								<reference key="IBUITextColor" ref="713951369"/>
 								<nil key="IBUIHighlightedColor"/>
 								<int key="IBUIBaselineAdjustment">0</int>
@@ -520,9 +520,9 @@
 							<reference ref="435727991"/>
 							<reference ref="484138120"/>
 							<reference ref="763939642"/>
-							<reference ref="758186850"/>
 							<reference ref="194338953"/>
 							<reference ref="165822564"/>
+							<reference ref="758186850"/>
 							<reference ref="1030843068"/>
 						</array>
 						<reference key="parent" ref="0"/>
@@ -591,11 +591,6 @@
 						<reference key="parent" ref="758186850"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">31</int>
-						<reference key="object" ref="458854786"/>
-						<reference key="parent" ref="758186850"/>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">32</int>
 						<reference key="object" ref="819941389"/>
 						<reference key="parent" ref="758186850"/>
@@ -628,6 +623,11 @@
 						<int key="objectID">43</int>
 						<reference key="object" ref="1030843068"/>
 						<reference key="parent" ref="191373211"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">31</int>
+						<reference key="object" ref="458854786"/>
+						<reference key="parent" ref="758186850"/>
 					</object>
 				</array>
 			</object>
@@ -680,6 +680,6 @@
 			<string key="small_logo_new.png">{125, 26}</string>
 			<string key="upgrade-landscape.jpg">{435, 260}</string>
 		</dictionary>
-		<string key="IBCocoaTouchPluginVersion">1930</string>
+		<string key="IBCocoaTouchPluginVersion">2083</string>
 	</data>
 </archive>

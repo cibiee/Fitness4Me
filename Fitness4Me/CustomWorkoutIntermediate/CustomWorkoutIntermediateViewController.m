@@ -67,13 +67,24 @@
     {
         [backButton setHidden:YES];
     }
-
+    
 }
 
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidAppear:NO];
+    [super viewWillAppear:NO];
+    UIButton *backutton = [UIButton buttonWithType:UIButtonTypeCustom];
+    backutton.frame = CGRectMake(0, 0, 58, 30);
+    [backutton setBackgroundImage:[UIImage imageNamed:@"back_btnBlack.png"] forState:UIControlStateNormal];
+    
+    [backutton setTitle:NSLocalizedStringWithDefaultValue(@"back", nil,[Fitness4MeUtils getBundle], nil, nil) forState:UIControlStateNormal];
+    [backutton.titleLabel setFont:[UIFont systemFontOfSize:14]];
+    [backutton.titleLabel setTextAlignment:UITextAlignmentRight];
+    [backutton addTarget:self action:@selector(onClickBack:) forControlEvents:UIControlEventTouchDown];
+    UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithCustomView:backutton];
+    self.navigationBar.leftBarButtonItem = backBtn;
+
     [letsgoButton setEnabled:NO];
     [letsgoButton setHidden:YES];
     if (self.navigateBack) {
@@ -133,7 +144,7 @@
         if ([[NSFileManager defaultManager] fileExistsAtPath:storeURL]){
             UIImage *im =[[UIImage alloc]initWithContentsOfFile:storeURL];
             excersiceImageHolder.image=im;
-                   }else{
+        }else{
             UIImage *im =[UIImage imageNamed:@"dummyimg.png"];
             excersiceImageHolder.image =im;
         }
@@ -171,23 +182,27 @@
         self.focusLabel.text=[self.workout Focus];
         [self.focusLabel sizeToFit];
     }else{
-       // propLabel.hidden =YES;
+        // propLabel.hidden =YES;
     }
     
-  //  NSString *duration=[[workout Duration] stringByAppendingString:@" Minutes"];
-   
+    //  NSString *duration=[[workout Duration] stringByAppendingString:@" Minutes"];
+    
     [self.durationLabel setText:[NSString stringWithFormat:@"%@",[Fitness4MeUtils displayTimeWithSecond:[[workout Duration]intValue]]]];
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     [userinfo setObject:workout.Name forKey:@"WorkoutName"];
     // add continue button
     backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     backButton.frame = CGRectMake(0, 0, 58, 30);
-    [backButton setBackgroundImage:[UIImage imageNamed:@"back_btn_with_text.png"] forState:UIControlStateNormal];
+    [backButton setBackgroundImage:[UIImage imageNamed:@"back_btnBlack.png"] forState:UIControlStateNormal];
+    [backButton setTitle:NSLocalizedStringWithDefaultValue(@"back", nil,[Fitness4MeUtils getBundle], nil, nil) forState:UIControlStateNormal];
+
+    [backButton setTitle:NSLocalizedStringWithDefaultValue(@"back", nil,[Fitness4MeUtils getBundle], nil, nil) forState:UIControlStateNormal];
     [backButton addTarget:self action:@selector(onClickBack:) forControlEvents:UIControlEventTouchDown];
     UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     self.navigationBar.leftBarButtonItem = backBtn;
-
+    
 }
+
 
 
 
@@ -215,11 +230,11 @@
         [excersices addObject: [[Excersice alloc]initWithData:workouts:[item objectForKey :@"poster_video"]:[item objectForKey:@"poster_name"]:[item objectForKey:@"poster_rep"]:[item objectForKey:@"main_video"]:[item objectForKey:@"video_name"]:[item objectForKey:@"main_rep"]:[item objectForKey:@"stop_video"]:[ item objectForKey:@"stop_name"]:[item objectForKey:@"stop_rep"]:[item objectForKey:@"otherside_poster"]:[item objectForKey:@"otherside_postername"]:[item objectForKey:@"otherside_posterrep"]:[item objectForKey:@"otherside_video"]:[item objectForKey:@"otherside_name"]:[item objectForKey:@"otherside_rep"]:[ item objectForKey:@"recovery_video"]:[ item objectForKey:@"recovery_video_name"]:[item objectForKey :@"next_video"]:[item objectForKey:@"next_name"]:[item objectForKey :@"next_rep"]:[item objectForKey:@"completed_video"]:[item objectForKey :@"completed_name"]:[ item valueForKey:@"completed_rep"]]];
     }];
     
-    NSLog(@"%i",[excersices count]);
+    
 }
 
 -(void)parseExcersiceDetails{
-
+    
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     self.workoutType =[userinfo stringForKey:@"workoutType"];
     
@@ -228,22 +243,21 @@
         NSString *requestString;
         int  selectedlang=[Fitness4MeUtils getApplicationLanguage] ;
         if ([self.workoutType isEqualToString:@"Custom"]) {
-             requestString =[NSString stringWithFormat:@"%@customvideos=yes&custom_workout_id=%@&user_level=%@&lang=%i&user_id=%@",urlPath,[self.workout WorkoutID],userlevel,selectedlang,userID];
+            requestString =[NSString stringWithFormat:@"%@customvideos=yes&custom_workout_id=%@&user_level=%@&lang=%i&user_id=%@",urlPath,[self.workout WorkoutID],userlevel,selectedlang,userID];
         }
         else
         {
-              requestString =[NSString stringWithFormat:@"%@listselfvideos=yes&self_workout_id=%@&user_level=%@&lang=%i&userid=%@",urlPath,[self.workout WorkoutID],userlevel,selectedlang,userID];
+            requestString =[NSString stringWithFormat:@"%@listselfvideos=yes&self_workout_id=%@&user_level=%@&lang=%i&userid=%@",urlPath,[self.workout WorkoutID],userlevel,selectedlang,userID];
         }
-               NSURL *url =[NSURL URLWithString:requestString];
+        NSURL *url =[NSURL URLWithString:requestString];
         ASIFormDataRequest   *request = [ASIFormDataRequest   requestWithURL:url];
         [request setTimeOutSeconds:15];
         [request startSynchronous];
         
         NSError *error = [request error];
         if (!error){
-           
+            
             NSString *response = [request responseString];
-            //NSLog(response);
             NSMutableArray *object = [response JSONValue];
             excersices = [[NSMutableArray alloc]init];
             [self getWorkoutVideoData:object];
@@ -260,7 +274,7 @@
         if([signUpView superview]!=nil){
             [signUpView removeFromSuperview];
         }
-      
+        
         [self getExcersices];
     }
 }
@@ -277,7 +291,7 @@
 -(void)navigateToHome
 {
     
-    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"fitness4.me" message:NSLocalizedString(@"resumeDownload", nil)                                                       delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"fitness4.me" message:NSLocalizedStringWithDefaultValue(@"resumeDownload", nil,[Fitness4MeUtils getBundle], nil, nil)                                                       delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
     [alertview show];
     
     
@@ -285,7 +299,7 @@
 
 -(void)ShowVideounAvaialableMessage
 {
-    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"fitness4.me" message:NSLocalizedString(@"VideoUnavailable", nil)
+    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"fitness4.me" message:NSLocalizedStringWithDefaultValue(@"VideoUnavailable", nil,[Fitness4MeUtils getBundle], nil, nil)
                                                        delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alertview show];
 }
@@ -300,22 +314,19 @@
 
 
 
-//method to  delete the records from  so that it delete all the existing records
-//related to a workout and insert new data
+
 -(void)deleteExcersices
 {
     [self initilaizeDatabase];
     NSString *workoutID =[self.workout WorkoutID];
     int workouts =[workoutID intValue];
-     if ([self.workoutType isEqualToString:@"Custom"])
-    [excersiceDB deleteCustomExcersice:workouts];
+    if ([self.workoutType isEqualToString:@"Custom"])
+        [excersiceDB deleteCustomExcersice:workouts];
     else
-    [excersiceDB deleteSelfMadeExcersice:workouts];
+        [excersiceDB deleteSelfMadeExcersice:workouts];
 }
 
-//
-// called for getting User Details
-//
+
 -(void)getUserDetails
 {
     UserDB *userDB =[[UserDB alloc]init];
@@ -326,18 +337,18 @@
 }
 
 
-//method to insert the records related to a workout
+
 -(void)insertExcersices
 {
     [self initilaizeDatabase];
     if ([self.workoutType isEqualToString:@"Custom"])
-    [excersiceDB insertCustomExcersices:excersices];
+        [excersiceDB insertCustomExcersices:excersices];
     else
-      [excersiceDB insertSelfMadeExcersices:excersices];
+        [excersiceDB insertSelfMadeExcersices:excersices];
 }
 
 
-//method to get Excersices related to a workout
+
 -(void)getExcersices
 {
     [self.view addSubview:signUpView];
@@ -348,9 +359,9 @@
     NSString *workoutID =[self.workout WorkoutID];
     int workouts =[workoutID intValue];
     if ([self.workoutType isEqualToString:@"Custom"])
-    [excersiceDB getCustomExcersices:workouts];
+        [excersiceDB getCustomExcersices:workouts];
     else
-      [excersiceDB getSelfMadeExcersices:workouts];
+        [excersiceDB getSelfMadeExcersices:workouts];
     
     if([excersiceDB.Excersices count]>0){
         excersicesList =excersiceDB.Excersices;
@@ -358,7 +369,7 @@
     [NSThread detachNewThreadSelector:@selector(startDownload) toTarget:self withObject:nil];
 }
 
-// Get the number of Unlocked excersices
+
 -(void)getUnlockedExcersices
 {
     
@@ -366,12 +377,10 @@
     [workoutDB setUpDatabase];
     [workoutDB createDatabase];
     [workoutDB selectWorkout];
-     count = [workoutDB temp];
-        
+    count = [workoutDB temp];
+    
 }
 
-
-//method to start Download videos related to a workout
 -(void)startDownload
 {
     
@@ -379,48 +388,47 @@
     NSString *videoPath=[NSString getVideoPath];
     
     [fileDownloadProgressView setHidden:YES];
-        
+    
     for (int i=0; i<[excersicesList count]; i++) {
-       
+        
         NSString *PosterUrl= [videoPath stringByAppendingString:[[excersicesList objectAtIndex: i] valueForKey: @"PosterUrl"]];
         NSString *PosterName= [[excersicesList objectAtIndex: i] valueForKey: @"PosterName"];
         [self downloadVideos:PosterUrl:PosterName];
-         
         
-
+        
+        
         NSString *videoUrl = [videoPath stringByAppendingString:[[excersicesList objectAtIndex: i] valueForKey: @"VideoUrl"]];
         NSString *Name =  [[excersicesList objectAtIndex: i] valueForKey: @"Name"];
         [self downloadVideos:videoUrl:Name];
         
-                
+        
         
         NSString *otherSidePoster= [videoPath stringByAppendingString:[[excersicesList objectAtIndex: i] valueForKey: @"OtherSidePoster"]];
         NSString *othersidePosterName= [[excersicesList objectAtIndex: i] valueForKey: @"OthersidePosterName"];
         if ([othersidePosterName length]>0) {
             [self downloadVideos:otherSidePoster:othersidePosterName];
         }
-         
+        
         
         NSString *othersideVideo= [videoPath stringByAppendingString:[[excersicesList objectAtIndex: i] valueForKey: @"OthersideVideo"]];
         NSString *othersideName= [[excersicesList objectAtIndex: i] valueForKey: @"OthersideName"];
         if ([othersideName length]>0) {
             [self downloadVideos:othersideVideo:othersideName];
         }
-         
+        
     }
-       
+    
 }
 
 
-//method to start Download videos related to a workout
 -(void)getCount
 {
     
-   [fileDownloadProgressView setHidden:YES];
+    [fileDownloadProgressView setHidden:YES];
     
     for (int i=0; i<[excersicesList count]; i++) {
         
-       
+        
         NSString *PosterName= [[excersicesList objectAtIndex: i] valueForKey: @"PosterName"];
         if ([PosterName length]>0) {
             [self getExcersiceCount];
@@ -449,22 +457,22 @@
 
 
 int stopz=0;
-//method to Download videos related to a workout
--(void)downloadVideos:(NSString *)url:(NSString*)name{
+
+-(void)downloadVideos:(NSString *)url :(NSString*)name{
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
     NSString *dataPath1 = [documentsDirectory stringByAppendingPathComponent:@"MyFolder"];
     NSString  *filepath =[dataPath1 stringByAppendingPathComponent :name];
-   
+    
     BOOL isReachable =[Fitness4MeUtils isReachable];
     
     if (isReachable){
         
         // Check If File Does Exists if not download the video
         if (![[NSFileManager defaultManager] fileExistsAtPath:filepath]){
-           
-            self.myQueue = [ASINetworkQueue queue]; 
+            
+            self.myQueue = [ASINetworkQueue queue];
             [self.myQueue setDelegate:self];
             [self.myQueue setShowAccurateProgress:YES];
             [self.myQueue setRequestDidFinishSelector:@selector(requestDidFinish:)];
@@ -476,11 +484,11 @@ int stopz=0;
             //[downloadrequest startAsynchronous];
             [myQueue addOperation:downloadrequest];
             [myQueue go];
-
+            
         }else {
-                        finished=finished+1;
+            finished=finished+1;
             [self didfinishedWorkout:finished :totalCount];
-            }
+        }
         
     }
     else {
@@ -511,18 +519,17 @@ int stopz=0;
 }
 
 
-- (void)didfinishedWorkout:(int)countCompleted:(int)totalcount
+#pragma mark -fitnessservercommunication  delegate methods
+- (void)didfinishedWorkout:(int)countCompleted :(int)totalcount
 {
-    
-        
     
     if (countCompleted>0) {
         [fileDownloadProgressView setHidden:NO];
     }
-
+    
     [signUpView addSubview:lblCompleted];
     NSString *s= [NSString stringWithFormat:@"%i / %i",countCompleted,totalcount];
-       
+    
     lblCompleted.text =s;
     if (countCompleted ==totalCount) {
         [UIView transitionWithView:signUpView duration:1
@@ -538,17 +545,12 @@ int stopz=0;
          }];
         
         
-    }
-    
-    else
-    {
+    }else{
         [letsgoButton setEnabled:NO];
         [letsgoButton setHidden:YES];
     }
-    
-      
     fileDownloadProgressView.progress = ((float)countCompleted / (float) totalCount);
-        
+    
 }
 
 
@@ -560,12 +562,12 @@ int stopz=0;
     finished=finished+1;
     [self didfinishedWorkout:finished:totalCount];
     
-        if (finished==totalCount) {
-          [myQueue setDelegate:nil];
-           [myQueue cancelAllOperations];
-
-          [self resetRequest];
-        }
+    if (finished==totalCount) {
+        [myQueue setDelegate:nil];
+        [myQueue cancelAllOperations];
+        
+        [self resetRequest];
+    }
     
 }
 
@@ -584,7 +586,7 @@ int stopz=0;
     [signUpView removeFromSuperview];
     [letsgoButton setEnabled:NO];
     [letsgoButton setHidden:YES];
-    }
+}
 
 
 -(void)requestFailed:(ASIHTTPRequest *)request
@@ -603,10 +605,15 @@ int stopz=0;
 
 -(void)NavigateToWorkoutList
 {
-   
- 
+    
+    
 }
-
+-(void)cancelDownload {
+    [myQueue setDelegate:nil];
+    [myQueue cancelAllOperations];
+    totalCount=0;
+    finished=0;
+}
 
 #pragma mark -Instance Methods
 
@@ -640,33 +647,31 @@ int stopz=0;
 -(IBAction)onClickBack:(id)sender{
     [self cancelDownload];
     [self.navigationController popViewControllerAnimated:YES];
-    
 }
-
--(void)cancelDownload {
-    
-//    
-//    for (ASIHTTPRequest *req in ASIHTTPRequest.sharedQueue.operations)
-//    {
-//        [req cancel];
-//        [req setDelegate:nil];
-//        [req clearDelegatesAndCancel];
-//    }
-    [myQueue setDelegate:nil];
-    [myQueue cancelAllOperations];
-    
-    totalCount=0;
-    
-    finished=0;
-    
-}
-
 
 -(IBAction)onClickOK:(id)sender{
-    
     [slownetView removeFromSuperview];
     [self NavigateToWorkoutList];
 }
+
+
+- (IBAction)onClickWorkouts:(id)sender {
+    
+    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+    self.workoutType =[userinfo stringForKey:@"workoutType"];
+    
+    CustomWorkoutsViewController *viewController =[[CustomWorkoutsViewController alloc]initWithNibName:@"CustomWorkoutsViewController" bundle:nil];
+    if ([self.workoutType isEqualToString:@"Custom"]){
+        [viewController setWorkoutType:@"Custom"];
+    }
+    else
+    {
+        [viewController setWorkoutType:@"SelfMade"];
+    }
+    [self.navigationController pushViewController:viewController animated:YES];
+}
+
+
 
 -(BOOL)shouldAutorotate {
     return NO;
@@ -674,8 +679,6 @@ int stopz=0;
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    // Return YES for supported orientations
-    //return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft);
     return NO;
 }
 

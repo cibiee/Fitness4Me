@@ -49,7 +49,7 @@
 
 #pragma mark ten minutes  section
 
--(void)getWorkouts{
+-(void)getWorkoutsOfDuration:(NSString*)durations{
     
     
      [self selectWorkout];
@@ -59,8 +59,8 @@
     if(!database.open){
       //  NSLog(@"Databse not Open");
     }
-    
-    FMResultSet *resultSet=[database executeQuery:@"Select * from Workout order by IsLocked ASC"];
+    NSString *query =[NSString stringWithFormat:@"Select * from Workout where Duration =%@ order by IsLocked ASC",durations];
+    FMResultSet *resultSet=[database executeQuery:query];
 
     while(resultSet.next)
     {
@@ -83,7 +83,8 @@
         NSString *descriptionBig = [resultSet stringForColumnIndex:8];
         NSString *thumbImageUrl =  [resultSet stringForColumnIndex:9];
         NSString *props =  [resultSet stringForColumnIndex:10];
-        Workout *workout = [[Workout alloc]initWithData:workoutID:name:rate:ImageUrl:Imagename:islocked:description:descriptionToDo:lockimageUrl:descriptionBig:thumbImageUrl:props];
+        NSString *duration=[resultSet stringForColumnIndex:11];
+        Workout *workout = [[Workout alloc]initWithData:workoutID:name:rate:ImageUrl:Imagename:islocked:description:descriptionToDo:lockimageUrl:descriptionBig:thumbImageUrl:props:duration];
         [Workouts addObject:workout];
         [workout release];
     }
@@ -99,9 +100,9 @@
     }
     
     [database beginTransaction];
-    [database executeUpdate:@"INSERT INTO Workout (WorkoutID,Name,Description,Rate,IsLocked,DescriptionToDo,ImageUrl,ImageName,DescriptionBig,ImageThumbUrl,Props) VALUES (?,?,?,?,?,?,?,?,?,?,?);",
+    [database executeUpdate:@"INSERT INTO Workout (WorkoutID,Name,Description,Rate,IsLocked,DescriptionToDo,ImageUrl,ImageName,DescriptionBig,ImageThumbUrl,Props,Duration) VALUES (?,?,?,?,?,?,?,?,?,?,?,?);",
 
-       workout.WorkoutID,workout.Name,workout.Description,workout.Rate,workout.IsLocked,workout.DescriptionToDo,workout.ImageUrl,workout.ImageName,workout.DescriptionBig,workout.ThumbImageUrl, workout.Props,nil];
+       workout.WorkoutID,workout.Name,workout.Description,workout.Rate,workout.IsLocked,workout.DescriptionToDo,workout.ImageUrl,workout.ImageName,workout.DescriptionBig,workout.ThumbImageUrl, workout.Props,workout.Duration,nil];
     [database commit];
     [database close];
 }
@@ -128,8 +129,9 @@
         workout.DescriptionBig = [[workouts objectAtIndex: count] valueForKey: @"DescriptionBig"];
         workout.ThumbImageUrl = [[workouts objectAtIndex: count] valueForKey: @"ThumbImageUrl"];
         workout.Props = [[workouts objectAtIndex: count] valueForKey: @"Props"];
+        workout.Duration = [[workouts objectAtIndex: count] valueForKey: @"Duration"];
         [self insertWorkout:workout];
-        [workout release];
+       
         
     }
     
@@ -138,7 +140,7 @@
 
 
 
--(void)updateWorkout:(NSString *)workoutID:(NSString *)isLocked{
+-(void)updateWorkout:(NSString *)workoutID :(NSString *)isLocked{
     database =[FMDatabase databaseWithPath:databasePath];
     if(!database.open){
        // NSLog(@"Databse not Open");
@@ -348,7 +350,7 @@
 }
 
 
--(void)updateCustomWorkout:(NSString *)workoutID:(NSString *)isLocked{
+-(void)updateCustomWorkout:(NSString *)workoutID :(NSString *)isLocked{
     database =[FMDatabase databaseWithPath:databasePath];
     if(!database.open){
         // NSLog(@"Databse not Open");
@@ -375,8 +377,8 @@
     if(!database.open){
           NSLog(@"Databse not Open");
     }
-     [database setLogsErrors:TRUE];
-     [database setTraceExecution:TRUE];
+    // [database setLogsErrors:TRUE];
+    // [database setTraceExecution:TRUE];
 
     
     [database beginTransaction];
@@ -499,7 +501,7 @@
 }
 
 
--(void)updateSelfMadeWorkout:(NSString *)workoutID:(NSString *)isLocked{
+-(void)updateSelfMadeWorkout:(NSString *)workoutID :(NSString *)isLocked{
     database =[FMDatabase databaseWithPath:databasePath];
     if(!database.open){
         // NSLog(@"Databse not Open");

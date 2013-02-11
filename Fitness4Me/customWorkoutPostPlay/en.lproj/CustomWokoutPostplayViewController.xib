@@ -102,14 +102,14 @@
 							<object class="IBUIButton" id="882415138">
 								<reference key="NSNextResponder" ref="388546352"/>
 								<int key="NSvFlags">290</int>
-								<string key="NSFrame">{{107, 209}, {269, 38}}</string>
+								<string key="NSFrame">{{106, 212}, {269, 38}}</string>
 								<reference key="NSSuperview" ref="388546352"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<int key="IBUIContentHorizontalAlignment">0</int>
 								<int key="IBUIContentVerticalAlignment">0</int>
-								<string key="IBUINormalTitle">Conitnue</string>
+								<string key="IBUINormalTitle">Continue</string>
 								<reference key="IBUIHighlightedTitleColor" ref="429517884"/>
 								<reference key="IBUINormalTitleColor" ref="429517884"/>
 								<reference key="IBUINormalTitleShadowColor" ref="703978516"/>
@@ -304,11 +304,11 @@
 						<array class="NSMutableArray" key="children">
 							<reference ref="268683593"/>
 							<reference ref="1032757314"/>
-							<reference ref="882415138"/>
 							<reference ref="628287857"/>
 							<reference ref="260293846"/>
 							<reference ref="717247366"/>
 							<reference ref="813006080"/>
+							<reference ref="882415138"/>
 						</array>
 						<reference key="parent" ref="191373211"/>
 					</object>

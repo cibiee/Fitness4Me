@@ -23,7 +23,7 @@
 +(BOOL)validEmail:(NSString*) emailString;
 +(void)getImageAtPath:(NSString *)imageUrl toDestination:( NSString *)storeURL setDelegate:(UIViewController*)viewController;
 +(void)showAlert:(NSString*)message;
-+(void)setViewMovedUp:(BOOL)movedUp:(UIView*)view :(BOOL)stayup:(int)offset;
++(void)setViewMovedUp:(BOOL)movedUp :(UIView*)view :(BOOL)stayup :(int)offset;
 +(void)showAdMob:(UIViewController*)viewController;
 +(void)showAdMobLandscape:(UIViewController*)viewController;
 +(void)showAdMobPrelogin:(UIViewController*)viewController;

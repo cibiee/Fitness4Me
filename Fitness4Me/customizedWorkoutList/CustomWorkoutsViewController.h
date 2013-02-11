@@ -30,6 +30,7 @@
     NSUserDefaults *userinfo;
     NSMutableArray *searchArray;
     NSString *canCreate;
+    NSString *canCreatetrial;
     FitnessServerCommunication *fitness;
     WorkoutDB *workoutDB;
     ASINetworkQueue  *myQueue;
@@ -37,15 +38,20 @@
     
     IBOutlet UIActivityIndicatorView *activityIndicator;
 }
+- (IBAction)onClickskipToPurchase:(id)sender;
 - (IBAction)onClickOk:(id)sender;
 - (IBAction)onClickClose:(id)sender;
 -(IBAction)onClickEdit:(id)sender;
 -(IBAction)onClickBack:(id)sender;
 -(IBAction)onClickAdd:(id)sender;
+-(IBAction)onClickContinueTrial:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UITextView *messageLabel;
 @property (weak, nonatomic) IBOutlet UIView *memberView;
 @property(strong,nonatomic)NSString *workoutType;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIButton *continueButton;
+@property (weak, nonatomic) IBOutlet UIButton *yesButton;
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigationBar;
 @property (nonatomic,retain) ASINetworkQueue *myQueue;
 

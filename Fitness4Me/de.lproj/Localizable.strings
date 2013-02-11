@@ -1,10 +1,10 @@
-/* 
-  Localizable.strings
-  Fitness4Me
-
-  Created by Ciby on 10/08/12.
-
-*/
+/*
+ Localizable.strings
+ Fitness4Me
+ 
+ Created by Ciby on 10/08/12.
+ 
+ */
 
 
 
@@ -32,7 +32,22 @@
 "beginnerLevelMessage" ="Bitte warte, bis Deine 5 kostenlose Workouts Anfänger Niveau  heruntergeladen sind. Je nach Qualität deiner Internetverbindung kann dies einige Minuten dauern";
 "experLevelMessage" ="Bitte warte, bis Deine 5 kostenlose Workouts Profi Niveau  heruntergeladen sind. Je nach Qualität deiner Internetverbindung kann dies einige Minuten dauern";
 
-/*------------------------------------------------------------------------------------------------------------------------*/
+
+"first"="erste";
+"second"="zweite";
+"third"="dritte";
+"fourth"="vierte";
+"last"="letzte";
+"startWorkout"="Workout starten";
+"back"="zurück";
+"next"="nächste";
+
+"creationCompleteMsgCustom"="Herzlichen Glückwunsch! Du hast gerade dein personalisiertes Workout entworfen .";
+"creationCompleteMsgSelfMade"="Herzlichen Glückwunsch! Du hast gerade dein selbst erstelltes Workout entworfen .";
+
+
+
+
 "NameNull" ="Please Provide a Name for the workout.";
 "numberOfExcersice"= "Anzahl der Übungen";
 "totalTime"= "Gesamtzeit";
@@ -44,58 +59,20 @@
 "creationCustomizedCompleteMsg"="Gratulation! Du hast gerade das %@ deiner fünf kostenlosen personalisierten Workouts erstellt.";
 "focusMessage"="Bitte wähle einen Schwerpunkt";
 
-/*3. Selbst erstellte Workouts
-4. Erstelle dein eigenes Workout in fünf einfachen Schritten.
-Wähle die Muskeln aus, die du trainieren möchtest
-Sag uns, welche Hilfsmittel dir zur Verfügung stehen
-Markiere die Übungen, die in deinem Workout enthalten sein sollen
-Du kannst jederzeit auf die Filterfunktion zurückgreifen, wenn du etwas ändern möchtest. Die bereits hinzugefügten Übungen gehen nicht verloren.
-Wähle die Reihenfolge deiner Übungen und füge die benötigten Erholungsphasen hinzu.
-Gib dem Workout einen Namen
-Und beginne zu trainieren! Nicht wieder zeigen.
-5. Welche Muskeln möchtest du trainieren?
-6. Welche Hilfsmittel stehen dir zur Verfügung?
-7. Wähle die Übungen für dein Workout*/
 
-/*11. Bewege dich nach links
-12. Bewege dich nach rechst
-13. Füge 30 Sekunden Pause ein
-14. Benenne das Workout
-15. Auf der Liste speichern
-16. Speichern und Workout starten
-17.
-Version2
-1. Wilkommen bei der fitness4.me Premium Version.
-2. Personalisierte Workouts
-3. Dauer
-4. Schwerpunkt
-5. Hilfsmittel
-6. Bearbeiten
-￼￼
-7. Neues Workout hinzufügen
-8. Bist du sicher, dass du dieses Workout löschen möchtest?
-9. Erhalte dein personalisiertes Workout in vier einfachen Schritten.
-10. Wieviel Zeit hast du?
-11. Wo liegt dein Schwerpunkt?
-12. Welche Hilfsmittel stehen dir zur Verfügung?
-13. Wie möchtest du dieses Workout benennen?
-14. Gratulation! Du hast gerade das (erste) deiner fünf kostenlosen personalisierten Workouts
-erstellt. Startklar?
-15. Speichern und Workout starten
-16. Dein persönliches Fitnessstudio,
-das dir überallhin folgt.
-Werde ein Fitness4.me Mitglied und erhalte unbegrenzt personalisierte Wokouts
-unbegrenzt selbst erstellte Wokouts
-Zugang zu unzähligen vordefinierten Workouts Zugang zu mehr als 500 Übungen
-Kostenlose App- und Cross-Platform-Synchronisation. Trainiere ÜBERALL und JEDERZEIT
-17. Erzähl mir mehr
-18. Nicht jetzt
-19. Eine Fitness4.me Mitgliedschaft ist alles was du brauchst, um in Form zu kommen oder fit zu
-bleiben. Du brauchst kein Fitnessstudio oder teures Equipment.
-Trainiere ÜBERALL und JEDERZEIT Melde dich jetzt an!
-20. Zeig mir das Fitness4.me Video
-21. Sag uns, wieviel Zeit du hast und was du trainieren möchtest.
-Und wir designen das perfekte Workout für dich.
-Wir wählen aus unserer riesigen Datenbank genau die Übungen aus, die zu deiner Zeitvorgabe und deinem Trainingsziel passen.
-22. Wieviel ist dir dein persönliches Fitnesstudio wert? Wieviel zahlst du beim nächstgelegenen Fitnessstudio? Wieviel Zeit und Benzin kostet es, um dort hinzugelangen? Wie oft gehst du dorthin?
-Wieviel würdest du monatlich ausgeben, damit alles was du brauchst Platz in deiner Hosentasche findet?*/
+
+
+"monthlyDescription"="Das ist weniger als der Preis f\u00fcr eine Mahlzeit im n\u00e4chsten Fast Food Restaurant und wesentlich besser f\u00fcr deinen K\u00f6rper.Du kannst jederzeit k\u00fcndigen!";
+"supersaver1Description"="Leiste eine Vorauszahlung f\u00fcr 12 Monate und erhalte 3 Monate kostenfrei!Dein Workout - \u00fcberall und jederzeit f\u00fcr 15 Monate.";
+"supersaver2Description"="Leiste eine Vorauszahlung f\u00fcr 18 Monate und erhalte 6 Monate kostenfrei!Dein Workout \u0096 \u00fcberall und jederzeit f\u00fcr 24 Monate";
+"supersaver3Description"="Leiste eine Vorauszahlung f\u00fcr 24 Monate und erhalte 12 Monate free.Dein Workout \u0096 \u00fcberall und jederzeit f\u00fcr 3 Jahre";
+
+
+
+"cannoteditMessage"="Als Nicht-Premium Mitglied kannst du dieses personalisierte Workout nicht bearbeiten .                         Aber du bist herzlich eingeladen, dieses tolle Feature auszuprobieren .                  Melde dich heute an und erhalte Zugang zu noch mehr Schnell- Workouts und Übungen .                            Und du kannst unbegrenzt viele personalisierte und selbst erstellte Workouts speichern .";
+
+"trailMessage"="Als Nicht-Premium Mitglied kannst du dieses selbst erstellte Workout nicht speichern.                                                                                  Aber du bist herzlich eingeladen, dieses tolle Feature auszuprobieren.                         Als Premium Mitglied erhälst du Zugang zu noch mehr Übungen und Schnell-Workouts .                                       Und du kannst unbegrenzt viele personalisierte und selbst erstellte Workouts speichern .";
+
+"trailEndMessage"="Entschuldigung, aber du hast dein selbst erstelltes Probe-Workout schon genutzt.     Diese Funktion ist nur für Benutzer mit einer vollen Mitgliedschaft verfügbar.                                          Melde dich heute an und erhalte Zugang zu noch mehr Schnell- Workouts und Übungen.                             Und du kannst unbegrenzt viele personalisierte und selbst erstellte Workouts speichern.";
+
+"trail5EndMessage"="Sorry, you have already created your five trial personalized Workout. This funtionality is only available for users with full membership.                   Sign up today and get access to even more quick workouts and exercises.                     And you can save an unlimited number of personalized and self-made workouts.";

@@ -11,6 +11,7 @@
 #import "ShareFitness4MeViewController.h"
 #import "CustomWorkoutsViewController.h"
 #import "ListWorkoutsViewController.h"
+#import "MembershipPurchaseViewController.h"
 @interface MembershipRateViewController : UIViewController
 {
     Workout * workout;
@@ -22,5 +23,5 @@
 @property (weak, nonatomic) IBOutlet UIButton *showMoreButton;
 - (IBAction)onClickYes:(id)sender;
 - (IBAction)onClickNotYet:(id)sender;
-
+- (IBAction)onClickSkipToPurchase:(id)sender;
 @end

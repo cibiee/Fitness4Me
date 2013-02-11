@@ -23,7 +23,7 @@
     IBOutlet UITextField *passwordTextField;
     IBOutlet UIActivityIndicatorView *activityIndicator;
 }
-
+@property (retain, nonatomic) IBOutlet UINavigationItem *navigationBar;
 -(IBAction)onNavigateToHomeView:(id)sender;
 -(IBAction)onclickLogin:(id)sender;
 -(IBAction)dismissKeyboardAway;

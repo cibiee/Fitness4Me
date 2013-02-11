@@ -22,7 +22,7 @@
     NSString *DescriptionBig;
     NSString *ThumbImageUrl;
     NSString *Props;
-   NSString *duration;
+    NSString *duration;
     NSString *focus;
     
 }
@@ -51,7 +51,7 @@
 // Function Description:  The constructor of the class.
 ///
 //////
--(id)initWithData:(NSString*)workoutID:(NSString*)name:(NSString *)rate:(NSString*)imageUrl:(NSString*)imageName:(NSString*)isLocked:(NSString*)description:(NSString*)descriptionToDo:(NSString *)lockImageUrl:(NSString*)descriptionBig:(NSString *)thumbImageUrl:(NSString *)Props;
+-(id)initWithData:(NSString*)workoutID :(NSString*)name :(NSString *)rate :(NSString*)imageUrl :(NSString*)imageName :(NSString*)isLocked :(NSString*)description :(NSString*)descriptionToDo :(NSString *)lockImageUrl :(NSString*)descriptionBig :(NSString *)thumbImageUrl :(NSString *)Props :(NSString *)durations ;
 
--(id)initWithCustomData:(NSString*)workoutID:(NSString*)name:(NSString *)rate:(NSString*)imageUrl:(NSString*)imageName:(NSString*)isLocked:(NSString*)description:(NSString*)descriptionToDo:(NSString *)lockImageUrl:(NSString*)descriptionBig:(NSString *)thumbImageUrl:(NSString *)props:(NSString *)durations:(NSString *)focusarea ;
+-(id)initWithCustomData:(NSString*)workoutID :(NSString*)name :(NSString *)rate :(NSString*)imageUrl :(NSString*)imageName :(NSString*)isLocked :(NSString*)description :(NSString*)descriptionToDo :(NSString *)lockImageUrl :(NSString*)descriptionBig :(NSString *)thumbImageUrl :(NSString *)props :(NSString *)durations :(NSString *)focusarea ;
 @end

@@ -34,6 +34,8 @@
     return self;
 }
 
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -41,7 +43,10 @@
     
     UIButton *backutton = [UIButton buttonWithType:UIButtonTypeCustom];
     backutton.frame = CGRectMake(0, 0, 58, 30);
-    [backutton setBackgroundImage:[UIImage imageNamed:@"back_btn_with_text.png"] forState:UIControlStateNormal];
+    [backutton setBackgroundImage:[UIImage imageNamed:@"back_btnBlack.png"] forState:UIControlStateNormal];
+    [backutton setTitle:NSLocalizedStringWithDefaultValue(@"back", nil,[Fitness4MeUtils getBundle], nil, nil) forState:UIControlStateNormal];
+    [backutton.titleLabel setFont:[UIFont systemFontOfSize:14]];
+    [backutton.titleLabel setTextAlignment:UITextAlignmentRight];
     [backutton addTarget:self action:@selector(onClickBack:) forControlEvents:UIControlEventTouchDown];
     UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithCustomView:backutton];
     self.navigationBar.leftBarButtonItem = backBtn;
@@ -259,9 +264,9 @@
 }
 
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyleforRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyleforRowAtIndexPath :(NSIndexPath *)indexPath
 {
-    printf("About to delete item %d\n", [indexPath row]);
+   // printf("About to delete item %d\n", [indexPath row]);
     //[tableTitles removeObjectAtIndex:[indexPath row]];
     [tableView reloadData];
 }
@@ -368,6 +373,7 @@
                  viewController.workout =[[Workout alloc]init];
                  viewController .workout =workout;
                 
+                [viewController setName:[workout Name]];
                  [viewController setTotalDuration:self.totalDuration];
                 [viewController setEquipments:[workout Props]];
                 [viewController setFocusList:[workout Focus]];
@@ -387,7 +393,7 @@
         CustomWorkoutAddViewController *viewController =[[CustomWorkoutAddViewController alloc]initWithNibName:@"CustomWorkoutAddViewController" bundle:nil];
         viewController.workout =[[Workout alloc]init];
         viewController .workout=workout;
-        NSLog(@"%@",workout.WorkoutID);
+       
         
         [self.navigationController pushViewController:viewController animated:YES];
     }
@@ -421,7 +427,7 @@
                 [excersice setName:@"recovery 30"];
                 [excersice setExcersiceID:@"rec30"];
                 [excersice setImageUrl:[item objectForKey:@"image"]];
-                [excersice setImageName:@"page.png"];
+                [excersice setImageName:@"page_30.png"];
             }
             else
             {
@@ -431,11 +437,11 @@
                 [excersice setName:@"recovery 15"];
                 [excersice setExcersiceID:@"rec15"];
                 [excersice setImageUrl:[item objectForKey:@"image"]];
-                [excersice setImageName:[item objectForKey:@"page.png"]];
+                [excersice setImageName:@"page_15.png"];
             }
             
         }
-        
+       
         [GlobalArray addObject:excersice];
     }];
     
@@ -545,7 +551,7 @@
 
 -(IBAction)onClickdelete:(id)sender{
     self.s= [sender tag];
-    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"fitness4.me" message:NSLocalizedString(@"deleteWorkout", nil)
+    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"fitness4.me" message:NSLocalizedStringWithDefaultValue(@"deleteWorkout", nil,[Fitness4MeUtils getBundle], nil, nil)
     delegate:self cancelButtonTitle:@"ok" otherButtonTitles:@"cancel", nil];
     [alertview show];
 }
@@ -568,7 +574,7 @@
                 [self.workouts removeObjectAtIndex:self.s];
                 [self prepareTableView];
                 [self.tableView reloadData];
-                [Fitness4MeUtils showAlert:NSLocalizedString(@"deletedSucessfully", nil)];
+                [Fitness4MeUtils showAlert:NSLocalizedStringWithDefaultValue(@"deletedSucessfully", nil,[Fitness4MeUtils getBundle], nil, nil)];
                 [fitness parseSelfMadeFitnessDetails:UserID trail:@"0" onCompletion:^(NSString *responseString){
                     
                 } onError:^(NSError *error) {
@@ -585,7 +591,7 @@
                 [self.workouts removeObjectAtIndex:self.s];
                 [self prepareTableView];
                 [self.tableView reloadData];
-                 [Fitness4MeUtils showAlert:NSLocalizedString(@"deletedSucessfully", nil)];
+                 [Fitness4MeUtils showAlert:NSLocalizedStringWithDefaultValue(@"deletedSucessfully", nil,[Fitness4MeUtils getBundle], nil, nil)];
                 [fitness parseCustomFitnessDetails:UserID onCompletion:^(NSString *responseString){
                     
                 } onError:^(NSError *error) {

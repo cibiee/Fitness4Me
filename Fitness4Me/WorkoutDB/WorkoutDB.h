@@ -33,13 +33,13 @@ FMDatabase * database;
 
 -(void)createDatabase;
 
--(void)getWorkouts;
+-(void)getWorkoutsOfDuration:(NSString*)durations;
 
 -(void)insertWorkout:(Workout *)workout;
 -(void)insertWorkouts:(NSMutableArray *)workouts;
 -(void)deleteWorkout;
 -(void)selectWorkout;
--(void)updateWorkout:(NSString *)workoutID:(NSString *)isLocked;
+-(void)updateWorkout:(NSString *)workoutID :(NSString *)isLocked;
 
 
 -(void)getCustomWorkouts;
@@ -48,7 +48,7 @@ FMDatabase * database;
 -(void)deleteCustomWorkout;
 -(Workout*)getCustomWorkoutByID:(NSString*)workoutID;
 //-(void)selectCustomWorkout;
--(void)updateCustomWorkout:(NSString *)workoutID:(NSString *)isLocked;
+-(void)updateCustomWorkout:(NSString *)workoutID :(NSString *)isLocked;
 
 -(void)getSelfMadeWorkouts;
 -(void)insertSelfMadeWorkout:(Workout *)workout;
@@ -56,7 +56,7 @@ FMDatabase * database;
 -(void)deleteSelfMadeWorkout;
 //-(Workout*)getSelfMadeWorkoutByID:(NSString*)workoutID;
 //-(void)selectCustomWorkout;
--(void)updateSelfMadeWorkout:(NSString *)workoutID:(NSString *)isLocked;
+-(void)updateSelfMadeWorkout:(NSString *)workoutID :(NSString *)isLocked;
 -(Workout*)getSelfMadeByID:(NSString*)workoutID;
 
 

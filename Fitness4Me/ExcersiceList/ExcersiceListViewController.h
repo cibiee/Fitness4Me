@@ -22,6 +22,7 @@
 @property (strong, nonatomic)ExcersiceList *focus;
 @property(strong,nonatomic) NSString *focusList;
 @property(strong,nonatomic) NSString *equipments;
+@property(strong,nonatomic) NSString *name;
 @property(strong,nonatomic)NSMutableArray *excersiceNewList;
 
 @property (weak, nonatomic) IBOutlet UILabel *durationLabel;
@@ -29,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigationBar;
 @property (weak, nonatomic) IBOutlet UITableView *excersiceListTableview;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
-
+@property (weak, nonatomic) IBOutlet UIView *screenLockView;
+@property (strong, nonatomic)Workout *workout;
 
 @end

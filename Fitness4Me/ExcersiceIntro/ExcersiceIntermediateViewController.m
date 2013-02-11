@@ -13,7 +13,7 @@
 
 @implementation ExcersiceIntermediateViewController
 
-@synthesize workout,userlevel,purchaseAll,userID,productIdentifier,myQueue;
+@synthesize workout,userlevel,purchaseAll,userID,myQueue;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,14 +33,17 @@
     [super viewDidLoad];
     
     [slownetView removeFromSuperview];
-     slownetView.layer .cornerRadius =14;
+    slownetView.layer .cornerRadius =14;
     
     [descriptionTextview.layer setBorderColor:[[UIColor greenColor]CGColor]];
     [descriptionTextview.layer setBorderWidth:2];
     
     stop =0;
     stopz=0;
+    
     [self InitializeView];
+   
+    
     urlPath =[NSString GetURlPath];
     self.view.transform = CGAffineTransformConcat(self.view.transform,
                                                   CGAffineTransformMakeRotation(M_PI_2));
@@ -54,6 +57,7 @@
     [signUpView removeFromSuperview];
     
     [self UnlockVideos];
+    
     [letsgoButton setEnabled:NO];
     [letsgoButton setHidden:YES];
 }
@@ -187,29 +191,6 @@
         excersiceImageHolder.image =im;
     }
 }
-//
-//  updated server with the video informations
-//
--(void)UpdateServer:(NSString *)purchaseStatus;
-{
-    FitnessServerCommunication *fitness= [FitnessServerCommunication sharedState];
-    [fitness UpdateServerWithPurchaseStatus:purchaseStatus hasMadefullpurchase:[self purchaseAll] workoutID:[self.workout WorkoutID] userID:userID activityIndicator:nil progressView:signUpView
-                               onCompletion:^(NSString *isExist) {
-                                   if ([isExist isEqualToString:@"success"]) {
-                                       if ([[self purchaseAll] isEqualToString:@"true"]){
-                                           NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
-                                           [userinfo setObject:@"true" forKey:@"hasMadeFullPurchase"];
-                                       }
-                                       
-                                   }
-                                   
-                                   [self performSelector:@selector(NavigateToWorkoutList) withObject:nil afterDelay:5];
-                                   
-                               }
-                                    onError:^(NSError *error) {
-                                        
-                                    }];
-}
 
 
 -(void)updateWorkout:(NSString *)purchaseStatus
@@ -286,7 +267,7 @@
 -(void)navigateToHome
 {
     
-    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"fitness4.me" message:NSLocalizedString(@"resumeDownload", nil)                                                       delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"fitness4.me" message:NSLocalizedStringWithDefaultValue(@"resumeDownload", nil,[Fitness4MeUtils getBundle], nil, nil)                                                       delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
     [alertview show];
     [alertview release];
     
@@ -295,7 +276,7 @@
 -(void)ShowVideounAvaialableMessage
 {
     
-    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"fitness4.me" message:NSLocalizedString(@"VideoUnavailable", nil)
+    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"fitness4.me" message:NSLocalizedStringWithDefaultValue(@"VideoUnavailable", nil,[Fitness4MeUtils getBundle], nil, nil)
                                                        delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alertview show];
     [alertview release];
@@ -359,18 +340,7 @@
     [NSThread detachNewThreadSelector:@selector(startDownload) toTarget:self withObject:nil];
 }
 
-// Get the number of Unlocked excersices
--(void)getUnlockedExcersices
-{
-    
-    workoutDB =[[WorkoutDB alloc]init];
-    [workoutDB setUpDatabase];
-    [workoutDB createDatabase];
-    [workoutDB selectWorkout];
-    count = [workoutDB temp];
-    [workoutDB release];
-    
-}
+
 
 
 //method to start Download videos related to a workout
@@ -457,7 +427,7 @@
 
 
 //method to Download videos related to a workout
--(void)downloadVideos:(NSString *)url:(NSString*)name{
+-(void)downloadVideos:(NSString *)url :(NSString*)name{
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
@@ -568,47 +538,10 @@
 // Method to either make a free purchase or in app purchase;
 -(void)UnlockVideos
 {
-    NSString *purchaseStatus;
     
-    [self getUnlockedExcersices];
+    [self startActivity];
+    [NSThread detachNewThreadSelector:@selector(parseExcersiceDetails) toTarget:self withObject:nil];
     
-    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
-    int unlockcount =[userinfo integerForKey:@"freePurchaseCount"];
-    
-    if (unlockcount >=2) {
-        if ([[workout IsLocked] isEqualToString :@"true"]) {
-            [self startActivity];
-            [NSThread detachNewThreadSelector:@selector(purchaseProUpgrade) toTarget:self withObject:nil];
-        }
-        else {
-            
-            [self startActivity];
-            [NSThread detachNewThreadSelector:@selector(parseExcersiceDetails) toTarget:self withObject:nil];
-        }
-    }
-    
-    else
-    {
-        NSString *workoutID= [userinfo stringForKey:@"WorkoutID"];
-        if ([[workout WorkoutID] isEqualToString:workoutID]) {
-            [self startActivity];
-            [NSThread detachNewThreadSelector:@selector(parseExcersiceDetails)
-                                     toTarget:self withObject:nil];
-        }
-        else
-        {
-            
-            NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
-            int unlockcount =[userinfo integerForKey:@"freePurchaseCount"];
-            [userinfo setInteger:unlockcount+1 forKey:@"freePurchaseCount"];
-            [userinfo setObject:[workout WorkoutID]   forKey:@"WorkoutID"];
-            purchaseStatus =@"false";
-            [self UpdateServer:purchaseStatus];
-            [self startActivity];
-            
-            
-        }
-    }
 }
 
 -(void)NavigateToWorkoutList
@@ -616,189 +549,6 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-
-#pragma   mark In App purchase methods
-#pragma   loadStore
-- (void)loadStore
-{
-    // restarts any purchases if they were interrupted last time the app was open
-    [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
-}
-
-
-//
-// call this before making a purchase
-//
-- (BOOL)canMakePurchases
-{
-    return [SKPaymentQueue canMakePayments];
-}
-
-
-//
-// kick off the upgrade transaction
-//
-- (void)purchaseProUpgrade
-{
-    [self loadStore];
-    [self canMakePurchases];
-    if ([[self purchaseAll] isEqualToString:@"true"]) {
-        productIdentifier = @"com.fitness4me.Fitness4Me.PurchaseAll";
-    }
-    else {
-        productIdentifier = [NSString stringWithFormat:@"com.fitness4me.Fitness4Me.%@",
-                             [workout WorkoutID]];
-    }
-   // SKProduct *validProduct=productIdentifier;
-    SKPayment *payment = [SKPayment paymentWithProductIdentifier:productIdentifier];
-    [[SKPaymentQueue defaultQueue] addPayment:payment];
-}
-
-
-//
-// saves a record of the transaction by storing the receipt to disk
-//
-- (void)recordTransaction:(SKPaymentTransaction *)transaction
-{
-    if ([transaction.payment.productIdentifier isEqualToString:productIdentifier])
-    {
-        // save the transaction receipt to disk
-        [[NSUserDefaults standardUserDefaults] setValue:transaction.transactionReceipt forKey:@"proUpgradeTransactionReceipt"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
-}
-
-//
-// enable pro features
-//
-- (void)provideContent:(NSString *)productId
-{
-    if ([productId isEqualToString:productIdentifier])
-    {
-        // enable the pro features
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isProUpgradePurchased" ];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
-}
-
-//
-// removes the transaction from the queue and posts a notification with the transaction result
-//
-- (void)finishTransaction:(SKPaymentTransaction *)transaction wasSuccessful:(BOOL)wasSuccessful
-{
-    // remove the transaction from the payment queue.
-    [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
-    NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:transaction, @"transaction" , nil];
-    if (wasSuccessful){
-        // update the server with the purchased details
-        [self UpdateServer:@"true"];
-        NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
-        [userinfo setObject:@"true" forKey:@"hasMadeFullPurchase"];
-        transaction =nil;
-        // send out a notification that we’ve finished the transaction
-        [[NSNotificationCenter defaultCenter] postNotificationName:kInAppPurchaseManagerTransactionSucceededNotification object:self userInfo:userInfo];
-        
-
-        [userinfo setObject:@"false" forKey:@"fullVideoDownloadlater"];
-    }
-    else{
-        // send out a notification for the failed transaction
-        [[NSNotificationCenter defaultCenter] postNotificationName:kInAppPurchaseManagerTransactionFailedNotification object:self userInfo:userInfo];
-    }
-}
-
-//
-// called when the transaction was successful
-//
-- (void)completeTransaction:(SKPaymentTransaction *)transaction
-{
-    [self recordTransaction:transaction];
-    [self provideContent:transaction.payment.productIdentifier];
-    [self finishTransaction:transaction wasSuccessful:YES];
-}
-
-//
-// called when a transaction has been restored and and successfully completed
-//
-- (void)restoreTransaction:(SKPaymentTransaction *)transaction
-{
-    [self recordTransaction:transaction.originalTransaction];
-    [self provideContent:transaction.originalTransaction.payment.productIdentifier];
-    [self finishTransaction:transaction wasSuccessful:YES];
-}
-
-//
-// called when a transaction has failed
-//
-- (void)failedTransaction:(SKPaymentTransaction *)transaction
-{
-    
-    letsgoButton.enabled=NO;
-    backButton.enabled=NO;
-    letsgoButton.hidden=YES;
-    NSLog(@"failedTransaction : %@", [transaction.error localizedDescription]);
-    if (transaction.error.code != SKErrorPaymentCancelled)
-    {
-        // error!
-        [self finishTransaction:transaction wasSuccessful:NO];
-        [signUpView removeFromSuperview];
-    }
-    else
-    {
-        // this is fine, the user just cancelled, so don’t notify
-        [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
-        if([signUpView superview]!=nil)
-            [signUpView removeFromSuperview];
-    }
-}
-
-#pragma mark -
-#pragma mark SKPaymentTransactionObserver methods
-
-//
-// called when the transaction status is updated
-//
-- (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions
-{
-    for (SKPaymentTransaction *transaction in transactions){
-        switch (transaction.transactionState)
-        {
-            case SKPaymentTransactionStatePurchased:
-                [self completeTransaction:transaction];
-                break;
-            case SKPaymentTransactionStateFailed:
-                [self failedTransaction:transaction];
-                break;
-            case SKPaymentTransactionStateRestored:
-                [self restoreTransaction:transaction];
-                break;
-            default:
-                break;
-        }
-    }
-}
-
-
--(void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response
-{
-    SKProduct *validProduct = nil;
-    
-    int counts = [response.products count];
-    
-    NSLog (@"count for in app purchases is %d", count);
-    
-    if (counts>0) {
-        
-        validProduct = [response.products objectAtIndex:0];
-        //SKPayment *payment = [SKPayment paymentWithProductIdentifier:@"appUpdate1"];
-        //
-       // [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
-       // [[SKPaymentQueue defaultQueue] addPayment:payment]; // <-- KA CHING!
-        
-       // NSLog (@"payment proccessed I think");
-    }
-    
-}
 
 
 #pragma mark -Instance Methods

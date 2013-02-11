@@ -68,7 +68,7 @@
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<int key="IBUIContentHorizontalAlignment">0</int>
 								<int key="IBUIContentVerticalAlignment">0</int>
-								<string key="IBUINormalTitle">Ein weiteres Workout durchführen</string>
+								<string key="IBUINormalTitle">Ein weiteres workout durchführen</string>
 								<object class="NSColor" key="IBUIHighlightedTitleColor" id="429517884">
 									<int key="NSColorSpace">3</int>
 									<bytes key="NSWhite">MQA</bytes>
@@ -102,14 +102,14 @@
 							<object class="IBUIButton" id="882415138">
 								<reference key="NSNextResponder" ref="388546352"/>
 								<int key="NSvFlags">290</int>
-								<string key="NSFrame">{{106, 212}, {269, 38}}</string>
+								<string key="NSFrame">{{105, 212}, {269, 38}}</string>
 								<reference key="NSSuperview" ref="388546352"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<int key="IBUIContentHorizontalAlignment">0</int>
 								<int key="IBUIContentVerticalAlignment">0</int>
-								<string key="IBUINormalTitle">Exit</string>
+								<string key="IBUINormalTitle">Fortfahren</string>
 								<reference key="IBUIHighlightedTitleColor" ref="429517884"/>
 								<reference key="IBUINormalTitleColor" ref="429517884"/>
 								<reference key="IBUINormalTitleShadowColor" ref="703978516"/>

@@ -18,7 +18,8 @@
 @property (retain,nonatomic)Workout *workout;
 @property (retain,nonatomic)NSString *navigateTo;
 @property(strong,nonatomic)NSString *workoutType;
+@property (weak, nonatomic) IBOutlet UIButton *showMoreButton;
 - (IBAction)onClickTellMeMore:(id)sender;
 - (IBAction)onClickNotYet:(id)sender;
-
+- (IBAction)onClickSkipToPurchase:(id)sender;
 @end

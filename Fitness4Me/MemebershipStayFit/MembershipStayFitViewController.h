@@ -11,6 +11,7 @@
 #import "ShareFitness4MeViewController.h"
 #import "CustomWorkoutsViewController.h"
 #import "ListWorkoutsViewController.h"
+#import "MembershipPurchaseViewController.h"
 @interface MembershipStayFitViewController : UIViewController
 
 @property(strong,nonatomic)NSString *workoutType;
@@ -21,5 +22,5 @@
 - (IBAction)onClickNotYet:(id)sender;
 - (IBAction)onClickShowYouTube:(id)sender;
 - (IBAction)onClickTellMeMore:(id)sender;
-
+- (IBAction)onClickSkipToPurchase:(id)sender;
 @end

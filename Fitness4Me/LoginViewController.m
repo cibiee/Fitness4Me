@@ -121,12 +121,12 @@
 {
     
     if([nameTextField.text length] ==0 ||[emailTextField.text length]==0 ||[usernameTextField.text length]==0 ||[passwordTextField.text length]==0){
-        [self showErrorWithMessage:NSLocalizedString(@"mandatory", nil)];
+        [self showErrorWithMessage:NSLocalizedStringWithDefaultValue(@"mandatory", nil,[Fitness4MeUtils getBundle], nil, nil)];
     
         return;
     }
     if (isValid ==NO||isValidUserName==NO  ) {
-        [self showErrorWithMessage:NSLocalizedString(@"validateemailUsername", nil)];
+        [self showErrorWithMessage:NSLocalizedStringWithDefaultValue(@"validateemailUsername", nil,[Fitness4MeUtils getBundle], nil, nil)];
         return;
     }
     
@@ -173,7 +173,7 @@
             [nameValidator setBackgroundColor:[UIColor clearColor]];
             [lastNameTextField becomeFirstResponder];
         }else{
-            [Fitness4MeUtils showAlert:NSLocalizedString(@"mandatory", nil)];
+            [Fitness4MeUtils showAlert:NSLocalizedStringWithDefaultValue(@"mandatory", nil,[Fitness4MeUtils getBundle], nil, nil)];
             [nameValidator setBackgroundColor:[UIColor redColor]];
             [nameTextField becomeFirstResponder];
         }
@@ -182,7 +182,7 @@
             [lastNameValidator setBackgroundColor:[UIColor clearColor]];
             [ emailTextField becomeFirstResponder];
         }else{
-            [Fitness4MeUtils showAlert:NSLocalizedString(@"mandatory", nil)];
+            [Fitness4MeUtils showAlert:NSLocalizedStringWithDefaultValue(@"mandatory", nil,[Fitness4MeUtils getBundle], nil, nil)];
             [lastNameValidator setBackgroundColor:[UIColor redColor]];
             [lastNameTextField becomeFirstResponder];
         }
@@ -192,7 +192,7 @@
             [ usernameTextField becomeFirstResponder];
             [emailValidator setBackgroundColor:[UIColor clearColor]];
         }else{
-            [Fitness4MeUtils showAlert:NSLocalizedString(@"mandatory", nil)];
+            [Fitness4MeUtils showAlert:NSLocalizedStringWithDefaultValue(@"mandatory", nil,[Fitness4MeUtils getBundle], nil, nil)];
             [emailValidator setBackgroundColor:[UIColor redColor]];
             [emailTextField becomeFirstResponder];
         }
@@ -202,7 +202,7 @@
             [usernameValidator setBackgroundColor:[UIColor clearColor]];
             [usernameValidImageView setHidden:YES];
         }else{
-            [Fitness4MeUtils showAlert:NSLocalizedString(@"mandatory", nil)];
+            [Fitness4MeUtils showAlert:NSLocalizedStringWithDefaultValue(@"mandatory", nil,[Fitness4MeUtils getBundle], nil, nil)];
             [usernameValidator setBackgroundColor:[UIColor redColor]];
             [usernameValidImageView setHidden:YES];
             [usernameTextField becomeFirstResponder];
@@ -212,7 +212,7 @@
             [textField resignFirstResponder];
             [passwordValidator setBackgroundColor:[UIColor clearColor]];
         }else{
-            [Fitness4MeUtils showAlert:NSLocalizedString(@"mandatory", nil)];
+            [Fitness4MeUtils showAlert:NSLocalizedStringWithDefaultValue(@"mandatory", nil,[Fitness4MeUtils getBundle], nil, nil)];
             [passwordValidator setBackgroundColor:[UIColor redColor]];
             [passwordTextField becomeFirstResponder];
         }
@@ -431,7 +431,7 @@
     isValidUserName=  [Fitness4MeUtils validUsername:usernameTextField.text];
     
     if (isValidUserName==NO){
-        [Fitness4MeUtils showAlert:NSLocalizedString(@"usernameAlphanumeric", nil)];
+        [Fitness4MeUtils showAlert:NSLocalizedStringWithDefaultValue(@"usernameAlphanumeric", nil,[Fitness4MeUtils getBundle], nil, nil)];
         [usernameValidator setBackgroundColor:[UIColor redColor]];
         [activityIndicator  stopAnimating];
         
@@ -462,7 +462,7 @@
     
     if (isValidPassword==NO) {
         
-        [Fitness4MeUtils showAlert:NSLocalizedString(@"PasswordAlphanumeric", nil)];
+        [Fitness4MeUtils showAlert:NSLocalizedStringWithDefaultValue(@"PasswordAlphanumeric", nil,[Fitness4MeUtils getBundle], nil, nil)];
         [passwordValidator setBackgroundColor:[UIColor redColor]];
     }
     else
@@ -481,7 +481,7 @@
     
     if (isValid==NO) {
         
-        [self terminateActivity:NSLocalizedString(@"invalidaMail", nil)];
+        [self terminateActivity:NSLocalizedStringWithDefaultValue(@"invalidaMail", nil,[Fitness4MeUtils getBundle], nil, nil)];
     }else {
         
         [emailValidator setBackgroundColor:[UIColor clearColor]];
@@ -489,7 +489,7 @@
         [fitness isValidEmail:emailTextField.text andActivityIndicator:emailactivityIndicator onCompletion:^(NSString *IsExist) {
             if ([IsExist isEqualToString:@"true"]) {
                 isValid =NO;
-                [self terminateActivity:NSLocalizedString(@"emailExists", nil)];
+                [self terminateActivity:NSLocalizedStringWithDefaultValue(@"emailExists", nil,[Fitness4MeUtils getBundle], nil, nil)];
                 [emailactivityIndicator stopAnimating];
             }
             else {
@@ -514,7 +514,7 @@
     [usernameValidImageView setHidden:NO];
     [self removeActivity];
     
-    [Fitness4MeUtils showAlert:NSLocalizedString(@"UsernameExits", nil)];}
+    [Fitness4MeUtils showAlert:NSLocalizedStringWithDefaultValue(@"UsernameExits", nil,[Fitness4MeUtils getBundle], nil, nil)];}
 
 
 -(void)setValiidstate

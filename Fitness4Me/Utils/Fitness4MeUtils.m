@@ -50,7 +50,7 @@
         return YES;
 }
 
-+(void)setViewMovedUp:(BOOL)movedUp:(UIView*)view :(BOOL)stayup:(int)offset
++(void)setViewMovedUp:(BOOL)movedUp :(UIView*)view :(BOOL)stayup :(int)offset
 {
     
         [UIView beginAnimations:nil context:NULL];
@@ -73,32 +73,40 @@
 }
 
 +(void)showAdMob:(UIViewController*)viewController{
+   
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     NSString *hasMadeFullPurchase= [userinfo valueForKey:@"hasMadeFullPurchase"];
+    NSString *isMember=[userinfo stringForKey:@"isMember"];
     GADBannerView *bannerView_;
-    if ([hasMadeFullPurchase isEqualToString:@"true"]) {
+    if ([isMember isEqualToString:@"true"]) {
         
     }
-    else {
-        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+    else
+    {
+        if ([hasMadeFullPurchase isEqualToString:@"true"]) {
             
-            bannerView_ = [[GADBannerView alloc]
-                           initWithFrame:CGRectMake(0,viewController.view.frame.size.height-50,
-                                                    viewController.view.frame.size.width,
-                                                    50)];
-
         }
         else {
-            bannerView_ = [[GADBannerView alloc]
-                           initWithFrame:CGRectMake(0,viewController.view.frame.size.height-90,
-                                                    viewController.view.frame.size.width,
-                                                    100)];
+            if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+                
+                bannerView_ = [[GADBannerView alloc]
+                               initWithFrame:CGRectMake(0,viewController.view.frame.size.height-50,
+                                                        viewController.view.frame.size.width,
+                                                        50)];
+                
+            }
+            else {
+                bannerView_ = [[GADBannerView alloc]
+                               initWithFrame:CGRectMake(0,viewController.view.frame.size.height-90,
+                                                        viewController.view.frame.size.width,
+                                                        100)];
+            }
+            bannerView_.adUnitID = @"a15074fa73f350f";
+            [bannerView_ setAutoresizingMask:UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin];
+            bannerView_.rootViewController = viewController;
+            [viewController.view addSubview:bannerView_];
+            [bannerView_ loadRequest:[GADRequest request]];
         }
-        bannerView_.adUnitID = @"a1506940e575b91";
-        [bannerView_ setAutoresizingMask:UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin];
-        bannerView_.rootViewController = viewController;
-        [viewController.view addSubview:bannerView_];
-        [bannerView_ loadRequest:[GADRequest request]];
     }
 }
 
@@ -123,7 +131,8 @@
                                                 100)];
         
     }
-    bannerView_.adUnitID = @"a1506940e575b91";
+    //a15074fa73f350f
+    bannerView_.adUnitID = @"a150efb4cbe1a0a";
     [bannerView_ setAutoresizingMask:UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin];
     bannerView_.rootViewController = viewController;
     [viewController.view addSubview:bannerView_];
@@ -158,7 +167,7 @@
                                                     90)];
             
         }
-        bannerView_.adUnitID = @"a1506940e575b91";
+        bannerView_.adUnitID = @"a150efb4cbe1a0a";
         [bannerView_ setAutoresizingMask:UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin];
         bannerView_.rootViewController = viewController;
         [viewController.view addSubview:bannerView_];
@@ -221,7 +230,6 @@
     NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
     return [documentsDirectory stringByAppendingPathComponent:@"MyFolder"];
     
-    
 }
 
 
@@ -269,7 +277,7 @@
     
     NSInteger remindSecond = seconds - (remindMinuteNew * 60) - (remindHours * 3600);
     
-    NSString *duration = [NSString stringWithFormat:@"%i:%i:%i",remindHours,remindMinuteNew,remindSecond];
+    NSString *duration = [NSString stringWithFormat:@"%02i:%02i:%02i",remindHours,remindMinuteNew,remindSecond];
     
     return duration;
     

@@ -35,22 +35,22 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
     [super didReceiveMemoryWarning];
 }
 
+
+
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    [self.backgroundLabel.layer setCornerRadius:10];
-    [self.totalVideoCountLabel setText:[NSString stringWithFormat:@"Number of excersices [%i]",self.videoCount]];
-    [self.durationLabel setText:[NSString stringWithFormat:@"Total Time [%@]",[Fitness4MeUtils displayTimeWithSecond:self.totalDuration]]];
-    
-    self.view.transform = CGAffineTransformConcat(self.view.transform, CGAffineTransformMakeRotation(M_PI_2));
-    [self.recoverySegmentControl setSelectedSegmentIndex:-1];
-    [self.moveSegmentControl setSelectedSegmentIndex:-1];
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:NO];
     // add continue button
     UIButton *backutton = [UIButton buttonWithType:UIButtonTypeCustom];
     backutton.frame = CGRectMake(0, 0, 58, 30);
-    [backutton setBackgroundImage:[UIImage imageNamed:@"back_btn_with_text.png"] forState:UIControlStateNormal];
+    [backutton setBackgroundImage:[UIImage imageNamed:@"back_btnBlack.png"] forState:UIControlStateNormal];
+   
+    [backutton setTitle:NSLocalizedStringWithDefaultValue(@"back",nil,[Fitness4MeUtils getBundle], nil, nil) forState:UIControlStateNormal];
+    [backutton.titleLabel setFont:[UIFont systemFontOfSize:14]];
+    [backutton.titleLabel setTextAlignment:UITextAlignmentRight];
     [backutton addTarget:self action:@selector(onClickBack:) forControlEvents:UIControlEventTouchDown];
     UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithCustomView:backutton];
     self.navigationBar.leftBarButtonItem = backBtn;
@@ -58,10 +58,28 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
     UIButton *nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
     nextButton.frame = CGRectMake(0, 0, 58, 30);
     [nextButton setBackgroundImage:[UIImage imageNamed:@"next_btn_with_text.png"] forState:UIControlStateNormal];
+    [nextButton setTitle:NSLocalizedStringWithDefaultValue(@"next",nil,[Fitness4MeUtils getBundle], nil, nil) forState:UIControlStateNormal];
+    [nextButton.titleLabel setFont:[UIFont systemFontOfSize:13]];
+    [nextButton.titleLabel setTextAlignment:UITextAlignmentRight];
     [nextButton addTarget:self action:@selector(onClickNext:) forControlEvents:UIControlEventTouchDown];
     UIBarButtonItem *nextBtn = [[UIBarButtonItem alloc] initWithCustomView:nextButton];
     self.navigationBar.rightBarButtonItem = nextBtn;
+
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
     
+    [self.backgroundLabel.layer setCornerRadius:10];
+    [self.totalVideoCountLabel setText:[NSString stringWithFormat:@"%@ %i",NSLocalizedStringWithDefaultValue(@"numberOfExcersice", nil,[Fitness4MeUtils getBundle], nil, nil),self.videoCount]];
+    [self.durationLabel setText:[NSString stringWithFormat:@"%@ %@",NSLocalizedStringWithDefaultValue(@"totalTime", nil,[Fitness4MeUtils getBundle], nil, nil),[Fitness4MeUtils displayTimeWithSecond:self.totalDuration]]];
+    
+
+    
+    self.view.transform = CGAffineTransformConcat(self.view.transform, CGAffineTransformMakeRotation(M_PI_2));
+    [self.recoverySegmentControl setSelectedSegmentIndex:-1];
+    [self.moveSegmentControl setSelectedSegmentIndex:-1];
+      
     if ([self.operationMode isEqualToString:@"Edit"]) {
         
     }
@@ -126,8 +144,11 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
     //views outside of the `if (view == nil) {...}` check otherwise
     //you'll get weird issues with carousel item content appearing
     //in the wrong place in the carousel
+    if ([[[GlobalArray objectAtIndex:index] name]length]>0) {
     label.text = [[GlobalArray objectAtIndex:index] name];
      ((UIImageView *)view).image = [self imageForRowAtIndexPath:[GlobalArray objectAtIndex:index] inIndexPath:index];
+    
+         }
     return view;
 }
 
@@ -142,6 +163,7 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
     if (![[NSFileManager defaultManager] fileExistsAtPath:dataPath]){
         [[NSFileManager defaultManager] createDirectoryAtPath:dataPath withIntermediateDirectories:YES attributes:nil error:nil];
     }
+   
     
     NSString  *storeURL= [dataPath stringByAppendingPathComponent :[excersiceList imageName]];
     UIImageView *excersiceImageHolder =[[UIImageView alloc]init];
@@ -159,6 +181,7 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
         [myQueue addOperation:[request copy]];
         [myQueue go];
     }else {
+        
         UIImage *im =[[UIImage alloc]initWithContentsOfFile:storeURL];
         excersiceImageHolder.image=im;
     }
@@ -198,25 +221,25 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
             case 0:
                 
                 list.name=@"recovery 15";
-                list.imageName= @"page.png";
+                list.imageName= @"page_15.png";
                 list.excersiceID=@"rec15";
                 list.time=@"15";
                 list.repetitions=@"1";
                 [GlobalArray insertObject:list atIndex: self.selectedIndex];
-                self.videoCount++;
-                self.totalDuration=self.totalDuration+ 900;
+               // self.videoCount++;
+                self.totalDuration=self.totalDuration+ 15;
                 
                 
                 break;
             case 1:
                 list.name=@"recovery 30";
-                list.imageName= @"page.png";
+                list.imageName= @"page_30.png";
                 list.excersiceID=@"rec30";
                 list.time=@"30";
                 list.repetitions=@"1";
                 [GlobalArray insertObject:list atIndex: self.selectedIndex];
-                self.videoCount++;
-                self.totalDuration=self.totalDuration+ 1800;
+                //self.videoCount++;
+                self.totalDuration=self.totalDuration+ 30;
                 break;
                 
             default:
@@ -225,7 +248,7 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
     }
     
     [self.carousel reloadData];
-    [self.durationLabel setText:[NSString stringWithFormat:@"Total Time [%@]",[Fitness4MeUtils displayTimeWithSecond:self.totalDuration]]];
+     [self.durationLabel setText:[NSString stringWithFormat:@"%@ %@",NSLocalizedStringWithDefaultValue(@"totalTime", nil,[Fitness4MeUtils getBundle], nil, nil),[Fitness4MeUtils displayTimeWithSecond:self.totalDuration]]];
     [self.recoverySegmentControl setSelectedSegmentIndex:-1];
     
 }
@@ -266,6 +289,8 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
 
 -(IBAction)onClickNext:(id)sender{
     
+     if (self.videoCount>0) {
+    
     NSString *str= [[NSString alloc]init];
     for (ExcersiceList *excerlist in GlobalArray) {
         
@@ -282,13 +307,21 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
     
     NameViewController *viewController =[[NameViewController alloc]initWithNibName:@"NameViewController" bundle:nil];
     viewController.workout= [[Workout alloc]init];
-    viewController.workout =self.workout;
+     viewController.workout =self.workout;
+    [viewController.workout setName:self.name];
+
     [viewController setCollectionString:str];
     [viewController setEquipments:self.equipments];
+    [viewController setName:self.name];
     
     [viewController setFocusList:self.focusList];
     
     [self.navigationController pushViewController:viewController animated:YES];
+     }
+    else
+    {
+    [self showAlertwithMsg:NSLocalizedStringWithDefaultValue(@"Please Select atleast one excersice", nil,[Fitness4MeUtils getBundle], nil, nil)];
+    }
 }
 
 
@@ -299,9 +332,8 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
             self.videoCount--;
             self.totalDuration=self.totalDuration- ([[[GlobalArray objectAtIndex:self.selectedIndex] time]intValue]*[[[GlobalArray objectAtIndex:self.selectedIndex] repetitions]intValue]);
             [GlobalArray removeObjectAtIndex:self.selectedIndex];
-            [self.totalVideoCountLabel setText:[NSString stringWithFormat:@"Number of excersices [%i]",self.videoCount]];
-            [self.durationLabel setText:[NSString stringWithFormat:@"Total Time [%@]",[Fitness4MeUtils displayTimeWithSecond:self.totalDuration]]];
-            
+            [self.totalVideoCountLabel setText:[NSString stringWithFormat:@"%@ %i",NSLocalizedStringWithDefaultValue(@"numberOfExcersice", nil,[Fitness4MeUtils getBundle], nil, nil),self.videoCount]];
+             [self.durationLabel setText:[NSString stringWithFormat:@"%@ %@",NSLocalizedStringWithDefaultValue(@"totalTime", nil,[Fitness4MeUtils getBundle], nil, nil),[Fitness4MeUtils displayTimeWithSecond:self.totalDuration]]];
             
             NSString *str= [[NSString alloc]init];
             for (ExcersiceList *excerlist in GlobalArray) {
@@ -322,7 +354,7 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
     
 }
 else{
-    [self showAlertwithMsg:NSLocalizedString(@"Please Select the workout to be removed", nil)];
+    [self showAlertwithMsg:NSLocalizedStringWithDefaultValue(@"Please Select the workout to be removed", nil,[Fitness4MeUtils getBundle], nil, nil)];
 }
 
 }
@@ -355,7 +387,7 @@ else{
 - (IBAction)addMoreExcersices:(id)sender {
     FocusViewController *viewController =[[FocusViewController alloc]initWithNibName:@"FocusViewController" bundle:nil];
     viewController.workout =[[Workout alloc]init];
-    viewController .workout=self.workout;
+        viewController .workout=self.workout;
     [self.navigationController pushViewController:viewController animated:YES];
     
 }

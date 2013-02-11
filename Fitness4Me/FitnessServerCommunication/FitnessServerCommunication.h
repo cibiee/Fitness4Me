@@ -125,14 +125,14 @@ typedef void (^errorBlock)(NSString *errorString);
 
 - (void)GetUserTypeWithactivityIndicator:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView onCompletion:(WMLoginResponseBlock)completionBlock onError:(NSError*)errorBlock;
 
-
+- (void)getMembershipRemainingDays:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView onCompletion:(WMLoginResponseBlock)completionBlock onError:(NSError*)errorBlock;
 /*--------------------------SELF MADE WORKOUT LIST SERVICES---------------------------------------------------*/
 
 
 
 #pragma mark-
--(void)downloadVideos:(NSString *)url:(NSString*)name;
--(void)getFreePurchaseCount:(int)UserID ;
+-(void)downloadVideos:(NSString *)url :(NSString*)name;
+-(void)getFreePurchaseCount :(int)UserID ;
 -(void)getAllvideos;
 -(void)cancelDownload;
 -(void)getFreevideos;
@@ -145,7 +145,7 @@ typedef void (^errorBlock)(NSString *errorString);
 - (void)didRecieveWorkoutList;
 @optional
 
-- (void)didfinishedWorkout:(int)countCompleted:(int)totalCount;
+- (void)didfinishedWorkout:(int)countCompleted :(int)totalCount;
 @optional
 - (void)didfinishedDownloadImage;
 @end

@@ -27,6 +27,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.showMoreButton.titleLabel setNumberOfLines:3];
+    self.showMoreButton.titleLabel.textAlignment = UITextAlignmentCenter;
+    self.showMoreButton.titleLabel.lineBreakMode = UILineBreakModeWordWrap;
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -105,4 +108,24 @@
 }
 
 
+- (IBAction)showVideoButton:(id)sender {
+}
+
+- (IBAction)onClickSkipToPurchase:(id)sender {
+    MembershipPurchaseViewController *viewController;
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+    {
+        
+        viewController = [[MembershipPurchaseViewController alloc]initWithNibName:@"MembershipPurchaseViewController" bundle:nil];
+        
+    }
+    else {
+        viewController = [[MembershipPurchaseViewController alloc]initWithNibName:@"MembershipPurchaseViewController" bundle:nil];
+    }
+    [viewController setNavigateTo:[self navigateTo]];
+    viewController.workout =self.workout;
+    [self.navigationController pushViewController:viewController animated:YES];
+    
+}
 @end

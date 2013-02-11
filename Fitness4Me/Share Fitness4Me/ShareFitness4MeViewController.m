@@ -39,7 +39,7 @@
     slownetView .backgroundColor =[UIColor clearColor];
     [self InitializeView];
     
-    static NSString* kApiKey = @"447892125262110";
+    static NSString* kApiKey = @"174856069322289";
     
     // Initialize Facebook
     permissions = [[NSArray alloc] initWithObjects:@"offline_access", @"read_stream", @"publish_stream", nil];
@@ -84,7 +84,7 @@
             excersiceImageHolder.image=im;
         }
     }
-            else{
+    else{
         storeURL= [dataPath stringByAppendingPathComponent :[self imageName]];
         if ([[NSFileManager defaultManager] fileExistsAtPath:storeURL]){
             UIImage *im =[[UIImage alloc]initWithContentsOfFile:storeURL];
@@ -104,24 +104,27 @@
     name=[userinfo stringForKey:@"Name"];
     NSString *workoutName=[userinfo stringForKey:@"WorkoutName"];
     NSString *workoutType=[userinfo stringForKey:@"workoutType"];
-    NSString *msg;
-    if ([Fitness4MeUtils getApplicationLanguage] ==1) {
-         msg =[NSString stringWithFormat:@" just completed the %@ fitness4.me ",workoutType];
-    }else{
-         msg =[NSString stringWithFormat:@" just completed the %@ fitness4.me ",workoutType];
+    NSString *msg = [[NSString alloc]init];
+    if ([workoutType isEqualToString:@"QuickWorkouts"]) {
+        msg =[NSString stringWithFormat:@" just completed the fitness4.me %@ ",workoutType];
     }
-   
+    else  if ([workoutType isEqualToString:@"Custom"]) {
+        msg =@" just completed fitness4.me personlized workout ";
+
+    }
+    else{
+        msg =[NSString stringWithFormat:@" just completed the fitness4.me %@ workout ",workoutType];
+    }
     msg =[name stringByAppendingString:msg];
     shareAppMessageTextView.text=[msg stringByAppendingString:workoutName];
     dataPath =[Fitness4MeUtils path];
-
     [self showImage];
 }
 
 
 -(void)navigateToHome
 {
-    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"fitness4.me" message:NSLocalizedString(@"ExitMsg", nil)
+    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"fitness4.me" message:NSLocalizedStringWithDefaultValue(@"ExitMsg", nil,[Fitness4MeUtils getBundle], nil, nil)
                                                        delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
     [alertview show];
     [UIView beginAnimations:@"" context:nil];
@@ -159,45 +162,45 @@
     BOOL isReachable =[Fitness4MeUtils isReachable];
     if (isReachable)
     {
-    if([TWTweetComposeViewController canSendTweet]) {
-        
-        TWTweetComposeViewController *controller = [[TWTweetComposeViewController alloc] init];
-        controller.view.transform = CGAffineTransformConcat( controller.view.transform, CGAffineTransformMakeRotation(M_PI_2));
-        NSString *pageLink = @"http://fitness4.Me/"; // replace it with yours
-        NSString *fbPagelink = @"https://www.facebook.com/fitness4.Me"; // replate it with yours
-        [controller setInitialText:shareAppMessageTextView.text];
-        [controller addImage: excersiceImageHolder.image];
-        [controller  addURL:[NSURL URLWithString:pageLink]];
-        [controller  addURL:[NSURL URLWithString:fbPagelink]];
-        [controller setEditing:NO];
-        controller.completionHandler = ^(TWTweetComposeViewControllerResult result)  {
+        if([TWTweetComposeViewController canSendTweet]) {
             
-            [self dismissModalViewControllerAnimated:YES];
+            TWTweetComposeViewController *controller = [[TWTweetComposeViewController alloc] init];
+            controller.view.transform = CGAffineTransformConcat( controller.view.transform, CGAffineTransformMakeRotation(M_PI_2));
+            NSString *pageLink = @"http://fitness4.Me/"; // replace it with yours
+            NSString *fbPagelink = @"https://www.facebook.com/fitness4.Me"; // replate it with yours
+            [controller setInitialText:shareAppMessageTextView.text];
+            [controller addImage: excersiceImageHolder.image];
+            [controller  addURL:[NSURL URLWithString:pageLink]];
+            [controller  addURL:[NSURL URLWithString:fbPagelink]];
+            [controller setEditing:NO];
+            controller.completionHandler = ^(TWTweetComposeViewControllerResult result)  {
+                
+                [self dismissModalViewControllerAnimated:YES];
+                
+                switch (result) {
+                    case TWTweetComposeViewControllerResultCancelled:
+                        break;
+                        
+                    case TWTweetComposeViewControllerResultDone:
+                        break;
+                        
+                    default:
+                        break;
+                }
+            };
             
-            switch (result) {
-                case TWTweetComposeViewControllerResultCancelled:
-                    break;
-                    
-                case TWTweetComposeViewControllerResultDone:
-                    break;
-                    
-                default:
-                    break;
-            }
-        };
+            
+            [self presentModalViewController:controller animated:YES];
+            [controller setEditing:NO];
+            [controller release];
+        }
         
-        
-        [self presentModalViewController:controller animated:YES];
-        [controller setEditing:NO];
-        [controller release];
-    }
-    
-    else{
-        [Fitness4MeUtils showAlert:NSLocalizedString(@"twitterConfigure", nil)];
-    }
+        else{
+            [Fitness4MeUtils showAlert:NSLocalizedStringWithDefaultValue(@"twitterConfigure", nil,[Fitness4MeUtils getBundle], nil, nil)];
+        }
     }
     else {
-        [Fitness4MeUtils showAlert:NSLocalizedString(@"NoInternetMessage", nil)];
+        [Fitness4MeUtils showAlert:NSLocalizedStringWithDefaultValue(@"NoInternetMessage", nil,[Fitness4MeUtils getBundle], nil, nil)];
         
     }
 }
@@ -209,7 +212,7 @@
         [self login];
     }
     else {
-        [Fitness4MeUtils showAlert:NSLocalizedString(@"NoInternetMessage", nil)];
+        [Fitness4MeUtils showAlert:NSLocalizedStringWithDefaultValue(@"NoInternetMessage", nil,[Fitness4MeUtils getBundle], nil, nil)];
     }
 }
 
@@ -284,7 +287,7 @@
 
 - (void)fbDidLogout {
     
-
+    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults removeObjectForKey:@"FBAccessTokenKey"];
     [defaults removeObjectForKey:@"FBExpirationDateKey"];
