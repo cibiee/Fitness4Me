@@ -15,7 +15,7 @@
 #define kOFFSET_FOR_KEYBOARD 80;
 +(void)showAlert:(NSString*)message{
     
-    UIAlertView *alertview = [[UIAlertView alloc]initWithTitle:@"fitness4.me" message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    UIAlertView *alertview = [[UIAlertView alloc]initWithTitle:@"Fitness4.me" message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alertview show];
     
 }

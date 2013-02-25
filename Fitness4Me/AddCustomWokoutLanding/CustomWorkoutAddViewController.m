@@ -36,7 +36,7 @@
 {
     [super viewWillAppear:NO];
     // add continue button
-    [self setTabbarItems];
+    //[self setTabbarItems];
 }
 
 - (void)setTabbarItems
@@ -47,6 +47,7 @@
     [backutton setTitle:NSLocalizedStringWithDefaultValue(@"back", nil,[Fitness4MeUtils getBundle], nil, nil) forState:UIControlStateNormal];
     [backutton.titleLabel setFont:[UIFont systemFontOfSize:14]];
     [backutton.titleLabel setTextAlignment:UITextAlignmentRight];
+    
     [backutton addTarget:self action:@selector(onClickBack:) forControlEvents:UIControlEventTouchDown];
     UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithCustomView:backutton];
     self.navigationBar.leftBarButtonItem = backBtn;
@@ -54,9 +55,11 @@
     UIButton *nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
     nextButton.frame = CGRectMake(0, 0, 58, 30);
     [nextButton setBackgroundImage:[UIImage imageNamed:@"next_btn_with_text.png"] forState:UIControlStateNormal];
+    
     [nextButton setTitle:NSLocalizedStringWithDefaultValue(@"next", nil,[Fitness4MeUtils getBundle], nil, nil) forState:UIControlStateNormal];
     [nextButton.titleLabel setFont:[UIFont systemFontOfSize:13]];
     [nextButton.titleLabel setTextAlignment:UITextAlignmentRight];
+    
     [nextButton addTarget:self action:@selector(onClickNext:) forControlEvents:UIControlEventTouchDown];
     UIBarButtonItem *nextBtn = [[UIBarButtonItem alloc] initWithCustomView:nextButton];
     self.navigationBar.rightBarButtonItem = nextBtn;
@@ -169,7 +172,20 @@
     }
     
     [workouts setDuration:self.duration];
-    FocusViewController *viewController =[[FocusViewController alloc]initWithNibName:@"FocusViewController" bundle:nil];
+    
+    FocusViewController *viewController;
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+    {
+        
+        viewController = [[FocusViewController alloc]initWithNibName:@"FocusViewController" bundle:nil];
+        
+    }
+    else {
+        viewController = [[FocusViewController alloc]initWithNibName:@"FocusViewController_iPad" bundle:nil];
+    }
+    
+ 
     viewController.workout =[[Workout alloc]init];
     viewController .workout=workouts;
     [self.navigationController pushViewController:viewController animated:YES];

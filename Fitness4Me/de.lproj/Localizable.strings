@@ -14,7 +14,7 @@
 "emailExists"       ="E-Mail Adresse existiert bereits";
 "UsernameExits"     ="Benutzername existiert bereits";
 "ProfileUpdated"    ="Profile Updated";
-"ExitMsg"           ="Möchtest du wirklich fitness4.me verlassen?";
+"ExitMsg"           ="Möchtest du wirklich Fitness4.me verlassen?";
 "fullDownloadMsg"   ="Lade alle übrigen Workouts herunter. Dies könnte mehrere Minuten dauern, abhängig von Deiner Internet Verbindung.";
 "usernameAlphanumeric"="Benutzername muss alphanumerischen";
 "PasswordAlphanumeric"="Password muss alphanumerischen";
@@ -42,11 +42,17 @@
 "back"="zurück";
 "next"="nächste";
 
-"creationCompleteMsgCustom"="Herzlichen Glückwunsch! Du hast gerade dein personalisiertes Workout entworfen .";
-"creationCompleteMsgSelfMade"="Herzlichen Glückwunsch! Du hast gerade dein selbst erstelltes Workout entworfen .";
+"focus"="Muskeln :";
+"duration"="Daeur :";
 
 
+"creationCompleteMsgCustom"="Gratulation!                     Du hast gerade dein personalisiertes Workout entworfen.";
+"creationCompleteMsgSelfMade"="Gratulation!                          Du hast gerade dein selbst erstelltes Workout entworfen.";
 
+"Notenoughworkouts"="Nicht genug Workouts zum Entfernen";
+"Selectworkout"="Bitte wähle die zu entfernenden Workouts";
+"Selectoneexcersice" ="Bitte wähle mindestens eine Übung aus";
+"cancelPayment"= "Du hast den Fitness4.me Mitgliedschaftsplan gekündigt";
 
 "NameNull" ="Please Provide a Name for the workout.";
 "numberOfExcersice"= "Anzahl der Übungen";
@@ -56,7 +62,7 @@
 "deleteWorkout"="Bist du sicher, dass du dieses Workout löschen möchtest?";
 "deletedSucessfully"="Deleted Sucessfully";
 "editMessage"="Speichern und Workout starten?";
-"creationCustomizedCompleteMsg"="Gratulation! Du hast gerade das %@ deiner fünf kostenlosen personalisierten Workouts erstellt.";
+"creationCustomizedCompleteMsg"="Gratulation!                       Du hast gerade das %@ deiner fünf kostenlosen personalisierten Workouts erstellt.";
 "focusMessage"="Bitte wähle einen Schwerpunkt";
 
 
@@ -73,6 +79,6 @@
 
 "trailMessage"="Als Nicht-Premium Mitglied kannst du dieses selbst erstellte Workout nicht speichern.                                                                                  Aber du bist herzlich eingeladen, dieses tolle Feature auszuprobieren.                         Als Premium Mitglied erhälst du Zugang zu noch mehr Übungen und Schnell-Workouts .                                       Und du kannst unbegrenzt viele personalisierte und selbst erstellte Workouts speichern .";
 
-"trailEndMessage"="Entschuldigung, aber du hast dein selbst erstelltes Probe-Workout schon genutzt.     Diese Funktion ist nur für Benutzer mit einer vollen Mitgliedschaft verfügbar.                                          Melde dich heute an und erhalte Zugang zu noch mehr Schnell- Workouts und Übungen.                             Und du kannst unbegrenzt viele personalisierte und selbst erstellte Workouts speichern.";
+"trailEndMessage"="Entschuldigung, aber du hast dein selbst erstelltes Probe-Workout schon genutzt.     Diese Funktion ist nur für Benutzer mit einer vollen Mitgliedschaft verfügbar.                                          Melde dich heute an und erhalte Zugang zu noch mehr Schnell-Workouts und Übungen.                             Und du kannst unbegrenzt viele personalisierte und selbst erstellte Workouts speichern.";
 
-"trail5EndMessage"="Sorry, you have already created your five trial personalized Workout. This funtionality is only available for users with full membership.                   Sign up today and get access to even more quick workouts and exercises.                     And you can save an unlimited number of personalized and self-made workouts.";
+"trail5EndMessage"="Entschuldigung, du hast bereits deine fünf personalisierten Probe- Workouts erstellt.     Diese Funktion steht nur Benutzern mit voller Mitgliedschaft zur Verfügung.                                        Melde dich heute an und erhalte Zugang zu noch mehr Schnell-Workouts und Übungen.                              Und du kannst unbegrenzt viele personalisierte und selbst erstellte Workouts speichern.";

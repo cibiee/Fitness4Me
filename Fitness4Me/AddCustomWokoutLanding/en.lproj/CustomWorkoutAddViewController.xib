@@ -56,7 +56,7 @@
 					</object>
 					<object class="IBUIPickerView" id="585863566">
 						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">266</int>
+						<int key="NSvFlags">290</int>
 						<string key="NSFrame">{{44, 183}, {230, 216}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -66,7 +66,7 @@
 					<object class="IBUILabel" id="803388597">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{27, 57}, {250, 104}}</string>
+						<string key="NSFrame">{{35, 57}, {250, 104}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSNextKeyView" ref="56318200"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>

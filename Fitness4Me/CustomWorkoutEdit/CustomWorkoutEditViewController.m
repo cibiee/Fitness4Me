@@ -28,6 +28,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:[Fitness4MeUtils getBundle]];
     if (self) {
+         myQueue=[[ASINetworkQueue alloc]init];
         // Custom initialization
         GlobalArray =[[NSMutableArray alloc]init];
     }
@@ -44,9 +45,10 @@
     UIButton *backutton = [UIButton buttonWithType:UIButtonTypeCustom];
     backutton.frame = CGRectMake(0, 0, 58, 30);
     [backutton setBackgroundImage:[UIImage imageNamed:@"back_btnBlack.png"] forState:UIControlStateNormal];
-    [backutton setTitle:NSLocalizedStringWithDefaultValue(@"back", nil,[Fitness4MeUtils getBundle], nil, nil) forState:UIControlStateNormal];
+    
     [backutton.titleLabel setFont:[UIFont systemFontOfSize:14]];
     [backutton.titleLabel setTextAlignment:UITextAlignmentRight];
+     [backutton setTitle:NSLocalizedStringWithDefaultValue(@"back", nil,[Fitness4MeUtils getBundle], nil, nil) forState:UIControlStateNormal];
     [backutton addTarget:self action:@selector(onClickBack:) forControlEvents:UIControlEventTouchDown];
     UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithCustomView:backutton];
     self.navigationBar.leftBarButtonItem = backBtn;
@@ -316,7 +318,19 @@
 
 
 -(IBAction)onClickAdd:(id)sender{
-    CustomWorkoutAddViewController *viewController =[[CustomWorkoutAddViewController alloc]initWithNibName:@"CustomWorkoutAddViewController" bundle:nil];
+    CustomWorkoutAddViewController *viewController;
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+    {
+        
+        viewController = [[CustomWorkoutAddViewController alloc]initWithNibName:@"CustomWorkoutAddViewController" bundle:nil];
+        
+    }
+    else {
+        viewController = [[CustomWorkoutAddViewController alloc]initWithNibName:@"CustomWorkoutAddViewController_iPad" bundle:nil];
+    }
+    
+
     [self.navigationController pushViewController:viewController animated:YES];
 }
 
@@ -367,12 +381,12 @@
                 if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
                     viewController =[[CarouselViewDemoViewController alloc]initWithNibName:@"CarouselViewDemoViewController" bundle:nil];
                 }else {
-                    viewController =[[CarouselViewDemoViewController alloc]initWithNibName:@"CarouselViewDemoViewController" bundle:nil];
+                    viewController =[[CarouselViewDemoViewController alloc]initWithNibName:@"CarouselViewDemoViewController_iPad" bundle:nil];
                 }
                  [viewController setOperationMode:@"Edit"];
                  viewController.workout =[[Workout alloc]init];
                  viewController .workout =workout;
-                
+                 
                 [viewController setName:[workout Name]];
                  [viewController setTotalDuration:self.totalDuration];
                 [viewController setEquipments:[workout Props]];
@@ -390,7 +404,13 @@
     }
     else
     {
-        CustomWorkoutAddViewController *viewController =[[CustomWorkoutAddViewController alloc]initWithNibName:@"CustomWorkoutAddViewController" bundle:nil];
+        CustomWorkoutAddViewController *viewController;
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+            viewController =[[CustomWorkoutAddViewController alloc]initWithNibName:@"CustomWorkoutAddViewController" bundle:nil];
+        }else {
+            viewController =[[CustomWorkoutAddViewController alloc]initWithNibName:@"CustomWorkoutAddViewController_iPad" bundle:nil];
+        }
+        
         viewController.workout =[[Workout alloc]init];
         viewController .workout=workout;
        
@@ -551,7 +571,7 @@
 
 -(IBAction)onClickdelete:(id)sender{
     self.s= [sender tag];
-    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"fitness4.me" message:NSLocalizedStringWithDefaultValue(@"deleteWorkout", nil,[Fitness4MeUtils getBundle], nil, nil)
+    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"Fitness4.me" message:NSLocalizedStringWithDefaultValue(@"deleteWorkout", nil,[Fitness4MeUtils getBundle], nil, nil)
     delegate:self cancelButtonTitle:@"ok" otherButtonTitles:@"cancel", nil];
     [alertview show];
 }

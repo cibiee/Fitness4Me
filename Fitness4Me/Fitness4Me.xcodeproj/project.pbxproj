@@ -22,7 +22,6 @@
 		0B3E7B231603065E0053A47B /* home_nav_bot.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B3E7B251603065E0053A47B /* home_nav_bot.png */; };
 		0B3E7B27160306840053A47B /* yes_no_btn_hover.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B3E7B29160306840053A47B /* yes_no_btn_hover.png */; };
 		0B3E7B2B1603068F0053A47B /* yes_no_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B3E7B2D1603068F0053A47B /* yes_no_btn.png */; };
-		0B3E7B2F160306980053A47B /* upgrade.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0B3E7B31160306980053A47B /* upgrade.jpg */; };
 		0B3E7B32160306A30053A47B /* upgrade-landscape.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0B3E7B34160306A30053A47B /* upgrade-landscape.jpg */; };
 		0B3E7B37160306C50053A47B /* congrats.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B3E7B39160306C50053A47B /* congrats.png */; };
 		0B3E7B3B160306CF0053A47B /* app_bg_portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B3E7B3D160306CF0053A47B /* app_bg_portrait.png */; };
@@ -199,23 +198,18 @@
 		F5085412167844ED0094F314 /* MembershipRateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5085414167844ED0094F314 /* MembershipRateViewController.xib */; };
 		F508541B167856A90094F314 /* ExcersiceListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5085419167856A90094F314 /* ExcersiceListViewController.m */; };
 		F50854201678628F0094F314 /* ExcersiceList.m in Sources */ = {isa = PBXBuildFile; fileRef = F508541F1678628F0094F314 /* ExcersiceList.m */; };
-		F5085422167885C50094F314 /* back_btn_with_text.png in Resources */ = {isa = PBXBuildFile; fileRef = F5085424167885C50094F314 /* back_btn_with_text.png */; };
-		F5085425167885C90094F314 /* back_btnBlack.png in Resources */ = {isa = PBXBuildFile; fileRef = F5085427167885C90094F314 /* back_btnBlack.png */; };
 		F5085428167885CD0094F314 /* button_full_width.png in Resources */ = {isa = PBXBuildFile; fileRef = F508542A167885CD0094F314 /* button_full_width.png */; };
 		F508542B167885D10094F314 /* logo_new_side.png in Resources */ = {isa = PBXBuildFile; fileRef = F508542D167885D10094F314 /* logo_new_side.png */; };
-		F508542E167885D40094F314 /* back_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = F5085430167885D40094F314 /* back_btn.png */; };
 		F5085434167885DC0094F314 /* package_box.png in Resources */ = {isa = PBXBuildFile; fileRef = F5085436167885DC0094F314 /* package_box.png */; };
 		F5085437167885DF0094F314 /* list_box.png in Resources */ = {isa = PBXBuildFile; fileRef = F5085439167885DF0094F314 /* list_box.png */; };
 		F5085440167885E90094F314 /* edit_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = F5085442167885E90094F314 /* edit_btn.png */; };
 		F5085443167885EC0094F314 /* edit_btn_with_text.png in Resources */ = {isa = PBXBuildFile; fileRef = F5085445167885EC0094F314 /* edit_btn_with_text.png */; };
 		F5085446167885F00094F314 /* continue_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = F5085448167885F00094F314 /* continue_btn.png */; };
 		F5085449167885F30094F314 /* continue_btn_with_text.png in Resources */ = {isa = PBXBuildFile; fileRef = F508544B167885F30094F314 /* continue_btn_with_text.png */; };
-		F508544F167886030094F314 /* button_half_width.png in Resources */ = {isa = PBXBuildFile; fileRef = F5085451167886030094F314 /* button_half_width.png */; };
 		F5085461167898610094F314 /* CustomExcersiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5085460167898610094F314 /* CustomExcersiceCell.m */; };
 		F509271B1695829100072169 /* MembershipStayFitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F50927191695829100072169 /* MembershipStayFitViewController.m */; };
 		F50927211695863600072169 /* MembershipPersonliazedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F509271F1695863600072169 /* MembershipPersonliazedViewController.m */; };
 		F5092727169588F300072169 /* MembershipCreateOwnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5092725169588F300072169 /* MembershipCreateOwnViewController.m */; };
-		F509272D16958EFA00072169 /* MembershipPersonalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F509272B16958EFA00072169 /* MembershipPersonalViewController.m */; };
 		F5092732169599BC00072169 /* MemverRateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5092730169599BB00072169 /* MemverRateViewController.m */; };
 		F50B060D16819EC7006FC355 /* CarouselViewDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F50B060A16819BA3006FC355 /* CarouselViewDemoViewController.m */; };
 		F512B7581639093500B922E1 /* TermsOfUse_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F512B75A1639093500B922E1 /* TermsOfUse_iPad.xib */; };
@@ -226,9 +220,11 @@
 		F51404BB1664783C00B0B386 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F51404B71664783C00B0B386 /* icon@2x.png */; };
 		F519902516661801009C3F3D /* CustomWorkoutsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F519902316661800009C3F3D /* CustomWorkoutsViewController.m */; };
 		F519902716661A0E009C3F3D /* CustomWorkoutsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F519902916661A0E009C3F3D /* CustomWorkoutsViewController.xib */; };
+		F519E57116CA61F100EE6F65 /* CarouselViewDemoViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F519E55D16CA535900EE6F65 /* CarouselViewDemoViewController_iPad.xib */; };
 		F5253890163FABC8004F9195 /* ExcersiceIntermediateViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5253892163FABC8004F9195 /* ExcersiceIntermediateViewController_iPad.xib */; };
 		F5253896163FB15B004F9195 /* ExcersicePlayViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5253898163FB15B004F9195 /* ExcersicePlayViewController_iPad.xib */; };
 		F52538A9163FC23E004F9195 /* AboutViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F52538AB163FC23E004F9195 /* AboutViewController_iPad.xib */; };
+		F52F079816CA6757006BE6EF /* CustomInitialLaunchViewControllerView_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F52F079616CA6757006BE6EF /* CustomInitialLaunchViewControllerView_iPad.xib */; };
 		F52FEA0F164790D70002E199 /* ThanksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F52FEA0E164790D70002E199 /* ThanksViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F52FEA12164793930002E199 /* TermsOfUse.m in Sources */ = {isa = PBXBuildFile; fileRef = F52FEA11164793930002E199 /* TermsOfUse.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F52FEA15164793B10002E199 /* ShareFitness4MeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F52FEA14164793B10002E199 /* ShareFitness4MeViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -243,20 +239,14 @@
 		F533059F1654E78900D0BCBE /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = F533059A1654E78900D0BCBE /* FMDatabase.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F53305A01654E78900D0BCBE /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F533059C1654E78900D0BCBE /* FMDatabaseAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F53305A11654E78900D0BCBE /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = F533059E1654E78900D0BCBE /* FMResultSet.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		F533DCCF16A7FC7000A4B72E /* MembershipPersonalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F533DCD116A7FC7000A4B72E /* MembershipPersonalViewController.xib */; };
 		F5341CCE161323C8001E9075 /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F5341CCD161323C8001E9075 /* libGoogleAdMobAds.a */; };
-		F535C87A165E47FD0032BDE4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F535C879165E47FD0032BDE4 /* Default-568h@2x.png */; };
-		F538D0E016C4B81D00F16627 /* btn_320_480.png in Resources */ = {isa = PBXBuildFile; fileRef = F538D0DB16C4B81D00F16627 /* btn_320_480.png */; };
-		F538D0E116C4B81D00F16627 /* btn_480_640.png in Resources */ = {isa = PBXBuildFile; fileRef = F538D0DC16C4B81D00F16627 /* btn_480_640.png */; };
-		F538D0E216C4B81D00F16627 /* btn_480_800.png in Resources */ = {isa = PBXBuildFile; fileRef = F538D0DD16C4B81D00F16627 /* btn_480_800.png */; };
-		F538D0E316C4B81D00F16627 /* btn_720_960.png in Resources */ = {isa = PBXBuildFile; fileRef = F538D0DE16C4B81D00F16627 /* btn_720_960.png */; };
-		F538D0E416C4B81D00F16627 /* btn_720_1280.png in Resources */ = {isa = PBXBuildFile; fileRef = F538D0DF16C4B81D00F16627 /* btn_720_1280.png */; };
 		F538D0F116C4C47100F16627 /* green_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = F538D0F316C4C47100F16627 /* green_btn.png */; };
 		F538D0F516C4C47A00F16627 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = F538D0F716C4C47A00F16627 /* bg.png */; };
 		F538D0FB16C4C50D00F16627 /* refresh_green.png in Resources */ = {isa = PBXBuildFile; fileRef = F538D0F916C4C50D00F16627 /* refresh_green.png */; };
 		F5393E7D16662EA400D24D7F /* CustomCellContentController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5393E7C16662EA400D24D7F /* CustomCellContentController.m */; };
 		F5393E7F16662FE200D24D7F /* CustomCellContentController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5393E7E16662FE200D24D7F /* CustomCellContentController.xib */; };
 		F539BE3616C8C0CE00A66915 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F539BE3416C8C0CE00A66915 /* Localizable.strings */; };
+		F539BE3916C9222500A66915 /* back_btnBlack.png in Resources */ = {isa = PBXBuildFile; fileRef = F5085427167885C90094F314 /* back_btnBlack.png */; };
 		F53E75421648FC9600970DB9 /* breathing.png in Resources */ = {isa = PBXBuildFile; fileRef = F53E753B1648FC9600970DB9 /* breathing.png */; };
 		F53E75431648FC9600970DB9 /* drinks.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F53E753C1648FC9600970DB9 /* drinks.jpg */; };
 		F53E75441648FC9600970DB9 /* floor.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F53E753D1648FC9600970DB9 /* floor.jpg */; };
@@ -278,10 +268,22 @@
 		F5427FF716537D4F00520F0C /* NSString+Config.m in Sources */ = {isa = PBXBuildFile; fileRef = F5427FF616537D4F00520F0C /* NSString+Config.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F5428001165399F600520F0C /* RatingViewControllerView_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5428003165399F600520F0C /* RatingViewControllerView_iPad.xib */; };
 		F54ED67116C2367C00F1129D /* membershipbg_new.png in Resources */ = {isa = PBXBuildFile; fileRef = F54ED67316C2367C00F1129D /* membershipbg_new.png */; };
+		F553218516D5E41200BEAC21 /* refresh_green.png in Resources */ = {isa = PBXBuildFile; fileRef = F553218716D5E41200BEAC21 /* refresh_green.png */; };
 		F554A25E1679BBCA00E268B5 /* icon_edit.png in Resources */ = {isa = PBXBuildFile; fileRef = F554A25C1679B60F00E268B5 /* icon_edit.png */; };
 		F554A25F1679BBCA00E268B5 /* smiley.png in Resources */ = {isa = PBXBuildFile; fileRef = F554A2581679B60700E268B5 /* smiley.png */; };
 		F554A2601679BBCA00E268B5 /* smiley_disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = F554A2541679B5FF00E268B5 /* smiley_disabled.png */; };
 		F554A2611679BBCA00E268B5 /* icon_delete.png in Resources */ = {isa = PBXBuildFile; fileRef = F554A2501679B5F500E268B5 /* icon_delete.png */; };
+		F554E90516CB56020039CA4B /* CustomWorkoutsViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F554E90716CB56020039CA4B /* CustomWorkoutsViewController_iPad.xib */; };
+		F554E91316CB5A940039CA4B /* FocusViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F554E91116CB5A940039CA4B /* FocusViewController_iPad.xib */; };
+		F554E91716CB5AF00039CA4B /* CustomWorkoutAddViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F554E91516CB5AF00039CA4B /* CustomWorkoutAddViewController_iPad.xib */; };
+		F554E91B16CB5BDA0039CA4B /* CustomWokoutPostplayViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F554E91916CB5BDA0039CA4B /* CustomWokoutPostplayViewController_iPad.xib */; };
+		F554E91F16CB5C2F0039CA4B /* EquipmentViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F554E91D16CB5C2F0039CA4B /* EquipmentViewController_iPad.xib */; };
+		F554E92716CB5D240039CA4B /* CustomWorkoutEditViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F554E92516CB5D240039CA4B /* CustomWorkoutEditViewController_iPad.xib */; };
+		F554E92F16CB5D610039CA4B /* NameViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F554E92D16CB5D610039CA4B /* NameViewController_iPad.xib */; };
+		F554E94316CB651E0039CA4B /* ExcersiceListViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F554E94116CB651E0039CA4B /* ExcersiceListViewController_iPad.xib */; };
+		F554E94B16CB6AB60039CA4B /* WorkoutCreationCompletedViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F554E94916CB6AB60039CA4B /* WorkoutCreationCompletedViewController_iPad.xib */; };
+		F554E94F16CB6ACB0039CA4B /* CustomWorkoutIntermediateViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F554E94D16CB6ACB0039CA4B /* CustomWorkoutIntermediateViewController_iPad.xib */; };
+		F554E95616CB8D250039CA4B /* CustomizedWorkoutPlayViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F554E95416CB8D250039CA4B /* CustomizedWorkoutPlayViewController_iPad.xib */; };
 		F557B012165F9DD30033759A /* next_exercise_de.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F557AFE8165F2F6F0033759A /* next_exercise_de.mp4 */; };
 		F55B76F916AD1B180034F967 /* CustomInitialLaunchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F55B76FB16AD1B180034F967 /* CustomInitialLaunchViewController.xib */; };
 		F55B770216AD444D0034F967 /* upgrade.png in Resources */ = {isa = PBXBuildFile; fileRef = F55B770016AD444D0034F967 /* upgrade.png */; };
@@ -296,6 +298,15 @@
 		F56075FA16A00A85001C770B /* MembershipPurchaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F56075FC16A00A85001C770B /* MembershipPurchaseViewController.xib */; };
 		F56075FE16A00A95001C770B /* MembershipPersonliazedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F560760016A00A95001C770B /* MembershipPersonliazedViewController.xib */; };
 		F560760216A00AB0001C770B /* MembershipStayFitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F560760416A00AB0001C770B /* MembershipStayFitViewController.xib */; };
+		F567009C16CCBC4D001DF5C7 /* MembershipPurchaseViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F567009A16CCBC4D001DF5C7 /* MembershipPurchaseViewController_iPad.xib */; };
+		F56700A016CCBCBD001DF5C7 /* MemberPromoViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F567009E16CCBCBD001DF5C7 /* MemberPromoViewController_iPad.xib */; };
+		F56700A416CCBE10001DF5C7 /* MemverRateViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F56700A216CCBE10001DF5C7 /* MemverRateViewController_iPad.xib */; };
+		F56700A816CCC0B9001DF5C7 /* MembershipCreateOwnViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F56700A616CCC0B9001DF5C7 /* MembershipCreateOwnViewController_iPad.xib */; };
+		F56700B016CCC40C001DF5C7 /* MembershipRateViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F56700AE16CCC40C001DF5C7 /* MembershipRateViewController_iPad.xib */; };
+		F56700BA16CCC58E001DF5C7 /* MembershipPersonliazedViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F56700B816CCC58E001DF5C7 /* MembershipPersonliazedViewController_iPad.xib */; };
+		F56700BE16CCC5B5001DF5C7 /* MembershipStayFitViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F56700BC16CCC5B5001DF5C7 /* MembershipStayFitViewController_iPad.xib */; };
+		F567010216CCE74A001DF5C7 /* bg_Ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = F567010416CCE74A001DF5C7 /* bg_Ipad.png */; };
+		F567011E16CD010B001DF5C7 /* btn_new.png in Resources */ = {isa = PBXBuildFile; fileRef = F567012016CD010B001DF5C7 /* btn_new.png */; };
 		F577DBB8166DD71F0064B920 /* FocusDB.m in Sources */ = {isa = PBXBuildFile; fileRef = F577DBB7166DD71F0064B920 /* FocusDB.m */; };
 		F577DBBD166DD8060064B920 /* Focus.m in Sources */ = {isa = PBXBuildFile; fileRef = F577DBBC166DD8060064B920 /* Focus.m */; };
 		F577DBF1166E06750064B920 /* FocusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F577DBED166E05C80064B920 /* FocusViewController.m */; };
@@ -346,6 +357,13 @@
 		F5AF28301670906C00C18C34 /* CustomizedWorkoutPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5AF282E1670906C00C18C34 /* CustomizedWorkoutPlayViewController.m */; };
 		F5AF28321670938900C18C34 /* CustomizedWorkoutPlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5AF28341670938900C18C34 /* CustomizedWorkoutPlayViewController.xib */; };
 		F5AF283B16709BDF00C18C34 /* CustomWorkoutEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5AF283916709BDF00C18C34 /* CustomWorkoutEditViewController.m */; };
+		F5B27E5F16D387B700576BB1 /* button_half_width.png in Resources */ = {isa = PBXBuildFile; fileRef = F5B27E6116D387B700576BB1 /* button_half_width.png */; };
+		F5B27E6B16D3935000576BB1 /* small_button.png in Resources */ = {isa = PBXBuildFile; fileRef = F5B27E6D16D3935000576BB1 /* small_button.png */; };
+		F5B27E7016D3952F00576BB1 /* button_half_width_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = F5B27E6F16D3952F00576BB1 /* button_half_width_iPad.png */; };
+		F5B27E7316D3956F00576BB1 /* button_full_width_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = F5B27E7516D3956F00576BB1 /* button_full_width_iPad.png */; };
+		F5B27E7816D3959D00576BB1 /* button_half_width_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = F5B27E7A16D3959D00576BB1 /* button_half_width_iPad.png */; };
+		F5B27E7E16D397AC00576BB1 /* button_full_width@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5B27E7D16D397AC00576BB1 /* button_full_width@2x.png */; };
+		F5B27E8116D39C6800576BB1 /* small_button_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = F5B27E8316D39C6800576BB1 /* small_button_iPad.png */; };
 		F5B2975D166CC26D00011A7D /* CustomWorkoutAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B2975B166CC26D00011A7D /* CustomWorkoutAddViewController.m */; };
 		F5B400D316A67D740002444E /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = F5B400D516A67D740002444E /* button.png */; };
 		F5BB87BC16253D2900043059 /* LoadAppstoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5BB87BA16253D2900043059 /* LoadAppstoreViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -362,6 +380,7 @@
 		F5D76918167EE83A003C079A /* FitnessServer.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D76917167EE83A003C079A /* FitnessServer.m */; };
 		F5D7691C167F0C4F003C079A /* CustomFavourites.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D7691B167F0C4F003C079A /* CustomFavourites.m */; };
 		F5D76920167F0CAB003C079A /* Favourite.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D7691F167F0CAB003C079A /* Favourite.m */; };
+		F5D76B5A16D72E1200590256 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5D76B5916D72E1200590256 /* Default-568h@2x.png */; };
 		F5DF2D9516C3A48A00ABB91B /* upgradenew.png in Resources */ = {isa = PBXBuildFile; fileRef = F5DF2D9316C3A48A00ABB91B /* upgradenew.png */; };
 		F5E8CC06163FF9E100B21A47 /* ShareFitness4MeViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5E8CC08163FF9E100B21A47 /* ShareFitness4MeViewController_iPad.xib */; };
 		F5F1F18D162FE3D70007D55E /* big_green_container_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = F5F1F16F162FE3D70007D55E /* big_green_container_iPad.png */; };
@@ -412,10 +431,8 @@
 		0B3E7B2A160306890053A47B /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/yes_no_btn_hover.png; sourceTree = "<group>"; };
 		0B3E7B2C1603068F0053A47B /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/yes_no_btn.png; sourceTree = "<group>"; };
 		0B3E7B2E160306920053A47B /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/yes_no_btn.png; sourceTree = "<group>"; };
-		0B3E7B30160306980053A47B /* en */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = en; path = en.lproj/upgrade.jpg; sourceTree = "<group>"; };
 		0B3E7B33160306A30053A47B /* de */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = de; path = "de.lproj/upgrade-landscape.jpg"; sourceTree = "<group>"; };
 		0B3E7B35160306A90053A47B /* en */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = en; path = "en.lproj/upgrade-landscape.jpg"; sourceTree = "<group>"; };
-		0B3E7B36160306AF0053A47B /* de */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = de; path = de.lproj/upgrade.jpg; sourceTree = "<group>"; };
 		0B3E7B38160306C50053A47B /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/congrats.png; sourceTree = "<group>"; };
 		0B3E7B3A160306CA0053A47B /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/congrats.png; sourceTree = "<group>"; };
 		0B3E7B3C160306CF0053A47B /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/app_bg_portrait.png; sourceTree = "<group>"; };
@@ -724,29 +741,22 @@
 		F508541E1678628F0094F314 /* ExcersiceList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExcersiceList.h; path = ExcersiceLists/ExcersiceList.h; sourceTree = "<group>"; };
 		F508541F1678628F0094F314 /* ExcersiceList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExcersiceList.m; path = ExcersiceLists/ExcersiceList.m; sourceTree = "<group>"; };
 		F50854211678673C0094F314 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/CustomizedWorkoutPlayViewController.xib; sourceTree = "<group>"; };
-		F5085423167885C50094F314 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/back_btn_with_text.png; sourceTree = "<group>"; };
 		F5085426167885C90094F314 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/back_btnBlack.png; sourceTree = "<group>"; };
 		F5085429167885CD0094F314 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/button_full_width.png; sourceTree = "<group>"; };
 		F508542C167885D10094F314 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/logo_new_side.png; sourceTree = "<group>"; };
-		F508542F167885D40094F314 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/back_btn.png; sourceTree = "<group>"; };
 		F5085435167885DC0094F314 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/package_box.png; sourceTree = "<group>"; };
 		F5085438167885DF0094F314 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/list_box.png; sourceTree = "<group>"; };
 		F5085441167885E90094F314 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/edit_btn.png; sourceTree = "<group>"; };
 		F5085444167885EC0094F314 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/edit_btn_with_text.png; sourceTree = "<group>"; };
 		F5085447167885F00094F314 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/continue_btn.png; sourceTree = "<group>"; };
 		F508544A167885F30094F314 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/continue_btn_with_text.png; sourceTree = "<group>"; };
-		F508544C167885F70094F314 /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/back_btn_with_text.png; sourceTree = "<group>"; };
-		F508544D167885FA0094F314 /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/back_btnBlack.png; sourceTree = "<group>"; };
 		F508544E167885FD0094F314 /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/button_full_width.png; sourceTree = "<group>"; };
-		F5085450167886030094F314 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/button_half_width.png; sourceTree = "<group>"; };
-		F5085452167886060094F314 /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/button_half_width.png; sourceTree = "<group>"; };
 		F5085453167886090094F314 /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/continue_btn_with_text.png; sourceTree = "<group>"; };
 		F50854541678860C0094F314 /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/continue_btn.png; sourceTree = "<group>"; };
 		F50854551678860F0094F314 /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/edit_btn_with_text.png; sourceTree = "<group>"; };
 		F5085456167886120094F314 /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/edit_btn.png; sourceTree = "<group>"; };
 		F50854591678861B0094F314 /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/list_box.png; sourceTree = "<group>"; };
 		F508545A1678861E0094F314 /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/package_box.png; sourceTree = "<group>"; };
-		F508545C167886250094F314 /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/back_btn.png; sourceTree = "<group>"; };
 		F508545D167886280094F314 /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/logo_new_side.png; sourceTree = "<group>"; };
 		F508545F167898610094F314 /* CustomExcersiceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomExcersiceCell.h; path = CustomlistCell/CustomExcersiceCell.h; sourceTree = "<group>"; };
 		F5085460167898610094F314 /* CustomExcersiceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomExcersiceCell.m; path = CustomlistCell/CustomExcersiceCell.m; sourceTree = "<group>"; };
@@ -756,8 +766,6 @@
 		F509271F1695863600072169 /* MembershipPersonliazedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MembershipPersonliazedViewController.m; path = MembershipPersonliazed/MembershipPersonliazedViewController.m; sourceTree = "<group>"; };
 		F5092724169588F300072169 /* MembershipCreateOwnViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MembershipCreateOwnViewController.h; path = MembershipCreateOwn/MembershipCreateOwnViewController.h; sourceTree = "<group>"; };
 		F5092725169588F300072169 /* MembershipCreateOwnViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MembershipCreateOwnViewController.m; path = MembershipCreateOwn/MembershipCreateOwnViewController.m; sourceTree = "<group>"; };
-		F509272A16958EFA00072169 /* MembershipPersonalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MembershipPersonalViewController.h; path = MembershipPersonalGym/MembershipPersonalViewController.h; sourceTree = "<group>"; };
-		F509272B16958EFA00072169 /* MembershipPersonalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MembershipPersonalViewController.m; path = MembershipPersonalGym/MembershipPersonalViewController.m; sourceTree = "<group>"; };
 		F509272F169599BB00072169 /* MemverRateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MemverRateViewController.h; path = MemberRate/MemverRateViewController.h; sourceTree = "<group>"; };
 		F5092730169599BB00072169 /* MemverRateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MemverRateViewController.m; path = MemberRate/MemverRateViewController.m; sourceTree = "<group>"; };
 		F50B060916819BA3006FC355 /* CarouselViewDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarouselViewDemoViewController.h; sourceTree = "<group>"; };
@@ -773,11 +781,15 @@
 		F519902216661800009C3F3D /* CustomWorkoutsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomWorkoutsViewController.h; path = customizedWorkoutList/CustomWorkoutsViewController.h; sourceTree = "<group>"; };
 		F519902316661800009C3F3D /* CustomWorkoutsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomWorkoutsViewController.m; path = customizedWorkoutList/CustomWorkoutsViewController.m; sourceTree = "<group>"; };
 		F519902816661A0E009C3F3D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CustomWorkoutsViewController.xib; sourceTree = "<group>"; };
+		F519E55C16CA535900EE6F65 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CarouselViewDemoViewController_iPad.xib; sourceTree = "<group>"; };
+		F519E55E16CA535F00EE6F65 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/CarouselViewDemoViewController_iPad.xib; sourceTree = "<group>"; };
 		F5253891163FABC8004F9195 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ExcersiceIntermediateViewController_iPad.xib; sourceTree = "<group>"; };
 		F5253897163FB15B004F9195 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ExcersicePlayViewController_iPad.xib; sourceTree = "<group>"; };
 		F5253899163FB160004F9195 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/ExcersicePlayViewController_iPad.xib; sourceTree = "<group>"; };
 		F52538AA163FC23E004F9195 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/AboutViewController_iPad.xib; sourceTree = "<group>"; };
 		F52538AC163FC243004F9195 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/AboutViewController_iPad.xib; sourceTree = "<group>"; };
+		F52F079716CA6757006BE6EF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = CustomInitialLaunch/en.lproj/CustomInitialLaunchViewControllerView_iPad.xib; sourceTree = "<group>"; };
+		F52F079916CA6771006BE6EF /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = CustomInitialLaunch/de.lproj/CustomInitialLaunchViewControllerView_iPad.xib; sourceTree = "<group>"; };
 		F52FEA0D164790D70002E199 /* ThanksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ThanksViewController.h; path = Thanks/ThanksViewController.h; sourceTree = "<group>"; };
 		F52FEA0E164790D70002E199 /* ThanksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ThanksViewController.m; path = Thanks/ThanksViewController.m; sourceTree = "<group>"; };
 		F52FEA10164793930002E199 /* TermsOfUse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TermsOfUse.h; path = TermsOfUse/TermsOfUse.h; sourceTree = "<group>"; };
@@ -813,15 +825,8 @@
 		F53305A91654E81600D0BCBE /* GADInterstitialDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GADInterstitialDelegate.h; path = GoogleAds/GADInterstitialDelegate.h; sourceTree = "<group>"; };
 		F53305AA1654E81600D0BCBE /* GADRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GADRequest.h; path = GoogleAds/GADRequest.h; sourceTree = "<group>"; };
 		F53305AB1654E81600D0BCBE /* GADRequestError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GADRequestError.h; path = GoogleAds/GADRequestError.h; sourceTree = "<group>"; };
-		F533DCD016A7FC7000A4B72E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MembershipPersonalViewController.xib; sourceTree = "<group>"; };
 		F5341CCD161323C8001E9075 /* libGoogleAdMobAds.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAdMobAds.a; sourceTree = "<group>"; };
 		F535C875165DEEFC0032BDE4 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
-		F535C879165E47FD0032BDE4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		F538D0DB16C4B81D00F16627 /* btn_320_480.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_320_480.png; sourceTree = "<group>"; };
-		F538D0DC16C4B81D00F16627 /* btn_480_640.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_480_640.png; sourceTree = "<group>"; };
-		F538D0DD16C4B81D00F16627 /* btn_480_800.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_480_800.png; sourceTree = "<group>"; };
-		F538D0DE16C4B81D00F16627 /* btn_720_960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_720_960.png; sourceTree = "<group>"; };
-		F538D0DF16C4B81D00F16627 /* btn_720_1280.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_720_1280.png; sourceTree = "<group>"; };
 		F538D0F216C4C47100F16627 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/green_btn.png; sourceTree = "<group>"; };
 		F538D0F416C4C47400F16627 /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/green_btn.png; sourceTree = "<group>"; };
 		F538D0F616C4C47A00F16627 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/bg.png; sourceTree = "<group>"; };
@@ -834,6 +839,7 @@
 		F5393E7E16662FE200D24D7F /* CustomCellContentController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomCellContentController.xib; path = CustomWorkoutCell/CustomCellContentController.xib; sourceTree = "<group>"; };
 		F539BE3516C8C0CE00A66915 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F539BE3716C8C0D100A66915 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F539BE3816C920AA00A66915 /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/back_btnBlack.png; sourceTree = "<group>"; };
 		F53E753B1648FC9600970DB9 /* breathing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = breathing.png; sourceTree = "<group>"; };
 		F53E753C1648FC9600970DB9 /* drinks.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = drinks.jpg; sourceTree = "<group>"; };
 		F53E753D1648FC9600970DB9 /* floor.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = floor.jpg; sourceTree = "<group>"; };
@@ -882,11 +888,12 @@
 		F54ED67516C2447000F1129D /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/MembershipStayFitViewController.xib; sourceTree = "<group>"; };
 		F54ED67616C2447500F1129D /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/MembershipPersonliazedViewController.xib; sourceTree = "<group>"; };
 		F54ED67716C2447900F1129D /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/MembershipRateViewController.xib; sourceTree = "<group>"; };
-		F54ED67816C2448200F1129D /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/MembershipPersonalViewController.xib; sourceTree = "<group>"; };
 		F54ED67916C2448800F1129D /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/MembershipCreateOwnViewController.xib; sourceTree = "<group>"; };
 		F54ED67A16C2448E00F1129D /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/MemberPromoViewController.xib; sourceTree = "<group>"; };
 		F54ED67B16C248DC00F1129D /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/MemverRateViewController.xib; sourceTree = "<group>"; };
 		F54ED67C16C273A500F1129D /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/MembershipPurchaseViewController.xib; sourceTree = "<group>"; };
+		F553218616D5E41200BEAC21 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/refresh_green.png; sourceTree = "<group>"; };
+		F553218816D5E41500BEAC21 /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/refresh_green.png; sourceTree = "<group>"; };
 		F554A24F1679B5F500E268B5 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/icon_delete.png; sourceTree = "<group>"; };
 		F554A2511679B5FC00E268B5 /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/icon_delete.png; sourceTree = "<group>"; };
 		F554A2531679B5FF00E268B5 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/smiley_disabled.png; sourceTree = "<group>"; };
@@ -895,6 +902,28 @@
 		F554A2591679B60A00E268B5 /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/smiley.png; sourceTree = "<group>"; };
 		F554A25B1679B60F00E268B5 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/icon_edit.png; sourceTree = "<group>"; };
 		F554A25D1679B61500E268B5 /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/icon_edit.png; sourceTree = "<group>"; };
+		F554E90816CB560C0039CA4B /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/CustomWorkoutsViewController_iPad.xib; sourceTree = "<group>"; };
+		F554E90B16CB56C10039CA4B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CustomWorkoutsViewController_iPad.xib; sourceTree = "<group>"; };
+		F554E91216CB5A940039CA4B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = Focus/en.lproj/FocusViewController_iPad.xib; sourceTree = "<group>"; };
+		F554E91416CB5A9B0039CA4B /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = Focus/de.lproj/FocusViewController_iPad.xib; sourceTree = "<group>"; };
+		F554E91616CB5AF00039CA4B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = AddCustomWokoutLanding/en.lproj/CustomWorkoutAddViewController_iPad.xib; sourceTree = "<group>"; };
+		F554E91816CB5AF40039CA4B /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = AddCustomWokoutLanding/de.lproj/CustomWorkoutAddViewController_iPad.xib; sourceTree = "<group>"; };
+		F554E91A16CB5BDA0039CA4B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = customWorkoutPostPlay/en.lproj/CustomWokoutPostplayViewController_iPad.xib; sourceTree = "<group>"; };
+		F554E91C16CB5BFC0039CA4B /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = customWorkoutPostPlay/de.lproj/CustomWokoutPostplayViewController_iPad.xib; sourceTree = "<group>"; };
+		F554E91E16CB5C2F0039CA4B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = Equipments/en.lproj/EquipmentViewController_iPad.xib; sourceTree = "<group>"; };
+		F554E92016CB5C330039CA4B /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = Equipments/de.lproj/EquipmentViewController_iPad.xib; sourceTree = "<group>"; };
+		F554E92616CB5D240039CA4B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = CustomWorkoutEdit/en.lproj/CustomWorkoutEditViewController_iPad.xib; sourceTree = "<group>"; };
+		F554E92816CB5D2A0039CA4B /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = CustomWorkoutEdit/de.lproj/CustomWorkoutEditViewController_iPad.xib; sourceTree = "<group>"; };
+		F554E92E16CB5D610039CA4B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = AddName/en.lproj/NameViewController_iPad.xib; sourceTree = "<group>"; };
+		F554E93016CB5D650039CA4B /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = AddName/de.lproj/NameViewController_iPad.xib; sourceTree = "<group>"; };
+		F554E94216CB651E0039CA4B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = ExcersiceList/en.lproj/ExcersiceListViewController_iPad.xib; sourceTree = "<group>"; };
+		F554E94416CB65230039CA4B /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = ExcersiceList/de.lproj/ExcersiceListViewController_iPad.xib; sourceTree = "<group>"; };
+		F554E94A16CB6AB60039CA4B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = WorkoutCreationCompleted/en.lproj/WorkoutCreationCompletedViewController_iPad.xib; sourceTree = "<group>"; };
+		F554E94C16CB6ABB0039CA4B /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = WorkoutCreationCompleted/de.lproj/WorkoutCreationCompletedViewController_iPad.xib; sourceTree = "<group>"; };
+		F554E94E16CB6ACB0039CA4B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = CustomWorkoutIntermediate/en.lproj/CustomWorkoutIntermediateViewController_iPad.xib; sourceTree = "<group>"; };
+		F554E95016CB6AD10039CA4B /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = CustomWorkoutIntermediate/de.lproj/CustomWorkoutIntermediateViewController_iPad.xib; sourceTree = "<group>"; };
+		F554E95516CB8D250039CA4B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = CustomizedWorkoutPlay/en.lproj/CustomizedWorkoutPlayViewController_iPad.xib; sourceTree = "<group>"; };
+		F554E95716CB8D390039CA4B /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = CustomizedWorkoutPlay/de.lproj/CustomizedWorkoutPlayViewController_iPad.xib; sourceTree = "<group>"; };
 		F557AFE8165F2F6F0033759A /* next_exercise_de.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = next_exercise_de.mp4; sourceTree = "<group>"; };
 		F55B76EF16ACF6490034F967 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/CarouselViewDemoViewController.xib; sourceTree = "<group>"; };
 		F55B76F016ACFEF90034F967 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/Fitness4MeViewController.xib; sourceTree = "<group>"; };
@@ -921,6 +950,24 @@
 		F56075FB16A00A85001C770B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MembershipPurchaseViewController.xib; sourceTree = "<group>"; };
 		F56075FF16A00A95001C770B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MembershipPersonliazedViewController.xib; sourceTree = "<group>"; };
 		F560760316A00AB0001C770B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MembershipStayFitViewController.xib; sourceTree = "<group>"; };
+		F567009B16CCBC4D001DF5C7 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = MembershipPurchase/en.lproj/MembershipPurchaseViewController_iPad.xib; sourceTree = "<group>"; };
+		F567009D16CCBC5D001DF5C7 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = MembershipPurchase/de.lproj/MembershipPurchaseViewController_iPad.xib; sourceTree = "<group>"; };
+		F567009F16CCBCBD001DF5C7 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = MemberPromo/en.lproj/MemberPromoViewController_iPad.xib; sourceTree = "<group>"; };
+		F56700A116CCBCC2001DF5C7 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = MemberPromo/de.lproj/MemberPromoViewController_iPad.xib; sourceTree = "<group>"; };
+		F56700A316CCBE10001DF5C7 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = MemberRate/en.lproj/MemverRateViewController_iPad.xib; sourceTree = "<group>"; };
+		F56700A516CCBE14001DF5C7 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = MemberRate/de.lproj/MemverRateViewController_iPad.xib; sourceTree = "<group>"; };
+		F56700A716CCC0B9001DF5C7 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = MembershipCreateOwn/en.lproj/MembershipCreateOwnViewController_iPad.xib; sourceTree = "<group>"; };
+		F56700A916CCC0BE001DF5C7 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = MembershipCreateOwn/de.lproj/MembershipCreateOwnViewController_iPad.xib; sourceTree = "<group>"; };
+		F56700AF16CCC40C001DF5C7 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = Membershiprate/en.lproj/MembershipRateViewController_iPad.xib; sourceTree = "<group>"; };
+		F56700B116CCC412001DF5C7 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = Membershiprate/de.lproj/MembershipRateViewController_iPad.xib; sourceTree = "<group>"; };
+		F56700B916CCC58E001DF5C7 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = MembershipPersonliazed/en.lproj/MembershipPersonliazedViewController_iPad.xib; sourceTree = "<group>"; };
+		F56700BB16CCC596001DF5C7 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = MembershipPersonliazed/de.lproj/MembershipPersonliazedViewController_iPad.xib; sourceTree = "<group>"; };
+		F56700BD16CCC5B5001DF5C7 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = MemebershipStayFit/en.lproj/MembershipStayFitViewController_iPad.xib; sourceTree = "<group>"; };
+		F56700BF16CCC5BD001DF5C7 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = MemebershipStayFit/de.lproj/MembershipStayFitViewController_iPad.xib; sourceTree = "<group>"; };
+		F567010316CCE74A001DF5C7 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/bg_Ipad.png; sourceTree = "<group>"; };
+		F567010916CCE756001DF5C7 /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/bg_Ipad.png; sourceTree = "<group>"; };
+		F567011F16CD010B001DF5C7 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/btn_new.png; sourceTree = "<group>"; };
+		F567012116CD0110001DF5C7 /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/btn_new.png; sourceTree = "<group>"; };
 		F577DBB6166DD71F0064B920 /* FocusDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FocusDB.h; path = FocusDB/FocusDB.h; sourceTree = "<group>"; };
 		F577DBB7166DD71F0064B920 /* FocusDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FocusDB.m; path = FocusDB/FocusDB.m; sourceTree = "<group>"; };
 		F577DBBB166DD8060064B920 /* Focus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Focus.h; path = FocusEntity/Focus.h; sourceTree = "<group>"; };
@@ -1017,6 +1064,18 @@
 		F5AF28331670938900C18C34 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CustomizedWorkoutPlayViewController.xib; sourceTree = "<group>"; };
 		F5AF283816709BDF00C18C34 /* CustomWorkoutEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomWorkoutEditViewController.h; path = CustomWorkoutEdit/CustomWorkoutEditViewController.h; sourceTree = "<group>"; };
 		F5AF283916709BDF00C18C34 /* CustomWorkoutEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomWorkoutEditViewController.m; path = CustomWorkoutEdit/CustomWorkoutEditViewController.m; sourceTree = "<group>"; };
+		F5B27E6016D387B700576BB1 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/button_half_width.png; sourceTree = "<group>"; };
+		F5B27E6216D387BB00576BB1 /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/button_half_width.png; sourceTree = "<group>"; };
+		F5B27E6C16D3935000576BB1 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/small_button.png; sourceTree = "<group>"; };
+		F5B27E6E16D3935300576BB1 /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/small_button.png; sourceTree = "<group>"; };
+		F5B27E6F16D3952F00576BB1 /* button_half_width_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_half_width_iPad.png; sourceTree = "<group>"; };
+		F5B27E7416D3956F00576BB1 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/button_full_width_iPad.png; sourceTree = "<group>"; };
+		F5B27E7916D3959D00576BB1 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/button_half_width_iPad.png; sourceTree = "<group>"; };
+		F5B27E7B16D395A600576BB1 /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/button_half_width_iPad.png; sourceTree = "<group>"; };
+		F5B27E7C16D395AA00576BB1 /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/button_full_width_iPad.png; sourceTree = "<group>"; };
+		F5B27E7D16D397AC00576BB1 /* button_full_width@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_full_width@2x.png"; sourceTree = "<group>"; };
+		F5B27E8216D39C6800576BB1 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/small_button_iPad.png; sourceTree = "<group>"; };
+		F5B27E8416D39C6C00576BB1 /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/small_button_iPad.png; sourceTree = "<group>"; };
 		F5B2975A166CC26D00011A7D /* CustomWorkoutAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomWorkoutAddViewController.h; path = AddCustomWokoutLanding/CustomWorkoutAddViewController.h; sourceTree = "<group>"; };
 		F5B2975B166CC26D00011A7D /* CustomWorkoutAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomWorkoutAddViewController.m; path = AddCustomWokoutLanding/CustomWorkoutAddViewController.m; sourceTree = "<group>"; };
 		F5B400D416A67D740002444E /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/button.png; sourceTree = "<group>"; };
@@ -1049,6 +1108,7 @@
 		F5D7691B167F0C4F003C079A /* CustomFavourites.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomFavourites.m; path = CustomFavourites/CustomFavourites.m; sourceTree = "<group>"; };
 		F5D7691E167F0CAB003C079A /* Favourite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Favourite.h; path = Favourite/Favourite.h; sourceTree = "<group>"; };
 		F5D7691F167F0CAB003C079A /* Favourite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Favourite.m; path = Favourite/Favourite.m; sourceTree = "<group>"; };
+		F5D76B5916D72E1200590256 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		F5DF2D9416C3A48A00ABB91B /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/upgradenew.png; sourceTree = "<group>"; };
 		F5DF2D9616C3A49800ABB91B /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/upgradenew.png; sourceTree = "<group>"; };
 		F5E8CC07163FF9E100B21A47 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ShareFitness4MeViewController_iPad.xib; sourceTree = "<group>"; };
@@ -1341,52 +1401,33 @@
 		0B9026E5156E4D0700DB211F /* 1X */ = {
 			isa = PBXGroup;
 			children = (
-				F538D0F916C4C50D00F16627 /* refresh_green.png */,
-				F538D0F316C4C47100F16627 /* green_btn.png */,
-				F538D0F716C4C47A00F16627 /* bg.png */,
-				F538D0DB16C4B81D00F16627 /* btn_320_480.png */,
-				F538D0DC16C4B81D00F16627 /* btn_480_640.png */,
-				F538D0DD16C4B81D00F16627 /* btn_480_800.png */,
-				F538D0DE16C4B81D00F16627 /* btn_720_960.png */,
-				F538D0DF16C4B81D00F16627 /* btn_720_1280.png */,
-				F5DF2D9316C3A48A00ABB91B /* upgradenew.png */,
-				F54ED67316C2367C00F1129D /* membershipbg_new.png */,
-				F598E16216B8DC1C004CF4D7 /* btnMembership.png */,
-				F598E16016B8DC11004CF4D7 /* membershipbg.png */,
-				F55B770016AD444D0034F967 /* upgrade.png */,
-				F5B400D516A67D740002444E /* button.png */,
-				F5998B0416A5343C00E4FEC1 /* checkbox_checked.png */,
-				F5998B0716A5344000E4FEC1 /* checkbox.png */,
-				F5998B0A16A5344300E4FEC1 /* next_btn_with_text.png */,
-				F554A25C1679B60F00E268B5 /* icon_edit.png */,
-				F554A2581679B60700E268B5 /* smiley.png */,
-				F554A2541679B5FF00E268B5 /* smiley_disabled.png */,
-				F554A2501679B5F500E268B5 /* icon_delete.png */,
-				F5085424167885C50094F314 /* back_btn_with_text.png */,
-				F5085427167885C90094F314 /* back_btnBlack.png */,
-				F508542A167885CD0094F314 /* button_full_width.png */,
-				F5085451167886030094F314 /* button_half_width.png */,
-				F508544B167885F30094F314 /* continue_btn_with_text.png */,
-				F5085448167885F00094F314 /* continue_btn.png */,
-				F5085445167885EC0094F314 /* edit_btn_with_text.png */,
-				F5085442167885E90094F314 /* edit_btn.png */,
-				F5085439167885DF0094F314 /* list_box.png */,
-				F5085436167885DC0094F314 /* package_box.png */,
-				F5085430167885D40094F314 /* back_btn.png */,
-				F508542D167885D10094F314 /* logo_new_side.png */,
-				F53E754D1649276E00970DB9 /* btn_small.png */,
-				F5A884E916411A2B00AFE158 /* btn_small_hover.png */,
+				F5B27E6D16D3935000576BB1 /* small_button.png */,
+				F5B27E6116D387B700576BB1 /* button_half_width.png */,
 				0B3E7B21160306440053A47B /* app_bg_landscape.png */,
 				0B3E7B3D160306CF0053A47B /* app_bg_portrait.png */,
+				F5085427167885C90094F314 /* back_btnBlack.png */,
+				F538D0F716C4C47A00F16627 /* bg.png */,
 				0B3E7B41160306D70053A47B /* big_green_container.png */,
 				0B3E7B45160306DE0053A47B /* btn_landscape.png */,
 				0B3E7B49160306E90053A47B /* btn_landscape_hover.png */,
 				0B3E7B4D160306FC0053A47B /* btn_portrait.png */,
 				0B3E7B51160307300053A47B /* btn_portrait_hover.png */,
+				F53E754D1649276E00970DB9 /* btn_small.png */,
+				F5A884E916411A2B00AFE158 /* btn_small_hover.png */,
+				F598E16216B8DC1C004CF4D7 /* btnMembership.png */,
+				F5B400D516A67D740002444E /* button.png */,
+				F508542A167885CD0094F314 /* button_full_width.png */,
 				0B3E7B7D1603080C0053A47B /* buttongreenyes.png */,
 				0B3E7B80160308130053A47B /* calender.png */,
+				F5998B0716A5344000E4FEC1 /* checkbox.png */,
+				F5998B0416A5343C00E4FEC1 /* checkbox_checked.png */,
 				0B3E7B83160308220053A47B /* closePopup.png */,
 				0B3E7B39160306C50053A47B /* congrats.png */,
+				F5085448167885F00094F314 /* continue_btn.png */,
+				F508544B167885F30094F314 /* continue_btn_with_text.png */,
+				F5085442167885E90094F314 /* edit_btn.png */,
+				F5085445167885EC0094F314 /* edit_btn_with_text.png */,
+				F538D0F316C4C47100F16627 /* green_btn.png */,
 				0B3E7B8C160309250053A47B /* home_bg.png */,
 				0B3E7B861603084F0053A47B /* home_logo.png */,
 				0B3E7B251603065E0053A47B /* home_nav_bot.png */,
@@ -1395,15 +1436,24 @@
 				0B40C92916031115008D2A0A /* home_nav_mid_hover.png */,
 				0B40C92D1603111D008D2A0A /* home_nav_top.png */,
 				0B40C93116031127008D2A0A /* home_nav_top_hover.png */,
+				F554A2501679B5F500E268B5 /* icon_delete.png */,
+				F554A25C1679B60F00E268B5 /* icon_edit.png */,
 				0B40C9351603112E008D2A0A /* lady.png */,
 				0B40C9391603113B008D2A0A /* ladypopup.png */,
 				0B40C93D16031144008D2A0A /* letsgo.png */,
+				F5085439167885DF0094F314 /* list_box.png */,
 				0B40C9411603114A008D2A0A /* list_item.png */,
 				0B40C94516031153008D2A0A /* list_item_hover.png */,
 				0B40C9491603115A008D2A0A /* lock.png */,
+				F508542D167885D10094F314 /* logo_new_side.png */,
 				0B40C94D16031161008D2A0A /* man.png */,
+				F598E16016B8DC11004CF4D7 /* membershipbg.png */,
+				F54ED67316C2367C00F1129D /* membershipbg_new.png */,
+				F5998B0A16A5344300E4FEC1 /* next_btn_with_text.png */,
+				F5085436167885DC0094F314 /* package_box.png */,
 				0B40C9521603116C008D2A0A /* popupline.png */,
 				0B40C95616031175008D2A0A /* push-up-on-beach.png */,
+				F538D0F916C4C50D00F16627 /* refresh_green.png */,
 				0B3E7B64160307D30053A47B /* second_btn.png */,
 				0B3E7B79160308000053A47B /* second_btn_hover.png */,
 				0B3E7B76160307FB0053A47B /* settings1.jpg */,
@@ -1411,8 +1461,11 @@
 				0B3E7B71160307EF0053A47B /* small_green_container.png */,
 				0B3E7B5E160307CC0053A47B /* small_logo.png */,
 				0B3E7B5B160307C90053A47B /* small_logo_new.png */,
+				F554A2581679B60700E268B5 /* smiley.png */,
+				F554A2541679B5FF00E268B5 /* smiley_disabled.png */,
 				0B3E7B34160306A30053A47B /* upgrade-landscape.jpg */,
-				0B3E7B31160306980053A47B /* upgrade.jpg */,
+				F55B770016AD444D0034F967 /* upgrade.png */,
+				F5DF2D9316C3A48A00ABB91B /* upgradenew.png */,
 				0B3E7B2D1603068F0053A47B /* yes_no_btn.png */,
 				0B3E7B29160306840053A47B /* yes_no_btn_hover.png */,
 			);
@@ -1422,14 +1475,16 @@
 		0B902700156E4D0700DB211F /* 2X */ = {
 			isa = PBXGroup;
 			children = (
-				F5A884E116411A1500AFE158 /* btn_small@2x_hover.png */,
-				F5A884DD16411A0900AFE158 /* btn_small@2x.png */,
+				F5B27E7D16D397AC00576BB1 /* button_full_width@2x.png */,
+				F5B27E6F16D3952F00576BB1 /* button_half_width_iPad.png */,
 				0B40C9B916031A5A008D2A0A /* app_bg_landscapeMultiple build commands for output file@2x.png */,
 				0B40C9BD16031A62008D2A0A /* app_bg_portrait@2x.png */,
 				0B40C9C116031A68008D2A0A /* btn_landscape@2x.png */,
 				0B40C9C516031A70008D2A0A /* btn_landscape_hover@2x.png */,
 				0B40C9C916031A85008D2A0A /* btn_portrait@2x.png */,
 				0B40C9CD16031A8D008D2A0A /* btn_portrait_hover@2x.png */,
+				F5A884DD16411A0900AFE158 /* btn_small@2x.png */,
+				F5A884E116411A1500AFE158 /* btn_small@2x_hover.png */,
 				0B40C9D116031A97008D2A0A /* calender@2x.png */,
 				0B40C9D516031AA3008D2A0A /* closePopup@2x.png */,
 				0B40C9D916031AEA008D2A0A /* home_bg@2x.png */,
@@ -1574,6 +1629,7 @@
 		0BD4A2D515C643FF00F1FCB7 /* Splash */ = {
 			isa = PBXGroup;
 			children = (
+				F5D76B5916D72E1200590256 /* Default-568h@2x.png */,
 				F5C0B399165A5B830008B5EA /* Default-Portrait.png */,
 				0B608E3B15D0E2A5002B2A56 /* Default.png */,
 				0B608E3D15D0E2DF002B2A56 /* Default@2x.png */,
@@ -1889,6 +1945,7 @@
 		F50854171678532D0094F314 /* ExcersiceList */ = {
 			isa = PBXGroup;
 			children = (
+				F554E94116CB651E0039CA4B /* ExcersiceListViewController_iPad.xib */,
 				F5085418167856A90094F314 /* ExcersiceListViewController.h */,
 				F5085419167856A90094F314 /* ExcersiceListViewController.m */,
 				F56075EB169FD88A001C770B /* ExcersiceListViewController.xib */,
@@ -1962,13 +2019,12 @@
 			children = (
 				F592D3B616B7CBCD0005655C /* CustomCell */,
 				F55C7FF21677264B00C817A8 /* MemberPromo */,
-				F5B1C919169A9BB600148477 /* MemberRate */,
-				F5092723169588C800072169 /* MembershipCreateOwn */,
-				F509272916958DCB00072169 /* MembershipPersonalGym */,
-				F55C7FFE16773BEB00C817A8 /* MembershipPurchase */,
 				F55C7FF81677343500C817A8 /* MembershipRate */,
-				F509271D1695859100072169 /* MemebershipPersonalized */,
 				F50927121695814200072169 /* MemershipStayFit */,
+				F509271D1695859100072169 /* MemebershipPersonalized */,
+				F5092723169588C800072169 /* MembershipCreateOwn */,
+				F5B1C919169A9BB600148477 /* MemberRate */,
+				F55C7FFE16773BEB00C817A8 /* MembershipPurchase */,
 			);
 			name = Memberships;
 			sourceTree = "<group>";
@@ -1987,9 +2043,9 @@
 		F509271116957C2500072169 /* Custom/Selfmade Screens */ = {
 			isa = PBXGroup;
 			children = (
-				F5998AF716A521F400E4FEC1 /* CustomWorkoutLaunchingScreens */,
 				F5B29758166CC22400011A7D /* AddCustomWorkoutLandingPage */,
 				F55C7FE7167718EB00C817A8 /* CustomWorkout */,
+				F5998AF716A521F400E4FEC1 /* CustomWorkoutLaunchingScreens */,
 				F5C84712166C8BA200B8EDA6 /* Equipments */,
 				F50854171678532D0094F314 /* ExcersiceList */,
 				F5AE76C016671F1700751B65 /* Focus */,
@@ -2007,6 +2063,7 @@
 		F50927121695814200072169 /* MemershipStayFit */ = {
 			isa = PBXGroup;
 			children = (
+				F56700BC16CCC5B5001DF5C7 /* MembershipStayFitViewController_iPad.xib */,
 				F50927181695829100072169 /* MembershipStayFitViewController.h */,
 				F50927191695829100072169 /* MembershipStayFitViewController.m */,
 				F560760416A00AB0001C770B /* MembershipStayFitViewController.xib */,
@@ -2017,6 +2074,7 @@
 		F509271D1695859100072169 /* MemebershipPersonalized */ = {
 			isa = PBXGroup;
 			children = (
+				F56700B816CCC58E001DF5C7 /* MembershipPersonliazedViewController_iPad.xib */,
 				F509271E1695863600072169 /* MembershipPersonliazedViewController.h */,
 				F509271F1695863600072169 /* MembershipPersonliazedViewController.m */,
 				F560760016A00A95001C770B /* MembershipPersonliazedViewController.xib */,
@@ -2027,21 +2085,12 @@
 		F5092723169588C800072169 /* MembershipCreateOwn */ = {
 			isa = PBXGroup;
 			children = (
+				F56700A616CCC0B9001DF5C7 /* MembershipCreateOwnViewController_iPad.xib */,
 				F5092724169588F300072169 /* MembershipCreateOwnViewController.h */,
 				F5092725169588F300072169 /* MembershipCreateOwnViewController.m */,
 				F56075F816A00A71001C770B /* MembershipCreateOwnViewController.xib */,
 			);
 			name = MembershipCreateOwn;
-			sourceTree = "<group>";
-		};
-		F509272916958DCB00072169 /* MembershipPersonalGym */ = {
-			isa = PBXGroup;
-			children = (
-				F509272A16958EFA00072169 /* MembershipPersonalViewController.h */,
-				F509272B16958EFA00072169 /* MembershipPersonalViewController.m */,
-				F533DCD116A7FC7000A4B72E /* MembershipPersonalViewController.xib */,
-			);
-			name = MembershipPersonalGym;
 			sourceTree = "<group>";
 		};
 		F50B05F616819430006FC355 /* carousel */ = {
@@ -2060,6 +2109,7 @@
 				F50B060916819BA3006FC355 /* CarouselViewDemoViewController.h */,
 				F50B060A16819BA3006FC355 /* CarouselViewDemoViewController.m */,
 				F56075F0169FE392001C770B /* CarouselViewDemoViewController.xib */,
+				F519E55D16CA535900EE6F65 /* CarouselViewDemoViewController_iPad.xib */,
 			);
 			name = SelectedWorkouts;
 			sourceTree = "<group>";
@@ -2271,6 +2321,12 @@
 		F5375B951663339C000F1921 /* 1X */ = {
 			isa = PBXGroup;
 			children = (
+				F5B27E8316D39C6800576BB1 /* small_button_iPad.png */,
+				F5B27E7A16D3959D00576BB1 /* button_half_width_iPad.png */,
+				F5B27E7516D3956F00576BB1 /* button_full_width_iPad.png */,
+				F553218716D5E41200BEAC21 /* refresh_green.png */,
+				F567012016CD010B001DF5C7 /* btn_new.png */,
+				F567010416CCE74A001DF5C7 /* bg_Ipad.png */,
 				F5C0B373165A1DCA0008B5EA /* landscape_logo.png */,
 				F5A60445162D361000B2ED1D /* app_bg_landscape_iPad.png */,
 				F5A60449162D361800B2ED1D /* app_bg_portrait_iPad.png */,
@@ -2381,6 +2437,7 @@
 				F55C80061677498C00C817A8 /* CustomWokoutPostplayViewController.h */,
 				F55C80071677498C00C817A8 /* CustomWokoutPostplayViewController.m */,
 				F508540C167844D10094F314 /* CustomWokoutPostplayViewController.xib */,
+				F554E91916CB5BDA0039CA4B /* CustomWokoutPostplayViewController_iPad.xib */,
 			);
 			name = CustomWorkout;
 			sourceTree = "<group>";
@@ -2388,6 +2445,7 @@
 		F55C7FF21677264B00C817A8 /* MemberPromo */ = {
 			isa = PBXGroup;
 			children = (
+				F567009E16CCBCBD001DF5C7 /* MemberPromoViewController_iPad.xib */,
 				F55C7FF31677266F00C817A8 /* MemberPromoViewController.h */,
 				F55C7FF41677267000C817A8 /* MemberPromoViewController.m */,
 				F5085410167844E10094F314 /* MemberPromoViewController.xib */,
@@ -2398,6 +2456,7 @@
 		F55C7FF81677343500C817A8 /* MembershipRate */ = {
 			isa = PBXGroup;
 			children = (
+				F56700AE16CCC40C001DF5C7 /* MembershipRateViewController_iPad.xib */,
 				F55C7FF91677357200C817A8 /* MembershipRateViewController.h */,
 				F55C7FFA1677357200C817A8 /* MembershipRateViewController.m */,
 				F5085414167844ED0094F314 /* MembershipRateViewController.xib */,
@@ -2408,6 +2467,7 @@
 		F55C7FFE16773BEB00C817A8 /* MembershipPurchase */ = {
 			isa = PBXGroup;
 			children = (
+				F567009A16CCBC4D001DF5C7 /* MembershipPurchaseViewController_iPad.xib */,
 				F55C7FFF16773C1E00C817A8 /* MembershipPurchaseViewController.h */,
 				F55C800016773C1E00C817A8 /* MembershipPurchaseViewController.m */,
 				F56075FC16A00A85001C770B /* MembershipPurchaseViewController.xib */,
@@ -2457,6 +2517,7 @@
 				F577DBF3166E18B70064B920 /* NameViewController.h */,
 				F577DBF4166E18B70064B920 /* NameViewController.m */,
 				F50853FE167844890094F314 /* NameViewController.xib */,
+				F554E92D16CB5D610039CA4B /* NameViewController_iPad.xib */,
 			);
 			name = WorkoutName;
 			sourceTree = "<group>";
@@ -2502,6 +2563,7 @@
 				F5998AF916A5229B00E4FEC1 /* CustomInitialLaunchViewController.h */,
 				F5998AFA16A5229B00E4FEC1 /* CustomInitialLaunchViewController.m */,
 				F55B76FB16AD1B180034F967 /* CustomInitialLaunchViewController.xib */,
+				F52F079616CA6757006BE6EF /* CustomInitialLaunchViewControllerView_iPad.xib */,
 			);
 			name = CustomWorkoutLaunchingScreens;
 			sourceTree = "<group>";
@@ -2612,7 +2674,6 @@
 		F5A6043D162D300300B2ED1D /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				F535C879165E47FD0032BDE4 /* Default-568h@2x.png */,
 				0B9026E4156E4D0700DB211F /* IPHONE */,
 				0B9026B1156E465100DB211F /* IPAD */,
 			);
@@ -2633,6 +2694,7 @@
 				F519902216661800009C3F3D /* CustomWorkoutsViewController.h */,
 				F519902316661800009C3F3D /* CustomWorkoutsViewController.m */,
 				F519902916661A0E009C3F3D /* CustomWorkoutsViewController.xib */,
+				F554E90716CB56020039CA4B /* CustomWorkoutsViewController_iPad.xib */,
 			);
 			name = WorkoutLists;
 			sourceTree = "<group>";
@@ -2640,6 +2702,7 @@
 		F5AE76C016671F1700751B65 /* Focus */ = {
 			isa = PBXGroup;
 			children = (
+				F554E91116CB5A940039CA4B /* FocusViewController_iPad.xib */,
 				F577DBEC166E05C80064B920 /* FocusViewController.h */,
 				F577DBED166E05C80064B920 /* FocusViewController.m */,
 				F50853F61678446E0094F314 /* FocusViewController.xib */,
@@ -2650,6 +2713,7 @@
 		F5AF282B1670903700C18C34 /* WorkoutPlay */ = {
 			isa = PBXGroup;
 			children = (
+				F554E95416CB8D250039CA4B /* CustomizedWorkoutPlayViewController_iPad.xib */,
 				F5AF282D1670906C00C18C34 /* CustomizedWorkoutPlayViewController.h */,
 				F5AF282E1670906C00C18C34 /* CustomizedWorkoutPlayViewController.m */,
 				F5AF28341670938900C18C34 /* CustomizedWorkoutPlayViewController.xib */,
@@ -2660,6 +2724,7 @@
 		F5AF283616709BAE00C18C34 /* WorkoutEdit */ = {
 			isa = PBXGroup;
 			children = (
+				F554E92516CB5D240039CA4B /* CustomWorkoutEditViewController_iPad.xib */,
 				F5AF283816709BDF00C18C34 /* CustomWorkoutEditViewController.h */,
 				F5AF283916709BDF00C18C34 /* CustomWorkoutEditViewController.m */,
 				F5085403167844AC0094F314 /* CustomWorkoutEditViewController.xib */,
@@ -2670,6 +2735,7 @@
 		F5B1C919169A9BB600148477 /* MemberRate */ = {
 			isa = PBXGroup;
 			children = (
+				F56700A216CCBE10001DF5C7 /* MemverRateViewController_iPad.xib */,
 				F509272F169599BB00072169 /* MemverRateViewController.h */,
 				F5092730169599BB00072169 /* MemverRateViewController.m */,
 				F56075F416A00A5F001C770B /* MemverRateViewController.xib */,
@@ -2683,6 +2749,7 @@
 				F5B2975A166CC26D00011A7D /* CustomWorkoutAddViewController.h */,
 				F5B2975B166CC26D00011A7D /* CustomWorkoutAddViewController.m */,
 				F5085408167844C60094F314 /* CustomWorkoutAddViewController.xib */,
+				F554E91516CB5AF00039CA4B /* CustomWorkoutAddViewController_iPad.xib */,
 			);
 			name = AddCustomWorkoutLandingPage;
 			sourceTree = "<group>";
@@ -2700,6 +2767,7 @@
 		F5C84712166C8BA200B8EDA6 /* Equipments */ = {
 			isa = PBXGroup;
 			children = (
+				F554E91D16CB5C2F0039CA4B /* EquipmentViewController_iPad.xib */,
 				F5C84713166C8E4A00B8EDA6 /* EquipmentViewController.h */,
 				F5C84714166C8E4A00B8EDA6 /* EquipmentViewController.m */,
 				F50853FA1678447B0094F314 /* EquipmentViewController.xib */,
@@ -2737,6 +2805,7 @@
 		F5F40437166F15AF0019C5EA /* WorkoutCreationCompleted */ = {
 			isa = PBXGroup;
 			children = (
+				F554E94916CB6AB60039CA4B /* WorkoutCreationCompletedViewController_iPad.xib */,
 				F5F40439166F16000019C5EA /* WorkoutCreationCompletedViewController.h */,
 				F5F4043A166F16000019C5EA /* WorkoutCreationCompletedViewController.m */,
 				F50853F2167844600094F314 /* WorkoutCreationCompletedViewController.xib */,
@@ -2749,6 +2818,7 @@
 			children = (
 				F5F4043F166F26800019C5EA /* CustomWorkoutIntermediateViewController.h */,
 				F5F40440166F26800019C5EA /* CustomWorkoutIntermediateViewController.m */,
+				F554E94D16CB6ACB0039CA4B /* CustomWorkoutIntermediateViewController_iPad.xib */,
 				F5A9998F1675E77D00E238D9 /* CustomWorkoutIntermediateViewController.xib */,
 			);
 			name = WorkoutIntermediate;
@@ -2805,6 +2875,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F519E57116CA61F100EE6F65 /* CarouselViewDemoViewController_iPad.xib in Resources */,
+				F539BE3916C9222500A66915 /* back_btnBlack.png in Resources */,
 				F554A25E1679BBCA00E268B5 /* icon_edit.png in Resources */,
 				F554A25F1679BBCA00E268B5 /* smiley.png in Resources */,
 				F554A2601679BBCA00E268B5 /* smiley_disabled.png in Resources */,
@@ -2956,7 +3028,6 @@
 				0B608E3E15D0E2DF002B2A56 /* Default@2x.png in Resources */,
 				0B40C93B16031144008D2A0A /* letsgo.png in Resources */,
 				0BD4841B16031DF300D3AFB8 /* letsgo@2xpng.png in Resources */,
-				0B3E7B2F160306980053A47B /* upgrade.jpg in Resources */,
 				0B40C9B01603198A008D2A0A /* upgrade@2x.jpg in Resources */,
 				0B3E7B7B1603080C0053A47B /* buttongreenyes.png in Resources */,
 				0B3E7B32160306A30053A47B /* upgrade-landscape.jpg in Resources */,
@@ -2992,7 +3063,6 @@
 				F53E75451648FC9600970DB9 /* standing.jpg in Resources */,
 				F53E754B1649276E00970DB9 /* btn_small.png in Resources */,
 				F508542B167885D10094F314 /* logo_new_side.png in Resources */,
-				F508542E167885D40094F314 /* back_btn.png in Resources */,
 				F5428001165399F600520F0C /* RatingViewControllerView_iPad.xib in Resources */,
 				F5C0B3691659F04D0008B5EA /* SettingsViewController_iPad.xib in Resources */,
 				F5C0B371165A1DCA0008B5EA /* landscape_logo.png in Resources */,
@@ -3014,7 +3084,6 @@
 				F5066EB5165B928A00DF8B6B /* termsOfUseDe.html in Resources */,
 				F5066EB6165B928A00DF8B6B /* termsOfUseDeiPad.html in Resources */,
 				F5066EB7165B928A00DF8B6B /* termsofUseiPad.html in Resources */,
-				F535C87A165E47FD0032BDE4 /* Default-568h@2x.png in Resources */,
 				F51404B81664783C00B0B386 /* icon-72.png in Resources */,
 				F51404B91664783C00B0B386 /* icon-72@2x.png in Resources */,
 				F51404BA1664783C00B0B386 /* icon.png in Resources */,
@@ -3023,10 +3092,7 @@
 				F5393E7F16662FE200D24D7F /* CustomCellContentController.xib in Resources */,
 				F50853F81678447B0094F314 /* EquipmentViewController.xib in Resources */,
 				F5085406167844C60094F314 /* CustomWorkoutAddViewController.xib in Resources */,
-				F5085422167885C50094F314 /* back_btn_with_text.png in Resources */,
-				F5085425167885C90094F314 /* back_btnBlack.png in Resources */,
 				F5085428167885CD0094F314 /* button_full_width.png in Resources */,
-				F508544F167886030094F314 /* button_half_width.png in Resources */,
 				F5085449167885F30094F314 /* continue_btn_with_text.png in Resources */,
 				F5085446167885F00094F314 /* continue_btn.png in Resources */,
 				F5085443167885EC0094F314 /* edit_btn_with_text.png in Resources */,
@@ -3049,7 +3115,6 @@
 				F560760216A00AB0001C770B /* MembershipStayFitViewController.xib in Resources */,
 				F56075FE16A00A95001C770B /* MembershipPersonliazedViewController.xib in Resources */,
 				F56075F616A00A71001C770B /* MembershipCreateOwnViewController.xib in Resources */,
-				F533DCCF16A7FC7000A4B72E /* MembershipPersonalViewController.xib in Resources */,
 				F56075F216A00A5F001C770B /* MemverRateViewController.xib in Resources */,
 				F55B76F916AD1B180034F967 /* CustomInitialLaunchViewController.xib in Resources */,
 				F5998B0216A5343C00E4FEC1 /* checkbox_checked.png in Resources */,
@@ -3063,15 +3128,40 @@
 				F598E16316B8DC1C004CF4D7 /* btnMembership.png in Resources */,
 				F54ED67116C2367C00F1129D /* membershipbg_new.png in Resources */,
 				F5DF2D9516C3A48A00ABB91B /* upgradenew.png in Resources */,
-				F538D0E016C4B81D00F16627 /* btn_320_480.png in Resources */,
-				F538D0E116C4B81D00F16627 /* btn_480_640.png in Resources */,
-				F538D0E216C4B81D00F16627 /* btn_480_800.png in Resources */,
-				F538D0E316C4B81D00F16627 /* btn_720_960.png in Resources */,
-				F538D0E416C4B81D00F16627 /* btn_720_1280.png in Resources */,
 				F538D0F516C4C47A00F16627 /* bg.png in Resources */,
 				F538D0F116C4C47100F16627 /* green_btn.png in Resources */,
 				F538D0FB16C4C50D00F16627 /* refresh_green.png in Resources */,
 				F539BE3616C8C0CE00A66915 /* Localizable.strings in Resources */,
+				F52F079816CA6757006BE6EF /* CustomInitialLaunchViewControllerView_iPad.xib in Resources */,
+				F554E90516CB56020039CA4B /* CustomWorkoutsViewController_iPad.xib in Resources */,
+				F554E91316CB5A940039CA4B /* FocusViewController_iPad.xib in Resources */,
+				F554E91716CB5AF00039CA4B /* CustomWorkoutAddViewController_iPad.xib in Resources */,
+				F554E91B16CB5BDA0039CA4B /* CustomWokoutPostplayViewController_iPad.xib in Resources */,
+				F554E91F16CB5C2F0039CA4B /* EquipmentViewController_iPad.xib in Resources */,
+				F554E92716CB5D240039CA4B /* CustomWorkoutEditViewController_iPad.xib in Resources */,
+				F554E92F16CB5D610039CA4B /* NameViewController_iPad.xib in Resources */,
+				F554E94316CB651E0039CA4B /* ExcersiceListViewController_iPad.xib in Resources */,
+				F554E94B16CB6AB60039CA4B /* WorkoutCreationCompletedViewController_iPad.xib in Resources */,
+				F554E94F16CB6ACB0039CA4B /* CustomWorkoutIntermediateViewController_iPad.xib in Resources */,
+				F554E95616CB8D250039CA4B /* CustomizedWorkoutPlayViewController_iPad.xib in Resources */,
+				F567010216CCE74A001DF5C7 /* bg_Ipad.png in Resources */,
+				F567009C16CCBC4D001DF5C7 /* MembershipPurchaseViewController_iPad.xib in Resources */,
+				F56700A016CCBCBD001DF5C7 /* MemberPromoViewController_iPad.xib in Resources */,
+				F56700A416CCBE10001DF5C7 /* MemverRateViewController_iPad.xib in Resources */,
+				F56700A816CCC0B9001DF5C7 /* MembershipCreateOwnViewController_iPad.xib in Resources */,
+				F56700B016CCC40C001DF5C7 /* MembershipRateViewController_iPad.xib in Resources */,
+				F56700BA16CCC58E001DF5C7 /* MembershipPersonliazedViewController_iPad.xib in Resources */,
+				F56700BE16CCC5B5001DF5C7 /* MembershipStayFitViewController_iPad.xib in Resources */,
+				F567011E16CD010B001DF5C7 /* btn_new.png in Resources */,
+				F553218516D5E41200BEAC21 /* refresh_green.png in Resources */,
+				F5B27E5F16D387B700576BB1 /* button_half_width.png in Resources */,
+				F5B27E6B16D3935000576BB1 /* small_button.png in Resources */,
+				F5B27E7016D3952F00576BB1 /* button_half_width_iPad.png in Resources */,
+				F5B27E7316D3956F00576BB1 /* button_full_width_iPad.png in Resources */,
+				F5B27E7816D3959D00576BB1 /* button_half_width_iPad.png in Resources */,
+				F5B27E7E16D397AC00576BB1 /* button_full_width@2x.png in Resources */,
+				F5B27E8116D39C6800576BB1 /* small_button_iPad.png in Resources */,
+				F5D76B5A16D72E1200590256 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3165,7 +3255,6 @@
 				F509271B1695829100072169 /* MembershipStayFitViewController.m in Sources */,
 				F50927211695863600072169 /* MembershipPersonliazedViewController.m in Sources */,
 				F5092727169588F300072169 /* MembershipCreateOwnViewController.m in Sources */,
-				F509272D16958EFA00072169 /* MembershipPersonalViewController.m in Sources */,
 				F5092732169599BC00072169 /* MemverRateViewController.m in Sources */,
 				F5998AFC16A5229B00E4FEC1 /* CustomInitialLaunchViewController.m in Sources */,
 				F592D3B116B7A9D00005655C /* Membership.m in Sources */,
@@ -3268,15 +3357,6 @@
 				0B3E7B2E160306920053A47B /* de */,
 			);
 			name = yes_no_btn.png;
-			sourceTree = "<group>";
-		};
-		0B3E7B31160306980053A47B /* upgrade.jpg */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0B3E7B30160306980053A47B /* en */,
-				0B3E7B36160306AF0053A47B /* de */,
-			);
-			name = upgrade.jpg;
 			sourceTree = "<group>";
 		};
 		0B3E7B34160306A30053A47B /* upgrade-landscape.jpg */ = {
@@ -4198,20 +4278,11 @@
 			path = Membershiprate;
 			sourceTree = "<group>";
 		};
-		F5085424167885C50094F314 /* back_btn_with_text.png */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F5085423167885C50094F314 /* en */,
-				F508544C167885F70094F314 /* de */,
-			);
-			name = back_btn_with_text.png;
-			sourceTree = "<group>";
-		};
 		F5085427167885C90094F314 /* back_btnBlack.png */ = {
 			isa = PBXVariantGroup;
 			children = (
 				F5085426167885C90094F314 /* en */,
-				F508544D167885FA0094F314 /* de */,
+				F539BE3816C920AA00A66915 /* de */,
 			);
 			name = back_btnBlack.png;
 			sourceTree = "<group>";
@@ -4232,15 +4303,6 @@
 				F508545D167886280094F314 /* de */,
 			);
 			name = logo_new_side.png;
-			sourceTree = "<group>";
-		};
-		F5085430167885D40094F314 /* back_btn.png */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F508542F167885D40094F314 /* en */,
-				F508545C167886250094F314 /* de */,
-			);
-			name = back_btn.png;
 			sourceTree = "<group>";
 		};
 		F5085436167885DC0094F314 /* package_box.png */ = {
@@ -4297,15 +4359,6 @@
 			name = continue_btn_with_text.png;
 			sourceTree = "<group>";
 		};
-		F5085451167886030094F314 /* button_half_width.png */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F5085450167886030094F314 /* en */,
-				F5085452167886060094F314 /* de */,
-			);
-			name = button_half_width.png;
-			sourceTree = "<group>";
-		};
 		F512B75A1639093500B922E1 /* TermsOfUse_iPad.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -4334,6 +4387,15 @@
 			path = customizedWorkoutList;
 			sourceTree = "<group>";
 		};
+		F519E55D16CA535900EE6F65 /* CarouselViewDemoViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F519E55C16CA535900EE6F65 /* en */,
+				F519E55E16CA535F00EE6F65 /* de */,
+			);
+			name = CarouselViewDemoViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
 		F5253892163FABC8004F9195 /* ExcersiceIntermediateViewController_iPad.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -4359,6 +4421,15 @@
 				F52538AC163FC243004F9195 /* de */,
 			);
 			name = AboutViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+		F52F079616CA6757006BE6EF /* CustomInitialLaunchViewControllerView_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F52F079716CA6757006BE6EF /* en */,
+				F52F079916CA6771006BE6EF /* de */,
+			);
+			name = CustomInitialLaunchViewControllerView_iPad.xib;
 			sourceTree = "<group>";
 		};
 		F52FEA20164799D60002E199 /* ThanksViewController_iPad.xib */ = {
@@ -4413,16 +4484,6 @@
 				F5427FC31653757D00520F0C /* de */,
 			);
 			name = LandigPageViewController_iPad.xib;
-			sourceTree = "<group>";
-		};
-		F533DCD116A7FC7000A4B72E /* MembershipPersonalViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F533DCD016A7FC7000A4B72E /* en */,
-				F54ED67816C2448200F1129D /* de */,
-			);
-			name = MembershipPersonalViewController.xib;
-			path = MembershipPersonalGym;
 			sourceTree = "<group>";
 		};
 		F538D0F316C4C47100F16627 /* green_btn.png */ = {
@@ -4488,6 +4549,15 @@
 			name = membershipbg_new.png;
 			sourceTree = "<group>";
 		};
+		F553218716D5E41200BEAC21 /* refresh_green.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F553218616D5E41200BEAC21 /* en */,
+				F553218816D5E41500BEAC21 /* de */,
+			);
+			name = refresh_green.png;
+			sourceTree = "<group>";
+		};
 		F554A2501679B5F500E268B5 /* icon_delete.png */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -4522,6 +4592,106 @@
 				F554A25D1679B61500E268B5 /* de */,
 			);
 			name = icon_edit.png;
+			sourceTree = "<group>";
+		};
+		F554E90716CB56020039CA4B /* CustomWorkoutsViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F554E90816CB560C0039CA4B /* de */,
+				F554E90B16CB56C10039CA4B /* en */,
+			);
+			name = CustomWorkoutsViewController_iPad.xib;
+			path = customizedWorkoutList;
+			sourceTree = "<group>";
+		};
+		F554E91116CB5A940039CA4B /* FocusViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F554E91216CB5A940039CA4B /* en */,
+				F554E91416CB5A9B0039CA4B /* de */,
+			);
+			name = FocusViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+		F554E91516CB5AF00039CA4B /* CustomWorkoutAddViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F554E91616CB5AF00039CA4B /* en */,
+				F554E91816CB5AF40039CA4B /* de */,
+			);
+			name = CustomWorkoutAddViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+		F554E91916CB5BDA0039CA4B /* CustomWokoutPostplayViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F554E91A16CB5BDA0039CA4B /* en */,
+				F554E91C16CB5BFC0039CA4B /* de */,
+			);
+			name = CustomWokoutPostplayViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+		F554E91D16CB5C2F0039CA4B /* EquipmentViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F554E91E16CB5C2F0039CA4B /* en */,
+				F554E92016CB5C330039CA4B /* de */,
+			);
+			name = EquipmentViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+		F554E92516CB5D240039CA4B /* CustomWorkoutEditViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F554E92616CB5D240039CA4B /* en */,
+				F554E92816CB5D2A0039CA4B /* de */,
+			);
+			name = CustomWorkoutEditViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+		F554E92D16CB5D610039CA4B /* NameViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F554E92E16CB5D610039CA4B /* en */,
+				F554E93016CB5D650039CA4B /* de */,
+			);
+			name = NameViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+		F554E94116CB651E0039CA4B /* ExcersiceListViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F554E94216CB651E0039CA4B /* en */,
+				F554E94416CB65230039CA4B /* de */,
+			);
+			name = ExcersiceListViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+		F554E94916CB6AB60039CA4B /* WorkoutCreationCompletedViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F554E94A16CB6AB60039CA4B /* en */,
+				F554E94C16CB6ABB0039CA4B /* de */,
+			);
+			name = WorkoutCreationCompletedViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+		F554E94D16CB6ACB0039CA4B /* CustomWorkoutIntermediateViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F554E94E16CB6ACB0039CA4B /* en */,
+				F554E95016CB6AD10039CA4B /* de */,
+			);
+			name = CustomWorkoutIntermediateViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+		F554E95416CB8D250039CA4B /* CustomizedWorkoutPlayViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F554E95516CB8D250039CA4B /* en */,
+				F554E95716CB8D390039CA4B /* de */,
+			);
+			name = CustomizedWorkoutPlayViewController_iPad.xib;
 			sourceTree = "<group>";
 		};
 		F55B76FB16AD1B180034F967 /* CustomInitialLaunchViewController.xib */ = {
@@ -4610,6 +4780,87 @@
 			);
 			name = MembershipStayFitViewController.xib;
 			path = MemebershipStayFit;
+			sourceTree = "<group>";
+		};
+		F567009A16CCBC4D001DF5C7 /* MembershipPurchaseViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F567009B16CCBC4D001DF5C7 /* en */,
+				F567009D16CCBC5D001DF5C7 /* de */,
+			);
+			name = MembershipPurchaseViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+		F567009E16CCBCBD001DF5C7 /* MemberPromoViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F567009F16CCBCBD001DF5C7 /* en */,
+				F56700A116CCBCC2001DF5C7 /* de */,
+			);
+			name = MemberPromoViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+		F56700A216CCBE10001DF5C7 /* MemverRateViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F56700A316CCBE10001DF5C7 /* en */,
+				F56700A516CCBE14001DF5C7 /* de */,
+			);
+			name = MemverRateViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+		F56700A616CCC0B9001DF5C7 /* MembershipCreateOwnViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F56700A716CCC0B9001DF5C7 /* en */,
+				F56700A916CCC0BE001DF5C7 /* de */,
+			);
+			name = MembershipCreateOwnViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+		F56700AE16CCC40C001DF5C7 /* MembershipRateViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F56700AF16CCC40C001DF5C7 /* en */,
+				F56700B116CCC412001DF5C7 /* de */,
+			);
+			name = MembershipRateViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+		F56700B816CCC58E001DF5C7 /* MembershipPersonliazedViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F56700B916CCC58E001DF5C7 /* en */,
+				F56700BB16CCC596001DF5C7 /* de */,
+			);
+			name = MembershipPersonliazedViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+		F56700BC16CCC5B5001DF5C7 /* MembershipStayFitViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F56700BD16CCC5B5001DF5C7 /* en */,
+				F56700BF16CCC5BD001DF5C7 /* de */,
+			);
+			name = MembershipStayFitViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+		F567010416CCE74A001DF5C7 /* bg_Ipad.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F567010316CCE74A001DF5C7 /* en */,
+				F567010916CCE756001DF5C7 /* de */,
+			);
+			name = bg_Ipad.png;
+			sourceTree = "<group>";
+		};
+		F567012016CD010B001DF5C7 /* btn_new.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F567011F16CD010B001DF5C7 /* en */,
+				F567012116CD0110001DF5C7 /* de */,
+			);
+			name = btn_new.png;
 			sourceTree = "<group>";
 		};
 		F58761E716A9506100475F54 /* background.png */ = {
@@ -4918,6 +5169,51 @@
 			);
 			name = CustomizedWorkoutPlayViewController.xib;
 			path = CustomizedWorkoutPlay;
+			sourceTree = "<group>";
+		};
+		F5B27E6116D387B700576BB1 /* button_half_width.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F5B27E6016D387B700576BB1 /* en */,
+				F5B27E6216D387BB00576BB1 /* de */,
+			);
+			name = button_half_width.png;
+			sourceTree = "<group>";
+		};
+		F5B27E6D16D3935000576BB1 /* small_button.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F5B27E6C16D3935000576BB1 /* en */,
+				F5B27E6E16D3935300576BB1 /* de */,
+			);
+			name = small_button.png;
+			sourceTree = "<group>";
+		};
+		F5B27E7516D3956F00576BB1 /* button_full_width_iPad.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F5B27E7416D3956F00576BB1 /* en */,
+				F5B27E7C16D395AA00576BB1 /* de */,
+			);
+			name = button_full_width_iPad.png;
+			sourceTree = "<group>";
+		};
+		F5B27E7A16D3959D00576BB1 /* button_half_width_iPad.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F5B27E7916D3959D00576BB1 /* en */,
+				F5B27E7B16D395A600576BB1 /* de */,
+			);
+			name = button_half_width_iPad.png;
+			sourceTree = "<group>";
+		};
+		F5B27E8316D39C6800576BB1 /* small_button_iPad.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F5B27E8216D39C6800576BB1 /* en */,
+				F5B27E8416D39C6C00576BB1 /* de */,
+			);
+			name = small_button_iPad.png;
 			sourceTree = "<group>";
 		};
 		F5B400D516A67D740002444E /* button.png */ = {

@@ -26,8 +26,6 @@
     ASIHTTPRequest   *downloadrequest ;
     ASINetworkQueue  *myQueue;
     ExcersiceDB *excersiceDB;
-   
-    
     BOOL isConected;
     int count;
     int stop;
@@ -37,9 +35,6 @@
     NSString *urlPath;
     NSString *userlevel;
     NSString *userID;
-    
-   
-    
     NSMutableArray *excersices;
     NSMutableArray *arr;
     NSMutableArray *excersicesList;

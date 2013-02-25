@@ -365,6 +365,7 @@
     [userInfo setInteger:userID  forKey:@"UserID"];
     [userInfo setObject:userLevel  forKey:@"Userlevel"];
     [userInfo setObject:emailTextField.text  forKey:@"email"];
+    [userInfo setObject:@"false" forKey:@"isMember"];
 }
 
 -(void)removeActivities{

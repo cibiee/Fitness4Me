@@ -27,7 +27,7 @@
     NSString *freeVideo;
     NSString *oldUserlevel;
     NSString *hasMadeFullPurchase;
-    
+    NSString *isMemeber;
     WorkoutDB *workoutDB;
     
     UIView *signUpView;

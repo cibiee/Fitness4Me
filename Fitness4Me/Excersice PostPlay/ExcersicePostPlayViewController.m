@@ -133,7 +133,7 @@
     
     else {
         
-        [self performSelector:@selector(showUpgradeView) withObject:nil afterDelay:2];
+       // [self performSelector:@selector(showUpgradeView) withObject:nil afterDelay:2];
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
         {
             
@@ -177,7 +177,7 @@
         viewController = [[MemberPromoViewController alloc]initWithNibName:@"MemberPromoViewController" bundle:nil];
     }
     else {
-        viewController = [[MemberPromoViewController alloc]initWithNibName:@"MemberPromoViewController" bundle:nil];
+        viewController = [[MemberPromoViewController alloc]initWithNibName:@"MemberPromoViewController_iPad" bundle:nil];
     }
     
     [viewController setNavigateTo:@"NotList"];

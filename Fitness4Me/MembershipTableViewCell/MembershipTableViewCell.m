@@ -10,7 +10,7 @@
 
 @implementation MembershipTableViewCell
 
-@synthesize nameLabel,rateLabel,buyNowButton,moreInfoButton;
+@synthesize nameLabel,rateLabel,descritptionLabel;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -22,45 +22,50 @@
         
         nameLabel.textAlignment = UITextAlignmentCenter;
         
-        nameLabel.font = [UIFont boldSystemFontOfSize:17];
+        nameLabel.font = [UIFont boldSystemFontOfSize:20];
         
         nameLabel.backgroundColor =[UIColor clearColor];
         
         nameLabel.textColor =[UIColor blackColor];
         
-              
-        
-        
         // Initialization code
         rateLabel = [[UILabel alloc]init];
         
-        rateLabel.textAlignment = UITextAlignmentLeft;
-        rateLabel.font = [UIFont boldSystemFontOfSize:20];
+        rateLabel.textAlignment = UITextAlignmentCenter;
+        
+        rateLabel.font = [UIFont boldSystemFontOfSize:18];
         
         rateLabel.backgroundColor =[UIColor clearColor];
         
-        rateLabel.textColor =[UIColor redColor];
+        rateLabel.textColor =[UIColor whiteColor];
         
         rateLabel.numberOfLines=0;
         
         [rateLabel sizeToFit];
         
-        moreInfoButton =[[UIButton alloc]init];
-        buyNowButton =[[UIButton alloc]init];
-    
-         
+        //
         
-        [moreInfoButton setTitle:@"More Info"  forState:UIControlStateNormal];
-        [buyNowButton setTitle:@"Buy Now"  forState:UIControlStateNormal];
-        [moreInfoButton setBackgroundImage:[UIImage imageNamed:@"btnMembership.png"] forState:UIControlStateNormal];
-        [buyNowButton setBackgroundImage:[UIImage imageNamed:@"btnMembership.png"] forState:UIControlStateNormal];
+        descritptionLabel = [[UILabel alloc]init];
         
+        descritptionLabel.textAlignment = UITextAlignmentCenter;
         
+        descritptionLabel.font = [UIFont systemFontOfSize:13];
+        
+        descritptionLabel.backgroundColor =[UIColor clearColor];
+        
+        descritptionLabel.textColor =[UIColor blackColor];
+        
+        descritptionLabel.numberOfLines=2;
+        
+        descritptionLabel.lineBreakMode=UILineBreakModeWordWrap;
+        
+        [descritptionLabel sizeToFit];
+
+       
         [self.contentView addSubview:nameLabel];
         [self.contentView addSubview:rateLabel];
-        [self.contentView addSubview:moreInfoButton];
-        [self.contentView addSubview:buyNowButton];
-        
+        [self.contentView addSubview:descritptionLabel];
+               
         
         
     }
@@ -90,25 +95,17 @@
     
     CGRect frame;
     
-    
-    frame= CGRectMake(boundsX+10,boundsY, contentRect.size.width-30, 36);
+    frame= CGRectMake(boundsX+5,boundsY, contentRect.size.width-5, 36);
     
     nameLabel.frame = frame;
     
-    frame= CGRectMake(boundsX+106 ,33, contentRect.size.width-200, 36);
+    frame= CGRectMake(boundsX+5,66, contentRect.size.width-5, 36);
     
     self.rateLabel.frame = frame;
     
-       
-    frame= CGRectMake(56 ,74, 90, 28);
+    frame= CGRectMake(boundsX+5 ,25, contentRect.size.width-5, 56);
     
-    self.moreInfoButton.frame = frame;
-    
-    
-    frame= CGRectMake(156 ,74, 90, 28);
-    
-    self.buyNowButton.frame = frame;
-    
+    self.descritptionLabel.frame = frame;
 }
 
 

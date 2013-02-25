@@ -33,10 +33,9 @@
     UIButton *backutton = [UIButton buttonWithType:UIButtonTypeCustom];
     backutton.frame = CGRectMake(0, 0, 58, 30);
     [backutton setBackgroundImage:[UIImage imageNamed:@"back_btnBlack.png"] forState:UIControlStateNormal];
-    
-    [backutton setTitle:NSLocalizedStringWithDefaultValue(@"back", nil,[Fitness4MeUtils getBundle], nil, nil) forState:UIControlStateNormal];
     [backutton.titleLabel setFont:[UIFont systemFontOfSize:14]];
     [backutton.titleLabel setTextAlignment:UITextAlignmentRight];
+     [backutton setTitle:NSLocalizedStringWithDefaultValue(@"back", nil,[Fitness4MeUtils getBundle], nil, nil) forState:UIControlStateNormal];
     [backutton addTarget:self action:@selector(onClickBack:) forControlEvents:UIControlEventTouchDown];
     UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithCustomView:backutton];
     self.navigationBar.leftBarButtonItem = backBtn;
@@ -44,9 +43,10 @@
     UIButton *nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
     nextButton.frame = CGRectMake(0, 0, 58, 30);
     [nextButton setBackgroundImage:[UIImage imageNamed:@"next_btn_with_text.png"] forState:UIControlStateNormal];
-    [nextButton setTitle:NSLocalizedStringWithDefaultValue(@"next", nil,[Fitness4MeUtils getBundle], nil, nil) forState:UIControlStateNormal];
+    
     [nextButton.titleLabel setFont:[UIFont systemFontOfSize:13]];
     [nextButton.titleLabel setTextAlignment:UITextAlignmentRight];
+    [nextButton setTitle:NSLocalizedStringWithDefaultValue(@"next", nil,[Fitness4MeUtils getBundle], nil, nil) forState:UIControlStateNormal];
     [nextButton addTarget:self action:@selector(onClickNext:) forControlEvents:UIControlEventTouchDown];
     UIBarButtonItem *nextBtn = [[UIBarButtonItem alloc] initWithCustomView:nextButton];
     self.navigationBar.rightBarButtonItem = nextBtn;
@@ -83,28 +83,56 @@
         NSString *workoutType =[userinfo stringForKey:@"workoutType"];
         if ([workoutType isEqualToString:@"Custom"]){
             Workout *workouts= [[Workout alloc]init];
+            NSLog([workouts WorkoutID]);
             if ([[workout WorkoutID]intValue]>0) {
                 WorkoutDB *workoutDB =[[WorkoutDB alloc]init];
                 [workoutDB setUpDatabase];
                 [workoutDB createDatabase];
-                workouts =[workoutDB getCustomWorkoutByID:[workout WorkoutID]];
+                 workouts =[workoutDB getCustomWorkoutByID:[workout WorkoutID]];
+                [workouts  setWorkoutID:[workout WorkoutID]];
+                NSLog([workouts WorkoutID]);
+                
             }
             [workouts setDuration:workout.Duration];
             [workouts setFocus:workout.Focus];
             [workouts setProps:workout.Props];
             [workouts setName:self.nameTextfield.text];
-            WorkoutCreationCompletedViewController *viewController =[[WorkoutCreationCompletedViewController alloc]initWithNibName:@"WorkoutCreationCompletedViewController" bundle:nil];
+            WorkoutCreationCompletedViewController *viewController;
+            
+            if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+                viewController = [[WorkoutCreationCompletedViewController alloc]initWithNibName:@"WorkoutCreationCompletedViewController" bundle:nil];
+            }
+            else {
+                viewController = [[WorkoutCreationCompletedViewController alloc]initWithNibName:@"WorkoutCreationCompletedViewController_iPad" bundle:nil];
+            }
+
+            
             viewController.workout= [[Workout alloc]init];
             viewController.workout =workouts;
+              
             [self.navigationController pushViewController:viewController animated:YES];
         }else{
-            WorkoutCreationCompletedViewController *viewController =[[WorkoutCreationCompletedViewController alloc]initWithNibName:@"WorkoutCreationCompletedViewController" bundle:nil];
+            WorkoutCreationCompletedViewController *viewController;
+            
+            if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+                viewController = [[WorkoutCreationCompletedViewController alloc]initWithNibName:@"WorkoutCreationCompletedViewController" bundle:nil];
+            }
+            else {
+                viewController = [[WorkoutCreationCompletedViewController alloc]initWithNibName:@"WorkoutCreationCompletedViewController_iPad" bundle:nil];
+            }
+            
+
+           
             [viewController setWorkoutName:self.nameTextfield.text];
             [viewController setCollectionString:self.collectionString];
             
             [viewController setWorkoutID:[workout WorkoutID]];
             [viewController setEquipments:self.equipments];
-           
+            
+            viewController.workout= [[Workout alloc]init];
+            if ([[workout WorkoutID]intValue]>0)
+                [viewController.workout setWorkoutID:[workout WorkoutID]];
+
             [viewController setFocusList:self.focusList];
             [self.navigationController pushViewController:viewController animated:YES];
         }

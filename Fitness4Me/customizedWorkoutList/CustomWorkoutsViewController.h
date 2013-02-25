@@ -30,7 +30,7 @@
     NSUserDefaults *userinfo;
     NSMutableArray *searchArray;
     NSString *canCreate;
-    NSString *canCreatetrial;
+   
     FitnessServerCommunication *fitness;
     WorkoutDB *workoutDB;
     ASINetworkQueue  *myQueue;
@@ -45,7 +45,7 @@
 -(IBAction)onClickBack:(id)sender;
 -(IBAction)onClickAdd:(id)sender;
 -(IBAction)onClickContinueTrial:(id)sender;
-
+@property (strong, nonatomic) NSString *canCreatetrial;
 @property (weak, nonatomic) IBOutlet UITextView *messageLabel;
 @property (weak, nonatomic) IBOutlet UIView *memberView;
 @property(strong,nonatomic)NSString *workoutType;

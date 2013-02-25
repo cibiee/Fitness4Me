@@ -37,7 +37,7 @@
    
     [self.planPopUpView setHidden:YES];
     [self.tableView setHidden:YES];
-    [self PrepareDataForInappPurchase];
+        [self PrepareDataForInappPurchase];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -72,7 +72,7 @@
             if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
                 viewController =[[CustomWorkoutsViewController alloc]initWithNibName:@"CustomWorkoutsViewController" bundle:nil];
             }else {
-                //viewController =[[HintsViewController alloc]initWithNibName:@"CustomizedWorkoutListViewController_iPad" bundle:nil];
+                viewController =[[CustomWorkoutsViewController alloc]initWithNibName:@"CustomWorkoutsViewController_iPad" bundle:nil];
             }
             [viewController setWorkoutType:self.workoutType];
             [self.navigationController pushViewController:viewController animated:YES];
@@ -250,7 +250,7 @@
         
         [self sendMembership];
         // update the server with the purchased details
-       
+        [userinfo setObject:@"true" forKey:@"showDownload"];
        
         transaction =nil;
         // send out a notification that we’ve finished the transaction
@@ -463,6 +463,8 @@
     if (cell == nil){
         cell = [[MembershipTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:MyIdentifier];
         cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"membershipbg.png"]];
+        cell.selectionStyle = UITableViewCellSelectionStyleGray;
+
     }
     
     NSDictionary *dictionary = [self.groupedMemberships objectAtIndex:indexPath.section];
@@ -470,27 +472,40 @@
     Membership *membership = [[Membership alloc]init];
     membership = [array objectAtIndex:indexPath.row];
     cell.nameLabel.text = [membership name];
-    cell.rateLabel.text=[[membership currency] stringByAppendingString:[membership rate]];
     
-    cell.moreInfoButton.titleLabel .textColor=[UIColor whiteColor];
-    cell.buyNowButton.titleLabel .textColor=[UIColor whiteColor];
     
-    cell.moreInfoButton.titleLabel .font=[UIFont systemFontOfSize:14];
-    cell.buyNowButton.titleLabel .font=[UIFont systemFontOfSize:14];
-    [cell.moreInfoButton setTag:[indexPath section]];
-    [cell.moreInfoButton  addTarget:self action:@selector(onClickMoreInfo:) forControlEvents:UIControlEventTouchUpInside];
-    [cell.buyNowButton setTag:[indexPath section]];
-    [cell.buyNowButton  addTarget:self action:@selector(onClickBuyNow:) forControlEvents:UIControlEventTouchUpInside];
+    cell.rateLabel.text= [[[@"Only " stringByAppendingString:[membership currency]]stringByAppendingString:[membership discount]]
+                          
+                          stringByAppendingString:@" per month"] ;
+
+    int selectedlang =[Fitness4MeUtils getApplicationLanguage];
+        
+    if (selectedlang==2) {
+        cell.rateLabel.text= [[[@"nur " stringByAppendingString:[membership currency]]stringByAppendingString:[membership discount]]
+                              
+                              stringByAppendingString:@" im Monat."] ;
+        [cell.nameLabel setFont: [UIFont boldSystemFontOfSize:16]];
+        //[cell.descritptionLabel setFont: [UIFont boldSystemFontOfSize:15]];
+    }
+   cell.descritptionLabel.text=[membership description];
     return cell;
 }
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 105;
+    return 114;
 }
 
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSDictionary *dictionary = [self.groupedMemberships objectAtIndex:indexPath.row];
+    NSArray *array = [dictionary objectForKey:@"memberships"];
+    selectedMembership = [[Membership alloc]init];
+    selectedMembership = [array objectAtIndex:0];
+    productIdentifier=[selectedMembership appleID];
+    [self purchaseProUpgrade];
+}
 - (void)viewDidUnload {
     [self setTableView:nil];
     [self setCloseButton:nil];
@@ -500,58 +515,8 @@
     [self setRateLabel:nil];
     [super viewDidUnload];
 }
-- (IBAction)closePopup:(id)sender {
-    [self.planPopUpView setHidden:YES];
-}
 
-- (IBAction)onClickMoreInfo:(id)sender {
-    
-    int s = [sender tag];
-    
-    NSDictionary *dictionary = [self.groupedMemberships objectAtIndex:s];
-    NSArray *array = [dictionary objectForKey:@"memberships"];
-    selectedMembership = [[Membership alloc]init];
-    selectedMembership = [array objectAtIndex:0];
-    [self.titleLabel setText:[selectedMembership name]];
-    NSString *ratetext= [[selectedMembership currency] stringByAppendingString:[selectedMembership rate]];
-    [self.rateLabel setText:[@"only " stringByAppendingString:ratetext]];
-    int membershipID= [[selectedMembership membershipID]intValue];
-    NSString *descriptionKey;
-    
-    switch (membershipID) {
-        case 1:
-            
-            descriptionKey =@"monthlyDescription";
-            break;
-        case 2:
-            
-            descriptionKey =@"supersaver1Description";
-            break;
-        case 3:
-            
-            descriptionKey =@"supersaver2Description";
-            break;
-        case 4:
-            
-            descriptionKey =@"supersaver3Description";
-            break;
-            
-        default:
-            break;
-    }
-    [self.descriptionLabel setText:NSLocalizedStringWithDefaultValue(descriptionKey, nil,[Fitness4MeUtils getBundle], nil, nil)];
-    [self.planPopUpView setHidden:NO];
-}
 
-- (IBAction)onClickBuyNow:(id)sender {
-    int s = [sender tag];
-    NSDictionary *dictionary = [self.groupedMemberships objectAtIndex:s];
-    NSArray *array = [dictionary objectForKey:@"memberships"];
-    selectedMembership = [[Membership alloc]init];
-    selectedMembership = [array objectAtIndex:0];
-    productIdentifier=[selectedMembership appleID];
-   [self purchaseProUpgrade];
-}
 
 
 
@@ -564,7 +529,7 @@
                 [userinfo setObject:@"true" forKey:@"isMember"];
                 [userinfo setObject:@"dontSubscribe" forKey:@"yearly"];
                 [userinfo setObject:[selectedMembership membershipID] forKey:@"MembershipPlan"];
-                [self showAlertwithMsg:@"Congratulations! You  have become a member of fitness4.me."];
+                [self showAlertwithMsg:@"Congratulations! You  have become a premium member of Fitness4.me."];
             }
         }
     }  onError:^(NSError *error) {
@@ -586,7 +551,7 @@
 
 -(void)showAlertwithMsg:(NSString*)message
 {
-    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"fitness4.me" message:message
+    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"Fitness4.me" message:message
                                                        delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     [alertview show];
     

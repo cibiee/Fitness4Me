@@ -53,7 +53,7 @@
         
     }
     else {
-        viewController = [[MembershipRateViewController alloc]initWithNibName:@"MembershipRateViewController" bundle:nil];
+        viewController = [[MembershipRateViewController alloc]initWithNibName:@"MembershipRateViewController_iPad" bundle:nil];
     }
     [viewController setNavigateTo:[self navigateTo]];
     viewController.workout =self.workout;
@@ -71,7 +71,7 @@
         
     }
     else {
-        viewController = [[MembershipPurchaseViewController alloc]initWithNibName:@"MembershipPurchaseViewController" bundle:nil];
+        viewController = [[MembershipPurchaseViewController alloc]initWithNibName:@"MembershipPurchaseViewController_iPad" bundle:nil];
     }
     [viewController setNavigateTo:[self navigateTo]];
     viewController.workout =self.workout;
@@ -99,14 +99,14 @@
 
         
         }
-        
+        //9633002233
        
         else{
             CustomWorkoutsViewController *viewController;
             if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
                 viewController =[[CustomWorkoutsViewController alloc]initWithNibName:@"CustomWorkoutsViewController" bundle:nil];
             }else {
-                //viewController =[[HintsViewController alloc]initWithNibName:@"CustomizedWorkoutListViewController_iPad" bundle:nil];
+                 viewController =[[CustomWorkoutsViewController alloc]initWithNibName:@"CustomWorkoutsViewController_iPad" bundle:nil];
             }
             [viewController setWorkoutType:self.workoutType];
             [self.navigationController pushViewController:viewController animated:YES];

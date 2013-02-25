@@ -41,6 +41,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *backgroundLabel;
 @property (nonatomic, readonly) NSInteger indexOfSelectedCell;
 @property (weak, nonatomic) IBOutlet UILabel *durationLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *bgImageView;
 @property (weak, nonatomic) IBOutlet UILabel *totalVideoCountLabel;
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigationBar;
 @property (weak, nonatomic) IBOutlet UIButton *addMoreButton;
@@ -52,7 +53,6 @@
 
 -(IBAction)onClickMove:(id)sender;
 -(IBAction)onClickBack:(id)sender;
--(IBAction) segmentedControlIndexChanged;
 -(IBAction)removeSelectedColumn;
 -(IBAction)addMoreExcersices:(id)sender;
 

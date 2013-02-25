@@ -68,7 +68,7 @@
 -(void)ListExcersices;
 
 
-
+-(IBAction)snycData;
 
 -(IBAction)unlockAll;
 -(IBAction)navigateToHome;

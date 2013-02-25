@@ -7,6 +7,7 @@
 //
 
 #import "CustomCellContentController.h"
+#import "Fitness4MeUtils.h"
     //#import "Globals.h"
 
 
@@ -70,7 +71,9 @@
         
         self.DurationLabels.textColor =[UIColor blackColor];
         
-        [self.DurationLabels setText:@"Duration :"];
+        
+        [self.DurationLabels setLineBreakMode:UILineBreakModeWordWrap];
+        [self.DurationLabels setText:NSLocalizedStringWithDefaultValue(@"duration", nil,[Fitness4MeUtils getBundle], nil, nil)];
         
         
         // Initialization code
@@ -83,9 +86,9 @@
         self.focusLabels.backgroundColor =[UIColor clearColor];
         
         self.focusLabels.textColor =[UIColor blackColor];
-        
-        [self.focusLabels setText:@"Focus :"];
-        
+        [self.focusLabels setLineBreakMode:UILineBreakModeWordWrap];
+
+        [self.focusLabels setText:NSLocalizedStringWithDefaultValue(@"focus", nil,[Fitness4MeUtils getBundle], nil, nil)];
 
         // Initialization code
         self.EditLabel = [[UILabel alloc]init];
@@ -202,21 +205,21 @@
     
     self.focusLabel.frame = frame;
   
-    frame= CGRectMake(boundsX+90 ,47, 55, 65);
+    frame= CGRectMake(boundsX+90 ,47, 65, 65);
     
     self.focusLabels.frame = frame;
 
     
-    frame= CGRectMake(265,10, 32, 32);
+    frame= CGRectMake(contentRect.size.width-45,10, 32, 32);
     
     self.favIcon.frame = frame;
     
-    frame= CGRectMake(265 ,80, 32, 32);
+    frame= CGRectMake(contentRect.size.width-45 ,80, 32, 32);
     
     self.EditButton.frame = frame;
     
 
-    frame= CGRectMake(265 ,45, 32, 32);
+    frame= CGRectMake(contentRect.size.width-45 ,45, 32, 32);
     
     self.deleteButton.frame = frame;
     

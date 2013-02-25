@@ -118,8 +118,7 @@
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string type="base64-UTF8" key="IBUIText">Q29uZ3JhdHVsYXRpb25zISBZb3UganVzdCBkZXNpZ25lZCAgdGhlIFtmaXJzdF0gb2YgeW91ciBmaXZl
-IGZyZWUgY3VzdG9taXplZCB3b3Jrb3V0cw0KDQo</string>
+						<string key="IBUIText"/>
 						<object class="NSColor" key="IBUITextColor" id="988455223">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MQA</bytes>
@@ -162,13 +161,13 @@ IGZyZWUgY3VzdG9taXplZCB3b3Jrb3V0cw0KDQo</string>
 							<string key="NSResourceName">button_half_width.png</string>
 						</object>
 						<reference key="IBUINormalBackgroundImage" ref="1055735542"/>
-						<object class="IBUIFontDescription" key="IBUIFontDescription" id="724708649">
+						<object class="IBUIFontDescription" key="IBUIFontDescription" id="487625521">
 							<int key="type">2</int>
-							<double key="pointSize">15</double>
+							<double key="pointSize">16</double>
 						</object>
-						<object class="NSFont" key="IBUIFont" id="528257890">
+						<object class="NSFont" key="IBUIFont" id="416868461">
 							<string key="NSName">Helvetica-Bold</string>
-							<double key="NSSize">15</double>
+							<double key="NSSize">16</double>
 							<int key="NSfFlags">16</int>
 						</object>
 					</object>
@@ -216,8 +215,8 @@ IGZyZWUgY3VzdG9taXplZCB3b3Jrb3V0cw0KDQo</string>
 						<reference key="IBUINormalTitleColor" ref="988455223"/>
 						<reference key="IBUINormalTitleShadowColor" ref="319122980"/>
 						<reference key="IBUINormalBackgroundImage" ref="1055735542"/>
-						<reference key="IBUIFontDescription" ref="724708649"/>
-						<reference key="IBUIFont" ref="528257890"/>
+						<reference key="IBUIFontDescription" ref="487625521"/>
+						<reference key="IBUIFont" ref="416868461"/>
 					</object>
 				</array>
 				<string key="NSFrame">{{0, 20}, {320, 460}}</string>

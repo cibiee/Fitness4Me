@@ -50,7 +50,7 @@
 
     NSString *MembershipPlan =[userinfo objectForKey:@"MembershipPlan"];
     if ([membershipPurchase isEqualToString:@"Subscribe"]) {
-        [self showAlertwithMsg:@"Your fitness4.me membership has expierd. please renew your subscription"];
+        [self showAlertwithMsg:@"Your Fitness4.me membership has expierd. please renew your subscription"];
     }
     NSArray *VideoArray =[NSArray arrayWithObjects:@"completed_exercise_de.mp4",@"completed_exercise.mp4",@"next_exercise_de.mp4",@"next_exercise.mp4",@"otherside_exercise_de.mp4",@"otherside_exercise.mp4",@"recovery_15_de.mp4",@"recovery_15.mp4",@"recovery_30_de.mp4",@"recovery_30.mp4",@"stop_exercise_de.mp4",@"stop_exercise.mp4",nil];
     
@@ -228,7 +228,7 @@
 
 -(void)showAlertwithMsg:(NSString*)message
 {
-    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"fitness4.me" message:message
+    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"Fitness4.me" message:message
                                                        delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     [alertview show];
     
@@ -307,8 +307,9 @@
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
         viewController =[[CustomWorkoutsViewController alloc]initWithNibName:@"CustomWorkoutsViewController" bundle:nil];
     }else {
-        //viewController =[[HintsViewController alloc]initWithNibName:@"CustomizedWorkoutListViewController_iPad" bundle:nil];
+        viewController =[[CustomWorkoutsViewController alloc]initWithNibName:@"CustomWorkoutsViewController_iPad" bundle:nil];
     }
+    
     [viewController setWorkoutType:@"Custom"];
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     [userinfo setObject:@"Custom" forKey:@"workoutType"];
@@ -332,7 +333,7 @@
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
             viewController =[[CustomWorkoutsViewController alloc]initWithNibName:@"CustomWorkoutsViewController" bundle:nil];
         }else {
-            //viewController =[[HintsViewController alloc]initWithNibName:@"CustomizedWorkoutListViewController_iPad" bundle:nil];
+            viewController =[[CustomWorkoutsViewController alloc]initWithNibName:@"CustomWorkoutsViewController_iPad" bundle:nil];
         }
         
         [userinfo setObject:@"SelfMade" forKey:@"workoutType"];
@@ -350,7 +351,7 @@
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
             viewController =[[CustomInitialLaunchViewController alloc]initWithNibName:@"CustomInitialLaunchViewController" bundle:nil];
         }else {
-            //viewController =[[HintsViewController alloc]initWithNibName:@"CustomizedWorkoutListViewController_iPad" bundle:nil];
+            viewController =[[CustomInitialLaunchViewController alloc]initWithNibName:@"CustomInitialLaunchViewControllerView_iPad" bundle:nil];
         }
         NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
         [userinfo setObject:@"SelfMade" forKey:@"workoutType"];
@@ -492,8 +493,9 @@
        // [self sendMembership];
         // update the server with the purchased details
           NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+        [userinfo setObject:@"true" forKey:@"showDownload"];
         [userinfo setObject:@"dontSubscribe" forKey:@"yearly"];
-        [self sendMembershipPlanID:@"100" membershipStatus:@"true" msg:@"Congratulations!Be part of the fitness4.me"];
+        [self sendMembershipPlanID:@"100" membershipStatus:@"true" msg:@"Congratulations!You are now a fitness4.me premium Memebr."];
         transaction =nil;
         // send out a notification that we’ve finished the transaction
         [[NSNotificationCenter defaultCenter] postNotificationName:kInAppPurchaseManagerTransactionSucceededNotification object:self userInfo:userInfo];
@@ -603,7 +605,7 @@
         
         // this is fine, the user just cancelled, so don’t notify
         [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
-        [self sendMembershipPlanID:@"0" membershipStatus:@"false" msg:@"You have cancelled the fitness4.me membership plan"];
+        [self sendMembershipPlanID:@"0" membershipStatus:@"false" msg:NSLocalizedStringWithDefaultValue(@"cancelPayment", nil,[Fitness4MeUtils getBundle], nil, nil)];
        //  NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
        // [userinfo setObject:@"dontSubscribe" forKey:@"yearly"];
     }

@@ -115,7 +115,7 @@
 - (ASIFormDataRequest *)getWorkoutList:(NSString *)UrlPath {
     
      int  selectedlang=[Fitness4MeUtils getApplicationLanguage] ;
-    NSString *requestString = [NSString stringWithFormat:@"%@listapps=yes&userid=%i&duration=10&lang=%i",UrlPath, UserID,selectedlang];
+    NSString *requestString = [NSString stringWithFormat:@"%@listapps=yes&userid=%i&duration=%@&lang=%i",UrlPath, UserID,self.duration ,selectedlang];
     NSURL *url =[NSURL URLWithString:requestString];
     
     ASIFormDataRequest   *request = [ASIFormDataRequest   requestWithURL:url];
@@ -770,7 +770,7 @@
             viewController = [[MemberPromoViewController alloc]initWithNibName:@"MemberPromoViewController" bundle:nil];
         }
         else {
-            viewController = [[MemberPromoViewController alloc]initWithNibName:@"MemberPromoViewController" bundle:nil];
+            viewController = [[MemberPromoViewController alloc]initWithNibName:@"MemberPromoViewController_iPad" bundle:nil];
         }
         
         [viewController setNavigateTo:@"List"];

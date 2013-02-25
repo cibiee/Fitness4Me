@@ -28,23 +28,9 @@
     
     [super viewDidAppear:YES];
 
-    UIButton *backutton = [UIButton buttonWithType:UIButtonTypeCustom];
-     backutton.frame = CGRectMake(0, 0, 58, 30);
-    [backutton setBackgroundImage:[UIImage imageNamed:@"back_btnBlack.png"] forState:UIControlStateNormal];
-//    int selectedLanguage=[Fitness4MeUtils getApplicationLanguage];
-//    if (selectedLanguage==1) {
-//        [backutton setTitle:@"Back" forState:UIControlStateNormal];
-//    }
-//    else{
-       [backutton setTitle:NSLocalizedStringWithDefaultValue(@"back", nil, [Fitness4MeUtils getBundle], nil, nil)forState:UIControlStateNormal];
-//    }
-//    
-    [backutton.titleLabel setFont:[UIFont systemFontOfSize:14]];
-    [backutton.titleLabel setTextAlignment:UITextAlignmentRight];
-    [backutton addTarget:self action:@selector(onClickBack:) forControlEvents:UIControlEventTouchDown];
-    UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithCustomView:backutton];
+    
     [[UIApplication sharedApplication]  registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert)];
-    self.navigationBar.leftBarButtonItem = backBtn;
+   
 }
 
 - (void)viewDidLoad

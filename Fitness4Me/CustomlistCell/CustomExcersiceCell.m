@@ -69,7 +69,7 @@
         
         [self.DurationLabels setText:@"Duration"];
         
-        
+        [self.DurationLabels setLineBreakMode:UILineBreakModeWordWrap];
         // Initialization code
         self.focusLabels = [[UILabel alloc]init];
         
@@ -83,7 +83,7 @@
         
         [self.focusLabels setText:@"Focus"];
         
-        
+        [self.focusLabels setLineBreakMode:UILineBreakModeWordWrap];
         // Initialization code
         self.EditLabel = [[UILabel alloc]init];
         
@@ -194,12 +194,12 @@
     
     
     
-    frame= CGRectMake(boundsX+90 ,30, 55, 21);
+    frame= CGRectMake(boundsX+90 ,30, 60, 21);
     
     self.DurationLabels.frame = frame;
     
     
-    frame= CGRectMake(boundsX+90 ,50, 55, 65);
+    frame= CGRectMake(boundsX+90 ,50, 60, 65);
     
     self.focusLabels.frame = frame;
     

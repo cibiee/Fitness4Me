@@ -40,9 +40,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *closeButton;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITextView *descriptionLabel;
-- (IBAction)onClickMoreInfo:(id)sender ;
-- (IBAction)onClickBuyNow:(id)sender ;
+
 - (IBAction)onClickQuit:(id)sender;
-- (IBAction)closePopup:(id)sender;
 - (IBAction)onClicksubscribe:(id)sender;
 @end

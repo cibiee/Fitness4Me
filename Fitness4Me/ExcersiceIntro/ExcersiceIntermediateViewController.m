@@ -267,7 +267,7 @@
 -(void)navigateToHome
 {
     
-    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"fitness4.me" message:NSLocalizedStringWithDefaultValue(@"resumeDownload", nil,[Fitness4MeUtils getBundle], nil, nil)                                                       delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"Fitness4.me" message:NSLocalizedStringWithDefaultValue(@"resumeDownload", nil,[Fitness4MeUtils getBundle], nil, nil)                                                       delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
     [alertview show];
     [alertview release];
     
@@ -276,7 +276,7 @@
 -(void)ShowVideounAvaialableMessage
 {
     
-    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"fitness4.me" message:NSLocalizedStringWithDefaultValue(@"VideoUnavailable", nil,[Fitness4MeUtils getBundle], nil, nil)
+    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"Fitness4.me" message:NSLocalizedStringWithDefaultValue(@"VideoUnavailable", nil,[Fitness4MeUtils getBundle], nil, nil)
                                                        delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alertview show];
     [alertview release];

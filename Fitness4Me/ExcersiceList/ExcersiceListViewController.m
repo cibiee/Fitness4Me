@@ -25,6 +25,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:[Fitness4MeUtils getBundle]];
     if (self) {
+         myQueue=[[ASINetworkQueue alloc]init];
         // Custom initialization
         userinfo=[NSUserDefaults standardUserDefaults];
         if ([GlobalArray count]>0) {
@@ -38,40 +39,17 @@
     return self;
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:NO];
-    // add continue button
-    UIButton *backutton = [UIButton buttonWithType:UIButtonTypeCustom];
-    backutton.frame = CGRectMake(0, 0, 58, 30);
-    [backutton setBackgroundImage:[UIImage imageNamed:@"back_btnBlack.png"] forState:UIControlStateNormal];
-    
-    [backutton setTitle:NSLocalizedStringWithDefaultValue(@"back", nil,[Fitness4MeUtils getBundle], nil, nil) forState:UIControlStateNormal];
-    [backutton.titleLabel setFont:[UIFont systemFontOfSize:14]];
-    [backutton.titleLabel setTextAlignment:UITextAlignmentRight];
-    [backutton addTarget:self action:@selector(onClickBack:) forControlEvents:UIControlEventTouchDown];
-    UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithCustomView:backutton];
-    self.navigationBar.leftBarButtonItem = backBtn;
-    
-    UIButton *nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    nextButton.frame = CGRectMake(0, 0, 58, 30);
-    [nextButton setBackgroundImage:[UIImage imageNamed:@"next_btn_with_text.png"] forState:UIControlStateNormal];
-    [nextButton setTitle:NSLocalizedStringWithDefaultValue(@"next", nil,[Fitness4MeUtils getBundle], nil, nil) forState:UIControlStateNormal];
-    [nextButton.titleLabel setFont:[UIFont systemFontOfSize:13]];
-    [nextButton.titleLabel setTextAlignment:UITextAlignmentRight];
-    [nextButton addTarget:self action:@selector(onClickNext:) forControlEvents:UIControlEventTouchDown];
-    UIBarButtonItem *nextBtn = [[UIBarButtonItem alloc] initWithCustomView:nextButton];
-    self.navigationBar.rightBarButtonItem = nextBtn;
-    
-}
+
 
 - (void)viewDidLoad
 {
     
     self.videoCount=0;
     self.totalDuration=0;
-    [self.totalVideoCountLabel setText:[NSString stringWithFormat:@"Number of excersices %i",self.videoCount]];
-    [self.durationLabel setText:[NSString stringWithFormat:@"Total Time %@",[Fitness4MeUtils displayTimeWithSecond:self.totalDuration]]];
+     [self.totalVideoCountLabel setText:[NSString stringWithFormat:@"%@ %i",NSLocalizedStringWithDefaultValue(@"numberOfExcersice", nil,[Fitness4MeUtils getBundle], nil, nil),self.videoCount]];
+    
+    
+     [self.durationLabel setText:[NSString stringWithFormat:@"%@ %@",NSLocalizedStringWithDefaultValue(@"totalTime", nil,[Fitness4MeUtils getBundle], nil, nil),[Fitness4MeUtils displayTimeWithSecond:self.totalDuration]]];
     
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -79,9 +57,10 @@
     UIButton *backutton = [UIButton buttonWithType:UIButtonTypeCustom];
     backutton.frame = CGRectMake(0, 0, 58, 30);
     [backutton setBackgroundImage:[UIImage imageNamed:@"back_btnBlack.png"] forState:UIControlStateNormal];
-    [backutton setTitle:NSLocalizedStringWithDefaultValue(@"back", nil,[Fitness4MeUtils getBundle], nil, nil) forState:UIControlStateNormal];
+    
     [backutton.titleLabel setFont:[UIFont systemFontOfSize:14]];
     [backutton.titleLabel setTextAlignment:UITextAlignmentRight];
+      [backutton setTitle:NSLocalizedStringWithDefaultValue(@"back", nil,[Fitness4MeUtils getBundle], nil, nil) forState:UIControlStateNormal];
     [backutton addTarget:self action:@selector(onClickBack:) forControlEvents:UIControlEventTouchDown];
     UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithCustomView:backutton];
     self.navigationBar.leftBarButtonItem = backBtn;
@@ -89,9 +68,10 @@
     UIButton *nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
     nextButton.frame = CGRectMake(0, 0, 58, 30);
     [nextButton setBackgroundImage:[UIImage imageNamed:@"next_btn_with_text.png"] forState:UIControlStateNormal];
-    [nextButton setTitle:NSLocalizedStringWithDefaultValue(@"next", nil,[Fitness4MeUtils getBundle], nil, nil) forState:UIControlStateNormal];
+    
     [nextButton.titleLabel setFont:[UIFont systemFontOfSize:13]];
     [nextButton.titleLabel setTextAlignment:UITextAlignmentRight];
+    [nextButton setTitle:NSLocalizedStringWithDefaultValue(@"next", nil,[Fitness4MeUtils getBundle], nil, nil) forState:UIControlStateNormal];
     [nextButton addTarget:self action:@selector(onClickNext:) forControlEvents:UIControlEventTouchDown];
     UIBarButtonItem *nextBtn = [[UIBarButtonItem alloc] initWithCustomView:nextButton];
     self.navigationBar.rightBarButtonItem = nextBtn;
@@ -270,8 +250,8 @@
     [self.activityIndicator setHidesWhenStopped:YES];
     [self.screenLockView setHidden:YES];
     
-    [self.totalVideoCountLabel setText:[NSString stringWithFormat:@"%@ %i",NSLocalizedStringWithDefaultValue(@"numberOfExcersice", nil,[Fitness4MeUtils getBundle], nil, nil),self.videoCount]];
-    [self.durationLabel setText:[NSString stringWithFormat:@"Total Time %@",[Fitness4MeUtils displayTimeWithSecond:self.totalDuration]]];
+    [self.totalVideoCountLabel setText:[NSString stringWithFormat:@"%@  %i",NSLocalizedStringWithDefaultValue(@"numberOfExcersice", nil,[Fitness4MeUtils getBundle], nil, nil),self.videoCount]];
+    [self.durationLabel setText:[NSString stringWithFormat:@"%@ %@",NSLocalizedStringWithDefaultValue(@"totalTime", nil,[Fitness4MeUtils getBundle], nil, nil),[Fitness4MeUtils displayTimeWithSecond:self.totalDuration]]];
     return newfocusArray;
 }
 
@@ -342,6 +322,8 @@
     [cell.EditButton setHidden:YES];
     [cell.deleteLabel setHidden:YES];
     [cell.EditLabel setHidden:YES];
+    [cell.focusLabels  setText:NSLocalizedStringWithDefaultValue(@"focus", nil,[Fitness4MeUtils getBundle], nil, nil)];
+    [cell.DurationLabels  setText:NSLocalizedStringWithDefaultValue(@"duration", nil,[Fitness4MeUtils getBundle], nil, nil)];
     if([workout name])
     {
         cell.TitleLabel.text = [workout name];
@@ -369,6 +351,9 @@
 
 - (UIImage *)imageForRowAtIndexPath:(ExcersiceList *)workout inIndexPath:(NSIndexPath *)indexPath
 {
+
+   
+
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
@@ -390,7 +375,7 @@
         ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:[workout imageUrl]]];
         [request setDownloadDestinationPath:storeURL];
         [request setDelegate:self];
-        [request startAsynchronous];
+       // [request startAsynchronous];
         [myQueue addOperation:[request copy]];
         [myQueue go];
     }else {
@@ -427,8 +412,8 @@
         self.totalDuration=self.totalDuration+ ([[[self.excersiceList objectAtIndex:indexPath.section] time]intValue]*[[[self.excersiceList objectAtIndex:indexPath.section] repetitions]intValue]);
     }
     [self performSelector:@selector(deselect:) withObject:nil afterDelay:0.5f];
-    [self.totalVideoCountLabel setText:[NSString stringWithFormat:@"Number of excersices %i",self.videoCount]];
-    [self.durationLabel setText:[NSString stringWithFormat:@"Total Time %@",[Fitness4MeUtils displayTimeWithSecond:self.totalDuration]]];
+    [self.totalVideoCountLabel setText:[NSString stringWithFormat:@"%@ %i",NSLocalizedStringWithDefaultValue(@"numberOfExcersice", nil,[Fitness4MeUtils getBundle], nil, nil),self.videoCount]];
+    [self.durationLabel setText:[NSString stringWithFormat:@"%@ %@",NSLocalizedStringWithDefaultValue(@"totalTime", nil,[Fitness4MeUtils getBundle], nil, nil),[Fitness4MeUtils displayTimeWithSecond:self.totalDuration]]];
     
 }
 
@@ -497,7 +482,7 @@
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
             viewController =[[CarouselViewDemoViewController alloc]initWithNibName:@"CarouselViewDemoViewController" bundle:nil];
         }else {
-            viewController =[[CarouselViewDemoViewController alloc]initWithNibName:@"CarouselViewDemoViewController" bundle:nil];
+            viewController =[[CarouselViewDemoViewController alloc]initWithNibName:@"CarouselViewDemoViewController_iPad" bundle:nil];
         }
         [viewController setEquipments:self.equipments];
         [viewController setFocusList:self.focusList];
@@ -509,7 +494,7 @@
         [self.navigationController pushViewController:viewController animated:YES];
         
     }else{
-        [Fitness4MeUtils showAlert:@"Please select the excersice"];
+        [Fitness4MeUtils showAlert:NSLocalizedStringWithDefaultValue(@"Selectoneexcersice", nil,[Fitness4MeUtils getBundle], nil, nil)];
     }
 }
 

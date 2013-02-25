@@ -40,17 +40,15 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
 #pragma mark - View lifecycle
 
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:NO];
-    // add continue button
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
     UIButton *backutton = [UIButton buttonWithType:UIButtonTypeCustom];
     backutton.frame = CGRectMake(0, 0, 58, 30);
     [backutton setBackgroundImage:[UIImage imageNamed:@"back_btnBlack.png"] forState:UIControlStateNormal];
-   
-    [backutton setTitle:NSLocalizedStringWithDefaultValue(@"back",nil,[Fitness4MeUtils getBundle], nil, nil) forState:UIControlStateNormal];
     [backutton.titleLabel setFont:[UIFont systemFontOfSize:14]];
     [backutton.titleLabel setTextAlignment:UITextAlignmentRight];
+    [backutton setTitle:NSLocalizedStringWithDefaultValue(@"back", nil,[Fitness4MeUtils getBundle], nil, nil) forState:UIControlStateNormal];
     [backutton addTarget:self action:@selector(onClickBack:) forControlEvents:UIControlEventTouchDown];
     UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithCustomView:backutton];
     self.navigationBar.leftBarButtonItem = backBtn;
@@ -58,18 +56,13 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
     UIButton *nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
     nextButton.frame = CGRectMake(0, 0, 58, 30);
     [nextButton setBackgroundImage:[UIImage imageNamed:@"next_btn_with_text.png"] forState:UIControlStateNormal];
-    [nextButton setTitle:NSLocalizedStringWithDefaultValue(@"next",nil,[Fitness4MeUtils getBundle], nil, nil) forState:UIControlStateNormal];
+     [nextButton setTitle:NSLocalizedStringWithDefaultValue(@"next", nil,[Fitness4MeUtils getBundle], nil, nil) forState:UIControlStateNormal];
     [nextButton.titleLabel setFont:[UIFont systemFontOfSize:13]];
     [nextButton.titleLabel setTextAlignment:UITextAlignmentRight];
+    
     [nextButton addTarget:self action:@selector(onClickNext:) forControlEvents:UIControlEventTouchDown];
     UIBarButtonItem *nextBtn = [[UIBarButtonItem alloc] initWithCustomView:nextButton];
     self.navigationBar.rightBarButtonItem = nextBtn;
-
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
     [self.backgroundLabel.layer setCornerRadius:10];
     [self.totalVideoCountLabel setText:[NSString stringWithFormat:@"%@ %i",NSLocalizedStringWithDefaultValue(@"numberOfExcersice", nil,[Fitness4MeUtils getBundle], nil, nil),self.videoCount]];
     [self.durationLabel setText:[NSString stringWithFormat:@"%@ %@",NSLocalizedStringWithDefaultValue(@"totalTime", nil,[Fitness4MeUtils getBundle], nil, nil),[Fitness4MeUtils displayTimeWithSecond:self.totalDuration]]];
@@ -86,6 +79,9 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
     else
     {
         [self.addMoreButton removeFromSuperview];
+         [self.bgImageView setFrame:CGRectMake(0,276,480 , 33)];
+         [self.totalVideoCountLabel setFrame:CGRectMake(290,282,158,21)];
+
     }
     self.carousel.type = iCarouselTypeCoverFlow2;
     if([GlobalArray count]>2)
@@ -209,15 +205,16 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
 #pragma mark - IBActions
 
 
--(IBAction) segmentedControlIndexChanged{
+-(IBAction) segmentedControlIndexChanged:(id)sender {
     
     
     ExcersiceList *list= [[ExcersiceList alloc]init];
     
+    //self.selectedIndex =[sender tag];
     if (self.selectedIndex >0) {
         
         
-        switch (self.recoverySegmentControl.selectedSegmentIndex) {
+        switch ([sender tag]) {
             case 0:
                 
                 list.name=@"recovery 15";
@@ -254,7 +251,7 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
 }
 
 - (IBAction)onClickMove:(id)sender {
-    switch (self.moveSegmentControl.selectedSegmentIndex) {
+    switch ([sender tag]) {
         case 0:
             if ( self.selectedIndex>0) {
                 [GlobalArray exchangeObjectAtIndex: self.selectedIndex withObjectAtIndex: self.selectedIndex-1];
@@ -304,10 +301,17 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
     }
     
     [userinfo setObject:str forKey:@"SelectedWorkouts"];
-    
-    NameViewController *viewController =[[NameViewController alloc]initWithNibName:@"NameViewController" bundle:nil];
+         NameViewController *viewController;
+         
+         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+             viewController =[[NameViewController alloc]initWithNibName:@"NameViewController" bundle:nil];
+         }else {
+             viewController =[[NameViewController alloc]initWithNibName:@"NameViewController_iPad" bundle:nil];
+         }
+         
     viewController.workout= [[Workout alloc]init];
      viewController.workout =self.workout;
+       
     [viewController.workout setName:self.name];
 
     [viewController setCollectionString:str];
@@ -320,7 +324,7 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
      }
     else
     {
-    [self showAlertwithMsg:NSLocalizedStringWithDefaultValue(@"Please Select atleast one excersice", nil,[Fitness4MeUtils getBundle], nil, nil)];
+    [self showAlertwithMsg:NSLocalizedStringWithDefaultValue(@"Selectoneexcersice", nil,[Fitness4MeUtils getBundle], nil, nil)];
     }
 }
 
@@ -349,12 +353,12 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
             [userinfo setObject:str forKey:@"SelectedWorkouts"];
         }
         else{
-            [self showAlertwithMsg:@"Not enough workouts to be removed"];
+            [self showAlertwithMsg:NSLocalizedStringWithDefaultValue(@"Notenoughworkouts", nil,[Fitness4MeUtils getBundle], nil, nil)];
         }
     
 }
 else{
-    [self showAlertwithMsg:NSLocalizedStringWithDefaultValue(@"Please Select the workout to be removed", nil,[Fitness4MeUtils getBundle], nil, nil)];
+    [self showAlertwithMsg:NSLocalizedStringWithDefaultValue(@"Selectworkout", nil,[Fitness4MeUtils getBundle], nil, nil)];
 }
 
 }
@@ -362,7 +366,7 @@ else{
 
 -(void)showAlertwithMsg:(NSString*)message
 {
-    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"fitness4.me" message:message
+    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"Fitness4.me" message:message
                                                        delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     [alertview show];
     [UIView beginAnimations:@"" context:nil];
@@ -385,7 +389,15 @@ else{
 
 
 - (IBAction)addMoreExcersices:(id)sender {
-    FocusViewController *viewController =[[FocusViewController alloc]initWithNibName:@"FocusViewController" bundle:nil];
+    FocusViewController *viewController;
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+        viewController =[[FocusViewController alloc]initWithNibName:@"FocusViewController" bundle:nil];
+    }else {
+        viewController =[[FocusViewController alloc]initWithNibName:@"FocusViewController_iPad" bundle:nil];
+    }
+
+     
     viewController.workout =[[Workout alloc]init];
         viewController .workout=self.workout;
     [self.navigationController pushViewController:viewController animated:YES];

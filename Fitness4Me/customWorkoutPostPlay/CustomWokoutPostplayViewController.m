@@ -40,14 +40,22 @@
 }
 
 - (IBAction)onClickDoAnotherWokout:(id)sender {
-    CustomWorkoutsViewController *viewController =[[CustomWorkoutsViewController alloc]initWithNibName:@"CustomWorkoutsViewController" bundle:nil];
+    CustomWorkoutsViewController *viewController;
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+        viewController =[[CustomWorkoutsViewController alloc]initWithNibName:@"CustomWorkoutsViewController" bundle:nil];
+    }else {
+        viewController =[[CustomWorkoutsViewController alloc]initWithNibName:@"CustomWorkoutsViewController_iPad" bundle:nil];
+        
+    }
+     viewController.workoutType =self.workoutType;
     [self.navigationController pushViewController:viewController animated:YES];
 }
 
 - (IBAction)onClickCOntinue:(id)sender {
     
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
-    NSString *hasMadeFullPurchase= [userinfo valueForKey:@"hasMadeFullPurchase"];
+    NSString *hasMadeFullPurchase= [userinfo valueForKey:@"isMember"];
     
     if ([hasMadeFullPurchase isEqualToString:@"true"]) {
               
@@ -77,7 +85,7 @@
             
         }
         else {
-            viewController = [[MemberPromoViewController alloc]initWithNibName:@"MemberPromoViewController" bundle:nil];
+            viewController = [[MemberPromoViewController alloc]initWithNibName:@"MemberPromoViewController_iPad" bundle:nil];
         }
         
         [viewController setNavigateTo:@"NotList"];

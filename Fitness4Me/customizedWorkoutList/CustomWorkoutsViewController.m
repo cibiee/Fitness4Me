@@ -18,7 +18,7 @@
 
 @property NSMutableArray *groupedExcersice;
 @property NSMutableArray *workouts;
-@property (strong,nonatomic)NSString* canCreatetrials;
+
 @end
 
 @implementation CustomWorkoutsViewController
@@ -27,37 +27,30 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:[Fitness4MeUtils getBundle]];
     if (self) {
+         myQueue=[[ASINetworkQueue alloc]init];
         fitness =[FitnessServerCommunication sharedState];
-         userinfo =[NSUserDefaults standardUserDefaults];
-        //  self.workoutType=[[NSString alloc]init];
-        // Custom initialization
+        userinfo =[NSUserDefaults standardUserDefaults];
+        
     }
     return self;
 }
 
--(void)viewWillLayoutSubviews{
-    UIButton *backutton = [UIButton buttonWithType:UIButtonTypeCustom];
-    backutton.frame = CGRectMake(0, 0, 58, 30);
-    [backutton setBackgroundImage:[UIImage imageNamed:@"back_btnBlack.png"] forState:UIControlStateNormal];
-    [backutton setTitle:NSLocalizedStringWithDefaultValue(@"back", nil,[Fitness4MeUtils getBundle], nil, nil) forState:UIControlStateNormal];
-    [backutton.titleLabel setFont:[UIFont systemFontOfSize:14]];
-    [backutton.titleLabel setTextAlignment:UITextAlignmentRight];
-    [backutton addTarget:self action:@selector(onClickBack:) forControlEvents:UIControlEventTouchDown];
-    UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithCustomView:backutton];
-    self.navigationBar.leftBarButtonItem = backBtn;
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+    self.canCreatetrial =@"false" ;
+    [self canCreate];
 }
-
 
 - (void)setTabbarItems
 {
     // Do any additional setup after loading the view from its nib.
     
     UIButton *backutton = [UIButton buttonWithType:UIButtonTypeCustom];
-     backutton.frame = CGRectMake(0, 0, 58, 30);
+    backutton.frame = CGRectMake(0, 0, 58, 30);
     [backutton setBackgroundImage:[UIImage imageNamed:@"back_btnBlack.png"] forState:UIControlStateNormal];
-    [backutton setTitle:NSLocalizedStringWithDefaultValue(@"back", nil,[Fitness4MeUtils getBundle], nil, nil) forState:UIControlStateNormal];
     [backutton.titleLabel setFont:[UIFont systemFontOfSize:14]];
     [backutton.titleLabel setTextAlignment:UITextAlignmentRight];
+    [backutton setTitle:NSLocalizedStringWithDefaultValue(@"back", nil,[Fitness4MeUtils getBundle], nil, nil) forState:UIControlStateNormal];
     [backutton addTarget:self action:@selector(onClickBack:) forControlEvents:UIControlEventTouchDown];
     UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithCustomView:backutton];
     self.navigationBar.leftBarButtonItem = backBtn;
@@ -82,16 +75,13 @@
 
 -(void)ListExcersices
 {
-    NSString *canCreates=[[NSString alloc]init];
-   canCreatetrial=[[NSString alloc]init];
-
-    canCreates=[self canCreate];
     
+    self.canCreatetrial=[[NSString alloc]init];
     workoutDB =[[WorkoutDB alloc]init];
     [workoutDB setUpDatabase];
     [workoutDB createDatabase];
     [userinfo setObject:self.workoutType forKey:@"workoutType"];
-  
+    
     
     if ([self.workoutType isEqualToString:@"SelfMade"]){
         NSString *isMember =[userinfo valueForKey:@"isMember"];
@@ -131,7 +121,7 @@
 
 
 -(void)parseFitnessDetails{
-   
+    
     UserID =[userinfo integerForKey:@"UserID"];
     if ([self.workoutType isEqualToString:@"SelfMade"]) {
         [fitness parseSelfMadeFitnessDetails:UserID trail:@"0" onCompletion:^(NSString *responseString){
@@ -200,13 +190,13 @@
     [self setTabbarItems];
     [self.memberView setHidden:YES];
     [self setBackground];
-    // canCreatetrial=@"false";
+    
     
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [self.memberView setHidden:YES];
-     [self getExcersices];
+    [self getExcersices];
     [super viewDidAppear:animated];
 }
 
@@ -281,7 +271,7 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyleforRowAtIndexPath :(NSIndexPath *)indexPath
 {
-   // printf("About to delete item %d\n", [indexPath row]);
+    // printf("About to delete item %d\n", [indexPath row]);
     //[tableTitles removeObjectAtIndex:[indexPath row]];
     [tableView reloadData];
 }
@@ -325,31 +315,47 @@
 
 
 - (void)navigateToFocus {
-    FocusViewController *viewController =[[FocusViewController alloc]initWithNibName:@"FocusViewController" bundle:nil];
+    FocusViewController *viewController;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+        viewController =[[FocusViewController alloc]initWithNibName:@"FocusViewController" bundle:nil];
+    }else {
+        viewController =[[FocusViewController alloc]initWithNibName:@"FocusViewController_iPad" bundle:nil];
+    }
+    
+    
+    
     viewController .workout=nil;
     [self.navigationController pushViewController:viewController animated:YES];
 }
 
 - (void)navigateToCustomWorkoutAdd {
-    CustomWorkoutAddViewController *viewController =[[CustomWorkoutAddViewController alloc]initWithNibName:@"CustomWorkoutAddViewController" bundle:nil];
+    CustomWorkoutAddViewController *viewController;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+        viewController =[[CustomWorkoutAddViewController alloc]initWithNibName:@"CustomWorkoutAddViewController" bundle:nil];
+    }else {
+        viewController =[[CustomWorkoutAddViewController alloc]initWithNibName:@"CustomWorkoutAddViewController_iPad" bundle:nil];
+    }
+    
     [self.navigationController pushViewController:viewController animated:YES];
 }
 
--(NSString*)canCreate
+-(void)canCreate
 {
-    
-  self.canCreatetrials=@"";
+    self.canCreatetrial=[[NSString alloc]init];
     [fitness GetUserTypeWithactivityIndicator:nil progressView:nil onCompletion:^(NSString *responseString) {
-                canCreate=[[NSString alloc]init];
-        canCreate =responseString;
-        canCreatetrial=[[NSString alloc]init];
-        canCreatetrial=responseString;
-
+        self.canCreatetrial=responseString;
+        if ([self.canCreatetrial isEqualToString:@"false"]) {
+             [self.messageLabel setText:NSLocalizedStringWithDefaultValue(@"trail5EndMessage", nil,[Fitness4MeUtils getBundle], nil, nil)];
+        }
+        else
+        {
+            [self.messageLabel setText:NSLocalizedStringWithDefaultValue(@"trailMessage", nil,[Fitness4MeUtils getBundle], nil, nil)];
+        }
     } onError:^(NSError *error){
         
     }];
-     
-    return canCreate;
+    
+    
 }
 
 
@@ -358,7 +364,7 @@
     NSString *isMember =[userinfo valueForKey:@"isMember"];
     [userinfo setObject:@"" forKey:@"SelectedEquipments"];
     [userinfo setObject:@"" forKey:@"Selectedfocus"];
-       
+    
     
     if ([isMember isEqualToString:@"true"]) {
         if ([self.workoutType isEqualToString:@"SelfMade"]) {
@@ -370,24 +376,17 @@
         if ([self.groupedExcersice count]>=5) {
             [self.continueButton setHidden:YES];
             [self.messageLabel setText:NSLocalizedStringWithDefaultValue(@"trail5EndMessage", nil,[Fitness4MeUtils getBundle], nil, nil)];
-
+            
             [self showPremium];
         }
         else{
-           
+            
             if ([self.workoutType isEqualToString:@"SelfMade"]) {
-                if ([canCreatetrial isEqualToString:@"false"]) {
-                    [self.continueButton setHidden:NO];
-                    [self.messageLabel setText:NSLocalizedStringWithDefaultValue(@"trailMessage", nil,[Fitness4MeUtils getBundle], nil, nil)];
-                    [self showPremium];
-                    
-                }
-                else{
-                   
-                    [self.continueButton setHidden:YES];
-                    [self.messageLabel setText:NSLocalizedStringWithDefaultValue(@"trailEndMessage", nil,[Fitness4MeUtils getBundle], nil, nil)];
-                    [self showPremium];
-                }
+                [self.view addSubview:activityIndicator];
+                [activityIndicator startAnimating];
+                [NSThread detachNewThreadSelector:@selector(getTrail) toTarget:self withObject:nil];
+                
+               
             }
             
             else{
@@ -400,6 +399,34 @@
     
     [userinfo setObject:@"" forKey:@"SelectedWorkouts"];
     GlobalArray=[[NSMutableArray alloc]init];
+}
+
+
+-(void)getTrail{
+    
+    [fitness GetUserTypeWithactivityIndicator:activityIndicator progressView:nil onCompletion:^(NSString *responseString) {
+        self.canCreatetrial=responseString;
+        if ([self.canCreatetrial isEqualToString:@"false"]) {
+            [self.continueButton setHidden:NO];
+            [self.messageLabel setText:NSLocalizedStringWithDefaultValue(@"trailMessage", nil,[Fitness4MeUtils getBundle], nil, nil)];
+            [self showPremium];
+            [activityIndicator stopAnimating];
+            [activityIndicator removeFromSuperview];
+            
+        }
+        else{
+            
+            [self.continueButton setHidden:YES];
+            [self.messageLabel setText:NSLocalizedStringWithDefaultValue(@"trailEndMessage", nil,[Fitness4MeUtils getBundle], nil, nil)];
+            [self showPremium];
+            [activityIndicator stopAnimating];
+            [activityIndicator removeFromSuperview];
+        }                } onError:^(NSError *error){
+            
+        }];
+
+    
+    
 }
 
 -(IBAction)onClickContinueTrial:(id)sender
@@ -420,7 +447,7 @@
 - (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex==1) {
-       
+        
     }
     else {
         
@@ -524,24 +551,38 @@
 
 
 -(IBAction)onClickBack:(id)sender{
-    Fitness4MeViewController *viewController =[[Fitness4MeViewController alloc]initWithNibName:@"Fitness4MeViewController" bundle:nil];
+    
+    Fitness4MeViewController *viewController;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+        viewController =[[Fitness4MeViewController alloc]initWithNibName:@"Fitness4MeViewController" bundle:nil];
+    }else {
+        viewController =[[Fitness4MeViewController alloc]initWithNibName:@"Fitness4MeViewController_iPad" bundle:nil];
+    }
+    
+    
     [self.navigationController pushViewController:viewController animated:YES];
 }
 
 -(IBAction)onClickEdit:(id)sender{
     
-    NSString *canCreatetrail=[[NSString alloc]init];
-    canCreatetrail=[self canCreate];
+    
     [userinfo setObject:@"" forKey:@"SelectedEquipments"];
     [userinfo setObject:@"" forKey:@"Selectedfocus"];
     NSString *isMember =[userinfo valueForKey:@"isMember"];
     if ([isMember isEqualToString:@"true"]) {
-        CustomWorkoutEditViewController *viewController =[[CustomWorkoutEditViewController alloc]initWithNibName:@"CustomWorkoutEditViewController" bundle:nil];
+        CustomWorkoutEditViewController *viewController;
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+            viewController =[[CustomWorkoutEditViewController alloc]initWithNibName:@"CustomWorkoutEditViewController" bundle:nil];
+        }else {
+            viewController =[[CustomWorkoutEditViewController alloc]initWithNibName:@"CustomWorkoutEditViewController_iPad" bundle:nil];
+        }
+        
+        
         [viewController setWorkoutType:self.workoutType];
         [self.navigationController pushViewController:viewController animated:YES];
-   }else{
-       [self.continueButton setHidden:YES];
-       [self.messageLabel setText:NSLocalizedStringWithDefaultValue(@"cannoteditMessage", nil,[Fitness4MeUtils getBundle], nil, nil)];
+    }else{
+        [self.continueButton setHidden:YES];
+        [self.messageLabel setText:NSLocalizedStringWithDefaultValue(@"cannoteditMessage", nil,[Fitness4MeUtils getBundle], nil, nil)];
         [self showPremium];
     }
 }
@@ -554,7 +595,16 @@
     NSArray *array = [dictionary objectForKey:@"workouts"];
     Workout *workout = [[Workout alloc]init];
     workout = [array objectAtIndex:indexPath.row];
-    CustomWorkoutIntermediateViewController *viewController =[[CustomWorkoutIntermediateViewController alloc]initWithNibName:@"CustomWorkoutIntermediateViewController" bundle:nil];
+    
+    CustomWorkoutIntermediateViewController *viewController;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+        viewController =[[CustomWorkoutIntermediateViewController alloc]initWithNibName:@"CustomWorkoutIntermediateViewController" bundle:nil];
+    }else {
+        viewController =[[CustomWorkoutIntermediateViewController alloc]initWithNibName:@"CustomWorkoutIntermediateViewController_iPad" bundle:nil];
+    }
+    
+    
+    
     viewController.workout =[[Workout alloc]init];
     viewController .workout=workout;
     [viewController setNavigateBack:YES];
@@ -574,10 +624,10 @@
         
     }
     else {
-        viewController = [[MembershipPurchaseViewController alloc]initWithNibName:@"MembershipPurchaseViewController" bundle:nil];
+        viewController = [[MembershipPurchaseViewController alloc]initWithNibName:@"MembershipPurchaseViewController_iPad" bundle:nil];
     }
     [viewController setNavigateTo:@"List"];
-     viewController.workout =nil;
+    viewController.workout =nil;
     [self.navigationController pushViewController:viewController animated:YES];
     
 }
@@ -589,7 +639,7 @@
         viewController = [[MemberPromoViewController alloc]initWithNibName:@"MemberPromoViewController" bundle:nil];
     }
     else {
-        viewController = [[MemberPromoViewController alloc]initWithNibName:@"MemberPromoViewController" bundle:nil];
+        viewController = [[MemberPromoViewController alloc]initWithNibName:@"MemberPromoViewController_iPad" bundle:nil];
     }
     
     [viewController setNavigateTo:@"List"];

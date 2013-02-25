@@ -606,10 +606,18 @@ static FitnessServerCommunication *sharedState;
 {
     __block NSString *workoutsID;
     BOOL isReachable =[Fitness4MeUtils isReachable];
+    
+    if ([equipments length]>0) {
+        
+    }
+    else{
+        equipments =@"''";
+    }
+    
     if (isReachable)
     {
      
-        NSLog(workoutID);
+       
         NSString *UrlPath= [NSString GetURlPath];
         NSString *requestString;
         if ([workoutID intValue]>0) {

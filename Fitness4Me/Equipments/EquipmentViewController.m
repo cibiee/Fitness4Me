@@ -27,23 +27,7 @@
     return self;
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:NO];
-    // add continue button
-    UIButton *backutton = [UIButton buttonWithType:UIButtonTypeCustom];
-    backutton.frame = CGRectMake(0, 0, 58, 30);
-    [backutton setBackgroundImage:[UIImage imageNamed:@"back_btnBlack.png"] forState:UIControlStateNormal];
-    
-    [backutton setTitle:NSLocalizedStringWithDefaultValue(@"back", nil,[Fitness4MeUtils getBundle], nil, nil) forState:UIControlStateNormal];
-    [backutton.titleLabel setFont:[UIFont systemFontOfSize:14]];
-    [backutton.titleLabel setTextAlignment:UITextAlignmentRight];
-    [backutton addTarget:self action:@selector(onClickBack:) forControlEvents:UIControlEventTouchDown];
-    UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithCustomView:backutton];
-    self.navigationBar.leftBarButtonItem = backBtn;
-    
-    
-}
+
 
 - (void)viewDidLoad
 {
@@ -61,9 +45,10 @@
     UIButton *backutton = [UIButton buttonWithType:UIButtonTypeCustom];
     backutton.frame = CGRectMake(0, 0, 58, 30);
     [backutton setBackgroundImage:[UIImage imageNamed:@"back_btnBlack.png"] forState:UIControlStateNormal];
-    [backutton setTitle:NSLocalizedStringWithDefaultValue(@"back", nil,[Fitness4MeUtils getBundle], nil, nil) forState:UIControlStateNormal];
+    
     [backutton.titleLabel setFont:[UIFont systemFontOfSize:14]];
     [backutton.titleLabel setTextAlignment:UITextAlignmentRight];
+     [backutton setTitle:NSLocalizedStringWithDefaultValue(@"back", nil,[Fitness4MeUtils getBundle], nil, nil) forState:UIControlStateNormal];
     [backutton addTarget:self action:@selector(onClickBack:) forControlEvents:UIControlEventTouchDown];
     UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithCustomView:backutton];
     self.navigationBar.leftBarButtonItem = backBtn;
@@ -71,9 +56,10 @@
     UIButton *nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
     nextButton.frame = CGRectMake(0, 0, 58, 30);
     [nextButton setBackgroundImage:[UIImage imageNamed:@"next_btn_with_text.png"] forState:UIControlStateNormal];
-    [nextButton setTitle:NSLocalizedStringWithDefaultValue(@"next", nil,[Fitness4MeUtils getBundle], nil, nil) forState:UIControlStateNormal];
+    
     [nextButton.titleLabel setFont:[UIFont systemFontOfSize:13]];
     [nextButton.titleLabel setTextAlignment:UITextAlignmentRight];
+    [nextButton setTitle:NSLocalizedStringWithDefaultValue(@"next", nil,[Fitness4MeUtils getBundle], nil, nil) forState:UIControlStateNormal];
     [nextButton addTarget:self action:@selector(onClickNext:) forControlEvents:UIControlEventTouchDown];
     UIBarButtonItem *nextBtn = [[UIBarButtonItem alloc] initWithCustomView:nextButton];
     self.navigationBar.rightBarButtonItem = nextBtn;
@@ -85,6 +71,10 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [self.equipmentsTableView reloadData];
 }
 
 -(void)getEquipments{
@@ -113,7 +103,7 @@
              self.equipments = [self prepareData:self.equipmentDB.equipments];
             }
         }
-        [self.equipmentsTableView reloadData];
+        
     }else{
         FitnessServerCommunication *fitness =[FitnessServerCommunication sharedState];
         [fitness listEquipments:nil progressView:nil onCompletion:^(NSString *responseString) {
@@ -233,7 +223,16 @@
     NSString *workoutType =[userinfo stringForKey:@"workoutType"];
     
     if ([workoutType isEqualToString:@"Custom"]) {
-        NameViewController *viewController =[[NameViewController alloc]initWithNibName:@"NameViewController" bundle:nil];
+        NameViewController *viewController;
+        
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+            viewController = [[NameViewController alloc]initWithNibName:@"NameViewController" bundle:nil];
+        }
+        else {
+            viewController = [[NameViewController alloc]initWithNibName:@"NameViewController_iPad" bundle:nil];
+        }
+        
+       
         viewController.workout= [[Workout alloc]init];
         viewController.workout =workouts;
         [viewController setName:[workout Name]];
@@ -245,7 +244,7 @@
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
             viewController =[[ExcersiceListViewController alloc]initWithNibName:@"ExcersiceListViewController" bundle:nil];
         }else {
-            viewController =[[ExcersiceListViewController alloc]initWithNibName:@"ExcersiceListViewController" bundle:nil];
+            viewController =[[ExcersiceListViewController alloc]initWithNibName:@"ExcersiceListViewController_iPad" bundle:nil];
         }
         [viewController setFocusList:[workout Focus]];
         [viewController setEquipments:str];

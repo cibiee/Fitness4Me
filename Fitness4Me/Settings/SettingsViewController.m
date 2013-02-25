@@ -35,8 +35,10 @@
     
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     hasMadeFullPurchase= [userinfo valueForKey:@"hasMadeFullPurchase"];
+    isMemeber= [userinfo valueForKey:@"isMemeber"];
+    [isMemeber retain];
     [hasMadeFullPurchase retain];
-    NSString *showDownload= [userinfo valueForKey:@"showDownload"];
+     NSString *showDownload= [userinfo valueForKey:@"showDownload"];
     
     userID=0;
     [fulldownloadButton removeFromSuperview];
@@ -65,6 +67,12 @@
 - (void)showHideDownloadButton:(NSString *)showDownload
 {
     if ([hasMadeFullPurchase isEqualToString:@"true"]) {
+        if ([showDownload isEqualToString:@"true"]) {
+            [self.view addSubview:fulldownloadButton];
+        }
+    }
+    
+    if ([isMemeber isEqualToString:@"true"]) {
         if ([showDownload isEqualToString:@"true"]) {
             [self.view addSubview:fulldownloadButton];
         }
@@ -176,7 +184,16 @@
                 }
                 freeVideo =@"false";
                 [self.view addSubview:fulldownloadButton];
-            }else{
+            }
+           else if ([isMemeber isEqualToString:@"true"]) {
+                    if(isLevelChanged ==YES){
+                        [self.view addSubview:profileUpdatedView];
+                        [userinfo setObject:@"true" forKey:@"showDownload"];
+                    }
+                    freeVideo =@"false";
+                    [self.view addSubview:fulldownloadButton];
+            }
+            else{
                 if(isLevelChanged ==YES){
                     freeVideo =@"true";
                     if ([userlevel isEqualToString:@"1"]) {

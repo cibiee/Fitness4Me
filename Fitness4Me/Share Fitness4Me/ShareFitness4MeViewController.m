@@ -106,14 +106,14 @@
     NSString *workoutType=[userinfo stringForKey:@"workoutType"];
     NSString *msg = [[NSString alloc]init];
     if ([workoutType isEqualToString:@"QuickWorkouts"]) {
-        msg =[NSString stringWithFormat:@" just completed the fitness4.me %@ ",workoutType];
+        msg =@" just completed the Fitness4.me quick workouts ";
     }
     else  if ([workoutType isEqualToString:@"Custom"]) {
-        msg =@" just completed fitness4.me personlized workout ";
+        msg =@" just completed Fitness4.me personalized workout ";
 
     }
     else{
-        msg =[NSString stringWithFormat:@" just completed the fitness4.me %@ workout ",workoutType];
+        msg =@" just completed the Fitness4.me self-made workout ";
     }
     msg =[name stringByAppendingString:msg];
     shareAppMessageTextView.text=[msg stringByAppendingString:workoutName];
@@ -124,7 +124,7 @@
 
 -(void)navigateToHome
 {
-    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"fitness4.me" message:NSLocalizedStringWithDefaultValue(@"ExitMsg", nil,[Fitness4MeUtils getBundle], nil, nil)
+    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"Fitness4.me" message:NSLocalizedStringWithDefaultValue(@"ExitMsg", nil,[Fitness4MeUtils getBundle], nil, nil)
                                                        delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
     [alertview show];
     [UIView beginAnimations:@"" context:nil];
@@ -166,8 +166,8 @@
             
             TWTweetComposeViewController *controller = [[TWTweetComposeViewController alloc] init];
             controller.view.transform = CGAffineTransformConcat( controller.view.transform, CGAffineTransformMakeRotation(M_PI_2));
-            NSString *pageLink = @"http://fitness4.Me/"; // replace it with yours
-            NSString *fbPagelink = @"https://www.facebook.com/fitness4.Me"; // replate it with yours
+            NSString *pageLink = @"http://fitness4.me/"; // replace it with yours
+            NSString *fbPagelink = @"https://www.facebook.com/fitness4.me"; // replate it with yours
             [controller setInitialText:shareAppMessageTextView.text];
             [controller addImage: excersiceImageHolder.image];
             [controller  addURL:[NSURL URLWithString:pageLink]];
@@ -341,7 +341,7 @@
 - (void)apiDialogFeedUser {
     
     NSString *msg =shareAppMessageTextView.text;
-    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"fitness4.Me", @"name",@"Fitness Program.", @"caption",msg, @"message",@"http://fitness4.Me/", @"link",imageUrl, @"picture",nil];
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"Fitness4.me", @"name",msg, @"description",@"http://fitness4.me/", @"link",imageUrl, @"picture",nil];
     [facebook requestWithGraphPath:@"me/feed" andParams:params andHttpMethod:@"POST" andDelegate:self];
 }
 

@@ -284,8 +284,14 @@ static float totalDuration=0;
         initalArrayCount=0;
         playCount=0;
         moviePlayer=nil;
+        CustomWorkoutsViewController *viewController;
         
-        CustomWorkoutsViewController *viewController =[[CustomWorkoutsViewController alloc]initWithNibName:@"CustomWorkoutsViewController" bundle:nil];
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+            viewController =[[CustomWorkoutsViewController alloc]initWithNibName:@"CustomWorkoutsViewController" bundle:nil];
+        }else {
+            viewController =[[CustomWorkoutsViewController alloc]initWithNibName:@"CustomWorkoutsViewController_iPad" bundle:nil];
+        }
+       
         viewController.workoutType =self.workoutType;
         [self.navigationController pushViewController:viewController animated:YES];
         
@@ -331,9 +337,9 @@ static float totalDuration=0;
             viewController = [[CustomWokoutPostplayViewController alloc]initWithNibName:@"CustomWokoutPostplayViewController" bundle:nil];
         }
         else {
-            viewController = [[CustomWokoutPostplayViewController alloc]initWithNibName:@"CustomWokoutPostplayViewController" bundle:nil];
+            viewController = [[CustomWokoutPostplayViewController alloc]initWithNibName:@"CustomWokoutPostplayViewController_iPad" bundle:nil];
         }
-        
+        [viewController setWorkoutType:self.workoutType];
         viewController.workout =self.workout;
         [self.navigationController pushViewController:viewController animated:YES];
         

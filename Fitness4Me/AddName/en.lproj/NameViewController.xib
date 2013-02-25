@@ -161,7 +161,7 @@
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string key="IBUIText">What would you like to call this workout</string>
+						<string key="IBUIText">What would you like to call this workout ?</string>
 						<reference key="IBUITextColor" ref="146293486"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">0</int>

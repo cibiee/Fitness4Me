@@ -74,17 +74,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:NO];
-    UIButton *backutton = [UIButton buttonWithType:UIButtonTypeCustom];
-    backutton.frame = CGRectMake(0, 0, 58, 30);
-    [backutton setBackgroundImage:[UIImage imageNamed:@"back_btnBlack.png"] forState:UIControlStateNormal];
     
-    [backutton setTitle:NSLocalizedStringWithDefaultValue(@"back", nil,[Fitness4MeUtils getBundle], nil, nil) forState:UIControlStateNormal];
-    [backutton.titleLabel setFont:[UIFont systemFontOfSize:14]];
-    [backutton.titleLabel setTextAlignment:UITextAlignmentRight];
-    [backutton addTarget:self action:@selector(onClickBack:) forControlEvents:UIControlEventTouchDown];
-    UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithCustomView:backutton];
-    self.navigationBar.leftBarButtonItem = backBtn;
-
     [letsgoButton setEnabled:NO];
     [letsgoButton setHidden:YES];
     if (self.navigateBack) {
@@ -194,9 +184,12 @@
     backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     backButton.frame = CGRectMake(0, 0, 58, 30);
     [backButton setBackgroundImage:[UIImage imageNamed:@"back_btnBlack.png"] forState:UIControlStateNormal];
+    [backButton.titleLabel setFont:[UIFont systemFontOfSize:13]];
+    [backButton.titleLabel setTextAlignment:UITextAlignmentRight];
+    
     [backButton setTitle:NSLocalizedStringWithDefaultValue(@"back", nil,[Fitness4MeUtils getBundle], nil, nil) forState:UIControlStateNormal];
 
-    [backButton setTitle:NSLocalizedStringWithDefaultValue(@"back", nil,[Fitness4MeUtils getBundle], nil, nil) forState:UIControlStateNormal];
+   
     [backButton addTarget:self action:@selector(onClickBack:) forControlEvents:UIControlEventTouchDown];
     UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     self.navigationBar.leftBarButtonItem = backBtn;
@@ -291,7 +284,7 @@
 -(void)navigateToHome
 {
     
-    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"fitness4.me" message:NSLocalizedStringWithDefaultValue(@"resumeDownload", nil,[Fitness4MeUtils getBundle], nil, nil)                                                       delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"Fitness4.me" message:NSLocalizedStringWithDefaultValue(@"resumeDownload", nil,[Fitness4MeUtils getBundle], nil, nil)                                                       delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
     [alertview show];
     
     
@@ -299,7 +292,7 @@
 
 -(void)ShowVideounAvaialableMessage
 {
-    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"fitness4.me" message:NSLocalizedStringWithDefaultValue(@"VideoUnavailable", nil,[Fitness4MeUtils getBundle], nil, nil)
+    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"Fitness4.me" message:NSLocalizedStringWithDefaultValue(@"VideoUnavailable", nil,[Fitness4MeUtils getBundle], nil, nil)
                                                        delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alertview show];
 }
@@ -660,7 +653,13 @@ int stopz=0;
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     self.workoutType =[userinfo stringForKey:@"workoutType"];
     
-    CustomWorkoutsViewController *viewController =[[CustomWorkoutsViewController alloc]initWithNibName:@"CustomWorkoutsViewController" bundle:nil];
+    CustomWorkoutsViewController *viewController;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+        viewController =[[CustomWorkoutsViewController alloc]initWithNibName:@"CustomWorkoutsViewController" bundle:nil];
+    }else {
+        viewController =[[CustomWorkoutsViewController alloc]initWithNibName:@"CustomWorkoutsViewController_iPad" bundle:nil];
+    }
+
     if ([self.workoutType isEqualToString:@"Custom"]){
         [viewController setWorkoutType:@"Custom"];
     }
