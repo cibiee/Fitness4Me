@@ -68,7 +68,7 @@ User *user;
 
 @property(nonatomic)BOOL navigateBack;
 @property (weak, nonatomic) IBOutlet UITextView *durationLabel;
-@property (weak, nonatomic) IBOutlet UILabel *focusLabel;
+@property (weak, nonatomic) IBOutlet UITextView *focusLabel;
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigationBar;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (retain,nonatomic)Workout *workout;

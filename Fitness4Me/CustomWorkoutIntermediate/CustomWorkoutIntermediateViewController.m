@@ -161,6 +161,8 @@
     [descriptionTextview sizeToFit];
     titleLabel.text=[self.workout Name];
     if ([[self.workout Props] length]>0) {
+       [propsLabel.layer setBorderColor:[[UIColor greenColor]CGColor]] ;
+         [propsLabel.layer setBorderWidth:1] ;
         propsLabel.text=[self.workout Props];
         [propsLabel sizeToFit];
     }else{
@@ -169,7 +171,9 @@
     }
     
     if ([[self.workout Focus] length]>0) {
-        self.focusLabel.text=[self.workout Focus];
+        [self.focusLabel.layer setBorderColor:[[UIColor greenColor]CGColor]] ;
+        [self.focusLabel.layer setBorderWidth:1] ;
+         self.focusLabel.text=[self.workout Focus];
         [self.focusLabel sizeToFit];
     }else{
         // propLabel.hidden =YES;

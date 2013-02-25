@@ -87,7 +87,14 @@
     if(!self.database.open){
       //  NSLog(@"Databse not Open");
     }
-    
+    if ( [muscleID length] > 0){
+        NSString *lastChar = [muscleID substringFromIndex:[muscleID length] - 1];
+        if([lastChar isEqualToString:@","])
+        {
+            muscleID = [muscleID substringToIndex:[muscleID length] - 1];
+        }
+    }
+
     NSString *query =[NSString stringWithFormat:@"Select * from focus where muscleID in (%@)",muscleID];
     FMResultSet *resultSet=[self.database executeQuery:query];
      
@@ -98,11 +105,12 @@
         if ([focus length]==0) {
           
             focus =[focus stringByAppendingString:[resultSet stringForColumnIndex:1]];
+            
         }
        else
        {
            
-           focus=[focus stringByAppendingString:@","];
+           focus=[focus stringByAppendingString:@", "];
            if ([resultSet stringForColumnIndex:1] !=nil) {
                 focus =[focus stringByAppendingString:[resultSet stringForColumnIndex:1]];
            }

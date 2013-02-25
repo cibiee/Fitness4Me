@@ -117,17 +117,26 @@
 -(NSString*)getSelectedEquipments:(NSString*)equipmentID{
     [self setUpDatabase];
     [self createDatabase];
-    
+  
     self.database =[FMDatabase databaseWithPath:self.databasePath];
     NSString *equipments =[[NSString alloc]init];
     if(!self.database.open){
      //   NSLog(@"Databse not Open");
     }
     
+    if ( [equipmentID length] > 0){
+      NSString *lastChar = [equipmentID substringFromIndex:[equipmentID length] - 1];
+        if([lastChar isEqualToString:@","])
+        {
+            equipmentID = [equipmentID substringToIndex:[equipmentID length] - 1];
+        }
+    }
+    
+    
+    
     NSString *query =[NSString stringWithFormat:@"Select * from Equipments where equipmentID in (%@)",equipmentID];
     FMResultSet *resultSet=[self.database executeQuery:query];
-    
-    
+   
     while (resultSet.next) {
         
         
@@ -137,7 +146,7 @@
         }
         else
         {
-            equipments=[equipments stringByAppendingString:@","];
+            equipments=[equipments stringByAppendingString:@", "];
             if ([resultSet stringForColumnIndex:1] !=nil) {
               equipments =[equipments stringByAppendingString:[resultSet stringForColumnIndex:1]];
             }

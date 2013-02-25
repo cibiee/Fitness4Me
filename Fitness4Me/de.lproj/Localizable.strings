@@ -21,13 +21,13 @@
 "workoutsthroughsettingsmsg"="Du kannst später alle Workouts unter Einstellungen herunterladen";
 "nullfeedbackmsg"="Sende uns bitte ein Feedback";
 "exitVideo"   ="Du bist dabei das Video zu beenden, bist Du sicher?";
-"VideoUnavailable"   ="Workout Video ist gerade nicht verfügbar.Downloade die Videos während einer guten Internet Verbindung.";
+"VideoUnavailable"   ="Workout Video ist gerade nicht verfügbar. Downloade die Videos während einer guten Internet Verbindung.";
 "resumeDownload"   ="Wir versuchen Dein Workout herunter zu laden, aber Deine Internet Verbindungen scheint langsam zu sein.Wir empfehlen Dir, den Download abzubrechen, starte ihn  wieder, wenn Du eine gute Internet Verbindung zur Verfügung hast..";
 "validateemailUsername"="E-Mail / Benutzername nicht gültig.";
 "mandatory"="Alle Felder sind Pflichtfelder.";
 "invalidaMail"="E-Mail ist nicht gültig";
 "slowdata"="Antwort aufgrund einer zu langsamen Internet Verbindung im Moment leider nicht möglich Bitte erneut versuchen, wenn du eine bessere Internet Verbindung hast.";
-"requestError"="Fehlermeldung .Unser Support Team wurde dieser Fehler weiter geleitet.Bitte versuche es später erneut.";
+"requestError"="Fehlermeldung. Unser Support Team wurde dieser Fehler weiter geleitet. Bitte versuche es später erneut.";
 "advancedLevelMessage" ="Bitte warte, bis Deine 5 kostenlose Workouts Fortgeschrittenen Niveau  heruntergeladen sind. Je nach Qualität deiner Internetverbindung kann dies einige Minuten dauern";
 "beginnerLevelMessage" ="Bitte warte, bis Deine 5 kostenlose Workouts Anfänger Niveau  heruntergeladen sind. Je nach Qualität deiner Internetverbindung kann dies einige Minuten dauern";
 "experLevelMessage" ="Bitte warte, bis Deine 5 kostenlose Workouts Profi Niveau  heruntergeladen sind. Je nach Qualität deiner Internetverbindung kann dies einige Minuten dauern";
@@ -68,16 +68,11 @@
 
 
 
-"monthlyDescription"="Das ist weniger als der Preis f\u00fcr eine Mahlzeit im n\u00e4chsten Fast Food Restaurant und wesentlich besser f\u00fcr deinen K\u00f6rper.Du kannst jederzeit k\u00fcndigen!";
-"supersaver1Description"="Leiste eine Vorauszahlung f\u00fcr 12 Monate und erhalte 3 Monate kostenfrei!Dein Workout - \u00fcberall und jederzeit f\u00fcr 15 Monate.";
-"supersaver2Description"="Leiste eine Vorauszahlung f\u00fcr 18 Monate und erhalte 6 Monate kostenfrei!Dein Workout \u0096 \u00fcberall und jederzeit f\u00fcr 24 Monate";
-"supersaver3Description"="Leiste eine Vorauszahlung f\u00fcr 24 Monate und erhalte 12 Monate free.Dein Workout \u0096 \u00fcberall und jederzeit f\u00fcr 3 Jahre";
 
 
+"cannoteditMessage"="Als Nicht-Premium Mitglied kannst du dieses personalisierte Workout nicht bearbeiten.                         Aber du bist herzlich eingeladen, dieses tolle Feature auszuprobieren.                  Melde dich heute an und erhalte Zugang zu noch mehr Schnell- Workouts und Übungen.                            Und du kannst unbegrenzt viele personalisierte und selbst erstellte Workouts speichern.";
 
-"cannoteditMessage"="Als Nicht-Premium Mitglied kannst du dieses personalisierte Workout nicht bearbeiten .                         Aber du bist herzlich eingeladen, dieses tolle Feature auszuprobieren .                  Melde dich heute an und erhalte Zugang zu noch mehr Schnell- Workouts und Übungen .                            Und du kannst unbegrenzt viele personalisierte und selbst erstellte Workouts speichern .";
-
-"trailMessage"="Als Nicht-Premium Mitglied kannst du dieses selbst erstellte Workout nicht speichern.                                                                                  Aber du bist herzlich eingeladen, dieses tolle Feature auszuprobieren.                         Als Premium Mitglied erhälst du Zugang zu noch mehr Übungen und Schnell-Workouts .                                       Und du kannst unbegrenzt viele personalisierte und selbst erstellte Workouts speichern .";
+"trailMessage"="Als Nicht-Premium Mitglied kannst du dieses selbst erstellte Workout nicht speichern.                                                                                  Aber du bist herzlich eingeladen, dieses tolle Feature auszuprobieren.                         Als Premium Mitglied erhälst du Zugang zu noch mehr Übungen und Schnell-Workouts.                                       Und du kannst unbegrenzt viele personalisierte und selbst erstellte Workouts speichern.";
 
 "trailEndMessage"="Entschuldigung, aber du hast dein selbst erstelltes Probe-Workout schon genutzt.     Diese Funktion ist nur für Benutzer mit einer vollen Mitgliedschaft verfügbar.                                          Melde dich heute an und erhalte Zugang zu noch mehr Schnell-Workouts und Übungen.                             Und du kannst unbegrenzt viele personalisierte und selbst erstellte Workouts speichern.";
 

@@ -206,6 +206,7 @@
     [database executeUpdate:@"INSERT INTO CustomWorkout (WorkoutID,Name,Description,Rate,IsLocked,DescriptionToDo,ImageUrl,ImageName,DescriptionBig,ImageThumbUrl,Props,Duration,Focus) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?);",
      
      workout.WorkoutID,workout.Name,workout.Description,workout.Rate,workout.IsLocked,workout.DescriptionToDo,workout.ImageUrl,workout.ImageName,workout.DescriptionBig,workout.ThumbImageUrl, workout.Props,workout.Duration,workout.Focus,nil];
+    NSLog([workout Focus]);
     [database commit];
     [database close];
     
@@ -233,6 +234,7 @@
         workout.Props = [[workouts objectAtIndex: count] valueForKey: @"Props"];
         workout.Duration = [[workouts objectAtIndex: count] valueForKey: @"Duration"];
         workout.Focus = [[workouts objectAtIndex: count] valueForKey: @"Focus"];
+        
         [self insertCustomWorkout:workout];
         [workout release];
         
@@ -274,6 +276,7 @@
         NSString *props =[equipmentDB getSelectedEquipments:[resultSet stringForColumnIndex:10]]; 
         NSString *duration =  [resultSet stringForColumnIndex:11];
         NSString *focus = [focusDB getSelectedFocus:[resultSet stringForColumnIndex:12]];
+                
         Workout *workout = [[Workout alloc]initWithCustomData:workoutID:name:rate:ImageUrl:Imagename:islocked:description:descriptionToDo:lockimageUrl:descriptionBig:thumbImageUrl:props:duration:focus];
         [Workouts addObject:workout];
         [workout release];
