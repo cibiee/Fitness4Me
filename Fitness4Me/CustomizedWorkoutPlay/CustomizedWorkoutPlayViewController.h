@@ -35,18 +35,14 @@
     NSString *storeURL;
     NSString *duration;
     MPMoviePlayerController __strong *moviePlayer;
-    
     NSMutableArray *arr;
     NSMutableArray *aras;
     NSMutableArray * excersices;
-    
     Excersice *fitness;
     Workout * workout;
     ExcersiceDB *excersiceDB;
     StatisticsDB *statisticsDB;
-    
     int WorkoutID;
-    
     NSString *userID;
     Boolean *stayup;
 }

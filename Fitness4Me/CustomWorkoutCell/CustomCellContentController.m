@@ -36,7 +36,7 @@
         
         DurationLabel.textAlignment = UITextAlignmentLeft;
         
-        DurationLabel.font = [UIFont systemFontOfSize:13];
+        DurationLabel.font = [UIFont boldSystemFontOfSize:13];
         
         DurationLabel.backgroundColor =[UIColor clearColor];
         
@@ -45,17 +45,18 @@
         
         
         // Initialization code
-        focusLabel = [[UILabel alloc]init];
+        focusLabel = [[CustomLabel alloc]init];
         
         focusLabel.textAlignment = UITextAlignmentLeft;
         
-        focusLabel.font = [UIFont systemFontOfSize:13];
+        focusLabel.font = [UIFont boldSystemFontOfSize:13];
         
         focusLabel.backgroundColor =[UIColor clearColor];
         
         focusLabel.textColor =[UIColor blackColor];
 
-        focusLabel.numberOfLines=0;
+        [self.focusLabel setLineBreakMode:UILineBreakModeWordWrap];
+         self.focusLabel.numberOfLines=0;
         
         [focusLabel sizeToFit];
         
@@ -73,6 +74,7 @@
         
         
         [self.DurationLabels setLineBreakMode:UILineBreakModeWordWrap];
+       
         [self.DurationLabels setText:NSLocalizedStringWithDefaultValue(@"duration", nil,[Fitness4MeUtils getBundle], nil, nil)];
         
         
@@ -86,6 +88,7 @@
         self.focusLabels.backgroundColor =[UIColor clearColor];
         
         self.focusLabels.textColor =[UIColor blackColor];
+        
         [self.focusLabels setLineBreakMode:UILineBreakModeWordWrap];
 
         [self.focusLabels setText:NSLocalizedStringWithDefaultValue(@"focus", nil,[Fitness4MeUtils getBundle], nil, nil)];
@@ -183,43 +186,39 @@
     TitleLabel.frame = frame;
     
     
-    
-    
-    frame =CGRectMake(7, 25, 80, 72);
+    frame =CGRectMake(3, 25, 80, 72);
     
     ExcersiceImage.frame=frame;
     
     
-    frame= CGRectMake(boundsX+90 ,30, 65, 21);
+    frame= CGRectMake(boundsX+85 ,30, 65, 21);
     
     self.DurationLabels.frame = frame;
     
 
-    frame= CGRectMake(boundsX+160 ,30, 110, 21);
+    frame= CGRectMake(boundsX+150 ,30, 110, 21);
     
     self.DurationLabel.frame = frame;
 
     
-    
-    frame= CGRectMake(boundsX+160 ,47, contentRect.size.width-210, 65);
+    frame= CGRectMake(boundsX+150 ,50, contentRect.size.width-180, 64);
     
     self.focusLabel.frame = frame;
   
-    frame= CGRectMake(boundsX+90 ,47, 65, 65);
+    frame= CGRectMake(boundsX+85 ,24, 65, 65);
     
     self.focusLabels.frame = frame;
 
-    
-    frame= CGRectMake(contentRect.size.width-45,10, 32, 32);
+    frame= CGRectMake(contentRect.size.width-30,10, 32, 32);
     
     self.favIcon.frame = frame;
     
-    frame= CGRectMake(contentRect.size.width-45 ,80, 32, 32);
+    frame= CGRectMake(contentRect.size.width-30 ,80, 32, 32);
     
     self.EditButton.frame = frame;
     
 
-    frame= CGRectMake(contentRect.size.width-45 ,45, 32, 32);
+    frame= CGRectMake(contentRect.size.width-30 ,45, 32, 32);
     
     self.deleteButton.frame = frame;
     

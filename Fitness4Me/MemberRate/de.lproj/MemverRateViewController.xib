@@ -114,7 +114,7 @@
 					<object class="IBUILabel" id="1020076123">
 						<reference key="NSNextResponder" ref="240967791"/>
 						<int key="NSvFlags">272</int>
-						<string key="NSFrame">{{21, 134}, {280, 189}}</string>
+						<string key="NSFrame">{{25, 129}, {276, 190}}</string>
 						<reference key="NSSuperview" ref="240967791"/>
 						<reference key="NSNextKeyView" ref="94763873"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -124,30 +124,31 @@
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSMutableString" key="IBUIText">
-							<bytes key="NS.bytes">V2VuaWdlciBhbHMgZWluIHBhYXIgTGl0ZXIgQmVuemluIOKAkyB1bmQgZHUgc2Nob25zdCBkaWUgVW13
-ZWx0IQ1XZW5pZ2VyIGFscyBlaW4gQmlnIE1hYyBNZW51zIgg4oCTIHVuZCBkdSB0dXN0IGRlaW5lbSBL
-b8yIcnBlciBldHdhcyBHdXRlcyEgICAgICAgICAgICAgICAgICAgICAgICBXZW5pZ2VyIGFscyBlaW4g
-QmllciBpbiBkZXIgbmHMiGNoc3RlbiBLbmVpcGUg4oCTIHVuZCBkdSBibGVpYnN0IG51zIhjaHRlcm4h
-CldlbmlnZXIgYWxzIGVpbiBncm/Dn2VyIEJlY2hlciBLYWZmZWUg4oCTIHVuZCBkdSBibGVpYnN0IHRy
-b3R6ZGVtIGxhzIhuZ2VyIHdhY2ghA</bytes>
+							<bytes key="NS.bytes">V2VuaWdlciBhbHMgZWluIHBhYXIgTGl0ZXIgQmVuemluICAgICAgICAgICAgICAgICAgIOKAkyB1bmQg
+ZHUgc2Nob25zdCBkaWUgVW13ZWx0IQ1XZW5pZ2VyIGFscyBlaW4gQmlnIE1hYyBNZW51zIggICAgICAg
+ICAgICAgICAgICAgICAgICDigJMgdW5kIGR1IHR1c3QgZGVpbmVtIEtvzIhycGVyIGV0d2FzIEd1dGVz
+ISAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBXZW5pZ2VyIGFs
+cyBlaW4gQmllciBpbiBkZXIgbmHMiGNoc3RlbiBLbmVpcGUgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICDigJMgdW5kIGR1IGJsZWlic3QgbnXMiGNodGVybiEK
+V2VuaWdlciBhbHMgZWluIGdyb8OfZXIgQmVjaGVyIEthZmZlZSAgICAgICAgICAgIOKAkyB1bmQgZHUg
+YmxlaWJzdCB0cm90emRlbSBsYcyIbmdlciB3YWNoIQ</bytes>
 						</object>
 						<reference key="IBUITextColor" ref="378071700"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">0</int>
 						<int key="IBUINumberOfLines">11</int>
-						<int key="IBUITextAlignment">1</int>
 						<int key="IBUILineBreakMode">0</int>
 						<object class="IBUIFontDescription" key="IBUIFontDescription">
 							<int key="type">1</int>
-							<double key="pointSize">15</double>
+							<double key="pointSize">14</double>
 						</object>
 						<object class="NSFont" key="IBUIFont">
 							<string key="NSName">Helvetica</string>
-							<double key="NSSize">15</double>
+							<double key="NSSize">14</double>
 							<int key="NSfFlags">16</int>
 						</object>
 						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
-						<double key="preferredMaxLayoutWidth">280</double>
+						<double key="preferredMaxLayoutWidth">276</double>
 					</object>
 					<object class="IBUILabel" id="1059124327">
 						<reference key="NSNextResponder" ref="240967791"/>
@@ -265,7 +266,7 @@ b3R6ZGVtIGxhzIhuZ2VyIHdhY2ghA</bytes>
 					<object class="IBUILabel" id="381526428">
 						<reference key="NSNextResponder" ref="240967791"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{54, 81}, {215, 58}}</string>
+						<string key="NSFrame">{{19.5, 81}, {278.5, 58}}</string>
 						<reference key="NSSuperview" ref="240967791"/>
 						<reference key="NSNextKeyView" ref="1059124327"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -283,15 +284,15 @@ b3R6ZGVtIGxhzIhuZ2VyIHdhY2ghA</bytes>
 						<int key="IBUILineBreakMode">2</int>
 						<object class="IBUIFontDescription" key="IBUIFontDescription">
 							<int key="type">2</int>
-							<double key="pointSize">16</double>
+							<double key="pointSize">14</double>
 						</object>
 						<object class="NSFont" key="IBUIFont">
 							<string key="NSName">Helvetica-Bold</string>
-							<double key="NSSize">16</double>
+							<double key="NSSize">14</double>
 							<int key="NSfFlags">16</int>
 						</object>
 						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
-						<double key="preferredMaxLayoutWidth">215</double>
+						<double key="preferredMaxLayoutWidth">278.5</double>
 					</object>
 					<object class="IBUILabel" id="173185444">
 						<reference key="NSNextResponder" ref="240967791"/>
@@ -418,10 +419,10 @@ b3R6ZGVtIGxhzIhuZ2VyIHdhY2ghA</bytes>
 							<reference ref="591152151"/>
 							<reference ref="1020449894"/>
 							<reference ref="304270563"/>
-							<reference ref="1020076123"/>
 							<reference ref="173185444"/>
 							<reference ref="381526428"/>
 							<reference ref="1059124327"/>
+							<reference ref="1020076123"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>

@@ -59,7 +59,7 @@
     FMResultSet *resultSet=[self.database executeQuery:@"Select * from focus"];
     while(resultSet.next){
         NSString * focusId =[resultSet stringForColumnIndex:0];
-        NSString *focusName = [resultSet stringForColumnIndex:1];
+        NSString *focusName = [[resultSet stringForColumnIndex:1]capitalizedString];
          Focus *focus = [[Focus alloc]init];
         [focus setMuscleID:focusId];
         [focus setMuscleName:focusName];
@@ -118,11 +118,25 @@
 
        }
     }
-      
+    
+    NSString *capitalizedfocus= [[NSString alloc]init];
+    NSArray* foo = [focus componentsSeparatedByString: @","];
+    
+    for (NSString *focuses in foo) {
+        if ([capitalizedfocus length]==0) {
+            capitalizedfocus =[[capitalizedfocus stringByAppendingString:focuses]capitalizedString];
+        }else{
+            capitalizedfocus=[capitalizedfocus stringByAppendingString:@","];
+            capitalizedfocus =[[capitalizedfocus stringByAppendingString:focuses]capitalizedString];
+        }
+        
+     
+    }
+
     
     [resultSet close];
 
-    return focus;
+    return capitalizedfocus;
     
     
     

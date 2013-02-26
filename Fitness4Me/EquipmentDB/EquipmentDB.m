@@ -60,7 +60,7 @@
     FMResultSet *resultSet=[self.database executeQuery:@"Select equipmentID,equipmentName from Equipments"];
     while(resultSet.next){
         NSString * equipmentId =[resultSet stringForColumnIndex:0];
-        NSString *equipmentName = [resultSet stringForColumnIndex:1];
+        NSString *equipmentName = [[resultSet stringForColumnIndex:1]capitalizedString];
         Equipments *equipment = [[Equipments alloc]init];
         [equipment setEquipmentID:equipmentId];
         [equipment setEquipmentName:equipmentName];
@@ -154,11 +154,25 @@
             
         }
     }
+    NSString *capitalizedequip= [[NSString alloc]init];
+    NSArray* foo = [equipments componentsSeparatedByString: @","];
     
+    for (NSString *focuses in foo) {
+        if ([capitalizedequip length]==0) {
+            capitalizedequip =[[capitalizedequip stringByAppendingString:focuses]capitalizedString];
+        }else{
+            capitalizedequip=[capitalizedequip stringByAppendingString:@","];
+            capitalizedequip =[[capitalizedequip stringByAppendingString:focuses]capitalizedString];
+        }
+        
+        
+    }
+    
+
     
     [resultSet close];
    // NSLog(@"%@",equipments );
-    return equipments;
+    return capitalizedequip;
     
     
     

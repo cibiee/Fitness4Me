@@ -51,7 +51,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{130, 169}, {20, 20}}</string>
 								<reference key="NSSuperview" ref="708688546"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="971891209"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -64,7 +63,6 @@
 								<int key="NSvFlags">274</int>
 								<string key="NSFrameSize">{290, 410}</string>
 								<reference key="NSSuperview" ref="708688546"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="359347587"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -79,7 +77,6 @@
 								<int key="NSvFlags">264</int>
 								<string key="NSFrame">{{110, 339}, {163, 40}}</string>
 								<reference key="NSSuperview" ref="708688546"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="316512385"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -119,7 +116,6 @@
 								<int key="NSvFlags">264</int>
 								<string key="NSFrame">{{109, 339}, {163, 40}}</string>
 								<reference key="NSSuperview" ref="708688546"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="1067580342"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -143,7 +139,6 @@
 								<int key="NSvFlags">264</int>
 								<string key="NSFrame">{{110, 372}, {163, 40}}</string>
 								<reference key="NSSuperview" ref="708688546"/>
-								<reference key="NSWindow"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -166,7 +161,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{107, 91}, {181, 250}}</string>
 								<reference key="NSSuperview" ref="708688546"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="733757831"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -198,7 +192,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{262, 2}, {27, 27}}</string>
 								<reference key="NSSuperview" ref="708688546"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="854596545"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -222,7 +215,6 @@
 						</array>
 						<string key="NSFrame">{{239, 297}, {290, 410}}</string>
 						<reference key="NSSuperview" ref="286911712"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="957118523"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<reference key="IBUIBackgroundColor" ref="789731523"/>
@@ -233,7 +225,6 @@
 						<int key="NSvFlags">274</int>
 						<string key="NSFrame">{{0, 38}, {768, 966}}</string>
 						<reference key="NSSuperview" ref="286911712"/>
-						<reference key="NSWindow"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -247,7 +238,6 @@
 						<int key="NSvFlags">290</int>
 						<string key="NSFrameSize">{768, 44}</string>
 						<reference key="NSSuperview" ref="286911712"/>
-						<reference key="NSWindow"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<int key="IBUIBarStyle">1</int>
@@ -276,7 +266,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{349, 502}, {37, 37}}</string>
 						<reference key="NSSuperview" ref="286911712"/>
-						<reference key="NSWindow"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -288,7 +277,6 @@
 						<int key="NSvFlags">274</int>
 						<string key="NSFrame">{{0, 44}, {768, 900}}</string>
 						<reference key="NSSuperview" ref="286911712"/>
-						<reference key="NSWindow"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
@@ -310,7 +298,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{159.5, 963}, {450, 38}}</string>
 						<reference key="NSSuperview" ref="286911712"/>
-						<reference key="NSWindow"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -340,7 +327,6 @@
 				</array>
 				<string key="NSFrame">{{0, 20}, {768, 1004}}</string>
 				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
 					<bytes key="NSWhite">MQA</bytes>
@@ -648,101 +634,7 @@
 			<nil key="sourceID"/>
 			<int key="maxID">68</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes">
-			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
-				<object class="IBPartialClassDescription">
-					<string key="className">CustomWorkoutsViewController</string>
-					<string key="superclassName">UIViewController</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="onClickAdd:">id</string>
-						<string key="onClickBack:">id</string>
-						<string key="onClickClose:">id</string>
-						<string key="onClickContinueTrial:">id</string>
-						<string key="onClickEdit:">id</string>
-						<string key="onClickOk:">id</string>
-						<string key="onClicksetFavourite:">id</string>
-						<string key="onClickskipToPurchase:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="onClickAdd:">
-							<string key="name">onClickAdd:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="onClickBack:">
-							<string key="name">onClickBack:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="onClickClose:">
-							<string key="name">onClickClose:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="onClickContinueTrial:">
-							<string key="name">onClickContinueTrial:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="onClickEdit:">
-							<string key="name">onClickEdit:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="onClickOk:">
-							<string key="name">onClickOk:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="onClicksetFavourite:">
-							<string key="name">onClicksetFavourite:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="onClickskipToPurchase:">
-							<string key="name">onClickskipToPurchase:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="activityIndicator">UIActivityIndicatorView</string>
-						<string key="continueButton">UIButton</string>
-						<string key="memberView">UIView</string>
-						<string key="messageLabel">UITextView</string>
-						<string key="navigationBar">UINavigationItem</string>
-						<string key="tableView">UITableView</string>
-						<string key="yesButton">UIButton</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="activityIndicator">
-							<string key="name">activityIndicator</string>
-							<string key="candidateClassName">UIActivityIndicatorView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="continueButton">
-							<string key="name">continueButton</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="memberView">
-							<string key="name">memberView</string>
-							<string key="candidateClassName">UIView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="messageLabel">
-							<string key="name">messageLabel</string>
-							<string key="candidateClassName">UITextView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="navigationBar">
-							<string key="name">navigationBar</string>
-							<string key="candidateClassName">UINavigationItem</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="tableView">
-							<string key="name">tableView</string>
-							<string key="candidateClassName">UITableView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="yesButton">
-							<string key="name">yesButton</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/CustomWorkoutsViewController.h</string>
-					</object>
-				</object>
-			</array>
-		</object>
+		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBIPadFramework</string>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>

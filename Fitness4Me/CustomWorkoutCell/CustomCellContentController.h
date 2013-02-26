@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CustomLabel.h"
 
 @interface CustomCellContentController : UITableViewCell
 
@@ -15,7 +16,7 @@
 
 @property(retain,nonatomic)IBOutlet UILabel *TitleLabel;
 
-@property(retain,nonatomic)IBOutlet UILabel *focusLabel;
+@property(retain,nonatomic)IBOutlet CustomLabel *focusLabel;
 
 //@property(retain,nonatomic)IBOutlet UILabel *EquipmentLabel;
 

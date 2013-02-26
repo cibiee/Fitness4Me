@@ -710,6 +710,7 @@
 						<string key="_removeSelectedButton">UIButton</string>
 						<string key="addMoreButton">UIButton</string>
 						<string key="backgroundLabel">UILabel</string>
+						<string key="bgImageView">UIImageView</string>
 						<string key="carousel">iCarousel</string>
 						<string key="durationLabel">UILabel</string>
 						<string key="moveSegmentControl">UISegmentedControl</string>
@@ -733,6 +734,10 @@
 						<object class="IBToOneOutletInfo" key="backgroundLabel">
 							<string key="name">backgroundLabel</string>
 							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="bgImageView">
+							<string key="name">bgImageView</string>
+							<string key="candidateClassName">UIImageView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="carousel">
 							<string key="name">carousel</string>

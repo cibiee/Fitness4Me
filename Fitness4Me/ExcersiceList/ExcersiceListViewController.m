@@ -191,14 +191,48 @@
         }
         
         if (![[item objectForKey:@"exerciseFocus"] isEqualToString:@""]) {
-            [excersiceLists setFocus:[item objectForKey:@"exerciseFocus"]];
+            
+            NSString *capitalizedFocus= [[NSString alloc]init];
+            NSArray* foo = [[item objectForKey:@"exerciseFocus"] componentsSeparatedByString: @","];
+            
+            for (NSString *focuses in foo) {
+                if ([capitalizedFocus length]==0) {
+                    capitalizedFocus =[[capitalizedFocus stringByAppendingString:focuses]capitalizedString];
+                }else{
+                    capitalizedFocus=[capitalizedFocus stringByAppendingString:@","];
+                    capitalizedFocus =[[capitalizedFocus stringByAppendingString:focuses]capitalizedString];
+                }
+                
+                
+            }
+            
+            [excersiceLists setFocus:capitalizedFocus];
+
+            
+        
+            
+             
         }
         else{
             [excersiceLists setFocus:@"Focus unavailable"];
         }
         
         if (![[item objectForKey:@"exerciseEquipments"]isEqualToString:@""]) {
-            [excersiceLists setEquipments:[item objectForKey:@"exerciseEquipments"]];
+            NSString *capitalizedequip= [[NSString alloc]init];
+            NSArray* foo = [[item objectForKey:@"exerciseEquipments"] componentsSeparatedByString: @","];
+            
+            for (NSString *focuses in foo) {
+                if ([capitalizedequip length]==0) {
+                    capitalizedequip =[[capitalizedequip stringByAppendingString:focuses]capitalizedString];
+                }else{
+                    capitalizedequip=[capitalizedequip stringByAppendingString:@","];
+                    capitalizedequip =[[capitalizedequip stringByAppendingString:focuses]capitalizedString];
+                }
+                
+                
+            }
+
+            [excersiceLists setEquipments:capitalizedequip];
         }
         
         else{
@@ -318,10 +352,7 @@
     workout = [array objectAtIndex:indexPath.row];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell.deleteButton setHidden:YES];
-    [cell.EditButton setHidden:YES];
-    [cell.deleteLabel setHidden:YES];
-    [cell.EditLabel setHidden:YES];
+   
     [cell.focusLabels  setText:NSLocalizedStringWithDefaultValue(@"focus", nil,[Fitness4MeUtils getBundle], nil, nil)];
     [cell.DurationLabels  setText:NSLocalizedStringWithDefaultValue(@"duration", nil,[Fitness4MeUtils getBundle], nil, nil)];
     if([workout name])

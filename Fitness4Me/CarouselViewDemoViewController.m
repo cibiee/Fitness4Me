@@ -217,7 +217,7 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
         switch ([sender tag]) {
             case 0:
                 
-                list.name=@"recovery 15";
+                list.name=@"Recovery 15";
                 list.imageName= @"page_15.png";
                 list.excersiceID=@"rec15";
                 list.time=@"15";
@@ -229,7 +229,7 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
                 
                 break;
             case 1:
-                list.name=@"recovery 30";
+                list.name=@"Recovery 30";
                 list.imageName= @"page_30.png";
                 list.excersiceID=@"rec30";
                 list.time=@"30";

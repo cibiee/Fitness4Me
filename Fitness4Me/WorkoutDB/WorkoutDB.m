@@ -342,9 +342,9 @@
         NSString *Imagename =  [resultSet stringForColumnIndex:7];
         NSString *descriptionBig = [resultSet stringForColumnIndex:8];
         NSString *thumbImageUrl =  [resultSet stringForColumnIndex:9];
-        NSString *props =[equipmentDB getSelectedEquipments:[resultSet stringForColumnIndex:10]];
+        NSString *props =[[equipmentDB getSelectedEquipments:[resultSet stringForColumnIndex:10]]capitalizedString];
         NSString *duration =  [resultSet stringForColumnIndex:11];
-        NSString *focus = [focusDB getSelectedFocus:[resultSet stringForColumnIndex:12]];
+        NSString *focus = [[focusDB getSelectedFocus:[resultSet stringForColumnIndex:12]]capitalizedString];
         
        workout= [[Workout alloc]initWithCustomData:workoutID:name:rate:ImageUrl:Imagename:islocked:description:descriptionToDo:lockimageUrl:descriptionBig:thumbImageUrl:props:duration:focus];
     }
@@ -493,9 +493,9 @@
         NSString *Imagename =  [resultSet stringForColumnIndex:7];
         NSString *descriptionBig = [resultSet stringForColumnIndex:8];
         NSString *thumbImageUrl =  [resultSet stringForColumnIndex:9];
-        NSString *props =[equipmentDB getSelectedEquipments:[resultSet stringForColumnIndex:10]];
+        NSString *props =[[equipmentDB getSelectedEquipments:[resultSet stringForColumnIndex:10]]capitalizedString];
         NSString *duration =  [resultSet stringForColumnIndex:11];
-        NSString *focus = [focusDB getSelectedFocus:[resultSet stringForColumnIndex:12]];
+        NSString *focus = [[focusDB getSelectedFocus:[resultSet stringForColumnIndex:12]]capitalizedString];
         
         workout= [[Workout alloc]initWithCustomData:workoutID:name:rate:ImageUrl:Imagename:islocked:description:descriptionToDo:lockimageUrl:descriptionBig:thumbImageUrl:props:duration:focus];
     }

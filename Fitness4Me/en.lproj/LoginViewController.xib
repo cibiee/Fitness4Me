@@ -109,7 +109,7 @@
 								<bool key="IBUIMultipleTouchEnabled">YES</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<bool key="IBUIEditable">NO</bool>
-								<string key="IBUIText">Shortly you will recieve an email to your personal login to our website. Don't worry we do not share your data with anyone . </string>
+								<string key="IBUIText">Shortly you will recieve an email to your personal login to our website. Don't worry we do not share your data with anyone. </string>
 								<int key="IBUITextAlignment">1</int>
 								<object class="IBUITextInputTraits" key="IBUITextInputTraits">
 									<int key="IBUIAutocapitalizationType">2</int>

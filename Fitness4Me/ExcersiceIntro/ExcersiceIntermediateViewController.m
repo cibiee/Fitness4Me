@@ -162,7 +162,24 @@
     [descriptionTextview sizeToFit];
     titleLabel.text=[self.workout Name];
     if ([[self.workout Props] length]>0) {
-        propsLabel.text=[self.workout Props];
+        
+        NSString *capitalizedequip= [[NSString alloc]init];
+        NSArray* foo = [self.workout.Props componentsSeparatedByString: @","];
+        
+        for (NSString *focuses in foo) {
+            if ([capitalizedequip length]==0) {
+                capitalizedequip =[[capitalizedequip stringByAppendingString:focuses]capitalizedString];
+            }else{
+                capitalizedequip=[capitalizedequip stringByAppendingString:@","];
+                capitalizedequip =[[capitalizedequip stringByAppendingString:focuses]capitalizedString];
+            }
+            
+            
+        }
+        
+        
+        
+        propsLabel.text=capitalizedequip;
         [propsLabel sizeToFit];
     }else{
         propLabel.hidden =YES;

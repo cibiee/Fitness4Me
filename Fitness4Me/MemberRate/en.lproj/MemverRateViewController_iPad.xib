@@ -68,7 +68,7 @@
 					<object class="IBUILabel" id="362387775">
 						<reference key="NSNextResponder" ref="120090003"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{46, 326}, {675, 344}}</string>
+						<string key="NSFrame">{{201, 320}, {471, 344}}</string>
 						<reference key="NSSuperview" ref="120090003"/>
 						<reference key="NSNextKeyView" ref="855176641"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -77,12 +77,13 @@
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<string type="base64-UTF8" key="IBUIText">TGVzcyB0aGFuIGEgZ2FsbG9uIG9mIGdhcyDigJMgYW5kIGl0IGlzIGEgbG90IGZyaWVuZGxpZXIgdG8g
-dGhlIGVudmlyb25tZW50ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBM
-ZXNzIHRoYW4gYSBCaWcgTWFjIG1lYWwg4oCTIGFuZCBpdOKAmXMgYmV0dGVyIGZvciB5b3VyIGJvZHkN
-TGVzcyB0aGFuIGEgYmVlciBhdCB5b3VyIGxvY2FsIHB1YiDigJMgYW5kIHlvdSBzdGF5IHNvYmVyDUxl
-c3MgdGhhbiBhIGxhcmdlIGN1cCBvZiBjb2ZmZWUg4oCTIGFuZCBpdCB3aWxsIGtlZXAgeW91IGF3YWtl
-IGxvbmdlcg</string>
+						<string type="base64-UTF8" key="IBUIText">TGVzcyB0aGFuIGEgZ2FsbG9uIG9mIGdhcyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAg4oCTIGJ1dCBmcmllbmRsaWVyIHRvIHRoZSBlbnZpcm9ubWVudA0KTGVzcyB0aGFuIGEgQmln
+IE1hYyBtZWFsICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIOKAkyBidXQgYmV0
+dGVyIGZvciB5b3VyIGJvZHkgDQpMZXNzIHRoYW4gYSBiZWVyIGF0IHlvdXIgbG9jYWwgcHViICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgIOKAkyBhbmQgeW91IHN0YXkgc29iZXINCkxlc3MgdGhhbiBhIGxh
+cmdlIGN1cCBvZiBjb2ZmZWUgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICDigJMgYnV0IHdp
+bGwga2VlcCB5b3UgYXdha2UNCgA</string>
 						<object class="NSColor" key="IBUITextColor" id="624546359">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MQA</bytes>
@@ -90,7 +91,6 @@ IGxvbmdlcg</string>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">0</int>
 						<int key="IBUINumberOfLines">11</int>
-						<int key="IBUITextAlignment">1</int>
 						<int key="IBUILineBreakMode">2</int>
 						<object class="IBUIFontDescription" key="IBUIFontDescription">
 							<int key="type">1</int>
@@ -102,7 +102,7 @@ IGxvbmdlcg</string>
 							<int key="NSfFlags">16</int>
 						</object>
 						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
-						<double key="preferredMaxLayoutWidth">675</double>
+						<double key="preferredMaxLayoutWidth">471</double>
 					</object>
 					<object class="IBUILabel" id="855176641">
 						<reference key="NSNextResponder" ref="120090003"/>
@@ -138,7 +138,7 @@ IGxvbmdlcg</string>
 					<object class="IBUILabel" id="695637914">
 						<reference key="NSNextResponder" ref="120090003"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{179, 694}, {435, 78}}</string>
+						<string key="NSFrame">{{166, 699}, {435, 78}}</string>
 						<reference key="NSSuperview" ref="120090003"/>
 						<reference key="NSNextKeyView" ref="1005162160"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -393,9 +393,9 @@ IGxvbmdlcg</string>
 							<reference ref="693874870"/>
 							<reference ref="930869221"/>
 							<reference ref="1005162160"/>
-							<reference ref="362387775"/>
 							<reference ref="855176641"/>
 							<reference ref="807645328"/>
+							<reference ref="362387775"/>
 							<reference ref="695637914"/>
 						</array>
 						<reference key="parent" ref="0"/>

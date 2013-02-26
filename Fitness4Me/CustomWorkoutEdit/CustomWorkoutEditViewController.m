@@ -444,7 +444,7 @@
                 [excersice setRepetitions:@"1"];
                 [excersice setTime:@"30"];
                 [excersice setExcersiceID:[item objectForKey:@"recovery"]];
-                [excersice setName:@"recovery 30"];
+                [excersice setName:@"Recovery 30"];
                 [excersice setExcersiceID:@"rec30"];
                 [excersice setImageUrl:[item objectForKey:@"image"]];
                 [excersice setImageName:@"page_30.png"];
@@ -454,7 +454,7 @@
                 [excersice setRepetitions:@"1"];
                 [excersice setTime:@"15"];
                 [excersice setExcersiceID:[item objectForKey:@"recovery"]];
-                [excersice setName:@"recovery 15"];
+                [excersice setName:@"Recovery 15"];
                 [excersice setExcersiceID:@"rec15"];
                 [excersice setImageUrl:[item objectForKey:@"image"]];
                 [excersice setImageName:@"page_15.png"];

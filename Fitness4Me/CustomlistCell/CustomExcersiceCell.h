@@ -7,13 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CustomLabel.h"
 
 @interface CustomExcersiceCell : UITableViewCell
 @property(retain,nonatomic)IBOutlet UILabel *DurationLabel;
 
 @property(retain,nonatomic)IBOutlet UILabel *TitleLabel;
 
-@property(retain,nonatomic)IBOutlet UILabel *focusLabel;
+@property(retain,nonatomic)IBOutlet CustomLabel *focusLabel;
 
 //@property(retain,nonatomic)IBOutlet UILabel *EquipmentLabel;
 
@@ -23,13 +24,6 @@
 
 
 
-@property(retain,nonatomic)IBOutlet UILabel *EditLabel;
-
-@property(retain,nonatomic)IBOutlet UIButton *EditButton;
-
-@property(retain,nonatomic)IBOutlet UILabel *deleteLabel;
-
-@property(retain,nonatomic)IBOutlet UIButton *deleteButton;
 
 
 @property(retain,nonatomic)IBOutlet UILabel *focusLabels;

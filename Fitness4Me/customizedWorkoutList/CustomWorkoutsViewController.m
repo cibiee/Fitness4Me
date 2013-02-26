@@ -247,6 +247,7 @@
     [cell.EditLabel setHidden:YES];
     cell.TitleLabel.text = [workout Name];
     cell.DurationLabel.text = [NSString stringWithFormat:@"%@",[Fitness4MeUtils displayTimeWithSecond:[[workout Duration]intValue]]];
+   
     cell.focusLabel.text=[workout Focus];
     cell.ExcersiceImage.image =[self imageForRowAtIndexPath:workout inIndexPath:indexPath];
     

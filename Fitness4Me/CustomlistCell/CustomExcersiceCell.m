@@ -10,7 +10,7 @@
 
 @implementation CustomExcersiceCell
 
-@synthesize TitleLabel,ExcersiceImage,focusLabel,DurationLabel,deleteButton,deleteLabel,EditButton,EditLabel;
+@synthesize TitleLabel,ExcersiceImage,focusLabel,DurationLabel;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -34,7 +34,7 @@
         
         DurationLabel.textAlignment = UITextAlignmentLeft;
         
-        DurationLabel.font = [UIFont systemFontOfSize:13];
+        DurationLabel.font = [UIFont boldSystemFontOfSize:13];
         
         DurationLabel.backgroundColor =[UIColor clearColor];
         
@@ -43,11 +43,11 @@
         
         
         // Initialization code
-        focusLabel = [[UILabel alloc]init];
+        focusLabel = [[CustomLabel alloc]init];
         
         focusLabel.textAlignment = UITextAlignmentLeft;
         
-        focusLabel.font = [UIFont systemFontOfSize:13];
+        focusLabel.font = [UIFont boldSystemFontOfSize:13];
         
         focusLabel.backgroundColor =[UIColor clearColor];
         
@@ -61,7 +61,7 @@
         
         self.DurationLabels.textAlignment = UITextAlignmentLeft;
         
-        self.DurationLabels.font = [UIFont systemFontOfSize:13];
+        self.DurationLabels.font = [UIFont boldSystemFontOfSize:13];
         
         self.DurationLabels.backgroundColor =[UIColor clearColor];
         
@@ -75,7 +75,7 @@
         
         self.focusLabels.textAlignment = UITextAlignmentLeft;
         
-        self.focusLabels.font = [UIFont systemFontOfSize:13];
+        self.focusLabels.font = [UIFont boldSystemFontOfSize:13];
         
         self.focusLabels.backgroundColor =[UIColor clearColor];
         
@@ -84,46 +84,15 @@
         [self.focusLabels setText:@"Focus"];
         
         [self.focusLabels setLineBreakMode:UILineBreakModeWordWrap];
-        // Initialization code
-        self.EditLabel = [[UILabel alloc]init];
+               
         
-        self.EditLabel.textAlignment = UITextAlignmentLeft;
-        
-        self.EditLabel.font = [UIFont systemFontOfSize:12];
-        
-        self.EditLabel.backgroundColor =[UIColor clearColor];
-        
-        self.EditLabel.textColor =[UIColor blackColor];
-        
-        [self.EditLabel setText:@"Edit"];
-        
-        
-        // Initialization code
-        self.deleteLabel = [[UILabel alloc]init];
-        
-        self.deleteLabel.textAlignment = UITextAlignmentLeft;
-        
-        self.deleteLabel.font = [UIFont systemFontOfSize:12];
-        
-        self.deleteLabel.backgroundColor =[UIColor clearColor];
-        
-        self.deleteLabel.textColor =[UIColor blackColor];
-        
-        [self.deleteLabel setText:@"Delete"];
         
         
         
         ExcersiceImage =[[UIImageView alloc]init];
         
         
-        
-        EditButton =[[UIButton alloc]init];
-        deleteButton =[[UIButton alloc]init];
-        
-        [EditButton setImage:[UIImage imageNamed:@"icon_edit.png"] forState:UIControlStateNormal];
-        [deleteButton setImage:[UIImage imageNamed:@"icon_delete.png"] forState:UIControlStateNormal];
-        
-        
+              
         [self.contentView addSubview:TitleLabel];
         
         
@@ -134,10 +103,7 @@
         [self.contentView addSubview:DurationLabel];
         [self.contentView addSubview:self.focusLabels];
         [self.contentView addSubview:self.DurationLabels];
-        [self.contentView addSubview:deleteButton];
-        [self.contentView addSubview:deleteLabel];
-        [self.contentView addSubview:EditLabel];
-        [self.contentView addSubview:EditButton];
+  
         
         
         
@@ -169,54 +135,35 @@
     CGRect frame;
     
     
-    frame= CGRectMake(boundsX+35,boundsY+1, contentRect.size.width-60, 25);
+    frame= CGRectMake(boundsX+35,boundsY+1, contentRect.size.width-80, 25);
     
     TitleLabel.frame = frame;
     
     
-    
-    
-    frame =CGRectMake(7, 25, 80, 72);
+    frame =CGRectMake(3, 25, 80, 72);
     
     ExcersiceImage.frame=frame;
     
     
-    
-    frame= CGRectMake(boundsX+160 ,30, 110, 21);
-    
-    self.DurationLabel.frame = frame;
-    
-    
-    frame= CGRectMake(boundsX+160 ,50, contentRect.size.width-210, 65);
-    
-    self.focusLabel.frame = frame;
-    
-    
-    
-    
-    frame= CGRectMake(boundsX+90 ,30, 60, 21);
+    frame= CGRectMake(boundsX+85 ,20, 65, 21);
     
     self.DurationLabels.frame = frame;
     
     
-    frame= CGRectMake(boundsX+90 ,50, 60, 65);
+    frame= CGRectMake(boundsX+150 ,20, 110, 21);
+    
+    self.DurationLabel.frame = frame;
+    
+    
+    frame= CGRectMake(boundsX+150 ,50, contentRect.size.width-170, 64);
+    
+    self.focusLabel.frame = frame;
+    
+    frame= CGRectMake(boundsX+85 ,24, 65, 65);
     
     self.focusLabels.frame = frame;
     
-    
-    
-    
-    frame= CGRectMake(270 ,80, 25, 25);
-    
-    self.EditButton.frame = frame;
-    
-    
-    
-    
-    frame= CGRectMake(270 ,50, 25, 25);
-    
-    self.deleteButton.frame = frame;
-    
+      
 }
 
 
