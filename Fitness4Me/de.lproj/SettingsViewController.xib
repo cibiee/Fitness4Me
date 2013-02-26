@@ -240,7 +240,7 @@ DQ</string>
 									<int key="type">1</int>
 									<double key="pointSize">14</double>
 								</object>
-								<object class="NSFont" key="IBUIFont" id="512775008">
+								<object class="NSFont" key="IBUIFont" id="182693772">
 									<string key="NSName">Helvetica</string>
 									<double key="NSSize">14</double>
 									<int key="NSfFlags">16</int>
@@ -274,7 +274,7 @@ DQ</string>
 									<int key="type">1</int>
 									<double key="pointSize">13</double>
 								</object>
-								<object class="NSFont" key="IBUIFont" id="369011098">
+								<object class="NSFont" key="IBUIFont" id="64043005">
 									<string key="NSName">Helvetica</string>
 									<double key="NSSize">13</double>
 									<int key="NSfFlags">16</int>
@@ -303,7 +303,7 @@ DQ</string>
 								<float key="IBUIMinimumFontSize">10</float>
 								<int key="IBUITextAlignment">1</int>
 								<reference key="IBUIFontDescription" ref="418366315"/>
-								<reference key="IBUIFont" ref="369011098"/>
+								<reference key="IBUIFont" ref="64043005"/>
 							</object>
 							<object class="IBUILabel" id="105211833">
 								<reference key="NSNextResponder" ref="475502130"/>
@@ -389,7 +389,7 @@ buKAnS4NA</string>
 									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								</object>
 								<reference key="IBUIFontDescription" ref="761274999"/>
-								<reference key="IBUIFont" ref="512775008"/>
+								<reference key="IBUIFont" ref="182693772"/>
 							</object>
 							<object class="IBUIButton" id="216362414">
 								<reference key="NSNextResponder" ref="122580289"/>
@@ -446,7 +446,7 @@ buKAnS4NA</string>
 								<float key="IBUIMinimumFontSize">10</float>
 								<int key="IBUITextAlignment">1</int>
 								<reference key="IBUIFontDescription" ref="418366315"/>
-								<reference key="IBUIFont" ref="369011098"/>
+								<reference key="IBUIFont" ref="64043005"/>
 							</object>
 							<object class="IBUILabel" id="605409026">
 								<reference key="NSNextResponder" ref="122580289"/>
@@ -471,7 +471,7 @@ buKAnS4NA</string>
 								<float key="IBUIMinimumFontSize">10</float>
 								<int key="IBUITextAlignment">1</int>
 								<reference key="IBUIFontDescription" ref="418366315"/>
-								<reference key="IBUIFont" ref="369011098"/>
+								<reference key="IBUIFont" ref="64043005"/>
 							</object>
 							<object class="IBUIProgressView" id="1040704588">
 								<reference key="NSNextResponder" ref="122580289"/>
@@ -611,7 +611,7 @@ buKAnS4NA</string>
 								<int key="IBUIBaselineAdjustment">1</int>
 								<float key="IBUIMinimumFontSize">10</float>
 								<reference key="IBUIFontDescription" ref="761274999"/>
-								<reference key="IBUIFont" ref="512775008"/>
+								<reference key="IBUIFont" ref="182693772"/>
 							</object>
 							<object class="IBUILabel" id="604472266">
 								<reference key="NSNextResponder" ref="249682022"/>
@@ -655,7 +655,7 @@ buKAnS4NA</string>
 									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								</object>
 								<reference key="IBUIFontDescription" ref="761274999"/>
-								<reference key="IBUIFont" ref="512775008"/>
+								<reference key="IBUIFont" ref="182693772"/>
 							</object>
 							<object class="IBUILabel" id="305041605">
 								<reference key="NSNextResponder" ref="249682022"/>
@@ -675,7 +675,7 @@ buKAnS4NA</string>
 								<int key="IBUIBaselineAdjustment">1</int>
 								<float key="IBUIMinimumFontSize">10</float>
 								<reference key="IBUIFontDescription" ref="761274999"/>
-								<reference key="IBUIFont" ref="512775008"/>
+								<reference key="IBUIFont" ref="182693772"/>
 							</object>
 							<object class="IBUILabel" id="473805790">
 								<reference key="NSNextResponder" ref="249682022"/>
@@ -695,7 +695,7 @@ buKAnS4NA</string>
 								<int key="IBUIBaselineAdjustment">1</int>
 								<float key="IBUIMinimumFontSize">10</float>
 								<reference key="IBUIFontDescription" ref="761274999"/>
-								<reference key="IBUIFont" ref="512775008"/>
+								<reference key="IBUIFont" ref="182693772"/>
 							</object>
 							<object class="IBUILabel" id="869884789">
 								<reference key="NSNextResponder" ref="249682022"/>
@@ -749,7 +749,7 @@ buKAnS4NA</string>
 									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								</object>
 								<reference key="IBUIFontDescription" ref="761274999"/>
-								<reference key="IBUIFont" ref="512775008"/>
+								<reference key="IBUIFont" ref="182693772"/>
 							</object>
 							<object class="IBUILabel" id="523781554">
 								<reference key="NSNextResponder" ref="249682022"/>
@@ -789,7 +789,7 @@ buKAnS4NA</string>
 								<int key="IBUIBaselineAdjustment">1</int>
 								<float key="IBUIMinimumFontSize">10</float>
 								<reference key="IBUIFontDescription" ref="761274999"/>
-								<reference key="IBUIFont" ref="512775008"/>
+								<reference key="IBUIFont" ref="182693772"/>
 							</object>
 							<object class="IBUILabel" id="656594906">
 								<reference key="NSNextResponder" ref="249682022"/>
