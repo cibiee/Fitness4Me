@@ -45,10 +45,7 @@
     [self freeVideoDownload];
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     NSString *membershipPurchase =[userinfo objectForKey:@"yearly"];
-    NSString *isMember =[userinfo objectForKey:@"isMember"];
-     int remianingdays =[userinfo integerForKey:@"remainingDays"];
-
-    NSString *MembershipPlan =[userinfo objectForKey:@"MembershipPlan"];
+   
     if ([membershipPurchase isEqualToString:@"Subscribe"]) {
         [self showAlertwithMsg:@"Your Fitness4.me membership has expierd. please renew your subscription"];
     }
@@ -79,37 +76,13 @@
             }
         }
     }
+     NSString *MembershipPlan =[userinfo stringForKey:@"MembershipPlan"];
     
-    
-    if ([isMember isEqualToString:@"true"]) {
-        if ([MembershipPlan isEqualToString:@"1"]||[MembershipPlan isEqualToString:@"2"]||[MembershipPlan isEqualToString:@"100"]) {
-            if (remianingdays<=0) {
-                [self verifyReceiptsWithPlan:MembershipPlan];
-            }
-            
-        }
-    }
-    
+    NSLog(MembershipPlan);
+       
 }
 
-- (void)verifyReceiptsWithPlan:(NSString*)planID {
-    
-  
-    FitnessServer *fitness= [FitnessServer sharedState];
-    [fitness verifyReciptwithPlanID:planID  activitIndicator:nil progressView:nil onCompletion:^(NSString *response) {
-        FitnessServerCommunication *fitnessServer=[FitnessServerCommunication sharedState];
-        [fitnessServer GetUserTypeWithactivityIndicator:nil progressView:nil onCompletion:^(NSString *responseString) {
-            
-        }onError:^(NSError *error) {
-            
-        }];
-        
-    } onError:^(NSError *error) {
-        
-    }];
-    
-  
-}
+
 
 -(void)checkPurchasedItems
 {
@@ -490,7 +463,7 @@
      NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:transaction, @"transaction" , nil];
     if (wasSuccessful){
         
-       // [self sendMembership];
+        // [self sendMembership];
         // update the server with the purchased details
           NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
         [userinfo setObject:@"true" forKey:@"showDownload"];
@@ -509,13 +482,14 @@
     }
 }
 
--(void)sendMembershipPlanID:(NSString*)planID membershipStatus:(NSString*)status msg:(NSString*)message{
+-(void)sendMembershipPlanID:(NSString*)planID membershipStatus:(NSString*)membershipStatus msg:(NSString*)message{
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     FitnessServer *fitness =[FitnessServer sharedState];
     [fitness membershipPlanUser:planID activityIndicator:nil progressView:nil onCompletion:^(NSString *status) {
         if ([status length]>0) {
             if ([status isEqualToString:@"success"]) {
-                [userinfo setObject:status forKey:@"isMember"];
+               
+                [userinfo setObject:membershipStatus forKey:@"isMember"];
                 [userinfo setObject:planID forKey:@"MembershipPlan"];
                 [Fitness4MeUtils showAlert:message];
             }
@@ -523,6 +497,11 @@
     }  onError:^(NSError *error) {
         
     }];
+    
+  
+    
+    NSString *isMember =[userinfo objectForKey:@"isMember"];
+ 
     
 }
 
@@ -541,9 +520,9 @@
 //
 - (void)restoreTransaction:(SKPaymentTransaction *)transaction
 {
-    [self recordTransaction:transaction.originalTransaction];
-    [self provideContent:transaction.originalTransaction.payment.productIdentifier];
-   [self finishTransaction:transaction wasSuccessful:YES];
+   // [self recordTransaction:transaction.originalTransaction];
+   // [self provideContent:transaction.originalTransaction.payment.productIdentifier];
+   //[self finishTransaction:transaction wasSuccessful:YES];
 }
 
 
@@ -626,7 +605,7 @@
                 [self completeTransaction:transaction];
                 break;
             case SKPaymentTransactionStateFailed:
-                [self failedTransaction:transaction];
+               // [self failedTransaction:transaction];
                 break;
             case SKPaymentTransactionStateRestored:
                 [self restoreTransaction:transaction];

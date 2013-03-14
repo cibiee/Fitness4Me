@@ -37,7 +37,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
-    self.canCreatetrial =@"false" ;
+     self.canCreatetrial =@"false" ;
     [self canCreate];
 }
 
@@ -76,7 +76,7 @@
 -(void)ListExcersices
 {
     
-    self.canCreatetrial=[[NSString alloc]init];
+     self.canCreatetrial=[[NSString alloc]init];
     workoutDB =[[WorkoutDB alloc]init];
     [workoutDB setUpDatabase];
     [workoutDB createDatabase];
@@ -298,7 +298,7 @@
         [self.myQueue setDelegate:self];
         [self.myQueue setShowAccurateProgress:YES];
         [self.myQueue setRequestDidFinishSelector:@selector(requestFinisheds:)];
-        ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:[workout ThumbImageUrl]]];
+        ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:[[workout ThumbImageUrl]stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
         [request setDownloadDestinationPath:storeURL];
         [request setDelegate:self];
         

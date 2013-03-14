@@ -42,7 +42,6 @@
 						<int key="NSvFlags">274</int>
 						<string key="NSFrame">{{0, 147}, {768, 857}}</string>
 						<reference key="NSSuperview" ref="120090003"/>
-						<reference key="NSWindow"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -56,7 +55,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrameSize">{768, 146}</string>
 						<reference key="NSSuperview" ref="120090003"/>
-						<reference key="NSWindow"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -70,7 +68,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{132, 315}, {590, 342}}</string>
 						<reference key="NSSuperview" ref="120090003"/>
-						<reference key="NSWindow"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -112,7 +109,6 @@ ICAgICDigJMgdW5kIGR1IGJsZWlic3QgdHJvdHpkZW0gbGHMiG5nZXIgd2FjaCE</bytes>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{46, 179}, {681, 107}}</string>
 						<reference key="NSSuperview" ref="120090003"/>
-						<reference key="NSWindow"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -143,7 +139,6 @@ ICAgICDigJMgdW5kIGR1IGJsZWlic3QgdHJvdHpkZW0gbGHMiG5nZXIgd2FjaCE</bytes>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{101, 694}, {590, 78}}</string>
 						<reference key="NSSuperview" ref="120090003"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="874045705"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -168,19 +163,17 @@ ICAgICDigJMgdW5kIGR1IGJsZWlic3QgdHJvdHpkZW0gbGHMiG5nZXIgd2FjaCE</bytes>
 						</object>
 						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 					</object>
-					<object class="IBUIButton" id="930869221">
+					<object class="IBUIButton" id="1005162160">
 						<reference key="NSNextResponder" ref="120090003"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{46, 910}, {681, 44}}</string>
+						<string key="NSFrame">{{46, 824}, {235, 126}}</string>
 						<reference key="NSSuperview" ref="120090003"/>
-						<reference key="NSWindow"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
 						<int key="IBUIButtonType">1</int>
-						<string key="IBUINormalTitle">Ja!</string>
 						<reference key="IBUIHighlightedTitleColor" ref="624546359"/>
 						<object class="NSColor" key="IBUINormalTitleColor" id="89867048">
 							<int key="NSColorSpace">1</int>
@@ -191,35 +184,6 @@ ICAgICDigJMgdW5kIGR1IGJsZWlic3QgdHJvdHpkZW0gbGHMiG5nZXIgd2FjaCE</bytes>
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MC41AA</bytes>
 						</object>
-						<object class="NSCustomResource" key="IBUINormalBackgroundImage">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">button_full_width_iPad.png</string>
-						</object>
-						<object class="IBUIFontDescription" key="IBUIFontDescription">
-							<int key="type">2</int>
-							<double key="pointSize">20</double>
-						</object>
-						<object class="NSFont" key="IBUIFont">
-							<string key="NSName">Helvetica-Bold</string>
-							<double key="NSSize">20</double>
-							<int key="NSfFlags">16</int>
-						</object>
-					</object>
-					<object class="IBUIButton" id="1005162160">
-						<reference key="NSNextResponder" ref="120090003"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{46, 780}, {235, 126}}</string>
-						<reference key="NSSuperview" ref="120090003"/>
-						<reference key="NSWindow"/>
-						<string key="NSReuseIdentifierKey">_NS:9</string>
-						<bool key="IBUIOpaque">NO</bool>
-						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<int key="IBUIContentHorizontalAlignment">0</int>
-						<int key="IBUIContentVerticalAlignment">0</int>
-						<int key="IBUIButtonType">1</int>
-						<reference key="IBUIHighlightedTitleColor" ref="624546359"/>
-						<reference key="IBUINormalTitleColor" ref="89867048"/>
-						<reference key="IBUINormalTitleShadowColor" ref="172269338"/>
 						<object class="NSCustomResource" key="IBUINormalBackgroundImage" id="809956695">
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">button_half_width_iPad.png</string>
@@ -237,9 +201,8 @@ ICAgICDigJMgdW5kIGR1IGJsZWlic3QgdHJvdHpkZW0gbGHMiG5nZXIgd2FjaCE</bytes>
 					<object class="IBUILabel" id="369362423">
 						<reference key="NSNextResponder" ref="120090003"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{57, 808}, {213, 71}}</string>
+						<string key="NSFrame">{{57, 852}, {213, 71}}</string>
 						<reference key="NSSuperview" ref="120090003"/>
-						<reference key="NSWindow"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -268,16 +231,15 @@ ICAgICDigJMgdW5kIGR1IGJsZWlic3QgdHJvdHpkZW0gbGHMiG5nZXIgd2FjaCE</bytes>
 					<object class="IBUIButton" id="693874870">
 						<reference key="NSNextResponder" ref="120090003"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{289, 780}, {215, 126}}</string>
+						<string key="NSFrame">{{289, 824}, {215, 126}}</string>
 						<reference key="NSSuperview" ref="120090003"/>
-						<reference key="NSWindow"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
 						<int key="IBUIButtonType">1</int>
-						<string key="IBUINormalTitle">Erzähl mir mehr !</string>
+						<string key="IBUINormalTitle">Ja!</string>
 						<reference key="IBUIHighlightedTitleColor" ref="624546359"/>
 						<reference key="IBUINormalTitleColor" ref="89867048"/>
 						<reference key="IBUINormalTitleShadowColor" ref="172269338"/>
@@ -288,9 +250,8 @@ ICAgICDigJMgdW5kIGR1IGJsZWlic3QgdHJvdHpkZW0gbGHMiG5nZXIgd2FjaCE</bytes>
 					<object class="IBUIButton" id="842173878">
 						<reference key="NSNextResponder" ref="120090003"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{512, 780}, {215, 126}}</string>
+						<string key="NSFrame">{{512, 824}, {215, 126}}</string>
 						<reference key="NSSuperview" ref="120090003"/>
-						<reference key="NSWindow"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -308,7 +269,6 @@ ICAgICDigJMgdW5kIGR1IGJsZWlic3QgdHJvdHpkZW0gbGHMiG5nZXIgd2FjaCE</bytes>
 				</array>
 				<string key="NSFrame">{{0, 20}, {768, 1004}}</string>
 				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
 					<bytes key="NSWhite">MQA</bytes>
@@ -352,15 +312,6 @@ ICAgICDigJMgdW5kIGR1IGJsZWlic3QgdHJvdHpkZW0gbGHMiG5nZXIgd2FjaCE</bytes>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">onClickSkipToPurchase:</string>
-						<reference key="source" ref="930869221"/>
-						<reference key="destination" ref="372490531"/>
-						<int key="IBEventType">7</int>
-					</object>
-					<int key="connectionID">24</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">onClickShowYouTube:</string>
 						<reference key="source" ref="1005162160"/>
 						<reference key="destination" ref="372490531"/>
@@ -396,7 +347,6 @@ ICAgICDigJMgdW5kIGR1IGJsZWlic3QgdHJvdHpkZW0gbGHMiG5nZXIgd2FjaCE</bytes>
 							<reference ref="290740642"/>
 							<reference ref="842173878"/>
 							<reference ref="693874870"/>
-							<reference ref="930869221"/>
 							<reference ref="1005162160"/>
 							<reference ref="369362423"/>
 							<reference ref="874045705"/>
@@ -423,11 +373,6 @@ ICAgICDigJMgdW5kIGR1IGJsZWlic3QgdHJvdHpkZW0gbGHMiG5nZXIgd2FjaCE</bytes>
 					<object class="IBObjectRecord">
 						<int key="objectID">17</int>
 						<reference key="object" ref="693874870"/>
-						<reference key="parent" ref="120090003"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">18</int>
-						<reference key="object" ref="930869221"/>
 						<reference key="parent" ref="120090003"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -467,7 +412,6 @@ ICAgICDigJMgdW5kIGR1IGJsZWlic3QgdHJvdHpkZW0gbGHMiG5nZXIgd2FjaCE</bytes>
 				<string key="15.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="16.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="17.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="18.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="19.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="20.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<object class="NSMutableAttributedString" key="20.notes">
@@ -485,63 +429,13 @@ ICAgICDigJMgdW5kIGR1IGJsZWlic3QgdHJvdHpkZW0gbGHMiG5nZXIgd2FjaCE</bytes>
 			<nil key="sourceID"/>
 			<int key="maxID">31</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes">
-			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
-				<object class="IBPartialClassDescription">
-					<string key="className">MemverRateViewController</string>
-					<string key="superclassName">UIViewController</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="onClickNotYet:">id</string>
-						<string key="onClickShowYouTube:">id</string>
-						<string key="onClickSkipToPurchase:">id</string>
-						<string key="onClickTellMeMore:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="onClickNotYet:">
-							<string key="name">onClickNotYet:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="onClickShowYouTube:">
-							<string key="name">onClickShowYouTube:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="onClickSkipToPurchase:">
-							<string key="name">onClickSkipToPurchase:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="onClickTellMeMore:">
-							<string key="name">onClickTellMeMore:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="showMoreButton">UIButton</string>
-						<string key="tellmeMoreButton">UIButton</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="showMoreButton">
-							<string key="name">showMoreButton</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="tellmeMoreButton">
-							<string key="name">tellmeMoreButton</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/MemverRateViewController.h</string>
-					</object>
-				</object>
-			</array>
-		</object>
+		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBIPadFramework</string>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
 			<string key="big_green_container_iPad.png">{768, 858}</string>
-			<string key="button_full_width_iPad.png">{900, 152}</string>
 			<string key="button_half_width_iPad.png">{500, 252}</string>
 			<string key="home_logo_iPad.png">{768, 146}</string>
 		</dictionary>

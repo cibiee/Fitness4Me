@@ -139,9 +139,8 @@
         [self.contentView addSubview:TitleLabel];
         
         
-                 [self.contentView addSubview:favIcon];
+        [self.contentView addSubview:favIcon];
         [self.contentView addSubview:ExcersiceImage];
-       
         [self.contentView addSubview:focusLabel];
         [self.contentView addSubview:DurationLabel];
         [self.contentView addSubview:self.focusLabels];
@@ -171,55 +170,41 @@
 - (void)layoutSubviews {
     
     [super layoutSubviews];
-    
     CGRect contentRect = self.contentView.bounds;
-    
     CGFloat boundsX = contentRect.origin.x;
-    
     CGFloat boundsY = contentRect.origin.y;
-    
     CGRect frame;
     
     
     frame= CGRectMake(boundsX+35,boundsY+1, contentRect.size.width-120, 25);
-    
     TitleLabel.frame = frame;
     
     
     frame =CGRectMake(3, 25, 80, 72);
-    
     ExcersiceImage.frame=frame;
     
     
     frame= CGRectMake(boundsX+85 ,30, 65, 21);
-    
     self.DurationLabels.frame = frame;
     
 
     frame= CGRectMake(boundsX+150 ,30, 110, 21);
-    
     self.DurationLabel.frame = frame;
 
     
     frame= CGRectMake(boundsX+150 ,50, contentRect.size.width-180, 64);
-    
     self.focusLabel.frame = frame;
   
     frame= CGRectMake(boundsX+85 ,24, 65, 65);
-    
     self.focusLabels.frame = frame;
 
     frame= CGRectMake(contentRect.size.width-30,10, 32, 32);
-    
     self.favIcon.frame = frame;
     
     frame= CGRectMake(contentRect.size.width-30 ,80, 32, 32);
-    
     self.EditButton.frame = frame;
     
-
     frame= CGRectMake(contentRect.size.width-30 ,45, 32, 32);
-    
     self.deleteButton.frame = frame;
     
    }

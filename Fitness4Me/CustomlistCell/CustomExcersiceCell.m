@@ -145,12 +145,12 @@
     ExcersiceImage.frame=frame;
     
     
-    frame= CGRectMake(boundsX+85 ,20, 65, 21);
+    frame= CGRectMake(boundsX+85 ,25, 65, 21);
     
     self.DurationLabels.frame = frame;
     
     
-    frame= CGRectMake(boundsX+150 ,20, 110, 21);
+    frame= CGRectMake(boundsX+150 ,25, 110, 21);
     
     self.DurationLabel.frame = frame;
     

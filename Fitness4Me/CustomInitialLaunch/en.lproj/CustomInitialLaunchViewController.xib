@@ -243,7 +243,7 @@
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string type="base64-UTF8" key="IBUIText">TWFyayB0aGUgZXhlcmNpc2VzIHlvdSB3b3VsZCBsaWtlIGluIHlvdXIgd29ya291dAsgLllvdSBjYW4g
+						<string type="base64-UTF8" key="IBUIText">TWFyayB0aGUgZXhlcmNpc2VzIHlvdSB3b3VsZCBsaWtlIGluIHlvdXIgd29ya291dAsuIFlvdSBjYW4g
 YWx3YXlzIGp1bXAgYmFjayB0byB0aGUgZmlsdGVyIGFnYWluIGlmIHlvdSB3YW50IHRvIGNoYW5nZSBz
 b21ldGhpbmcuIFRoZSBleGVyY2lzZXMgeW91IGhhdmUgYWxyZWFkeSBhZGRlZCB3aWxsIG5vdCBiZSBs
 b3N0Lg</string>

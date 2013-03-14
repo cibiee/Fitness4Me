@@ -212,7 +212,7 @@
 								<reference key="IBUINavigationBar" ref="773806859"/>
 								<string key="IBUITitle">www.fitness4.me</string>
 								<object class="IBUIBarButtonItem" key="IBUIRightBarButtonItem" id="523419557">
-									<string key="IBUITitle">Quit</string>
+									<string key="IBUITitle">verlassen</string>
 									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 									<int key="IBUIStyle">1</int>
 									<reference key="IBUINavigationItem" ref="543617305"/>

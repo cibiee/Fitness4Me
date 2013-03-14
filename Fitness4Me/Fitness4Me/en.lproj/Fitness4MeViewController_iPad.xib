@@ -161,6 +161,7 @@ dGFrZSBzZXZlcmFsIG1pbnV0ZXMuCg</string>
 								<nil key="IBUIHighlightedColor"/>
 								<int key="IBUIBaselineAdjustment">0</int>
 								<float key="IBUIMinimumFontSize">10</float>
+								<int key="IBUITextAlignment">2</int>
 								<reference key="IBUIFontDescription" ref="163622121"/>
 								<reference key="IBUIFont" ref="556432073"/>
 							</object>

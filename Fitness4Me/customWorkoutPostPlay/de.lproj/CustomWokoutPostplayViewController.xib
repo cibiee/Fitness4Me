@@ -135,7 +135,7 @@
 								<bool key="IBUIMultipleTouchEnabled">YES</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<bool key="IBUIEditable">NO</bool>
-								<string key="IBUIText">Herzlichen Glückwunsch!                                        Gut gemacht!  </string>
+								<string key="IBUIText">Herzlichen Glückwunsch!                                        Gut gemacht! </string>
 								<int key="IBUITextAlignment">1</int>
 								<object class="IBUITextInputTraits" key="IBUITextInputTraits">
 									<int key="IBUIAutocapitalizationType">2</int>

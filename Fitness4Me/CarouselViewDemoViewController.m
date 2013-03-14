@@ -23,6 +23,7 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
 {
     self = [super initWithNibName:nibNameOrNil bundle:[Fitness4MeUtils getBundle]];
     if (self) {
+        myQueue=[[ASINetworkQueue alloc]init];
         self.dataSourceArray = [[NSMutableArray alloc]init];
         userinfo=[NSUserDefaults standardUserDefaults];
     }
@@ -64,7 +65,10 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
     UIBarButtonItem *nextBtn = [[UIBarButtonItem alloc] initWithCustomView:nextButton];
     self.navigationBar.rightBarButtonItem = nextBtn;
     [self.backgroundLabel.layer setCornerRadius:10];
+    [self createSelfmadeImageDirectory];
+    
     [self.totalVideoCountLabel setText:[NSString stringWithFormat:@"%@ %i",NSLocalizedStringWithDefaultValue(@"numberOfExcersice", nil,[Fitness4MeUtils getBundle], nil, nil),self.videoCount]];
+    
     [self.durationLabel setText:[NSString stringWithFormat:@"%@ %@",NSLocalizedStringWithDefaultValue(@"totalTime", nil,[Fitness4MeUtils getBundle], nil, nil),[Fitness4MeUtils displayTimeWithSecond:self.totalDuration]]];
     
 
@@ -78,9 +82,15 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
     }
     else
     {
-        [self.addMoreButton removeFromSuperview];
-         [self.bgImageView setFrame:CGRectMake(0,276,480 , 33)];
-         [self.totalVideoCountLabel setFrame:CGRectMake(290,282,158,21)];
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+            [self.addMoreButton removeFromSuperview];
+            [self.bgImageView setFrame:CGRectMake(0,276,480 , 33)];
+            [self.totalVideoCountLabel setFrame:CGRectMake(290,282,158,21)];
+        }else
+        {
+             [self.addMoreButton removeFromSuperview];
+        }
+         
 
     }
     self.carousel.type = iCarouselTypeCoverFlow2;
@@ -88,8 +98,36 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
     {
      [self.carousel scrollToItemAtIndex:1 animated:NO];
     }
+    
 }
 
+- (void)createSelfmadeImageDirectory
+{
+    
+    
+    NSArray *VideoArray =[NSArray arrayWithObjects:@"page_15.png",@"page_30.png",nil];
+    
+    
+    BOOL success;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
+    dataPath = [documentsDirectory stringByAppendingPathComponent:@"MyFolder/SelfMadeThumbs"];
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:dataPath]){
+        [[NSFileManager defaultManager] createDirectoryAtPath:dataPath withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    for (NSString *name in VideoArray) {
+        NSString *datapath1=[[[NSBundle mainBundle]resourcePath]stringByAppendingPathComponent:name];
+        NSString *datapath2=[dataPath stringByAppendingPathComponent:name];
+        NSFileManager *filemanager =[NSFileManager defaultManager];
+        success =[filemanager  fileExistsAtPath:datapath1];
+        if(success){
+            if (![[NSFileManager defaultManager] fileExistsAtPath:datapath2]){
+                [filemanager copyItemAtPath:datapath1 toPath:datapath2 error:nil];
+            }
+        }
+    }
+}
 - (void)viewDidUnload {
     [self setRecoverySegmentControl:nil];
     [self setMoveSegmentControl:nil];
@@ -170,14 +208,15 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
         [self.myQueue setDelegate:self];
         [self.myQueue setShowAccurateProgress:YES];
         [self.myQueue setRequestDidFinishSelector:@selector(requestFinisheds:)];
-        ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:[excersiceList imageUrl]]];
+        NSLog([excersiceList imageUrl]);
+        ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:[[excersiceList imageUrl]stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
         [request setDownloadDestinationPath:storeURL];
         [request setDelegate:self];
-        [request startAsynchronous];
-        [myQueue addOperation:[request copy]];
+       // [request startAsynchronous];
+        [myQueue addOperation:request];
         [myQueue go];
     }else {
-        
+         
         UIImage *im =[[UIImage alloc]initWithContentsOfFile:storeURL];
         excersiceImageHolder.image=im;
     }
@@ -185,6 +224,7 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
     return excersiceImageHolder.image;
     
 }
+
 
 - (void)requestFinisheds:(ASINetworkQueue *)queue
 {

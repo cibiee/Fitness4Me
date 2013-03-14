@@ -91,7 +91,7 @@
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string key="IBUIText">VIELEN DANK für dein Feedback</string>
+						<string key="IBUIText">VIELEN DANK für dein Feedback.</string>
 						<object class="NSColor" key="IBUITextColor" id="560447555">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MQA</bytes>

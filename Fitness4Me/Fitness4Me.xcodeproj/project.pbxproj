@@ -199,7 +199,6 @@
 		F508541B167856A90094F314 /* ExcersiceListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5085419167856A90094F314 /* ExcersiceListViewController.m */; };
 		F50854201678628F0094F314 /* ExcersiceList.m in Sources */ = {isa = PBXBuildFile; fileRef = F508541F1678628F0094F314 /* ExcersiceList.m */; };
 		F5085428167885CD0094F314 /* button_full_width.png in Resources */ = {isa = PBXBuildFile; fileRef = F508542A167885CD0094F314 /* button_full_width.png */; };
-		F508542B167885D10094F314 /* logo_new_side.png in Resources */ = {isa = PBXBuildFile; fileRef = F508542D167885D10094F314 /* logo_new_side.png */; };
 		F5085434167885DC0094F314 /* package_box.png in Resources */ = {isa = PBXBuildFile; fileRef = F5085436167885DC0094F314 /* package_box.png */; };
 		F5085437167885DF0094F314 /* list_box.png in Resources */ = {isa = PBXBuildFile; fileRef = F5085439167885DF0094F314 /* list_box.png */; };
 		F5085440167885E90094F314 /* edit_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = F5085442167885E90094F314 /* edit_btn.png */; };
@@ -264,6 +263,9 @@
 		F5427FF416537B2300520F0C /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = F5427FEB16537B2300520F0C /* ASINetworkQueue.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F5427FF716537D4F00520F0C /* NSString+Config.m in Sources */ = {isa = PBXBuildFile; fileRef = F5427FF616537D4F00520F0C /* NSString+Config.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F5428001165399F600520F0C /* RatingViewControllerView_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5428003165399F600520F0C /* RatingViewControllerView_iPad.xib */; };
+		F545B6F116DF1BD5009BF586 /* icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = F545B6F016DF1BD5009BF586 /* icon-72.png */; };
+		F545B6F316DF1BE4009BF586 /* icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F545B6F216DF1BE4009BF586 /* icon-72@2x.png */; };
+		F545B6F516DF1C02009BF586 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F545B6F416DF1C01009BF586 /* icon@2x.png */; };
 		F54ED67116C2367C00F1129D /* membershipbg_new.png in Resources */ = {isa = PBXBuildFile; fileRef = F54ED67316C2367C00F1129D /* membershipbg_new.png */; };
 		F553218516D5E41200BEAC21 /* refresh_green.png in Resources */ = {isa = PBXBuildFile; fileRef = F553218716D5E41200BEAC21 /* refresh_green.png */; };
 		F554A25E1679BBCA00E268B5 /* icon_edit.png in Resources */ = {isa = PBXBuildFile; fileRef = F554A25C1679B60F00E268B5 /* icon_edit.png */; };
@@ -380,6 +382,9 @@
 		F5D76920167F0CAB003C079A /* Favourite.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D7691F167F0CAB003C079A /* Favourite.m */; };
 		F5D76B5A16D72E1200590256 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F5D76B5916D72E1200590256 /* Default-568h@2x.png */; };
 		F5DF2D9516C3A48A00ABB91B /* upgradenew.png in Resources */ = {isa = PBXBuildFile; fileRef = F5DF2D9316C3A48A00ABB91B /* upgradenew.png */; };
+		F5E62CA816E47861007B8F72 /* FitnessDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5E62CA616E47861007B8F72 /* FitnessDemoViewController.m */; };
+		F5E62CA916E47861007B8F72 /* FitnessDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5E62CA716E47861007B8F72 /* FitnessDemoViewController.xib */; };
+		F5E62CAB16E48FC9007B8F72 /* fitness4me-intro-small.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F5E62CAA16E47F8C007B8F72 /* fitness4me-intro-small.mp4 */; };
 		F5E8CC06163FF9E100B21A47 /* ShareFitness4MeViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5E8CC08163FF9E100B21A47 /* ShareFitness4MeViewController_iPad.xib */; };
 		F5F1F18D162FE3D70007D55E /* big_green_container_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = F5F1F16F162FE3D70007D55E /* big_green_container_iPad.png */; };
 		F5F1F18E162FE3D70007D55E /* buttongreenyes_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = F5F1F171162FE3D70007D55E /* buttongreenyes_iPad.png */; };
@@ -741,7 +746,6 @@
 		F50854211678673C0094F314 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/CustomizedWorkoutPlayViewController.xib; sourceTree = "<group>"; };
 		F5085426167885C90094F314 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/back_btnBlack.png; sourceTree = "<group>"; };
 		F5085429167885CD0094F314 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/button_full_width.png; sourceTree = "<group>"; };
-		F508542C167885D10094F314 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/logo_new_side.png; sourceTree = "<group>"; };
 		F5085435167885DC0094F314 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/package_box.png; sourceTree = "<group>"; };
 		F5085438167885DF0094F314 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/list_box.png; sourceTree = "<group>"; };
 		F5085441167885E90094F314 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/edit_btn.png; sourceTree = "<group>"; };
@@ -755,7 +759,6 @@
 		F5085456167886120094F314 /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/edit_btn.png; sourceTree = "<group>"; };
 		F50854591678861B0094F314 /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/list_box.png; sourceTree = "<group>"; };
 		F508545A1678861E0094F314 /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/package_box.png; sourceTree = "<group>"; };
-		F508545D167886280094F314 /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/logo_new_side.png; sourceTree = "<group>"; };
 		F508545F167898610094F314 /* CustomExcersiceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomExcersiceCell.h; path = CustomlistCell/CustomExcersiceCell.h; sourceTree = "<group>"; };
 		F5085460167898610094F314 /* CustomExcersiceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomExcersiceCell.m; path = CustomlistCell/CustomExcersiceCell.m; sourceTree = "<group>"; };
 		F50927181695829100072169 /* MembershipStayFitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MembershipStayFitViewController.h; path = MemebershipStayFit/MembershipStayFitViewController.h; sourceTree = "<group>"; };
@@ -878,6 +881,9 @@
 		F5428002165399F600520F0C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RatingViewControllerView_iPad.xib; sourceTree = "<group>"; };
 		F5428005165399FA00520F0C /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/RatingViewControllerView_iPad.xib; sourceTree = "<group>"; };
 		F5439A9F163A61F2007A534A /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/Fitness4MeViewController_iPad.xib; sourceTree = "<group>"; };
+		F545B6F016DF1BD5009BF586 /* icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-72.png"; path = "../icon-72.png"; sourceTree = "<group>"; };
+		F545B6F216DF1BE4009BF586 /* icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-72@2x.png"; path = "../icon-72@2x.png"; sourceTree = "<group>"; };
+		F545B6F416DF1C01009BF586 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "../icon@2x.png"; sourceTree = "<group>"; };
 		F54ED67216C2367C00F1129D /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/membershipbg_new.png; sourceTree = "<group>"; };
 		F54ED67416C2367F00F1129D /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/membershipbg_new.png; sourceTree = "<group>"; };
 		F54ED67516C2447000F1129D /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/MembershipStayFitViewController.xib; sourceTree = "<group>"; };
@@ -1108,6 +1114,10 @@
 		F5D76B5916D72E1200590256 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		F5DF2D9416C3A48A00ABB91B /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/upgradenew.png; sourceTree = "<group>"; };
 		F5DF2D9616C3A49800ABB91B /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/upgradenew.png; sourceTree = "<group>"; };
+		F5E62CA516E47861007B8F72 /* FitnessDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FitnessDemoViewController.h; path = FitnessDemo/FitnessDemoViewController.h; sourceTree = "<group>"; };
+		F5E62CA616E47861007B8F72 /* FitnessDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FitnessDemoViewController.m; path = FitnessDemo/FitnessDemoViewController.m; sourceTree = "<group>"; };
+		F5E62CA716E47861007B8F72 /* FitnessDemoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FitnessDemoViewController.xib; path = FitnessDemo/FitnessDemoViewController.xib; sourceTree = "<group>"; };
+		F5E62CAA16E47F8C007B8F72 /* fitness4me-intro-small.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fitness4me-intro-small.mp4"; sourceTree = "<group>"; };
 		F5E8CC07163FF9E100B21A47 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ShareFitness4MeViewController_iPad.xib; sourceTree = "<group>"; };
 		F5F1F170162FE3D70007D55E /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/big_green_container_iPad.png; sourceTree = "<group>"; };
 		F5F1F172162FE3D70007D55E /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/buttongreenyes_iPad.png; sourceTree = "<group>"; };
@@ -1226,6 +1236,9 @@
 		0B05B2A1159192D5005BBE89 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				F545B6F416DF1C01009BF586 /* icon@2x.png */,
+				F545B6F216DF1BE4009BF586 /* icon-72@2x.png */,
+				F545B6F016DF1BD5009BF586 /* icon-72.png */,
 				F53C21DE16DC90D700A62DF5 /* icon.png */,
 			);
 			name = Icons;
@@ -1439,7 +1452,6 @@
 				0B40C9411603114A008D2A0A /* list_item.png */,
 				0B40C94516031153008D2A0A /* list_item_hover.png */,
 				0B40C9491603115A008D2A0A /* lock.png */,
-				F508542D167885D10094F314 /* logo_new_side.png */,
 				0B40C94D16031161008D2A0A /* man.png */,
 				F598E16016B8DC11004CF4D7 /* membershipbg.png */,
 				F54ED67316C2367C00F1129D /* membershipbg_new.png */,
@@ -1857,6 +1869,7 @@
 		AE7D67321504DB00001718B5 /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				F5E62CAA16E47F8C007B8F72 /* fitness4me-intro-small.mp4 */,
 				F5CE43EB16B672560040F96C /* page_15.png */,
 				F5CE43EC16B672560040F96C /* page_30.png */,
 				0B40C968160311AE008D2A0A /* calendar.png */,
@@ -2009,6 +2022,7 @@
 		F509270F16957AEC00072169 /* Memberships */ = {
 			isa = PBXGroup;
 			children = (
+				F5E62CA416E4780C007B8F72 /* Fitness4meDemoVideo */,
 				F592D3B616B7CBCD0005655C /* CustomCell */,
 				F55C7FF21677264B00C817A8 /* MemberPromo */,
 				F55C7FF81677343500C817A8 /* MembershipRate */,
@@ -3068,6 +3082,16 @@
 			name = Favourite;
 			sourceTree = "<group>";
 		};
+		F5E62CA416E4780C007B8F72 /* Fitness4meDemoVideo */ = {
+			isa = PBXGroup;
+			children = (
+				F5E62CA516E47861007B8F72 /* FitnessDemoViewController.h */,
+				F5E62CA616E47861007B8F72 /* FitnessDemoViewController.m */,
+				F5E62CA716E47861007B8F72 /* FitnessDemoViewController.xib */,
+			);
+			name = Fitness4meDemoVideo;
+			sourceTree = "<group>";
+		};
 		F5F40437166F15AF0019C5EA /* WorkoutCreationCompleted */ = {
 			isa = PBXGroup;
 			children = (
@@ -3135,6 +3159,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5E62CAB16E48FC9007B8F72 /* fitness4me-intro-small.mp4 in Resources */,
 				F519E57116CA61F100EE6F65 /* CarouselViewDemoViewController_iPad.xib in Resources */,
 				F539BE3916C9222500A66915 /* back_btnBlack.png in Resources */,
 				F554A25E1679BBCA00E268B5 /* icon_edit.png in Resources */,
@@ -3322,7 +3347,6 @@
 				F53E75441648FC9600970DB9 /* floor.jpg in Resources */,
 				F53E75451648FC9600970DB9 /* standing.jpg in Resources */,
 				F53E754B1649276E00970DB9 /* btn_small.png in Resources */,
-				F508542B167885D10094F314 /* logo_new_side.png in Resources */,
 				F5428001165399F600520F0C /* RatingViewControllerView_iPad.xib in Resources */,
 				F5C0B3691659F04D0008B5EA /* SettingsViewController_iPad.xib in Resources */,
 				F5C0B371165A1DCA0008B5EA /* landscape_logo.png in Resources */,
@@ -3419,6 +3443,10 @@
 				F5B27E8116D39C6800576BB1 /* small_button_iPad.png in Resources */,
 				F5D76B5A16D72E1200590256 /* Default-568h@2x.png in Resources */,
 				F53C21DF16DC90D700A62DF5 /* icon.png in Resources */,
+				F545B6F116DF1BD5009BF586 /* icon-72.png in Resources */,
+				F545B6F316DF1BE4009BF586 /* icon-72@2x.png in Resources */,
+				F545B6F516DF1C02009BF586 /* icon@2x.png in Resources */,
+				F5E62CA916E47861007B8F72 /* FitnessDemoViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3520,6 +3548,7 @@
 				F598E15C16B8DA97004CF4D7 /* WorkoutDB.m in Sources */,
 				F598E15F16B8DAB8004CF4D7 /* Workout.m in Sources */,
 				F57775C916DCABFD00A09A99 /* CustomLabel.m in Sources */,
+				F5E62CA816E47861007B8F72 /* FitnessDemoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4552,15 +4581,6 @@
 				F508544E167885FD0094F314 /* de */,
 			);
 			name = button_full_width.png;
-			sourceTree = "<group>";
-		};
-		F508542D167885D10094F314 /* logo_new_side.png */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F508542C167885D10094F314 /* en */,
-				F508545D167886280094F314 /* de */,
-			);
-			name = logo_new_side.png;
 			sourceTree = "<group>";
 		};
 		F5085436167885DC0094F314 /* package_box.png */ = {
@@ -5691,8 +5711,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				PROVISIONING_PROFILE = "6040C47F-2B9F-46E1-95CF-1C370CA3C2BB";
-				"PROVISIONING_PROFILE[sdk=*]" = "6040C47F-2B9F-46E1-95CF-1C370CA3C2BB";
+				PROVISIONING_PROFILE = "5A4A356C-4725-4343-B580-45DC07BA5FF3";
+				"PROVISIONING_PROFILE[sdk=*]" = "5A4A356C-4725-4343-B580-45DC07BA5FF3";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -5715,7 +5735,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "6040C47F-2B9F-46E1-95CF-1C370CA3C2BB";
+				PROVISIONING_PROFILE = "5A4A356C-4725-4343-B580-45DC07BA5FF3";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -5735,8 +5755,8 @@
 				LIBRARY_SEARCH_PATHS = /Project/Fitness4Me;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "468D9B14-E7E6-403D-AE8C-562921968F55";
-				"PROVISIONING_PROFILE[sdk=*]" = "468D9B14-E7E6-403D-AE8C-562921968F55";
+				PROVISIONING_PROFILE = "5A4A356C-4725-4343-B580-45DC07BA5FF3";
+				"PROVISIONING_PROFILE[sdk=*]" = "5A4A356C-4725-4343-B580-45DC07BA5FF3";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
@@ -5756,7 +5776,7 @@
 				LIBRARY_SEARCH_PATHS = /Project/Fitness4Me;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "468D9B14-E7E6-403D-AE8C-562921968F55";
+				PROVISIONING_PROFILE = "5A4A356C-4725-4343-B580-45DC07BA5FF3";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;

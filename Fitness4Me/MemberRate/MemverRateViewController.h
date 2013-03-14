@@ -10,6 +10,7 @@
 #import "Workout.h"
 #import "ShareFitness4MeViewController.h"
 #import "CustomWorkoutsViewController.h"
+#import "FitnessDemoViewController.h"
 #import "ListWorkoutsViewController.h"
 @interface MemverRateViewController : UIViewController
 @property(strong,nonatomic)NSString *workoutType;

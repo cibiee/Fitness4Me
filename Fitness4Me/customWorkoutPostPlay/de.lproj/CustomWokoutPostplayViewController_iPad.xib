@@ -151,7 +151,7 @@
 					<object class="IBUILabel" id="227047286">
 						<reference key="NSNextResponder" ref="164778020"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{485, 522}, {42, 21}}</string>
+						<string key="NSFrame">{{472, 522}, {78, 21}}</string>
 						<reference key="NSSuperview" ref="164778020"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -159,7 +159,7 @@
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<string key="IBUIText">Exit</string>
+						<string key="IBUIText">Fortfahren</string>
 						<reference key="IBUITextColor" ref="618033711"/>
 						<reference key="IBUIHighlightedColor" ref="618033711"/>
 						<int key="IBUIBaselineAdjustment">0</int>

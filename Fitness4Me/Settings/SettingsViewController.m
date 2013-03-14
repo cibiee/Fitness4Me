@@ -398,6 +398,7 @@
 -(IBAction)cancelDownloas:(id)sender
 {
     [downloadFullView removeFromSuperview];
+    [SyncView removeFromSuperview];
     FitnessServerCommunication *fitness =[FitnessServerCommunication sharedState];
     [fitness cancelDownload];
     [lblCompleted removeFromSuperview];

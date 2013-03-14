@@ -10,6 +10,7 @@
 #import "Workout.h"
 #import "ShareFitness4MeViewController.h"
 #import "MembershipRateViewController.h"
+#import "FitnessDemoViewController.h"
 
 @interface MemberPromoViewController : UIViewController
 {
@@ -21,5 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *showMoreButton;
 - (IBAction)onClickTellMeMore:(id)sender;
 - (IBAction)onClickNotYet:(id)sender;
+- (IBAction)onClickShowVideo:(id)sender;
+
 - (IBAction)onClickSkipToPurchase:(id)sender;
 @end

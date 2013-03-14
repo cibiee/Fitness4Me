@@ -651,20 +651,58 @@ int userID;
      NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     remainisgDays=[[NSString alloc]init];
     NSMutableArray *object = [responseString JSONValue];
-    NSLog(responseString);
+    NSString *isMember =[userinfo objectForKey:@"isMember"];
+    int remianingdays =[userinfo integerForKey:@"remainingDays"];
+    NSString *MembershipPlan =[userinfo stringForKey:@"MembershipPlan"];
+   
     NSMutableArray *itemsarray =[object valueForKey:@"items"];
     for (int i=0; i<[itemsarray count]; i++) {
         remainisgDays =[[itemsarray objectAtIndex:0] valueForKey:@"days"];
-        NSLog(@"%i",[remainisgDays intValue]);
+        //NSLog(@"%i",[remainisgDays intValue]);
     }
     
     if ([remainisgDays intValue]<=0) {
-        [userinfo setObject:@"Subscribe" forKey:@"yearly"];
+         
+        NSLog(MembershipPlan);
+        if ([isMember isEqualToString:@"true"]) {
+            {
+                if (remianingdays<=0) {
+                    [self verifyReceiptsWithPlan:MembershipPlan];
+                }
+                
+            
+            }}
+
         
-        [self navigateToHome];
     }
      [userinfo setInteger:[remainisgDays intValue] forKey:@"remainingDays"];
 }
+
+
+- (void)verifyReceiptsWithPlan:(NSString*)planID {
+    
+    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+    FitnessServer *fitness= [FitnessServer sharedState];
+    [fitness verifyReciptwithPlanID:planID  activitIndicator:nil progressView:nil onCompletion:^(NSString *response) {
+        if ([response intValue]!=5) {
+            [userinfo setObject:@"Subscribe" forKey:@"yearly"];
+            [self navigateToHome];
+
+        }
+        FitnessServerCommunication *fitnessServer=[FitnessServerCommunication sharedState];
+        [fitnessServer GetUserTypeWithactivityIndicator:nil progressView:nil onCompletion:^(NSString *responseString) {
+            
+        }onError:^(NSError *error) {
+            
+        }];
+        
+    } onError:^(NSError *error) {
+        
+    }];
+    
+    
+}
+
 
 
 @end

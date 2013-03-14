@@ -72,7 +72,7 @@
         excersiceImageHolder.image = [UIImage imageWithData:imageData]; 
         
         
-        ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:[workout ImageUrl]]];
+        ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:[[workout ImageUrl]stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
         
         [request setDownloadDestinationPath:storeURL];
         
@@ -207,28 +207,52 @@
 
    
 -(IBAction)navigateToShareAppView:(id)sender{
-    
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     [userinfo setObject:@"QuickWorkouts" forKey:@"workoutType"];
-    ShareFitness4MeViewController *viewController;
+     NSString *hasMadeFullPurchase= [userinfo valueForKey:@"isMember"];
     
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
-    {
+    if ([hasMadeFullPurchase isEqualToString:@"true"]) {
         
-        viewController = [[ShareFitness4MeViewController alloc]initWithNibName:@"ShareFitness4MeViewController" bundle:nil];
+        ShareFitness4MeViewController *viewController;
         
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+        {
+            
+            viewController = [[ShareFitness4MeViewController alloc]initWithNibName:@"ShareFitness4MeViewController" bundle:nil];
+            
+        }
+        else {
+            viewController = [[ShareFitness4MeViewController alloc]initWithNibName:@"ShareFitness4MeViewController_iPad" bundle:nil];
+        }
+        
+        viewController.imageUrl =[self.workout ImageUrl];
+        viewController.imageName =[self.workout ImageName];
+        viewController.workoutType=@"QuickWorkouts";
+
+        [self.navigationController pushViewController:viewController animated:YES];
     }
     else {
-        viewController = [[ShareFitness4MeViewController alloc]initWithNibName:@"ShareFitness4MeViewController_iPad" bundle:nil];
-    }
-    
-    viewController.imageUrl =[self.workout ImageUrl];
-    viewController.imageName =[self.workout ImageName];
-    viewController.workoutType=@"QuickWorkouts";
-    [self.navigationController pushViewController:viewController animated:YES];
-    
+        MemberPromoViewController *viewController;
+        
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+        {
+            
+            viewController = [[MemberPromoViewController alloc]initWithNibName:@"MemberPromoViewController" bundle:nil];
+            
+        }
+        else {
+            viewController = [[MemberPromoViewController alloc]initWithNibName:@"MemberPromoViewController_iPad" bundle:nil];
+        }
+        
+        [viewController setNavigateTo:@"NotList"];
+        viewController.workout =self.workout;
+        viewController.workoutType=@"QuickWorkouts";
+        [self.navigationController pushViewController:viewController animated:YES];
+        
 
-    
+        
+    }
+
 }
 
 -(IBAction)removeUpgardeView:(id)sender

@@ -128,4 +128,20 @@
         [self.navigationController pushViewController:viewController animated:YES];
     }
 }
+
+- (IBAction)onClickShowVideo:(id)sender {
+    FitnessDemoViewController *viewController;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+        viewController = [[FitnessDemoViewController alloc]initWithNibName:@"FitnessDemoViewController" bundle:nil];
+    }
+    else {
+        viewController = [[FitnessDemoViewController alloc]initWithNibName:@"FitnessDemoViewController_iPad" bundle:nil];
+    }
+    
+    [self.navigationController pushViewController:viewController animated:YES];
+}
+- (void)viewDidUnload {
+   
+    [super viewDidUnload];
+}
 @end

@@ -211,7 +211,7 @@
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<string key="IBUIText">Tell us which kind of equipment you have</string>
+						<string key="IBUIText">Tell us which kind of equipment you have.</string>
 						<reference key="IBUITextColor" ref="548513203"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">0</int>
@@ -245,7 +245,7 @@
 					<object class="IBUILabel" id="290996386">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{73, 565}, {671, 41}}</string>
+						<string key="NSFrame">{{73, 565}, {671, 72}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSNextKeyView" ref="488681069"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -268,7 +268,7 @@
 					<object class="IBUILabel" id="653352391">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{75, 658}, {417, 24}}</string>
+						<string key="NSFrame">{{75, 658}, {417, 36}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSNextKeyView" ref="937612597"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -277,7 +277,7 @@
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<string type="base64-UTF8" key="IBUIText">R2l2ZSB0aGUgd29ya291dCBhIG5hbWUgDQoAA</string>
+						<string type="base64-UTF8" key="IBUIText">R2l2ZSB0aGUgd29ya291dCBhIG5hbWUuIA0KAA</string>
 						<reference key="IBUITextColor" ref="548513203"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">0</int>
@@ -366,7 +366,7 @@ b3N0Lg</string>
 					<object class="IBUILabel" id="682443236">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{75, 244}, {644, 30}}</string>
+						<string key="NSFrame">{{75, 244}, {644, 36}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSNextKeyView" ref="1028810049"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -375,7 +375,7 @@ b3N0Lg</string>
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<string key="IBUIText">Filter out the muscles you would like to exercise</string>
+						<string key="IBUIText">Filter out the muscles you would like to exercise.</string>
 						<reference key="IBUITextColor" ref="548513203"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">0</int>

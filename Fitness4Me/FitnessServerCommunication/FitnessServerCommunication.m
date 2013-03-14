@@ -55,7 +55,7 @@ static FitnessServerCommunication *sharedState;
     if (isReachable)
     {
         NSString *UrlPath= [NSString GetURlPath];
-        NSString *requestString =[NSString stringWithFormat:@"%@login=yes&username=%@&password=%@",UrlPath,username,password];
+        NSString *requestString =[NSString stringWithFormat:@"%@login=yes&username=%@&password=%@&plan=2",UrlPath,username,password];
         NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         
         __weak ASIHTTPRequest *requests = [ASIHTTPRequest requestWithURL:url];
@@ -162,7 +162,7 @@ static FitnessServerCommunication *sharedState;
         UIDevice *dev = [UIDevice currentDevice];
         NSString *deviceUuid = dev.uniqueIdentifier;
         NSString *requestUrl =[NSString stringWithFormat:@"%@iphone_register.php?deviceregister=yes&userid=%i&devicetoken=%@&deviceuid=%@",[NSString getDeviceRegisterPath],userId,devToken,deviceUuid];
-        NSURL *urlrequest =[NSURL URLWithString:requestUrl];
+        NSURL *urlrequest =[NSURL URLWithString:[requestUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         
         __weak ASIHTTPRequest *requests = [ASIHTTPRequest requestWithURL:urlrequest];
         [requests setCompletionBlock:^{
@@ -416,6 +416,7 @@ static FitnessServerCommunication *sharedState;
         NSString *UrlPath= [NSString GetURlPath];
         NSString *requestString;
         if ([[workout WorkoutID]intValue]>0) {
+            
             requestString =[NSString stringWithFormat:@"%@editcustom=yes&user_id=%@&user_level=%@&customname=%@&duration=%@&equipment=%@&focus=%@&lang=%i&custom_workout_id=%@",UrlPath,userID,userLevel,[workout Name],[workout Duration],[workout Props],[workout Focus],selectedlanguage,[workout WorkoutID]];
         }
         else{
@@ -843,11 +844,8 @@ static FitnessServerCommunication *sharedState;
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     int userID =[userinfo integerForKey:@"UserID"];
     NSString*membershipPlan= [userinfo stringForKey:@"MembershipPlan"];
-    membershipPlan=@"4";
-    if ([membershipPlan isEqualToString:@"100"]) {
-        
-    }
-    else{
+    
+    
         BOOL isReachable =[Fitness4MeUtils isReachable];
         if (isReachable)
         {
@@ -874,7 +872,7 @@ static FitnessServerCommunication *sharedState;
         }else{
             [self terminateActivities:NSLocalizedStringWithDefaultValue(@"NoInternetMessage", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
         }
-    }
+    
 }
 
 
@@ -883,7 +881,7 @@ static FitnessServerCommunication *sharedState;
 
 -(void) getImageAtPath:(NSString *)imageUrl toDestination:( NSString *)storeURL setDelegate:(UIViewController*)viewController
 {
-    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:imageUrl]];
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:[imageUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
     [request setDownloadDestinationPath:storeURL];
     [request setDelegate:viewController];
     [request startAsynchronous];
@@ -900,9 +898,9 @@ static FitnessServerCommunication *sharedState;
         
         NSString *requestString = [NSString stringWithFormat:@"%@listapps=yes&userid=%i&lang=%i&bridgetest=1",urlPath, userID,selectedLanguage];
         
-        NSURL *url =[NSURL URLWithString:requestString];
+        NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         
-        ASIFormDataRequest   *request = [ASIFormDataRequest   requestWithURL:url];
+        ASIFormDataRequest   *request = [ASIFormDataRequest   requestWithURL:url ];
         [request setTimeOutSeconds:10];
         [request setDelegate:self];
         [request startAsynchronous];
@@ -925,7 +923,7 @@ static FitnessServerCommunication *sharedState;
     if (isReachable){
         
         NSString *requestString = [NSString stringWithFormat:@"%@allworkouts=yes&duration=10&user_level=%i&lang=%i",urlPath, userlevel,selectedLanguage];
-        NSURL *url =[NSURL URLWithString:requestString];
+        NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         
         ASIFormDataRequest   *request = [ASIFormDataRequest   requestWithURL:url];
         [request setTimeOutSeconds:10];
@@ -989,7 +987,7 @@ static FitnessServerCommunication *sharedState;
         UserID =[userinfo integerForKey:@"UserID"];
         
         NSString *requestString = [NSString stringWithFormat:@"%@freecount=yes&user_id=%i",urlPath, UserID];
-        NSURL *url =[NSURL URLWithString:requestString];
+        NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         
         ASIFormDataRequest   *request = [ASIFormDataRequest   requestWithURL:url];
         [request setTimeOutSeconds:15];
@@ -1010,7 +1008,7 @@ static FitnessServerCommunication *sharedState;
         int  selectedLanguage=[Fitness4MeUtils getApplicationLanguage] ;
         int  userlevel=[Fitness4MeUtils getuserLevel] ;
         NSString *requestString = [NSString stringWithFormat:@"%@allvideos=yes&duration=10&user_level=%i&lang=%i",UrlPath, userlevel,selectedLanguage];
-        NSURL *url =[NSURL URLWithString:requestString];
+        NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         
         ASIFormDataRequest   *request = [ASIFormDataRequest   requestWithURL:url];
         [request setTimeOutSeconds:15];
@@ -1031,7 +1029,7 @@ static FitnessServerCommunication *sharedState;
         
         
         NSString *requestString = [NSString stringWithFormat:@"%@freevideos=yes&duration=10&user_level=%i&lang=%i",UrlPath, userlevel,selectedlang];
-        NSURL *url =[NSURL URLWithString:requestString];
+        NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         
         ASIFormDataRequest   *request = [ASIFormDataRequest   requestWithURL:url];
         [request setTimeOutSeconds:15];
@@ -1464,6 +1462,8 @@ int excersiceIntroCount=0,excersiceMainCount=0,excersiceOtherCount=0;
 
 - (NSString *)getMemberType:(NSString *)responseString
 {
+    
+    //NSLog(responseString);
     
     NSUserDefaults *userInfo =[NSUserDefaults standardUserDefaults];
     NSString *canCreate=[[NSString alloc]init];

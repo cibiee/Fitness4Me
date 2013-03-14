@@ -124,10 +124,10 @@
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string type="base64-UTF8" key="IBUIText">VW5saW1pdGVkIHBlcnNvbmFsaXplZCB3b3Jrb3V0cw0KVW5saW1pdGVkIHNlbGYtbWFkZSB3b3Jrb3V0
-cw0KQWNjZXNzIHRvIGh1bmRyZWRzIG9mIHByZWRlZmluZWQgd29ya291dHMNCkFjY2VzcyB0byBtb3Jl
-IHRoYW4gNTAwIGV4ZXJjaXNlcw0KRnJlZSBhcHBzIGFuZCBjcm9zcy1wbGF0Zm9ybSBzeW5jaHJvbml6
-YXRpb24uA</string>
+						<string type="base64-UTF8" key="IBUIText">VW5saW1pdGVkIHBlcnNvbmFsaXplZCB3b3Jrb3V0cy4NClVubGltaXRlZCBzZWxmLW1hZGUgd29ya291
+dHMuDQpBY2Nlc3MgdG8gaHVuZHJlZHMgb2YgcHJlZGVmaW5lZCB3b3Jrb3V0cy4NCkFjY2VzcyB0byBt
+b3JlIHRoYW4gNTAwIGV4ZXJjaXNlcw0KRnJlZSBhcHBzIGFuZCBjcm9zcy1wbGF0Zm9ybSBzeW5jaHJv
+bml6YXRpb24uA</string>
 						<reference key="IBUITextColor" ref="736438047"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">0</int>
@@ -468,14 +468,6 @@ YXRpb24uA</string>
 					<int key="connectionID">3</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">showMoreButton</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="234289827"/>
-					</object>
-					<int key="connectionID">28</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">onClickTellMeMore:</string>
 						<reference key="source" ref="1025218631"/>
@@ -492,6 +484,15 @@ YXRpb24uA</string>
 						<int key="IBEventType">7</int>
 					</object>
 					<int key="connectionID">25</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">onClickShowVideo:</string>
+						<reference key="source" ref="234289827"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">40</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -664,7 +665,7 @@ YXRpb24uA</string>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">36</int>
+			<int key="maxID">40</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>

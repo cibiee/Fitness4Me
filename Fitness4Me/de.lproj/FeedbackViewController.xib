@@ -65,7 +65,7 @@
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string key="IBUIText">                        Danke!                          Wir wollen, dass unsere Benutzer die besten Resultate beim Training mit fitness4.me erzielen.Aber wir brauchen dein Feedback, um uns zu verbessern</string>
+						<string key="IBUIText">                        Danke!                          Wir wollen, dass unsere Benutzer die besten Resultate beim Training mit fitness4.me erzielen. Aber wir brauchen dein Feedback, um uns zu verbessern</string>
 						<object class="NSColor" key="IBUITextColor">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MSAxIDEgMC45OQA</bytes>

@@ -135,7 +135,7 @@
     UrlPath =[NSString GetURlPath];
     int selectedlang =[Fitness4MeUtils getApplicationLanguage];
     
-    RequestString =[NSString stringWithFormat:@"%@register=yes&fname=%@&sname=%@&email=%@&username=%@&password=%@&level=%@&device=1&lang=%i",UrlPath,nameTextField.text,lastNameTextField.text,emailTextField.text,usernameTextField.text,passwordTextField.text,userlevel,selectedlang];
+    RequestString =[NSString stringWithFormat:@"%@register=yes&fname=%@&sname=%@&email=%@&username=%@&password=%@&level=%@&device=1&lang=%i&plan=2",UrlPath,nameTextField.text,lastNameTextField.text,emailTextField.text,usernameTextField.text,passwordTextField.text,userlevel,selectedlang];
     
     [self performSelector:@selector(navigateToExcersiceListView:) withObject:RequestString afterDelay:0.5];
     

@@ -38,7 +38,7 @@
     str = [NSString stringWithFormat:@"%@533403096", str];
     
     NSString *urlAddress =str;
-    NSURL *url = [NSURL URLWithString:urlAddress];
+    NSURL *url = [NSURL URLWithString:[urlAddress stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
     [rateView loadRequest:requestObj];
     

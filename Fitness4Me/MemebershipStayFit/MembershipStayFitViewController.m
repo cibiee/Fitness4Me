@@ -88,6 +88,15 @@
 }
 
 - (IBAction)onClickShowYouTube:(id)sender {
+    FitnessDemoViewController *viewController;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+        viewController = [[FitnessDemoViewController alloc]initWithNibName:@"FitnessDemoViewController" bundle:nil];
+    }
+    else {
+        viewController = [[FitnessDemoViewController alloc]initWithNibName:@"FitnessDemoViewController_iPad" bundle:nil];
+    }
+    
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 - (IBAction)onClickTellMeMore:(id)sender {
@@ -109,6 +118,7 @@
 
 
 - (IBAction)showVideoButton:(id)sender {
+   
 }
 
 - (IBAction)onClickSkipToPurchase:(id)sender {

@@ -206,7 +206,7 @@
     [database executeUpdate:@"INSERT INTO CustomWorkout (WorkoutID,Name,Description,Rate,IsLocked,DescriptionToDo,ImageUrl,ImageName,DescriptionBig,ImageThumbUrl,Props,Duration,Focus) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?);",
      
      workout.WorkoutID,workout.Name,workout.Description,workout.Rate,workout.IsLocked,workout.DescriptionToDo,workout.ImageUrl,workout.ImageName,workout.DescriptionBig,workout.ThumbImageUrl, workout.Props,workout.Duration,workout.Focus,nil];
-    NSLog([workout Focus]);
+   
     [database commit];
     [database close];
     

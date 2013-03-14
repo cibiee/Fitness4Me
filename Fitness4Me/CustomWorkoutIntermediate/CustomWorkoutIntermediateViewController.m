@@ -162,7 +162,7 @@
     titleLabel.text=[self.workout Name];
     if ([[self.workout Props] length]>0) {
        [propsLabel.layer setBorderColor:[[UIColor greenColor]CGColor]] ;
-         [propsLabel.layer setBorderWidth:1] ;
+       [propsLabel.layer setBorderWidth:1] ;
         propsLabel.text=[self.workout Props];
         [propsLabel sizeToFit];
     }else{
@@ -246,7 +246,7 @@
         {
             requestString =[NSString stringWithFormat:@"%@listselfvideos=yes&self_workout_id=%@&user_level=%@&lang=%i&userid=%@",urlPath,[self.workout WorkoutID],userlevel,selectedlang,userID];
         }
-        NSURL *url =[NSURL URLWithString:requestString];
+        NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         ASIFormDataRequest   *request = [ASIFormDataRequest   requestWithURL:url];
         [request setTimeOutSeconds:15];
         [request startSynchronous];
@@ -474,7 +474,8 @@ int stopz=0;
             [self.myQueue setShowAccurateProgress:YES];
             [self.myQueue setRequestDidFinishSelector:@selector(requestDidFinish:)];
             [self.myQueue setRequestDidFailSelector:@selector(requestDidFail:)];
-            downloadrequest =[ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
+              
+            downloadrequest =[ASIHTTPRequest requestWithURL:[NSURL URLWithString:[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
             [downloadrequest setDownloadDestinationPath:filepath];
             [downloadrequest setTimeOutSeconds:100];
             [downloadrequest shouldContinueWhenAppEntersBackground];

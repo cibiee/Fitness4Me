@@ -11,6 +11,7 @@
 #import "ShareFitness4MeViewController.h"
 #import "CustomWorkoutsViewController.h"
 #import "ListWorkoutsViewController.h"
+#import "FitnessDemoViewController.h"
 @interface MembershipCreateOwnViewController : UIViewController
 @property(strong,nonatomic)NSString *workoutType;
 @property (retain,nonatomic)Workout *workout;

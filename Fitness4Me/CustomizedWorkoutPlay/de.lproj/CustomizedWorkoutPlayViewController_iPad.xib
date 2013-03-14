@@ -70,7 +70,7 @@
 								<reference key="IBUINavigationBar" ref="605029553"/>
 								<string key="IBUITitle"/>
 								<object class="IBUIBarButtonItem" key="IBUIRightBarButtonItem" id="364031617">
-									<string key="IBUITitle">Quit</string>
+									<string key="IBUITitle">verlassen</string>
 									<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 									<int key="IBUIStyle">2</int>
 									<reference key="IBUINavigationItem" ref="508978570"/>

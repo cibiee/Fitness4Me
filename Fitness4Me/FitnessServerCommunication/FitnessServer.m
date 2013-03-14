@@ -149,6 +149,8 @@ static FitnessServer *sharedState;
             // Use when fetching text data
             NSString *responseString =[requests responseString];
             if ([responseString length]>0) {
+                status=[self parseStatus:responseString];
+                
                 if (completionBlock) completionBlock(status);
             }else{
                 [self terminateActivities:NSLocalizedStringWithDefaultValue(@"slowdata", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
@@ -169,9 +171,9 @@ static FitnessServer *sharedState;
 
 
 
-
 - (NSString *)parseStatus:(NSString *)responseString
 {
+    NSLog(responseString);
     NSString *status;
     NSMutableArray *object = [responseString JSONValue];
     NSMutableArray *itemsarray =[object valueForKey:@"items"];

@@ -74,7 +74,7 @@
         
         int duration = [[workout Duration]intValue];
         duration=duration/60;
-        self.duration= [workout Duration];
+        self.duration= [NSString stringWithFormat:@"%i",duration];
         int tensplace= duration/5;
         self.workoutID =[workout WorkoutID];
         [self.timePickerView selectRow:tensplace-1 inComponent:0 animated:YES];

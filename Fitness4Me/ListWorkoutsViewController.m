@@ -116,7 +116,7 @@
     
      int  selectedlang=[Fitness4MeUtils getApplicationLanguage] ;
     NSString *requestString = [NSString stringWithFormat:@"%@listapps=yes&userid=%i&duration=%@&lang=%i",UrlPath, UserID,self.duration ,selectedlang];
-    NSURL *url =[NSURL URLWithString:requestString];
+    NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     
     ASIFormDataRequest   *request = [ASIFormDataRequest   requestWithURL:url];
     [request setTimeOutSeconds:60];
@@ -652,7 +652,7 @@
         [self.myQueue setDelegate:self];
         [self.myQueue setShowAccurateProgress:YES];
         [self.myQueue setRequestDidFinishSelector:@selector(requestFinisheds:)];
-        ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:[workout ImageUrl]]];
+        ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:[[workout ImageUrl]stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
         [request setDownloadDestinationPath:storeURL];
         [request setDelegate:self];
         [request startAsynchronous];

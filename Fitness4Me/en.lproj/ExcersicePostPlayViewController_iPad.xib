@@ -302,14 +302,14 @@
 					<object class="IBUIButton" id="720199131">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{312, 518}, {400, 32}}</string>
+						<string key="NSFrame">{{312, 515}, {400, 38}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
-						<string key="IBUINormalTitle">Exit</string>
+						<string key="IBUINormalTitle">Continue</string>
 						<reference key="IBUIHighlightedTitleColor" ref="885467325"/>
 						<object class="NSColor" key="IBUINormalTitleColor" id="314253426">
 							<int key="NSColorSpace">6</int>

@@ -127,7 +127,7 @@
             
             if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
             {
-               [self.saveandStartbutton setFrame:CGRectMake(86, 290,135 , 88)];
+               [self.saveandStartbutton setFrame:CGRectMake(86, 290,140, 88)];
             }
             else {
                [self.saveandStartbutton setFrame:CGRectMake(270,840,250 , 125)];

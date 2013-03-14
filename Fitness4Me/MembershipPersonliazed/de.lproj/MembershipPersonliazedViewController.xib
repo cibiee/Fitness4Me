@@ -79,11 +79,13 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSMutableString" key="IBUIText">
 							<bytes key="NS.bytes">U2FnIHVucywgd2lldmllbCBaZWl0IGR1IGhhc3QgdW5kIHdhcyBkdSB0cmFpbmllcmVuIG3DtmNodGVz
-dC4g4oCoVW5kIHdpciBkZXNpZ25lbiBkYXMgcGVyZmVrdGUgd29ya291dCBmw7xyIGRpY2guIOKAqFdp
-ciB3w6RobGVuIGF1cyB1bnNlcmVyIHJpZXNpZ2VuIERhdGVuYmFuayBnZW5hdSBkaWUgw5xidW5nZW4g
-YXVzLCBkaWUgenUgZGVpbmVyIFplaXR2b3JnYWJlIHVuZCBkZWluZW0gVHJhaW5pbmdzemllbCBwYXNz
-ZW4uICAgICAgICAgICAgICAgICAgICAgICAgICBBbHMgUHJlbWl1bS1NaXRnbGllZCBoYXN0IGR1IHVu
-YmVncmVuenRlbiBadWdhbmcgenUgYWxsIHVuc2VyZW4gVcyIYnVuZ2VuIHVuZCBXb3Jrb3V0cy4gDQo</bytes>
+dC4g4oCoICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+VW5kIHdpciBkZXNpZ25lbiBkYXMgcGVyZmVrdGUgd29ya291dCBmw7xyIGRpY2guIOKAqFdpciB3w6Ro
+bGVuIGF1cyB1bnNlcmVyIHJpZXNpZ2VuIERhdGVuYmFuayBnZW5hdSBkaWUgw5xidW5nZW4gYXVzLCBk
+aWUgenUgZGVpbmVyIFplaXR2b3JnYWJlIHVuZCBkZWluZW0gVHJhaW5pbmdzemllbCBwYXNzZW4uICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBBbHMgUHJl
+bWl1bS1NaXRnbGllZCBoYXN0IGR1IHVuYmVncmVuenRlbiBadWdhbmcgenUgYWxsIHVuc2VyZW4gVcyI
+YnVuZ2VuIHVuZCBXb3Jrb3V0cy4gDQo</bytes>
 						</object>
 						<object class="NSColor" key="IBUITextColor" id="180488174">
 							<int key="NSColorSpace">3</int>
@@ -95,11 +97,11 @@ YmVncmVuenRlbiBadWdhbmcgenUgYWxsIHVuc2VyZW4gVcyIYnVuZ2VuIHVuZCBXb3Jrb3V0cy4gDQo<
 						<int key="IBUITextAlignment">1</int>
 						<object class="IBUIFontDescription" key="IBUIFontDescription">
 							<int key="type">1</int>
-							<double key="pointSize">15</double>
+							<double key="pointSize">14</double>
 						</object>
 						<object class="NSFont" key="IBUIFont">
 							<string key="NSName">Helvetica</string>
-							<double key="NSSize">15</double>
+							<double key="NSSize">14</double>
 							<int key="NSfFlags">16</int>
 						</object>
 						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
@@ -377,6 +379,15 @@ YmVncmVuenRlbiBadWdhbmcgenUgYWxsIHVuc2VyZW4gVcyIYnVuZ2VuIHVuZCBXb3Jrb3V0cy4gDQo<
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">onClickShowYouTube:</string>
+						<reference key="source" ref="185454841"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">23</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">onClickSkipToPurchase:</string>
 						<reference key="source" ref="37965993"/>
 						<reference key="destination" ref="372490531"/>
@@ -500,7 +511,7 @@ YmVncmVuenRlbiBadWdhbmcgenUgYWxsIHVuc2VyZW4gVcyIYnVuZ2VuIHVuZCBXb3Jrb3V0cy4gDQo<
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">22</int>
+			<int key="maxID">23</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>

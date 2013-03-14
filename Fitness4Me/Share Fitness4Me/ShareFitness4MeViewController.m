@@ -75,7 +75,7 @@
             NSURL * imageURL = [NSURL URLWithString:self.imageUrl];
             NSData * imageData = [NSData dataWithContentsOfURL:imageURL];
             excersiceImageHolder.image = [UIImage imageWithData:imageData];
-            ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:self.imageUrl]];
+            ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:[self.imageUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
             [request setDownloadDestinationPath:storeURL];
             [request setDelegate:self];
             [request startAsynchronous];
@@ -99,24 +99,59 @@
 
 -(void)InitializeView
 {
-    
+    int selectedLanguage=[Fitness4MeUtils getApplicationLanguage];
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     name=[userinfo stringForKey:@"Name"];
     NSString *workoutName=[userinfo stringForKey:@"WorkoutName"];
     NSString *workoutType=[userinfo stringForKey:@"workoutType"];
     NSString *msg = [[NSString alloc]init];
     if ([workoutType isEqualToString:@"QuickWorkouts"]) {
-        msg =@" just completed the Fitness4.me quick workouts ";
+        if (selectedLanguage ==1) {
+              msg =@" just completed the fitness4.me - ";
+        }
+      
+        else
+        {
+            msg=@ " hat gerade das Trainingsprogramm - ";
+        }
     }
     else  if ([workoutType isEqualToString:@"Custom"]) {
-        msg =@" just completed Fitness4.me personalized workout ";
+        
+        if (selectedLanguage ==1) {
+             msg =@" just completed a fitness4.me personalized workout - ";
+        }
+        
+        else
+        {
+            msg=@ " hat gerade das fitness4.me personalisierte workout - ";
+        }
+
+      
 
     }
     else{
-        msg =@" just completed the Fitness4.me self-made workout ";
+        
+        if (selectedLanguage ==1) {
+            msg =@" just completed a fitness4.me self-made workout - ";
+        }
+        
+        else
+        {
+            msg=@ " hat gerade das fitness4.me selbst erstellte workout - ";
+        }
     }
     msg =[name stringByAppendingString:msg];
-    shareAppMessageTextView.text=[msg stringByAppendingString:workoutName];
+    
+    if (selectedLanguage ==1) {
+      shareAppMessageTextView.text=[msg stringByAppendingString:workoutName];
+    }
+    
+    else
+    {
+        shareAppMessageTextView.text=[[msg stringByAppendingString:workoutName] stringByAppendingString:@" beendet"];
+    }
+    
+    
     dataPath =[Fitness4MeUtils path];
     [self showImage];
 }

@@ -295,7 +295,7 @@
         [self.myQueue setDelegate:self];
         [self.myQueue setShowAccurateProgress:YES];
         [self.myQueue setRequestDidFinishSelector:@selector(requestFinisheds:)];
-        ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:[workout ThumbImageUrl]]];
+        ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:[[workout ThumbImageUrl]stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
         [request setDownloadDestinationPath:storeURL];
         [request setDelegate:self];
         //[request startAsynchronous];
@@ -433,8 +433,8 @@
             
         [excersice setExcersiceID:[item objectForKey:@"exerciseID"]];
         [excersice setName:[item objectForKey:@"name"]];
-        [excersice setImageUrl:[item objectForKey:@"image"]];
-        [excersice setImageName:[item objectForKey:@"imageName"]];
+        [excersice setImageUrl:[item objectForKey:@"imageBig"]];
+        [excersice setImageName:[item objectForKey:@"imagebigName"]];
         [excersice setRepetitions:[item objectForKey:@"repetition"]];
         [excersice setTime:[item objectForKey:@"duration"]];
          }

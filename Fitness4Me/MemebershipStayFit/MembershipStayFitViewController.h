@@ -12,6 +12,7 @@
 #import "CustomWorkoutsViewController.h"
 #import "ListWorkoutsViewController.h"
 #import "MembershipPurchaseViewController.h"
+#import "FitnessDemoViewController.h"
 @interface MembershipStayFitViewController : UIViewController
 
 @property(strong,nonatomic)NSString *workoutType;

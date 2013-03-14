@@ -12,6 +12,7 @@
 #import "CustomWorkoutsViewController.h"
 #import "ListWorkoutsViewController.h"
 #import "MembershipPurchaseViewController.h"
+#import "FitnessDemoViewController.h"
 @interface MembershipRateViewController : UIViewController
 {
     Workout * workout;
@@ -24,4 +25,5 @@
 - (IBAction)onClickYes:(id)sender;
 - (IBAction)onClickNotYet:(id)sender;
 - (IBAction)onClickSkipToPurchase:(id)sender;
+- (IBAction)onClickShowVideo:(id)sender;
 @end

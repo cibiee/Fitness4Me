@@ -64,7 +64,7 @@
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<string type="base64-UTF8" key="IBUIText">R2V0IHlvdXIgb3duIHBlcnNvbmFsaXplZCB3b3Jrb3V0IGluIGZvdXIgZWFzeSBzdGVwcw0KAA</string>
+						<string type="base64-UTF8" key="IBUIText">R2V0IHlvdXIgb3duIHBlcnNvbmFsaXplZCB3b3Jrb3V0IGluIGZvdXIgZWFzeSBzdGVwcy4NCgA</string>
 						<object class="NSColor" key="IBUITextColor" id="1056984534">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MQA</bytes>
@@ -136,7 +136,7 @@
 					<object class="IBUILabel" id="51205893">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{256, 249}, {280, 40}}</string>
+						<string key="NSFrame">{{33, 249}, {704, 40}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -149,6 +149,7 @@
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">0</int>
 						<int key="IBUITextAlignment">1</int>
+						<int key="IBUILineBreakMode">0</int>
 						<reference key="IBUIFontDescription" ref="409488410"/>
 						<reference key="IBUIFont" ref="865941544"/>
 						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>

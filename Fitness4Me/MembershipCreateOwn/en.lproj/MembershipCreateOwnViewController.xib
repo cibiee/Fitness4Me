@@ -42,6 +42,7 @@
 						<int key="NSvFlags">274</int>
 						<string key="NSFrame">{{0, 60}, {320, 409}}</string>
 						<reference key="NSSuperview" ref="198166574"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="754559721"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -56,6 +57,7 @@
 						<int key="NSvFlags">264</int>
 						<string key="NSFrame">{{20.5, 414}, {280, 36}}</string>
 						<reference key="NSSuperview" ref="198166574"/>
+						<reference key="NSWindow"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -103,6 +105,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrameSize">{320, 61}</string>
 						<reference key="NSSuperview" ref="198166574"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="844188597"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -117,6 +120,7 @@
 						<int key="NSvFlags">272</int>
 						<string key="NSFrame">{{16, 131}, {280, 207}}</string>
 						<reference key="NSSuperview" ref="198166574"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="331889461"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -150,6 +154,7 @@ IG9ubHkgYXZhaWxhYmxlIHRvIFByZW1pdW0gbWVtYmVycw0KAA</string>
 						<int key="NSvFlags">264</int>
 						<string key="NSFrame">{{112, 352}, {91, 58}}</string>
 						<reference key="NSSuperview" ref="198166574"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="274117362"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -179,6 +184,7 @@ IG9ubHkgYXZhaWxhYmxlIHRvIFByZW1pdW0gbWVtYmVycw0KAA</string>
 						<int key="NSvFlags">264</int>
 						<string key="NSFrame">{{22, 352}, {85, 58}}</string>
 						<reference key="NSSuperview" ref="198166574"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="774362666"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -204,6 +210,7 @@ IG9ubHkgYXZhaWxhYmxlIHRvIFByZW1pdW0gbWVtYmVycw0KAA</string>
 						<int key="NSvFlags">264</int>
 						<string key="NSFrame">{{17, 352}, {91, 56}}</string>
 						<reference key="NSSuperview" ref="198166574"/>
+						<reference key="NSWindow"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -231,6 +238,7 @@ IG9ubHkgYXZhaWxhYmxlIHRvIFByZW1pdW0gbWVtYmVycw0KAA</string>
 						<int key="NSvFlags">264</int>
 						<string key="NSFrame">{{208, 352}, {91, 58}}</string>
 						<reference key="NSSuperview" ref="198166574"/>
+						<reference key="NSWindow"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -252,6 +260,7 @@ IG9ubHkgYXZhaWxhYmxlIHRvIFByZW1pdW0gbWVtYmVycw0KAA</string>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{35, 77}, {251, 53}}</string>
 						<reference key="NSSuperview" ref="198166574"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="160049412"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -283,6 +292,7 @@ IG9ubHkgYXZhaWxhYmxlIHRvIFByZW1pdW0gbWVtYmVycw0KAA</string>
 						<int key="NSvFlags">280</int>
 						<string key="NSFrame">{{28, 317}, {267, 36}}</string>
 						<reference key="NSSuperview" ref="198166574"/>
+						<reference key="NSWindow"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -307,6 +317,7 @@ IG9ubHkgYXZhaWxhYmxlIHRvIFByZW1pdW0gbWVtYmVycw0KAA</string>
 				</array>
 				<string key="NSFrame">{{0, 20}, {320, 460}}</string>
 				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="583421639"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
@@ -344,6 +355,15 @@ IG9ubHkgYXZhaWxhYmxlIHRvIFByZW1pdW0gbWVtYmVycw0KAA</string>
 						<reference key="destination" ref="331889461"/>
 					</object>
 					<int key="connectionID">42</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">onClickShowYouTube:</string>
+						<reference key="source" ref="331889461"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">48</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -494,9 +514,58 @@ IG9ubHkgYXZhaWxhYmxlIHRvIFByZW1pdW0gbWVtYmVycw0KAA</string>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">47</int>
+			<int key="maxID">48</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes"/>
+		<object class="IBClassDescriber" key="IBDocument.Classes">
+			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
+				<object class="IBPartialClassDescription">
+					<string key="className">MembershipCreateOwnViewController</string>
+					<string key="superclassName">UIViewController</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="onClickNotYet:">id</string>
+						<string key="onClickShowYouTube:">id</string>
+						<string key="onClickSkipToPurchase:">id</string>
+						<string key="onClickTellMeMore:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="onClickNotYet:">
+							<string key="name">onClickNotYet:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="onClickShowYouTube:">
+							<string key="name">onClickShowYouTube:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="onClickSkipToPurchase:">
+							<string key="name">onClickSkipToPurchase:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="onClickTellMeMore:">
+							<string key="name">onClickTellMeMore:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="showMoreButton">UIButton</string>
+						<string key="tellmeMoreButton">UIButton</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="showMoreButton">
+							<string key="name">showMoreButton</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="tellmeMoreButton">
+							<string key="name">tellmeMoreButton</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/MembershipCreateOwnViewController.h</string>
+					</object>
+				</object>
+			</array>
+		</object>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaTouchFramework</string>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>

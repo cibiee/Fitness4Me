@@ -164,13 +164,13 @@
     if ([[self.workout Props] length]>0) {
         
         NSString *capitalizedequip= [[NSString alloc]init];
-        NSArray* foo = [self.workout.Props componentsSeparatedByString: @","];
+        NSArray* foo = [self.workout.Props componentsSeparatedByString: @", "];
         
         for (NSString *focuses in foo) {
             if ([capitalizedequip length]==0) {
                 capitalizedequip =[[capitalizedequip stringByAppendingString:focuses]capitalizedString];
             }else{
-                capitalizedequip=[capitalizedequip stringByAppendingString:@","];
+                capitalizedequip=[capitalizedequip stringByAppendingString:@", "];
                 capitalizedequip =[[capitalizedequip stringByAppendingString:focuses]capitalizedString];
             }
             
@@ -458,7 +458,7 @@
         // Check If File Does Exists if not download the video
         if (![[NSFileManager defaultManager] fileExistsAtPath:filepath]){
             
-            ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
+            ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
             [request setDownloadDestinationPath:filepath];
             [request setDelegate:self];
             [request setTimeOutSeconds:15];

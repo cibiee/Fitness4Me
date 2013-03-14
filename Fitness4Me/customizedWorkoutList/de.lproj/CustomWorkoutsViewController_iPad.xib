@@ -75,7 +75,7 @@
 							<object class="IBUIButton" id="1067580342">
 								<reference key="NSNextResponder" ref="708688546"/>
 								<int key="NSvFlags">264</int>
-								<string key="NSFrame">{{110, 339}, {163, 40}}</string>
+								<string key="NSFrame">{{77, 339}, {203, 40}}</string>
 								<reference key="NSSuperview" ref="708688546"/>
 								<reference key="NSNextKeyView" ref="316512385"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -114,7 +114,7 @@
 							<object class="IBUIButton" id="971891209">
 								<reference key="NSNextResponder" ref="708688546"/>
 								<int key="NSvFlags">264</int>
-								<string key="NSFrame">{{107, 339}, {163, 40}}</string>
+								<string key="NSFrame">{{77, 339}, {203, 40}}</string>
 								<reference key="NSSuperview" ref="708688546"/>
 								<reference key="NSNextKeyView" ref="1067580342"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -122,7 +122,7 @@
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<int key="IBUIContentHorizontalAlignment">0</int>
 								<int key="IBUIContentVerticalAlignment">0</int>
-								<string key="IBUINormalTitle">Continue trial</string>
+								<string key="IBUINormalTitle">Probetraining fortführen</string>
 								<reference key="IBUIHighlightedTitleColor" ref="789731523"/>
 								<object class="NSColor" key="IBUINormalTitleColor">
 									<int key="NSColorSpace">1</int>
@@ -137,7 +137,7 @@
 							<object class="IBUIButton" id="316512385">
 								<reference key="NSNextResponder" ref="708688546"/>
 								<int key="NSvFlags">264</int>
-								<string key="NSFrame">{{110, 372}, {163, 40}}</string>
+								<string key="NSFrame">{{77, 372}, {203, 40}}</string>
 								<reference key="NSSuperview" ref="708688546"/>
 								<reference key="NSNextKeyView" ref="916468853"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -249,7 +249,7 @@
 								<reference key="IBUINavigationBar" ref="605542765"/>
 								<string key="IBUITitle">www.fitness4.me</string>
 								<object class="IBUIBarButtonItem" key="IBUIRightBarButtonItem" id="897132573">
-									<string key="IBUITitle">Edit</string>
+									<string key="IBUITitle">bearbeiten</string>
 									<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 									<int key="IBUIStyle">1</int>
 									<reference key="IBUINavigationItem" ref="87660739"/>
@@ -303,7 +303,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{159.5, 960}, {450, 38}}</string>
 						<reference key="NSSuperview" ref="286911712"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -567,8 +566,8 @@
 							<reference ref="1067580342"/>
 							<reference ref="957118523"/>
 							<reference ref="316512385"/>
-							<reference ref="971891209"/>
 							<reference ref="854596545"/>
+							<reference ref="971891209"/>
 						</array>
 						<reference key="parent" ref="286911712"/>
 					</object>
@@ -622,7 +621,7 @@
 				<string key="50.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="51.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="52.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<real value="1" key="52.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
+				<real value="0.0" key="52.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
 				<string key="53.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<real value="0.0" key="53.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
 				<string key="54.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>

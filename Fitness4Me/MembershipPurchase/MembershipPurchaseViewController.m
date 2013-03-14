@@ -249,6 +249,9 @@
     if (wasSuccessful){
         
         [self sendMembership];
+        [userinfo setObject:@"true" forKey:@"isMember"];
+        [userinfo setObject:@"dontSubscribe" forKey:@"yearly"];
+        [userinfo setObject:[selectedMembership membershipID] forKey:@"MembershipPlan"];
         // update the server with the purchased details
         [userinfo setObject:@"true" forKey:@"showDownload"];
        
@@ -499,7 +502,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSDictionary *dictionary = [self.groupedMemberships objectAtIndex:indexPath.row];
+    NSDictionary *dictionary = [self.groupedMemberships objectAtIndex:indexPath.section];
     NSArray *array = [dictionary objectForKey:@"memberships"];
     selectedMembership = [[Membership alloc]init];
     selectedMembership = [array objectAtIndex:0];
@@ -526,9 +529,7 @@
     [fitness membershipPlanUser:[selectedMembership membershipID] activityIndicator:nil progressView:nil onCompletion:^(NSString *status) {
         if ([status length]>0) {
             if ([status isEqualToString:@"success"]) {
-                [userinfo setObject:@"true" forKey:@"isMember"];
-                [userinfo setObject:@"dontSubscribe" forKey:@"yearly"];
-                [userinfo setObject:[selectedMembership membershipID] forKey:@"MembershipPlan"];
+                
                 [self showAlertwithMsg:@"Congratulations! You  have become a premium member of Fitness4.me."];
             }
         }
