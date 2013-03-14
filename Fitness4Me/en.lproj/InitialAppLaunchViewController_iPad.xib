@@ -3,12 +3,12 @@
 	<data>
 		<int key="IBDocument.SystemTarget">1280</int>
 		<string key="IBDocument.SystemVersion">12C60</string>
-		<string key="IBDocument.InterfaceBuilderVersion">2844</string>
+		<string key="IBDocument.InterfaceBuilderVersion">3084</string>
 		<string key="IBDocument.AppKitVersion">1187.34</string>
 		<string key="IBDocument.HIToolboxVersion">625.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">1930</string>
+			<string key="NS.object.0">2083</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>IBProxyObject</string>
@@ -131,7 +131,7 @@
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<string key="IBUIText">New to Fitness4Me ?</string>
+						<string key="IBUIText">New to fitness4.me ?</string>
 						<object class="NSColor" key="IBUITextColor" id="954335368">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MQA</bytes>
@@ -166,7 +166,7 @@
 					<object class="IBUILabel" id="161372508">
 						<reference key="NSNextResponder" ref="591617279"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{256, 817}, {256, 21}}</string>
+						<string key="NSFrame">{{256, 817}, {266, 24}}</string>
 						<reference key="NSSuperview" ref="591617279"/>
 						<reference key="NSNextKeyView" ref="617520264"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -175,7 +175,7 @@
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<string key="IBUIText">Have a Fitness4Me Account ?</string>
+						<string key="IBUIText">Have a fitness4.me Account ?</string>
 						<reference key="IBUITextColor" ref="954335368"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">0</int>
@@ -512,6 +512,6 @@
 			<string key="home_logo_iPad.png">{768, 146}</string>
 			<string key="push-up-on-beach_iPad.png">{768, 483}</string>
 		</dictionary>
-		<string key="IBCocoaTouchPluginVersion">1930</string>
+		<string key="IBCocoaTouchPluginVersion">2083</string>
 	</data>
 </archive>

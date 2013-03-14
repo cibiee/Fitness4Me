@@ -87,7 +87,7 @@
     NSString*thePath=[[NSString alloc]init];
     thePath=[[[NSBundle mainBundle]resourcePath]stringByAppendingPathComponent:@"fitness4me-intro-small.mp4"];
     
-    NSLog(thePath);
+    
     
             moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL fileURLWithPath:thePath]];
            // moviePlayer.contentURL =theurl;

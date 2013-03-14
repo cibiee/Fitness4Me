@@ -18,6 +18,7 @@
 #import "StatisticsDB.h"
 #import "Favourite.h"
 #import "CustomFavourites.h"
+#import "Facebook.h"
 
 
 @class Fitness4MeViewController;
@@ -28,9 +29,10 @@
     User *user;
     WorkoutDB *workoutDB;
       NSString* remainisgDays;
+    //Facebook* facebook;
 }
 
-
+@property (strong, nonatomic) Facebook *facebook;
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) InitialAppLaunchViewController *viewController;
 @property (strong, nonatomic) Fitness4MeViewController *fitness4MeViewController;

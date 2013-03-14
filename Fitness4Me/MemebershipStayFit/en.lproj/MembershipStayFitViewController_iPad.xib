@@ -321,6 +321,15 @@ IHRvIGFsbCBvdXIgd29ya291dHMuDQoAA</string>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">onClickShowYouTube:</string>
+						<reference key="source" ref="376393942"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">40</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">onClickSkipToPurchase:</string>
 						<reference key="source" ref="986876030"/>
 						<reference key="destination" ref="372490531"/>
@@ -466,7 +475,7 @@ IHRvIGFsbCBvdXIgd29ya291dHMuDQoAA</string>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">39</int>
+			<int key="maxID">40</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>

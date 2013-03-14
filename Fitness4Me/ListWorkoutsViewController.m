@@ -48,7 +48,8 @@
     signupviews.layer.borderWidth = 2;
     signupviews.layer.borderColor = [UIColor whiteColor].CGColor;
 
-    
+    [fileDownloadProgressView setHidden:NO];
+    fileDownloadProgressView.progress = (0 / 100);
     tableview.rowHeight =90;
     tableview.separatorColor =[UIColor clearColor];
     [Fitness4MeUtils showAdMob:self];
@@ -200,7 +201,7 @@
     
     [fullvideoView  removeFromSuperview];
     [self.view addSubview:signupviews];
-    [activityindicators startAnimating];
+    //[activityindicators startAnimating];
      NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     [userinfo setObject:@"true" forKey:@"fullVideoDownloadlater"];
     [NSThread detachNewThreadSelector:@selector(startDownload) toTarget:self withObject:nil];
@@ -302,9 +303,10 @@
             [NSThread detachNewThreadSelector:@selector(parseFitnessDetails) toTarget:self withObject:nil];
         }
         else {
-            networkNotificationtextView.hidden=NO;
+             networkNotificationtextView.hidden=NO;
             [activityIndicator stopAnimating];
             [activityIndicator removeFromSuperview];
+            
             return;
         }
     }
@@ -350,7 +352,14 @@
         [self.view addSubview:fullvideoView];
         [activityIndicator setHidden:NO];
         [activityIndicator startAnimating];
-        [NSThread detachNewThreadSelector:@selector(parseFitnessDetails) toTarget:self withObject:nil];
+        BOOL isReachable =[Fitness4MeUtils isReachable];
+        if (isReachable){
+            [NSThread detachNewThreadSelector:@selector(parseFitnessDetails) toTarget:self withObject:nil];
+        }
+        else {
+            [self ListExcersices];
+        }
+
     }
 }
 
@@ -377,6 +386,7 @@
     NSString *hasMadeFullPurchase= [userinfo valueForKey:@"hasMadeFullPurchase"];
     NSString *fullvideoDownload= [userinfo valueForKey:@"fullVideoDownloadlater"];
     NSString *isMember= [userinfo valueForKey:@"isMember"];
+    self.UserID =[userinfo integerForKey:@"UserID"];
     [userinfo setObject:@"QuickWorkouts" forKey:@"workoutType"];
     if ([isMember isEqualToString:@"true"]) {
         [self startFullVideoDownload:fullvideoDownload];
@@ -400,11 +410,12 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
+    
     letUserSelectRow = YES;
-    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
-    self.UserID =[userinfo integerForKey:@"UserID"];
+    //NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+    
     [self getExcersices];
+    [super viewDidAppear:animated];
     
 }
 

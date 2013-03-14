@@ -7,6 +7,7 @@
 //
 
 #import "Fitness4MeAppDelegate.h"
+#import "Facebook.h"
 
 
 @implementation Fitness4MeAppDelegate
@@ -33,6 +34,8 @@ int userID;
         [self navigateToInitalLaunchScreen];
         [self saveUserPreferences];
     }
+   
+    
     self.window.rootViewController = self.navigationController;
     [self.window makeKeyAndVisible];
     return YES;
@@ -635,6 +638,8 @@ int userID;
 {
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     NSString *isMember =[userinfo objectForKey:@"isMember"];
+    NSString *paymentDevice =[userinfo stringForKey:@"paymentDevice"];
+    if ([paymentDevice isEqualToString:@"IStore"]) {
     if ([isMember isEqualToString:@"true"]) {
         FitnessServerCommunication *fitness =[FitnessServerCommunication sharedState];
         [fitness getMembershipRemainingDays:nil progressView:nil onCompletion:^(NSString *responseString) {
@@ -643,7 +648,13 @@ int userID;
             
         }];
     }
+    }
     
+}
+
+-(BOOL) application:(UIApplication *)application handleOpenURL:(NSURL *)url{
+    [self.facebook handleOpenURL:url];
+    return YES;
 }
 
 - (void)getMembershipRemainingDays:(NSString *)responseString
@@ -652,9 +663,9 @@ int userID;
     remainisgDays=[[NSString alloc]init];
     NSMutableArray *object = [responseString JSONValue];
     NSString *isMember =[userinfo objectForKey:@"isMember"];
-    int remianingdays =[userinfo integerForKey:@"remainingDays"];
     NSString *MembershipPlan =[userinfo stringForKey:@"MembershipPlan"];
-   
+    NSString *paymentDevice =[userinfo stringForKey:@"paymentDevice"];
+  
     NSMutableArray *itemsarray =[object valueForKey:@"items"];
     for (int i=0; i<[itemsarray count]; i++) {
         remainisgDays =[[itemsarray objectAtIndex:0] valueForKey:@"days"];
@@ -663,19 +674,18 @@ int userID;
     
     if ([remainisgDays intValue]<=0) {
          
-        NSLog(MembershipPlan);
+        
         if ([isMember isEqualToString:@"true"]) {
             {
-                if (remianingdays<=0) {
-                    [self verifyReceiptsWithPlan:MembershipPlan];
-                }
-                
-            
-            }}
-
+                if ([paymentDevice isEqualToString:@"IStore"]) {
+                [self verifyReceiptsWithPlan:MembershipPlan];
+                 }
+            }
+        }
         
     }
      [userinfo setInteger:[remainisgDays intValue] forKey:@"remainingDays"];
+   
 }
 
 
@@ -683,22 +693,30 @@ int userID;
     
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     FitnessServer *fitness= [FitnessServer sharedState];
+   
+     NSString *updatedMembershipPlan =[userinfo stringForKey:@"updatedMembershipPlan"];
+    if ([updatedMembershipPlan isEqualToString:@"100"]) {
+        planID=@"100";
+    }
     [fitness verifyReciptwithPlanID:planID  activitIndicator:nil progressView:nil onCompletion:^(NSString *response) {
-        if ([response intValue]!=5) {
-            [userinfo setObject:@"Subscribe" forKey:@"yearly"];
-            [self navigateToHome];
+        if ([response intValue] ==1) {
+           
+               [userinfo setObject:@"Subscribe" forKey:@"yearly"];
+               
+        
+           [self navigateToHome];
 
-        }
-        FitnessServerCommunication *fitnessServer=[FitnessServerCommunication sharedState];
-        [fitnessServer GetUserTypeWithactivityIndicator:nil progressView:nil onCompletion:^(NSString *responseString) {
+    }
+       FitnessServerCommunication *fitnessServer=[FitnessServerCommunication sharedState];
+    [fitnessServer GetUserTypeWithactivityIndicator:nil progressView:nil onCompletion:^(NSString *responseString) {
             
         }onError:^(NSError *error) {
             
         }];
         
-    } onError:^(NSError *error) {
+   } onError:^(NSError *error) {
         
-    }];
+   }];
     
     
 }

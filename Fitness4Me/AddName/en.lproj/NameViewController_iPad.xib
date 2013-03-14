@@ -161,7 +161,7 @@
 						<array key="IBUIItems">
 							<object class="IBUINavigationItem" id="528606413">
 								<reference key="IBUINavigationBar" ref="976579374"/>
-								<string key="IBUITitle">www.Fitness4.me</string>
+								<string key="IBUITitle">www.fitness4.me</string>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 							</object>
 						</array>

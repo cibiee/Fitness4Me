@@ -164,7 +164,7 @@ bHdheXMgY2hhbmdlIHRoZXNlIGJ5IHB1c2hpbmcgdGhlIHNldHRpbmdzIGJ1dHRvbi4</string>
 							<object class="IBUILabel" id="664311397">
 								<reference key="NSNextResponder" ref="1033303124"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{70, 66}, {181, 21}}</string>
+								<string key="NSFrame">{{70, 66}, {182, 21}}</string>
 								<reference key="NSSuperview" ref="1033303124"/>
 								<reference key="NSNextKeyView" ref="725987353"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -173,7 +173,7 @@ bHdheXMgY2hhbmdlIHRoZXNlIGJ5IHB1c2hpbmcgdGhlIHNldHRpbmdzIGJ1dHRvbi4</string>
 								<int key="IBUIContentMode">7</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<string key="IBUIText">Welcome to Fitness4.me</string>
+								<string key="IBUIText">Welcome to fitness4.me</string>
 								<reference key="IBUITextColor" ref="358580615"/>
 								<nil key="IBUIHighlightedColor"/>
 								<int key="IBUIBaselineAdjustment">0</int>

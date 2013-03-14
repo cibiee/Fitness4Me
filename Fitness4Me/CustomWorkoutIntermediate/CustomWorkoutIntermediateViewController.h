@@ -18,6 +18,7 @@
 #import "SBJsonParser.h"
 #import "User.h"
 #import "UserDB.h"
+#import "GADBannerView.h"
 
 @interface CustomWorkoutIntermediateViewController : UIViewController<ASIHTTPRequestDelegate>
 {
@@ -37,7 +38,7 @@ NSMutableArray *excersices;
 NSMutableArray *arr;
 NSMutableArray *excersicesList;
 
-
+  GADBannerView *bannerView_;
 IBOutlet UIImageView *excersiceImageHolder;
 IBOutlet UITextView  *descriptionTextview;
 

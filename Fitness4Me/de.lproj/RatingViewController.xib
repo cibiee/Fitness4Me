@@ -211,7 +211,7 @@ ZW50IGFuZCBJIHdvdWxkIGxpa2UgdG8gZ2l2ZS4geW91IG15IGZlZWRiYWNrLg</string>
 						<bool key="IBUIShowsHorizontalScrollIndicator">NO</bool>
 						<bool key="IBUIShowsVerticalScrollIndicator">NO</bool>
 						<bool key="IBUIEditable">NO</bool>
-						<string type="base64-UTF8" key="IBUIText">TmVpbiENRml0bmVzczQubWUga2FubiB2ZXJiZXNzZXJ0IHdlcmRlbi4gSWNoIG3DtmNodGUgZXVjaCBt
+						<string type="base64-UTF8" key="IBUIText">TmVpbiENZml0bmVzczQubWUga2FubiB2ZXJiZXNzZXJ0IHdlcmRlbi4gSWNoIG3DtmNodGUgZXVjaCBt
 ZWluIEZlZWRiYWNrIG1pdHRlaWxlbi4</string>
 						<reference key="IBUITextColor" ref="238803055"/>
 						<int key="IBUITextAlignment">1</int>

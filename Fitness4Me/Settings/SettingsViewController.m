@@ -32,7 +32,8 @@
 {
     [super viewDidLoad];
     [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
-    
+    [fileDownloadProgressView setHidden:NO];
+    fileDownloadProgressView.progress = (0 / 100);
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     hasMadeFullPurchase= [userinfo valueForKey:@"hasMadeFullPurchase"];
     isMemeber= [userinfo valueForKey:@"isMemeber"];
@@ -40,7 +41,7 @@
     [hasMadeFullPurchase retain];
      NSString *showDownload= [userinfo valueForKey:@"showDownload"];
     
-    userID=0;
+    //userID=0;
     [fulldownloadButton removeFromSuperview];
     
     [self showHideDownloadButton:showDownload];
@@ -161,6 +162,8 @@
 -(void)navigateToExcersiceListView:(NSString *)requestString{
     
     [profileUpdatedView removeFromSuperview];
+    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+    userID=  [userinfo integerForKey:@"UserID"];
     NSString *userid =[NSString stringWithFormat:@"%i",userID];
     
     FitnessServerCommunication *fitness =[FitnessServerCommunication sharedState];
@@ -176,7 +179,7 @@
             }
             
             
-            NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+            
             if ([hasMadeFullPurchase isEqualToString:@"true"]) {
                 if(isLevelChanged ==YES){
                     [self.view addSubview:profileUpdatedView];
@@ -290,6 +293,7 @@
     usernameLabel.text =  [userInfo stringForKey:@"Username"];
     nameTextField.text =  [userInfo stringForKey:@"Name"];
     userID=  [userInfo integerForKey:@"UserID"];
+    NSLog(@"%i",userID);
     userlevel =[userInfo stringForKey:@"Userlevel"];
     oldUserlevel =[[NSString alloc]init];
     
@@ -318,10 +322,11 @@
 
 -(void)startDownload
 {
+    fileDownloadProgressView.progress = (0/100);
     FitnessServerCommunication *fitness =[FitnessServerCommunication sharedState];
     [fitness setDelegate:self];
     [fitness getAllvideos];
-    fileDownloadProgressView.progress = ((float)0 / (float) 100);
+   
 }
 
 -(void)navigateToHome
@@ -340,10 +345,11 @@
 
 -(void)startFreeDownload
 {
+     fileDownloadProgressView.progress = (0/100);
     FitnessServerCommunication *fitness =[FitnessServerCommunication sharedState];
     [fitness setDelegate:self];
     [fitness getFreevideos];
-    fileDownloadProgressView.progress = ((float)0 / (float) 100);
+   // fileDownloadProgressView.progress = ((float)0 / (float) 100);
 }
 
 -(void)saveUserDetails:(NSString*)userLevel

@@ -68,188 +68,6 @@
 							<string key="NSResourceName">home_logo_iPad.png</string>
 						</object>
 					</object>
-					<object class="IBUIButton" id="544023961">
-						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{115, 616}, {541, 52}}</string>
-						<reference key="NSSuperview" ref="191373211"/>
-						<reference key="NSNextKeyView" ref="79842793"/>
-						<string key="NSReuseIdentifierKey">_NS:9</string>
-						<bool key="IBUIOpaque">NO</bool>
-						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<int key="IBUIContentVerticalAlignment">0</int>
-						<double key="IBUIContentEdgeInsets.top">0.0</double>
-						<double key="IBUIContentEdgeInsets.bottom">0.0</double>
-						<double key="IBUIContentEdgeInsets.left">30</double>
-						<double key="IBUIContentEdgeInsets.right">0.0</double>
-						<string key="IBUINormalTitle">Schnelle Workouts</string>
-						<object class="NSColor" key="IBUIHighlightedTitleColor" id="620430652">
-							<int key="NSColorSpace">3</int>
-							<bytes key="NSWhite">MQA</bytes>
-						</object>
-						<object class="NSColor" key="IBUINormalTitleColor" id="908317802">
-							<int key="NSColorSpace">6</int>
-							<string key="NSCatalogName">System</string>
-							<string key="NSColorName">alternateSelectedControlTextColor</string>
-							<reference key="NSColor" ref="620430652"/>
-						</object>
-						<object class="NSCustomResource" key="IBUIHighlightedBackgroundImage">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">home_nav_top_hover_iPad.png</string>
-						</object>
-						<object class="NSCustomResource" key="IBUINormalBackgroundImage">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">home_nav_top_iPad.png</string>
-						</object>
-						<object class="IBUIFontDescription" key="IBUIFontDescription" id="794383809">
-							<int key="type">2</int>
-							<double key="pointSize">20</double>
-						</object>
-						<object class="NSFont" key="IBUIFont" id="1036125735">
-							<string key="NSName">Helvetica-Bold</string>
-							<double key="NSSize">20</double>
-							<int key="NSfFlags">16</int>
-						</object>
-					</object>
-					<object class="IBUIButton" id="409424643">
-						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{114, 824}, {541, 52}}</string>
-						<reference key="NSSuperview" ref="191373211"/>
-						<reference key="NSNextKeyView" ref="488464887"/>
-						<string key="NSReuseIdentifierKey">_NS:9</string>
-						<bool key="IBUIOpaque">NO</bool>
-						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<int key="IBUIContentVerticalAlignment">0</int>
-						<double key="IBUIContentEdgeInsets.top">0.0</double>
-						<double key="IBUIContentEdgeInsets.bottom">0.0</double>
-						<double key="IBUIContentEdgeInsets.left">30</double>
-						<double key="IBUIContentEdgeInsets.right">0.0</double>
-						<string key="IBUINormalTitle">Tipps und Ratschläge</string>
-						<reference key="IBUIHighlightedTitleColor" ref="620430652"/>
-						<reference key="IBUINormalTitleColor" ref="908317802"/>
-						<object class="NSColor" key="IBUINormalTitleShadowColor" id="763177747">
-							<int key="NSColorSpace">3</int>
-							<bytes key="NSWhite">MC41AA</bytes>
-						</object>
-						<object class="NSCustomResource" key="IBUIHighlightedBackgroundImage" id="565844279">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">home_nav_mid_hover_iPad.png</string>
-						</object>
-						<object class="NSCustomResource" key="IBUINormalBackgroundImage" id="233112823">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">home_nav_mid_iPad.png</string>
-						</object>
-						<reference key="IBUIFontDescription" ref="794383809"/>
-						<reference key="IBUIFont" ref="1036125735"/>
-					</object>
-					<object class="IBUIButton" id="79842793">
-						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{115, 772}, {541, 52}}</string>
-						<reference key="NSSuperview" ref="191373211"/>
-						<reference key="NSNextKeyView" ref="409424643"/>
-						<string key="NSReuseIdentifierKey">_NS:9</string>
-						<bool key="IBUIOpaque">NO</bool>
-						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<int key="IBUIContentVerticalAlignment">0</int>
-						<double key="IBUIContentEdgeInsets.top">0.0</double>
-						<double key="IBUIContentEdgeInsets.bottom">0.0</double>
-						<double key="IBUIContentEdgeInsets.left">30</double>
-						<double key="IBUIContentEdgeInsets.right">0.0</double>
-						<string key="IBUIHighlightedTitle">Einstellungen</string>
-						<string key="IBUINormalTitle">Einstellungen</string>
-						<reference key="IBUIHighlightedTitleColor" ref="620430652"/>
-						<reference key="IBUINormalTitleColor" ref="908317802"/>
-						<reference key="IBUIHighlightedBackgroundImage" ref="565844279"/>
-						<reference key="IBUINormalBackgroundImage" ref="233112823"/>
-						<reference key="IBUIFontDescription" ref="794383809"/>
-						<reference key="IBUIFont" ref="1036125735"/>
-					</object>
-					<object class="IBUIButton" id="155639623">
-						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{115, 668}, {541, 52}}</string>
-						<reference key="NSSuperview" ref="191373211"/>
-						<string key="NSReuseIdentifierKey">_NS:9</string>
-						<bool key="IBUIOpaque">NO</bool>
-						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<int key="IBUIContentVerticalAlignment">0</int>
-						<double key="IBUIContentEdgeInsets.top">0.0</double>
-						<double key="IBUIContentEdgeInsets.bottom">0.0</double>
-						<double key="IBUIContentEdgeInsets.left">30</double>
-						<double key="IBUIContentEdgeInsets.right">0.0</double>
-						<string key="IBUINormalTitle">Personalisierte Workouts</string>
-						<reference key="IBUIHighlightedTitleColor" ref="620430652"/>
-						<reference key="IBUINormalTitleColor" ref="908317802"/>
-						<reference key="IBUIHighlightedBackgroundImage" ref="565844279"/>
-						<reference key="IBUINormalBackgroundImage" ref="233112823"/>
-						<reference key="IBUIFontDescription" ref="794383809"/>
-						<reference key="IBUIFont" ref="1036125735"/>
-					</object>
-					<object class="IBUIButton" id="29294704">
-						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{115, 720}, {541, 52}}</string>
-						<reference key="NSSuperview" ref="191373211"/>
-						<string key="NSReuseIdentifierKey">_NS:9</string>
-						<bool key="IBUIOpaque">NO</bool>
-						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<int key="IBUIContentVerticalAlignment">0</int>
-						<double key="IBUIContentEdgeInsets.top">0.0</double>
-						<double key="IBUIContentEdgeInsets.bottom">0.0</double>
-						<double key="IBUIContentEdgeInsets.left">30</double>
-						<double key="IBUIContentEdgeInsets.right">0.0</double>
-						<string key="IBUINormalTitle">Selbst erstellte Wokouts</string>
-						<reference key="IBUIHighlightedTitleColor" ref="620430652"/>
-						<reference key="IBUINormalTitleColor" ref="908317802"/>
-						<reference key="IBUIHighlightedBackgroundImage" ref="565844279"/>
-						<reference key="IBUINormalBackgroundImage" ref="233112823"/>
-						<reference key="IBUIFontDescription" ref="794383809"/>
-						<reference key="IBUIFont" ref="1036125735"/>
-					</object>
-					<object class="IBUIButton" id="488464887">
-						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{114, 876}, {541, 52}}</string>
-						<reference key="NSSuperview" ref="191373211"/>
-						<string key="NSReuseIdentifierKey">_NS:9</string>
-						<bool key="IBUIOpaque">NO</bool>
-						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<int key="IBUIContentVerticalAlignment">0</int>
-						<double key="IBUIContentEdgeInsets.top">0.0</double>
-						<double key="IBUIContentEdgeInsets.bottom">0.0</double>
-						<double key="IBUIContentEdgeInsets.left">30</double>
-						<double key="IBUIContentEdgeInsets.right">0.0</double>
-						<string key="IBUINormalTitle">Über uns</string>
-						<reference key="IBUIHighlightedTitleColor" ref="620430652"/>
-						<reference key="IBUINormalTitleColor" ref="908317802"/>
-						<reference key="IBUINormalTitleShadowColor" ref="763177747"/>
-						<object class="NSCustomResource" key="IBUIHighlightedBackgroundImage">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">home_nav_bot_hover_iPad.png</string>
-						</object>
-						<object class="NSCustomResource" key="IBUINormalBackgroundImage">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">home_nav_bot_iPad.png</string>
-						</object>
-						<reference key="IBUIFontDescription" ref="794383809"/>
-						<reference key="IBUIFont" ref="1036125735"/>
-					</object>
-					<object class="IBUIImageView" id="642485106">
-						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{60, 200}, {642, 349}}</string>
-						<reference key="NSSuperview" ref="191373211"/>
-						<reference key="NSNextKeyView" ref="396961405"/>
-						<string key="NSReuseIdentifierKey">_NS:9</string>
-						<bool key="IBUIUserInteractionEnabled">NO</bool>
-						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<object class="NSCustomResource" key="IBUIImage">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">lady_iPad.png</string>
-						</object>
-					</object>
 					<object class="IBUIView" id="396961405">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
@@ -328,7 +146,10 @@
 								<string type="base64-UTF8" key="IBUIText">RGVpbiBrb3N0ZW5sb3NlcyBXb3Jrb3V0IHdpcmQgaGVydW50ZXJnZWxhZGVuIHVuZCBhdWYgZGVpbmVt
 IEdlcsOkdCBnZXNwZWljaGVydC4gDUplIG5hY2ggUXVhbGl0w6R0IGRlaW5lciBJbnRlcm5ldHZlcmJp
 bmR1bmcga2FubiBkaWVzIGVpbmlnZSBNaW51dGVuIGRhdWVybi4NA</string>
-								<reference key="IBUITextColor" ref="620430652"/>
+								<object class="NSColor" key="IBUITextColor" id="620430652">
+									<int key="NSColorSpace">3</int>
+									<bytes key="NSWhite">MQA</bytes>
+								</object>
 								<int key="IBUITextAlignment">1</int>
 								<object class="IBUITextInputTraits" key="IBUITextInputTraits">
 									<int key="IBUIAutocapitalizationType">2</int>
@@ -382,7 +203,10 @@ bmR1bmcga2FubiBkaWVzIGVpbmlnZSBNaW51dGVuIGRhdWVybi4NA</string>
 								<string key="IBUINormalTitle">Abbrechen</string>
 								<reference key="IBUIHighlightedTitleColor" ref="620430652"/>
 								<reference key="IBUINormalTitleColor" ref="620430652"/>
-								<reference key="IBUINormalTitleShadowColor" ref="763177747"/>
+								<object class="NSColor" key="IBUINormalTitleShadowColor" id="763177747">
+									<int key="NSColorSpace">3</int>
+									<bytes key="NSWhite">MC41AA</bytes>
+								</object>
 								<object class="NSCustomResource" key="IBUIHighlightedBackgroundImage">
 									<string key="NSClassName">NSImage</string>
 									<string key="NSResourceName">btn_portrait_hover_iPad.png</string>
@@ -412,6 +236,182 @@ bmR1bmcga2FubiBkaWVzIGVpbmlnZSBNaW51dGVuIGRhdWVybi4NA</string>
 							<string key="IBUIColorCocoaTouchKeyPath">darkTextColor</string>
 						</object>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+					</object>
+					<object class="IBUIButton" id="544023961">
+						<reference key="NSNextResponder" ref="191373211"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{115, 616}, {541, 52}}</string>
+						<reference key="NSSuperview" ref="191373211"/>
+						<reference key="NSNextKeyView" ref="79842793"/>
+						<string key="NSReuseIdentifierKey">_NS:9</string>
+						<bool key="IBUIOpaque">NO</bool>
+						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+						<int key="IBUIContentVerticalAlignment">0</int>
+						<double key="IBUIContentEdgeInsets.top">0.0</double>
+						<double key="IBUIContentEdgeInsets.bottom">0.0</double>
+						<double key="IBUIContentEdgeInsets.left">30</double>
+						<double key="IBUIContentEdgeInsets.right">0.0</double>
+						<string key="IBUINormalTitle">Schnelle Workouts</string>
+						<reference key="IBUIHighlightedTitleColor" ref="620430652"/>
+						<object class="NSColor" key="IBUINormalTitleColor" id="908317802">
+							<int key="NSColorSpace">6</int>
+							<string key="NSCatalogName">System</string>
+							<string key="NSColorName">alternateSelectedControlTextColor</string>
+							<reference key="NSColor" ref="620430652"/>
+						</object>
+						<object class="NSCustomResource" key="IBUIHighlightedBackgroundImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">home_nav_top_hover_iPad.png</string>
+						</object>
+						<object class="NSCustomResource" key="IBUINormalBackgroundImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">home_nav_top_iPad.png</string>
+						</object>
+						<object class="IBUIFontDescription" key="IBUIFontDescription" id="794383809">
+							<int key="type">2</int>
+							<double key="pointSize">20</double>
+						</object>
+						<object class="NSFont" key="IBUIFont" id="1036125735">
+							<string key="NSName">Helvetica-Bold</string>
+							<double key="NSSize">20</double>
+							<int key="NSfFlags">16</int>
+						</object>
+					</object>
+					<object class="IBUIButton" id="409424643">
+						<reference key="NSNextResponder" ref="191373211"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{114, 824}, {541, 52}}</string>
+						<reference key="NSSuperview" ref="191373211"/>
+						<reference key="NSNextKeyView" ref="488464887"/>
+						<string key="NSReuseIdentifierKey">_NS:9</string>
+						<bool key="IBUIOpaque">NO</bool>
+						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+						<int key="IBUIContentVerticalAlignment">0</int>
+						<double key="IBUIContentEdgeInsets.top">0.0</double>
+						<double key="IBUIContentEdgeInsets.bottom">0.0</double>
+						<double key="IBUIContentEdgeInsets.left">30</double>
+						<double key="IBUIContentEdgeInsets.right">0.0</double>
+						<string key="IBUINormalTitle">Tipps und Ratschläge</string>
+						<reference key="IBUIHighlightedTitleColor" ref="620430652"/>
+						<reference key="IBUINormalTitleColor" ref="908317802"/>
+						<reference key="IBUINormalTitleShadowColor" ref="763177747"/>
+						<object class="NSCustomResource" key="IBUIHighlightedBackgroundImage" id="565844279">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">home_nav_mid_hover_iPad.png</string>
+						</object>
+						<object class="NSCustomResource" key="IBUINormalBackgroundImage" id="233112823">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">home_nav_mid_iPad.png</string>
+						</object>
+						<reference key="IBUIFontDescription" ref="794383809"/>
+						<reference key="IBUIFont" ref="1036125735"/>
+					</object>
+					<object class="IBUIButton" id="79842793">
+						<reference key="NSNextResponder" ref="191373211"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{115, 772}, {541, 52}}</string>
+						<reference key="NSSuperview" ref="191373211"/>
+						<reference key="NSNextKeyView" ref="409424643"/>
+						<string key="NSReuseIdentifierKey">_NS:9</string>
+						<bool key="IBUIOpaque">NO</bool>
+						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+						<int key="IBUIContentVerticalAlignment">0</int>
+						<double key="IBUIContentEdgeInsets.top">0.0</double>
+						<double key="IBUIContentEdgeInsets.bottom">0.0</double>
+						<double key="IBUIContentEdgeInsets.left">30</double>
+						<double key="IBUIContentEdgeInsets.right">0.0</double>
+						<string key="IBUIHighlightedTitle">Einstellungen</string>
+						<string key="IBUINormalTitle">Einstellungen</string>
+						<reference key="IBUIHighlightedTitleColor" ref="620430652"/>
+						<reference key="IBUINormalTitleColor" ref="908317802"/>
+						<reference key="IBUIHighlightedBackgroundImage" ref="565844279"/>
+						<reference key="IBUINormalBackgroundImage" ref="233112823"/>
+						<reference key="IBUIFontDescription" ref="794383809"/>
+						<reference key="IBUIFont" ref="1036125735"/>
+					</object>
+					<object class="IBUIButton" id="155639623">
+						<reference key="NSNextResponder" ref="191373211"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{115, 668}, {541, 52}}</string>
+						<reference key="NSSuperview" ref="191373211"/>
+						<string key="NSReuseIdentifierKey">_NS:9</string>
+						<bool key="IBUIOpaque">NO</bool>
+						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+						<int key="IBUIContentVerticalAlignment">0</int>
+						<double key="IBUIContentEdgeInsets.top">0.0</double>
+						<double key="IBUIContentEdgeInsets.bottom">0.0</double>
+						<double key="IBUIContentEdgeInsets.left">30</double>
+						<double key="IBUIContentEdgeInsets.right">0.0</double>
+						<string key="IBUINormalTitle">Personalisierte Workouts</string>
+						<reference key="IBUIHighlightedTitleColor" ref="620430652"/>
+						<reference key="IBUINormalTitleColor" ref="908317802"/>
+						<reference key="IBUIHighlightedBackgroundImage" ref="565844279"/>
+						<reference key="IBUINormalBackgroundImage" ref="233112823"/>
+						<reference key="IBUIFontDescription" ref="794383809"/>
+						<reference key="IBUIFont" ref="1036125735"/>
+					</object>
+					<object class="IBUIButton" id="29294704">
+						<reference key="NSNextResponder" ref="191373211"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{115, 720}, {541, 52}}</string>
+						<reference key="NSSuperview" ref="191373211"/>
+						<string key="NSReuseIdentifierKey">_NS:9</string>
+						<bool key="IBUIOpaque">NO</bool>
+						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+						<int key="IBUIContentVerticalAlignment">0</int>
+						<double key="IBUIContentEdgeInsets.top">0.0</double>
+						<double key="IBUIContentEdgeInsets.bottom">0.0</double>
+						<double key="IBUIContentEdgeInsets.left">30</double>
+						<double key="IBUIContentEdgeInsets.right">0.0</double>
+						<string key="IBUINormalTitle">Selbst erstellte Workouts</string>
+						<reference key="IBUIHighlightedTitleColor" ref="620430652"/>
+						<reference key="IBUINormalTitleColor" ref="908317802"/>
+						<reference key="IBUIHighlightedBackgroundImage" ref="565844279"/>
+						<reference key="IBUINormalBackgroundImage" ref="233112823"/>
+						<reference key="IBUIFontDescription" ref="794383809"/>
+						<reference key="IBUIFont" ref="1036125735"/>
+					</object>
+					<object class="IBUIButton" id="488464887">
+						<reference key="NSNextResponder" ref="191373211"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{114, 876}, {541, 52}}</string>
+						<reference key="NSSuperview" ref="191373211"/>
+						<string key="NSReuseIdentifierKey">_NS:9</string>
+						<bool key="IBUIOpaque">NO</bool>
+						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+						<int key="IBUIContentVerticalAlignment">0</int>
+						<double key="IBUIContentEdgeInsets.top">0.0</double>
+						<double key="IBUIContentEdgeInsets.bottom">0.0</double>
+						<double key="IBUIContentEdgeInsets.left">30</double>
+						<double key="IBUIContentEdgeInsets.right">0.0</double>
+						<string key="IBUINormalTitle">Über uns</string>
+						<reference key="IBUIHighlightedTitleColor" ref="620430652"/>
+						<reference key="IBUINormalTitleColor" ref="908317802"/>
+						<reference key="IBUINormalTitleShadowColor" ref="763177747"/>
+						<object class="NSCustomResource" key="IBUIHighlightedBackgroundImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">home_nav_bot_hover_iPad.png</string>
+						</object>
+						<object class="NSCustomResource" key="IBUINormalBackgroundImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">home_nav_bot_iPad.png</string>
+						</object>
+						<reference key="IBUIFontDescription" ref="794383809"/>
+						<reference key="IBUIFont" ref="1036125735"/>
+					</object>
+					<object class="IBUIImageView" id="642485106">
+						<reference key="NSNextResponder" ref="191373211"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{60, 200}, {642, 349}}</string>
+						<reference key="NSSuperview" ref="191373211"/>
+						<reference key="NSNextKeyView" ref="396961405"/>
+						<string key="NSReuseIdentifierKey">_NS:9</string>
+						<bool key="IBUIUserInteractionEnabled">NO</bool>
+						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+						<object class="NSCustomResource" key="IBUIImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">lady_iPad.png</string>
+						</object>
 					</object>
 				</array>
 				<string key="NSFrame">{{0, 20}, {768, 1004}}</string>
@@ -704,7 +704,204 @@ bmR1bmcga2FubiBkaWVzIGVpbmlnZSBNaW51dGVuIGRhdWVybi4NA</string>
 			<nil key="sourceID"/>
 			<int key="maxID">47</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes"/>
+		<object class="IBClassDescriber" key="IBDocument.Classes">
+			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
+				<object class="IBPartialClassDescription">
+					<string key="className">CarouselViewDemoViewController</string>
+					<string key="superclassName">UIViewController</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="addMoreExcersices:">id</string>
+						<string key="onClickBack:">id</string>
+						<string key="onClickMove:">id</string>
+						<string key="removeSelectedColumn">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="addMoreExcersices:">
+							<string key="name">addMoreExcersices:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="onClickBack:">
+							<string key="name">onClickBack:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="onClickMove:">
+							<string key="name">onClickMove:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="removeSelectedColumn">
+							<string key="name">removeSelectedColumn</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="_animationSegmentedControl">UISegmentedControl</string>
+						<string key="_removeSelectedButton">UIButton</string>
+						<string key="addMoreButton">UIButton</string>
+						<string key="backgroundLabel">UILabel</string>
+						<string key="bgImageView">UIImageView</string>
+						<string key="carousel">iCarousel</string>
+						<string key="durationLabel">UILabel</string>
+						<string key="moveSegmentControl">UISegmentedControl</string>
+						<string key="navigationBar">UINavigationItem</string>
+						<string key="recoverySegmentControl">UISegmentedControl</string>
+						<string key="totalVideoCountLabel">UILabel</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="_animationSegmentedControl">
+							<string key="name">_animationSegmentedControl</string>
+							<string key="candidateClassName">UISegmentedControl</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_removeSelectedButton">
+							<string key="name">_removeSelectedButton</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="addMoreButton">
+							<string key="name">addMoreButton</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="backgroundLabel">
+							<string key="name">backgroundLabel</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="bgImageView">
+							<string key="name">bgImageView</string>
+							<string key="candidateClassName">UIImageView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="carousel">
+							<string key="name">carousel</string>
+							<string key="candidateClassName">iCarousel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="durationLabel">
+							<string key="name">durationLabel</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="moveSegmentControl">
+							<string key="name">moveSegmentControl</string>
+							<string key="candidateClassName">UISegmentedControl</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="navigationBar">
+							<string key="name">navigationBar</string>
+							<string key="candidateClassName">UINavigationItem</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="recoverySegmentControl">
+							<string key="name">recoverySegmentControl</string>
+							<string key="candidateClassName">UISegmentedControl</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="totalVideoCountLabel">
+							<string key="name">totalVideoCountLabel</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/CarouselViewDemoViewController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">Fitness4MeViewController</string>
+					<string key="superclassName">UIViewController</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="cancelDownloas:">id</string>
+						<string key="navigateToAboutView:">id</string>
+						<string key="navigateToCustomWorkoutListView:">id</string>
+						<string key="navigateToHintstView:">id</string>
+						<string key="navigateToSettingsView:">id</string>
+						<string key="navigateToWorkoutListView:">id</string>
+						<string key="onclickSelfMadeworkout:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="cancelDownloas:">
+							<string key="name">cancelDownloas:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="navigateToAboutView:">
+							<string key="name">navigateToAboutView:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="navigateToCustomWorkoutListView:">
+							<string key="name">navigateToCustomWorkoutListView:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="navigateToHintstView:">
+							<string key="name">navigateToHintstView:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="navigateToSettingsView:">
+							<string key="name">navigateToSettingsView:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="navigateToWorkoutListView:">
+							<string key="name">navigateToWorkoutListView:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="onclickSelfMadeworkout:">
+							<string key="name">onclickSelfMadeworkout:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="SyncView">UIView</string>
+						<string key="activityindicators">UIActivityIndicatorView</string>
+						<string key="fileDownloadProgressView">UIProgressView</string>
+						<string key="hintsAdviceButton">UIButton</string>
+						<string key="lblCompleted">UILabel</string>
+						<string key="viewController">CarouselViewDemoViewController</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="SyncView">
+							<string key="name">SyncView</string>
+							<string key="candidateClassName">UIView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="activityindicators">
+							<string key="name">activityindicators</string>
+							<string key="candidateClassName">UIActivityIndicatorView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="fileDownloadProgressView">
+							<string key="name">fileDownloadProgressView</string>
+							<string key="candidateClassName">UIProgressView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="hintsAdviceButton">
+							<string key="name">hintsAdviceButton</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="lblCompleted">
+							<string key="name">lblCompleted</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="viewController">
+							<string key="name">viewController</string>
+							<string key="candidateClassName">CarouselViewDemoViewController</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/Fitness4MeViewController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">iCarousel</string>
+					<string key="superclassName">UIView</string>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="dataSource">id</string>
+						<string key="delegate">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="dataSource">
+							<string key="name">dataSource</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="delegate">
+							<string key="name">delegate</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/iCarousel.h</string>
+					</object>
+				</object>
+			</array>
+		</object>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBIPadFramework</string>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>

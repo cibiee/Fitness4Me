@@ -65,12 +65,12 @@ static FitnessServerCommunication *sharedState;
             if ([responseString length]>0) {
                 if (completionBlock) completionBlock(responseString);
             }else{
-                [self terminateActivities:NSLocalizedStringWithDefaultValue(@"slowdata", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
+                [self terminateActivities:NSLocalizedStringWithDefaultValue(@"requestError", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
             }
         }];
         [requests setFailedBlock:^{
             //NSError *error = [requests error];
-            [self terminateActivities:NSLocalizedStringWithDefaultValue(@"requestError", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
+            [self terminateActivities:NSLocalizedStringWithDefaultValue(@"slowdata", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
         }];
         [requests startAsynchronous];
     }else{
@@ -100,12 +100,12 @@ static FitnessServerCommunication *sharedState;
                 IsExist = [self Isvalid:responseString];
                 if (completionBlock) completionBlock(IsExist);
             }else{
-                [self terminateActivities:NSLocalizedStringWithDefaultValue(@"slowdata", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:nil];
+                [self terminateActivities:NSLocalizedStringWithDefaultValue(@"requestError", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:nil];
             }
         }];
         [requests setFailedBlock:^{
             //NSError *error = [requests error];
-            [self terminateActivities:NSLocalizedStringWithDefaultValue(@"requestError", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:nil];
+            [self terminateActivities:NSLocalizedStringWithDefaultValue(@"slowdata", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:nil];
         }];
         [requests startAsynchronous];
     }else{
@@ -135,12 +135,12 @@ static FitnessServerCommunication *sharedState;
                 IsExist = [self Isvalid:responseString];
                 if (completionBlock) completionBlock(IsExist);
             }else{
-                [self terminateActivities:NSLocalizedStringWithDefaultValue(@"slowdata", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:nil];
+                [self terminateActivities:NSLocalizedStringWithDefaultValue(@"requestError", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:nil];
             }
         }];
         [requests setFailedBlock:^{
             //NSError *error = [requests error];
-            [self terminateActivities:NSLocalizedStringWithDefaultValue(@"requestError", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:nil];
+            [self terminateActivities:NSLocalizedStringWithDefaultValue(@"slowdata", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:nil];
         }];
         [requests startAsynchronous];
     }else{
@@ -171,12 +171,12 @@ static FitnessServerCommunication *sharedState;
             if ([responseString length]>0) {
                 
             }else{
-                [self terminateActivities:NSLocalizedStringWithDefaultValue(@"slowdata", nil,[Fitness4MeUtils getBundle], nil, nil):nil:signUpView];
+                [self terminateActivities:NSLocalizedStringWithDefaultValue(@"requestError", nil,[Fitness4MeUtils getBundle], nil, nil):nil:signUpView];
             }
         }];
         [requests setFailedBlock:^{
             //NSError *error = [requests error];
-            [self terminateActivities:NSLocalizedStringWithDefaultValue(@"requestError", nil,[Fitness4MeUtils getBundle], nil, nil):nil:signUpView];
+            [self terminateActivities:NSLocalizedStringWithDefaultValue(@"slowdata", nil,[Fitness4MeUtils getBundle], nil, nil):nil:signUpView];
         }];
         [requests startAsynchronous];
     }else{
@@ -209,12 +209,12 @@ static FitnessServerCommunication *sharedState;
                 IsExist = [self Isvalid:responseString];
                 if (completionBlock) completionBlock(IsExist);
             }else{
-                [self terminateActivities:NSLocalizedStringWithDefaultValue(@"slowdata", nil,[Fitness4MeUtils getBundle], nil, nil):nil:nil];
+                [self terminateActivities:NSLocalizedStringWithDefaultValue(@"requestError", nil,[Fitness4MeUtils getBundle], nil, nil):nil:nil];
             }
         }];
         [requests setFailedBlock:^{
             //NSError *error = [requests error];
-            [self terminateActivities:NSLocalizedStringWithDefaultValue(@"requestError", nil,[Fitness4MeUtils getBundle], nil, nil):nil:nil];
+            [self terminateActivities:NSLocalizedStringWithDefaultValue(@"slowdata", nil,[Fitness4MeUtils getBundle], nil, nil):nil:nil];
         }];
         [requests startAsynchronous];
     }else{
@@ -245,11 +245,11 @@ static FitnessServerCommunication *sharedState;
                 IsExist = [self IsUpdated:responseString];
                 if (completionBlock) completionBlock(IsExist);
             }else{
-                [self terminateActivities:NSLocalizedStringWithDefaultValue(@"slowdata", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
+                [self terminateActivities:NSLocalizedStringWithDefaultValue(@"requestError", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
             }
         }];
         [requests setFailedBlock:^{
-            [self terminateActivities:NSLocalizedStringWithDefaultValue(@"requestError", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
+            [self terminateActivities:NSLocalizedStringWithDefaultValue(@"slowdata", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
             
         }];
         [requests startAsynchronous];
@@ -285,11 +285,11 @@ static FitnessServerCommunication *sharedState;
                 IsExist = [self Isvalid:responseString];
                 if (completionBlock) completionBlock(IsExist);
             }else{
-                [self terminateActivities:NSLocalizedStringWithDefaultValue(@"slowdata", nil,[Fitness4MeUtils getBundle], nil, nil):nil:signUpView];
+                [self terminateActivities:NSLocalizedStringWithDefaultValue(@"requestError", nil,[Fitness4MeUtils getBundle], nil, nil):nil:signUpView];
             }
         }];
         [requests setFailedBlock:^{
-            [self terminateActivities:NSLocalizedStringWithDefaultValue(@"requestError", nil,[Fitness4MeUtils getBundle], nil, nil):nil:signUpView];
+            [self terminateActivities:NSLocalizedStringWithDefaultValue(@"slowdata", nil,[Fitness4MeUtils getBundle], nil, nil):nil:signUpView];
             
         }];
         [requests startAsynchronous];
@@ -317,12 +317,12 @@ static FitnessServerCommunication *sharedState;
             if ([responseString length]>0) {
                 if (completionBlock) completionBlock(responseString);
             }else{
-                [self terminateActivities:NSLocalizedStringWithDefaultValue(@"slowdata", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
+                [self terminateActivities:NSLocalizedStringWithDefaultValue(@"requestError", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
             }
         }];
         [requests setFailedBlock:^{
             //NSError *error = [requests error];
-            [self terminateActivities:NSLocalizedStringWithDefaultValue(@"requestError", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
+            [self terminateActivities:NSLocalizedStringWithDefaultValue(@"slowdata", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
         }];
         [requests startAsynchronous];
     }else{
@@ -434,12 +434,12 @@ static FitnessServerCommunication *sharedState;
                 workoutID =[self parseWorkoutID:responseString];
                 if (completionBlock) completionBlock(workoutID);
             }else{
-                [self terminateActivities:NSLocalizedStringWithDefaultValue(@"slowdata", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
+                [self terminateActivities:NSLocalizedStringWithDefaultValue(@"requestError", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
             }
         }];
         [requests setFailedBlock:^{
             //NSError *error = [requests error];
-            [self terminateActivities:NSLocalizedStringWithDefaultValue(@"requestError", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
+            [self terminateActivities:NSLocalizedStringWithDefaultValue(@"slowdata", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
         }];
         [requests startAsynchronous];
     }else{
@@ -470,12 +470,12 @@ static FitnessServerCommunication *sharedState;
                 IsExist=[self Isvalid:responseString];
                 if (completionBlock) completionBlock(IsExist);
             }else{
-                [self terminateActivities:NSLocalizedStringWithDefaultValue(@"slowdata", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
+                [self terminateActivities:NSLocalizedStringWithDefaultValue(@"requestError", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
             }
         }];
         [requests setFailedBlock:^{
             //NSError *error = [requests error];
-            [self terminateActivities:NSLocalizedStringWithDefaultValue(@"requestError", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
+            [self terminateActivities:NSLocalizedStringWithDefaultValue(@"slowdata", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
         }];
         [requests startAsynchronous];
     }else{
@@ -506,18 +506,16 @@ static FitnessServerCommunication *sharedState;
                 [self parseCustomWorkoutList:responseString];
                 if (completionBlock) completionBlock(responseString);
             }else{
-                // [self terminateActivities:NSLocalizedStringWithDefaultValue(@"slowdata", nil):nil:nil];
+                [self terminateActivities:NSLocalizedStringWithDefaultValue(@"requestError", nil,[Fitness4MeUtils getBundle], nil, nil):nil:nil];
             }
         }];
         [requests setFailedBlock:^{
             //NSError *error = [requests error];
-            //[self terminateActivities:NSLocalizedStringWithDefaultValue(@"requestError",nil):nil:nil];
-            
+            [self terminateActivities:NSLocalizedStringWithDefaultValue(@"slowdata", nil,[Fitness4MeUtils getBundle], nil, nil):nil:nil];
         }];
         [requests startAsynchronous];
     }else{
-        //  [self terminateActivities:NSLocalizedStringWithDefaultValue(@"NoInternetMessage", nil):nil:nil];
-        
+        [self terminateActivities:NSLocalizedStringWithDefaultValue(@"NoInternetMessage", nil,[Fitness4MeUtils getBundle], nil, nil):nil:nil];
     }
 }
 
@@ -544,18 +542,16 @@ static FitnessServerCommunication *sharedState;
                 [self parseSelfMadeWorkoutList:responseString];
                 if (completionBlock) completionBlock(responseString);
             }else{
-                // [self terminateActivities:NSLocalizedStringWithDefaultValue(@"slowdata", nil):nil:nil];
+                [self terminateActivities:NSLocalizedStringWithDefaultValue(@"requestError", nil,[Fitness4MeUtils getBundle], nil, nil):nil:nil];
             }
         }];
         [requests setFailedBlock:^{
             //NSError *error = [requests error];
-            //[self terminateActivities:NSLocalizedStringWithDefaultValue(@"requestError",nil):nil:nil];
-            
+            [self terminateActivities:NSLocalizedStringWithDefaultValue(@"slowdata", nil,[Fitness4MeUtils getBundle], nil, nil):nil:nil];
         }];
         [requests startAsynchronous];
     }else{
-        //  [self terminateActivities:NSLocalizedStringWithDefaultValue(@"NoInternetMessage", nil):nil:nil];
-        
+        [self terminateActivities:NSLocalizedStringWithDefaultValue(@"NoInternetMessage", nil,[Fitness4MeUtils getBundle], nil, nil):nil:nil];
     }
 }
 
@@ -588,12 +584,12 @@ static FitnessServerCommunication *sharedState;
                 
                 if (completionBlock) completionBlock(responseString);
             }else{
-                [self terminateActivities:NSLocalizedStringWithDefaultValue(@"slowdata", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
+                [self terminateActivities:NSLocalizedStringWithDefaultValue(@"requestError", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
             }
         }];
         [requests setFailedBlock:^{
             //NSError *error = [requests error];
-            [self terminateActivities:NSLocalizedStringWithDefaultValue(@"requestError", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
+            [self terminateActivities:NSLocalizedStringWithDefaultValue(@"slowdata", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
         }];
         [requests startAsynchronous];
     }else{
@@ -645,12 +641,12 @@ static FitnessServerCommunication *sharedState;
                 workoutsID =[self parseWorkoutID:responseString];
                 if (completionBlock) completionBlock(workoutsID);
             }else{
-                [self terminateActivities:NSLocalizedStringWithDefaultValue(@"slowdata", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
+                [self terminateActivities:NSLocalizedStringWithDefaultValue(@"requestError", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
             }
         }];
         [requests setFailedBlock:^{
             //NSError *error = [requests error];
-            [self terminateActivities:NSLocalizedStringWithDefaultValue(@"requestError", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
+            [self terminateActivities:NSLocalizedStringWithDefaultValue(@"slowdata", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
         }];
         [requests startAsynchronous];
     }else{
@@ -682,12 +678,12 @@ static FitnessServerCommunication *sharedState;
                 IsExist=[self Isvalid:responseString];
                 if (completionBlock) completionBlock(IsExist);
             }else{
-                [self terminateActivities:NSLocalizedStringWithDefaultValue(@"slowdata", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
+                [self terminateActivities:NSLocalizedStringWithDefaultValue(@"requestError", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
             }
         }];
         [requests setFailedBlock:^{
             //NSError *error = [requests error];
-            [self terminateActivities:NSLocalizedStringWithDefaultValue(@"requestError", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
+            [self terminateActivities:NSLocalizedStringWithDefaultValue(@"slowdata", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
         }];
         [requests startAsynchronous];
     }else{
@@ -718,12 +714,12 @@ static FitnessServerCommunication *sharedState;
                 
                 if (completionBlock) completionBlock(responseString);
             }else{
-                [self terminateActivities:NSLocalizedStringWithDefaultValue(@"slowdata", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
+                [self terminateActivities:NSLocalizedStringWithDefaultValue(@"requestError", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
             }
         }];
         [requests setFailedBlock:^{
             //NSError *error = [requests error];
-            [self terminateActivities:NSLocalizedStringWithDefaultValue(@"requestError", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
+            [self terminateActivities:NSLocalizedStringWithDefaultValue(@"slowdata", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
         }];
         [requests startAsynchronous];
     }else{
@@ -755,12 +751,12 @@ static FitnessServerCommunication *sharedState;
                 
                 if (completionBlock) completionBlock(responseString);
             }else{
-                [self terminateActivities:NSLocalizedStringWithDefaultValue(@"slowdata", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
+                [self terminateActivities:NSLocalizedStringWithDefaultValue(@"requestError", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
             }
         }];
         [requests setFailedBlock:^{
             //NSError *error = [requests error];
-            [self terminateActivities:NSLocalizedStringWithDefaultValue(@"requestError", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
+            [self terminateActivities:NSLocalizedStringWithDefaultValue(@"slowdata", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
         }];
         [requests startAsynchronous];
     }else{
@@ -789,12 +785,12 @@ static FitnessServerCommunication *sharedState;
                 
                 if (completionBlock) completionBlock(responseString);
             }else{
-                [self terminateActivities:NSLocalizedStringWithDefaultValue(@"slowdata", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
+                [self terminateActivities:NSLocalizedStringWithDefaultValue(@"requestError", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
             }
         }];
         [requests setFailedBlock:^{
             //NSError *error = [requests error];
-            [self terminateActivities:NSLocalizedStringWithDefaultValue(@"requestError", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
+            [self terminateActivities:NSLocalizedStringWithDefaultValue(@"slowdata", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
         }];
         [requests startAsynchronous];
     }else{
@@ -824,16 +820,16 @@ static FitnessServerCommunication *sharedState;
                 
                 if (completionBlock) completionBlock(canCreate);
             }else{
-                [self terminateActivities:NSLocalizedStringWithDefaultValue(@"slowdata", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
+                //[self terminateActivities:NSLocalizedStringWithDefaultValue(@"slowdata", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
             }
         }];
         [requests setFailedBlock:^{
             //NSError *error = [requests error];
-            [self terminateActivities:NSLocalizedStringWithDefaultValue(@"requestError", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
+            //[self terminateActivities:NSLocalizedStringWithDefaultValue(@"requestError", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
         }];
         [requests startAsynchronous];
     }else{
-        [self terminateActivities:NSLocalizedStringWithDefaultValue(@"NoInternetMessage", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
+        //[self terminateActivities:NSLocalizedStringWithDefaultValue(@"NoInternetMessage", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
     }
 }
 
@@ -861,16 +857,16 @@ static FitnessServerCommunication *sharedState;
                     
                     if (completionBlock) completionBlock(responseString);
                 }else{
-                    [self terminateActivities:NSLocalizedStringWithDefaultValue(@"slowdata", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
+                   // [self terminateActivities:NSLocalizedStringWithDefaultValue(@"slowdata", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
                 }
             }];
             [requests setFailedBlock:^{
                 //NSError *error = [requests error];
-                [self terminateActivities:NSLocalizedStringWithDefaultValue(@"requestError", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
+               // [self terminateActivities:NSLocalizedStringWithDefaultValue(@"requestError", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
             }];
             [requests startAsynchronous];
         }else{
-            [self terminateActivities:NSLocalizedStringWithDefaultValue(@"NoInternetMessage", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
+           // [self terminateActivities:NSLocalizedStringWithDefaultValue(@"NoInternetMessage", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
         }
     
 }
@@ -951,6 +947,8 @@ static FitnessServerCommunication *sharedState;
             NSString *response = [request responseString];
             if ([response length]>0)
             {
+                
+                
                 NSMutableArray *object = [response JSONValue];
                 NSMutableArray *itemsarray =[object valueForKey:@"items"];
                 for (int i=0; i<[itemsarray count]; i++)
@@ -959,10 +957,10 @@ static FitnessServerCommunication *sharedState;
                 }
             }else
             {
-                [self terminateActivities:NSLocalizedStringWithDefaultValue(@"slowdata", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];            }
+                [self terminateActivities:NSLocalizedStringWithDefaultValue(@"requestError", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];            }
         }else
         {
-            [self terminateActivities:NSLocalizedStringWithDefaultValue(@"requestError", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
+            [self terminateActivities:NSLocalizedStringWithDefaultValue(@"slowdata", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
         }
     }else
     {
@@ -1468,6 +1466,7 @@ int excersiceIntroCount=0,excersiceMainCount=0,excersiceOtherCount=0;
     NSUserDefaults *userInfo =[NSUserDefaults standardUserDefaults];
     NSString *canCreate=[[NSString alloc]init];
     NSString *isMember=[[NSString alloc]init];
+     NSString *hasFullPurchase=[[NSString alloc]init];
     NSMutableArray *object = [responseString JSONValue];
     NSMutableArray *itemsarray =[object valueForKey:@"items"];
     for (int i=0; i<[itemsarray count]; i++) {
@@ -1487,8 +1486,16 @@ int excersiceIntroCount=0,excersiceMainCount=0,excersiceOtherCount=0;
         else if ([[[itemsarray objectAtIndex:i] valueForKey:@"member"]intValue] ==1) {
             isMember =@"true";
         }
+        
+        if ([[[itemsarray objectAtIndex:i] valueForKey:@"fullpurchase"]intValue] ==0) {
+            hasFullPurchase =@"false";
+        }
+        else if ([[[itemsarray objectAtIndex:i] valueForKey:@"fullpurchase"]intValue] ==1) {
+            hasFullPurchase =@"true";
+        }
     }
     [userInfo setObject:isMember forKey:@"isMember"];
+    [userInfo setObject:hasFullPurchase forKey:@"hasMadeFullPurchase"];
     
     return canCreate;
 }

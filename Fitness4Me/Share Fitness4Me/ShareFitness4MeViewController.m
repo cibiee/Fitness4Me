@@ -7,6 +7,7 @@
 //
 
 #import "ShareFitness4MeViewController.h"
+#import "Fitness4MeAppDelegate.h"
 
 
 @implementation ShareFitness4MeViewController
@@ -39,13 +40,27 @@
     slownetView .backgroundColor =[UIColor clearColor];
     [self InitializeView];
     
+    
     static NSString* kApiKey = @"174856069322289";
+
     
-    // Initialize Facebook
-    permissions = [[NSArray alloc] initWithObjects:@"offline_access", @"read_stream", @"publish_stream", nil];
+    permissions =  [[NSArray arrayWithObjects:@"publish_stream",nil] retain];
     
-    facebook = [[Facebook alloc] initWithAppId:kApiKey andDelegate:self];
+    Fitness4MeAppDelegate *theAppDelegate = (Fitness4MeAppDelegate *)[[UIApplication sharedApplication]delegate];
     
+    //Asking for permission
+    theAppDelegate = (Fitness4MeAppDelegate *)[[UIApplication sharedApplication] delegate];
+    theAppDelegate.facebook = [[Facebook alloc] initWithAppId:kApiKey andDelegate:self];
+     //Facebook *fb = [theAppDelegate facebook];
+    //[fb  authorize:permissions];
+    
+    facebook= [theAppDelegate facebook];
+      // Initialize Facebook
+   // permissions = [[NSArray alloc] initWithObjects:@"offline_access", @"read_stream", @"publish_stream", nil];
+    
+   // facebook = [[Facebook alloc] initWithAppId:kApiKey andDelegate:self];
+    //self hand
+   // [facebook authorize:permissions];
     // Check and retrieve authorization information
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if ([defaults objectForKey:@"FBAccessTokenKey"] && [defaults objectForKey:@"FBExpirationDateKey"]) {
@@ -67,6 +82,8 @@
 
 - (void)showImage
 {
+   // self.imageUrl=@"http://www.fitness4.me/public/images/logo.jpg";
+   // imageName=@"logo.jpg";
     if ([Fitness4MeUtils isReachable]) {
         [Fitness4MeUtils createDirectoryatPath:dataPath];
         storeURL= [dataPath stringByAppendingPathComponent :imageName];
@@ -159,7 +176,7 @@
 
 -(void)navigateToHome
 {
-    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"Fitness4.me" message:NSLocalizedStringWithDefaultValue(@"ExitMsg", nil,[Fitness4MeUtils getBundle], nil, nil)
+    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"fitness4.me" message:NSLocalizedStringWithDefaultValue(@"ExitMsg", nil,[Fitness4MeUtils getBundle], nil, nil)
                                                        delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
     [alertview show];
     [UIView beginAnimations:@"" context:nil];
@@ -204,7 +221,7 @@
             NSString *pageLink = @"http://fitness4.me/"; // replace it with yours
             NSString *fbPagelink = @"https://www.facebook.com/fitness4.me"; // replate it with yours
             [controller setInitialText:shareAppMessageTextView.text];
-            [controller addImage: excersiceImageHolder.image];
+            [controller addImage: logoImageHolder.image];
             [controller  addURL:[NSURL URLWithString:pageLink]];
             [controller  addURL:[NSURL URLWithString:fbPagelink]];
             [controller setEditing:NO];
@@ -244,7 +261,8 @@
 -(IBAction)shareAppOnFacebook :(id)sender{
     BOOL isReachable =[Fitness4MeUtils isReachable];
     if (isReachable){
-        [self login];
+      
+    [self login];
     }
     else {
         [Fitness4MeUtils showAlert:NSLocalizedStringWithDefaultValue(@"NoInternetMessage", nil,[Fitness4MeUtils getBundle], nil, nil)];
@@ -376,7 +394,7 @@
 - (void)apiDialogFeedUser {
     
     NSString *msg =shareAppMessageTextView.text;
-    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"Fitness4.me", @"name",msg, @"description",@"http://fitness4.me/", @"link",imageUrl, @"picture",nil];
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"fitness4.me", @"name",msg, @"description",@"http://fitness4.me/", @"link",@"http://www.fitness4.me/public/images/logofitness.jpg", @"picture",nil];
     [facebook requestWithGraphPath:@"me/feed" andParams:params andHttpMethod:@"POST" andDelegate:self];
 }
 

@@ -571,7 +571,7 @@
 
 -(IBAction)onClickdelete:(id)sender{
     self.s= [sender tag];
-    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"Fitness4.me" message:NSLocalizedStringWithDefaultValue(@"deleteWorkout", nil,[Fitness4MeUtils getBundle], nil, nil)
+    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"fitness4.me" message:NSLocalizedStringWithDefaultValue(@"deleteWorkout", nil,[Fitness4MeUtils getBundle], nil, nil)
     delegate:self cancelButtonTitle:@"ok" otherButtonTitles:@"cancel", nil];
     [alertview show];
 }

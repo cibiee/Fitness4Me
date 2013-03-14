@@ -14,8 +14,8 @@
 +(NSString*)GetURlPath
 {
     
-    NSString *UrlPath =[[NSString alloc]init];
-   NSString *filePath=[[NSBundle mainBundle]pathForResource:@"Config" ofType:@"plist"];
+NSString *UrlPath =[[NSString alloc]init];
+NSString *filePath=[[NSBundle mainBundle]pathForResource:@"Config" ofType:@"plist"];
 
 if( [[NSFileManager defaultManager]fileExistsAtPath:filePath] )
 {

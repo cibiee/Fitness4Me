@@ -208,7 +208,7 @@ NSString *letters = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345
         [self.myQueue setDelegate:self];
         [self.myQueue setShowAccurateProgress:YES];
         [self.myQueue setRequestDidFinishSelector:@selector(requestFinisheds:)];
-        NSLog([excersiceList imageUrl]);
+      //  NSLog([excersiceList imageUrl]);
         ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:[[excersiceList imageUrl]stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
         [request setDownloadDestinationPath:storeURL];
         [request setDelegate:self];
@@ -406,7 +406,7 @@ else{
 
 -(void)showAlertwithMsg:(NSString*)message
 {
-    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"Fitness4.me" message:message
+    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"fitness4.me" message:message
                                                        delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     [alertview show];
     [UIView beginAnimations:@"" context:nil];

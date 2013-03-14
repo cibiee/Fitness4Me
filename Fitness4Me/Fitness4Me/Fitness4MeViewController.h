@@ -22,6 +22,8 @@
 {
      GADBannerView *bannerView_;
     IBOutlet UIButton *hintsAdviceButton;
+     IBOutlet UIImageView *ladyImageView;
+    IBOutlet UIView *buttonContainerView;
     NSString *dataPath ;
     NSString* remainisgDays;
     IBOutlet UIView *SyncView;

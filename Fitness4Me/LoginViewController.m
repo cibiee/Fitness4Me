@@ -46,8 +46,9 @@
 {
     [self.navigationController setNavigationBarHidden:YES animated:YES];
     [acceptAgreementView removeFromSuperview];
-    [[UIApplication sharedApplication]  registerForRemoteNotificationTypes:
-     (UIRemoteNotificationTypeAlert)];
+    [[UIApplication sharedApplication]  registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert|
+                                                                            UIRemoteNotificationTypeBadge |
+                                                                            UIRemoteNotificationTypeSound)];
     [super viewDidLoad];
     [self setInitials];
     
@@ -320,12 +321,15 @@
         } onError:^(NSError *error) {
             
         }];
+        
+        [self saveUserDetails:userLevel];
         [self removeActivities];
         [self saveUserToDatabase:userLevel];
-        [self saveUserDetails:userLevel];
+        
         [self updateData];
+
         [self navigateToWorkoutList];
-    }
+            }
     
 }
 

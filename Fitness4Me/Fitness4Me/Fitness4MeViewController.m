@@ -34,6 +34,28 @@
 
 #pragma mark - View lifecycle
 
+-(void)viewWillAppear:(BOOL)animated{
+  
+    [self .navigationController setNavigationBarHidden:YES animated:NO];
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+    {
+        CGSize result = [[UIScreen mainScreen] bounds].size;
+        if(result.height == 480)
+        {
+            // iPhone Classic
+        }
+        if(result.height == 568)
+        {
+            buttonContainerView.frame=CGRectMake(20, 280, 280, 235);
+            ladyImageView.frame=CGRectMake(20, 80, 275, 150);
+        }
+    }
+
+    [super viewWillAppear:animated];
+
+    
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -41,13 +63,16 @@
     SyncView.layer.cornerRadius =14;
     SyncView.layer.borderWidth = 2;
     SyncView.layer.borderColor = [UIColor whiteColor].CGColor;
-    
+    [fileDownloadProgressView setHidden:NO];
+    fileDownloadProgressView.progress = (0 / 100);
     [self freeVideoDownload];
     NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
     NSString *membershipPurchase =[userinfo objectForKey:@"yearly"];
    
     if ([membershipPurchase isEqualToString:@"Subscribe"]) {
-        [self showAlertwithMsg:@"Your Fitness4.me membership has expierd. please renew your subscription"];
+      
+           [self showAlertwithMsg:NSLocalizedStringWithDefaultValue(@"membershipExpired", nil,[Fitness4MeUtils getBundle], nil, nil)]; 
+        
     }
     NSArray *VideoArray =[NSArray arrayWithObjects:@"completed_exercise_de.mp4",@"completed_exercise.mp4",@"next_exercise_de.mp4",@"next_exercise.mp4",@"otherside_exercise_de.mp4",@"otherside_exercise.mp4",@"recovery_15_de.mp4",@"recovery_15.mp4",@"recovery_30_de.mp4",@"recovery_30.mp4",@"stop_exercise_de.mp4",@"stop_exercise.mp4",nil];
     
@@ -76,9 +101,8 @@
             }
         }
     }
-     NSString *MembershipPlan =[userinfo stringForKey:@"MembershipPlan"];
-    
-    NSLog(MembershipPlan);
+     
+
        
 }
 
@@ -201,7 +225,7 @@
 
 -(void)showAlertwithMsg:(NSString*)message
 {
-    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"Fitness4.me" message:message
+    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"fitness4.me" message:message
                                                        delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     [alertview show];
     
@@ -363,12 +387,7 @@
     // e.g. self.myOutlet = nil;
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    
-    [self .navigationController setNavigationBarHidden:YES animated:NO];
-    [super viewWillAppear:animated];
-}
+
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -414,7 +433,19 @@
     [self loadStore];
     [self canMakePurchases];
     
-    productIdentifier =@"Yearl";
+    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+    NSString *MembershipPlan =[userinfo stringForKey:@"MembershipPlan"];
+    if ([MembershipPlan isEqualToString:@"1"]) {
+        productIdentifier =@"fitness4.me.monthly";
+    }
+    else
+    {
+        productIdentifier =@"fitness4.me.yearly";
+         NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+        [userinfo setObject:@"100" forKey:@"updatedMembershipPlan"];
+        
+    }
+   
     // SKProduct *validProduct=productIdentifier;
     SKPayment *payment = [SKPayment paymentWithProductIdentifier:productIdentifier];
     [[SKPaymentQueue defaultQueue] addPayment:payment];
@@ -466,9 +497,11 @@
         // [self sendMembership];
         // update the server with the purchased details
           NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+        
         [userinfo setObject:@"true" forKey:@"showDownload"];
         [userinfo setObject:@"dontSubscribe" forKey:@"yearly"];
-        [self sendMembershipPlanID:@"100" membershipStatus:@"true" msg:@"Congratulations!You are now a fitness4.me premium Memebr."];
+        NSString *MembershipPlan =[userinfo stringForKey:@"MembershipPlan"];
+        [self sendMembershipPlanID:MembershipPlan membershipStatus:@"true" msg:NSLocalizedStringWithDefaultValue(@"premiumsucessfull", nil,[Fitness4MeUtils getBundle], nil, nil)];
         transaction =nil;
         // send out a notification that we’ve finished the transaction
         [[NSNotificationCenter defaultCenter] postNotificationName:kInAppPurchaseManagerTransactionSucceededNotification object:self userInfo:userInfo];
@@ -491,18 +524,13 @@
                
                 [userinfo setObject:membershipStatus forKey:@"isMember"];
                 [userinfo setObject:planID forKey:@"MembershipPlan"];
+                
                 [Fitness4MeUtils showAlert:message];
             }
         }
     }  onError:^(NSError *error) {
         
     }];
-    
-  
-    
-    NSString *isMember =[userinfo objectForKey:@"isMember"];
- 
-    
 }
 
 //
@@ -520,9 +548,9 @@
 //
 - (void)restoreTransaction:(SKPaymentTransaction *)transaction
 {
-   // [self recordTransaction:transaction.originalTransaction];
-   // [self provideContent:transaction.originalTransaction.payment.productIdentifier];
-   //[self finishTransaction:transaction wasSuccessful:YES];
+    [self recordTransaction:transaction.originalTransaction];
+    [self provideContent:transaction.originalTransaction.payment.productIdentifier];
+    [self finishTransaction:transaction wasSuccessful:YES];
 }
 
 
@@ -584,7 +612,7 @@
         
         // this is fine, the user just cancelled, so don’t notify
         [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
-        [self sendMembershipPlanID:@"0" membershipStatus:@"false" msg:NSLocalizedStringWithDefaultValue(@"cancelPayment", nil,[Fitness4MeUtils getBundle], nil, nil)];
+        //[self sendMembershipPlanID:@"0" membershipStatus:@"false" msg:NSLocalizedStringWithDefaultValue(@"cancelPayment", nil,[Fitness4MeUtils getBundle], nil, nil)];
        //  NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
        // [userinfo setObject:@"dontSubscribe" forKey:@"yearly"];
     }

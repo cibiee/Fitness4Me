@@ -147,6 +147,7 @@
     label.textAlignment = UITextAlignmentCenter;
     label.backgroundColor = [UIColor clearColor];
     label.font=[UIFont systemFontOfSize:30];
+    
     return label;
 }
 

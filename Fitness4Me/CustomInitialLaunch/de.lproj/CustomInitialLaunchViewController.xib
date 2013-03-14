@@ -58,7 +58,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{43, 405}, {171, 30}}</string>
 						<reference key="NSSuperview" ref="574817124"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -104,7 +103,7 @@
 					<object class="IBUILabel" id="558267604">
 						<reference key="NSNextResponder" ref="574817124"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{10, 293}, {10, 21}}</string>
+						<string key="NSFrame">{{10, 294}, {10, 21}}</string>
 						<reference key="NSSuperview" ref="574817124"/>
 						<reference key="NSNextKeyView" ref="817337877"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -192,15 +191,8 @@
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">0</int>
 						<int key="IBUILineBreakMode">2</int>
-						<object class="IBUIFontDescription" key="IBUIFontDescription">
-							<int key="type">1</int>
-							<double key="pointSize">16</double>
-						</object>
-						<object class="NSFont" key="IBUIFont">
-							<string key="NSName">Helvetica</string>
-							<double key="NSSize">16</double>
-							<int key="NSfFlags">16</int>
-						</object>
+						<reference key="IBUIFontDescription" ref="23170855"/>
+						<reference key="IBUIFont" ref="865696363"/>
 						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 					</object>
 					<object class="IBUILabel" id="628710212">
@@ -227,7 +219,7 @@
 					<object class="IBUILabel" id="416164155">
 						<reference key="NSNextResponder" ref="574817124"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{10, 197}, {10, 21}}</string>
+						<string key="NSFrame">{{10, 196}, {10, 21}}</string>
 						<reference key="NSSuperview" ref="574817124"/>
 						<reference key="NSNextKeyView" ref="558267604"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -269,7 +261,7 @@
 					<object class="IBUILabel" id="791623258">
 						<reference key="NSNextResponder" ref="574817124"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{10, 157}, {10, 21}}</string>
+						<string key="NSFrame">{{10, 156}, {10, 21}}</string>
 						<reference key="NSSuperview" ref="574817124"/>
 						<reference key="NSNextKeyView" ref="568234244"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>

@@ -83,14 +83,14 @@
         NSString *workoutType =[userinfo stringForKey:@"workoutType"];
         if ([workoutType isEqualToString:@"Custom"]){
             Workout *workouts= [[Workout alloc]init];
-            NSLog([workouts WorkoutID]);
+           
             if ([[workout WorkoutID]intValue]>0) {
                 WorkoutDB *workoutDB =[[WorkoutDB alloc]init];
                 [workoutDB setUpDatabase];
                 [workoutDB createDatabase];
                  workouts =[workoutDB getCustomWorkoutByID:[workout WorkoutID]];
                 [workouts  setWorkoutID:[workout WorkoutID]];
-                NSLog([workouts WorkoutID]);
+                
                 
             }
             [workouts setDuration:workout.Duration];

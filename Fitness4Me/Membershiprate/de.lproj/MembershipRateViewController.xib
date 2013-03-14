@@ -115,7 +115,7 @@
 					<object class="IBUILabel" id="167863942">
 						<reference key="NSNextResponder" ref="254193821"/>
 						<int key="NSvFlags">272</int>
-						<string key="NSFrame">{{30, 81}, {267, 252}}</string>
+						<string key="NSFrame">{{31, 81}, {265, 252}}</string>
 						<reference key="NSSuperview" ref="254193821"/>
 						<reference key="NSNextKeyView" ref="1058789794"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -125,7 +125,7 @@
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSMutableString" key="IBUIText">
-							<bytes key="NS.bytes">RWluZSBGaXRuZXNzNC5tZSBNaXRnbGllZHNjaGFmdCBpc3QgYWxsZXMgd2FzIGR1IGJyYXVjaHN0LCB1
+							<bytes key="NS.bytes">RWluZSBmaXRuZXNzNC5tZSBNaXRnbGllZHNjaGFmdCBpc3QgYWxsZXMgd2FzIGR1IGJyYXVjaHN0LCB1
 bSBpbiBGb3JtIHp1IGtvbW1lbiBvZGVyIGZpdCB6dSDigKhibGVpYmVuLiBEdSBicmF1Y2hzdCBrZWlu
 IEZpdG5lc3NzdHVkaW8gb2RlciB0ZXVyZXMgRXF1aXBtZW50LiANCg0KVGFpbmllcmUgV0FOTiB1bmQg
 V08gZHUgd2lsbHN0ICAgDQoNCg0KTWVsZGUgZGljaCBqZXR6dCBhbiENClVuZCB0ZXN0ZSB1bnMgendl
@@ -146,7 +146,7 @@ aSBNb25hdGUgbGFuZyBrb3N0ZW5sb3MhA</bytes>
 							<int key="NSfFlags">16</int>
 						</object>
 						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
-						<double key="preferredMaxLayoutWidth">267</double>
+						<double key="preferredMaxLayoutWidth">265</double>
 					</object>
 					<object class="IBUIButton" id="567938743">
 						<reference key="NSNextResponder" ref="254193821"/>

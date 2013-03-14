@@ -29,7 +29,9 @@
     [super viewDidAppear:YES];
 
     
-    [[UIApplication sharedApplication]  registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert)];
+    [[UIApplication sharedApplication]  registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert|
+                                                                                                           UIRemoteNotificationTypeBadge |
+                                                                                                           UIRemoteNotificationTypeSound)];
    
 }
 
@@ -84,9 +86,9 @@
         if (userID>0) {
             [self saveUser:[item objectForKey:@"username"]
              nameOfTheUser:[item objectForKey:@"fname"]
-          levelofExpertise: [item objectForKey:@"level"]
-           mailIdOfTheUser:[item objectForKey:@"email"]
-           hasDoneFullPruchase:[item objectForKey:@"fullpurchase"]
+             levelofExpertise: [item objectForKey:@"level"]
+             mailIdOfTheUser:[item objectForKey:@"email"]
+             hasDoneFullPruchase:[item objectForKey:@"fullpurchase"]
              member:[item objectForKey:@"member"]];
             
             FitnessServerCommunication *fitness= [FitnessServerCommunication sharedState];

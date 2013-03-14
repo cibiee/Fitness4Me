@@ -11,6 +11,7 @@
 #import "Membership.h"
 @interface MembershipPurchaseViewController ()
 @property(nonatomic,strong)NSMutableArray *productArray;
+@property(nonatomic,strong)NSString *hasTrial;
 @end
 
 @implementation MembershipPurchaseViewController
@@ -37,6 +38,20 @@
    
     [self.planPopUpView setHidden:YES];
     [self.tableView setHidden:YES];
+    
+    [fitness hasTrail:nil progressView:nil onCompletion:^(NSString *status) {
+       
+            if ([status intValue] ==0) {
+                self.hasTrial =@"0";
+                
+            }
+            else{
+                 self.hasTrial =@"1";
+            }
+        
+    }  onError:^(NSError *error) {
+        
+    }];
         [self PrepareDataForInappPurchase];
     // Do any additional setup after loading the view from its nib.
 }
@@ -250,6 +265,8 @@
         
         [self sendMembership];
         [userinfo setObject:@"true" forKey:@"isMember"];
+        [userinfo setObject:@"true" forKey:@"hasMadeFullPurchase"];
+
         [userinfo setObject:@"dontSubscribe" forKey:@"yearly"];
         [userinfo setObject:[selectedMembership membershipID] forKey:@"MembershipPlan"];
         // update the server with the purchased details
@@ -502,12 +519,40 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+  
     NSDictionary *dictionary = [self.groupedMemberships objectAtIndex:indexPath.section];
     NSArray *array = [dictionary objectForKey:@"memberships"];
     selectedMembership = [[Membership alloc]init];
     selectedMembership = [array objectAtIndex:0];
-    productIdentifier=[selectedMembership appleID];
-    [self purchaseProUpgrade];
+    
+    
+    [userinfo setObject:@"IStore" forKey:@"paymentDevice"];
+    if ([[selectedMembership membershipID]isEqualToString:@"1"]) {
+        
+        if ([self.hasTrial isEqualToString:@"0"]) {
+            
+            
+            [userinfo setObject:@"true" forKey:@"isMember"];
+            [userinfo setObject:@"dontSubscribe" forKey:@"yearly"];
+            [userinfo setObject:[selectedMembership membershipID] forKey:@"MembershipPlan"];
+            // update the server with the purchased details
+            [userinfo setObject:@"true" forKey:@"showDownload"];
+            [self sendMembership];
+        }
+        else
+        {
+            productIdentifier=[selectedMembership appleID];
+            [self purchaseProUpgrade];
+        }
+    }
+    else
+    {
+        productIdentifier=[selectedMembership appleID];
+        [self purchaseProUpgrade];
+    }
+    
+   
+    
 }
 - (void)viewDidUnload {
     [self setTableView:nil];
@@ -530,7 +575,16 @@
         if ([status length]>0) {
             if ([status isEqualToString:@"success"]) {
                 
-                [self showAlertwithMsg:@"Congratulations! You  have become a premium member of Fitness4.me."];
+                if ([[selectedMembership membershipID] isEqualToString:@"1"]) {
+                    if ([self.hasTrial isEqualToString:@"0"]){
+                        [self showAlertwithMsg:NSLocalizedStringWithDefaultValue(@"premiumsucessfull", nil,[Fitness4MeUtils getBundle], nil, nil)];
+                    }
+                    else
+                    {
+                       [self showAlertwithMsg:NSLocalizedStringWithDefaultValue(@"premiumsucessfull", nil,[Fitness4MeUtils getBundle], nil, nil)]; 
+                    }
+                }
+                [self showAlertwithMsg:NSLocalizedStringWithDefaultValue(@"premiumsucessfull", nil,[Fitness4MeUtils getBundle], nil, nil)];
             }
         }
     }  onError:^(NSError *error) {
@@ -552,7 +606,7 @@
 
 -(void)showAlertwithMsg:(NSString*)message
 {
-    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"Fitness4.me" message:message
+    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"fitness4.me" message:message
                                                        delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     [alertview show];
     

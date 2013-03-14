@@ -66,7 +66,7 @@
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<string type="base64-UTF8" key="IBUIText">ICAgICAgICAgICAgICAgICBUSEFOSyBZT1UhDQpXZSBhcmUgY29tbWl0dGVkIHRvIGdpdmluZyB0aGUg
-dXNlciB0aGUgYmVzdCByZXN1bHRzIHVzaW5nIEZpdG5lc3M0Lm1lLiANCkJ1dCB3ZSBuZWVkIHlvdXIg
+dXNlciB0aGUgYmVzdCByZXN1bHRzIHVzaW5nIGZpdG5lc3M0Lm1lLiANCkJ1dCB3ZSBuZWVkIHlvdXIg
 ZmVlZGJhY2sgdG8gZ2V0IGJldHRlciEgDQpQbGVhc2UgdGVsbCB1cyB3aGF0IHdlIGNhbiBpbXByb3Zl
 A</string>
 						<object class="NSColor" key="IBUITextColor">

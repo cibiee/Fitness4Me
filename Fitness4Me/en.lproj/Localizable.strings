@@ -10,6 +10,7 @@
 "NoInternetMessage" ="Internet is not available - please try later.";
 "UsernameNull"      ="Username/Password cannot blank.";
 "twitterConfigure"  ="Configure your Twitter account in your device settings.";
+"facebookConfigure"  ="Configure your facebook account in your device settings.";
 "emailExists"       ="email already exists.";
 "ProfileUpdated"    ="Profile Updated.";
 "UsernameExits"     ="Username already exists.";
@@ -32,7 +33,7 @@
 "experLevelMessage" ="Please wait while I am downloading your 5 free workouts on expert level. Depending on the quality of your internet connection, this may take several minutes.";
 
 
-"NameNull" ="Please Provide a Name for this workout.";
+"NameNull" ="Please provide a Name for this workout.";
 "numberOfExcersice"= "Number of Exercises";
 "totalTime"= "Total Time";
 "Done"= "Done";
@@ -43,6 +44,8 @@
 "editMessage"="Save changes and start workout?";
 "focusMessage"="Please select a focus";
 
+"membershipExpired"="Your fitness4.me subscription has expired. please renew your subscription.";
+"premiumsucessfull"="Congratulations! You have become a premium member of fitness4.me.";
 
 
 "creationCompleteMsgCustom"="Congratulations!     You just designed your personalized workout.";
@@ -56,9 +59,9 @@
 "last"="last";
 "startWorkout"="Start Workout";
 
-"Selectoneexcersice"="Please Select at least one excersice.";
+"Selectoneexcersice"="Please select at least one excersice.";
 "Notenoughworkouts"="Not enough workouts to be removed.";
-"Selectworkout" ="Please Select the workout to be removed.";
+"Selectworkout" ="Please select the workout to be removed.";
 
 
 "cancelPayment"= "You have cancelled the fitness4.me membership plan";

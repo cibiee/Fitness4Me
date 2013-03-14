@@ -211,7 +211,7 @@
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<object class="NSMutableString" key="IBUIText">
-							<bytes key="NS.bytes">RWluZSBGaXRuZXNzNC5tZSBNaXRnbGllZHNjaGFmdCBpc3QgYWxsZXMgd2FzIGR1IGJyYXVjaHN0LCB1
+							<bytes key="NS.bytes">RWluZSBmaXRuZXNzNC5tZSBNaXRnbGllZHNjaGFmdCBpc3QgYWxsZXMgd2FzIGR1IGJyYXVjaHN0LCB1
 bSBpbiBGb3JtIHp1IGtvbW1lbiBvZGVyIGZpdCB6dSDigKhibGVpYmVuLiBEdSBicmF1Y2hzdCBrZWlu
 IEZpdG5lc3NzdHVkaW8gb2RlciB0ZXVyZXMgRXF1aXBtZW50LiANCg0KVGFpbmllcmUgV0FOTiB1bmQg
 V08gZHUgd2lsbHN0ICANCg0KDQpNZWxkZSBkaWNoIGpldHp0IGFuIQ0KVW5kIHRlc3RlIHVucyB6d2Vp
@@ -286,6 +286,15 @@ IE1vbmF0ZSBsYW5nIGtvc3RlbmxvcyEAA</bytes>
 						<int key="IBEventType">7</int>
 					</object>
 					<int key="connectionID">35</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">onClickShowVideo:</string>
+						<reference key="source" ref="203080284"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">38</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -388,7 +397,7 @@ IE1vbmF0ZSBsYW5nIGtvc3RlbmxvcyEAA</bytes>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">37</int>
+			<int key="maxID">38</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>

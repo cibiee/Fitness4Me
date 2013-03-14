@@ -144,12 +144,51 @@ static FitnessServer *sharedState;
         NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         
         __weak ASIHTTPRequest *requests = [ASIHTTPRequest requestWithURL:url];
+       
+        [requests setCompletionBlock:^{
+             NSLog(requestString);
+            // Use when fetching text data
+           NSString *responseString =[requests responseString];
+            if ([responseString length]>0) {
+           //     NSLog(responseString);
+                status=[self parseStatus:responseString];
+               
+                if (completionBlock) completionBlock(status);
+           }else{
+                [self terminateActivities:NSLocalizedStringWithDefaultValue(@"slowdata", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
+            }
+        }];
+        [requests setFailedBlock:^{
+            //NSError *error = [requests error];
+            [self terminateActivities:NSLocalizedStringWithDefaultValue(@"requestError", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
+        }];
+        [requests startAsynchronous];
+    }else{
+        [self terminateActivities:NSLocalizedStringWithDefaultValue(@"NoInternetMessage", nil,[Fitness4MeUtils getBundle], nil, nil):activityIndicator:signUpView];
+    }
+    
+    
+}
+
+
+- (void)hasTrail:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView onCompletion:(Responseblock)completionBlock onError:(NSError*)errorBlock;
+{
+    __block NSString *status;
+    NSString *UrlPath= [NSString GetURlPath];
+    BOOL isReachable =[Fitness4MeUtils isReachable];
+    if (isReachable){
+        NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+        int userID =[userinfo integerForKey:@"UserID"];
+        NSString *requestString =[NSString stringWithFormat:@"%@getTrialStatus=yes&user_id=%i",UrlPath,userID];
+        NSURL *url =[NSURL URLWithString:[requestString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+        
+        __weak ASIHTTPRequest *requests = [ASIHTTPRequest requestWithURL:url];
         
         [requests setCompletionBlock:^{
             // Use when fetching text data
             NSString *responseString =[requests responseString];
             if ([responseString length]>0) {
-                status=[self parseStatus:responseString];
+                status=[self parsetrialStatus:responseString];
                 
                 if (completionBlock) completionBlock(status);
             }else{
@@ -169,18 +208,33 @@ static FitnessServer *sharedState;
 }
 
 
-
-
-- (NSString *)parseStatus:(NSString *)responseString
+- (NSString *)parsetrialStatus:(NSString *)responseString
 {
-    NSLog(responseString);
+    
     NSString *status;
     NSMutableArray *object = [responseString JSONValue];
     NSMutableArray *itemsarray =[object valueForKey:@"items"];
     for (int i=0; i<[itemsarray count]; i++) {
-        status=[[itemsarray objectAtIndex:i] valueForKey:@"status"];
+        status=[[itemsarray objectAtIndex:i] valueForKey:@"trialStatus"];
     }
     return status;
+    
+}
+
+
+
+- (NSString *)parseStatus:(NSString *)responseString
+{
+  
+    NSString *status;
+    NSMutableArray *object = [responseString JSONValue];
+    NSMutableArray *itemsarray =[object valueForKey:@"items"];
+   for (int i=0; i<[itemsarray count]; i++) {
+       status=[[itemsarray objectAtIndex:i] valueForKey:@"status"];
+    }
+    
+    return status;
+    
 }
 
 -(void)parseWorkoutList:(NSString*)responseString
@@ -206,19 +260,19 @@ static FitnessServer *sharedState;
          switch (membershipID) {
             case 1:
                 
-                appleID =@"Full.fitness4.me.monthly";
+                appleID =@"fitness4.me.monthly";
                 break;
             case 2:
                 
-                appleID =@"Full.fitness4.me.supersaver1";
+                appleID =@"fitness4.me.supersaver15";
                 break;
             case 3:
                 
-                appleID =@"Full.fitness4.me.supersaver2";
+                appleID =@"fitness4.me.supersaver16";
                 break;
             case 4:
                 
-                appleID =@"Full.fitness4.me.supersaver3";
+                appleID =@"fitness4.me.supersaver36";
                 break;
                             
             default:

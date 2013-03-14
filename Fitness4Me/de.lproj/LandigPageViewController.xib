@@ -167,7 +167,7 @@ Z2xpY2hzdCBFcmdlYm5pc3NlIHNpZWhzdCB1bmQgc3DDvHJzdC4NVmllbCBTcGFzcyE</string>
 								<int key="IBUIContentMode">7</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<string key="IBUIText">Willkommenbei Fitness4.me</string>
+								<string key="IBUIText">Willkommenbei fitness4.me</string>
 								<reference key="IBUITextColor" ref="358580615"/>
 								<nil key="IBUIHighlightedColor"/>
 								<int key="IBUIBaselineAdjustment">0</int>

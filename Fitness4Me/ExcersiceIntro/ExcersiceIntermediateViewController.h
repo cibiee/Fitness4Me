@@ -19,6 +19,7 @@
 #import "User.h"
 #import "UserDB.h"
 #import "FitnessServerCommunication.h"
+#import "GADBannerView.h"
 
 #define kInAppPurchaseManagerProductsFetchedNotification @"kInAppPurchaseManagerProductsFetchedNotification"
 #define kInAppPurchaseManagerTransactionFailedNotification @"kInAppPurchaseManagerTransactionFailedNotification"
@@ -42,7 +43,7 @@
     NSMutableArray *arr;
     NSMutableArray *excersicesList;
 
-    
+    GADBannerView *bannerView_;
     IBOutlet UIImageView *excersiceImageHolder;
     IBOutlet UITextView  *descriptionTextview;
     IBOutlet  UINavigationBar *navigationBars;
@@ -56,10 +57,13 @@
     IBOutlet UILabel *propLabel;
     IBOutlet UIView *slownetView;
     IBOutlet UIButton *slownetButton;
-    
+    IBOutlet UIProgressView *fileDownloadProgressView;
+    IBOutlet UILabel *lblCompleted;
+
     ASIHTTPRequest   *downloadrequest ;
     ASINetworkQueue  *myQueue;
-    
+    int finished;
+    int totalCount;
     ExcersiceDB *excersiceDB;  
     WorkoutDB *workoutDB;
     Workout * workout;

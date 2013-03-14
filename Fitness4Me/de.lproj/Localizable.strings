@@ -11,10 +11,11 @@
 "NoInternetMessage" ="Es besteht keine Internetverbindung - bitte versuche es später.";
 "UsernameNull"      ="Benützername/Passwort bitte ausfüllen.";
 "twitterConfigure"  ="Bitte den Twitter Zugang in dein Gerät konfigurieren";
+"facebookConfigure"  ="Bitte den facebook Zugang in dein Gerät konfigurieren.";
 "emailExists"       ="E-Mail Adresse existiert bereits";
 "UsernameExits"     ="Benutzername existiert bereits";
 "ProfileUpdated"    ="Profile Updated";
-"ExitMsg"           ="Möchtest du wirklich Fitness4.me verlassen?";
+"ExitMsg"           ="Möchtest du wirklich fitness4.me verlassen?";
 "fullDownloadMsg"   ="Lade alle übrigen Workouts herunter. Dies könnte mehrere Minuten dauern, abhängig von Deiner Internet Verbindung.";
 "usernameAlphanumeric"="Benutzername muss alphanumerischen";
 "PasswordAlphanumeric"="Password muss alphanumerischen";
@@ -52,9 +53,9 @@
 "Notenoughworkouts"="Nicht genug Workouts zum Entfernen";
 "Selectworkout"="Bitte wähle die zu entfernenden Workouts";
 "Selectoneexcersice" ="Bitte wähle mindestens eine Übung aus";
-"cancelPayment"= "Du hast den Fitness4.me Mitgliedschaftsplan gekündigt";
+"cancelPayment"= "Du hast den fitness4.me Mitgliedschaftsplan gekündigt";
 
-"NameNull" ="Please Provide a Name for the workout.";
+"NameNull" ="Bitte geben Sie einen Namen für das Training.";
 "numberOfExcersice"= "Anzahl der Übungen";
 "totalTime"= "Gesamtzeit";
 "Done"= "Erledigt";
@@ -66,8 +67,8 @@
 "focusMessage"="Bitte wähle einen Schwerpunkt";
 
 
-
-
+"membershipExpired"="Ihr fitness4.me-Mitgliedschaft ist abgelaufen. Bitte erneuern Sie Ihre Mitgliedschaft.";
+"premiumsucessfull"="Herzlichen Glückwunsch! Sie sind nun Premium-Mitglied bei fitness4.me.";
 
 
 "cannoteditMessage"="Als Nicht-Premium Mitglied kannst du dieses personalisierte Workout nicht bearbeiten.                         Aber du bist herzlich eingeladen, dieses tolle Feature auszuprobieren.                  Melde dich heute an und erhalte Zugang zu noch mehr Schnell- Workouts und Übungen.                              Und du kannst unbegrenzt viele personalisierte und selbst erstellte Workouts speichern.";

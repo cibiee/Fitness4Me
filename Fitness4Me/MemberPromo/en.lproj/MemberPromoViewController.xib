@@ -186,7 +186,7 @@ bml6YXRpb24uA</string>
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string key="IBUIText">Become  member of Fitness4.me and get</string>
+						<string key="IBUIText">Become  member of fitness4.me and get</string>
 						<reference key="IBUITextColor" ref="736438047"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">0</int>

@@ -148,7 +148,7 @@
 					<object class="IBUILabel" id="491477023">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{312, 215}, {121, 21}}</string>
+						<string key="NSFrame">{{277, 215}, {187, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSNextKeyView" ref="838778886"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -157,7 +157,7 @@
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string key="IBUIText">Add Recovery</string>
+						<string key="IBUIText">Erholungszeit einfügen</string>
 						<reference key="IBUITextColor" ref="59960685"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">0</int>
@@ -170,7 +170,6 @@
 						<int key="NSvFlags">289</int>
 						<string key="NSFrame">{{332, 277}, {121, 33}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -521,7 +520,6 @@
 							<reference ref="472368456"/>
 							<reference ref="219260349"/>
 							<reference ref="1007255486"/>
-							<reference ref="491477023"/>
 							<reference ref="684702909"/>
 							<reference ref="1037764337"/>
 							<reference ref="735945701"/>
@@ -533,6 +531,7 @@
 							<reference ref="838778886"/>
 							<reference ref="395176264"/>
 							<reference ref="219594725"/>
+							<reference ref="491477023"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>

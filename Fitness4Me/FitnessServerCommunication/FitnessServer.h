@@ -34,5 +34,8 @@ typedef void (^errorblock)(NSString *errorString);
 
 - (void)verifyReciptwithPlanID:(NSString*)planID activitIndicator:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView onCompletion:(Responseblock)completionBlock onError:(NSError*)errorBlock;
 
+
+- (void)hasTrail:(UIActivityIndicatorView*)activityIndicator progressView:(UIView*)signUpView onCompletion:(Responseblock)completionBlock onError:(NSError*)errorBlock;
+
 @end
 NSMutableArray *GlobalArray;

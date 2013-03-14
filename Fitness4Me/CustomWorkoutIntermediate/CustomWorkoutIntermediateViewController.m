@@ -34,7 +34,8 @@
 - (void)viewDidLoad{
     
     [super viewDidLoad];
-    
+    [fileDownloadProgressView setHidden:NO];
+    fileDownloadProgressView.progress = (0 / 100);
     [slownetView removeFromSuperview];
     slownetView.layer .cornerRadius =14;
     
@@ -50,7 +51,7 @@
     self.UserID =[userinfo stringForKey:@"UserID"];
     self.userlevel =[userinfo stringForKey:@"Userlevel"];
     [userinfo setObject:@"false" forKey:@"shouldExit"];
-    
+    [self showAdMobs];
     [self UnlockVideos];
     [letsgoButton setEnabled:NO];
     [letsgoButton setHidden:YES];
@@ -288,7 +289,7 @@
 -(void)navigateToHome
 {
     
-    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"Fitness4.me" message:NSLocalizedStringWithDefaultValue(@"resumeDownload", nil,[Fitness4MeUtils getBundle], nil, nil)                                                       delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"fitness4.me" message:NSLocalizedStringWithDefaultValue(@"resumeDownload", nil,[Fitness4MeUtils getBundle], nil, nil)                                                       delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
     [alertview show];
     
     
@@ -296,7 +297,7 @@
 
 -(void)ShowVideounAvaialableMessage
 {
-    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"Fitness4.me" message:NSLocalizedStringWithDefaultValue(@"VideoUnavailable", nil,[Fitness4MeUtils getBundle], nil, nil)
+    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"fitness4.me" message:NSLocalizedStringWithDefaultValue(@"VideoUnavailable", nil,[Fitness4MeUtils getBundle], nil, nil)
                                                        delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alertview show];
 }
@@ -384,7 +385,7 @@
     [self getCount];
     NSString *videoPath=[NSString getVideoPath];
     
-    [fileDownloadProgressView setHidden:YES];
+    //[fileDownloadProgressView setHidden:YES];
     
     for (int i=0; i<[excersicesList count]; i++) {
         
@@ -420,8 +421,10 @@
 
 -(void)getCount
 {
+    NSLog(@"%i" ,[excersicesList count]);
     
-    [fileDownloadProgressView setHidden:YES];
+    if ([excersicesList count]>0) {
+        
     
     for (int i=0; i<[excersicesList count]; i++) {
         
@@ -444,7 +447,12 @@
         }
         
     }
-    
+    //[fileDownloadProgressView setHidden:YES];
+    //[fileDownloadProgressView removeFromSuperview];
+    }
+    else{
+        [self ShowVideounAvaialableMessage];
+    }
 }
 
 -(void)getExcersiceCount
@@ -510,6 +518,7 @@ int stopz=0;
             
         }
         else {
+            //NSLog(@"%i----%i",totalCount,finished);
             finished=finished+1;
             [self didfinishedWorkout:finished :totalCount];
         }
@@ -603,7 +612,7 @@ int stopz=0;
 
 -(void)NavigateToWorkoutList
 {
-    
+    [self onClickWorkouts:nil];
     
 }
 -(void)cancelDownload {
@@ -644,7 +653,7 @@ int stopz=0;
 
 -(IBAction)onClickBack:(id)sender{
     [self cancelDownload];
-    [self.navigationController popViewControllerAnimated:YES];
+    [self onClickWorkouts:nil];
 }
 
 -(IBAction)onClickOK:(id)sender{
@@ -673,6 +682,36 @@ int stopz=0;
         [viewController setWorkoutType:@"SelfMade"];
     }
     [self.navigationController pushViewController:viewController animated:YES];
+}
+
+
+-(void)showAdMobs
+{
+    NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+    NSString *hasMadeFullPurchase= [userinfo valueForKey:@"hasMadeFullPurchase"];
+    [userinfo setObject:@"false" forKey:@"shouldExit"];
+    if ([hasMadeFullPurchase isEqualToString:@"true"]) {
+        
+    }
+    else {
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+            bannerView_ = [[GADBannerView alloc]
+                           initWithFrame:CGRectMake(0,270,
+                                                    self.view.frame.size.width,
+                                                    50)];
+        }else {
+          //  bannerView_ = [[GADBannerView alloc]
+           //                initWithFrame:CGRectMake(0,0,
+           //                                         self.view.frame.size.height-70,
+                //                                    90)];
+        }
+        
+        bannerView_.adUnitID = @"a150efb4cbe1a0a";
+        bannerView_.rootViewController = self;
+        [self.view addSubview:bannerView_];
+        // Initiate a generic request to load it with an ad.
+        [bannerView_ loadRequest:[GADRequest request]];
+    }
 }
 
 

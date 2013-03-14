@@ -15,6 +15,7 @@
 #import "Fitness4MeUtils.h"
 #import <QuartzCore/QuartzCore.h>
 #import "FitnessServerCommunication.h"
+#import "Social/Social.h"
 
 
 @interface ShareFitness4MeViewController : UIViewController <FBSessionDelegate,FBRequestDelegate,FBDialogDelegate> 

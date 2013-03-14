@@ -1266,7 +1266,7 @@ bmxvYWQgcHVzaCAiQ2FuY2VsIg</string>
 			<string key="closePopup_iPad.png">{44, 43}</string>
 			<string key="congrats_iPad.png">{658, 881}</string>
 			<string key="home_logo_iPad.png">{768, 146}</string>
-			<string key="refresh_green.png">{29, 28}</string>
+			<string key="refresh_green.png">{64, 62}</string>
 			<string key="upgrade_iPad.png">{394, 327}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">2083</string>
