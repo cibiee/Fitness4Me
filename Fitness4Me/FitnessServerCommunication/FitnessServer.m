@@ -146,8 +146,7 @@ static FitnessServer *sharedState;
         __weak ASIHTTPRequest *requests = [ASIHTTPRequest requestWithURL:url];
        
         [requests setCompletionBlock:^{
-             NSLog(requestString);
-            // Use when fetching text data
+                        // Use when fetching text data
            NSString *responseString =[requests responseString];
             if ([responseString length]>0) {
            //     NSLog(responseString);
@@ -260,11 +259,11 @@ static FitnessServer *sharedState;
          switch (membershipID) {
             case 1:
                 
-                appleID =@"fitness4.me.monthly";
+                appleID =@"fitness4.me.monthli";
                 break;
             case 2:
                 
-                appleID =@"fitness4.me.supersaver15";
+                appleID =@"fitness4.me.supersave15";
                 break;
             case 3:
                 

@@ -28,6 +28,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+    {
+        CGSize result = [[UIScreen mainScreen] bounds].size;
+        if(result.height == 480)
+        {
+            // iPhone Classic
+        }
+        if(result.height == 568)
+        {
+            
+           textView.frame=CGRectMake(10, 200, 320, 175);
+        }
+    }
+
+    
     // Do any additional setup after loading the view from its nib.
 }
 

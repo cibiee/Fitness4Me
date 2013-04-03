@@ -311,7 +311,6 @@
 		F577DBBD166DD8060064B920 /* Focus.m in Sources */ = {isa = PBXBuildFile; fileRef = F577DBBC166DD8060064B920 /* Focus.m */; };
 		F577DBF1166E06750064B920 /* FocusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F577DBED166E05C80064B920 /* FocusViewController.m */; };
 		F577DBF6166E18B70064B920 /* NameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F577DBF4166E18B70064B920 /* NameViewController.m */; };
-		F580D5C016E85ACD00F226FC /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F535C875165DEEFC0032BDE4 /* Social.framework */; };
 		F58761CA16A90CA400475F54 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = F58761C716A909D800475F54 /* iCarousel.m */; };
 		F58761D816A90F9700475F54 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F58761D716A90F9700475F54 /* QuartzCore.framework */; };
 		F58761E516A9506100475F54 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = F58761E716A9506100475F54 /* background.png */; };
@@ -367,6 +366,8 @@
 		F5B27E8116D39C6800576BB1 /* small_button_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = F5B27E8316D39C6800576BB1 /* small_button_iPad.png */; };
 		F5B2975D166CC26D00011A7D /* CustomWorkoutAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B2975B166CC26D00011A7D /* CustomWorkoutAddViewController.m */; };
 		F5B400D316A67D740002444E /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = F5B400D516A67D740002444E /* button.png */; };
+		F5B540ED16FC0CBE009816A3 /* fitness4me-marketing-video-german-small.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F5B540EC16FC0CBE009816A3 /* fitness4me-marketing-video-german-small.mp4 */; };
+		F5B540EF16FC17E2009816A3 /* bg1.png in Resources */ = {isa = PBXBuildFile; fileRef = F5B540EE16FC17E2009816A3 /* bg1.png */; };
 		F5BB87BC16253D2900043059 /* LoadAppstoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5BB87BA16253D2900043059 /* LoadAppstoreViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F5BB87BD16253D2900043059 /* LoadAppstoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5BB87BB16253D2900043059 /* LoadAppstoreViewController.xib */; };
 		F5C0B3691659F04D0008B5EA /* SettingsViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5C0B3671659F04D0008B5EA /* SettingsViewController_iPad.xib */; };
@@ -1085,6 +1086,8 @@
 		F5B2975B166CC26D00011A7D /* CustomWorkoutAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomWorkoutAddViewController.m; path = AddCustomWokoutLanding/CustomWorkoutAddViewController.m; sourceTree = "<group>"; };
 		F5B400D416A67D740002444E /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/button.png; sourceTree = "<group>"; };
 		F5B400D616A67D780002444E /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/button.png; sourceTree = "<group>"; };
+		F5B540EC16FC0CBE009816A3 /* fitness4me-marketing-video-german-small.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fitness4me-marketing-video-german-small.mp4"; sourceTree = "<group>"; };
+		F5B540EE16FC17E2009816A3 /* bg1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg1.png; sourceTree = "<group>"; };
 		F5BB87B916253D2900043059 /* LoadAppstoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadAppstoreViewController.h; path = LaodAppstoreView/LoadAppstoreViewController.h; sourceTree = "<group>"; };
 		F5BB87BA16253D2900043059 /* LoadAppstoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoadAppstoreViewController.m; path = LaodAppstoreView/LoadAppstoreViewController.m; sourceTree = "<group>"; };
 		F5BB87BB16253D2900043059 /* LoadAppstoreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoadAppstoreViewController.xib; path = LaodAppstoreView/LoadAppstoreViewController.xib; sourceTree = "<group>"; };
@@ -1163,7 +1166,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F580D5C016E85ACD00F226FC /* Social.framework in Frameworks */,
 				F58761D816A90F9700475F54 /* QuartzCore.framework in Frameworks */,
 				0BADC5B31553DD0000320687 /* AudioToolbox.framework in Frameworks */,
 				0B19188015491AB90010E4E6 /* AVFoundation.framework in Frameworks */,
@@ -1873,6 +1875,7 @@
 		AE7D67321504DB00001718B5 /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				F5B540EC16FC0CBE009816A3 /* fitness4me-marketing-video-german-small.mp4 */,
 				F5E62CAA16E47F8C007B8F72 /* fitness4me-intro-small.mp4 */,
 				F5CE43EB16B672560040F96C /* page_15.png */,
 				F5CE43EC16B672560040F96C /* page_30.png */,
@@ -3089,6 +3092,7 @@
 		F5E62CA416E4780C007B8F72 /* Fitness4meDemoVideo */ = {
 			isa = PBXGroup;
 			children = (
+				F5B540EE16FC17E2009816A3 /* bg1.png */,
 				F5E62CAE16E49689007B8F72 /* FitnessDemoViewController_iPad.xib */,
 				F5E62CA516E47861007B8F72 /* FitnessDemoViewController.h */,
 				F5E62CA616E47861007B8F72 /* FitnessDemoViewController.m */,
@@ -3453,6 +3457,8 @@
 				F545B6F516DF1C02009BF586 /* icon@2x.png in Resources */,
 				F5E62CA916E47861007B8F72 /* FitnessDemoViewController.xib in Resources */,
 				F5E62CAF16E4968A007B8F72 /* FitnessDemoViewController_iPad.xib in Resources */,
+				F5B540ED16FC0CBE009816A3 /* fitness4me-marketing-video-german-small.mp4 in Resources */,
+				F5B540EF16FC17E2009816A3 /* bg1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5700,8 +5706,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Erik Nielsen (V7YZXV767M)";
-				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -5717,7 +5723,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				PROVISIONING_PROFILE = "5A4A356C-4725-4343-B580-45DC07BA5FF3";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=*]" = "";
 				SDKROOT = iphoneos;
 			};
@@ -5731,7 +5737,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Erik Nielsen (V7YZXV767M)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -5741,7 +5747,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "5A4A356C-4725-4343-B580-45DC07BA5FF3";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -5751,8 +5757,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Erik Nielsen (V7YZXV767M)";
-				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Fitness4.me Ltd";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution: Fitness4.me Ltd";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Fitness4Me/Fitness4Me-Prefix.pch";
 				HEADER_SEARCH_PATHS = "/Project/facebook-iphone-sdk/**";
@@ -5761,7 +5767,7 @@
 				LIBRARY_SEARCH_PATHS = /Project/Fitness4Me;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5A4A356C-4725-4343-B580-45DC07BA5FF3";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=*]" = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = armv7;
@@ -5773,7 +5779,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Erik Nielsen (V7YZXV767M)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Fitness4.me Ltd";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Fitness4Me/Fitness4Me-Prefix.pch";
 				HEADER_SEARCH_PATHS = "/Project/facebook-iphone-sdk/**";
@@ -5782,7 +5788,7 @@
 				LIBRARY_SEARCH_PATHS = /Project/Fitness4Me;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5A4A356C-4725-4343-B580-45DC07BA5FF3";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
@@ -5799,7 +5805,7 @@
 				AE7D66C21504D9F4001718B5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 		AE7D66C31504D9F4001718B5 /* Build configuration list for PBXNativeTarget "Fitness4Me" */ = {
 			isa = XCConfigurationList;
@@ -5808,7 +5814,7 @@
 				AE7D66C51504D9F4001718B5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

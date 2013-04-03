@@ -715,7 +715,7 @@
 							<object class="IBUIActivityIndicatorView" id="74008263">
 								<reference key="NSNextResponder" ref="696270039"/>
 								<int key="NSvFlags">1293</int>
-								<string key="NSFrame">{{294, 163}, {20, 20}}</string>
+								<string key="NSFrame">{{292, 162}, {20, 20}}</string>
 								<reference key="NSSuperview" ref="696270039"/>
 								<reference key="NSNextKeyView" ref="478296380"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -1194,8 +1194,8 @@
 							<reference ref="161976389"/>
 							<reference ref="639718355"/>
 							<reference ref="824935629"/>
-							<reference ref="74008263"/>
 							<reference ref="126726077"/>
+							<reference ref="74008263"/>
 						</array>
 						<reference key="parent" ref="191373211"/>
 					</object>

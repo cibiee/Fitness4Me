@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface LandigPageViewController : UIViewController
-
+{
+IBOutlet UITextView *textView;
+}
 
 -(IBAction)onNavigateToUserRegistration:(id)sender;
 

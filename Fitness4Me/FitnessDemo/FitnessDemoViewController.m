@@ -7,7 +7,7 @@
 //
 
 #import "FitnessDemoViewController.h"
-
+#import <Fitness4MeUtils.h>
 @interface FitnessDemoViewController ()
 
 @end
@@ -61,7 +61,7 @@
             bannerView_ = [[GADBannerView alloc]
                            initWithFrame:CGRectMake(0,-7,
                                                     self.view.frame.size.width-70,
-                                                    50)];
+                                                50)];
             
         }
         else {
@@ -84,27 +84,34 @@
 
 -(void)initializPlayer
 {
+    int selectedLang= [Fitness4MeUtils getApplicationLanguage];
+    
     NSString*thePath=[[NSString alloc]init];
-    thePath=[[[NSBundle mainBundle]resourcePath]stringByAppendingPathComponent:@"fitness4me-intro-small.mp4"];
+    if (selectedLang ==2) {
+        thePath=[[[NSBundle mainBundle]resourcePath]stringByAppendingPathComponent:@"fitness4me-marketing-video-german-small.mp4"];
+    }
+    if (selectedLang ==1) {
+        thePath=[[[NSBundle mainBundle]resourcePath]stringByAppendingPathComponent:@"fitness4me-intro-small.mp4"];
+    }
     
     
     
-            moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL fileURLWithPath:thePath]];
-           // moviePlayer.contentURL =theurl;
-           // [moviePlayer play];
+    moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL fileURLWithPath:thePath]];
+    // moviePlayer.contentURL =theurl;
+    // [moviePlayer play];
     [moviePlayer prepareToPlay];
     [moviePlayer setShouldAutoplay:YES];
-            moviePlayer.controlStyle = MPMovieControlStyleNone;
-            moviePlayer.view .frame= subview.bounds;
-            [subview addSubview: moviePlayer.view];
-   
-            
-         moviePlayer.controlStyle = MPMovieControlStyleNone;
-        //Register to receive a notification when the movie has finished playing.
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(moviePlayBackDidFinish:)
-                                                     name:MPMoviePlayerPlaybackDidFinishNotification
-                                                   object:moviePlayer];
+    moviePlayer.controlStyle = MPMovieControlStyleNone;
+    moviePlayer.view .frame= subview.bounds;
+    [subview addSubview: moviePlayer.view];
+    
+    
+    moviePlayer.controlStyle = MPMovieControlStyleNone;
+    //Register to receive a notification when the movie has finished playing.
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(moviePlayBackDidFinish:)
+                                                 name:MPMoviePlayerPlaybackDidFinishNotification
+                                               object:moviePlayer];
     
 }
 
