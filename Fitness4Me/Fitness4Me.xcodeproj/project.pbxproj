@@ -577,7 +577,7 @@
 		0BF04E6115812E84009D819F /* GADCustomEventRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADCustomEventRequest.h; sourceTree = "<group>"; };
 		0BF97ECF1529790500C67DB3 /* ListWorkoutsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListWorkoutsViewController.h; sourceTree = "<group>"; };
 		0BF97ED01529790500C67DB3 /* ListWorkoutsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListWorkoutsViewController.m; sourceTree = "<group>"; };
-		AE7D66A51504D9F4001718B5 /* Fitness4Me.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fitness4Me.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE7D66A51504D9F4001718B5 /* 10 Minute Fitness App LITE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "10 Minute Fitness App LITE.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE7D66A91504D9F4001718B5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AE7D66AB1504D9F4001718B5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AE7D66AD1504D9F4001718B5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -1372,7 +1372,7 @@
 		AE7D66A61504D9F4001718B5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AE7D66A51504D9F4001718B5 /* Fitness4Me.app */,
+				AE7D66A51504D9F4001718B5 /* 10 Minute Fitness App LITE.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2032,7 +2032,7 @@
 			);
 			name = Fitness4Me;
 			productName = Fitness4Me;
-			productReference = AE7D66A51504D9F4001718B5 /* Fitness4Me.app */;
+			productReference = AE7D66A51504D9F4001718B5 /* 10 Minute Fitness App LITE.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -3834,8 +3834,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Fitness4.me Ltd";
-				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution: Fitness4.me Ltd";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -3850,8 +3850,8 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				PROVISIONING_PROFILE = "5468D80D-0444-4937-80C5-3A692223DE5E";
-				"PROVISIONING_PROFILE[sdk=*]" = "5468D80D-0444-4937-80C5-3A692223DE5E";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=*]" = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -3860,7 +3860,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Fitness4.me Ltd";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -3869,7 +3869,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "5468D80D-0444-4937-80C5-3A692223DE5E";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -3879,8 +3879,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Fitness4.me Ltd";
-				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution: Fitness4.me Ltd";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Fitness4Me/Fitness4Me-Prefix.pch";
 				HEADER_SEARCH_PATHS = "/Project/facebook-iphone-sdk/**";
@@ -3888,9 +3888,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = /Project/Fitness4Me;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5468D80D-0444-4937-80C5-3A692223DE5E";
-				"PROVISIONING_PROFILE[sdk=*]" = "5468D80D-0444-4937-80C5-3A692223DE5E";
+				PRODUCT_NAME = "10 Minute Fitness App LITE";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=*]" = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
@@ -3901,7 +3901,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Fitness4.me Ltd";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Fitness4Me/Fitness4Me-Prefix.pch";
 				HEADER_SEARCH_PATHS = "/Project/facebook-iphone-sdk/**";
@@ -3909,8 +3909,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = /Project/Fitness4Me;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5468D80D-0444-4937-80C5-3A692223DE5E";
+				PRODUCT_NAME = "10 Minute Fitness App LITE";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
