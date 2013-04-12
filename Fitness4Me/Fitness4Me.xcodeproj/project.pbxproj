@@ -194,7 +194,6 @@
 		F512B7581639093500B922E1 /* TermsOfUse_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F512B75A1639093500B922E1 /* TermsOfUse_iPad.xib */; };
 		F512B761163927E700B922E1 /* UserLoginViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F512B763163927E700B922E1 /* UserLoginViewController_iPad.xib */; };
 		F51404B81664783C00B0B386 /* icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = F51404B41664783C00B0B386 /* icon-72.png */; };
-		F51404B91664783C00B0B386 /* icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F51404B51664783C00B0B386 /* icon-72@2x.png */; };
 		F51404BA1664783C00B0B386 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F51404B61664783C00B0B386 /* icon.png */; };
 		F51404BB1664783C00B0B386 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F51404B71664783C00B0B386 /* icon@2x.png */; };
 		F5253890163FABC8004F9195 /* ExcersiceIntermediateViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5253892163FABC8004F9195 /* ExcersiceIntermediateViewController_iPad.xib */; };
@@ -626,7 +625,6 @@
 		F512B762163927E700B922E1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/UserLoginViewController_iPad.xib; sourceTree = "<group>"; };
 		F512B764163927EF00B922E1 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/UserLoginViewController_iPad.xib; sourceTree = "<group>"; };
 		F51404B41664783C00B0B386 /* icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-72.png"; sourceTree = "<group>"; };
-		F51404B51664783C00B0B386 /* icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-72@2x.png"; sourceTree = "<group>"; };
 		F51404B61664783C00B0B386 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		F51404B71664783C00B0B386 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		F5253891163FABC8004F9195 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ExcersiceIntermediateViewController_iPad.xib; sourceTree = "<group>"; };
@@ -898,7 +896,6 @@
 			isa = PBXGroup;
 			children = (
 				F51404B41664783C00B0B386 /* icon-72.png */,
-				F51404B51664783C00B0B386 /* icon-72@2x.png */,
 				F51404B61664783C00B0B386 /* icon.png */,
 				F51404B71664783C00B0B386 /* icon@2x.png */,
 			);
@@ -2274,7 +2271,6 @@
 				F5066EB7165B928A00DF8B6B /* termsofUseiPad.html in Resources */,
 				F535C87A165E47FD0032BDE4 /* Default-568h@2x.png in Resources */,
 				F51404B81664783C00B0B386 /* icon-72.png in Resources */,
-				F51404B91664783C00B0B386 /* icon-72@2x.png in Resources */,
 				F51404BA1664783C00B0B386 /* icon.png in Resources */,
 				F51404BB1664783C00B0B386 /* icon@2x.png in Resources */,
 			);
