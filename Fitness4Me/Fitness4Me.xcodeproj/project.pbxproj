@@ -367,7 +367,6 @@
 		F5B2975D166CC26D00011A7D /* CustomWorkoutAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B2975B166CC26D00011A7D /* CustomWorkoutAddViewController.m */; };
 		F5B400D316A67D740002444E /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = F5B400D516A67D740002444E /* button.png */; };
 		F5B540ED16FC0CBE009816A3 /* fitness4me-marketing-video-german-small.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F5B540EC16FC0CBE009816A3 /* fitness4me-marketing-video-german-small.mp4 */; };
-		F5B540EF16FC17E2009816A3 /* bg1.png in Resources */ = {isa = PBXBuildFile; fileRef = F5B540EE16FC17E2009816A3 /* bg1.png */; };
 		F5BB87BC16253D2900043059 /* LoadAppstoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5BB87BA16253D2900043059 /* LoadAppstoreViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F5BB87BD16253D2900043059 /* LoadAppstoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5BB87BB16253D2900043059 /* LoadAppstoreViewController.xib */; };
 		F5C0B3691659F04D0008B5EA /* SettingsViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5C0B3671659F04D0008B5EA /* SettingsViewController_iPad.xib */; };
@@ -1087,7 +1086,6 @@
 		F5B400D416A67D740002444E /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/button.png; sourceTree = "<group>"; };
 		F5B400D616A67D780002444E /* de */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = de; path = de.lproj/button.png; sourceTree = "<group>"; };
 		F5B540EC16FC0CBE009816A3 /* fitness4me-marketing-video-german-small.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fitness4me-marketing-video-german-small.mp4"; sourceTree = "<group>"; };
-		F5B540EE16FC17E2009816A3 /* bg1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg1.png; sourceTree = "<group>"; };
 		F5BB87B916253D2900043059 /* LoadAppstoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadAppstoreViewController.h; path = LaodAppstoreView/LoadAppstoreViewController.h; sourceTree = "<group>"; };
 		F5BB87BA16253D2900043059 /* LoadAppstoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoadAppstoreViewController.m; path = LaodAppstoreView/LoadAppstoreViewController.m; sourceTree = "<group>"; };
 		F5BB87BB16253D2900043059 /* LoadAppstoreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoadAppstoreViewController.xib; path = LaodAppstoreView/LoadAppstoreViewController.xib; sourceTree = "<group>"; };
@@ -3092,7 +3090,6 @@
 		F5E62CA416E4780C007B8F72 /* Fitness4meDemoVideo */ = {
 			isa = PBXGroup;
 			children = (
-				F5B540EE16FC17E2009816A3 /* bg1.png */,
 				F5E62CAE16E49689007B8F72 /* FitnessDemoViewController_iPad.xib */,
 				F5E62CA516E47861007B8F72 /* FitnessDemoViewController.h */,
 				F5E62CA616E47861007B8F72 /* FitnessDemoViewController.m */,
@@ -3458,7 +3455,6 @@
 				F5E62CA916E47861007B8F72 /* FitnessDemoViewController.xib in Resources */,
 				F5E62CAF16E4968A007B8F72 /* FitnessDemoViewController_iPad.xib in Resources */,
 				F5B540ED16FC0CBE009816A3 /* fitness4me-marketing-video-german-small.mp4 in Resources */,
-				F5B540EF16FC17E2009816A3 /* bg1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

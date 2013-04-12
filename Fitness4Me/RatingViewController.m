@@ -39,7 +39,7 @@
         str = [NSString stringWithFormat:@"%@type=Purple+Software&id=", str];
         
         // Here is the app id from itunesconnect
-        str = [NSString stringWithFormat:@"%@586155690", str];
+        str = [NSString stringWithFormat:@"%@591328331", str];
         
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
     
