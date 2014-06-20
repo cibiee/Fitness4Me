@@ -156,29 +156,29 @@ static FitnessServerCommunication *sharedState;
     BOOL isReachable =[Fitness4MeUtils isReachable];
     if (isReachable)
     {
-        NSString *devToken;
-        NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
-        devToken =[userinfo stringForKey:@"deviceToken"];
-        UIDevice *dev = [UIDevice currentDevice];
-        NSString *deviceUuid = dev.uniqueIdentifier;
-        NSString *requestUrl =[NSString stringWithFormat:@"%@iphone_register.php?deviceregister=yes&userid=%i&devicetoken=%@&deviceuid=%@",[NSString getDeviceRegisterPath],userId,devToken,deviceUuid];
-        NSURL *urlrequest =[NSURL URLWithString:[requestUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-        
-        __weak ASIHTTPRequest *requests = [ASIHTTPRequest requestWithURL:urlrequest];
-        [requests setCompletionBlock:^{
-            // Use when fetching text data
-            NSString *responseString =[requests responseString];
-            if ([responseString length]>0) {
-                
-            }else{
-                [self terminateActivities:NSLocalizedStringWithDefaultValue(@"requestError", nil,[Fitness4MeUtils getBundle], nil, nil):nil:signUpView];
-            }
-        }];
-        [requests setFailedBlock:^{
-            //NSError *error = [requests error];
-            [self terminateActivities:NSLocalizedStringWithDefaultValue(@"slowdata", nil,[Fitness4MeUtils getBundle], nil, nil):nil:signUpView];
-        }];
-        [requests startAsynchronous];
+//        NSString *devToken;
+//        NSUserDefaults *userinfo =[NSUserDefaults standardUserDefaults];
+//        devToken =[userinfo stringForKey:@"deviceToken"];
+//        UIDevice *dev = [UIDevice currentDevice];
+//        NSString *deviceUuid = dev.uniqueIdentifier;
+//        NSString *requestUrl =[NSString stringWithFormat:@"%@iphone_register.php?deviceregister=yes&userid=%i&devicetoken=%@&deviceuid=%@",[NSString getDeviceRegisterPath],userId,devToken,deviceUuid];
+//        NSURL *urlrequest =[NSURL URLWithString:[requestUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+//        
+//        __weak ASIHTTPRequest *requests = [ASIHTTPRequest requestWithURL:urlrequest];
+//        [requests setCompletionBlock:^{
+//            // Use when fetching text data
+//            NSString *responseString =[requests responseString];
+//            if ([responseString length]>0) {
+//                
+//            }else{
+//                [self terminateActivities:NSLocalizedStringWithDefaultValue(@"requestError", nil,[Fitness4MeUtils getBundle], nil, nil):nil:signUpView];
+//            }
+//        }];
+//        [requests setFailedBlock:^{
+//            //NSError *error = [requests error];
+//            [self terminateActivities:NSLocalizedStringWithDefaultValue(@"slowdata", nil,[Fitness4MeUtils getBundle], nil, nil):nil:signUpView];
+//        }];
+//        [requests startAsynchronous];
     }else{
         [self terminateActivities:NSLocalizedStringWithDefaultValue(@"NoInternetMessage", nil,[Fitness4MeUtils getBundle], nil, nil):nil:signUpView];
     }
